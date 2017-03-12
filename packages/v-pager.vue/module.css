@@ -1,0 +1,38 @@
+$_item_size: 32px;
+
+.root {
+    user-select: none;
+    font-size: 0;
+
+    > li {
+        display: inline-block;
+        text-align: center;
+        font-size: 12px;
+
+        > a, > span {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0 10px;
+            min-width: $_item_size;
+            height: $_item_size;
+            line-height: $_item_size;
+            color: $color-base;
+        }
+
+        > a {
+            background: $background-color-base;
+        }
+
+        > a:hover, > a:focus {
+            color: $brand-primary;
+        }
+
+        > a:active {}
+    }
+
+    > li[disabled] {
+        > a {
+            color: #ccc;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+$height-base: 12px;
+
+.root {
+    .track {
+        overflow: hidden;
+        height: $height-base;
+        line-height: $height-base;
+        background: $background-color-base;
+    }
+
+    .trail {
+        width: 0;
+        height: 100%;
+        float: left;
+        background: $brand-primary;
+        font-size: 12px;
+        color: white;
+        transition: width .6s ease;
+    }
+}

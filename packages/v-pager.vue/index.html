@@ -1,0 +1,4 @@
+<ul :class="$style.root">
+    <li :class="$style.prev" :disabled="current <= 1" @click="select(current - 1)"><a>上一页</a></li>
+    <li :class="$style.next" :disabled="current >= total" @click="select(current + 1)"><a>下一页</a></li>
+</ul>

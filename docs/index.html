@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        空白
+        <v-list-view :list="list" />
+    </div>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./vue.js"></script>
+    <script src="bundle.js"></script>
+    <script>
+    Vue.component('v-list-view', VisionUI.ListView);
+
+    new Vue({
+        el: '#test',
+        data: {
+            list: [
+                { id: 1, text: 'f12312' },
+                { id: 1, text: 'f123ee' },
+                { id: 1, text: 'f123cc' },
+            ]
+        }
+    })
+    </script>
+</body>
+</html>

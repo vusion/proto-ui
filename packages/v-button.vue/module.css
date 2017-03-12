@@ -1,0 +1,52 @@
+.root {
+    /* Correct inability to style clickable `input` types in iOS. */
+    -webkit-appearance: none;
+    /* Remove margins in Chrome, Safari and Opera. */
+    margin: 0;
+    /* Remove borders for `button`. */
+    border: none;
+    /* Address `overflow` set to `hidden` in IE+. */
+    overflow: visible;
+    /* Correct `font` properties not being inherited for `button`. */
+    font: inherit;
+    /* Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE. */
+    text-transform: none;
+    /* Required for `a`. */
+    text-decoration: none;
+    /* Use pointer cursor at any time. */
+    cursor: pointer;
+    /* Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214 */
+    background: none;
+    /* Others */
+    display: inline-block;
+    text-align: center;
+
+    /* @FOR CUSTOM */
+    padding: 0 12px;
+    height: $height-base;
+    line-height: $height-base;
+    background: white;
+    color: $color-base;
+    border: 1px solid $border-color-base;
+}
+
+.root:hover {
+    /* Remove default focus style */
+    outline: none;
+    /* Required for `a` elements */
+    text-decoration: none;
+
+    /* @FOR CUSTOM */
+    background: $background-color-base;
+}
+
+.root:focus {
+    /* Remove default focus style */
+    outline: none;
+    /* Required for `a` elements */
+    text-decoration: none;
+}
+
+.root:active {
+    background: $brand-primary;
+}

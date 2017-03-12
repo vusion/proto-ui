@@ -1,0 +1,34 @@
+{
+  "name": "proto-ui.vision",
+  "description": "Vision Proto UI",
+  "version": "0.0.1",
+  "author": "Rainfore <rainforest92@126.com>",
+  "main": "./index.js",
+  "repository": "vision-app/proto-ui",
+  "homepage": "http://vision-app.github.io",
+  "bugs": {
+    "url": "http://github.com/vision-app/proto-ui/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vision",
+    "proto",
+    "ui",
+    "proto-ui"
+  ],
+  "tags": [
+    "vision",
+    "proto",
+    "ui",
+    "proto-ui"
+  ],
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "vue": "^2.2.1"
+  },
+  "devDependencies": {
+    "vue": "^2.2.1",
+    "lerna": "2.0.0-beta.38"
+  }
+}
