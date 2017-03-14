@@ -1,4 +1,4 @@
-import { Base } from 'base.vision';
+import Base from 'v-base.vue';
 
 const Button = Base.extend({
     name: 'v-button',

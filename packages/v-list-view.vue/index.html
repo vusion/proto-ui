@@ -1,5 +1,5 @@
 <div :class="$style.root">
     <slot name="item" v-for="item in list" :item="item">
-        <div :class="$style.item">{{ item.text }}</div>
+        <div :class="$style.item">{{ item[field] }}</div>
     </slot>
 </div>

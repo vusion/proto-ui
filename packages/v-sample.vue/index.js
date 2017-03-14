@@ -1,4 +1,4 @@
-import { Base } from 'vision-v-base';
+import Base from 'v-base.vue';
 
 const Sample = Base.extend({
     name: 'v-sample',

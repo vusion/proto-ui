@@ -1,4 +1,5 @@
 .root {
+    /* @Private */
     /* Correct inability to style clickable `input` types in iOS. */
     -webkit-appearance: none;
     /* Remove margins in Chrome, Safari and Opera. */
@@ -21,7 +22,7 @@
     display: inline-block;
     text-align: center;
 
-    /* @FOR CUSTOM */
+    /* @Public */
     padding: 0 12px;
     height: $height-base;
     line-height: $height-base;
@@ -31,16 +32,18 @@
 }
 
 .root:hover {
+    /* @Private */
     /* Remove default focus style */
     outline: none;
     /* Required for `a` elements */
     text-decoration: none;
 
-    /* @FOR CUSTOM */
+    /* @Public */
     background: $background-color-base;
 }
 
 .root:focus {
+    /* @Private */
     /* Remove default focus style */
     outline: none;
     /* Required for `a` elements */

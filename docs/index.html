@@ -9,13 +9,12 @@
 <body>
     <div id="test">
         空白
-        <v-list-view :list="list" />
+        <v-linear-progress :percent="60" />
     </div>
-    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
-    <script src="./vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="bundle.js"></script>
     <script>
-    Vue.component('v-list-view', VisionUI.ListView);
+    Vue.component('v-linear-progress', VisionUI.LinearProgress);
 
     new Vue({
         el: '#test',

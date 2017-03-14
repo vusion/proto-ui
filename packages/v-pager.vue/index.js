@@ -1,4 +1,4 @@
-import { Base } from 'vision-v-base';
+import Base from 'v-base.vue';
 
 const Pager = Base.extend({
     name: 'v-pager',
