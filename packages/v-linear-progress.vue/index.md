@@ -1,8 +1,8 @@
-## 示例
-### 基本形式
+# Linear Progress
 
-<div class="m-example"></div>
+## Examples
+### Basic
 
-```xml
-<v-linear-progress percent="36" />
+``` html
+<v-linear-progress :percent="36" />
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "proto-ui.vision",
-  "description": "Vision Proto UI",
+  "name": "v-chart.vue",
+  "description": "Vision Proto UI - Chart",
   "version": "0.0.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
@@ -23,17 +23,9 @@
     "proto-ui"
   ],
   "dependencies": {
-    "vue": "^2.2.1",
-    "vision-ui-utils": "^0.0.1",
-    "v-base.vue": "^0.0.1",
-    "v-button.vue": "^0.0.1",
-    "v-circular-progress.vue": "^0.0.1",
-    "v-linear-progress.vue": "^0.0.1",
-    "v-list-view.vue": "^0.0.1",
-    "v-pager.vue": "^0.0.1",
-    "v-sample.vue": "^0.0.1"
+    "v-base.vue": "^0.0.1"
   },
-  "devDependencies": {
-    "lerna": "2.0.0-beta.38"
+  "peerDependencies": {
+    "vue": "^2.2.1"
   }
 }

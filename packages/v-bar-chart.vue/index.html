@@ -1,0 +1,9 @@
+<div :class="$style.root">
+    <div :class="$style.grid">
+        <div v-for="(xLabel, index) in axisXOptions.data"
+            :class="$style['line-y']" :style="{ left: 100 * index / axisXOptions.data.length + '%' }"></div>
+        <div :class="$style['line-y']" style="left: 100%"></div><!-- Middle Mode for BarChart -->
+        <div v-for="(yLabel, index) in axisYOptions.data"
+            :class="$style['line-x']" :style="{ bottom: 100 * index/(axisYOptions.data.length - 1) + '%' }"></div>
+    </div>
+</div>

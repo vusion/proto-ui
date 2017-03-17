@@ -39,7 +39,8 @@
     text-decoration: none;
 
     /* @Public */
-    background: $background-color-base;
+    color: $brand-primary;
+    border-color: $brand-primary;
 }
 
 .root:focus {
@@ -51,5 +52,15 @@
 }
 
 .root:active {
-    background: $brand-primary;
+    background: $background-color-base;
+}
+
+.root[disabled] {
+    /* @Private */
+    cursor: not-allowed;
+
+    /* @Public */
+    background: white;
+    border-color: $border-color-base;
+    color: $border-color-base;
 }

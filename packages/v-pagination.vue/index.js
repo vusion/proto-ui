@@ -1,7 +1,7 @@
 import Base from 'v-base.vue';
 
-const Pager = Base.extend({
-    name: 'v-pager',
+const Pagination = Base.extend({
+    name: 'v-pagination',
     props: {
         total: { type: Number, default: 11 },
         current: { type: Number, default: 1 },
@@ -20,7 +20,7 @@ const Pager = Base.extend({
         select(page) {
 
         },
-    }
+    },
 });
 
-export default Pager;
+export default Pagination;

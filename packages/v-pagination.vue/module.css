@@ -1,4 +1,4 @@
-$_item_size: 32px;
+$item_size: 32px;
 
 .root {
     user-select: none;
@@ -13,9 +13,9 @@ $_item_size: 32px;
             display: inline-block;
             text-decoration: none;
             padding: 0 10px;
-            min-width: $_item_size;
-            height: $_item_size;
-            line-height: $_item_size;
+            min-width: $item_size;
+            height: $item_size;
+            line-height: $item_size;
             color: $color-base;
         }
 
