@@ -2,13 +2,22 @@ import Base from 'v-base.vue';
 
 const ListView = Base.extend({
     name: 'v-list-view',
-    props: {
-        list: Array,
-        field: {
-            type: String,
-            default: 'text',
-        }
-    }
+    data() {
+        return {
+            value: undefined,
+            selectedItem: null,
+        };
+    },
+    methods: {
+        /**
+         * @method select(item) Select this item
+         * @public
+         * @return {void}
+         */
+        select(item) {
+            this.selectedItem = item;
+        },
+    },
 });
 
 export default ListView;

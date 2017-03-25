@@ -5,6 +5,7 @@ import Button from 'v-button.vue';
 import CircularProgress from 'v-circular-progress.vue';
 import LinearProgress from 'v-linear-progress.vue';
 import ListView from 'v-list-view.vue';
+import Item from 'v-item.vue';
 import Pagination from 'v-pagination.vue';
 import BarChart from 'v-bar-chart.vue';
 import Sample from 'v-sample.vue';
@@ -15,6 +16,7 @@ const Components = {
     CircularProgress,
     LinearProgress,
     ListView,
+    Item,
     Pagination,
     BarChart,
     Sample,

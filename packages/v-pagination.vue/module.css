@@ -1,38 +1,62 @@
 $item_size: 32px;
 
 .root {
+    /* @Private */
     user-select: none;
-    font-size: 0;
+    cursor: default;
+    padding: 0;
 
-    > li {
+    .item {
         display: inline-block;
-        text-align: center;
+        text-decoration: none;
+
+        padding: 0 10px;
+        min-width: $item_size;
+        height: $item_size;
+        line-height: $item_size;
         font-size: 12px;
-
-        > a, > span {
-            display: inline-block;
-            text-decoration: none;
-            padding: 0 10px;
-            min-width: $item_size;
-            height: $item_size;
-            line-height: $item_size;
-            color: $color-base;
-        }
-
-        > a {
-            background: $background-color-base;
-        }
-
-        > a:hover, > a:focus {
-            color: $brand-primary;
-        }
-
-        > a:active {}
+        text-align: center;
+        background: $background-color-base;
+        color: $color-base;
     }
 
-    > li[disabled] {
-        > a {
-            color: #ccc;
+    .item:hover {
+        color: $brand-primary;
+    }
+
+    .item[selected] {
+        background: $brand-primary;
+        color: white;
+    }
+
+    .item[disabled] {
+        color: $gray-base;
+    }
+
+    .item[role="prev"] {
+        &:before {
+            content: '‹';
         }
+    }
+
+    .item[role="next"] {
+        &:before {
+            content: '›';
+        }
+    }
+
+    .item[role="blank"] {
+        background: none;
+        color: $color-base;
+    }
+}
+
+.root[disabled] {
+    .item {
+        color: $gray-base;
+    }
+
+    .item[selected] {
+        background: $gray-dark;
     }
 }

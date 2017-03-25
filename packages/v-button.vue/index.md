@@ -12,10 +12,3 @@
 ``` html
 <v-button disabled>Button</v-button>
 ```
-
-### Fallback
-
-``` html
-<button class="v-button">Button</button>
-<a class="v-button">Link</a>
-```

@@ -1,4 +1,8 @@
-<ul :class="$style.root">
-    <li :class="$style.prev" :disabled="current <= 1" @click="select(current - 1)"><a>上一页</a></li>
-    <li :class="$style.next" :disabled="current >= total" @click="select(current + 1)"><a>下一页</a></li>
+<ul :class="$style.root" :disabled="disabled">
+    <li :class="$style.item" role="prev" :disabled="current_ <= 1" @click="select(current_ - 1)"></li>
+    <template v-for="page in pages">
+        <li v-if="page" :class="$style.item" :selected="current_ === page" @click="select(page)">{{ page }}</li>
+        <li v-else :class="$style.item" role="blank">...</li>
+    </template>
+    <li :class="$style.item" role="next" :disabled="current_ >= total" @click="select(current_ + 1)"></li>
 </ul>
