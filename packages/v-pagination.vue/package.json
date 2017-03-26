@@ -1,6 +1,6 @@
 {
-  "name": "v-pager.vue",
-  "description": "Vision Proto UI - Pager",
+  "name": "v-pagination.vue",
+  "description": "Vision Proto UI - Pagination",
   "version": "0.0.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",

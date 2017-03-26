@@ -30,6 +30,10 @@ $item_size: 32px;
     }
 
     .item[disabled] {
+        /* @Private */
+        cursor: not-allowed;
+
+        /* @Public */
         color: $gray-base;
     }
 
@@ -52,6 +56,9 @@ $item_size: 32px;
 }
 
 .root[disabled] {
+    /* @Private */
+    cursor: not-allowed;
+
     .item {
         color: $gray-base;
     }
