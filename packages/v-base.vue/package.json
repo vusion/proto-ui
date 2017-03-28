@@ -1,7 +1,7 @@
 {
   "name": "v-base.vue",
   "description": "Vision Proto UI - Base",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vision-app/proto-ui",
