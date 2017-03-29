@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
+  "scripts": {
+    "publish": "lerna publish --skip-git"
+  },
   "repository": "vision-app/proto-ui",
   "homepage": "http://vision-app.github.io",
   "bugs": {
