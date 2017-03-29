@@ -26,7 +26,6 @@
     "proto-ui"
   ],
   "dependencies": {
-    "normalize.css": "^6.0.0",
     "vue": "^2.2.1"
   },
   "devDependencies": {

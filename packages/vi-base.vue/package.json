@@ -22,6 +22,9 @@
     "ui",
     "proto-ui"
   ],
+  "dependencies": {
+    "normalize.css": "^6.0.0"
+  },
   "peerDependencies": {
     "vue": "^2.2.1"
   }
