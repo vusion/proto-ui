@@ -1,12 +1,9 @@
 {
-  "name": "proto-ui.vusion",
-  "description": "Vusion Proto UI",
+  "name": "vusion-utils",
+  "description": "Vusion - Utils",
   "version": "0.0.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
-  "scripts": {
-    "publish": "lerna publish --skip-git"
-  },
   "repository": "vusion/proto-ui",
   "homepage": "http://vusion.github.io",
   "bugs": {
@@ -24,13 +21,5 @@
     "proto",
     "ui",
     "proto-ui"
-  ],
-  "dependencies": {
-    "eslint": "^3.18.0",
-    "eslint-config-vusion": "^1.1.0",
-    "vue": "^2.2.1"
-  },
-  "devDependencies": {
-    "lerna": "2.0.0-beta.38"
-  }
+  ]
 }

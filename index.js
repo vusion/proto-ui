@@ -1,14 +1,14 @@
 import Vue from 'vue';
 
-import Base from './packages/vi-base.vue';
-import Button from './packages/vi-button.vue';
-import CircularProgress from './packages/vi-circular-progress.vue';
-import LinearProgress from './packages/vi-linear-progress.vue';
-import ListView from './packages/vi-list-view.vue';
-import Item from './packages/vi-item.vue';
-import Pagination from './packages/vi-pagination.vue';
-import BarChart from './packages/vi-bar-chart.vue';
-import Sample from './packages/vi-sample.vue';
+import Base from './packages/u-base.vue';
+import Button from './packages/u-button.vue';
+import CircularProgress from './packages/u-circular-progress.vue';
+import LinearProgress from './packages/u-linear-progress.vue';
+import ListView from './packages/u-list-view.vue';
+import Item from './packages/u-item.vue';
+import Pagination from './packages/u-pagination.vue';
+import BarChart from './packages/u-bar-chart.vue';
+import Sample from './packages/u-sample.vue';
 
 const Components = {
     Base,
