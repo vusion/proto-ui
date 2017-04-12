@@ -65,3 +65,11 @@
     <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/v/u-utils.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/dm/u-utils.svg?style=flat-square"></a></td>
 </tr>
+
+## Development
+
+``` shell
+npm install
+npm install -g vusion-cli
+vusion ui dev
+```
