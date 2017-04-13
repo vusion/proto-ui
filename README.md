@@ -6,6 +6,21 @@
     <thead><tr><th>Name</th><th>Version</th><th>Downloads</th></thead>
     <tbody>
 <tr>
+    <td>u-pagination.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/v/u-pagination.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/dm/u-pagination.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-tabs.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/v/u-tabs.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/dm/u-tabs.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-tab.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/v/u-tab.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/dm/u-tab.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
     <td>u-bar-chart.vue</td>
     <td><a href="https://www.npmjs.com/package/u-bar-chart.vue"><img src="https://img.shields.io/npm/v/u-bar-chart.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-bar-chart.vue"><img src="https://img.shields.io/npm/dm/u-bar-chart.vue.svg?style=flat-square"></a></td>
@@ -44,11 +59,6 @@
     <td>u-list-view.vue</td>
     <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/v/u-list-view.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/dm/u-list-view.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-pagination.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/v/u-pagination.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/dm/u-pagination.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
     <td>u-pie-chart.vue</td>
