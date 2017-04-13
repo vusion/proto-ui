@@ -76,23 +76,13 @@ const Pagination = Base.extend({
             if (page < 1 || page > this.total || page === this.current_)
                 return;
 
-            /**
-             * @event select - Emit when selecting a page
-             * @property {number} page - The page number to select
-             * @property {number} current - The current page number
-             */
-            this.$emit('select', {
-                page,
-                current: this.current_,
-            });
-
             this.current_ = page;
 
             /**
-             * @event change - Emit when current page changed
-             * @property {object} current - The changed current page number
+             * @event select - Emit when selecting a page
+             * @property {number} current - The current page
              */
-            this.$emit('change', {
+            this.$emit('select', {
                 current: page,
             });
         },

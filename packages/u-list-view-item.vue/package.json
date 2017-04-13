@@ -1,8 +1,7 @@
 {
-  "name": "u-item.vue",
-  "description": "Vusion Proto UI - Item",
+  "name": "u-list-view-item.vue",
+  "description": "Vusion Proto UI - ListViewItem",
   "version": "0.0.1",
-  "private": true,
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",

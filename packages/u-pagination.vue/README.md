@@ -16,8 +16,9 @@ Use `side` and `around` properties to change the count of displayed numbers.
 <u-pagination :total="11" :current="6" :side="1" :around="3"></u-pagination>
 ```
 
-### Disabled
+### Readonly & Disabled
 
 ``` html
+<u-pagination :total="11" readonly></u-pagination>
 <u-pagination :total="11" disabled></u-pagination>
 ```

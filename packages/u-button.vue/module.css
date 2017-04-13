@@ -61,6 +61,6 @@
 
     /* @Public */
     background: white;
-    border-color: $border-color-base;
-    color: $border-color-base;
+    border-color: $disabled-color;
+    color: $disabled-color;
 }

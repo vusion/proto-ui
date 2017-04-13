@@ -1,0 +1,57 @@
+.root {
+    margin-bottom: $margin-bottom-base;
+    
+    .head {
+        user-select: none;
+        border-bottom: 1px solid $border-color-base;
+    }
+
+    .item {
+        cursor: pointer;
+        display: inline-block;
+        box-sizing: content-box;
+
+        height: 30px;
+        line-height: 30px;
+        padding: 0 20px;
+
+        border: 1px solid transparent;
+        border-bottom: none;
+        margin-bottom: -1px;
+    }
+
+    .item:hover {
+        background: $background-color-base;
+    }
+
+    .item[selected] {
+        background: white;
+        border-color: $border-color-base;
+        color: $brand-primary;
+        border-bottom-color: transparent;
+        padding-bottom: 1px;
+    }
+
+    .item[disabled] {
+        background: none;
+        color: $disabled-color;
+        cursor: not-allowed;
+    }
+
+    .body {
+        padding-top: 10px;
+    }
+}
+
+.root[disabled] {
+    .item {
+        cursor: not-allowed;
+        background: none;
+        color: $disabled-color;
+    }
+
+    .item[selected] {
+        cursor: default;
+        background: white;
+    }
+}

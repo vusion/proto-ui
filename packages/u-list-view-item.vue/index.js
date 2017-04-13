@@ -1,12 +1,12 @@
 import Base from 'u-base.vue';
 
 /**
- * @class Item
+ * @class ListViewItem
  * @extends Base
  * @param {string}              attrs.title                  Title Tooltip
  */
-const Item = Base.extend({
-    name: 'u-item',
+const ListViewItem = Base.extend({
+    name: 'u-list-view-item',
     props: {
         selected: {
             type: Boolean,
@@ -41,4 +41,4 @@ const Item = Base.extend({
     },
 });
 
-export default Item;
+export default ListViewItem;

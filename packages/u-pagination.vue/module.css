@@ -5,6 +5,7 @@ $item_size: 32px;
     user-select: none;
     cursor: default;
     padding: 0;
+    margin-bottom: $margin-bottom-base;
 
     .item {
         display: inline-block;
@@ -34,7 +35,7 @@ $item_size: 32px;
         cursor: not-allowed;
 
         /* @Public */
-        color: $gray-base;
+        color: $disabled-color;
     }
 
     .item[role="prev"] {
@@ -60,10 +61,10 @@ $item_size: 32px;
     cursor: not-allowed;
 
     .item {
-        color: $gray-base;
+        color: $disabled-color;
     }
 
     .item[selected] {
-        background: $gray-dark;
+        background: $gray-base;
     }
 }

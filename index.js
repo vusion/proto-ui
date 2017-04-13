@@ -5,10 +5,12 @@ import Button from './packages/u-button.vue';
 import CircularProgress from './packages/u-circular-progress.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import ListView from './packages/u-list-view.vue';
-import Item from './packages/u-item.vue';
+import ListViewItem from './packages/u-list-view-item.vue';
 import Pagination from './packages/u-pagination.vue';
 import BarChart from './packages/u-bar-chart.vue';
 import Sample from './packages/u-sample.vue';
+import Tabs from './packages/u-tabs.vue';
+import Tab from './packages/u-tab.vue';
 
 const Components = {
     Base,
@@ -16,10 +18,12 @@ const Components = {
     CircularProgress,
     LinearProgress,
     ListView,
-    Item,
+    ListViewItem,
     Pagination,
     BarChart,
     Sample,
+    Tabs,
+    Tab,
 };
 
 window.Vue = Vue;
@@ -31,7 +35,10 @@ export {
     CircularProgress,
     LinearProgress,
     ListView,
+    ListViewItem,
     Pagination,
     BarChart,
     Sample,
+    Tabs,
+    Tab,
 };

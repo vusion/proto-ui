@@ -5,7 +5,7 @@ const ListView = Base.extend({
     data() {
         return {
             value: undefined,
-            selectedItem: null,
+            selectedItem: undefined,
         };
     },
     methods: {

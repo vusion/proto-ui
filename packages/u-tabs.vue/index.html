@@ -1,0 +1,16 @@
+<div :class="$style.root" :disabled="disabled">
+    <ul :class="$style.head">
+        <li :class="$style.item"
+            v-for="(tab, index) in tabs"
+            :title="tab.title"
+            :selected="selectedIndex_ === index"
+            :disabled="tab.disabled"
+            v-show="!tab.hidden"
+            @click="select(index)">
+            {{ tab.title }}
+        </li>
+    </ul>
+    <div :class="$style.body">
+        <slot></slot>
+    </div>
+</div>
