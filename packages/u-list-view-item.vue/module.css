@@ -1,7 +1,6 @@
 .root {
     /* @Private */
     cursor: pointer;
-    list-style: none;
 
     /* @Public */
     padding: 4px 12px;

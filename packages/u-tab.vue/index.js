@@ -1,5 +1,12 @@
 import Base from 'u-base.vue';
 
+/**
+ * @class Tab
+ * @extends Base
+ * @param {string}              props.title                     Tab title
+ * @param {boolean=false}       props.hidden                    Hide this tab
+ * @param {boolean=false}       props.disabled                  Disabled
+ */
 const Tab = Base.extend({
     name: 'u-tab',
     props: {

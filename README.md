@@ -41,6 +41,16 @@
     <td><a href="https://www.npmjs.com/package/u-circular-progress.vue"><img src="https://img.shields.io/npm/dm/u-circular-progress.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
+    <td>u-list-view.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/v/u-list-view.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/dm/u-list-view.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-list-view-item.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-list-view-item.vue"><img src="https://img.shields.io/npm/v/u-list-view-item.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-list-view-item.vue"><img src="https://img.shields.io/npm/dm/u-list-view-item.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
     <td>u-bar-chart.vue</td>
     <td><a href="https://www.npmjs.com/package/u-bar-chart.vue"><img src="https://img.shields.io/npm/v/u-bar-chart.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-bar-chart.vue"><img src="https://img.shields.io/npm/dm/u-bar-chart.vue.svg?style=flat-square"></a></td>
@@ -49,18 +59,6 @@
     <td>u-chart.vue</td>
     <td><a href="https://www.npmjs.com/package/u-chart.vue"><img src="https://img.shields.io/npm/v/u-chart.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-chart.vue"><img src="https://img.shields.io/npm/dm/u-chart.vue.svg?style=flat-square"></a></td>
-</tr>
-
-<tr>
-    <td>u-item.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-item.vue"><img src="https://img.shields.io/npm/v/u-item.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-item.vue"><img src="https://img.shields.io/npm/dm/u-item.vue.svg?style=flat-square"></a></td>
-</tr>
-
-<tr>
-    <td>u-list-view.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/v/u-list-view.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/dm/u-list-view.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
     <td>u-pie-chart.vue</td>
