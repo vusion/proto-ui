@@ -3,32 +3,29 @@ import Base from 'u-base.vue';
 /**
  * @class ListViewItem
  * @extends Base
- * @param {string}              attrs.title                  Title Tooltip
+ * @param {any}                 props.value                     Value of this item
+ * @param {boolean=false}       props.disabled                  Disabled
  */
 const ListViewItem = Base.extend({
     name: 'u-list-view-item',
     props: {
-        selected: {
-            type: Boolean,
-            default: false,
-        },
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
+        value: { type: null },
+        disabled: { type: Boolean, default: false },
     },
     computed: {
-        selected_() {
+        selected() {
             return this.$parent.selectedItem === this;
         },
     },
     created() {
-        if (!this.$parent.selectedItem === null && this.selected)
-            this.$parent.selectedItem = this;
+        this.$parent.add(this);
+    },
+    destroy() {
+        this.$parent.remove(this);
     },
     methods: {
         /**
-         * @method select() Select this item
+         * @method select() - Select this item
          * @public
          * @return {void}
          */

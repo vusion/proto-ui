@@ -4,4 +4,5 @@
 
     /* @Public */
     border: 1px solid $border-color-base;
+    margin-bottom: $margin-bottom-base;
 }

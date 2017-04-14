@@ -20,5 +20,9 @@
     /* @Private */
     cursor: not-allowed;
     background: none;
-    color: $gray-base;
+    color: $disabled-color;
+}
+
+.root[selected][disabled] {
+    background: $gray-base;
 }
