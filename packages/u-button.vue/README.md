@@ -10,15 +10,16 @@
 ### Disabled
 
 ``` html
-<u-button disabled>Button</u-button>
+<u-button disabled>Disabled</u-button>
 ```
 
 ### Link
 
-Use `v-href` or `v-to` directives to add link.
+- Use `v-href` directive to add normal link.
+- Use `v-to` directive to add [vue-router](https://router.vuejs.org) link.
 
 ``` html
-<u-button v-href="'/test'">Button</u-button>
-<u-button v-to="'/'">Button</u-button>
-<u-button v-href="'/'" disabled>Button</u-button>
+<u-button v-href="'https://github.com/vusion/vusion'">v-href</u-button>
+<u-button v-to="'/some/router/path'">v-to</u-button>
+<u-button v-href="'https://github.com/vusion/vusion'" disabled>v-href</u-button>
 ```
