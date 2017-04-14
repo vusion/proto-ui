@@ -1,6 +1,6 @@
 .root {
     margin-bottom: $margin-bottom-base;
-    
+
     .head {
         user-select: none;
         border-bottom: 1px solid $border-color-base;
@@ -38,20 +38,11 @@
         cursor: not-allowed;
     }
 
+    .item[selected][disabled] {
+        background: white;
+    }
+
     .body {
         padding-top: 10px;
-    }
-}
-
-.root[disabled] {
-    .item {
-        cursor: not-allowed;
-        background: none;
-        color: $disabled-color;
-    }
-
-    .item[selected] {
-        cursor: default;
-        background: white;
     }
 }

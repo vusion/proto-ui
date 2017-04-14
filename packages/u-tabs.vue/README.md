@@ -29,15 +29,15 @@
     <u-tab title="TabB">Readonly</u-tab>
     <u-tab title="TabC">Readonly</u-tab>
 </u-tabs>
-<u-tabs>
-    <u-tab title="TabA">Partially Disabled</u-tab>
-    <u-tab title="TabB" disabled>Partially Disabled</u-tab>
-    <u-tab title="TabC">Partially Disabled</u-tab>
-</u-tabs>
 <u-tabs disabled>
-    <u-tab title="TabA">All Disabled</u-tab>
-    <u-tab title="TabB">All Disabled</u-tab>
-    <u-tab title="TabC">All Disabled</u-tab>
+    <u-tab title="TabA">Disabled All</u-tab>
+    <u-tab title="TabB">Disabled All</u-tab>
+    <u-tab title="TabC">Disabled All</u-tab>
+</u-tabs>
+<u-tabs>
+    <u-tab title="TabA">Disabled Partially</u-tab>
+    <u-tab title="TabB" disabled>Disabled Partially</u-tab>
+    <u-tab title="TabC">Disabled Partially</u-tab>
 </u-tabs>
 ```
 

@@ -4,7 +4,7 @@
             v-for="(tab, index) in tabs"
             :title="tab.title"
             :selected="selectedIndex_ === index"
-            :disabled="tab.disabled"
+            :disabled="tab.disabled || disabled"
             v-show="!tab.hidden"
             @click="select(index)">
             {{ tab.title }}
