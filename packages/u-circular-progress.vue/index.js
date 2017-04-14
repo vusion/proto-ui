@@ -3,7 +3,7 @@ import Base from 'u-base.vue';
 /**
  * @class CircularProgress
  * @extends Base
- * @param {number=0}               props.percent                   百分比
+ * @param {number=0}               props.percent                   The percentage of progress
  */
 const CircularProgress = Base.extend({
     name: 'u-circular-progress',
