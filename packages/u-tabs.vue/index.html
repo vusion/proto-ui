@@ -3,7 +3,7 @@
         <li :class="$style.item"
             v-for="(tab, index) in tabs"
             :title="tab.title"
-            :selected="selectedIndex_ === index"
+            :selected="router ? tab.active : selectedIndex_ === index"
             :disabled="tab.disabled || disabled"
             v-show="!tab.hidden"
             @click="select(index)">

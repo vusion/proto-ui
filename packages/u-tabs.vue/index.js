@@ -6,6 +6,7 @@ import Base from 'u-base.vue';
  * @param {number=0}            props.selectedIndex             Index of selected tab
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
+ * @param {boolean=false}       props.router                    Use vue router to activate
  */
 const Tabs = Base.extend({
     name: 'u-tabs',
@@ -13,6 +14,7 @@ const Tabs = Base.extend({
         selectedIndex: { type: Number, default: 0 },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        router: { type: Boolean, default: false },
     },
     data() {
         return {
@@ -43,6 +45,7 @@ const Tabs = Base.extend({
             if (this.readonly || this.disabled || this.tabs[index].disabled)
                 return;
 
+            const tab = this.tabs[index];
             this.selectedIndex_ = index;
 
             /**
@@ -51,9 +54,11 @@ const Tabs = Base.extend({
              * @property {number} selectedIndex - Index of selected tab
              */
             this.$emit('select', {
-                selectedTab: this.selectedTab,
+                selectedTab: tab,
                 selectedIndex: index,
             });
+
+            this.router && tab.navigate();
         },
     },
 });
