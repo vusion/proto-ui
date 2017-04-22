@@ -4,7 +4,7 @@ import TreeViewNode from 'u-tree-view-node.vue';
 /**
  * @class TreeView
  * @extends Base
- * @param {Array}               props.data                      Data of tree
+ * @param {Array}               props.data                      Pass a data tree and don't need to loop tags manually
  * @param {any}                 props.value                     Value of selected item
  * @param {boolean=false}       props.cancelable                Select twice to cancel
  * @param {boolean=false}       props.readonly                  Readonly
@@ -12,7 +12,6 @@ import TreeViewNode from 'u-tree-view-node.vue';
  */
 const TreeView = Base.extend({
     name: 'u-tree-view',
-    components: { [TreeViewNode.options.name]: TreeViewNode },
     props: {
         data: Array,
         field: { type: String, default: 'text' },
@@ -22,6 +21,7 @@ const TreeView = Base.extend({
     },
     data() {
         return {
+            ChildComponent: TreeViewNode, // easy for SubComponent to extend
             selectedNode: undefined,
         };
     },

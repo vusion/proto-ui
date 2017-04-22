@@ -1,5 +1,5 @@
 <div :class="$style.root">
-    <div :class="$style.item" :selected="selected" :disabled="disabled || this.$ancestor.disabled"
+    <div :class="$style.item" :selected="selected" :disabled="disabled || $ancestor.disabled"
         @click="select" @mouseenter="enterItem" @mouseleave="leaveItem">
         <div :class="$style.back"></div>
         <i :class="$style.icon"></i>

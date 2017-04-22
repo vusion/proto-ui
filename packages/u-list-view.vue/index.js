@@ -1,8 +1,10 @@
 import Base from 'u-base.vue';
+import ListViewItem from 'u-list-view-item.vue';
 
 /**
  * @class ListView
  * @extends Base
+ * @param {Array}               props.data                      Pass a data list and don't need to loop tags manually
  * @param {any}                 props.value                     Value of selected item
  * @param {boolean=false}       props.cancelable                Select twice to cancel
  * @param {boolean=false}       props.readonly                  Readonly
@@ -11,6 +13,7 @@ import Base from 'u-base.vue';
 const ListView = Base.extend({
     name: 'u-list-view',
     props: {
+        data: Array,
         value: null,
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
@@ -18,6 +21,7 @@ const ListView = Base.extend({
     },
     data() {
         return {
+            ChildComponent: ListViewItem, // easy for SubComponent to extend
             items: [],
             value_: this.value,
             selectedItem_: undefined,

@@ -3,6 +3,8 @@
 ## Examples
 ### Basic
 
+It is recommended to use data pattern to generate tags easily.
+
 #### Tag Pattern
 
 ``` html

@@ -1,3 +1,7 @@
 <ul :class="$style.root" :disabled="disabled">
+    <component :is="ChildComponent" v-if="data"
+        v-for="item in data"
+        :value="item.value"
+        :disabled="item.disabled">{{ item.text }}</component>
     <slot></slot>
 </ul>
