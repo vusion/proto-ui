@@ -6,6 +6,8 @@ import CircularProgress from './packages/u-circular-progress.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import ListView from './packages/u-list-view.vue';
 import ListViewItem from './packages/u-list-view-item.vue';
+import TreeView from './packages/u-tree-view.vue';
+import TreeViewNode from './packages/u-tree-view-node.vue';
 import Pagination from './packages/u-pagination.vue';
 import BarChart from './packages/u-bar-chart.vue';
 import Sample from './packages/u-sample.vue';
@@ -19,6 +21,8 @@ const Components = {
     LinearProgress,
     ListView,
     ListViewItem,
+    TreeView,
+    TreeViewNode,
     Pagination,
     BarChart,
     Sample,
@@ -36,6 +40,8 @@ export {
     LinearProgress,
     ListView,
     ListViewItem,
+    TreeView,
+    TreeViewNode,
     Pagination,
     BarChart,
     Sample,

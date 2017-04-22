@@ -11,7 +11,7 @@ import Base from 'u-base.vue';
 const ListView = Base.extend({
     name: 'u-list-view',
     props: {
-        value: { type: null },
+        value: null,
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -51,7 +51,7 @@ const ListView = Base.extend({
             ~index && this.items.splice(index, 1);
         },
         /**
-         * @method select(item) - Select a item
+         * @method select(item) - Select an item
          * @public
          * @param  {number} item - Item to select
          * @return {void}

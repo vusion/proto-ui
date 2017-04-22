@@ -1,0 +1,19 @@
+<div :class="$style.root">
+    <div :class="$style.item" :selected="selected" :disabled="disabled || this.$ancestor.disabled"
+        @click="select" @mouseenter="enterItem" @mouseleave="leaveItem">
+        <div :class="$style.back"></div>
+        <i :class="$style.icon"></i>
+        <slot name="text">
+            <div :class="$style.text">{{ text }}</div>
+        </slot>
+    </div>
+    <div :class="$style.list">
+        <u-tree-view-node v-if="data"
+            v-for="node in data"
+            :text="node.text"
+            :value="node.value"
+            :disabled="node.disabled"
+            :data="node.children"></u-tree-view-node>
+        <slot></slot>
+    </div>
+</div>

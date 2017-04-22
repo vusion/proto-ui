@@ -1,0 +1,9 @@
+<div :class="$style.root">
+    <u-tree-view-node v-if="data"
+        v-for="node in data"
+        :text="node.text"
+        :value="node.value"
+        :disabled="node.disabled"
+        :data="node.children"></u-tree-view-node>
+    <slot></slot>
+</div>

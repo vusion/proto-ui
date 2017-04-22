@@ -1,0 +1,61 @@
+$height: 24px;
+
+.root {
+    cursor: pointer;
+    margin-left: 20px;
+
+    .item {
+        position: relative;
+
+        .back {
+            position: absolute;
+            left: -10000px;
+            right: -10000px;
+            height: 100%;
+        }
+
+        .icon {
+
+        }
+
+        .text {
+            position: relative;
+            padding: 4px 12px;
+        }
+    }
+
+    .item:hover {
+        .back {
+            background: $background-color-base;
+        }
+    }
+
+    .item[selected] {
+        .back {
+            background: $brand-primary;
+        }
+
+        .text {
+            color: white;
+        }
+    }
+
+    .item[disabled] {
+        /* @Private */
+        cursor: not-allowed;
+
+        .back {
+            background: none;
+        }
+
+        .text {
+            color: $disabled-color;
+        }
+    }
+
+    .item[selected][disabled] {
+        .back {
+            background: $gray-base;
+        }
+    }
+}

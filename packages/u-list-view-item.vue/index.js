@@ -9,7 +9,7 @@ import Base from 'u-base.vue';
 const ListViewItem = Base.extend({
     name: 'u-list-view-item',
     props: {
-        value: { type: null },
+        value: null,
         disabled: { type: Boolean, default: false },
     },
     computed: {
