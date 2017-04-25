@@ -40,8 +40,8 @@ const ListView = Base.extend({
     },
     created() {
         // @TODO: Suggest to add a nextTick option in Vue.js
-        // Must trigger `value` watcher at next tick
-        // otherwise items have not been pushed.
+        // Must trigger `value` watcher at next tick.
+        // If not, items have not been pushed.
         this.$nextTick(() => ListView.options.watch.value.call(this, this.value));
     },
     methods: {

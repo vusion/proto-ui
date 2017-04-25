@@ -14,8 +14,24 @@ $height: 24px;
             height: 100%;
         }
 
-        .icon {
+        .expander {
+            position: absolute;
+            z-index: 1;
+            width: 30px;
+            height: 30px;
+            line-height: 28px;
+            text-align: center;
+            margin-left: -20px;
 
+            &:before {
+                content: '▸';
+            }
+        }
+
+        .expander[expanded] {
+            &:before {
+                content: '▾';
+            }
         }
 
         .text {
@@ -25,6 +41,14 @@ $height: 24px;
     }
 
     .item:hover {
+        .back {
+            background: $background-color-base;
+        }
+    }
+
+    .item:focus {
+        outline: none;
+
         .back {
             background: $background-color-base;
         }
@@ -43,13 +67,10 @@ $height: 24px;
     .item[disabled] {
         /* @Private */
         cursor: not-allowed;
+        color: $disabled-color;
 
         .back {
             background: none;
-        }
-
-        .text {
-            color: $disabled-color;
         }
     }
 

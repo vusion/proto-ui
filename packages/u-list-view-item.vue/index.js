@@ -33,8 +33,6 @@ const ListViewItem = Base.extend({
             if (this.disabled || this.$parent.disabled)
                 return;
 
-            this.$parent.select(this);
-
             /**
              * @event select - Emit when selecting this item
              * @property {ListViewItem} selectedItem - This item
@@ -44,6 +42,8 @@ const ListViewItem = Base.extend({
                 selectedItem: this,
                 value: this.value,
             });
+
+            this.$parent.select(this);
         },
     },
 });

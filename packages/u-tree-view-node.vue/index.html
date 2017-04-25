@@ -1,13 +1,22 @@
 <div :class="$style.root">
-    <div :class="$style.item" :selected="selected" :disabled="disabled || $ancestor.disabled"
-        @click="select" @mouseenter="enterItem" @mouseleave="leaveItem">
+    <div :class="$style.item" :selected="selected"
+        :disabled="disabled || $ancestor.disabled"
+        :tabindex="disabled || $ancestor.disabled ? -1 : 0"
+        @click="select()"
+        @mouseenter="enterItem"
+        @mouseleave="leaveItem"
+        @keyup.enter="select()"
+        @keyup.left="toggle(false)"
+        @keyup.right="toggle(true)">
         <div :class="$style.back"></div>
-        <i :class="$style.icon"></i>
+        <div :class="$style.expander" v-if="data || nodes.length"
+            :expanded="expanded_"
+            @click.stop="toggle()"></div>
         <slot name="text">
             <div :class="$style.text">{{ text }}</div>
         </slot>
     </div>
-    <div :class="$style.list">
+    <div :class="$style.list" v-show="expanded_">
         <u-tree-view-node v-if="data"
             v-for="node in data"
             :text="node.text"
