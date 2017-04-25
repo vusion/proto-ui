@@ -10,6 +10,11 @@
     background: $background-color-base;
 }
 
+.root[readonly] {
+    cursor: default;
+    background: none;
+}
+
 .root[selected] {
     background: $brand-primary;
     color: white;

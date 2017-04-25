@@ -54,6 +54,14 @@ $height: 24px;
         }
     }
 
+    .item[readonly] {
+        cursor: default;
+
+        .back {
+            background: none;
+        }
+    }
+
     .item[selected] {
         .back {
             background: $brand-primary;

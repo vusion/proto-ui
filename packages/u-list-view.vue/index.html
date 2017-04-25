@@ -1,4 +1,4 @@
-<ul :class="$style.root" :disabled="disabled">
+<ul :class="$style.root" :readonly="readonly" :disabled="disabled">
     <component :is="ChildComponent" v-if="data"
         v-for="item in data"
         :value="item.value"

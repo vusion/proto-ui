@@ -1,7 +1,8 @@
 <div :class="$style.root">
     <div :class="$style.item" :selected="selected"
+        :readonly="$ancestor.readonly"
         :disabled="disabled || $ancestor.disabled"
-        :tabindex="disabled || $ancestor.disabled ? -1 : 0"
+        :tabindex="disabled || $ancestor.readonly || $ancestor.disabled ? -1 : 0"
         @click="select()"
         @mouseenter="enterItem"
         @mouseleave="leaveItem"

@@ -1,5 +1,6 @@
 <li :class="$style.root"
     :selected="selected"
+    :readonly="$parent.readonly"
     :disabled="disabled || $parent.disabled"
     @click="select()">
     <slot></slot>

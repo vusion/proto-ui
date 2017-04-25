@@ -30,7 +30,7 @@ const ListViewItem = Base.extend({
          * @return {void}
          */
         select() {
-            if (this.disabled || this.$parent.disabled)
+            if (this.disabled || this.$parent.readonly || this.$parent.disabled)
                 return;
 
             /**
