@@ -24,10 +24,10 @@ const Tab = Base.extend({
             return this.$parent.selectedTab === this;
         },
     },
-    created() {
+    beforeCreate() {
         this.$parent.add(this);
     },
-    destroy() {
+    destroyed() {
         this.$parent.remove(this);
     },
 });

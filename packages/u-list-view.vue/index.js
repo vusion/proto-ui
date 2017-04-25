@@ -23,28 +23,26 @@ const ListView = Base.extend({
         return {
             ChildComponent: ListViewItem, // easy for SubComponent to extend
             items: [],
-            value_: this.value,
-            selectedItem_: undefined,
+            selectedItem: undefined,
         };
     },
-    computed: {
-        selectedItem: {
-            get() {
-                if (this.value_ === undefined)
-                    return this.selectedItem_;
-                else
-                    return this.items.find((item) => item.value === this.value_);
-            },
-            set(item) {
-                if (item) {
-                    this.selectedItem_ = item;
-                    this.value_ = item.value;
-                } else {
-                    this.selectedItem_ = undefined;
-                    this.value_ = undefined;
-                }
-            },
+    watch: {
+        // It is dynamic to find selected item by value
+        // so using watcher is better than computed property.
+        value(value) {
+            if (this.selectedItem && this.selectedItem.value === value)
+                return;
+            if (value === undefined)
+                this.selectedItem = undefined;
+            else
+                this.selectedItem = this.items.find((item) => item.value === value);
         },
+    },
+    created() {
+        // @TODO: Suggest to add a nextTick option in Vue.js
+        // Must trigger `value` watcher at next tick
+        // otherwise items have not been pushed.
+        this.$nextTick(() => ListView.options.watch.value.call(this, this.value));
     },
     methods: {
         add(item) {
@@ -57,27 +55,26 @@ const ListView = Base.extend({
         /**
          * @method select(item) - Select an item
          * @public
-         * @param  {number} item - Item to select
+         * @param  {ListViewItem} item - Item to select
          * @return {void}
          */
         select(item) {
             if (this.readonly || this.disabled)
                 return;
 
-            let selectedItem;
             if (this.cancelable && this.selectedItem === item)
-                selectedItem = undefined;
+                this.selectedItem = undefined;
             else
-                selectedItem = item;
-            this.selectedItem = selectedItem;
+                this.selectedItem = item;
 
             /**
              * @event select - Emit when selecting an item
-             * @property {number} selectedItem - The selected item
+             * @property {ListViewItem} selectedItem - The selected item
+             * @property {any} value - Value of selected item
              */
             this.$emit('select', {
-                selectedItem,
-                value: selectedItem && selectedItem.value,
+                selectedItem: this.selectedItem,
+                value: this.selectedItem && this.selectedItem.value,
             });
         },
     },

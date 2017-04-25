@@ -17,10 +17,10 @@ const ListViewItem = Base.extend({
             return this.$parent.selectedItem === this;
         },
     },
-    created() {
+    beforeCreate() {
         this.$parent.add(this);
     },
-    destroy() {
+    destroyed() {
         this.$parent.remove(this);
     },
     methods: {
@@ -30,10 +30,20 @@ const ListViewItem = Base.extend({
          * @return {void}
          */
         select() {
-            if (this.disabled)
+            if (this.disabled || this.$parent.disabled)
                 return;
 
             this.$parent.select(this);
+
+            /**
+             * @event select - Emit when selecting this item
+             * @property {ListViewItem} selectedItem - This item
+             * @property {any} value - Value of this item
+             */
+            this.$emit('select', {
+                selectedItem: this,
+                value: this.value,
+            });
         },
     },
 });
