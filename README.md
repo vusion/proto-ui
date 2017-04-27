@@ -3,8 +3,8 @@
 ## Components
 
 <table>
-    <thead><tr><th>Name</th><th>Version</th><th>Downloads</th></thead>
-    <tbody>
+<thead><tr><th>Name</th><th>Version</th><th>Downloads</th></thead>
+<tbody>
 <tr>
     <td>u-base.vue</td>
     <td><a href="https://www.npmjs.com/package/u-base.vue"><img src="https://img.shields.io/npm/v/u-base.vue.svg?style=flat-square"></a></td>
@@ -85,6 +85,8 @@
     <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/v/u-utils.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/dm/u-utils.svg?style=flat-square"></a></td>
 </tr>
+</tbody>
+</table>
 
 ## Development
 
