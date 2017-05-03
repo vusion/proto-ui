@@ -27,6 +27,6 @@
     "u-base.vue": "^0.1.0"
   },
   "peerDependencies": {
-    "vue": "^2.2.1"
+    "vue": "2.3.0"
   }
 }

@@ -27,6 +27,6 @@
     "u-list-view-item.vue": "^0.1.1"
   },
   "peerDependencies": {
-    "vue": "^2.2.1"
+    "vue": "2.3.0"
   }
 }
