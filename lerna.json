@@ -1,7 +1,17 @@
 {
   "lerna": "2.0.0-beta.38",
   "packages": [
-    "packages/*"
+    "packages/u-base.vue",
+    "packages/u-button.vue",
+    "packages/u-circular-progress.vue",
+    "packages/u-linear-progress.vue",
+    "packages/u-list-view-item.vue",
+    "packages/u-list-view.vue",
+    "packages/u-pagination.vue",
+    "packages/u-tab.vue",
+    "packages/u-tabs.vue",
+    "packages/u-tree-view-node.vue",
+    "packages/u-tree-view.vue"
   ],
   "version": "independent"
 }

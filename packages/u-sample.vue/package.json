@@ -2,6 +2,7 @@
   "name": "u-sample.vue",
   "description": "Vusion Proto UI - Sample",
   "version": "0.0.1",
+  "private": true,
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
