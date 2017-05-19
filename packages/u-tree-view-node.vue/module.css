@@ -3,88 +3,80 @@ $height: 24px;
 .root {
     cursor: pointer;
     margin-left: 20px;
+}
 
-    .item {
-        position: relative;
+.item {
+    position: relative;
+}
 
-        .back {
-            position: absolute;
-            left: -10000px;
-            right: -10000px;
-            height: 100%;
-        }
+.back {
+    position: absolute;
+    left: -10000px;
+    right: -10000px;
+    height: 100%;
+}
 
-        .expander {
-            position: absolute;
-            z-index: 1;
-            width: 30px;
-            height: 30px;
-            line-height: 28px;
-            text-align: center;
-            margin-left: -20px;
+.expander {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    margin-left: -20px;
+}
 
-            &:before {
-                content: '▸';
-            }
-        }
+.expander:before {
+    content: '▸';
+}
 
-        .expander[expanded] {
-            &:before {
-                content: '▾';
-            }
-        }
+.expander[expanded]:before {
+    content: '▾';
+}
 
-        .text {
-            position: relative;
-            padding: 4px 12px;
-        }
-    }
+.text {
+    position: relative;
+    padding: 4px 12px;
+}
 
-    .item:hover {
-        .back {
-            background: $background-color-base;
-        }
-    }
+.item:hover .back {
+    background: $background-color-base;
+}
 
-    .item:focus {
-        outline: none;
+.item:focus {
+    outline: none;
+}
 
-        .back {
-            background: $background-color-base;
-        }
-    }
+.item:focus .back {
+    background: $background-color-base;
+}
 
-    .item[readonly] {
-        cursor: default;
+.item[readonly] {
+    cursor: default;
+}
 
-        .back {
-            background: none;
-        }
-    }
+.item[readonly] .back {
+    background: none;
+}
 
-    .item[selected] {
-        .back {
-            background: $brand-primary;
-        }
+.item[selected] .back {
+    background: $brand-primary;
+}
 
-        .text {
-            color: white;
-        }
-    }
+.item[selected] .text {
+    color: white;
+}
 
-    .item[disabled] {
-        /* @Private */
-        cursor: not-allowed;
-        color: $disabled-color;
+.item[disabled] {
+    /* @Private */
+    cursor: not-allowed;
+    color: $disabled-color;
+}
 
-        .back {
-            background: none;
-        }
-    }
+.item[disabled] .back {
+    background: none;
+}
 
-    .item[selected][disabled] {
-        .back {
-            background: $gray-base;
-        }
-    }
+.item[selected][disabled] .back {
+    background: $gray-base;
 }

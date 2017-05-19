@@ -1,13 +1,1 @@
-$background-color-base: #eee;
-$color-base: #345;
-$border-color-base: #ccc;
-$border-width-base: 1px;
-
-$brand-primary: #4b8;
-$disabled-color: #ccc;
-$gray-dark: #ccc;
-$gray-base: #ddd;
-$gray-light: #eee;
-
-$height-base: 32px;
-$margin-bottom-base: 15px;
+@import 'packages/u-base.vue/global.css';

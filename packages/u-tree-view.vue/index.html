@@ -3,6 +3,7 @@
         v-for="node in data"
         :text="node.text"
         :value="node.value"
+        :expanded="node.expanded"
         :disabled="node.disabled"
         :data="node.children"></component>
     <slot></slot>

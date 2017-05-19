@@ -5,66 +5,63 @@ $item_size: 32px;
     user-select: none;
     cursor: default;
     padding: 0;
+    
     margin-bottom: $margin-bottom-base;
+}
 
-    .item {
-        display: inline-block;
-        text-decoration: none;
+.item {
+    display: inline-block;
+    text-decoration: none;
 
-        padding: 0 10px;
-        min-width: $item_size;
-        height: $item_size;
-        line-height: $item_size;
-        font-size: 12px;
-        text-align: center;
-        background: $background-color-base;
-        color: $color-base;
-    }
+    padding: 0 10px;
+    min-width: $item_size;
+    height: $item_size;
+    line-height: $item_size;
+    font-size: 12px;
+    text-align: center;
+    background: $background-color-base;
+    color: $color-base;
+}
 
-    .item:hover {
-        color: $brand-primary;
-    }
+.item:hover {
+    color: $brand-primary;
+}
 
-    .item[selected] {
-        background: $brand-primary;
-        color: white;
-    }
+.item[selected] {
+    background: $brand-primary;
+    color: white;
+}
 
-    .item[disabled] {
-        /* @Private */
-        cursor: not-allowed;
+.item[disabled] {
+    /* @Private */
+    cursor: not-allowed;
 
-        /* @Public */
-        color: $disabled-color;
-    }
+    /* @Public */
+    color: $disabled-color;
+}
 
-    .item[role="prev"] {
-        &:before {
-            content: '‹';
-        }
-    }
+.item[role="prev"]:before {
+    content: '‹';
+}
 
-    .item[role="next"] {
-        &:before {
-            content: '›';
-        }
-    }
+.item[role="next"]:before {
+    content: '›';
+}
 
-    .item[role="blank"] {
-        background: none;
-        color: $color-base;
-    }
+.item[role="blank"] {
+    background: none;
+    color: $color-base;
 }
 
 .root[disabled] {
     /* @Private */
     cursor: not-allowed;
+}
 
-    .item {
-        color: $disabled-color;
-    }
+.root[disabled] .item {
+    color: $disabled-color;
+}
 
-    .item[selected] {
-        background: $gray-base;
-    }
+.root[disabled] .item[selected] {
+    background: $gray-base;
 }

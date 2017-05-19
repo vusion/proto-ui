@@ -1,48 +1,48 @@
 .root {
     margin-bottom: $margin-bottom-base;
+}
 
-    .head {
-        user-select: none;
-        border-bottom: 1px solid $border-color-base;
-    }
+.head {
+    user-select: none;
+    border-bottom: 1px solid $border-color-base;
+}
 
-    .item {
-        cursor: pointer;
-        display: inline-block;
-        box-sizing: content-box;
+.item {
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: content-box;
 
-        height: 30px;
-        line-height: 30px;
-        padding: 0 20px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
 
-        border: 1px solid transparent;
-        border-bottom: none;
-        margin-bottom: -1px;
-    }
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-bottom: -1px;
+}
 
-    .item:hover {
-        background: $background-color-base;
-    }
+.item:hover {
+    background: $background-color-base;
+}
 
-    .item[selected] {
-        background: white;
-        border-color: $border-color-base;
-        color: $brand-primary;
-        border-bottom-color: transparent;
-        padding-bottom: 1px;
-    }
+.item[selected] {
+    background: white;
+    border-color: $border-color-base;
+    color: $brand-primary;
+    border-bottom-color: transparent;
+    padding-bottom: 1px;
+}
 
-    .item[disabled] {
-        background: none;
-        color: $disabled-color;
-        cursor: not-allowed;
-    }
+.item[disabled] {
+    background: none;
+    color: $disabled-color;
+    cursor: not-allowed;
+}
 
-    .item[selected][disabled] {
-        background: white;
-    }
+.item[selected][disabled] {
+    background: white;
+}
 
-    .body {
-        padding-top: 10px;
-    }
+.body {
+    padding-top: 10px;
 }

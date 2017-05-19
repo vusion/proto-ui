@@ -13,15 +13,16 @@
         <div :class="$style.expander" v-if="data || nodes.length"
             :expanded="expanded_"
             @click.stop="toggle()"></div>
-        <slot name="text">
-            <div :class="$style.text">{{ text }}</div>
-        </slot>
+        <div :class="$style.text">
+            <slot name="text">{{ text }}</slot>
+        </div>
     </div>
     <div :class="$style.list" v-show="expanded_">
         <u-tree-view-node v-if="data"
             v-for="node in data"
             :text="node.text"
             :value="node.value"
+            :expanded="node.expanded"
             :disabled="node.disabled"
             :data="node.children"></u-tree-view-node>
         <slot></slot>
