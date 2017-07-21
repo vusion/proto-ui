@@ -1,11 +1,10 @@
 $item_size: 32px;
 
 .root {
-    /* @Private */
     user-select: none;
     cursor: default;
     padding: 0;
-    
+
     margin-bottom: $margin-bottom-base;
 }
 
@@ -33,10 +32,8 @@ $item_size: 32px;
 }
 
 .item[disabled] {
-    /* @Private */
     cursor: not-allowed;
 
-    /* @Public */
     color: $disabled-color;
 }
 
@@ -54,7 +51,6 @@ $item_size: 32px;
 }
 
 .root[disabled] {
-    /* @Private */
     cursor: not-allowed;
 }
 
