@@ -1,7 +1,7 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled">
     <component :is="ChildComponent" v-if="data"
         v-for="node in data"
-        :text="node.text"
+        :text="node[field]"
         :value="node.value"
         :expanded="node.expanded"
         :disabled="node.disabled"

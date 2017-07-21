@@ -2,6 +2,6 @@
     <component :is="ChildComponent" v-if="data"
         v-for="item in data"
         :value="item.value"
-        :disabled="item.disabled || disabled">{{ item.text }}</component>
+        :disabled="item.disabled || disabled">{{ item[field] }}</component>
     <slot></slot>
 </ul>

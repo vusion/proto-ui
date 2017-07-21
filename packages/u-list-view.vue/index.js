@@ -6,6 +6,7 @@ import ListViewItem from 'u-list-view-item.vue';
  * @extends Base
  * @param {Array}               props.data                      Pass a data list and don't need to loop tags manually
  * @param {any}                 props.value                     Value of selected item
+ * @param {string='text'}       props.field                     Indicate which field to show text
  * @param {boolean=false}       props.cancelable                Select twice to cancel
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
@@ -15,6 +16,7 @@ const ListView = Base.extend({
     props: {
         data: Array,
         value: null,
+        field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -29,13 +31,19 @@ const ListView = Base.extend({
     watch: {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
-        value(value) {
-            if (this.selectedItem && this.selectedItem.value === value)
-                return;
-            if (value === undefined)
-                this.selectedItem = undefined;
-            else
-                this.selectedItem = this.items.find((item) => item.value === value);
+        value: {
+            immediate: true,
+            handler(value) {
+                if (this.selectedItem && this.selectedItem.value === value)
+                    return;
+                if (value === undefined)
+                    this.selectedItem = undefined;
+                else {
+                    // Must trigger `value` watcher at next tick.
+                    // Otherwise, items may not be pushed.
+                    this.$nextTick(() => this.selectedItem = this.items.find((item) => item.value === value));
+                }
+            },
         },
     },
     created() {

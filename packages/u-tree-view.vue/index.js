@@ -22,6 +22,8 @@ const find = (root, func) => walk(root, (node) => {
  * @class TreeView
  * @extends Base
  * @param {Array}               props.data                      Pass a data tree and don't need to loop tags manually
+ * @param {any}                 props.value                     Value of selected item
+ * @param {string='text'}       props.field                     Indicate which field to show text
  * @param {boolean=false}       props.cancelable                Select twice to cancel
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
@@ -31,6 +33,7 @@ const TreeView = Base.extend({
     props: {
         data: Array,
         value: null,
+        field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },

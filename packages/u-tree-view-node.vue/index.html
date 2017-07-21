@@ -20,7 +20,7 @@
     <div :class="$style.list" v-show="expanded_">
         <u-tree-view-node v-if="data"
             v-for="node in data"
-            :text="node.text"
+            :text="node[$ancestor.field]"
             :value="node.value"
             :expanded="node.expanded"
             :disabled="node.disabled"
