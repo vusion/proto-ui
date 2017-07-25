@@ -23,9 +23,9 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-base.vue": "^0.1.3"
+    "u-base.vue": "~0.1.3"
   },
   "peerDependencies": {
-    "vue": "2.3.0"
+    "vue": "^2.4.0"
   }
 }

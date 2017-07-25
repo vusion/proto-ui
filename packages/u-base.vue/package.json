@@ -26,6 +26,6 @@
     "normalize.css": "^6.0.0"
   },
   "peerDependencies": {
-    "vue": "2.3.0"
+    "vue": "^2.4.0"
   }
 }
