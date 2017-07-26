@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+import './packages/u-base.vue/base.css';
+
 import Base from './packages/u-base.vue';
 import Button from './packages/u-button.vue';
 import CircularProgress from './packages/u-circular-progress.vue';

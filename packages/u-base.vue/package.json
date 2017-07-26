@@ -1,7 +1,7 @@
 {
   "name": "u-base.vue",
   "description": "Vusion Proto UI - Base",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
