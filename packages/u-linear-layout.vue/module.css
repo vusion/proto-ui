@@ -1,0 +1,7 @@
+.root[direction="horizontal"] > * {
+    margin-right: 20px;
+}
+
+.root[direction="vertical"] > * {
+    margin-bottom: 20px;
+}

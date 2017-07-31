@@ -1,5 +1,4 @@
 .root {
-    /* @Private */
     /* Correct inability to style clickable `input` types in iOS. */
     -webkit-appearance: none;
     /* Remove margins in Chrome, Safari and Opera. */
@@ -21,32 +20,24 @@
     /* Others */
     display: inline-block;
     text-align: center;
-
-    /* @Public */
     padding: 0 12px;
     height: $height-base;
     line-height: calc($height-base - $border-width-base * 2);
     background: white;
     color: $color-base;
     border: $border-width-base solid $border-color-base;
-    
-    margin-right: $margin-right-base;
 }
 
 .root:hover {
-    /* @Private */
     /* Remove default focus style */
     outline: none;
     /* Required for `a` elements */
     text-decoration: none;
-
-    /* @Public */
     color: $brand-primary;
     border-color: $brand-primary;
 }
 
 .root:focus {
-    /* @Private */
     /* Remove default focus style */
     outline: none;
     /* Required for `a` elements */
