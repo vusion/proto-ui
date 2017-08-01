@@ -1,7 +1,4 @@
-import Vue from 'vue';
-
 import './packages/u-base.vue/base.css';
-
 import Base from './packages/u-base.vue';
 import Button from './packages/u-button.vue';
 import CircularProgress from './packages/u-circular-progress.vue';
@@ -34,9 +31,6 @@ const Components = {
     Tab,
 };
 
-window.Vue = Vue;
-Object.keys(Components).forEach((key) => Vue.component(Components[key].options.name, Components[key]));
-
 export {
     Base,
     Button,
@@ -53,3 +47,11 @@ export {
     Tabs,
     Tab,
 };
+
+const Library = {
+    install(Vue) {
+        Object.keys(Components).forEach((key) => Vue.component(Components[key].options.name, Components[key]));
+    },
+};
+
+export default Library;
