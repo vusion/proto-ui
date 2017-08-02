@@ -2,6 +2,7 @@ import './packages/u-base.vue/base.css';
 import Base from './packages/u-base.vue';
 import Button from './packages/u-button.vue';
 import CircularProgress from './packages/u-circular-progress.vue';
+import Link from './packages/u-link.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import LinearLayout from './packages/u-linear-layout.vue';
 import ListView from './packages/u-list-view.vue';
@@ -18,6 +19,7 @@ const Components = {
     Base,
     Button,
     CircularProgress,
+    Link,
     LinearProgress,
     LinearLayout,
     ListView,
@@ -35,6 +37,7 @@ export {
     Base,
     Button,
     CircularProgress,
+    Link,
     LinearProgress,
     LinearLayout,
     ListView,
