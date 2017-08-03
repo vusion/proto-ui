@@ -25,3 +25,22 @@
     <u-button v-href="'https://github.com/vusion/vusion'" disabled>v-href</u-button>
 </u-linear-layout>
 ```
+
+## API
+### Attrs/Props
+
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| disabled | Boolean | `false` | Disable the button |
+
+### Slots
+
+| Slot | Description |
+| ---- | ----------- |
+| (default) | Hold the text and can contain HTML |
+
+### Events
+
+#### $listeners
+
+Inherit all events from `<button>` element.

@@ -1,9 +1,3 @@
-/**
- * @class TreeViewNode
- * @extends Base
- * @param {any}                 props.value                     Value of this item
- * @param {boolean=false}       props.disabled                  Disabled
- */
 export default {
     name: 'u-tree-view-node',
     props: {
@@ -40,19 +34,12 @@ export default {
             ~index && this.nodes.splice(index, 1);
         },
         /**
-         * @method select() - Select this node
-         * @public
-         * @return {void}
+         * @method - Select this node
          */
         select() {
             if (this.disabled || this.$ancestor.readonly || this.$ancestor.disabled)
                 return;
 
-            /**
-             * @event select - Emit when selecting this node
-             * @property {TreeViewNode} selectedNode - This node
-             * @property {any} value - Value of this node
-             */
             this.$emit('select', {
                 selectedNode: this,
                 value: this.value,
@@ -67,10 +54,8 @@ export default {
             this.$ancestor.$emit('leave-item', this.node, e);
         },
         /**
-         * @method toggle(expanded) - Expand or collapse this node
-         * @public
+         * @method - Expand or collapse this node
          * @param  {boolean?} expanded - Expanded or Collapsed. If this param is undefined, it will toggle between two states
-         * @return {void}
          */
         toggle(expanded) {
             if (this.disabled || this.$ancestor.readonly || this.$ancestor.disabled)
@@ -80,10 +65,6 @@ export default {
                 expanded = !this.expanded_;
             this.expanded_ = expanded;
 
-            /**
-             * @event toggle - Emit when expanding or collapsing this node
-             * @property {boolean} expanded - Expanded or Collapsed
-             */
             this.$emit('toggle', {
                 expanded,
             });

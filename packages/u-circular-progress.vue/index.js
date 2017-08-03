@@ -1,8 +1,3 @@
-/**
- * @class CircularProgress
- * @extends Base
- * @param {number=0}               props.percent                   The percentage of progress
- */
 export default {
     name: 'u-circular-progress',
     props: {

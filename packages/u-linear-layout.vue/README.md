@@ -20,3 +20,16 @@
     <u-pagination></u-pagination>
 </u-linear-layout>
 ```
+
+## API
+### Attrs/Props
+
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| direction | String | `'horizontal'` | 'horizontal' or 'vertical' |
+
+### Slots
+
+| Slot | Description |
+| ---- | ----------- |
+| (default) | |

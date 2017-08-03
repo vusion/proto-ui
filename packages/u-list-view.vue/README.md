@@ -90,3 +90,57 @@ Try to click twice on an item.
     <u-list-view-item value="C">Cake</u-list-view-item>
 </u-list-view>
 ```
+
+## ListView API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
+| value | Any | | Value of selected item |
+| field | String | `'text'` | Indicate which field to show text |
+| cancelable | Boolean | `false` | Select twice to cancel |
+| readonly | Boolean | `false` | Readonly |
+| disabled | Boolean | `false` | Disabled |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting an item.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| item | ListViewItem | Selected item |
+| value | Any | Value of selected item |
+
+## ListViewItem API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| value | Any | | Value of this item |
+| disabled | Boolean | `false` | Disabled |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting an item.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| item | ListViewItem | This item |
+| value | Any | Value of this item |

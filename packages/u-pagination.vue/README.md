@@ -22,3 +22,31 @@ Use `side` and `around` properties to change the count of displayed numbers.
 <u-pagination :total="11" readonly></u-pagination>
 <u-pagination :total="11" disabled></u-pagination>
 ```
+
+## API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| current | Number | `1` | Current page number |
+| total | Number | `11` | Total count of pages |
+| side | Number | `2` | Count of pages at side position |
+| around | Number | `5` | Count of pages around the current position |
+| readonly | Boolean | `false` | Readonly |
+| disabled | Boolean | `false` | Disabled |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting a page.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| page | Number | Page number to select |

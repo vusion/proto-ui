@@ -1,8 +1,3 @@
-/**
- * @class LinearLayout
- * @extends Base
- * @param {boolean=false}       attrs.direction                Direction
- */
 export default {
     name: 'u-linear-layout',
     props: {

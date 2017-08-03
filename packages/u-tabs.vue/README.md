@@ -50,3 +50,60 @@
     <u-tab title="TabC">ContentC</u-tab>
 </u-tabs>
 ```
+
+## Tabs API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| selectedIndex | Number | `0` | Index of selected tab |
+| readonly | Boolean | `false` | Readonly |
+| disabled | Boolean | `false` | Disabled |
+| router | Boolean | `false` | Use vue router to activate |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting a tab.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| selectedTab | Number | The selected tab |
+| selectedIndex | Number | Index of selected tab |
+
+## Tab API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| title | String | | Tab title |
+| hidden | Boolean | `false` | Hide this tab |
+| disabled | Boolean | `false` | Disabled |
+| to | String \| Object | | The target location of this link |
+| replace | Boolean | `false` | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
+| exact | Boolean | `false` | Active matching behavior is inclusive match |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @navigate
+
+Emit when navigating to other router.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| to | Object | The target location of this link |
+| replace | Boolean | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
+| exact | Boolean | Active matching behavior is inclusive match |

@@ -17,16 +17,6 @@ const find = (root, func) => walk(root, (node) => {
         return node;
 });
 
-/**
- * @class TreeView
- * @extends Base
- * @param {Array}               props.data                      Pass a data tree and don't need to loop tags manually
- * @param {any}                 props.value                     Value of selected item
- * @param {string='text'}       props.field                     Indicate which field to show text
- * @param {boolean=false}       props.cancelable                Select twice to cancel
- * @param {boolean=false}       props.readonly                  Readonly
- * @param {boolean=false}       props.disabled                  Disabled
- */
 const TreeView = {
     name: 'u-tree-view',
     props: {
@@ -81,12 +71,6 @@ const TreeView = {
             const index = this.nodes.indexOf(node);
             ~index && this.nodes.splice(index, 1);
         },
-        /**
-         * @method select(node) - Select a node
-         * @public
-         * @param  {TreeViewNode} node - Node to select
-         * @return {void}
-         */
         select(node) {
             if (this.readonly || this.disabled)
                 return;
@@ -96,22 +80,12 @@ const TreeView = {
             else
                 this.selectedNode = node;
 
-            /**
-             * @event select - Emit when selecting a node
-             * @property {TreeViewNode} selectedNode - The selected node
-             * @property {any} value - Value of this node
-             */
             this.$emit('select', {
                 selectedNode: this.selectedNode,
                 value: this.selectedNode && this.selectedNode.value,
             });
         },
         onNodeToggle(node, expanded) {
-            /**
-             * @event toggle - Emit when expanding or collapsing this node
-             * @property {TreeViewNode} node - Node to toggle
-             * @property {boolean} expanded - Expanded or Collapsed
-             */
             this.$emit('toggle', {
                 node,
                 expanded,

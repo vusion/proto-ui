@@ -1,15 +1,5 @@
 import ListViewItem from 'u-list-view-item.vue';
 
-/**
- * @class ListView
- * @extends Base
- * @param {Array}               props.data                      Pass a data list and don't need to loop tags manually
- * @param {any}                 props.value                     Value of selected item
- * @param {string='text'}       props.field                     Indicate which field to show text
- * @param {boolean=false}       props.cancelable                Select twice to cancel
- * @param {boolean=false}       props.readonly                  Readonly
- * @param {boolean=false}       props.disabled                  Disabled
- */
 const ListView = {
     name: 'u-list-view',
     props: {
@@ -59,12 +49,6 @@ const ListView = {
             const index = this.items.indexOf(item);
             ~index && this.items.splice(index, 1);
         },
-        /**
-         * @method select(item) - Select an item
-         * @public
-         * @param  {ListViewItem} item - Item to select
-         * @return {void}
-         */
         select(item) {
             if (this.readonly || this.disabled)
                 return;
@@ -74,11 +58,6 @@ const ListView = {
             else
                 this.selectedItem = item;
 
-            /**
-             * @event select - Emit when selecting an item
-             * @property {ListViewItem} selectedItem - The selected item
-             * @property {any} value - Value of selected item
-             */
             this.$emit('select', {
                 selectedItem: this.selectedItem,
                 value: this.selectedItem && this.selectedItem.value,

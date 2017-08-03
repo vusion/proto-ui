@@ -187,3 +187,74 @@ It is recommended to use data pattern to generate tags easily.
     </u-tree-view-node>
 </u-tree-view>
 ```
+
+## TreeView API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
+| value | Any | | Value of selected item |
+| field | String | `'text'` | Indicate which field to show text |
+| cancelable | Boolean | `false` | Select twice to cancel |
+| readonly | Boolean | `false` | Readonly |
+| disabled | Boolean | `false` | Disabled |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting an node.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| item | TreeViewNode | Selected node |
+| value | Any | Value of this node |
+
+#### @toggle
+
+Emit when expanding or collapsing this node.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| node | TreeViewNode | Node to toggle |
+| expanded | Boolean | Expanded or Collapsed |
+
+## ListViewItem API
+### Attrs/Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| value | Any | | Value of this item |
+| disabled | Boolean | `false` | Disabled |
+
+### Slots
+
+| Name | Description |
+| ---- | ----------- |
+| (default) | |
+
+### Events
+
+#### @select
+
+Emit when selecting an node.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| node | TreeViewNode | This node |
+| value | Any | Value of this node |
+
+#### @toggle
+
+Emit when expanding or collapsing this node.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| expanded | Boolean | Expanded or Collapsed |

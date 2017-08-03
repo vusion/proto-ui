@@ -5,6 +5,7 @@
             <circle :class="$style.trail" cx="0" cy="0" :r="radius" :style="{ strokeDasharray }" />
         </g>
     </svg>
-    <div :class="$style.text">{{ percent + '%' }}</div>
-    <slot></slot>
+    <div :class="$style.text">
+        <slot>{{ percent + '%' }}</slot>
+    </div>
  </div>

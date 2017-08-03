@@ -1,9 +1,3 @@
-/**
- * @class RouterItem
- * @param {string|Object}       props.to                        The target location of this link
- * @param {boolean=false}       props.replace                   Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked
- * @param {boolean=false}       props.exact                     Active matching behavior is inclusive match
- */
 export default {
     name: 'u-router-item',
     props: {
