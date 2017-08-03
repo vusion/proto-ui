@@ -1,7 +1,7 @@
 {
   "name": "u-button.vue",
   "description": "Vusion Proto UI - Button",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
