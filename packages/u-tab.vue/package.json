@@ -23,7 +23,7 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-base.vue": "~0.1.3"
+    "u-router-item.vue": "~0.1.0"
   },
   "peerDependencies": {
     "vue": "^2.4.0"

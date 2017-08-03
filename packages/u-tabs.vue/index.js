@@ -1,5 +1,3 @@
-import Base from 'u-base.vue';
-
 /**
  * @class Tabs
  * @extends Base
@@ -8,7 +6,7 @@ import Base from 'u-base.vue';
  * @param {boolean=false}       props.disabled                  Disabled
  * @param {boolean=false}       props.router                    Use vue router to activate
  */
-const Tabs = Base.extend({
+export default {
     name: 'u-tabs',
     props: {
         selectedIndex: { type: Number, default: 0 },
@@ -61,6 +59,4 @@ const Tabs = Base.extend({
             this.router && tab.navigate();
         },
     },
-});
-
-export default Tabs;
+};

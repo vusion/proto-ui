@@ -1,7 +1,3 @@
-import Base from 'u-base.vue';
-
-const Sample = Base.extend({
+export default {
     name: 'u-sample',
-});
-
-export default Sample;
+};

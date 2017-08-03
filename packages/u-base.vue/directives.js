@@ -1,6 +1,4 @@
-import Vue from 'vue';
-
-Vue.directive('href', {
+export const href = {
     bind(el, binding) {
         el.bindingValue = binding.value;
         el.addEventListener('click', (e) => location.href = el.bindingValue);
@@ -8,9 +6,9 @@ Vue.directive('href', {
     componentUpdated(el, binding) {
         el.bindingValue = binding.value;
     },
-});
+};
 
-Vue.directive('to', {
+export const to = {
     bind(el, binding, vnode) {
         const $router = vnode.componentInstance.$router;
         if (!$router)
@@ -22,4 +20,4 @@ Vue.directive('to', {
     componentUpdated(el, binding) {
         el.bindingValue = binding.value;
     },
-});
+};

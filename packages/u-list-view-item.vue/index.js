@@ -1,12 +1,10 @@
-import Base from 'u-base.vue';
-
 /**
  * @class ListViewItem
  * @extends Base
  * @param {any}                 props.value                     Value of this item
  * @param {boolean=false}       props.disabled                  Disabled
  */
-const ListViewItem = Base.extend({
+export default {
     name: 'u-list-view-item',
     props: {
         value: null,
@@ -46,6 +44,4 @@ const ListViewItem = Base.extend({
             this.$parent.select(this);
         },
     },
-});
-
-export default ListViewItem;
+};

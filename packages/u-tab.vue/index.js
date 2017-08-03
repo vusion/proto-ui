@@ -1,5 +1,4 @@
-import Base from 'u-base.vue';
-import { RouterItem } from 'u-base.vue/mixins';
+import RouterItem from 'u-router-item.vue';
 
 /**
  * @class Tab
@@ -11,7 +10,7 @@ import { RouterItem } from 'u-base.vue/mixins';
  * @param {boolean=false}       props.replace                   Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked
  * @param {boolean=false}       props.exact                     Active matching behavior is inclusive match
  */
-const Tab = Base.extend({
+export default {
     name: 'u-tab',
     mixins: [RouterItem],
     props: {
@@ -30,6 +29,4 @@ const Tab = Base.extend({
     destroyed() {
         this.$parent.remove(this);
     },
-});
-
-export default Tab;
+};

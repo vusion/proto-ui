@@ -1,5 +1,3 @@
-import Base from 'u-base.vue';
-
 /**
  * @class Chart
  * @extends Base
@@ -14,8 +12,6 @@ import Base from 'u-base.vue';
  * @param {boolean=true}            props.visible            是否显示
  * @param {string=''}               props.class              补充class
  */
-const Chart = Base.extend({
+export default {
     name: 'u-chart',
-});
-
-export default Chart;
+};

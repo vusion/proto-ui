@@ -1,11 +1,9 @@
-import Base from 'u-base.vue';
-
 /**
  * @class CircularProgress
  * @extends Base
  * @param {number=0}               props.percent                   The percentage of progress
  */
-const CircularProgress = Base.extend({
+export default {
     name: 'u-circular-progress',
     props: {
         percent: { type: Number, default: 0 },
@@ -20,6 +18,4 @@ const CircularProgress = Base.extend({
             return 2 * Math.PI * this.radius * this.percent * 0.01 + 'px 1000px';
         },
     },
-});
-
-export default CircularProgress;
+};

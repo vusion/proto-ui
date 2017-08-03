@@ -1,5 +1,4 @@
-import Base from 'u-base.vue';
-import * as _ from 'u-utils';
+import * as _ from 'u-base.vue/utils';
 
 /**
  * @class BarChart
@@ -18,7 +17,7 @@ import * as _ from 'u-utils';
  * @param {boolean=true}            props.visible            是否显示
  * @param {string='m-barChart'}     props.class              补充class
  */
-const BarChart = Base.extend({
+export default {
     name: 'u-bar-chart',
     props: {
         data: Array,
@@ -82,9 +81,7 @@ const BarChart = Base.extend({
                     axisYOptions.data.push(i);
             }
 
-            console.log(this.axisXOptions, this.axisYOptions);
+            // console.log(this.axisXOptions, this.axisYOptions);
         },
     },
-});
-
-export default BarChart;
+};

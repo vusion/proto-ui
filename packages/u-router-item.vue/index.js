@@ -4,8 +4,8 @@
  * @param {boolean=false}       props.replace                   Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked
  * @param {boolean=false}       props.exact                     Active matching behavior is inclusive match
  */
-
-export const RouterItem = {
+export default {
+    name: 'u-router-item',
     props: {
         to: [String, Object],
         replace: { type: Boolean, default: false },

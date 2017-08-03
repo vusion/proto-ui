@@ -8,6 +8,7 @@
     "packages/u-list-view-item.vue",
     "packages/u-list-view.vue",
     "packages/u-pagination.vue",
+    "packages/u-router-item.vue",
     "packages/u-tab.vue",
     "packages/u-tabs.vue",
     "packages/u-tree-view-node.vue",

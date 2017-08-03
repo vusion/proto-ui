@@ -1,5 +1,6 @@
 import './packages/u-base.vue/base.css';
-import Base from './packages/u-base.vue';
+import * as directives from './packages/u-base.vue/directives';
+
 import Button from './packages/u-button.vue';
 import CircularProgress from './packages/u-circular-progress.vue';
 import Link from './packages/u-link.vue';
@@ -9,6 +10,7 @@ import ListView from './packages/u-list-view.vue';
 import ListViewItem from './packages/u-list-view-item.vue';
 import TreeView from './packages/u-tree-view.vue';
 import TreeViewNode from './packages/u-tree-view-node.vue';
+import RouterItem from './packages/u-router-item.vue';
 import Pagination from './packages/u-pagination.vue';
 import BarChart from './packages/u-bar-chart.vue';
 import Sample from './packages/u-sample.vue';
@@ -16,7 +18,6 @@ import Tabs from './packages/u-tabs.vue';
 import Tab from './packages/u-tab.vue';
 
 const Components = {
-    Base,
     Button,
     CircularProgress,
     Link,
@@ -26,6 +27,7 @@ const Components = {
     ListViewItem,
     TreeView,
     TreeViewNode,
+    RouterItem,
     Pagination,
     BarChart,
     Sample,
@@ -34,7 +36,6 @@ const Components = {
 };
 
 export {
-    Base,
     Button,
     CircularProgress,
     Link,
@@ -44,6 +45,7 @@ export {
     ListViewItem,
     TreeView,
     TreeViewNode,
+    RouterItem,
     Pagination,
     BarChart,
     Sample,
@@ -53,7 +55,10 @@ export {
 
 const Library = {
     install(Vue) {
-        Object.keys(Components).forEach((key) => Vue.component(Components[key].options.name, Components[key]));
+        for (const key in directives)
+            Vue.directive(key, directives[key]);
+        for (const key in Components)
+            Vue.component(Components[key].name, Components[key]);
     },
 };
 

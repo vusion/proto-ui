@@ -1,4 +1,3 @@
-import Base from 'u-base.vue';
 import ListViewItem from 'u-list-view-item.vue';
 
 /**
@@ -11,7 +10,7 @@ import ListViewItem from 'u-list-view-item.vue';
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
  */
-const ListView = Base.extend({
+const ListView = {
     name: 'u-list-view',
     props: {
         data: Array,
@@ -50,7 +49,7 @@ const ListView = Base.extend({
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, items have not been pushed.
-        this.$nextTick(() => ListView.options.watch.value.call(this, this.value));
+        this.$nextTick(() => ListView.watch.value.call(this, this.value));
     },
     methods: {
         add(item) {
@@ -86,6 +85,6 @@ const ListView = Base.extend({
             });
         },
     },
-});
+};
 
 export default ListView;

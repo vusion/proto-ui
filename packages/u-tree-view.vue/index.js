@@ -1,4 +1,3 @@
-import Base from 'u-base.vue';
 import TreeViewNode from 'u-tree-view-node.vue';
 
 const walk = (root, func) => {
@@ -28,7 +27,7 @@ const find = (root, func) => walk(root, (node) => {
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
  */
-const TreeView = Base.extend({
+const TreeView = {
     name: 'u-tree-view',
     props: {
         data: Array,
@@ -119,6 +118,6 @@ const TreeView = Base.extend({
             });
         },
     },
-});
+};
 
 export default TreeView;

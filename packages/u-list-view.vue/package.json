@@ -23,7 +23,6 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-base.vue": "~0.1.3",
     "u-list-view-item.vue": "~0.1.3"
   },
   "peerDependencies": {

@@ -1,12 +1,10 @@
-import Base from 'u-base.vue';
-
 /**
  * @class TreeViewNode
  * @extends Base
  * @param {any}                 props.value                     Value of this item
  * @param {boolean=false}       props.disabled                  Disabled
  */
-const TreeViewNode = Base.extend({
+export default {
     name: 'u-tree-view-node',
     props: {
         data: Array,
@@ -93,6 +91,4 @@ const TreeViewNode = Base.extend({
             this.$ancestor.onNodeToggle(this, expanded);
         },
     },
-});
-
-export default TreeViewNode;
+};

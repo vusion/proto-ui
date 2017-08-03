@@ -23,7 +23,6 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-base.vue": "~0.1.3",
     "u-tree-view-node.vue": "~0.1.1"
   },
   "peerDependencies": {

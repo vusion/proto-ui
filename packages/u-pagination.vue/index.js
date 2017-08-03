@@ -1,5 +1,3 @@
-import Base from 'u-base.vue';
-
 /**
  * @class Pagination
  * @extends Base
@@ -10,7 +8,7 @@ import Base from 'u-base.vue';
  * @param {boolean=false}       props.readonly                  Readonly
  * @param {boolean=false}       props.disabled                  Disabled
  */
-const Pagination = Base.extend({
+export default {
     name: 'u-pagination',
     props: {
         total: { type: Number, default: 11 },
@@ -87,6 +85,4 @@ const Pagination = Base.extend({
             });
         },
     },
-});
-
-export default Pagination;
+};
