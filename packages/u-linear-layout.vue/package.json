@@ -1,7 +1,7 @@
 {
   "name": "u-linear-layout.vue",
   "description": "Vusion Proto UI - LinearLayout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",

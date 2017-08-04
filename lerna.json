@@ -4,6 +4,8 @@
     "packages/u-base.vue",
     "packages/u-button.vue",
     "packages/u-circular-progress.vue",
+    "packages/u-link.vue",
+    "packages/u-linear-layout.vue",
     "packages/u-linear-progress.vue",
     "packages/u-list-view-item.vue",
     "packages/u-list-view.vue",

@@ -26,6 +26,11 @@
     <td><a href="https://www.npmjs.com/package/u-router-item.vue"><img src="https://img.shields.io/npm/dm/u-router-item.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
+    <td>u-link.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-link.vue"><img src="https://img.shields.io/npm/v/u-link.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-link.vue"><img src="https://img.shields.io/npm/dm/u-link.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
     <td>u-tabs.vue</td>
     <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/v/u-tabs.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/dm/u-tabs.vue.svg?style=flat-square"></a></td>
@@ -84,11 +89,6 @@
     <td>u-sample.vue</td>
     <td><a href="https://www.npmjs.com/package/u-sample.vue"><img src="https://img.shields.io/npm/v/u-sample.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-sample.vue"><img src="https://img.shields.io/npm/dm/u-sample.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-utils</td>
-    <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/v/u-utils.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-utils"><img src="https://img.shields.io/npm/dm/u-utils.svg?style=flat-square"></a></td>
 </tr>
 </tbody>
 </table>
