@@ -61,7 +61,7 @@ const TreeView = {
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, nodes have not been pushed.
-        this.$nextTick(() => TreeView.options.watch.value.call(this, this.value));
+        this.$nextTick(() => TreeView.watch.value.call(this, this.value));
     },
     methods: {
         add(node) {

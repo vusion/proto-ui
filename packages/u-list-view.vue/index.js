@@ -20,19 +20,16 @@ const ListView = {
     watch: {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
-        value: {
-            immediate: true,
-            handler(value) {
-                if (this.selectedItem && this.selectedItem.value === value)
-                    return;
-                if (value === undefined)
-                    this.selectedItem = undefined;
-                else {
-                    // Must trigger `value` watcher at next tick.
-                    // Otherwise, items may not be pushed.
-                    this.$nextTick(() => this.selectedItem = this.items.find((item) => item.value === value));
-                }
-            },
+        value(value) {
+            if (this.selectedItem && this.selectedItem.value === value)
+                return;
+            if (value === undefined)
+                this.selectedItem = undefined;
+            else {
+                // Must trigger `value` watcher at next tick.
+                // Otherwise, items may not be pushed.
+                this.$nextTick(() => this.selectedItem = this.items.find((item) => item.value === value));
+            }
         },
     },
     created() {
