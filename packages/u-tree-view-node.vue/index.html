@@ -21,6 +21,7 @@
         <u-tree-view-node v-if="data"
             v-for="node in data"
             :text="node[$ancestor.field]"
+            :key="node.key"
             :value="node.value"
             :expanded="node.expanded"
             :disabled="node.disabled"

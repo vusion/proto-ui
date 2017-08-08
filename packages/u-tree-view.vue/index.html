@@ -2,6 +2,7 @@
     <component :is="ChildComponent" v-if="data"
         v-for="node in data"
         :text="node[field]"
+        :key="node.key"
         :value="node.value"
         :expanded="node.expanded"
         :disabled="node.disabled"
