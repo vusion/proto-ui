@@ -81,8 +81,8 @@ Emit when selecting a tab.
 ## Tab API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | title | String | | Tab title |
 | hidden | Boolean | `false` | Hide this tab |
 | disabled | Boolean | `false` | Disabled |
@@ -92,7 +92,7 @@ Emit when selecting a tab.
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 

@@ -16,12 +16,12 @@
 ## API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | color | String | | Try 'primary' |
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |

@@ -6,15 +6,15 @@
 ## API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | to | String \| Object | | The target location of this link |
 | replace | Boolean | `false` | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
 | exact | Boolean | `false` | Active matching behavior is inclusive match |
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 

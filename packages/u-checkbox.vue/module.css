@@ -1,0 +1,43 @@
+$box-size: 18px;
+
+.root {
+    user-select: none;
+    cursor: pointer;
+}
+
+.root[disabled] {
+    cursor: not-allowed;
+}
+
+.root:focus {
+    outline: $outline-base;
+}
+
+.box {
+    display: inline-block;
+    width: $box-size;
+    height: $box-size;
+    line-height: calc($box-size - 2px);
+    border: 1px solid $border-color-base;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.box[status="false"]:before {
+    content: '✓';
+    color: transparent;
+}
+
+.box[status="true"]:before {
+    content: '✓';
+    color: $brand-primary;
+}
+
+.box[status="null"]:before {
+    content: '-';
+    color: $brand-primary;
+}
+
+.box[disabled] {
+    background: $background-color-base;
+}

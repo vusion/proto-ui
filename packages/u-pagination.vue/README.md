@@ -26,8 +26,8 @@ Use `side` and `around` properties to change the count of displayed numbers.
 ## API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | current | Number | `1` | Current page number |
 | total | Number | `11` | Total count of pages |
 | side | Number | `2` | Count of pages at side position |
@@ -37,7 +37,7 @@ Use `side` and `around` properties to change the count of displayed numbers.
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 

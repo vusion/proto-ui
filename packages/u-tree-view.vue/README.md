@@ -191,8 +191,8 @@ It is recommended to use data pattern to generate tags easily.
 ## TreeView API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
 | value | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
@@ -202,7 +202,7 @@ It is recommended to use data pattern to generate tags easily.
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 
@@ -229,14 +229,14 @@ Emit when expanding or collapsing this node.
 ## ListViewItem API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | value | Any | | Value of this item |
 | disabled | Boolean | `false` | Disabled |
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 

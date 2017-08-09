@@ -94,8 +94,8 @@ Try to click twice on an item.
 ## ListView API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
 | value | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
@@ -105,7 +105,7 @@ Try to click twice on an item.
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 
@@ -123,14 +123,14 @@ Emit when selecting an item.
 ## ListViewItem API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | value | Any | | Value of this item |
 | disabled | Boolean | `false` | Disabled |
 
 ### Slots
 
-| Name | Description |
+| Slot | Description |
 | ---- | ----------- |
 | (default) | |
 
