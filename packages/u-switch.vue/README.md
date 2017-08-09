@@ -22,6 +22,15 @@ export default {
 </script>
 ```
 
+### Readonly & Disabled
+
+``` html
+<u-linear-layout>
+    <u-switch readonly></u-switch>
+    <u-switch disabled></u-switch>
+</u-linear-layout>
+```
+
 ## API
 ### Attrs/Props
 

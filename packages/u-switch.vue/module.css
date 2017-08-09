@@ -37,8 +37,7 @@ $button-size: 18px;
 }
 
 .root[checked] .button {
-    left: auto;
-    right: 2px;
+    left: calc(44px - $button-size - 2px);
 }
 
 .root[checked] .text {
@@ -47,4 +46,13 @@ $button-size: 18px;
 
 .root[width="wide"] {
     width: 54px;
+}
+
+.root[width="wide"][checked] .button {
+    left: calc(54px - $button-size - 2px);
+}
+
+.root[disabled] {
+    cursor: not-allowed;
+    background: $background-color-base;
 }
