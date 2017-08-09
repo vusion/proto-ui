@@ -1,0 +1,5 @@
+<label :class="$style.root" :checked="value_" :disabled="disabled" @click="change()"
+    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()">
+    <span :class="$style.button"></span>
+    <span :class="$style.text"><slot></slot></span>
+</label>

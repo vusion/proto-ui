@@ -3,14 +3,11 @@ $box-size: 18px;
 .root {
     user-select: none;
     cursor: pointer;
+    outline: $outline-base;
 }
 
 .root[disabled] {
     cursor: not-allowed;
-}
-
-.root:focus {
-    outline: $outline-base;
 }
 
 .box {

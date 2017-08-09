@@ -1,7 +1,6 @@
 <label :class="$style.root" :disabled="disabled"
-    @click="check()"
-    tabindex="0" @keydown.space.prevent @keyup.space.prevent="check()"
->
+    @click="change()"
+    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()">
     <span :class="$style.box" :status="String(value_)" :disabled="disabled"></span>
     <slot></slot>
 </label>

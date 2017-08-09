@@ -1,5 +1,5 @@
 export default {
-    name: 'u-checkbox',
+    name: 'u-switch',
     props: {
         value: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },

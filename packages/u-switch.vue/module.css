@@ -1,0 +1,50 @@
+$height: 22px;
+$button-size: 18px;
+
+.root {
+    display: inline-block;
+    position: relative;
+    line-height: $height;
+    height: $height;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    outline: $outline-base;
+    width: 44px;
+    border-radius: 100px;
+    background: $border-color-base;
+    color: white;
+}
+
+.button {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 100px;
+    width: $button-size;
+    height: $button-size;
+    background: white;
+}
+
+.text {
+    display: block;
+    text-align: right;
+    margin: 0 5px;
+}
+
+.root[checked] {
+    background: $brand-primary;
+}
+
+.root[checked] .button {
+    left: auto;
+    right: 2px;
+}
+
+.root[checked] .text {
+    text-align: left;
+}
+
+.root[width="wide"] {
+    width: 54px;
+}
