@@ -1,15 +1,30 @@
-$background-color-base: #eee;
-$color-base: #345;
-$border-color-base: #ccc;
-$border-width-base: 1px;
-
+/* Brand Colors */
 $brand-primary: #4b8;
-$disabled-color: #ccc;
+$brand-error: #d43;
+$brand-disabled: #ccc;
+
+/* Gray Colors */
 $gray-dark: #ccc;
 $gray-base: #ddd;
 $gray-light: #eee;
 
+/* Component Base Colors */
+$background-color-base: #eee;
+$color-base: #345;
+$border-color-base: #ccc;
+
+/* Component Base Dimensions */
+$border-width-base: 1px;
 $height-base: 32px;
+
+/* Component Action Hints */
+$cursor-pointer: cursor-pointer;
+$cursor-not-allowed: not-allowed;
+$focus-outline: none;
+
+/* Base Margins */
 $margin-bottom-base: 15px;
 $margin-right-base: 5px;
-$outline-base: none;
+
+/* @Deprecated */
+$disabled-color: #ccc;
