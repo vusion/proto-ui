@@ -9,11 +9,14 @@ $button-size: 18px;
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
-    outline: $outline-base;
     width: 44px;
     border-radius: 100px;
     background: $border-color-base;
     color: white;
+}
+
+.root:focus {
+    outline: $focus-outline;
 }
 
 .button {

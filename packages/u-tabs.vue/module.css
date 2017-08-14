@@ -1,6 +1,4 @@
-.root {
-    margin-bottom: $margin-bottom-base;
-}
+.root {}
 
 .head {
     user-select: none;
@@ -35,7 +33,7 @@
 
 .item[disabled] {
     background: none;
-    color: $disabled-color;
+    color: $brand-disabled;
     cursor: not-allowed;
 }
 
@@ -44,5 +42,5 @@
 }
 
 .body {
-    padding-top: 10px;
+    margin-top: 10px;
 }

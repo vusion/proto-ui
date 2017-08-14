@@ -4,8 +4,6 @@ $item_size: 32px;
     user-select: none;
     cursor: default;
     padding: 0;
-
-    margin-bottom: $margin-bottom-base;
 }
 
 .item {
@@ -34,7 +32,7 @@ $item_size: 32px;
 .item[disabled] {
     cursor: not-allowed;
 
-    color: $disabled-color;
+    color: $brand-disabled;
 }
 
 .item[role="prev"]:before {
@@ -55,7 +53,7 @@ $item_size: 32px;
 }
 
 .root[disabled] .item {
-    color: $disabled-color;
+    color: $brand-disabled;
 }
 
 .root[disabled] .item[selected] {

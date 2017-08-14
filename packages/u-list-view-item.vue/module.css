@@ -24,7 +24,7 @@
     /* @Private */
     cursor: not-allowed;
     background: none;
-    color: $disabled-color;
+    color: $brand-disabled;
 }
 
 .root[selected][disabled] {

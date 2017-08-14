@@ -44,7 +44,7 @@ $height: 24px;
 }
 
 .item:focus {
-    outline: none;
+    outline: $focus-outline;
 }
 
 .item:focus .back {
@@ -70,7 +70,7 @@ $height: 24px;
 .item[disabled] {
     /* @Private */
     cursor: not-allowed;
-    color: $disabled-color;
+    color: $brand-disabled;
 }
 
 .item[disabled] .back {

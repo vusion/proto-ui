@@ -29,8 +29,6 @@
 }
 
 .root:hover {
-    /* Remove default focus style */
-    outline: none;
     /* Required for `a` elements */
     text-decoration: none;
     color: $brand-primary;
@@ -39,7 +37,7 @@
 
 .root:focus {
     /* Remove default focus style */
-    outline: none;
+    outline: $focus-outline;
     /* Required for `a` elements */
     text-decoration: none;
 }
@@ -54,6 +52,6 @@
 
     /* @Public */
     background: white;
-    border-color: $disabled-color;
-    color: $disabled-color;
+    border-color: $brand-disabled;
+    color: $brand-disabled;
 }
