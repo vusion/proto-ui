@@ -1,5 +1,6 @@
-<label :class="$style.root" :checked="value_" :disabled="disabled" @click="change()"
-    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()">
+<label :class="$style.root" :checked="currentValue" :disabled="disabled" @click="change()"
+    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()"
+    @blur="onBlur" v-bind="$listeners">
     <span :class="$style.button"></span>
     <span :class="$style.text"><slot></slot></span>
 </label>

@@ -1,5 +1,8 @@
+import Field from 'u-field.vue';
+
 export default {
     name: 'u-switch',
+    mixins: [Field],
     props: {
         value: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
@@ -7,12 +10,12 @@ export default {
     },
     data() {
         return {
-            value_: this.value,
+            currentValue: this.value,
         };
     },
     watch: {
         value(value) {
-            this.value_ = value;
+            this.currentValue = value;
         },
     },
     methods: {
@@ -20,12 +23,15 @@ export default {
             if (this.readonly || this.disabled)
                 return;
 
-            const oldValue = this.value_;
-            this.value_ = !this.value_;
+            const oldValue = this.currentValue;
+            this.currentValue = !this.currentValue;
 
-            this.$emit('input', this.value_);
-            this.$emit('change', this.value_, oldValue);
-            this.$emit('update:value', this.value_);
+            this.$emit('input', this.currentValue);
+            this.$emit('change', this.currentValue, oldValue);
+            this.$emit('update:value', this.currentValue);
+        },
+        onBlur(e) {
+            this.$emit('blur', e);
         },
     },
 };

@@ -1,0 +1,31 @@
+.root {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+.label {
+    float: left;
+    width: 80px;
+    padding: 5px 0;
+}
+
+.label[required]:after {
+    content: '*';
+    color: $brand-error;
+}
+
+.field {
+    position: relative;
+    margin-left: 80px;
+}
+
+.message {
+    margin-left: 5px;
+    padding: 0 5px;
+    background: $background-color-base;
+}
+
+.message[color="error"] {
+    background: $brand-error;
+    color: white;
+}

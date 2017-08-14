@@ -4,6 +4,11 @@ import * as directives from './packages/u-base.vue/directives';
 import Button from './packages/u-button.vue';
 import Checkbox from './packages/u-checkbox.vue';
 import CircularProgress from './packages/u-circular-progress.vue';
+import Emitter from './packages/u-emitter.vue';
+import Field from './packages/u-field.vue';
+import Form from './packages/u-form.vue';
+import FormItem from './packages/u-form-item.vue';
+import Input from './packages/u-input.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import LinearLayout from './packages/u-linear-layout.vue';
 import Link from './packages/u-link.vue';
@@ -18,11 +23,17 @@ import Switch from './packages/u-switch.vue';
 import BarChart from './packages/u-bar-chart.vue';
 import Tabs from './packages/u-tabs.vue';
 import Tab from './packages/u-tab.vue';
+import Textarea from './packages/u-textarea.vue';
 
 const Components = {
     Button,
     Checkbox,
     CircularProgress,
+    Emitter,
+    Field,
+    Form,
+    FormItem,
+    Input,
     LinearProgress,
     LinearLayout,
     Link,
@@ -37,12 +48,18 @@ const Components = {
     BarChart,
     Tabs,
     Tab,
+    Textarea,
 };
 
 export {
     Button,
     Checkbox,
     CircularProgress,
+    Emitter,
+    Field,
+    Form,
+    FormItem,
+    Input,
     LinearProgress,
     LinearLayout,
     Link,
@@ -57,6 +74,7 @@ export {
     BarChart,
     Tabs,
     Tab,
+    Textarea,
 };
 
 const Library = {

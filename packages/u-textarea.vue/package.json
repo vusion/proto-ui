@@ -1,6 +1,6 @@
 {
-  "name": "u-switch.vue",
-  "description": "Vusion Proto UI - Switch",
+  "name": "u-textarea.vue",
+  "description": "Vusion Proto UI - Textarea",
   "version": "0.1.0",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",

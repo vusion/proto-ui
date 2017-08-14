@@ -1,0 +1,34 @@
+.root {
+    display: inline-block;
+}
+
+.input {
+    margin: 0;
+    padding: 0 8px;
+    background: white;
+    font: inherit;
+    color: inherit;
+    border: 1px solid $border-color-base;
+    border-radius: 0;
+    line-height: $height-base;
+    height: $height-base;
+    vertical-align: top;
+    width: 320px;
+    height: 120px;
+    resize: vertical;
+}
+
+.input:focus {
+    outline: $focus-outline;
+    border-color: $brand-primary;
+}
+
+.input[color="error"] {
+    color: $brand-error;
+    border-color: $brand-error;
+}
+
+.input[disabled] {
+    cursor: not-allowed;
+    background: $gray-base;
+}

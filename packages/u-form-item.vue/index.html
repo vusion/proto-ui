@@ -1,0 +1,7 @@
+<div :class="$style.root">
+    <label :class="$style.label" :required="required">{{ label }}</label>
+    <div :class="$style.field">
+        <slot></slot>
+        <span v-if="message" :class="$style.message" :color="state">{{ message }}</span>
+    </div>
+</div>

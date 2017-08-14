@@ -1,6 +1,5 @@
-<label :class="$style.root" :disabled="disabled"
-    @click="change()"
-    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()">
-    <span :class="$style.box" :status="String(value_)" :disabled="disabled"></span>
+<label :class="$style.root" :disabled="disabled" @click="change()"
+    tabindex="0" @keydown.space.prevent @keyup.space.prevent="change()" v-bind="$listeners">
+    <span :class="$style.box" :status="String(currentValue)" :disabled="disabled"></span>
     <slot></slot>
 </label>
