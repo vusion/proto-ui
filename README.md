@@ -26,6 +26,31 @@
     <td><a href="https://www.npmjs.com/package/u-circular-progress.vue"><img src="https://img.shields.io/npm/dm/u-circular-progress.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
+    <td>u-emitter.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/v/u-emitter.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/dm/u-emitter.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-field.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-field.vue"><img src="https://img.shields.io/npm/v/u-field.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-field.vue"><img src="https://img.shields.io/npm/dm/u-field.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-form-item.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-form-item.vue"><img src="https://img.shields.io/npm/v/u-form-item.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-form-item.vue"><img src="https://img.shields.io/npm/dm/u-form-item.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-form.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-form.vue"><img src="https://img.shields.io/npm/v/u-form.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-form.vue"><img src="https://img.shields.io/npm/dm/u-form.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-input.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-input.vue"><img src="https://img.shields.io/npm/v/u-input.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-input.vue"><img src="https://img.shields.io/npm/dm/u-input.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
     <td>u-linear-layout.vue</td>
     <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/v/u-linear-layout.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/dm/u-linear-layout.vue.svg?style=flat-square"></a></td>
@@ -79,6 +104,11 @@
     <td>u-tab.vue</td>
     <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/v/u-tab.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/dm/u-tab.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
+    <td>u-textarea.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/v/u-emitter.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/dm/u-emitter.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
     <td>u-tree-view.vue</td>

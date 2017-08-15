@@ -1,0 +1,31 @@
+{
+  "name": "u-form.vue",
+  "description": "Vusion Proto UI - Form",
+  "version": "0.1.0",
+  "author": "Rainfore <rainforest92@126.com>",
+  "main": "./index.js",
+  "repository": "vusion/proto-ui",
+  "homepage": "http://vusion.github.io",
+  "bugs": {
+    "url": "http://github.com/vusion/proto-ui/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vusion",
+    "proto",
+    "ui",
+    "proto-ui"
+  ],
+  "tags": [
+    "vusion",
+    "proto",
+    "ui",
+    "proto-ui"
+  ],
+  "peerDependencies": {
+    "vue": "^2.4.0"
+  },
+  "dependencies": {
+    "async-validator": "^1.7.1"
+  }
+}

@@ -56,12 +56,6 @@ export default {
 </script>
 ```
 
-### Color
-
-``` html
-<u-input color="error"></u-input>
-```
-
 ## API
 ### Attrs/Props
 
