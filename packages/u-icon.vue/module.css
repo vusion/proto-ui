@@ -1,0 +1,13 @@
+.root {}
+
+.root[name="arrow-down"]:before {
+    icon-font: url('./icons/arrow-down.svg');
+}
+
+.root[name="arrow-up"]:before {
+    icon-font: url('./icons/arrow-up.svg');
+}
+
+.root[name="arrow-right"]:before {
+    icon-font: url('./icons/arrow-right.svg');
+}

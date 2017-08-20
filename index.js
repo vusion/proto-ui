@@ -8,6 +8,7 @@ import Emitter from './packages/u-emitter.vue';
 import Field from './packages/u-field.vue';
 import Form from './packages/u-form.vue';
 import FormItem from './packages/u-form-item.vue';
+import Icon from './packages/u-icon.vue';
 import Input from './packages/u-input.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import LinearLayout from './packages/u-linear-layout.vue';
@@ -33,6 +34,7 @@ const Components = {
     Field,
     Form,
     FormItem,
+    Icon,
     Input,
     LinearProgress,
     LinearLayout,
@@ -59,6 +61,7 @@ export {
     Field,
     Form,
     FormItem,
+    Icon,
     Input,
     LinearProgress,
     LinearLayout,
