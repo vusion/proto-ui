@@ -6,19 +6,19 @@
 ``` vue
 <template>
 <u-form ref="form">
-    <u-form-item label="用户名" :rules="rules.username">
+    <u-form-item title="用户名" :rules="rules.username">
         <u-input></u-input>
     </u-form-item>
-    <u-form-item label="设置密码">
+    <u-form-item title="设置密码">
         <u-input></u-input>
     </u-form-item>
-    <u-form-item label="确认密码">
+    <u-form-item title="确认密码">
         <u-input></u-input>
     </u-form-item>
-    <u-form-item label="选择" :rules="rules.switch">
+    <u-form-item title="选择" :rules="rules.switch">
         <u-switch></u-switch>
     </u-form-item>
-    <u-form-item label="验证码">
+    <u-form-item title="验证码">
         <u-input></u-input>
     </u-form-item>
     <u-linear-layout>

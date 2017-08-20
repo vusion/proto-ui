@@ -3,13 +3,13 @@
     margin-bottom: 20px;
 }
 
-.label {
+.title {
     float: left;
     width: 80px;
     padding: 5px 0;
 }
 
-.label[required]:after {
+.title[required]:after {
     content: '*';
     color: $brand-error;
 }

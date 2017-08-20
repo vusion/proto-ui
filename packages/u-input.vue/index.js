@@ -20,10 +20,13 @@ export default {
     methods: {
         onInput(e) {
             this.currentValue = e.target.value;
-            this.$emit('input', e);
+            this.$emit('input', this.currentValue);
+        },
+        onFocus(e) {
+            this.$emit('focus', this.currentValue);
         },
         onBlur(e) {
-            this.$emit('blur', e);
+            this.$emit('blur', this.currentValue);
         },
     },
 };
