@@ -5,6 +5,7 @@ export default {
     mixins: [Field],
     props: {
         value: { type: String },
+        color: { type: String },
     },
     data() {
         return {

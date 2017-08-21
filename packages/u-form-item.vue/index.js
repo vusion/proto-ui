@@ -28,6 +28,8 @@ export default {
     },
     created() {
         this.dispatch('u-form', 'addItem', this);
+        this.$on('addField', (field) => field.formItem = this);
+        this.$on('removeField', (field) => field.formItem = undefined);
         this.$on('input', this.onInput);
         this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);

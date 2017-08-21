@@ -24,7 +24,6 @@
 }
 
 .input[color="error"] {
-    color: $brand-error;
     border-color: $brand-error;
 }
 

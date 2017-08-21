@@ -1,7 +1,7 @@
 {
   "name": "u-field.vue",
   "description": "Vusion Proto UI - Field",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
