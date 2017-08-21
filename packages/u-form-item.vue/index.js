@@ -19,8 +19,11 @@ export default {
         };
     },
     computed: {
+        currentRules() {
+            return this.rules || (this.form && this.form.rules && this.form.rules[this.name]);
+        },
         required() {
-            return this.rules && this.rules.some((rule) => rule.required);
+            return this.currentRules && this.currentRules.some((rule) => rule.required);
         },
     },
     created() {
@@ -50,7 +53,7 @@ export default {
             this.validate('blur').catch((errors) => errors);
         },
         validate(trigger = 'submit', silent = false) {
-            let rules = this.rules;
+            let rules = this.currentRules;
             rules = rules && rules.filter((rule) => (rule.trigger + '+submit').includes(trigger));
             if (!rules || !rules.length)
                 return Promise.resolve();

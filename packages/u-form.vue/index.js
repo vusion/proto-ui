@@ -2,6 +2,7 @@ export default {
     name: 'u-form',
     props: {
         model: Object,
+        rules: Object,
     },
     data() {
         return {
@@ -12,11 +13,12 @@ export default {
     },
     created() {
         this.$on('addItem', (item) => {
+            item.form = this;
             this.items.push(item);
         });
         this.$on('removeItem', (item) => {
-            const index = this.items.indexOf(item);
-            this.items.splice(index, 1);
+            item.form = undefined;
+            this.items.splice(this.items.indexOf(item), 1);
         });
         this.$on('validateItem', () => {
             this.state = this.getState();
@@ -42,7 +44,7 @@ export default {
 
             let state = 'success';
             this.items.forEach((item) => {
-                if (item.rules && STATE_LEVEL[item.state] > STATE_LEVEL[state])
+                if (item.currentRules && STATE_LEVEL[item.state] > STATE_LEVEL[state])
                     state = item.state;
             });
 
