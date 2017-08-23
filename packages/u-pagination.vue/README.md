@@ -4,8 +4,10 @@
 ### Basic
 
 ``` html
-<u-pagination :total="11"></u-pagination>
-<u-pagination :total="11" :current="6"></u-pagination>
+<u-linear-layout direction="vertical">
+    <u-pagination :total="11"></u-pagination>
+    <u-pagination :total="11" :current="6"></u-pagination>
+</u-linear-layout>
 ```
 
 ### Side & Around
@@ -19,8 +21,10 @@ Use `side` and `around` properties to change the count of displayed numbers.
 ### Readonly & Disabled
 
 ``` html
-<u-pagination :total="11" readonly></u-pagination>
-<u-pagination :total="11" disabled></u-pagination>
+<u-linear-layout direction="vertical">
+    <u-pagination :total="11" readonly></u-pagination>
+    <u-pagination :total="11" disabled></u-pagination>
+</u-linear-layout>
 ```
 
 ## API

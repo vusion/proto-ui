@@ -2,7 +2,7 @@ export default {
     name: 'u-pagination',
     props: {
         total: { type: Number, default: 11 },
-        current: { type: Number, default: 1 },
+        page: { type: Number, default: 1 },
         side: { type: Number, default: 2 },
         around: { type: Number, default: 5 },
         readonly: { type: Boolean, default: false },
@@ -10,15 +10,20 @@ export default {
     },
     data() {
         return {
-            current_: this.current,
+            currentPage: this.page,
         };
+    },
+    watch: {
+        page(page) {
+            this.currentPage = page;
+        },
     },
     computed: {
         pages() {
             const pages = [];
 
             const part = this.around >> 1;
-            let start = this.current_ - part;
+            let start = this.currentPage - part;
             let end = start + this.around - 1;
             if (start < 1) {
                 end += 1 - start;
@@ -55,10 +60,10 @@ export default {
             if (this.readonly || this.disabled)
                 return;
 
-            if (page < 1 || page > this.total || page === this.current_)
+            if (page < 1 || page > this.total || page === this.currentPage)
                 return;
 
-            this.current_ = page;
+            this.currentPage = page;
 
             this.$emit('select', {
                 current: page,

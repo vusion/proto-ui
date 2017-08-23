@@ -21,7 +21,6 @@ import Pagination from './packages/u-pagination.vue';
 import RouterItem from './packages/u-router-item.vue';
 import Sample from './packages/u-sample.vue';
 import Switch from './packages/u-switch.vue';
-import BarChart from './packages/u-bar-chart.vue';
 import Tabs from './packages/u-tabs.vue';
 import Tab from './packages/u-tab.vue';
 import Textarea from './packages/u-textarea.vue';
@@ -47,7 +46,6 @@ const Components = {
     RouterItem,
     Sample,
     Switch,
-    BarChart,
     Tabs,
     Tab,
     Textarea,
@@ -74,7 +72,6 @@ export {
     RouterItem,
     Sample,
     Switch,
-    BarChart,
     Tabs,
     Tab,
     Textarea,
