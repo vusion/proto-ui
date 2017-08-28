@@ -1,7 +1,7 @@
 {
   "name": "u-link.vue",
   "description": "Vusion Proto UI - Link",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",

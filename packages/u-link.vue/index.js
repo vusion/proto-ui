@@ -7,6 +7,10 @@ export default {
         append: { type: Boolean, default: false },
         disabled: { type: Boolean },
     },
+    beforeCreate() {
+        if (this.$listeners && this.$listeners.click)
+            delete this.$listeners.click;
+    },
     methods: {
         onClick(e) {
             if (this.disabled)
