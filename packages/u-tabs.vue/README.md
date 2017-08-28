@@ -11,10 +11,10 @@
 </u-tabs>
 ```
 
-### Selected Index
+### Index
 
 ``` html
-<u-tabs :selected-index="2">
+<u-tabs :index="2">
     <u-tab title="TabA">ContentA</u-tab>
     <u-tab title="TabB">ContentB</u-tab>
     <u-tab title="TabC">ContentC</u-tab>
@@ -44,7 +44,7 @@
 ### Hidden
 
 ``` html
-<u-tabs :selected-index="2">
+<u-tabs :index="2">
     <u-tab title="TabA">ContentA</u-tab>
     <u-tab title="TabB" hidden>ContentB</u-tab>
     <u-tab title="TabC">ContentC</u-tab>
@@ -56,7 +56,7 @@
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| selectedIndex | Number | `0` | Index of selected tab |
+| index, index.sync | Number | `0` | Index of selected tab |
 | readonly | Boolean | `false` | Readonly |
 | disabled | Boolean | `false` | Disabled |
 | router | Boolean | `false` | Use vue router to activate |
@@ -75,8 +75,16 @@ Emit when selecting a tab.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| selectedTab | Number | The selected tab |
-| selectedIndex | Number | Index of selected tab |
+| index | Number | Index of selected tab |
+| $Tab | Tab | The selected tab |
+
+#### @input
+
+Emit after selecting a tab.
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| index | Number | Index of selected tab |
 
 ## Tab API
 ### Attrs/Props

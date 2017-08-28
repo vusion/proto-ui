@@ -1,22 +1,23 @@
+import Emitter from 'u-emitter.vue';
 import RouterItem from 'u-router-item.vue';
 
 export default {
     name: 'u-tab',
-    mixins: [RouterItem],
+    mixins: [Emitter, RouterItem],
     props: {
         title: String,
         hidden: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
-    computed: {
-        visible() {
-            return this.$parent.selectedTab === this;
-        },
+    data() {
+        return {
+            tabs: undefined,
+        };
     },
-    beforeCreate() {
-        this.$parent.add(this);
+    created() {
+        this.dispatch('u-tabs', 'addItem', this);
     },
     destroyed() {
-        this.$parent.remove(this);
+        this.dispatch('u-tabs', 'removeItem', this);
     },
 };
