@@ -25,40 +25,42 @@ const ListView = {
                 return;
             if (value === undefined)
                 this.selectedItem = undefined;
-            else {
-                // Must trigger `value` watcher at next tick.
-                // Otherwise, items may not be pushed.
-                this.$nextTick(() => this.selectedItem = this.items.find((item) => item.value === value));
-            }
+            else
+                this.selectedItem = this.items.find((item) => item.value === value);
         },
     },
     created() {
+        this.$on('addItem', (item) => {
+            item.listView = this;
+            this.items.push(item);
+        });
+        this.$on('removeItem', (item) => {
+            item.listView = undefined;
+            this.items.splice(this.items.indexOf(item), 1);
+        });
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, items have not been pushed.
         this.$nextTick(() => ListView.watch.value.call(this, this.value));
     },
     methods: {
-        add(item) {
-            this.items.push(item);
-        },
-        remove(item) {
-            const index = this.items.indexOf(item);
-            ~index && this.items.splice(index, 1);
-        },
-        select(item) {
+        select($item) {
             if (this.readonly || this.disabled)
                 return;
 
-            if (this.cancelable && this.selectedItem === item)
+            if (this.cancelable && this.selectedItem === $item)
                 this.selectedItem = undefined;
             else
-                this.selectedItem = item;
+                this.selectedItem = $item;
 
+            const value = this.selectedItem && this.selectedItem.value;
+            const item = this.selectedItem && this.selectedItem.item;
             this.$emit('select', {
-                selectedItem: this.selectedItem,
-                value: this.selectedItem && this.selectedItem.value,
+                value,
+                item,
+                $item: this.selectedItem,
             });
+            this.$emit('input', value);
         },
     },
 };

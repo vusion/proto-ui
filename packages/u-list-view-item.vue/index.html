@@ -1,7 +1,7 @@
 <li :class="$style.root"
     :selected="selected"
-    :readonly="$parent.readonly"
-    :disabled="disabled || $parent.disabled"
+    :readonly="listView.readonly"
+    :disabled="disabled || listView.disabled"
     @click="select()">
     <slot></slot>
 </li>

@@ -97,7 +97,7 @@ Try to click twice on an item.
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
-| value | Any | | Value of selected item |
+| value, value.sync, v-model | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
 | cancelable | Boolean | `false` | Select twice to cancel |
 | readonly | Boolean | `false` | Readonly |
@@ -117,7 +117,16 @@ Emit when selecting an item.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| item | ListViewItem | Selected item |
+| value | Any | Value of selected item |
+| item | Object | The selected object. Only useful in data pattern |
+| $item | ListViewItem | Selected item |
+
+#### @input
+
+Emit when selecting
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
 | value | Any | Value of selected item |
 
 ## ListViewItem API
@@ -142,5 +151,7 @@ Emit when selecting an item.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| item | ListViewItem | This item |
 | value | Any | Value of this item |
+| item | Object | Only useful in data pattern |
+| $item | ListViewItem | This item |
+

@@ -16,6 +16,7 @@ export default {
             state: '',
             color: '',
             currentMessage: '',
+            form: undefined,
         };
     },
     computed: {

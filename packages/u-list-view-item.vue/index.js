@@ -1,31 +1,41 @@
+import Emitter from 'u-emitter.vue';
+
 export default {
     name: 'u-list-view-item',
+    mixins: [Emitter],
     props: {
         value: null,
         disabled: { type: Boolean, default: false },
+        item: Object,
+    },
+    data() {
+        return {
+            listView: undefined,
+        };
     },
     computed: {
         selected() {
-            return this.$parent.selectedItem === this;
+            return this.listView.selectedItem === this;
         },
     },
-    beforeCreate() {
-        this.$parent.add(this);
+    created() {
+        this.dispatch('u-list-view', 'addItem', this);
     },
     destroyed() {
-        this.$parent.remove(this);
+        this.dispatch('u-list-view', 'removeItem', this);
     },
     methods: {
         select() {
-            if (this.disabled || this.$parent.readonly || this.$parent.disabled)
+            if (this.disabled || this.listView.readonly || this.listView.disabled)
                 return;
 
             this.$emit('select', {
-                selectedItem: this,
                 value: this.value,
+                item: this.item,
+                $item: this,
             });
 
-            this.$parent.select(this);
+            this.listView.select(this);
         },
     },
 };
