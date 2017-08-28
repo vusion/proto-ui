@@ -7,9 +7,12 @@ export default {
         append: { type: Boolean, default: false },
         disabled: { type: Boolean },
     },
-    beforeCreate() {
-        if (this.$listeners && this.$listeners.click)
-            delete this.$listeners.click;
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.click;
+            return listeners;
+        },
     },
     methods: {
         onClick(e) {
