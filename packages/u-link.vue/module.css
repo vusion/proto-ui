@@ -5,3 +5,9 @@
 .root:hover {
     text-decoration: underline;
 }
+
+.root[disabled] {
+    cursor: $cursor-not-allowed;
+    color: $brand-disabled;
+    text-decoration: none;
+}

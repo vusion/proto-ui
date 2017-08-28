@@ -27,8 +27,8 @@ export default {
             if (!this.$router)
                 return console.warn('[proto-ui] Cannot find vue router.');
 
-            const router = this.$router;
-            this.replace ? router.replace(this.to) : router.push(this.to);
+            const $router = this.$router;
+            this.replace ? $router.replace(this.to) : $router.push(this.to);
 
             this.$emit('navigate', {
                 to: this.to,

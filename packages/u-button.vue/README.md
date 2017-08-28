@@ -15,14 +15,11 @@
 
 ### Link
 
-- Use `v-href` directive to add normal link.
-- Use `v-to` directive to add [vue-router](https://router.vuejs.org) link.
-
 ``` html
 <u-linear-layout>
-    <u-button v-href="'https://github.com/vusion/vusion'">v-href</u-button>
-    <u-button v-to="'/some/router/path'">v-to</u-button>
-    <u-button v-href="'https://github.com/vusion/vusion'" disabled>v-href</u-button>
+    <u-button href="https://github.com/vusion/vusion" target="_blank">href</u-button>
+    <u-button to="/some/router/path">to</u-button>
+    <u-button href="https://github.com/vusion/vusion" disabled>href</u-button>
 </u-linear-layout>
 ```
 
@@ -31,6 +28,11 @@
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
+| href | String |  | `href` property of link |
+| target | String |  | (native property) |
+| to | String \| Object |  | `to` property of `vue-router` |
+| replace | Boolean | `false` | |
+| append | Boolean | `false` | |
 | disabled | Boolean | `false` | Disable the button |
 
 ### Slots
@@ -43,4 +45,8 @@
 
 #### $listeners
 
-Inherit all events from `<button>` element.
+Inherit all events from `<a>` element.
+
+#### @click
+
+#### @navigate

@@ -1,7 +1,19 @@
-.root[direction="horizontal"] > * {
-    margin-right: 20px;
+.root[direction="horizontal"] > * + * {
+    margin-left: 20px;
 }
 
-.root[direction="vertical"] > * {
-    margin-bottom: 20px;
+.root[direction="vertical"] > * + * {
+    margin-top: 20px;
+}
+
+.root[alignment="left"] {
+    text-align: left;
+}
+
+.root[alignment="center"] {
+    text-align: center;
+}
+
+.root[alignment="right"] {
+    text-align: right;
 }
