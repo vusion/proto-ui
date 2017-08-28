@@ -14,6 +14,11 @@ export default {
             tabs: undefined,
         };
     },
+    computed: {
+        selected() {
+            return this.tabs.selectedItem === this;
+        },
+    },
     created() {
         this.dispatch('u-tabs', 'addItem', this);
     },

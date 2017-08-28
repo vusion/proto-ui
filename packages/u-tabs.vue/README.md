@@ -56,7 +56,7 @@
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| index, index.sync | Number | `0` | Index of selected tab |
+| index.sync | Number | `0` | Index of selected tab |
 | readonly | Boolean | `false` | Readonly |
 | disabled | Boolean | `false` | Disabled |
 | router | Boolean | `false` | Use vue router to activate |

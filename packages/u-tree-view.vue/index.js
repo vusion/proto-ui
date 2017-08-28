@@ -1,3 +1,4 @@
+import Field from 'u-field.vue';
 import TreeViewNode from 'u-tree-view-node.vue';
 
 const walk = (root, func) => {
@@ -19,6 +20,7 @@ const find = (root, func) => walk(root, (node) => {
 
 const TreeView = {
     name: 'u-tree-view',
+    mixins: [Field],
     props: {
         data: Array,
         value: null,
@@ -45,50 +47,54 @@ const TreeView = {
             else {
                 this.selectedNode = find(this, (node) => node.value === value);
                 if (this.selectedNode) {
-                    let node = this.selectedNode.$parent;
-                    while (node !== this.$ancestor) {
-                        node.expanded_ = true;
-                        node = node.$parent;
+                    let node = this.selectedNode.treeViewParent;
+                    while (node !== this.treeView) {
+                        node.currentExpanded = true;
+                        node = node.treeViewParent;
                     }
                 }
             }
         },
     },
-    beforeCreate() {
-        this.$ancestor = this;
-    },
     created() {
+        this.$on('addNode', (node) => {
+            node.treeView = this;
+            node.treeViewParent = this;
+            this.nodes.push(node);
+        });
+        this.$on('removeNode', (node) => {
+            node.treeView = undefined;
+            node.treeViewParent = undefined;
+            this.nodes.splice(this.nodes.indexOf(node), 1);
+        });
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, nodes have not been pushed.
         this.$nextTick(() => TreeView.watch.value.call(this, this.value));
     },
     methods: {
-        add(node) {
-            this.nodes.push(node);
-        },
-        remove(node) {
-            const index = this.nodes.indexOf(node);
-            ~index && this.nodes.splice(index, 1);
-        },
-        select(node) {
+        select($node) {
             if (this.readonly || this.disabled)
                 return;
 
-            if (this.cancelable && this.selectedNode === node)
+            if (this.cancelable && this.selectedNode === $node)
                 this.selectedNode = undefined;
             else
-                this.selectedNode = node;
+                this.selectedNode = $node;
 
+            const value = this.selectedNode && this.selectedNode.value;
+            const node = this.selectedNode && this.selectedNode.node;
             this.$emit('select', {
-                selectedNode: this.selectedNode,
-                value: this.selectedNode && this.selectedNode.value,
-            });
-        },
-        onNodeToggle(node, expanded) {
-            this.$emit('toggle', {
+                value,
                 node,
+                $node: this.selectedNode,
+            });
+            this.$emit('input', value);
+        },
+        onNodeToggle($node, expanded) {
+            this.$emit('toggle', {
                 expanded,
+                $node,
             });
         },
     },

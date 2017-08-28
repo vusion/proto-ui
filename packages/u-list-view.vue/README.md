@@ -97,7 +97,7 @@ Try to click twice on an item.
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
-| value, value.sync, v-model | Any | | Value of selected item |
+| value.sync, v-model | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
 | cancelable | Boolean | `false` | Select twice to cancel |
 | readonly | Boolean | `false` | Readonly |

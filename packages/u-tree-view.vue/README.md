@@ -194,7 +194,7 @@ It is recommended to use data pattern to generate tags easily.
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
-| value | Any | | Value of selected item |
+| value.sync, v-model | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
 | cancelable | Boolean | `false` | Select twice to cancel |
 | readonly | Boolean | `false` | Readonly |
@@ -214,8 +214,9 @@ Emit when selecting an node.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| item | TreeViewNode | Selected node |
 | value | Any | Value of this node |
+| node | Object | Node object of selected node |
+| $node | TreeViewNode | Selected node |
 
 #### @toggle
 
@@ -223,8 +224,8 @@ Emit when expanding or collapsing this node.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| node | TreeViewNode | Node to toggle |
 | expanded | Boolean | Expanded or Collapsed |
+| $node | TreeViewNode | Node to toggle |
 
 ## ListViewItem API
 ### Attrs/Props
@@ -232,6 +233,7 @@ Emit when expanding or collapsing this node.
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | Value of this item |
+| expanded.sync | Any | | Value of this item |
 | disabled | Boolean | `false` | Disabled |
 
 ### Slots
@@ -248,8 +250,9 @@ Emit when selecting an node.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| node | TreeViewNode | This node |
 | value | Any | Value of this node |
+| node | Object | Object of this node |
+| $node | TreeViewNode | This node |
 
 #### @toggle
 

@@ -1,8 +1,8 @@
 <div :class="$style.root">
     <div :class="$style.item" :selected="selected"
-        :readonly="$ancestor.readonly"
-        :disabled="disabled || $ancestor.disabled"
-        :tabindex="disabled || $ancestor.readonly || $ancestor.disabled ? -1 : 0"
+        :readonly="treeView.readonly"
+        :disabled="disabled || treeView.disabled"
+        :tabindex="disabled || treeView.readonly || treeView.disabled ? -1 : 0"
         @click="select()"
         @mouseenter="enterItem"
         @mouseleave="leaveItem"
@@ -11,21 +11,23 @@
         @keyup.right="toggle(true)">
         <div :class="$style.back"></div>
         <div :class="$style.expander" v-if="data || nodes.length"
-            :expanded="expanded_"
+            :expanded="currentExpanded"
             @click.stop="toggle()"></div>
         <div :class="$style.text">
             <slot name="text">{{ text }}</slot>
         </div>
     </div>
-    <div :class="$style.list" v-show="expanded_">
+    <div :class="$style.list" v-show="currentExpanded">
         <u-tree-view-node v-if="data"
             v-for="node in data"
-            :text="node[$ancestor.field]"
+            :text="node[treeView.field]"
             :key="node.key"
             :value="node.value"
             :expanded="node.expanded"
             :disabled="node.disabled"
-            :data="node.children"></u-tree-view-node>
+            :data="node.children"
+            :node="node"
+        ></u-tree-view-node>
         <slot></slot>
     </div>
 </div>
