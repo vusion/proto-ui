@@ -6,7 +6,7 @@
 ``` html
 <u-linear-layout direction="vertical">
     <u-pagination :total="11"></u-pagination>
-    <u-pagination :total="11" :current="6"></u-pagination>
+    <u-pagination :total="11" :page="6"></u-pagination>
 </u-linear-layout>
 ```
 
@@ -15,7 +15,7 @@
 Use `side` and `around` properties to change the count of displayed numbers.
 
 ``` html
-<u-pagination :total="11" :current="6" :side="1" :around="3"></u-pagination>
+<u-pagination :total="11" :page="6" :side="1" :around="3"></u-pagination>
 ```
 
 ### Readonly & Disabled
@@ -32,7 +32,7 @@ Use `side` and `around` properties to change the count of displayed numbers.
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| current | Number | `1` | Current page number |
+| page | Number | `1` | Current page number |
 | total | Number | `11` | Total count of pages |
 | side | Number | `2` | Count of pages at side position |
 | around | Number | `5` | Count of pages around the current position |
@@ -53,4 +53,4 @@ Emit when selecting a page.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| page | Number | Page number to select |
+| $event.page | Number | Page number to select |

@@ -28,6 +28,8 @@
     "proto-ui"
   ],
   "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.3.0",
     "eslint-config-vusion": "^1.2.2",
     "husky": "^0.13.3",

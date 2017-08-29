@@ -1,0 +1,10 @@
+{
+    "env": {
+        "test": {
+            "presets": ["env"],
+            "plugins": [["istanbul", {
+                "exclude": ["**/*.spec.js", "test/utils.js"]
+            }]]
+        }
+    }
+}
