@@ -1,5 +1,4 @@
 import Field from 'u-field.vue';
-import TreeViewNode from 'u-tree-view-node.vue';
 
 const walk = (root, func) => {
     let queue = [];
@@ -31,7 +30,7 @@ const TreeView = {
     },
     data() {
         return {
-            ChildComponent: TreeViewNode, // easy for SubComponent to extend
+            ChildComponent: 'u-tree-view-node', // easy for SubComponent to extend
             nodes: [],
             selectedNode: undefined,
         };

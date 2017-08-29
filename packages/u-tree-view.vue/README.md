@@ -218,6 +218,12 @@ Emit when selecting an node.
 | node | Object | Node object of selected node |
 | $node | TreeViewNode | Selected node |
 
+#### @input
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| value | Any | Value of this node |
+
 #### @toggle
 
 Emit when expanding or collapsing this node.

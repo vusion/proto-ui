@@ -1,5 +1,3 @@
-import ListViewItem from 'u-list-view-item.vue';
-
 const ListView = {
     name: 'u-list-view',
     props: {
@@ -12,7 +10,7 @@ const ListView = {
     },
     data() {
         return {
-            ChildComponent: ListViewItem, // easy for SubComponent to extend
+            ChildComponent: 'u-list-view-item', // easy for SubComponent to extend
             items: [],
             selectedItem: undefined,
         };
