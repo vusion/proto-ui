@@ -10,6 +10,7 @@ export default {
     },
     data() {
         return {
+            currentSelected: false,
             listView: undefined,
         };
     },
@@ -29,11 +30,15 @@ export default {
             if (this.disabled || this.listView.readonly || this.listView.disabled)
                 return;
 
+            let cancel = false;
             this.$emit('select', {
                 value: this.value,
                 item: this.item,
                 $item: this,
+                preventDefault: () => cancel = true,
             });
+            if (cancel)
+                return;
 
             this.listView.select(this);
         },

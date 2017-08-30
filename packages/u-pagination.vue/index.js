@@ -63,12 +63,24 @@ export default {
             if (page < 1 || page > this.total || page === this.currentPage)
                 return;
 
-            this.currentPage = page;
+            const oldPage = this.currentPage;
 
+            let cancel = false;
             this.$emit('select', {
                 page,
+                oldPage,
+                preventDefault: () => cancel = true,
             });
+            if (cancel)
+                return;
+
+            this.currentPage = page;
+
             this.$emit('update:page', page);
+            this.$emit('change', {
+                page,
+                oldPage,
+            });
         },
     },
 };

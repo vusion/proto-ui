@@ -4,7 +4,7 @@
         :text="node[field]"
         :key="node.key"
         :value="node.value"
-        :expanded="node.expanded"
+        :expanded.sync="node.expanded"
         :disabled="node.disabled"
         :data="node.children"
         :node="node"

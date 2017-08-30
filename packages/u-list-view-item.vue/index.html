@@ -1,5 +1,5 @@
 <li :class="$style.root"
-    :selected="selected"
+    :selected="selected || currentSelected"
     :readonly="listView.readonly"
     :disabled="disabled || listView.disabled"
     @click="select()">

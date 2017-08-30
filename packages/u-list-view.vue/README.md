@@ -91,6 +91,27 @@ Try to click twice on an item.
 </u-list-view>
 ```
 
+### Multiple
+
+``` vue
+<template>
+<u-list-view multiple v-model="value">
+    <u-list-view-item value="A">Apple</u-list-view-item>
+    <u-list-view-item value="B">Banana</u-list-view-item>
+    <u-list-view-item value="C">Cake</u-list-view-item>
+</u-list-view>
+<p>value: {{ value }}<p>
+</template>
+
+<script>
+export default {
+    data() {
+        return { value: ['B', 'C'] };
+    },
+};
+</script>
+```
+
 ## ListView API
 ### Attrs/Props
 
@@ -100,6 +121,7 @@ Try to click twice on an item.
 | value.sync, v-model | Any | | Value of selected item |
 | field | String | `'text'` | Indicate which field to show text |
 | cancelable | Boolean | `false` | Select twice to cancel |
+| multiple | Boolean | `false` | Multiple select |
 | readonly | Boolean | `false` | Readonly |
 | disabled | Boolean | `false` | Disabled |
 

@@ -29,10 +29,12 @@ export default {
     },
     created() {
         this.dispatch('u-form', 'addItem', this);
-        this.$on('addField', (field) => field.formItem = this);
+        this.$on('addField', (field) => {
+            field.formItem = this;
+            this.value = field.value;
+        });
         this.$on('removeField', (field) => field.formItem = undefined);
         this.$on('input', this.onInput);
-        this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
         this.$on('blur', this.onBlur);
     },
@@ -44,15 +46,11 @@ export default {
             this.value = value;
             this.validate('input').catch((errors) => errors);
         },
-        onChange(value) {
-            this.value = value;
-        },
-        onFocus(value) {
+        onFocus() {
             this.color = this.state = '';
             this.currentMessage = this.message;
         },
-        onBlur(value) {
-            this.value = value;
+        onBlur() {
             this.validate('blur').catch((errors) => errors);
         },
         validate(trigger = 'submit', silent = false) {

@@ -158,4 +158,28 @@ describe('Pagination', () => {
         pagination.select(13);
         expect(pagination.currentPage).to.equal(4);
     });
+
+    it('@select', () => {
+        pagination = createVM(Pagination);
+
+        let $event;
+        pagination.$once('select', (e) => $event = e);
+        pagination.select(7);
+        expect($event.page).to.equal(7);
+        expect($event.oldPage).to.equal(1);
+
+        pagination.$once('select', (e) => e.preventDefault());
+        pagination.select(4);
+        expect(pagination.currentPage).to.equal(7);
+    });
+
+    it('@change', () => {
+        pagination = createVM(Pagination);
+
+        let $event;
+        pagination.$once('change', (e) => $event = e);
+        pagination.select(7);
+        expect($event.page).to.equal(7);
+        expect($event.oldPage).to.equal(1);
+    });
 });
