@@ -14,6 +14,15 @@ export default {
             formItem: undefined,
         };
     },
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.input;
+            delete listeners.focus;
+            delete listeners.blur;
+            return listeners;
+        },
+    },
     watch: {
         value(value) {
             this.currentValue = value;
@@ -25,10 +34,10 @@ export default {
             this.$emit('input', this.currentValue);
         },
         onFocus(e) {
-            this.$emit('focus', this.currentValue);
+            this.$emit('focus', e);
         },
         onBlur(e) {
-            this.$emit('blur', this.currentValue);
+            this.$emit('blur', e);
         },
     },
 };

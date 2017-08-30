@@ -1,13 +1,13 @@
-# Switch
+# 开关（Switch）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-switch></u-switch>
 ```
 
-### v-model & Text
+### Value绑定
 
 ``` vue
 <template>
@@ -22,7 +22,7 @@ export default {
 </script>
 ```
 
-### Readonly & Disabled
+### 只读和禁用
 
 ``` html
 <u-linear-layout>
@@ -36,31 +36,39 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Boolean | `false` | Switch status. |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
+| value | Boolean | `false` | 开关状态 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入文本或HTML |
 
 ### Events
 
+切换开关状态时触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.value | Boolean | 开关状态 |
+| $event.oldValue | Boolean | 旧的开关状态 |
+| $event.preventDefault | Function | 阻止切换流程 |
+
 #### @input
 
-Emit when checking.
+切换开关状态后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Boolean | Checked value |
+| $event | Boolean | 切换后的选中状态 |
 
 #### @change
 
-Emit when change value.
+选中状态改变后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| newValue | Boolean | New value |
-| oldValue | Boolean | Old value |
+| $event.value | Boolean | 选中状态 |
+| $event.oldValue | Boolean | 旧的选中状态 |

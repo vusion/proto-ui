@@ -13,25 +13,49 @@ export default {
             currentValue: this.value,
         };
     },
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.focus;
+            delete listeners.blur;
+            return listeners;
+        },
+    },
     watch: {
         value(value) {
             this.currentValue = value;
         },
     },
     methods: {
-        change() {
+        onFocus(e) {
+            this.$emit('focus', e);
+        },
+        onBlur(e) {
+            this.$emit('blur', e);
+        },
+        toggle() {
             if (this.readonly || this.disabled)
                 return;
 
             const oldValue = this.currentValue;
-            this.currentValue = !this.currentValue;
+            const value = !this.currentValue;
 
-            this.$emit('input', this.currentValue);
-            this.$emit('change', this.currentValue, oldValue);
-            this.$emit('update:value', this.currentValue);
-        },
-        onBlur(e) {
-            this.$emit('blur', e);
+            let cancel = false;
+            this.$emit('toggle', {
+                value,
+                oldValue,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.currentValue = value;
+
+            this.$emit('input', value);
+            this.$emit('change', {
+                value,
+                oldValue,
+            });
         },
     },
 };

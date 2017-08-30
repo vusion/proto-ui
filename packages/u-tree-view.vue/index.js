@@ -26,6 +26,7 @@ const TreeView = {
         value: null,
         field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
+        checkable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },

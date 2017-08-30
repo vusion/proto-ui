@@ -1,13 +1,13 @@
-# Checkbox
+# 多选按钮（Checkbox）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-checkbox>Checkbox</u-checkbox>
 ```
 
-### v-model
+### Value绑定
 
 ``` vue
 <template>
@@ -24,7 +24,7 @@ export default {
 </script>
 ```
 
-### Disabled
+### 只读和禁用
 
 ``` html
 <u-linear-layout>
@@ -33,7 +33,7 @@ export default {
 </u-linear-layout>
 ```
 
-### Indeterminate
+### 不确定状态
 
 ``` html
 <u-checkbox :value="null">Indeterminate</u-checkbox>
@@ -44,31 +44,41 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Boolean \| null | `false` | Checked status. `null` means indeterminate status.  |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
+| value | Boolean \| null | `false` | 选中状态，`null`表示不确定状态  |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入文本或HTML |
 
 ### Events
 
+#### @check
+
+切换选中状态时触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.value | Boolean \| null | 选中状态 |
+| $event.oldValue | Boolean \| null | 旧的选中状态 |
+| $event.preventDefault | Function | 阻止切换流程 |
+
 #### @input
 
-Emit when checking.
+切换选中状态后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Boolean \| null | Checked value |
+| $event | Boolean \| null | 切换后的选中状态 |
 
 #### @change
 
-Emit when change value.
+选中状态改变后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| newValue | Boolean \| null | New value |
-| oldValue | Boolean \| null | Old value |
+| $event.value | Boolean \| null | 选中状态 |
+| $event.oldValue | Boolean \| null | 旧的选中状态 |

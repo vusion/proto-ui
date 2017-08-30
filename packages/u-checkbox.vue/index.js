@@ -1,5 +1,8 @@
+import Field from 'u-field.vue';
+
 export default {
     name: 'u-checkbox',
+    mixins: [Field],
     props: {
         value: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
@@ -10,22 +13,49 @@ export default {
             currentValue: this.value,
         };
     },
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.focus;
+            delete listeners.blur;
+            return listeners;
+        },
+    },
     watch: {
         value(value) {
             this.currentValue = value;
         },
     },
     methods: {
-        change() {
+        onFocus(e) {
+            this.$emit('focus', e);
+        },
+        onBlur(e) {
+            this.$emit('blur', e);
+        },
+        check() {
             if (this.readonly || this.disabled)
                 return;
 
             const oldValue = this.currentValue;
-            this.currentValue = !this.currentValue;
+            const value = !this.currentValue;
 
-            this.$emit('input', this.currentValue);
-            this.$emit('change', this.currentValue, oldValue);
-            this.$emit('update:value', this.currentValue);
+            let cancel = false;
+            this.$emit('check', {
+                value,
+                oldValue,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.currentValue = value;
+
+            this.$emit('input', value);
+            this.$emit('change', {
+                value,
+                oldValue,
+            });
         },
     },
 };
