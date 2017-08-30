@@ -1,7 +1,8 @@
 import Field from 'u-field.vue';
 
-const ListView = {
+export default {
     name: 'u-list-view',
+    childName: 'u-list-view-item',
     mixins: [Field],
     props: {
         data: Array,
@@ -14,7 +15,7 @@ const ListView = {
     },
     data() {
         return {
-            ChildComponent: 'u-list-view-item', // easy for SubComponent to extend
+            ChildComponent: this.$options.childName,
             items: [],
             selectedItem: undefined,
         };
@@ -37,17 +38,17 @@ const ListView = {
     },
     created() {
         this.$on('addItem', (item) => {
-            item.listView = this;
+            item.parent = this;
             this.items.push(item);
         });
         this.$on('removeItem', (item) => {
-            item.listView = undefined;
+            item.parent = undefined;
             this.items.splice(this.items.indexOf(item), 1);
         });
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, items have not been pushed.
-        this.$nextTick(() => ListView.watch.value.call(this, this.value));
+        this.$nextTick(() => this.$options.watch.value.call(this, this.value));
     },
     methods: {
         select($item) {
@@ -100,5 +101,3 @@ const ListView = {
         },
     },
 };
-
-export default ListView;

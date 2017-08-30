@@ -1,104 +1,104 @@
-# ListView
+# 列表视图（ListView）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
-It is recommended to use tag pattern, which is more flexible than data pattern.
+有两种书写方式，这里推荐使用Tag方式，使用起来更加灵活。
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-list-view>
-    <u-list-view-item>Apple</u-list-view-item>
-    <u-list-view-item>Banana</u-list-view-item>
-    <u-list-view-item>Cake</u-list-view-item>
+    <u-list-view-item>苹果</u-list-view-item>
+    <u-list-view-item>香蕉</u-list-view-item>
+    <u-list-view-item>蛋糕</u-list-view-item>
 </u-list-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-list-view :data="[
-    { text: 'Apple' },
-    { text: 'Banana' },
-    { text: 'Cake' },
+    { text: '苹果' },
+    { text: '香蕉' },
+    { text: '蛋糕' },
 ]"></u-list-view>
 ```
 
-### Value
+### 选项值
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-list-view value="C">
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B">香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-list-view value="C" :data="[
-    { text: 'Apple', value: 'A' },
-    { text: 'Banana', value: 'B' },
-    { text: 'Cake', value: 'C' },
+    { text: '苹果', value: 'A' },
+    { text: '香蕉', value: 'B' },
+    { text: '蛋糕', value: 'C' },
 ]"></u-list-view>
 ```
 
-### Readonly & Disabled
+### 只读、禁用、禁用某一项
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-list-view value="C" readonly>
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B">香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 <u-list-view value="C" disabled>
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B">香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 <u-list-view value="C">
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B" disabled>Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B" disabled>香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-list-view value="C" :data="[
-    { text: 'Apple', value: 'A' },
-    { text: 'Banana', value: 'B', disabled: true },
-    { text: 'Cake', value: 'C' },
+    { text: '苹果', value: 'A' },
+    { text: '香蕉', value: 'B', disabled: true },
+    { text: '蛋糕', value: 'C' },
 ]"></u-list-view>
 ```
 
-### Cancelable
+### 可取消
 
-Try to click twice on an item.
+尝试在同一个选项上点击两次。
 
 ``` html
 <u-list-view value="C" cancelable>
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B">香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 ```
 
-### Multiple
+### 多项
 
 ``` vue
 <template>
 <u-list-view multiple v-model="value">
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
+    <u-list-view-item value="A">苹果</u-list-view-item>
+    <u-list-view-item value="B">香蕉</u-list-view-item>
+    <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
 <p>value: {{ value }}<p>
 </template>
@@ -117,63 +117,79 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
-| value.sync, v-model | Any | | Value of selected item |
-| field | String | `'text'` | Indicate which field to show text |
-| cancelable | Boolean | `false` | Select twice to cancel |
-| multiple | Boolean | `false` | Multiple select |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
+| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
+| value.sync, v-model | Any | | 当前选择的值 |
+| field | String | `'text'` | 显示文本字段 |
+| cancelable | Boolean | `false` | 是否可以取消选择 |
+| multiple | Boolean | `false` | 是否可以多选 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入`<u-list-view-item>`子组件 |
 
 ### Events
 
 #### @select
 
-Emit when selecting an item.
+选择某一项时触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of selected item |
-| item | Object | The selected object. Only useful in data pattern |
-| $item | ListViewItem | Selected item |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.$item | ListViewItem | 选择项子组件 |
+| $event.preventDefault | Function | 阻止选择流程 |
 
 #### @input
 
-Emit when selecting
+选择某一项后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of selected item |
+| $event | Any | 选择项的值 |
+
+#### @change
+
+选择值改变后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.value | Any | 改变后的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 单选模式中，选择项相关对象 |
+| $event.$item | ListViewItem |  单选模式中，选择项子组件 |
+| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
+| $event.$item | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 
 ## ListViewItem API
 ### Attrs/Props
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Any | | Value of this item |
-| disabled | Boolean | `false` | Disabled |
+| value | Any | | 此项的值 |
+| disabled | Boolean | `false` | 禁用此项 |
+| item | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入文本或HTML |
 
 ### Events
 
 #### @select
 
-Emit when selecting an item.
+选择此项时触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of this item |
-| item | Object | Only useful in data pattern |
-| $item | ListViewItem | This item |
-
+| $event.value | Any | 此项的值 |
+| $event.item | Object | 此项的相关对象 |
+| $event.$item | ListViewItem | 此组件 |
+| $event.preventDefault | Function | 阻止选择流程 |

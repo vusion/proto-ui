@@ -1,8 +1,8 @@
 <div :class="$style.root">
     <div :class="$style.item" :selected="selected"
-        :readonly="treeView.readonly"
-        :disabled="disabled || treeView.disabled"
-        :tabindex="disabled || treeView.readonly || treeView.disabled ? -1 : 0"
+        :readonly="root.readonly"
+        :disabled="disabled || root.disabled"
+        :tabindex="disabled || root.readonly || root.disabled ? -1 : 0"
         @click="select()"
         @mouseenter="enterItem"
         @mouseleave="leaveItem"
@@ -20,7 +20,7 @@
     <div :class="$style.list" v-show="currentExpanded">
         <u-tree-view-node v-if="data"
             v-for="node in data"
-            :text="node[treeView.field]"
+            :text="node[root.field]"
             :key="node.key"
             :value="node.value"
             :expanded.sync="node.expanded"

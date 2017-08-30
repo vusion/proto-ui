@@ -2,6 +2,7 @@ import Emitter from 'u-emitter.vue';
 
 export default {
     name: 'u-list-view-item',
+    parentName: 'u-list-view',
     mixins: [Emitter],
     props: {
         value: null,
@@ -11,23 +12,23 @@ export default {
     data() {
         return {
             currentSelected: false,
-            listView: undefined,
+            parent: undefined,
         };
     },
     computed: {
         selected() {
-            return this.listView.selectedItem === this;
+            return this.parent.selectedItem === this;
         },
     },
     created() {
-        this.dispatch('u-list-view', 'addItem', this);
+        this.dispatch(this.$options.parentName, 'addItem', this);
     },
     destroyed() {
-        this.dispatch('u-list-view', 'removeItem', this);
+        this.dispatch(this.$options.parentName, 'removeItem', this);
     },
     methods: {
         select() {
-            if (this.disabled || this.listView.readonly || this.listView.disabled)
+            if (this.disabled || this.parent.readonly || this.parent.disabled)
                 return;
 
             let cancel = false;
@@ -40,7 +41,7 @@ export default {
             if (cancel)
                 return;
 
-            this.listView.select(this);
+            this.parent.select(this);
         },
     },
 };

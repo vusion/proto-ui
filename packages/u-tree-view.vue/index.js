@@ -19,6 +19,7 @@ const find = (root, func) => walk(root, (node) => {
 
 const TreeView = {
     name: 'u-tree-view',
+    childName: 'u-tree-view-node',
     mixins: [Field],
     props: {
         data: Array,
@@ -30,7 +31,7 @@ const TreeView = {
     },
     data() {
         return {
-            ChildComponent: 'u-tree-view-node', // easy for SubComponent to extend
+            ChildComponent: this.$options.childName, // easy for SubComponent inheriting
             nodes: [],
             selectedNode: undefined,
         };
@@ -46,10 +47,10 @@ const TreeView = {
             else {
                 this.selectedNode = find(this, (node) => node.value === value);
                 if (this.selectedNode) {
-                    let node = this.selectedNode.treeViewParent;
-                    while (node !== this.treeView) {
+                    let node = this.selectedNode.parent;
+                    while (node !== this.root) {
                         node.currentExpanded = true;
-                        node = node.treeViewParent;
+                        node = node.parent;
                     }
                 }
             }
@@ -57,13 +58,13 @@ const TreeView = {
     },
     created() {
         this.$on('addNode', (node) => {
-            node.treeView = this;
-            node.treeViewParent = this;
+            node.root = this;
+            node.parent = this;
             this.nodes.push(node);
         });
         this.$on('removeNode', (node) => {
-            node.treeView = undefined;
-            node.treeViewParent = undefined;
+            node.root = undefined;
+            node.parent = undefined;
             this.nodes.splice(this.nodes.indexOf(node), 1);
         });
         // @TODO: Suggest to add a nextTick option in Vue.js
@@ -76,6 +77,19 @@ const TreeView = {
             if (this.readonly || this.disabled)
                 return;
 
+            const oldValue = this.value;
+
+            let cancel = false;
+            this.$emit('select', {
+                value: $node && $node.value,
+                oldValue,
+                node: $node && $node.node,
+                $node,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
             if (this.cancelable && this.selectedNode === $node)
                 this.selectedNode = undefined;
             else
@@ -83,18 +97,22 @@ const TreeView = {
 
             const value = this.selectedNode && this.selectedNode.value;
             const node = this.selectedNode && this.selectedNode.node;
-            this.$emit('select', {
+
+            this.$emit('input', value);
+            this.$emit('change', {
                 value,
+                oldValue,
                 node,
                 $node: this.selectedNode,
             });
-            this.$emit('input', value);
         },
-        onNodeToggle($node, expanded) {
-            this.$emit('toggle', {
-                expanded,
-                $node,
-            });
+        toggle($node, expanded, oldExpanded) {
+            this.$emit('toggle', { expanded, oldExpanded, $node });
+
+            if (expanded)
+                this.$emit('expand', { $node });
+            else
+                this.$emit('collapse', { $node });
         },
     },
 };

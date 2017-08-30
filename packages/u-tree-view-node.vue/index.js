@@ -2,6 +2,7 @@ import Emitter from 'u-emitter.vue';
 
 export default {
     name: 'u-tree-view-node',
+    rootName: 'u-tree-view',
     mixins: [Emitter],
     props: {
         data: Array,
@@ -15,13 +16,13 @@ export default {
         return {
             nodes: [],
             currentExpanded: this.expanded,
-            treeViewParent: undefined,
-            treeView: undefined,
+            parent: undefined,
+            root: undefined,
         };
     },
     computed: {
         selected() {
-            return this.treeView.selectedNode === this;
+            return this.root.selectedNode === this;
         },
     },
     watch: {
@@ -30,63 +31,81 @@ export default {
         },
     },
     created() {
-        this.dispatch('u-tree-view-node', 'addNode', this);
-        if (!this.treeViewParent)
-            this.dispatch('u-tree-view', 'addNode', this);
+        this.dispatch(this.$options.name, 'addNode', this);
+        if (!this.parent)
+            this.dispatch(this.$options.rootName, 'addNode', this);
 
         this.$on('addNode', (node) => {
-            node.treeView = this.treeView;
-            node.treeViewParent = this;
+            node.root = this.root;
+            node.parent = this;
             this.nodes.push(node);
         });
         this.$on('removeNode', (node) => {
-            node.treeView = undefined;
-            node.treeViewParent = undefined;
+            node.root = undefined;
+            node.parent = undefined;
             this.nodes.splice(this.nodes.indexOf(node), 1);
         });
     },
     destroyed() {
-        this.dispatch('u-tree-view-node', 'removeNode', this);
-        this.dispatch('u-tree-view', 'removeNode', this);
+        this.dispatch(this.$options.rootName, 'removeNode', this);
+        this.dispatch(this.$options.name, 'removeNode', this);
     },
     methods: {
         /**
          * @method - Select this node
          */
         select() {
-            if (this.disabled || this.treeView.readonly || this.treeView.disabled)
+            if (this.disabled || this.root.readonly || this.root.disabled)
                 return;
 
+            let cancel = false;
             this.$emit('select', {
                 value: this.value,
                 node: this.node,
                 $node: this,
+                preventDefault: () => cancel = true,
             });
+            if (cancel)
+                return;
 
-            this.treeView.select(this);
+            this.root.select(this);
         },
         enterItem(e) {
-            this.treeView.$emit('enter-item', this.node, e);
+            this.root.$emit('enter-item', this.node, e);
         },
         leaveItem(e) {
-            this.treeView.$emit('leave-item', this.node, e);
+            this.root.$emit('leave-item', this.node, e);
         },
         /**
          * @method - Expand or collapse this node
          * @param  {boolean?} expanded - Expanded or Collapsed. If this param is undefined, it will toggle between two states
          */
         toggle(expanded) {
-            if (this.disabled || this.treeView.readonly || this.treeView.disabled)
+            if (this.disabled || this.root.readonly || this.root.disabled)
                 return;
 
+            const oldExpanded = this.currentExpanded;
             if (expanded === undefined)
                 expanded = !this.currentExpanded;
+
+            let cancel = false;
+            this.$emit('toggle', {
+                expanded,
+                oldExpanded,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
             this.currentExpanded = expanded;
 
-            this.$emit('toggle', expanded);
             this.$emit('update:expanded', expanded);
+            if (expanded)
+                this.$emit('expand');
+            else
+                this.$emit('collapse');
 
-            this.treeView.onNodeToggle(this, expanded);
+            this.root.toggle(this, expanded, oldExpanded);
         },
     },
 };

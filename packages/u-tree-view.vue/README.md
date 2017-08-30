@@ -1,189 +1,189 @@
-# TreeView
+# 树型视图（TreeView）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
-It is recommended to use data pattern to generate tags easily.
+有两种书写方式，这里推荐使用Data方式，因为树型结构的数据有时非常多。
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-tree-view>
-    <u-tree-view-node text="Node 1">
-        <u-tree-view-node text="Node 1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2">
-            <u-tree-view-node text="Node 1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2"></u-tree-view-node>
-    <u-tree-view-node text="Node 3">
-        <u-tree-view-node text="Node 3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2"></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-tree-view :data="[
-    { text: 'Node 1', children: [
-        { text: 'Node 1.1' },
-        { text: 'Node 1.2', children: [
-            { text: 'Node 1.2.1' },
-            { text: 'Node 1.2.2' },
+    { text: '节点1', children: [
+        { text: '节点1.1' },
+        { text: '节点1.2', children: [
+            { text: '节点1.2.1' },
+            { text: '节点1.2.2' },
         ] },
-        { text: 'Node 1.3' },
-        { text: 'Node 1.4' },
+        { text: '节点1.3' },
+        { text: '节点1.4' },
     ] },
-    { text: 'Node 2' },
-    { text: 'Node 3', children: [
-        { text: 'Node 3.1' },
-        { text: 'Node 3.2' },
+    { text: '节点2' },
+    { text: '节点3', children: [
+        { text: '节点3.1' },
+        { text: '节点3.2' },
     ] },
 ]"></u-tree-view>
 ```
 
-### Value
+### 选项值
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-tree-view value="1.2">
-    <u-tree-view-node text="Node 1" value="1">
-        <u-tree-view-node text="Node 1.1" value="1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2" value="1.2">
-            <u-tree-view-node text="Node 1.2.1" value="1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2" value="1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1" value="1">
+        <u-tree-view-node text="节点1.1" value="1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2" value="1.2">
+            <u-tree-view-node text="节点1.2.1" value="1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2" value="1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3" value="1.3"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4" value="1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3" value="1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4" value="1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2" value="2"></u-tree-view-node>
-    <u-tree-view-node text="Node 3" value="3">
-        <u-tree-view-node text="Node 3.1" value="3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2" value="3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2" value="2"></u-tree-view-node>
+    <u-tree-view-node text="节点3" value="3">
+        <u-tree-view-node text="节点3.1" value="3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2" value="3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-tree-view value="1.2" :data="[
-    { text: 'Node 1', value: '1', children: [
-        { text: 'Node 1.1', value: '1.1' },
-        { text: 'Node 1.2', value: '1.2', children: [
-            { text: 'Node 1.2.1', value: '1.2.1' },
-            { text: 'Node 1.2.2', value: '1.2.2' },
+    { text: '节点1', value: '1', children: [
+        { text: '节点1.1', value: '1.1' },
+        { text: '节点1.2', value: '1.2', children: [
+            { text: '节点1.2.1', value: '1.2.1' },
+            { text: '节点1.2.2', value: '1.2.2' },
         ] },
-        { text: 'Node 1.3', value: '1.3' },
-        { text: 'Node 1.4', value: '1.4' },
+        { text: '节点1.3', value: '1.3' },
+        { text: '节点1.4', value: '1.4' },
     ] },
-    { text: 'Node 2', value: '2' },
-    { text: 'Node 3', value: '3', children: [
-        { text: 'Node 3.1', value: '3.1' },
-        { text: 'Node 3.2', value: '3.2' },
+    { text: '节点2', value: '2' },
+    { text: '节点3', value: '3', children: [
+        { text: '节点3.1', value: '3.1' },
+        { text: '节点3.2', value: '3.2' },
     ] },
 ]"></u-tree-view>
 ```
 
-### Readonly & Disabled
+### 只读、禁用、禁用某一项
 
-#### Tag Pattern
+#### Tag方式
 
 ``` html
 <u-tree-view readonly>
-    <u-tree-view-node text="Node 1">
-        <u-tree-view-node text="Node 1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2">
-            <u-tree-view-node text="Node 1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2"></u-tree-view-node>
-    <u-tree-view-node text="Node 3">
-        <u-tree-view-node text="Node 3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2"></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 <u-tree-view disabled>
-    <u-tree-view-node text="Node 1">
-        <u-tree-view-node text="Node 1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2">
-            <u-tree-view-node text="Node 1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2"></u-tree-view-node>
-    <u-tree-view-node text="Node 3">
-        <u-tree-view-node text="Node 3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2"></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 <u-tree-view>
-    <u-tree-view-node text="Node 1">
-        <u-tree-view-node text="Node 1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2" disabled>
-            <u-tree-view-node text="Node 1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2" disabled>
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3" disabled></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3" disabled></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2" disabled></u-tree-view-node>
-    <u-tree-view-node text="Node 3">
-        <u-tree-view-node text="Node 3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2" disabled></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 ```
 
-#### Data Pattern
+#### Data方式
 
 ``` html
 <u-tree-view :data="[
-    { text: 'Node 1', children: [
-        { text: 'Node 1.1' },
-        { text: 'Node 1.2', disabled: true, children: [
-            { text: 'Node 1.2.1' },
-            { text: 'Node 1.2.2'}
+    { text: '节点1', children: [
+        { text: '节点1.1' },
+        { text: '节点1.2', disabled: true, children: [
+            { text: '节点1.2.1' },
+            { text: '节点1.2.2'}
         ] },
-        { text: 'Node 1.3', disabled: true  },
-        { text: 'Node 1.4' },
+        { text: '节点1.3', disabled: true  },
+        { text: '节点1.4' },
     ] },
-    { text: 'Node 2', disabled: true  },
-    { text: 'Node 3', children: [
-        { text: 'Node 3.1' },
-        { text: 'Node 3.2'}
+    { text: '节点2', disabled: true  },
+    { text: '节点3', children: [
+        { text: '节点3.1' },
+        { text: '节点3.2'}
     ]}
 ]"></u-tree-view>
 ```
 
-### Cancelable
+### 可取消
 
 ``` html
 <u-tree-view cancelable>
-    <u-tree-view-node text="Node 1">
-        <u-tree-view-node text="Node 1.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.2">
-            <u-tree-view-node text="Node 1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="Node 1.2.2"></u-tree-view-node>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
         </u-tree-view-node>
-        <u-tree-view-node text="Node 1.3"></u-tree-view-node>
-        <u-tree-view-node text="Node 1.4"></u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
     </u-tree-view-node>
-    <u-tree-view-node text="Node 2"></u-tree-view-node>
-    <u-tree-view-node text="Node 3">
-        <u-tree-view-node text="Node 3.1"></u-tree-view-node>
-        <u-tree-view-node text="Node 3.2"></u-tree-view-node>
+    <u-tree-view-node text="节点2"></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
     </u-tree-view-node>
 </u-tree-view>
 ```
@@ -193,72 +193,105 @@ It is recommended to use data pattern to generate tags easily.
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
-| value.sync, v-model | Any | | Value of selected item |
-| field | String | `'text'` | Indicate which field to show text |
-| cancelable | Boolean | `false` | Select twice to cancel |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
+| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
+| value.sync, v-model | Any | | 当前选择的值 |
+| field | String | `'text'` | 显示文本字段 |
+| cancelable | Boolean | `false` | 是否可以取消选择 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入`<u-tree-view-node>`子组件 |
 
 ### Events
 
 #### @select
 
-Emit when selecting an node.
+选择某一项时触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of this node |
-| node | Object | Node object of selected node |
-| $node | TreeViewNode | Selected node |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.node | Object | 选择项相关对象 |
+| $event.$node | TreeViewNode | 选择项子组件 |
+| $event.preventDefault | Function | 阻止选择流程 |
 
 #### @input
 
-| Property | Type | Description |
+选择某一项后触发
+
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of this node |
+| $event | Any | 选择项的值 |
+
+#### @change
+
+选择值改变后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.value | Any | 改变后的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.node | Object | 选择项相关对象 |
+| $event.$node | TreeViewNode |  选择项子组件 |
 
 #### @toggle
 
-Emit when expanding or collapsing this node.
+展开/收起某节点后触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| expanded | Boolean | Expanded or Collapsed |
-| $node | TreeViewNode | Node to toggle |
+| $event.expanded | Boolean | 展开/收起状态 |
+| $event.$node | TreeViewNode | 节点组件 |
+
+#### @expand
+
+展开某节点后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.$node | TreeViewNode | 节点组件 |
+
+#### @collapse
+
+收起某节点后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.$node | TreeViewNode | 节点组件 |
 
 ## ListViewItem API
 ### Attrs/Props
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Any | | Value of this item |
-| expanded.sync | Any | | Value of this item |
-| disabled | Boolean | `false` | Disabled |
+| value | Any | | 此项的值 |
+| expanded.sync | Any | | 展开/收起状态 |
+| disabled | Boolean | `false` | 禁用此项 |
+| node | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 在插槽中插入文本或HTML |
 
 ### Events
 
 #### @select
 
-Emit when selecting an node.
+选择此项时触发
 
-| Property | Type | Description |
+| Argument | Type | Description |
 | -------- | ---- | ----------- |
-| value | Any | Value of this node |
-| node | Object | Object of this node |
-| $node | TreeViewNode | This node |
+| $event.value | Any | 此项的值 |
+| $event.node | Object | 此项的相关对象 |
+| $event.$node | TreeViewNode | 此组件 |
+| $event.preventDefault | Function | 阻止选择流程 |
 
 #### @toggle
 
@@ -267,3 +300,28 @@ Emit when expanding or collapsing this node.
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | expanded | Boolean | Expanded or Collapsed |
+
+#### @toggle
+
+展开/收起某节点时触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| $event.expanded | Boolean | 展开/收起状态 |
+| $event.preventDefault | Function | 阻止展开/收起流程 |
+
+#### @expand
+
+展开某节点后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| 无 |
+
+#### @collapse
+
+收起某节点后触发
+
+| Argument | Type | Description |
+| -------- | ---- | ----------- |
+| 无 |
