@@ -21,10 +21,10 @@ export default {
         },
     },
     created() {
-        this.dispatch(this.$options.parentName, 'addItem', this);
+        this.dispatch(this.$options.parentName, 'add-item', this);
     },
     destroyed() {
-        this.dispatch(this.$options.parentName, 'removeItem', this);
+        this.dispatch(this.$options.parentName, 'remove-item', this);
     },
     methods: {
         select() {
@@ -32,7 +32,7 @@ export default {
                 return;
 
             let cancel = false;
-            this.$emit('select', {
+            this.$emit('before-select', {
                 value: this.value,
                 item: this.item,
                 $item: this,

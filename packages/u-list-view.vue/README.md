@@ -133,12 +133,12 @@ export default {
 
 ### Events
 
-#### @select
+#### @before-select
 
-选择某一项时触发
+选择某一项前触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
@@ -147,18 +147,18 @@ export default {
 
 #### @input
 
-选择某一项后触发
+选择某一项时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
 
-#### @change
+#### @select
 
-选择值改变后触发
+选择某一项时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 单选模式中，选择项相关对象 |
@@ -183,12 +183,12 @@ export default {
 
 ### Events
 
-#### @select
+#### @before-select
 
-选择此项时触发
+选择此项前触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 此项的值 |
 | $event.item | Object | 此项的相关对象 |
 | $event.$item | ListViewItem | 此组件 |

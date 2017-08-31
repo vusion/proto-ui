@@ -18,6 +18,7 @@ $box-size: 18px;
     width: $box-size;
     height: $box-size;
     line-height: calc($box-size - 2px);
+    background: white;
     border: 1px solid $border-color-base;
     margin-right: 5px;
     text-align: center;

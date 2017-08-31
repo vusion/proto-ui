@@ -58,14 +58,12 @@ const TreeView = {
         },
     },
     created() {
-        this.$on('addNode', (node) => {
+        this.$on('add-node', (node) => {
             node.root = this;
-            node.parent = this;
             this.nodes.push(node);
         });
-        this.$on('removeNode', (node) => {
+        this.$on('remove-node', (node) => {
             node.root = undefined;
-            node.parent = undefined;
             this.nodes.splice(this.nodes.indexOf(node), 1);
         });
         // @TODO: Suggest to add a nextTick option in Vue.js
@@ -81,7 +79,7 @@ const TreeView = {
             const oldValue = this.value;
 
             let cancel = false;
-            this.$emit('select', {
+            this.$emit('before-select', {
                 value: $node && $node.value,
                 oldValue,
                 node: $node && $node.node,
@@ -100,7 +98,7 @@ const TreeView = {
             const node = this.selectedNode && this.selectedNode.node;
 
             this.$emit('input', value);
-            this.$emit('change', {
+            this.$emit('select', {
                 value,
                 oldValue,
                 node,
@@ -108,12 +106,26 @@ const TreeView = {
             });
         },
         toggle($node, expanded, oldExpanded) {
-            this.$emit('toggle', { expanded, oldExpanded, $node });
-
-            if (expanded)
-                this.$emit('expand', { $node });
-            else
-                this.$emit('collapse', { $node });
+            this.$emit('toggle', {
+                expanded,
+                oldExpanded,
+                node: $node.node,
+                $node,
+            });
+        },
+        toggleAll(expanded) {
+            walk(this, (node) => node.toggle(expanded));
+        },
+        check($node, checked, oldChecked) {
+            this.$emit('check', {
+                checked,
+                oldChecked,
+                node: $node.node,
+                $node,
+            });
+        },
+        checkAll(checked) {
+            this.nodes.forEach((node) => node.check(checked));
         },
     },
 };

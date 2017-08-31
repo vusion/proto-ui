@@ -20,9 +20,9 @@ export default {
         },
     },
     created() {
-        this.dispatch('u-tabs', 'addItem', this);
+        this.dispatch('u-tabs', 'add-item', this);
     },
     destroyed() {
-        this.dispatch('u-tabs', 'removeItem', this);
+        this.dispatch('u-tabs', 'remove-item', this);
     },
 };

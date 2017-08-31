@@ -188,6 +188,82 @@
 </u-tree-view>
 ```
 
+### 多选
+
+``` vue
+<template>
+<u-tree-view ref="treeView" checkable :data="data"></u-tree-view>
+<p>{{ data }}</p>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            data: [
+                { text: '节点1', expanded: true, checked: false, children: [
+                    { text: '节点1.1', expanded: false, checked: false },
+                    { text: '节点1.2', expanded: true, checked: false, children: [
+                        { text: '节点1.2.1', expanded: false, checked: false },
+                        { text: '节点1.2.2', expanded: false, checked: false }
+                    ] },
+                    { text: '节点1.3', expanded: false, checked: false },
+                    { text: '节点1.4', expanded: false, checked: false },
+                ] },
+                { text: '节点2', expanded: false, checked: false },
+                { text: '节点3', expanded: false, checked: false },
+            ],
+        };
+    },
+};
+</script>
+```
+
+## 案例
+
+### 多选
+
+``` vue
+<template>
+<u-tree-view ref="treeView" checkable :data="data"></u-tree-view>
+<u-button @click="checkAll(true)">全部选中</u-button>
+<u-button @click="checkAll(false)">全部取消</u-button>
+<u-button @click="toggleAll(true)">全部展开</u-button>
+<u-button @click="toggleAll(false)">全部取消</u-button>
+<p>{{ data }}</p>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            data: [
+                { text: '节点1', expanded: true, checked: false, children: [
+                    { text: '节点1.1', expanded: false, checked: false },
+                    { text: '节点1.2', expanded: true, checked: false, children: [
+                        { text: '节点1.2.1', expanded: false, checked: false },
+                        { text: '节点1.2.2', expanded: false, checked: false }
+                    ] },
+                    { text: '节点1.3', expanded: false, checked: false },
+                    { text: '节点1.4', expanded: false, checked: false },
+                ] },
+                { text: '节点2', expanded: false, checked: false },
+                { text: '节点3', expanded: false, checked: false },
+            ],
+        };
+    },
+    methods: {
+        checkAll(checked) {
+            this.$refs.treeView.checkAll(checked);
+        },
+        toggleAll(expanded) {
+            this.$refs.treeView.toggleAll(expanded);
+        }
+    },
+};
+</script>
+```
+
 ## TreeView API
 ### Attrs/Props
 
@@ -197,6 +273,7 @@
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
+| checkable | Boolean | `false` | 是否可以选中/取消 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -208,12 +285,12 @@
 
 ### Events
 
-#### @select
+#### @before-select
 
-选择某一项时触发
+选择某一项前触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
@@ -222,18 +299,18 @@
 
 #### @input
 
-选择某一项后触发
+选择某一项时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
 
-#### @change
+#### @select
 
-选择值改变后触发
+选择某一项时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
@@ -241,36 +318,52 @@
 
 #### @toggle
 
-展开/收起某节点后触发
+展开/收起某节点时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/收起状态 |
+| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
+| $event.node | Object | 节点相关对象 |
 | $event.$node | TreeViewNode | 节点组件 |
 
-#### @expand
+#### @check
 
-展开某节点后触发
+选中/取消节点时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.checked | Boolean | 选中/取消状态 |
+| $event.oldChecked | Boolean | 旧的选中/取消状态 |
+| $event.node | Object | 节点相关对象 |
 | $event.$node | TreeViewNode | 节点组件 |
 
-#### @collapse
+### Methods
 
-收起某节点后触发
+#### toggleAll(expanded)
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
-| $event.$node | TreeViewNode | 节点组件 |
+展开/收起所有节点
 
-## ListViewItem API
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| expanded | Boolean | 展开/收起 |
+
+#### checkAll(checked)
+
+选中/取消所有节点
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| expanded | Boolean | 选中/取消 |
+
+## TreeViewNode API
 ### Attrs/Props
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | 此项的值 |
 | expanded.sync | Any | | 展开/收起状态 |
+| checked.sync | Any | | 选中/取消状态 |
 | disabled | Boolean | `false` | 禁用此项 |
 | node | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
 
@@ -282,46 +375,47 @@
 
 ### Events
 
-#### @select
+#### @before-select
 
-选择此项时触发
+选择此项前触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Any | 此项的值 |
 | $event.node | Object | 此项的相关对象 |
 | $event.$node | TreeViewNode | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
-#### @toggle
+#### @before-toggle
 
-Emit when expanding or collapsing this node.
+展开/收起此节点前触发
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| expanded | Boolean | Expanded or Collapsed |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.expanded | Boolean | 展开/收起状态 |
+| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
+| $event.node | Object | 节点相关对象 |
+| $event.$node | TreeViewNode | 节点组件 |
+| $event.preventDefault | Function | 阻止选择流程 |
 
 #### @toggle
 
 展开/收起某节点时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/收起状态 |
-| $event.preventDefault | Function | 阻止展开/收起流程 |
+| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
+| $event.node | Object | 节点相关对象 |
+| $event.$node | TreeViewNode | 节点组件 |
 
-#### @expand
+#### @check
 
-展开某节点后触发
+选中节点时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
-| 无 |
-
-#### @collapse
-
-收起某节点后触发
-
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
-| 无 |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.checked | Boolean | 选中状态 |
+| $event.oldChecked | Boolean | 旧的选中状态 |
+| $event.node | Object | 节点相关对象 |
+| $event.$node | TreeViewNode | 节点组件 |

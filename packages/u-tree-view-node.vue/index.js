@@ -9,6 +9,7 @@ export default {
         text: String,
         value: null,
         expanded: { type: Boolean, default: false },
+        checked: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         node: Object,
     },
@@ -16,6 +17,7 @@ export default {
         return {
             nodes: [],
             currentExpanded: this.expanded,
+            currentChecked: this.checked,
             parent: undefined,
             root: undefined,
         };
@@ -29,37 +31,36 @@ export default {
         expanded(expanded) {
             this.currentExpanded = expanded;
         },
+        checked(checked) {
+            this.currentChecked = checked;
+        },
     },
     created() {
-        this.dispatch(this.$options.name, 'addNode', this);
-        if (!this.parent)
-            this.dispatch(this.$options.rootName, 'addNode', this);
+        this.dispatch(this.$options.name, 'add-node', this);
+        !this.parent && this.dispatch(this.$options.rootName, 'add-node', this);
 
-        this.$on('addNode', (node) => {
+        this.$on('add-node', (node) => {
             node.root = this.root;
             node.parent = this;
             this.nodes.push(node);
         });
-        this.$on('removeNode', (node) => {
+        this.$on('remove-node', (node) => {
             node.root = undefined;
             node.parent = undefined;
             this.nodes.splice(this.nodes.indexOf(node), 1);
         });
     },
     destroyed() {
-        this.dispatch(this.$options.rootName, 'removeNode', this);
-        this.dispatch(this.$options.name, 'removeNode', this);
+        this.dispatch(this.$options.rootName, 'remove-node', this);
+        this.dispatch(this.$options.name, 'remove-node', this);
     },
     methods: {
-        /**
-         * @method - Select this node
-         */
         select() {
             if (this.disabled || this.root.readonly || this.root.disabled)
                 return;
 
             let cancel = false;
-            this.$emit('select', {
+            this.$emit('before-select', {
                 value: this.value,
                 node: this.node,
                 $node: this,
@@ -76,10 +77,6 @@ export default {
         leaveItem(e) {
             this.root.$emit('leave-item', this.node, e);
         },
-        /**
-         * @method - Expand or collapse this node
-         * @param  {boolean?} expanded - Expanded or Collapsed. If this param is undefined, it will toggle between two states
-         */
         toggle(expanded) {
             if (this.disabled || this.root.readonly || this.root.disabled)
                 return;
@@ -89,9 +86,11 @@ export default {
                 expanded = !this.currentExpanded;
 
             let cancel = false;
-            this.$emit('toggle', {
+            this.$emit('before-toggle', {
                 expanded,
                 oldExpanded,
+                node: this.node,
+                $node: this,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
@@ -100,12 +99,56 @@ export default {
             this.currentExpanded = expanded;
 
             this.$emit('update:expanded', expanded);
-            if (expanded)
-                this.$emit('expand');
-            else
-                this.$emit('collapse');
+            this.$emit('toggle', {
+                expanded,
+                oldExpanded,
+                node: this.node,
+                $node: this,
+            });
 
             this.root.toggle(this, expanded, oldExpanded);
+        },
+        check(checked, direction = 'up+down') {
+            const oldChecked = this.currentChecked;
+            this.currentChecked = checked;
+            this.$emit('update:checked', checked);
+
+            // down
+            if (direction.includes('down')) {
+                this.nodes.forEach((node) => {
+                    node.check(checked, 'down');
+                });
+            }
+
+            // up
+            const $parent = this.parent;
+            if (direction.includes('up') && $parent) {
+                let count = 0;
+                $parent.nodes.forEach((node) => {
+                    if (node.currentChecked)
+                        count++;
+                    else if (node.currentChecked === null)
+                        count += 0.5;
+                });
+
+                if (count === 0)
+                    $parent.check(false, 'up');
+                else if (count === $parent.nodes.length)
+                    $parent.check(true, 'up');
+                else
+                    $parent.check(null, 'up');
+            }
+
+            if (direction === 'up+down') {
+                this.$emit('check', {
+                    checked,
+                    oldChecked,
+                    node: this.node,
+                    $node: this,
+                });
+
+                this.root.check(this, checked, oldChecked);
+            }
         },
     },
 };

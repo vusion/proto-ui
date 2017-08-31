@@ -37,11 +37,11 @@ export default {
         },
     },
     created() {
-        this.$on('addItem', (item) => {
+        this.$on('add-item', (item) => {
             item.parent = this;
             this.items.push(item);
         });
-        this.$on('removeItem', (item) => {
+        this.$on('remove-item', (item) => {
             item.parent = undefined;
             this.items.splice(this.items.indexOf(item), 1);
         });
@@ -58,7 +58,7 @@ export default {
             const oldValue = this.value;
 
             let cancel = false;
-            this.$emit('select', {
+            this.$emit('before-select', {
                 value: $item && $item.value,
                 oldValue,
                 item: $item && $item.item,
@@ -75,7 +75,7 @@ export default {
                 const items = $items.map(($item) => $item.item);
 
                 this.$emit('input', value);
-                this.$emit('change', {
+                this.$emit('select', {
                     value,
                     oldValue,
                     items,
@@ -91,7 +91,7 @@ export default {
                 const item = this.selectedItem && this.selectedItem.item;
 
                 this.$emit('input', value);
-                this.$emit('change', {
+                this.$emit('select', {
                     value,
                     oldValue,
                     item,

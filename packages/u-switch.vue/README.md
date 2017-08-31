@@ -48,27 +48,38 @@ export default {
 
 ### Events
 
-切换开关状态时触发
+#### @before-toggle
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+切换开关状态前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Boolean | 开关状态 |
 | $event.oldValue | Boolean | 旧的开关状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
 
 #### @input
 
-切换开关状态后触发
+切换开关状态时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
-| $event | Boolean | 切换后的选中状态 |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | Boolean | 切换后的开关状态 |
+
+#### @toggle
+
+切换开关状态时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Boolean | 开关状态 |
+| $event.oldValue | Boolean | 旧的开关状态 |
 
 #### @change
 
-选中状态改变后触发
+开关状态改变时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
-| $event.value | Boolean | 选中状态 |
-| $event.oldValue | Boolean | 旧的选中状态 |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Boolean | 开关状态 |
+| $event.oldValue | Boolean | 旧的开关状态 |

@@ -28,7 +28,7 @@ export default {
         },
     },
     created() {
-        this.dispatch('u-form', 'addItem', this);
+        this.dispatch('u-form', 'add-item', this);
         this.$on('addField', (field) => {
             field.formItem = this;
             this.value = field.value;
@@ -39,7 +39,7 @@ export default {
         this.$on('blur', this.onBlur);
     },
     destroyed() {
-        this.dispatch('u-form', 'removeItem', this);
+        this.dispatch('u-form', 'remove-item', this);
     },
     methods: {
         onInput(value) {
@@ -76,7 +76,7 @@ export default {
                         this.currentMessage = errors ? errors[0].message : this.message;
                     }
 
-                    this.dispatch('u-form', 'validateItem', !errors);
+                    this.dispatch('u-form', 'validate-item', !errors);
                     errors ? reject(errors) : resolve();
                 });
             });

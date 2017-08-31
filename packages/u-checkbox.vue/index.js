@@ -25,6 +25,9 @@ export default {
         value(value) {
             this.currentValue = value;
         },
+        currentValue(value, oldValue) {
+            this.$emit('change', { value, oldValue });
+        },
     },
     methods: {
         onFocus(e) {
@@ -41,7 +44,7 @@ export default {
             const value = !this.currentValue;
 
             let cancel = false;
-            this.$emit('check', {
+            this.$emit('before-check', {
                 value,
                 oldValue,
                 preventDefault: () => cancel = true,
@@ -52,10 +55,7 @@ export default {
             this.currentValue = value;
 
             this.$emit('input', value);
-            this.$emit('change', {
-                value,
-                oldValue,
-            });
+            this.$emit('check', { value, oldValue });
         },
     },
 };

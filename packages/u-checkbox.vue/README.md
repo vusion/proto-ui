@@ -56,29 +56,38 @@ export default {
 
 ### Events
 
-#### @check
+#### @before-check
 
-切换选中状态时触发
+切换选中状态前触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Boolean \| null | 选中状态 |
 | $event.oldValue | Boolean \| null | 旧的选中状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
 
 #### @input
 
-切换选中状态后触发
+切换选中状态时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event | Boolean \| null | 切换后的选中状态 |
+
+#### @check
+
+切换选中状态时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Boolean \| null | 选中状态 |
+| $event.oldValue | Boolean \| null | 旧的选中状态 |
 
 #### @change
 
-选中状态改变后触发
+选中状态改变时触发
 
-| Argument | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | $event.value | Boolean \| null | 选中状态 |
 | $event.oldValue | Boolean \| null | 旧的选中状态 |

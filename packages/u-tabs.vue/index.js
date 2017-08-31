@@ -18,11 +18,11 @@ export default {
         },
     },
     created() {
-        this.$on('addItem', (item) => {
+        this.$on('add-item', (item) => {
             item.tabs = this;
             this.items.push(item);
         });
-        this.$on('removeItem', (item) => {
+        this.$on('remove-item', (item) => {
             item.tabs = undefined;
             this.items.splice(this.items.indexOf(item), 1);
         });

@@ -12,15 +12,15 @@ export default {
         };
     },
     created() {
-        this.$on('addItem', (item) => {
+        this.$on('add-item', (item) => {
             item.form = this;
             this.items.push(item);
         });
-        this.$on('removeItem', (item) => {
+        this.$on('remove-item', (item) => {
             item.form = undefined;
             this.items.splice(this.items.indexOf(item), 1);
         });
-        this.$on('validateItem', () => {
+        this.$on('validate-item', () => {
             this.state = this.getState();
             this.$emit('validate', this.state === 'success');
         });
