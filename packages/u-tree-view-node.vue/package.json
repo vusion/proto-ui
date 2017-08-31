@@ -1,7 +1,7 @@
 {
   "name": "u-tree-view-node.vue",
   "description": "Vusion Proto UI - TreeViewNode",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
@@ -26,6 +26,8 @@
     "u-emitter.vue": "~0.1.0"
   },
   "peerDependencies": {
+    "u-checkbox": "~0.1.1",
+    "u-tree-view": "0.2.3",
     "vue": "^2.4.0"
   }
 }
