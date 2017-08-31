@@ -1,7 +1,7 @@
 {
   "name": "u-form.vue",
   "description": "Vusion Proto UI - Form",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
@@ -23,6 +23,7 @@
     "proto-ui"
   ],
   "peerDependencies": {
+    "u-form-item": "0.1.4",
     "vue": "^2.4.0"
   },
   "dependencies": {

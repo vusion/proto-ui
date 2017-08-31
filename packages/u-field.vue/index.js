@@ -4,7 +4,7 @@ export default {
     name: 'u-field',
     mixins: [Emitter],
     created() {
-        this.dispatch('u-form-item', 'addField', this);
+        this.dispatch('u-form-item', 'add-field', this);
         this.$on('input', (value) => {
             this.$emit('update:value', value);
             this.dispatch('u-form-item', 'input', value);
@@ -13,6 +13,6 @@ export default {
         this.$on('blur', () => this.dispatch('u-form-item', 'blur'));
     },
     destroyed() {
-        this.dispatch('u-form-item', 'removeField', this);
+        this.dispatch('u-form-item', 'remove-field', this);
     },
 };
