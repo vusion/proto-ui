@@ -1,7 +1,7 @@
 {
   "name": "u-list-view-item.vue",
   "description": "Vusion Proto UI - ListViewItem",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
@@ -26,7 +26,7 @@
     "u-emitter.vue": "~0.1.0"
   },
   "peerDependencies": {
-    "u-list-view": "0.2.3",
+    "u-list-view.vue": "0.2.4",
     "vue": "^2.4.0"
   }
 }
