@@ -1,20 +1,20 @@
-# Input
+# 单行输入
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
-Most attributes are inherited from `<input>` element.
+大部分属性与`<input>`元素一致。
 
 ``` html
-<u-input type="password" maxlength="6" placeholder="Password" autofocus></u-input>
+<u-input maxlength="12" placeholder="1~12位小写字母" autofocus></u-input>
 ```
 
-### Readonly & Disabled
+### 只读与禁用
 
 ``` html
 <u-linear-layout>
-    <u-input value="Readonly" readonly></u-input>
-    <u-input value="Disabled" disabled></u-input>
+    <u-input value="只读" readonly></u-input>
+    <u-input value="禁用" disabled></u-input>
 </u-linear-layout>
 ```
 
@@ -23,16 +23,48 @@ Most attributes are inherited from `<input>` element.
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| type | String | `'text'` | type of input, 'text'/'password' |
-| value | String | | The value |
-| placeholder | String | | Original attribute |
-| maxlength | Number | | Original attribute |
-| autofocus | Boolean | | Original attribute |
-| readonly | Boolean | | Original attribute |
-| disabled | Boolean | | Original attribute |
+| type | String | `'text'` | 输入框的类型，目前只支持两种：`'text'`和`'password'` |
+| value | String | | 输入框的值 |
+| placeholder | String | | 原生属性 |
+| maxlength | Number | | 原生属性 |
+| autofocus | Boolean | | 原生属性 |
+| readonly | Boolean | | 原生属性 |
+| disabled | Boolean | | 原生属性 |
+| size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`。或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding |
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+#### (default)
+
+#### @input
+
+输入时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | Any | 选择项的值 |
+
+#### @change
+
+值变化时触发（与原生事件不同）
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 改变后的值 |
+| $event.oldValue | Any | 旧的值 |
+
+#### @focus
+
+获得焦点时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | Any | 原生事件对象 |
+
+#### @blur
+
+失去焦点时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | Any | 原生事件对象 |

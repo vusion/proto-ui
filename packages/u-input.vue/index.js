@@ -18,6 +18,7 @@ export default {
         listeners() {
             const listeners = Object.assign({}, this.$listeners);
             delete listeners.input;
+            delete listeners.change;
             delete listeners.focus;
             delete listeners.blur;
             return listeners;
@@ -26,6 +27,9 @@ export default {
     watch: {
         value(value) {
             this.currentValue = value;
+        },
+        currentValue(value, oldValue) {
+            this.$emit('change', { value, oldValue });
         },
     },
     methods: {

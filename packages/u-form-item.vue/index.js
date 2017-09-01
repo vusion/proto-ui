@@ -9,6 +9,7 @@ export default {
         title: String,
         rules: Array,
         message: String,
+        labelSize: String,
     },
     data() {
         return {
@@ -26,6 +27,9 @@ export default {
         required() {
             return this.currentRules && this.currentRules.some((rule) => rule.required);
         },
+        currentLabelSize() {
+            return this.labelSize || (this.form && this.form.labelSize) || 'auto';
+        },
     },
     created() {
         this.dispatch('u-form', 'add-item', this);
@@ -35,6 +39,7 @@ export default {
         });
         this.$on('remove-field', (field) => field.formItem = undefined);
         this.$on('input', this.onInput);
+        this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
         this.$on('blur', this.onBlur);
     },
@@ -45,6 +50,10 @@ export default {
         onInput(value) {
             this.value = value;
             this.validate('input').catch((errors) => errors);
+        },
+        onChange(value) {
+            this.value = value;
+            this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
             this.color = this.state = '';

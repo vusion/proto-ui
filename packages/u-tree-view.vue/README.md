@@ -279,9 +279,9 @@ export default {
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 在插槽中插入`<u-tree-view-node>`子组件 |
+#### (default)
+
+在插槽中插入`<u-tree-view-node>`子组件
 
 ### Events
 
@@ -369,9 +369,9 @@ export default {
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 在插槽中插入文本或HTML |
+#### (default)
+
+在插槽中插入文本或HTML
 
 ### Events
 

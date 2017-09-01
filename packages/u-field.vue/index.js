@@ -9,6 +9,7 @@ export default {
             this.$emit('update:value', value);
             this.dispatch('u-form-item', 'input', value);
         });
+        this.$on('change', ($event) => this.dispatch('u-form-item', 'change', $event.value));
         this.$on('focus', () => this.dispatch('u-form-item', 'focus'));
         this.$on('blur', () => this.dispatch('u-form-item', 'blur'));
     },

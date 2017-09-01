@@ -3,6 +3,8 @@ export default {
     props: {
         model: Object,
         rules: Object,
+        layout: { type: String, default: 'block' },
+        labelSize: { type: String, default: 'normal' },
     },
     data() {
         return {

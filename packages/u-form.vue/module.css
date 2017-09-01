@@ -1,3 +1,13 @@
-.root {
-    overflow: auto;
+.root {}
+
+.root[layout="block"] > * + * {
+    margin-top: 20px;
+}
+
+.root[layout="inline"] > * {
+    display: inline-block;
+}
+
+.root[layout="inline"] > * + * {
+    margin-left: 20px;
 }

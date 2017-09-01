@@ -1,12 +1,8 @@
-.root {
-    clear: both;
-    margin-bottom: 20px;
-}
+.root {}
 
 .title {
-    float: left;
-    width: 80px;
-    padding: 5px 0;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 .title[required]:after {
@@ -15,8 +11,8 @@
 }
 
 .field {
+    display: inline-block;
     position: relative;
-    margin-left: 80px;
 }
 
 .message {
@@ -28,4 +24,18 @@
 .message[color="error"] {
     background: $brand-error;
     color: white;
+}
+
+.root[placement="bottom"] .message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-left: 0;
+}
+
+.root[label-size$="normal"] .title { width: 80px; margin-right: 0; }
+.root[label-size$="normal"] .field { max-width: calc(100% - 80px); }
+
+.root[layout="block"] .field {
+    vertical-align: top;
 }
