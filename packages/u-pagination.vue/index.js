@@ -17,6 +17,9 @@ export default {
         page(page) {
             this.currentPage = page;
         },
+        currentPage(page, oldPage) {
+            this.$emit('change', { page, oldPage });
+        },
     },
     computed: {
         pages() {
@@ -66,7 +69,7 @@ export default {
             const oldPage = this.currentPage;
 
             let cancel = false;
-            this.$emit('select', {
+            this.$emit('before-select', {
                 page,
                 oldPage,
                 preventDefault: () => cancel = true,
@@ -77,7 +80,7 @@ export default {
             this.currentPage = page;
 
             this.$emit('update:page', page);
-            this.$emit('change', {
+            this.$emit('select', {
                 page,
                 oldPage,
             });

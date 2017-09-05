@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import Pagination from './index';
 import { createVM, createWrapVM } from '../../test/utils';
 
@@ -31,7 +30,7 @@ describe('Pagination', () => {
         expect(pagination.currentPage).to.be.equal(6);
 
         vm.page = 10;
-        Vue.nextTick(() => {
+        setTimeout(() => {
             expect(pagination.currentPage).to.equal(10);
             done();
         });
@@ -159,6 +158,20 @@ describe('Pagination', () => {
         expect(pagination.currentPage).to.equal(4);
     });
 
+    it('@before-select', () => {
+        pagination = createVM(Pagination);
+
+        let $event;
+        pagination.$once('before-select', (e) => $event = e);
+        pagination.select(7);
+        expect($event.page).to.equal(7);
+        expect($event.oldPage).to.equal(1);
+
+        pagination.$once('before-select', (e) => e.preventDefault());
+        pagination.select(4);
+        expect(pagination.currentPage).to.equal(7);
+    });
+
     it('@select', () => {
         pagination = createVM(Pagination);
 
@@ -167,19 +180,25 @@ describe('Pagination', () => {
         pagination.select(7);
         expect($event.page).to.equal(7);
         expect($event.oldPage).to.equal(1);
-
-        pagination.$once('select', (e) => e.preventDefault());
-        pagination.select(4);
-        expect(pagination.currentPage).to.equal(7);
     });
 
-    it('@change', () => {
+    it('@change', (done) => {
         pagination = createVM(Pagination);
 
         let $event;
-        pagination.$once('change', (e) => $event = e);
+        pagination.$on('change', (e) => $event = e);
         pagination.select(7);
-        expect($event.page).to.equal(7);
-        expect($event.oldPage).to.equal(1);
+
+        setTimeout(() => {
+            expect($event.page).to.equal(7);
+            expect($event.oldPage).to.equal(1);
+
+            pagination.currentPage = 2;
+            setTimeout(() => {
+                expect($event.page).to.equal(2);
+                expect($event.oldPage).to.equal(7);
+                done();
+            });
+        });
     });
 });

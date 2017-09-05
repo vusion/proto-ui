@@ -2,7 +2,7 @@
 
 .title {
     display: inline-block;
-    margin-right: 5px;
+    padding-right: 5px;
 }
 
 .title[required]:after {
@@ -33,7 +33,7 @@
     margin-left: 0;
 }
 
-.root[label-size$="normal"] .title { width: 80px; margin-right: 0; }
+.root[label-size$="normal"] .title { width: 80px; }
 .root[label-size$="normal"] .field { max-width: calc(100% - 80px); }
 
 .root[layout="block"] .field {
