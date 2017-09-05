@@ -12,36 +12,36 @@ export default {
     data() {
         return {
             currentSelected: false,
-            parent: undefined,
+            parentVM: undefined,
         };
     },
     computed: {
         selected() {
-            return this.parent.selectedItem === this;
+            return this.parentVM.selectedVM === this;
         },
     },
     created() {
-        this.dispatch(this.$options.parentName, 'add-item', this);
+        this.dispatch(this.$options.parentName, 'add-item-vm', this);
     },
     destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item', this);
+        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
     methods: {
         select() {
-            if (this.disabled || this.parent.readonly || this.parent.disabled)
+            if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)
                 return;
 
             let cancel = false;
             this.$emit('before-select', {
                 value: this.value,
                 item: this.item,
-                $item: this,
+                itemVM: this,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.parent.select(this);
+            this.parentVM.select(this);
         },
     },
 };

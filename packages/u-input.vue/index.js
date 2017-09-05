@@ -11,7 +11,6 @@ export default {
         return {
             currentValue: this.value,
             compositionInputing: false,
-            formItem: undefined,
         };
     },
     computed: {

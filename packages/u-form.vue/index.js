@@ -10,26 +10,26 @@ export default {
         return {
             // @TODO: Optimize
             state: '',
-            items: [],
+            itemVMs: [],
         };
     },
     created() {
-        this.$on('add-item', (item) => {
-            item.form = this;
-            this.items.push(item);
+        this.$on('add-item-vm', (itemVM) => {
+            itemVM.parentVM = this;
+            this.itemVMs.push(itemVM);
         });
-        this.$on('remove-item', (item) => {
-            item.form = undefined;
-            this.items.splice(this.items.indexOf(item), 1);
+        this.$on('remove-item-vm', (itemVM) => {
+            itemVM.parentVM = undefined;
+            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-        this.$on('validate-item', () => {
+        this.$on('validate-item-vm', () => {
             this.state = this.getState();
             this.$emit('validate', this.state === 'success');
         });
     },
     methods: {
         validate(silent = false) {
-            return Promise.all(this.items.map((item) => item.validate('submit', silent)
+            return Promise.all(this.itemVMs.map((itemVM) => itemVM.validate('submit', silent)
                 .catch((errors) => errors)
             )).then((results) => {
                 if (results.some((result) => !!result))
@@ -45,9 +45,9 @@ export default {
             };
 
             let state = 'success';
-            this.items.forEach((item) => {
-                if (item.currentRules && STATE_LEVEL[item.state] > STATE_LEVEL[state])
-                    state = item.state;
+            this.itemVMs.forEach((itemVM) => {
+                if (itemVM.currentRules && STATE_LEVEL[itemVM.state] > STATE_LEVEL[state])
+                    state = itemVM.state;
             });
 
             return state;

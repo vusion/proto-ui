@@ -1,23 +1,23 @@
 import Field from 'u-field.vue';
 
-const walk = (root, func) => {
+const walk = (rootVM, func) => {
     let queue = [];
-    queue = queue.concat(root.nodes);
-    let node;
-    while ((node = queue.shift())) {
-        queue = queue.concat(node.nodes);
-        const result = func(node);
+    queue = queue.concat(rootVM.nodeVMs);
+    let nodeVM;
+    while ((nodeVM = queue.shift())) {
+        queue = queue.concat(nodeVM.nodeVMs);
+        const result = func(nodeVM);
         if (result !== undefined)
             return result;
     }
 };
 
-const find = (root, func) => walk(root, (node) => {
-    if (func(node))
-        return node;
+const find = (rootVM, func) => walk(rootVM, (nodeVM) => {
+    if (func(nodeVM))
+        return nodeVM;
 });
 
-const TreeView = {
+export default {
     name: 'u-tree-view',
     childName: 'u-tree-view-node',
     mixins: [Field],
@@ -33,46 +33,46 @@ const TreeView = {
     data() {
         return {
             ChildComponent: this.$options.childName, // easy for SubComponent inheriting
-            nodes: [],
-            selectedNode: undefined,
+            nodeVMs: [],
+            selectedVM: undefined,
         };
     },
     watch: {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value) {
-            if (this.selectedNode && this.selectedNode.value === value)
+            if (this.selectedVM && this.selectedVM.value === value)
                 return;
             if (value === undefined)
-                this.selectedNode = undefined;
+                this.selectedVM = undefined;
             else {
-                this.selectedNode = find(this, (node) => node.value === value);
-                if (this.selectedNode) {
-                    let node = this.selectedNode.parent;
-                    while (node !== this.root) {
-                        node.currentExpanded = true;
-                        node = node.parent;
+                this.selectedVM = find(this, (nodeVM) => nodeVM.value === value);
+                if (this.selectedVM) {
+                    let nodeVM = this.selectedVM.parentVM;
+                    while (nodeVM !== this.rootVM) {
+                        nodeVM.currentExpanded = true;
+                        nodeVM = nodeVM.parentVM;
                     }
                 }
             }
         },
     },
     created() {
-        this.$on('add-node', (node) => {
-            node.root = this;
-            this.nodes.push(node);
+        this.$on('add-node-vm', (nodeVM) => {
+            nodeVM.rootVM = this;
+            this.nodeVMs.push(nodeVM);
         });
-        this.$on('remove-node', (node) => {
-            node.root = undefined;
-            this.nodes.splice(this.nodes.indexOf(node), 1);
+        this.$on('remove-node-vm', (nodeVM) => {
+            nodeVM.rootVM = undefined;
+            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
         });
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
-        // If not, nodes have not been pushed.
-        this.$nextTick(() => TreeView.watch.value.call(this, this.value));
+        // If not, nodeVMs have not been pushed.
+        this.$nextTick(() => this.$options.watch.value.call(this, this.value));
     },
     methods: {
-        select($node) {
+        select(nodeVM) {
             if (this.readonly || this.disabled)
                 return;
 
@@ -80,54 +80,51 @@ const TreeView = {
 
             let cancel = false;
             this.$emit('before-select', {
-                value: $node && $node.value,
+                value: nodeVM && nodeVM.value,
                 oldValue,
-                node: $node && $node.node,
-                $node,
+                node: nodeVM && nodeVM.node,
+                nodeVM,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            if (this.cancelable && this.selectedNode === $node)
-                this.selectedNode = undefined;
+            if (this.cancelable && this.selectedVM === nodeVM)
+                this.selectedVM = undefined;
             else
-                this.selectedNode = $node;
+                this.selectedVM = nodeVM;
 
-            const value = this.selectedNode && this.selectedNode.value;
-            const node = this.selectedNode && this.selectedNode.node;
+            const value = this.selectedVM && this.selectedVM.value;
+            const node = this.selectedVM && this.selectedVM.node;
 
             this.$emit('input', value);
             this.$emit('select', {
                 value,
                 oldValue,
                 node,
-                $node: this.selectedNode,
+                nodeVM: this.selectedVM,
             });
         },
-        toggle($node, expanded, oldExpanded) {
+        toggle(nodeVM, expanded) {
             this.$emit('toggle', {
                 expanded,
-                oldExpanded,
-                node: $node.node,
-                $node,
+                node: nodeVM.node,
+                nodeVM,
             });
         },
         toggleAll(expanded) {
-            walk(this, (node) => node.toggle(expanded));
+            walk(this, (nodeVM) => nodeVM.toggle(expanded));
         },
-        check($node, checked, oldChecked) {
+        check(nodeVM, checked, oldChecked) {
             this.$emit('check', {
                 checked,
                 oldChecked,
-                node: $node.node,
-                $node,
+                node: nodeVM.node,
+                nodeVM,
             });
         },
         checkAll(checked) {
-            this.nodes.forEach((node) => node.check(checked));
+            this.nodeVMs.forEach((nodeVM) => nodeVM.check(checked));
         },
     },
 };
-
-export default TreeView;

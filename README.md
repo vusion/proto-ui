@@ -129,5 +129,5 @@
 npm install
 npm install -g vusion-cli
 npm run bootstrap
-vusion ui dev
+vusion dev
 ```

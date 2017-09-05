@@ -142,7 +142,7 @@ export default {
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
-| $event.$item | ListViewItem | 选择项子组件 |
+| $event.itemVM | ListViewItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
 #### @input
@@ -162,9 +162,9 @@ export default {
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.$item | ListViewItem |  单选模式中，选择项子组件 |
+| $event.itemVM | ListViewItem |  单选模式中，选择项子组件 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.$item | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.itemVMs | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 
 ## ListViewItem API
 ### Attrs/Props
@@ -191,5 +191,5 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Any | 此项的值 |
 | $event.item | Object | 此项的相关对象 |
-| $event.$item | ListViewItem | 此组件 |
+| $event.itemVM | ListViewItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |

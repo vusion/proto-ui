@@ -1,27 +1,25 @@
 <div :class="$style.root">
     <div :class="$style.item" :selected="selected"
-        :readonly="root.readonly"
-        :disabled="disabled || root.disabled"
-        :tabindex="disabled || root.readonly || root.disabled ? -1 : 0"
+        :readonly="rootVM.readonly"
+        :disabled="disabled || rootVM.disabled"
+        :tabindex="disabled || rootVM.readonly || rootVM.disabled ? -1 : 0"
         @click="select()"
-        @mouseenter="enterItem"
-        @mouseleave="leaveItem"
         @keyup.enter="select()"
         @keyup.left="toggle(false)"
         @keyup.right="toggle(true)">
         <div :class="$style.back"></div>
-        <div :class="$style.expander" v-if="data || nodes.length"
+        <div :class="$style.expander" v-if="data || nodeVMs.length"
             :expanded="currentExpanded"
             @click.stop="toggle()"></div>
         <div :class="$style.text">
-            <u-checkbox v-if="root.checkable" :value="currentChecked" @check="check($event.value)"></u-checkbox>
+            <u-checkbox v-if="rootVM.checkable" :value="currentChecked" @check="check($event.value)"></u-checkbox>
             <slot name="text">{{ text }}</slot>
         </div>
     </div>
     <div :class="$style.list" v-show="currentExpanded">
         <u-tree-view-node v-if="data"
             v-for="node in data"
-            :text="node[root.field]"
+            :text="node[rootVM.field]"
             :key="node.key"
             :value="node.value"
             :expanded.sync="node.expanded"

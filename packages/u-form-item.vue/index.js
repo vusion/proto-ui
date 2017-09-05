@@ -17,34 +17,34 @@ export default {
             state: '',
             color: '',
             currentMessage: '',
-            form: undefined,
+            parentVM: undefined,
         };
     },
     computed: {
         currentRules() {
-            return this.rules || (this.form && this.form.rules && this.form.rules[this.name]);
+            return this.rules || (this.parentVM && this.parentVM.rules && this.parentVM.rules[this.name]);
         },
         required() {
             return this.currentRules && this.currentRules.some((rule) => rule.required);
         },
         currentLabelSize() {
-            return this.labelSize || (this.form && this.form.labelSize) || 'auto';
+            return this.labelSize || (this.parentVM && this.parentVM.labelSize) || 'auto';
         },
     },
     created() {
-        this.dispatch('u-form', 'add-item', this);
-        this.$on('add-field', (field) => {
-            field.formItem = this;
-            this.value = field.value;
+        this.dispatch('u-form', 'add-item-vm', this);
+        this.$on('add-field-vm', (fieldVM) => {
+            fieldVM.formItemVM = this;
+            this.value = fieldVM.value;
         });
-        this.$on('remove-field', (field) => field.formItem = undefined);
+        this.$on('remove-field-vm', (fieldVM) => fieldVM.formItemVM = undefined);
         this.$on('input', this.onInput);
         this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
         this.$on('blur', this.onBlur);
     },
     destroyed() {
-        this.dispatch('u-form', 'remove-item', this);
+        this.dispatch('u-form', 'remove-item-vm', this);
     },
     methods: {
         onInput(value) {
@@ -85,7 +85,7 @@ export default {
                         this.currentMessage = errors ? errors[0].message : this.message;
                     }
 
-                    this.dispatch('u-form', 'validate-item', !errors);
+                    this.dispatch('u-form', 'validate-item-vm', !errors);
                     errors ? reject(errors) : resolve();
                 });
             });

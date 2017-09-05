@@ -15,16 +15,16 @@ export default {
     },
     data() {
         return {
-            nodes: [],
+            nodeVMs: [],
             currentExpanded: this.expanded,
             currentChecked: this.checked,
-            parent: undefined,
-            root: undefined,
+            parentVM: undefined,
+            rootVM: undefined,
         };
     },
     computed: {
         selected() {
-            return this.root.selectedNode === this;
+            return this.rootVM.selectedVM === this;
         },
     },
     watch: {
@@ -36,61 +36,58 @@ export default {
         },
     },
     created() {
-        this.dispatch(this.$options.name, 'add-node', this);
-        !this.parent && this.dispatch(this.$options.rootName, 'add-node', this);
+        this.dispatch(this.$options.name, 'add-node-vm', this);
+        !this.parentVM && this.dispatch(this.$options.rootName, 'add-node-vm', this);
 
-        this.$on('add-node', (node) => {
-            node.root = this.root;
-            node.parent = this;
-            this.nodes.push(node);
+        this.$on('add-node-vm', (nodeVM) => {
+            nodeVM.rootVM = this.rootVM;
+            nodeVM.parentVM = this;
+            this.nodeVMs.push(nodeVM);
         });
-        this.$on('remove-node', (node) => {
-            node.root = undefined;
-            node.parent = undefined;
-            this.nodes.splice(this.nodes.indexOf(node), 1);
+        this.$on('remove-node-vm', (nodeVM) => {
+            nodeVM.rootVM = undefined;
+            nodeVM.parent = undefined;
+            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
         });
     },
     destroyed() {
-        this.dispatch(this.$options.rootName, 'remove-node', this);
-        this.dispatch(this.$options.name, 'remove-node', this);
+        this.dispatch(this.$options.rootName, 'remove-node-vm', this);
+        this.dispatch(this.$options.name, 'remove-node-vm', this);
     },
     methods: {
         select() {
-            if (this.disabled || this.root.readonly || this.root.disabled)
+            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
                 return;
 
             let cancel = false;
             this.$emit('before-select', {
                 value: this.value,
                 node: this.node,
-                $node: this,
+                nodeVM: this,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.root.select(this);
-        },
-        enterItem(e) {
-            this.root.$emit('enter-item', this.node, e);
-        },
-        leaveItem(e) {
-            this.root.$emit('leave-item', this.node, e);
+            this.rootVM.select(this);
         },
         toggle(expanded) {
-            if (this.disabled || this.root.readonly || this.root.disabled)
+            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
                 return;
 
             const oldExpanded = this.currentExpanded;
+
             if (expanded === undefined)
                 expanded = !this.currentExpanded;
+
+            if (expanded === oldExpanded)
+                return;
 
             let cancel = false;
             this.$emit('before-toggle', {
                 expanded,
-                oldExpanded,
                 node: this.node,
-                $node: this,
+                nodeVM: this,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
@@ -101,12 +98,11 @@ export default {
             this.$emit('update:expanded', expanded);
             this.$emit('toggle', {
                 expanded,
-                oldExpanded,
                 node: this.node,
-                $node: this,
+                nodeVM: this,
             });
 
-            this.root.toggle(this, expanded, oldExpanded);
+            this.rootVM.toggle(this, expanded);
         },
         check(checked, direction = 'up+down') {
             const oldChecked = this.currentChecked;
@@ -115,28 +111,28 @@ export default {
 
             // down
             if (direction.includes('down')) {
-                this.nodes.forEach((node) => {
-                    node.check(checked, 'down');
+                this.nodeVMs.forEach((nodeVM) => {
+                    nodeVM.check(checked, 'down');
                 });
             }
 
             // up
-            const $parent = this.parent;
-            if (direction.includes('up') && $parent) {
+            const parentVM = this.parentVM;
+            if (direction.includes('up') && parentVM) {
                 let count = 0;
-                $parent.nodes.forEach((node) => {
-                    if (node.currentChecked)
+                parentVM.nodeVMs.forEach((nodeVM) => {
+                    if (nodeVM.currentChecked)
                         count++;
-                    else if (node.currentChecked === null)
+                    else if (nodeVM.currentChecked === null)
                         count += 0.5;
                 });
 
                 if (count === 0)
-                    $parent.check(false, 'up');
-                else if (count === $parent.nodes.length)
-                    $parent.check(true, 'up');
+                    parentVM.check(false, 'up');
+                else if (count === parentVM.nodeVMs.length)
+                    parentVM.check(true, 'up');
                 else
-                    $parent.check(null, 'up');
+                    parentVM.check(null, 'up');
             }
 
             if (direction === 'up+down') {
@@ -144,10 +140,10 @@ export default {
                     checked,
                     oldChecked,
                     node: this.node,
-                    $node: this,
+                    nodeVM: this,
                 });
 
-                this.root.check(this, checked, oldChecked);
+                this.rootVM.check(this, checked, oldChecked);
             }
         },
     },

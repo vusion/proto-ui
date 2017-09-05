@@ -470,7 +470,7 @@ export default {
     mounted() {
         // 必须初始化时或在获取数据到时安静验证一次
         this.$refs.form.validate(true)
-            .then(() => alert('提交成功'))
+            .then(() => {})
             .catch(() => {});
 
         // 在获取数据到时如下

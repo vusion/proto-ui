@@ -294,7 +294,7 @@ export default {
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
-| $event.$node | TreeViewNode | 选择项子组件 |
+| $event.nodeVM | TreeViewNode | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
 #### @input
@@ -314,7 +314,7 @@ export default {
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
-| $event.$node | TreeViewNode |  选择项子组件 |
+| $event.nodeVM | TreeViewNode |  选择项子组件 |
 
 #### @toggle
 
@@ -323,9 +323,8 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/收起状态 |
-| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
 | $event.node | Object | 节点相关对象 |
-| $event.$node | TreeViewNode | 节点组件 |
+| $event.nodeVM | TreeViewNode | 节点组件 |
 
 #### @check
 
@@ -336,7 +335,7 @@ export default {
 | $event.checked | Boolean | 选中/取消状态 |
 | $event.oldChecked | Boolean | 旧的选中/取消状态 |
 | $event.node | Object | 节点相关对象 |
-| $event.$node | TreeViewNode | 节点组件 |
+| $event.nodeVM | TreeViewNode | 节点组件 |
 
 ### Methods
 
@@ -383,7 +382,7 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Any | 此项的值 |
 | $event.node | Object | 此项的相关对象 |
-| $event.$node | TreeViewNode | 此组件 |
+| $event.nodeVM | TreeViewNode | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
 #### @before-toggle
@@ -393,9 +392,8 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/收起状态 |
-| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
 | $event.node | Object | 节点相关对象 |
-| $event.$node | TreeViewNode | 节点组件 |
+| $event.nodeVM | TreeViewNode | 节点组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
 #### @toggle
@@ -405,9 +403,8 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/收起状态 |
-| $event.oldExpanded | Boolean | 旧的展开/收起状态 |
 | $event.node | Object | 节点相关对象 |
-| $event.$node | TreeViewNode | 节点组件 |
+| $event.nodeVM | TreeViewNode | 节点组件 |
 
 #### @check
 
@@ -418,4 +415,4 @@ export default {
 | $event.checked | Boolean | 选中状态 |
 | $event.oldChecked | Boolean | 旧的选中状态 |
 | $event.node | Object | 节点相关对象 |
-| $event.$node | TreeViewNode | 节点组件 |
+| $event.nodeVM | TreeViewNode | 节点组件 |

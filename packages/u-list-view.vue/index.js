@@ -16,8 +16,8 @@ export default {
     data() {
         return {
             ChildComponent: this.$options.childName,
-            items: [],
-            selectedItem: undefined,
+            itemVMs: [],
+            selectedVM: undefined,
         };
     },
     watch: {
@@ -25,33 +25,33 @@ export default {
         // so using watcher is better than computed property.
         value(value) {
             if (this.multiple)
-                this.items.forEach((item) => item.currentSelected = value && value.includes(item.value));
+                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value && value.includes(itemVM.value));
             else {
-                if (this.selectedItem && this.selectedItem.value === value)
+                if (this.selectedVM && this.selectedVM.value === value)
                     return;
                 if (value === undefined)
-                    this.selectedItem = undefined;
+                    this.selectedVM = undefined;
                 else
-                    this.selectedItem = this.items.find((item) => item.value === value);
+                    this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
             }
         },
     },
     created() {
-        this.$on('add-item', (item) => {
-            item.parent = this;
-            this.items.push(item);
+        this.$on('add-item-vm', (itemVM) => {
+            itemVM.parentVM = this;
+            this.itemVMs.push(itemVM);
         });
-        this.$on('remove-item', (item) => {
-            item.parent = undefined;
-            this.items.splice(this.items.indexOf(item), 1);
+        this.$on('remove-item-vm', (itemVM) => {
+            itemVM.parentVM = undefined;
+            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
-        // If not, items have not been pushed.
+        // If not, itemVMs have not been pushed.
         this.$nextTick(() => this.$options.watch.value.call(this, this.value));
     },
     methods: {
-        select($item) {
+        select(itemVM) {
             if (this.readonly || this.disabled)
                 return;
 
@@ -59,43 +59,43 @@ export default {
 
             let cancel = false;
             this.$emit('before-select', {
-                value: $item && $item.value,
+                value: itemVM && itemVM.value,
                 oldValue,
-                item: $item && $item.item,
-                $item,
+                item: itemVM && itemVM.item,
+                itemVM,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
             if (this.multiple) {
-                $item.currentSelected = !$item.currentSelected;
-                const $items = this.items.filter(($item) => $item.currentSelected);
-                const value = $items.map(($item) => $item.value);
-                const items = $items.map(($item) => $item.item);
+                itemVM.currentSelected = !itemVM.currentSelected;
+                const itemVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
+                const value = itemVMs.map((itemVM) => itemVM.value);
+                const items = itemVMs.map((itemVM) => itemVM.item);
 
                 this.$emit('input', value);
                 this.$emit('select', {
                     value,
                     oldValue,
                     items,
-                    $items,
+                    itemVMs,
                 });
             } else {
-                if (this.cancelable && this.selectedItem === $item)
-                    this.selectedItem = undefined;
+                if (this.cancelable && this.selectedVM === itemVM)
+                    this.selectedVM = undefined;
                 else
-                    this.selectedItem = $item;
+                    this.selectedVM = itemVM;
 
-                const value = this.selectedItem && this.selectedItem.value;
-                const item = this.selectedItem && this.selectedItem.item;
+                const value = this.selectedVM && this.selectedVM.value;
+                const item = this.selectedVM && this.selectedVM.item;
 
                 this.$emit('input', value);
                 this.$emit('select', {
                     value,
                     oldValue,
                     item,
-                    $item: this.selectedItem,
+                    itemVM: this.selectedVM,
                 });
             }
         },
