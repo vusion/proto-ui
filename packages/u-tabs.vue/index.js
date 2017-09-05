@@ -1,47 +1,67 @@
 export default {
     name: 'u-tabs',
     props: {
-        index: { type: Number, default: 0 },
+        index: { type: Number, default: 0, validator: (value) => Number.isInteger(value) && value >= 0 },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         router: { type: Boolean, default: false },
     },
     data() {
         return {
-            items: [],
+            itemVMs: [],
             currentIndex: this.index,
         };
     },
     computed: {
-        selectedItem() {
-            return this.items[this.currentIndex];
+        selectedVM() {
+            return this.itemVMs[this.currentIndex];
+        },
+    },
+    watch: {
+        currentIndex(index, oldIndex) {
+            this.$emit('change', index, oldIndex);
         },
     },
     created() {
-        this.$on('add-item', (item) => {
-            item.tabs = this;
-            this.items.push(item);
+        this.$on('add-item-vm', (itemVM) => {
+            itemVM.parentVM = this;
+            this.itemVMs.push(itemVM);
         });
-        this.$on('remove-item', (item) => {
-            item.tabs = undefined;
-            this.items.splice(this.items.indexOf(item), 1);
+        this.$on('remove-item-vm', (itemVM) => {
+            itemVM.parentVM = undefined;
+            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
     },
     methods: {
         select(index) {
-            if (this.readonly || this.disabled || this.items[index].disabled)
+            if (this.readonly || this.disabled || this.itemVMs[index].disabled)
                 return;
 
-            const $tab = this.items[index];
+            const oldIndex = this.currentIndex;
+            if (index === oldIndex)
+                return;
+
+            const tabVM = this.itemVMs[index];
             this.currentIndex = index;
+
+            let cancel = false;
+            this.$emit('before-select', {
+                index,
+                oldIndex,
+                tabVM,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
 
             this.$emit('select', {
                 index,
-                $tab,
+                oldIndex,
+                tabVM,
             });
             this.$emit('update:index', index);
 
-            this.router && $tab.navigate();
+            this.router && tabVM.navigate();
         },
     },
 };

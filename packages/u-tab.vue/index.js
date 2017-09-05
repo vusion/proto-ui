@@ -11,18 +11,18 @@ export default {
     },
     data() {
         return {
-            tabs: undefined,
+            parentVM: undefined,
         };
     },
     computed: {
         selected() {
-            return this.tabs.selectedItem === this;
+            return this.parentVM.selectedVM === this;
         },
     },
     created() {
-        this.dispatch('u-tabs', 'add-item', this);
+        this.dispatch('u-tabs', 'add-item-vm', this);
     },
     destroyed() {
-        this.dispatch('u-tabs', 'remove-item', this);
+        this.dispatch('u-tabs', 'remove-item-vm', this);
     },
 };

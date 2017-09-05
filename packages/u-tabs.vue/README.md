@@ -1,7 +1,7 @@
-# Tabs
+# 标签页（Tabs）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-tabs>
@@ -11,7 +11,7 @@
 </u-tabs>
 ```
 
-### Index
+### 索引
 
 ``` html
 <u-tabs :index="2">
@@ -21,7 +21,7 @@
 </u-tabs>
 ```
 
-### Readonly & Disabled
+### 只读和禁用
 
 ``` html
 <u-tabs readonly>
@@ -41,7 +41,7 @@
 </u-tabs>
 ```
 
-### Hidden
+### 隐藏部分项
 
 ``` html
 <u-tabs :index="2">
@@ -56,62 +56,63 @@
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| index.sync | Number | `0` | Index of selected tab |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
-| router | Boolean | `false` | Use vue router to activate |
+| index.sync | Number | `0` | 选中的标签页索引 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
+| router | Boolean | `false` | 是否根据vue-router对应的路由进行高亮显示 |
 
 ### Slots
 
-| Name | Description |
-| ---- | ----------- |
-| (default) | |
+#### (default)
+
+在插槽中插入`<u-tab>`子组件
 
 ### Events
 
+#### @before-select
+
+选择某一页前触发
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| index | Number | 选中的标签页索引 |
+| oldIndex | Number | 旧的标签页索引 |
+| tabVM | Tab | tab组件实例 |
+| $event.preventDefault | Function | 阻止选择流程 |
+
 #### @select
 
-Emit when selecting a tab.
+选择某一页时触发
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| index | Number | Index of selected tab |
-| $Tab | Tab | The selected tab |
+| index | Number | 选中的标签页索引 |
+| oldIndex | Number | 旧的标签页索引 |
+| tabVM | Tab | tab组件实例 |
 
-#### @input
+#### @change
 
-Emit after selecting a tab.
+标签页索引改变时触发
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| index | Number | Index of selected tab |
+| index | Number | 当前标签页索引 |
+| oldIndex | Number | 旧的标签页索引 |
 
 ## Tab API
 ### Attrs/Props
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| title | String | | Tab title |
-| hidden | Boolean | `false` | Hide this tab |
-| disabled | Boolean | `false` | Disabled |
-| to | String \| Object | | The target location of this link |
-| replace | Boolean | `false` | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
-| exact | Boolean | `false` | Active matching behavior is inclusive match |
+| title | String | | 标签页标题 |
+| hidden | Boolean | `false` | 是否隐藏此标签页 |
+| disabled | Boolean | `false` | 是否禁用此标签页 |
+| to | String \| Object | | vue-router的目标链接 |
+| replace | Boolean | `false` | 当切换路由时，调用`router.replace()`，而不是`router.push()` |
+| exact | Boolean | `false` | 是否精确匹配 |
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+#### (default)
 
-### Events
-
-#### @navigate
-
-Emit when navigating to other router.
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| to | Object | The target location of this link |
-| replace | Boolean | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
-| exact | Boolean | Active matching behavior is inclusive match |
+在插槽中插入文本或HTML
