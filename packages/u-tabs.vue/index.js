@@ -38,8 +38,6 @@ export default {
                 return;
 
             const oldIndex = this.currentIndex;
-            if (index === oldIndex)
-                return;
 
             const tabVM = this.itemVMs[index];
             this.currentIndex = index;

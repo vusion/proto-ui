@@ -32,6 +32,4 @@ Most attributes are inherited from `<textarea>` element.
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+#### (default)

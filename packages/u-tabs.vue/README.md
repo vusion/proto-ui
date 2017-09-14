@@ -54,8 +54,8 @@
 ## Tabs API
 ### Attrs/Props
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
 | index.sync | Number | `0` | 选中的标签页索引 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
@@ -73,8 +73,8 @@
 
 选择某一页前触发
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | index | Number | 选中的标签页索引 |
 | oldIndex | Number | 旧的标签页索引 |
 | tabVM | Tab | tab组件实例 |
@@ -84,8 +84,8 @@
 
 选择某一页时触发
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | index | Number | 选中的标签页索引 |
 | oldIndex | Number | 旧的标签页索引 |
 | tabVM | Tab | tab组件实例 |
@@ -94,8 +94,8 @@
 
 标签页索引改变时触发
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 | index | Number | 当前标签页索引 |
 | oldIndex | Number | 旧的标签页索引 |
 
