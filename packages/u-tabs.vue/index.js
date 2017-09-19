@@ -1,5 +1,6 @@
 export default {
     name: 'u-tabs',
+    childName: 'u-tab',
     props: {
         index: { type: Number, default: 0, validator: (value) => Number.isInteger(value) && value >= 0 },
         readonly: { type: Boolean, default: false },

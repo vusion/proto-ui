@@ -9,6 +9,12 @@
 <u-input maxlength="12" placeholder="1~12位小写字母" autofocus></u-input>
 ```
 
+### 加密
+
+``` html
+<u-input type="password" maxlength="12" placeholder="请输入密码"></u-input>
+```
+
 ### 只读与禁用
 
 ``` html
@@ -30,7 +36,7 @@
 | autofocus | Boolean | | 原生属性 |
 | readonly | Boolean | | 原生属性 |
 | disabled | Boolean | | 原生属性 |
-| size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`。或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding |
+| size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`, `'full'`，或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding书写格式 |
 
 ### Slots
 
@@ -42,7 +48,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择项的值 |
+| $event | String | 输入框的值 |
 
 #### @change
 
@@ -50,8 +56,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 改变后的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | String | 改变后的值 |
+| $event.oldValue | String | 旧的值 |
 
 #### @focus
 
@@ -59,7 +65,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 原生事件对象 |
+| $event | String | 原生事件对象 |
 
 #### @blur
 
@@ -67,4 +73,4 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 原生事件对象 |
+| $event | String | 原生事件对象 |

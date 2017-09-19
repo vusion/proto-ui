@@ -3,6 +3,7 @@ import RouterItem from 'u-router-item.vue';
 
 export default {
     name: 'u-tab',
+    parentName: 'u-tabs',
     mixins: [Emitter, RouterItem],
     props: {
         title: String,
@@ -20,9 +21,9 @@ export default {
         },
     },
     created() {
-        this.dispatch('u-tabs', 'add-item-vm', this);
+        this.dispatch(this.$options.parentName, 'add-item-vm', this);
     },
     destroyed() {
-        this.dispatch('u-tabs', 'remove-item-vm', this);
+        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
 };

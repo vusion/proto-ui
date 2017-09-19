@@ -1,7 +1,7 @@
 {
   "name": "u-tabs.vue",
   "description": "Vusion Proto UI - Tabs",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": "vusion/proto-ui",
