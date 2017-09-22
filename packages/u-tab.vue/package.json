@@ -27,7 +27,7 @@
     "u-router-item.vue": "~0.1.0"
   },
   "peerDependencies": {
-    "u-tabs.vue": "0.3.2",
+    "u-tabs.vue": "0.3.3",
     "vue": "^2.4.0"
   }
 }
