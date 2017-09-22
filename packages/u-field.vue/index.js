@@ -2,6 +2,7 @@ import Emitter from 'u-emitter.vue';
 
 export default {
     name: 'u-field',
+    isField: true,
     mixins: [Emitter],
     data() {
         return {
@@ -9,7 +10,7 @@ export default {
         };
     },
     created() {
-        this.dispatch('u-form-item', 'add-field-vm', this);
+        this.dispatch(($parent) => $parent.$options.name === 'u-form-item' || $parent.$options.isField, 'add-field-vm', this);
         this.$on('input', (value) => {
             this.$emit('update:value', value);
             this.dispatch('u-form-item', 'input', value);
@@ -19,6 +20,6 @@ export default {
         this.$on('blur', () => this.dispatch('u-form-item', 'blur'));
     },
     destroyed() {
-        this.dispatch('u-form-item', 'remove-field-vm', this);
+        this.dispatch(($parent) => $parent.$options.name === 'u-form-item' || $parent.$options.isField, 'remove-field-vm', this);
     },
 };
