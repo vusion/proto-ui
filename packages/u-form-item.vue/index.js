@@ -17,6 +17,7 @@ export default {
             state: '',
             color: '',
             currentMessage: '',
+            inputing: false,
             parentVM: undefined,
         };
     },
@@ -48,12 +49,17 @@ export default {
     },
     methods: {
         onInput(value) {
+            this.inputing = true;
             this.value = value;
             this.validate('input').catch((errors) => errors);
         },
         onChange(value) {
             this.value = value;
-            this.validate('submit', true).catch((errors) => errors);
+            if (!this.inputing)
+                this.validate('submit', true).catch((errors) => errors);
+            else
+                this.inputing = false;
+            // @TODO: input如果value不变，则不会进onChange，inputing会一直为true
         },
         onFocus() {
             this.color = this.state = '';
