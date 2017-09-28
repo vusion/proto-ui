@@ -15,6 +15,36 @@
 <u-input type="password" maxlength="12" placeholder="请输入密码"></u-input>
 ```
 
+### 数字
+
+使用`v-model`的`number`修饰符，可以很轻松的将输入值转成number类型。
+
+``` vue
+<template>
+<u-input v-model.number="value" maxlength="12" placeholder="请输入端口号" @input="onInput"></u-input>
+输出：{{ output }}
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            value: 3306,
+            output: '',
+        };
+    },
+    methods: {
+        onInput(value) {
+            this.output = JSON.stringify({
+                inputValue: value,
+                modelValue: this.value,
+            });
+        },
+    },
+};
+</script>
+```
+
 ### 只读与禁用
 
 ``` html

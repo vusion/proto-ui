@@ -4,7 +4,7 @@ export default {
     name: 'u-input',
     mixins: [Field],
     props: {
-        value: { type: String },
+        value: { type: [String, Number] },
         color: { type: String },
     },
     data() {
