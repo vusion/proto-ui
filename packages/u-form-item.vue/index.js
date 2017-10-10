@@ -51,22 +51,21 @@ export default {
         onInput(value) {
             this.inputing = true;
             this.value = value;
-            this.validate('input').catch((errors) => errors);
+            this.$nextTick(() => {
+                this.validate('input').catch((errors) => errors);
+                this.inputing = false;
+            });
         },
         onChange(value) {
             this.value = value;
-            if (!this.inputing)
-                this.validate('submit', true).catch((errors) => errors);
-            else
-                this.inputing = false;
-            // @TODO: input如果value不变，则不会进onChange，inputing会一直为true
+            !this.inputing && this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
             this.color = this.state = '';
             this.currentMessage = this.message;
         },
         onBlur() {
-            this.validate('blur').catch((errors) => errors);
+            this.$nextTick(() => this.validate('blur').catch((errors) => errors));
         },
         validate(trigger = 'submit', silent = false) {
             let rules = this.currentRules;
