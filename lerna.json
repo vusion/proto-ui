@@ -10,6 +10,7 @@
     "packages/u-form-item.vue",
     "packages/u-form.vue",
     "packages/u-input.vue",
+    "packages/u-label.vue",
     "packages/u-linear-layout.vue",
     "packages/u-linear-progress.vue",
     "packages/u-link.vue",

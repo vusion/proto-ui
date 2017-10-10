@@ -51,6 +51,11 @@
     <td><a href="https://www.npmjs.com/package/u-input.vue"><img src="https://img.shields.io/npm/dm/u-input.vue.svg?style=flat-square"></a></td>
 </tr>
 <tr>
+    <td>u-label.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-label.vue"><img src="https://img.shields.io/npm/v/u-label.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-label.vue"><img src="https://img.shields.io/npm/dm/u-label.vue.svg?style=flat-square"></a></td>
+</tr>
+<tr>
     <td>u-linear-layout.vue</td>
     <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/v/u-linear-layout.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/dm/u-linear-layout.vue.svg?style=flat-square"></a></td>

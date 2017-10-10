@@ -10,6 +10,7 @@ import Form from './packages/u-form.vue';
 import FormItem from './packages/u-form-item.vue';
 import Icon from './packages/u-icon.vue';
 import Input from './packages/u-input.vue';
+import Label from './packages/u-label.vue';
 import LinearProgress from './packages/u-linear-progress.vue';
 import LinearLayout from './packages/u-linear-layout.vue';
 import Link from './packages/u-link.vue';
@@ -35,6 +36,7 @@ const Components = {
     FormItem,
     Icon,
     Input,
+    Label,
     LinearProgress,
     LinearLayout,
     Link,
@@ -61,6 +63,7 @@ export {
     FormItem,
     Icon,
     Input,
+    Label,
     LinearProgress,
     LinearLayout,
     Link,
