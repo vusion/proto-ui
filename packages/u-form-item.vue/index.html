@@ -1,5 +1,5 @@
 <div :class="$style.root" :label-size="currentLabelSize">
-    <label :class="$style.title" :required="required" v-show="title || currentLabelSize !== 'auto'">{{ title }}</label>
+    <label :class="$style.title" :required="currentRequired" v-show="title || currentLabelSize !== 'auto'">{{ title }}</label>
     <div :class="$style.field">
         <slot></slot>
         <span v-if="currentMessage" :class="$style.message" :color="color">{{ currentMessage }}</span>

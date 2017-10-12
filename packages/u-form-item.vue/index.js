@@ -9,6 +9,7 @@ export default {
         title: String,
         rules: Array,
         message: String,
+        required: { type: Boolean, default: false },
         labelSize: String,
     },
     data() {
@@ -25,8 +26,8 @@ export default {
         currentRules() {
             return this.rules || (this.parentVM && this.parentVM.rules && this.parentVM.rules[this.name]);
         },
-        required() {
-            return this.currentRules && this.currentRules.some((rule) => rule.required);
+        currentRequired() {
+            return this.required || this.currentRules && this.currentRules.some((rule) => rule.required);
         },
         currentLabelSize() {
             return this.labelSize || (this.parentVM && this.parentVM.labelSize) || 'auto';
