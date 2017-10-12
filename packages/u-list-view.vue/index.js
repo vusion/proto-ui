@@ -26,7 +26,8 @@ export default {
         value(value) {
             this.watchValue(value);
         },
-        itemVMs(value) {
+        // This method just run once after pushing many itemVMs
+        itemVMs() {
             this.selectedVM = undefined;
             this.watchValue(this.value);
         },

@@ -43,6 +43,11 @@ export default {
         value(value) {
             this.watchValue(value);
         },
+        // This method just run once after pushing many nodeVMs
+        nodeVMs() {
+            this.selectedVM = undefined;
+            this.watchValue(this.value);
+        },
     },
     created() {
         this.$on('add-node-vm', (nodeVM) => {
