@@ -41,6 +41,30 @@ export default {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value) {
+            this.watchValue(value);
+        },
+        // This method just run once after pushing many nodeVMs
+        nodeVMs() {
+            this.selectedVM = undefined;
+            this.watchValue(this.value);
+        },
+    },
+    created() {
+        this.$on('add-node-vm', (nodeVM) => {
+            nodeVM.rootVM = this;
+            this.nodeVMs.push(nodeVM);
+        });
+        this.$on('remove-node-vm', (nodeVM) => {
+            nodeVM.rootVM = undefined;
+            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
+        });
+        // @TODO: Suggest to add a nextTick option in Vue.js
+        // Must trigger `value` watcher at next tick.
+        // If not, nodeVMs have not been pushed.
+        this.$nextTick(() => this.watchValue(this.value));
+    },
+    methods: {
+        watchValue(value) {
             if (this.selectedVM && this.selectedVM.value === value)
                 return;
             if (value === undefined)
@@ -56,22 +80,6 @@ export default {
                 }
             }
         },
-    },
-    created() {
-        this.$on('add-node-vm', (nodeVM) => {
-            nodeVM.rootVM = this;
-            this.nodeVMs.push(nodeVM);
-        });
-        this.$on('remove-node-vm', (nodeVM) => {
-            nodeVM.rootVM = undefined;
-            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
-        });
-        // @TODO: Suggest to add a nextTick option in Vue.js
-        // Must trigger `value` watcher at next tick.
-        // If not, nodeVMs have not been pushed.
-        this.$nextTick(() => this.$options.watch.value.call(this, this.value));
-    },
-    methods: {
         select(nodeVM) {
             if (this.readonly || this.disabled)
                 return;

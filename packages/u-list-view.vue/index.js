@@ -24,16 +24,12 @@ export default {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value) {
-            if (this.multiple)
-                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value && value.includes(itemVM.value));
-            else {
-                if (this.selectedVM && this.selectedVM.value === value)
-                    return;
-                if (value === undefined)
-                    this.selectedVM = undefined;
-                else
-                    this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
-            }
+            this.watchValue(value);
+        },
+        // This method just run once after pushing many itemVMs
+        itemVMs() {
+            this.selectedVM = undefined;
+            this.watchValue(this.value);
         },
     },
     created() {
@@ -48,9 +44,21 @@ export default {
         // @TODO: Suggest to add a nextTick option in Vue.js
         // Must trigger `value` watcher at next tick.
         // If not, itemVMs have not been pushed.
-        this.$nextTick(() => this.$options.watch.value.call(this, this.value));
+        this.$nextTick(() => this.watchValue(this.value));
     },
     methods: {
+        watchValue(value) {
+            if (this.multiple)
+                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value && value.includes(itemVM.value));
+            else {
+                if (this.selectedVM && this.selectedVM.value === value)
+                    return;
+                if (value === undefined)
+                    this.selectedVM = undefined;
+                else
+                    this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+            }
+        },
         select(itemVM) {
             if (this.readonly || this.disabled)
                 return;
