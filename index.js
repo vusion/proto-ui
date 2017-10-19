@@ -26,33 +26,6 @@ import Tabs from './packages/u-tabs.vue';
 import Tab from './packages/u-tab.vue';
 import Textarea from './packages/u-textarea.vue';
 
-const Components = {
-    Button,
-    Checkbox,
-    CircularProgress,
-    Emitter,
-    Field,
-    Form,
-    FormItem,
-    Icon,
-    Input,
-    Label,
-    LinearProgress,
-    LinearLayout,
-    Link,
-    ListView,
-    ListViewItem,
-    TreeView,
-    TreeViewNode,
-    Pagination,
-    RouterItem,
-    Sample,
-    Switch,
-    Tabs,
-    Tab,
-    Textarea,
-};
-
 export {
     Button,
     Checkbox,
@@ -79,14 +52,3 @@ export {
     Tab,
     Textarea,
 };
-
-const Library = {
-    install(Vue) {
-        for (const key in directives)
-            Vue.directive(key, directives[key]);
-        for (const key in Components)
-            Vue.component(Components[key].name, Components[key]);
-    },
-};
-
-export default Library;

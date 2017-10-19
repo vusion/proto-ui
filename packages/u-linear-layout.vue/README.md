@@ -1,7 +1,7 @@
-# LinearLayout
+# 线性布局（LinearLayout）
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-linear-layout>
@@ -11,7 +11,7 @@
 </u-linear-layout>
 ```
 
-### Direction
+### 方向
 
 ``` html
 <u-linear-layout direction="vertical">
@@ -26,7 +26,8 @@
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| direction | String | `'horizontal'` | 'horizontal' or 'vertical' |
+| direction | String | `'horizontal'` | 排列方向，'horizontal'或'vertical' |
+| alignment | String | `'left'` | 'left', 'center'或'right' |
 
 ### Slots
 

@@ -11,18 +11,12 @@
         <u-input maxlength="63" placeholder="由1-63个小写字母，数字，中划线组成，以字母开头，字母或数字结尾"></u-input>
     </u-form-item>
     <u-form-item title="规格">
-        <u-capsules value="0101">
-            <u-capsule value="0101">1核 1GB</u-capsule>
-            <u-capsule value="0102">1核 2GB</u-capsule>
-            <u-capsule value="0204">2核 4GB</u-capsule>
-            <u-capsule value="0408">4核 8GB</u-capsule>
-            <u-capsule value="0816">8核 16GB</u-capsule>
-            <u-capsule value="0832">8核 32GB</u-capsule>
-            <u-capsule value="1664">16核 64GB</u-capsule>
-        </u-capsules>
     </u-form-item>
     <u-form-item title="端口号">
         <u-input maxlength="5" placeholder="1150-65535" value="3306"></u-input>
+    </u-form-item>
+    <u-form-item title="详情">
+        <u-textarea></u-textarea>
     </u-form-item>
     <u-form-item>
         <u-button color="primary">立即创建</u-button>
@@ -33,7 +27,7 @@
 ### 行内
 
 ``` html
-<u-form label-size="auto" layout="inline">
+<u-form layout="inline" label-size="auto">
     <u-form-item title="状态">
         <u-input maxlength="63" placeholder="认证中"></u-input>
     </u-form-item>
@@ -470,13 +464,10 @@ export default {
     mounted() {
         // 必须初始化时或在获取数据到时安静验证一次
         this.$refs.form.validate(true)
-            .then(() => {})
             .catch(() => {});
-
         // 在获取数据到时如下
         // this.getData().then(...)
         //  .then(() => this.$refs.form.validate(true))
-        //  .then(() => alert('提交成功'))
         //  .catch(() => {});
     },
     methods: {
