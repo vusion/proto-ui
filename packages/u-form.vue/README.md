@@ -420,7 +420,7 @@ export default {
 
 ``` vue
 <template>
-<u-form ref="form" :rules="rules" @validate="canSubmit = $event">
+<u-form ref="form" :rules="rules" @validate="canSubmit = $event.valid">
     <u-form-item title="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>

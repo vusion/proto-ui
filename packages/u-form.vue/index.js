@@ -24,7 +24,9 @@ export default {
         });
         this.$on('validate-item-vm', () => {
             this.state = this.getState();
-            this.$emit('validate', this.state === 'success');
+            this.$emit('validate', {
+                valid: this.state === 'success',
+            });
         });
     },
     methods: {
