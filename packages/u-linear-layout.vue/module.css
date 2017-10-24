@@ -6,6 +6,12 @@
     margin-top: 20px;
 }
 
+/* @deprecated */
+.root[alignment="left"] { text-align: left; }
+.root[alignment="center"] { text-align: center; }
+.root[alignment="right"] { text-align: right; }
+
+/* @feature */
 .root[justify="start"] { text-align: left; }
 .root[justify="center"] { text-align: center; }
 .root[justify="end"] { text-align: right; }
