@@ -13,7 +13,15 @@
             @click.stop="toggle()"></div>
         <div :class="$style.text">
             <u-checkbox v-if="rootVM.checkable" :value="currentChecked" @check="check($event.value)"></u-checkbox>
-            <slot name="text">{{ text }}</slot>
+            <u-tree-view-text
+                :data="data"
+                :text="text"
+                :value="value"
+                :expanded="currentExpanded"
+                :checked="currentChecked"
+                :disabled="disabled"
+                :node="node"
+            ></u-tree-view-text>
         </div>
     </div>
     <div :class="$style.list" v-show="currentExpanded">

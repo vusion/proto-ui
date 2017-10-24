@@ -23,6 +23,7 @@
     "packages/u-tabs.vue",
     "packages/u-textarea.vue",
     "packages/u-tree-view-node.vue",
+    "packages/u-tree-view-text.vue",
     "packages/u-tree-view.vue"
   ],
   "version": "independent"

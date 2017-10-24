@@ -125,6 +125,11 @@
     <td><a href="https://www.npmjs.com/package/u-tree-view-node.vue"><img src="https://img.shields.io/npm/v/u-tree-view-node.vue.svg?style=flat-square"></a></td>
     <td><a href="https://www.npmjs.com/package/u-tree-view-node.vue"><img src="https://img.shields.io/npm/dm/u-tree-view-node.vue.svg?style=flat-square"></a></td>
 </tr>
+<tr>
+    <td>u-tree-view-text.vue</td>
+    <td><a href="https://www.npmjs.com/package/u-tree-view-text.vue"><img src="https://img.shields.io/npm/v/u-tree-view-text.vue.svg?style=flat-square"></a></td>
+    <td><a href="https://www.npmjs.com/package/u-tree-view-text.vue"><img src="https://img.shields.io/npm/dm/u-tree-view-text.vue.svg?style=flat-square"></a></td>
+</tr>
 </tbody>
 </table>
 

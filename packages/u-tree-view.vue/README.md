@@ -47,6 +47,36 @@
 ]"></u-tree-view>
 ```
 
+#### 自定义模板
+
+但我们知道，Tag方式很容易自定义模板，而Data方式却不好扩展。我们提供了一个名为`text`的作用域插槽，可以很轻松地处理这个问题。
+
+``` html
+<u-tree-view :data="[
+    { text: '文件夹1', type: 'directory', children: [
+        { text: '文件夹1.1', type: 'directory' },
+        { text: '文件夹1.2', type: 'directory', children: [
+            { text: '文件1.2.1', type: 'file' },
+            { text: '文件1.2.2', type: 'file' },
+        ] },
+        { text: '文件1.3', type: 'file' },
+        { text: '文件1.4', type: 'file' },
+    ] },
+    { text: '文件夹2', type: 'directory' },
+    { text: '文件夹3', type: 'directory', children: [
+        { text: '文件3.1', type: 'file' },
+        { text: '文件3.2', type: 'file' },
+    ] },
+]">
+    <span slot="text" slot-scope="{ node, expanded, text }">
+        {{ node.type === 'directory' ? (expanded ? '📂' : '📁') : '📄' }}
+        {{ text }}
+    </span>
+</u-tree-view>
+```
+
+但`text`作用域插槽只支持扩展text文本内容，如果您的需求更加复杂，建议直接通过继承TreeView相关组件来实现。
+
 ### 选项值
 
 #### Tag方式

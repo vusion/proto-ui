@@ -1,0 +1,30 @@
+{
+    "name": "u-tree-view-text.vue",
+    "description": "Vusion Proto UI - TreeViewText",
+    "version": "0.2.7",
+    "author": "Rainfore <rainforest92@126.com>",
+    "main": "./index.js",
+    "repository": "vusion/proto-ui",
+    "homepage": "http://vusion.github.io",
+    "bugs": {
+      "url": "http://github.com/vusion/proto-ui/issues"
+    },
+    "license": "MIT",
+    "keywords": [
+      "vusion",
+      "proto",
+      "ui",
+      "proto-ui"
+    ],
+    "tags": [
+      "vusion",
+      "proto",
+      "ui",
+      "proto-ui"
+    ],
+    "peerDependencies": {
+      "u-tree-view.vue": "0.2.7",
+      "u-tree-view-node.vue": "0.2.7",
+      "vue": "^2.4.0"
+    }
+  }

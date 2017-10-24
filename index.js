@@ -18,6 +18,7 @@ import ListView from './packages/u-list-view.vue';
 import ListViewItem from './packages/u-list-view-item.vue';
 import TreeView from './packages/u-tree-view.vue';
 import TreeViewNode from './packages/u-tree-view-node.vue';
+import TreeViewText from './packages/u-tree-view-text.vue';
 import Pagination from './packages/u-pagination.vue';
 import RouterItem from './packages/u-router-item.vue';
 import Sample from './packages/u-sample.vue';
@@ -44,6 +45,7 @@ export {
     ListViewItem,
     TreeView,
     TreeViewNode,
+    TreeViewText,
     Pagination,
     RouterItem,
     Sample,
