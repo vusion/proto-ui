@@ -22,9 +22,11 @@
       "ui",
       "proto-ui"
     ],
-    "peerDependencies": {
+    "dependencies": {
       "u-tree-view.vue": "0.2.7",
-      "u-tree-view-node.vue": "0.2.7",
+      "u-tree-view-node.vue": "0.2.7"
+    },
+    "peerDependencies": {
       "vue": "^2.4.0"
     }
   }

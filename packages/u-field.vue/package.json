@@ -23,10 +23,10 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-emitter.vue": "~0.1.1"
+    "u-emitter.vue": "~0.1.1",
+    "u-form-item.vue": "~0.1.8"
   },
   "peerDependencies": {
-    "u-form-item.vue": "~0.1.8",
     "vue": "^2.4.0"
   }
 }

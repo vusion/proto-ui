@@ -23,10 +23,10 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-field.vue": "~0.1.7"
+    "u-field.vue": "~0.1.7",
+    "u-list-view-item.vue": "0.2.6"
   },
   "peerDependencies": {
-    "u-list-view-item.vue": "0.2.6",
     "vue": "^2.4.0"
   }
 }

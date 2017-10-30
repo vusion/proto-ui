@@ -22,8 +22,10 @@
     "ui",
     "proto-ui"
   ],
+  "dependencies": {
+    "u-tab.vue": "0.3.3"
+  },
   "peerDependencies": {
-    "u-tab.vue": "0.3.3",
     "vue": "^2.4.0"
   }
 }

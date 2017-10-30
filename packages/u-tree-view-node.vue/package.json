@@ -23,12 +23,12 @@
     "proto-ui"
   ],
   "dependencies": {
-    "u-emitter.vue": "~0.1.0"
+    "u-checkbox.vue": "~0.1.1",
+    "u-emitter.vue": "~0.1.0",
+    "u-tree-view.vue": "0.2.7",
+    "u-tree-view-text.vue": "0.2.7"
   },
   "peerDependencies": {
-    "u-checkbox.vue": "~0.1.1",
-    "u-tree-view.vue": "0.2.7",
-    "u-tree-view-text.vue": "0.2.7",
     "vue": "^2.4.0"
   }
 }

@@ -22,12 +22,12 @@
     "ui",
     "proto-ui"
   ],
-  "peerDependencies": {
-    "u-form.vue": "0.2.0",
-    "vue": "^2.4.0"
-  },
   "dependencies": {
     "async-validator": "^1.7.1",
-    "u-emitter.vue": "~0.1.0"
+    "u-emitter.vue": "~0.1.0",
+    "u-form.vue": "0.2.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.4.0"
   }
 }

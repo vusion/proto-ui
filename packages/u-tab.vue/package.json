@@ -24,10 +24,10 @@
   ],
   "dependencies": {
     "u-emitter.vue": "~0.1.0",
-    "u-router-item.vue": "~0.1.0"
+    "u-router-item.vue": "~0.1.0",
+    "u-tabs.vue": "0.3.3"
   },
   "peerDependencies": {
-    "u-tabs.vue": "0.3.3",
     "vue": "^2.4.0"
   }
 }
