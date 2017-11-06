@@ -67,6 +67,10 @@ $height: 24px;
     color: white;
 }
 
+.item[selected] .expander {
+    color: white;
+}
+
 .item[disabled] {
     /* @Private */
     cursor: not-allowed;

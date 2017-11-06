@@ -46,7 +46,7 @@ export default {
         });
         this.$on('remove-node-vm', (nodeVM) => {
             nodeVM.rootVM = undefined;
-            nodeVM.parent = undefined;
+            nodeVM.parentVM = undefined;
             this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
         });
     },
