@@ -57,12 +57,6 @@ export default {
     props: {
         persistKey: { type: String },
     },
-    data() {
-        return {
-            sessionKey: this.persistKey,
-            persistEnable: !!this.persistKey,
-        };
-    },
     computed: {
         sessionValue: {
             set(value) {
@@ -74,8 +68,8 @@ export default {
         },
     },
     methods: {
-        enableSessionResume() {
-            this.persistEnable = true;
+        enableSessionResume(persistKey) {
+            this.sessionKey = persistKey || this.persistKey;
             const sessionValue = getValue(this.sessionKey);
             if (isValid(sessionValue))
                 this.sessionValue = sessionValue;
@@ -97,18 +91,17 @@ export default {
     },
     created() {
         this.$on('session-resume:enablePersist', (persistKey, formVM) => {
-            if (!persistKey || !this.formItemVM)
+            if (!persistKey)
                 return;
-            if (formVM)
+            if (this.formItemVM && formVM)
                 persistKey = persistKey + '_' + (this.formItemVM.name || formVM.itemVMs.indexOf(this.formItemVM));
-            this.sessionKey = persistKey;
-            this.enableSessionResume();
+            this.enableSessionResume(persistKey);
         });
-        if (this.persistEnable)
+        if (this.persistKey)
             this.enableSessionResume();
     },
     beforeDestroy() {
-        if (this.persistEnable)
+        if (this.sessionKey)
             setValue(this.sessionKey, this.sessionValue);
     },
 };
