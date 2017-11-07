@@ -490,7 +490,7 @@ disablePersist属性可禁用表单内指定Field组件的本地储存功能
     <u-form-item title="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="用户名" name="username">
+    <u-form-item title="密码" name="password">
         <u-input disablePersist="true" v-model="model.password" type="password" maxlength="12" placeholder="请输入密码"></u-input>
     </u-form-item>
     <u-form-item title="邮箱" name="email">
