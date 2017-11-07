@@ -7,12 +7,15 @@ Field类组件通过mixins:[Persist]使用，当persistKey属性值有效则自�
 <u-input maxlength="12" placeholder="1~12位小写字母" persistKey="u-input"></u-input>
 ```
 ### Form
-表单直接通过传入persistKey属性值，有效则表单内所有Field组件开启本地储存，在表单组件重新渲染或页面重载后表单内各个输入值自动恢复(表单开启本地储存时建议每个form-item都定义name值)
+表单直接通过传入persistKey属性值，有效则表单内所有Field组件开启本地储存，在表单组件重新渲染或页面重载后表单内各个输入值自动恢复(表单开启本地储存时建议每个form-item都定义name值).disablePersist属性可禁用表单内指定Field组件的本地储存功能
 ``` vue
 <template>
 <u-form ref="form" persistKey="u-form-1">
     <u-form-item title="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
+    </u-form-item>
+    <u-form-item title="用户名" name="username">
+        <u-input disablePersist="true" v-model="model.password" type="password" maxlength="12" placeholder="请输入密码"></u-input>
     </u-form-item>
     <u-form-item title="邮箱" name="email">
         <u-input v-model="model.email" maxlength="24" placeholder="请输入邮箱"></u-input>
@@ -32,6 +35,7 @@ export default {
         return {
             model: {
                 username: '',
+                password: '',
                 email: '',
                 phone: '',
             },
