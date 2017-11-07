@@ -16,6 +16,7 @@ import LinearLayout from './u-linear-layout.vue';
 import Link from './u-link.vue';
 import ListView from './u-list-view.vue';
 import ListViewItem from './u-list-view-item.vue';
+import Persist from './u-persist.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
@@ -43,6 +44,7 @@ export {
     Link,
     ListView,
     ListViewItem,
+    Persist,
     TreeView,
     TreeViewNode,
     TreeViewText,

@@ -1,9 +1,10 @@
 import Emitter from 'u-emitter.vue';
+import Persist from '../u-persist.vue';
 
 export default {
     name: 'u-field',
     isField: true,
-    mixins: [Emitter],
+    mixins: [Emitter, Persist],
     data() {
         return {
             formItemVM: undefined,

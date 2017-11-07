@@ -15,6 +15,13 @@
 <u-input type="password" maxlength="12" placeholder="请输入密码"></u-input>
 ```
 
+### 本地储存
+persistKey属性值有效则自动开启输入值本地储存，在组件重新渲染或页面重载后输入值自动恢复
+
+``` html
+<u-input maxlength="12" placeholder="1~12位小写字母" persistKey="u-input"></u-input>
+```
+
 ### 数字
 
 使用`v-model`的`number`修饰符，可以很轻松的将输入值转成number类型。

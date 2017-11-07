@@ -1,3 +1,5 @@
+import Emitter from 'u-emitter.vue';
+
 export default {
     name: 'u-form',
     props: {
@@ -5,7 +7,9 @@ export default {
         rules: Object,
         layout: { type: String, default: 'block' },
         labelSize: { type: String, default: 'normal' },
+        persistKey: { type: String },
     },
+    mixins: [Emitter],
     data() {
         return {
             // @TODO: Optimize
@@ -28,6 +32,10 @@ export default {
                 valid: this.state === 'success',
             });
         });
+    },
+    mounted() {
+        if (this.persistKey)
+            this.broadcast(($child) => $child.$options.isField, 'session-resume:enablePersist', this.persistKey, this);
     },
     methods: {
         validate(silent = false) {
