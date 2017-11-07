@@ -36,10 +36,10 @@ const isValid = function (value) {
     return typeof value !== 'undefined' && value !== null && value !== '';
 };
 
-let persistData = {}; // store form value in page runtime;
+// get data from sessionStorage
 const sessionData = getItem(getPath());
-if (sessionData)
-    persistData = JSON.parse(sessionData);
+// store form value in page runtime;
+const persistData = sessionData ? JSON.parse(sessionData) : {};
 // use event bus to transfer value from forms to persistData;
 const sessionResumeBus = new Vue();
 // storage all form value to sessionStorage;
