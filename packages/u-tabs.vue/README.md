@@ -51,6 +51,16 @@
 </u-tabs>
 ```
 
+### 路由
+
+``` html
+<u-tabs router>
+    <u-tab title="Button" to="u-button">Button Content</u-tab>
+    <u-tab title="Checkbox" to="u-checkbox">Checkbox Content</u-tab>
+    <u-tab title="Tabs" to="u-tabs">Tabs Content</u-tab>
+</u-tabs>
+```
+
 ## Tabs API
 ### Attrs/Props
 

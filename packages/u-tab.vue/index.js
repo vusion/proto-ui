@@ -17,7 +17,7 @@ export default {
     },
     computed: {
         selected() {
-            return this.parentVM.selectedVM === this;
+            return this.parentVM.router ? this.active : this.parentVM.selectedVM === this;
         },
     },
     created() {
