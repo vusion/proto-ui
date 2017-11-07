@@ -56,6 +56,7 @@ export default {
     name: 'u-persist',
     props: {
         persistKey: { type: String },
+        disablePersist: { type: Boolean, default: false },
     },
     computed: {
         sessionValue: {
@@ -78,7 +79,7 @@ export default {
 
             // store value in persistData
             sessionResumeBus.$on('session-resume:setSession', () => {
-                setValue(this.sessionKey, this.sessionValue);
+                this.sessionKey && setValue(this.sessionKey, this.sessionValue);
             });
         },
         getSession() {
@@ -92,20 +93,22 @@ export default {
         },
     },
     created() {
-        if (this.persistKey)
-            this.enableSessionResume();
-        else {
-            this.$on('session-resume:enablePersist', (persistKey, formVM) => {
-                if (!persistKey)
-                    return;
-                if (this.formItemVM && formVM)
-                    persistKey = persistKey + '_' + (this.formItemVM.name || formVM.itemVMs.indexOf(this.formItemVM));
-                this.enableSessionResume(persistKey);
-            });
+        if (!this.disablePersist) {
+            if (this.persistKey)
+                this.enableSessionResume();
+            else {
+                this.$on('session-resume:enablePersist', (persistKey, formVM) => {
+                    if (!persistKey)
+                        return;
+                    if (this.formItemVM && formVM)
+                        persistKey = persistKey + '_' + (this.formItemVM.name || formVM.itemVMs.indexOf(this.formItemVM));
+                    this.enableSessionResume(persistKey);
+                });
+            }
         }
     },
     beforeDestroy() {
-        if (this.sessionKey)
+        if (!this.disablePersist && this.sessionKey)
             setValue(this.sessionKey, this.sessionValue);
     },
 };

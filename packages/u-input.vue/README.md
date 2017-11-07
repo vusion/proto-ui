@@ -118,6 +118,7 @@ export default {
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | persistKey | String | | 本地储存的键值，需保证在该路由的页面下不重复 |
+| disablePersist | Boolean | false | 禁止本地储存功能 |
 
 ### Methods
 #### getSession
