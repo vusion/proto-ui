@@ -2,6 +2,7 @@
 
 .head {
     user-select: none;
+    height: 32px;
     border-bottom: 1px solid $border-color-base;
 }
 
@@ -41,6 +42,19 @@
     background: white;
 }
 
+.close:before {
+    display: inline-block;
+    content: '✕';
+}
+
+.close:hover {
+    color: #666;
+}
+
 .body {
     margin-top: 10px;
+}
+
+.extra {
+    float: right;
 }

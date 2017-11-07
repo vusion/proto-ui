@@ -51,6 +51,19 @@
 </u-tabs>
 ```
 
+### 可关闭
+
+``` html
+<u-tabs closable>
+    <u-tab title="TabA">ContentA</u-tab>
+    <u-tab title="TabB">ContentB</u-tab>
+    <u-tab title="TabC">ContentC</u-tab>
+    <u-tab title="TabD">ContentD</u-tab>
+    <u-tab title="TabE">ContentE</u-tab>
+</u-tabs>
+```
+
+
 ### 路由
 
 ``` html
@@ -58,6 +71,17 @@
     <u-tab title="Button" to="u-button">Button Content</u-tab>
     <u-tab title="Checkbox" to="u-checkbox">Checkbox Content</u-tab>
     <u-tab title="Tabs" to="u-tabs">Tabs Content</u-tab>
+</u-tabs>
+```
+
+### 额外的
+
+``` html
+<u-tabs value="1">
+    <u-tab title="TabA" value="0">ContentA</u-tab>
+    <u-tab title="TabB" value="1">ContentB</u-tab>
+    <u-tab title="TabC" value="2">ContentC</u-tab>
+    <u-checkbox slot="extra">All</u-checkbox>
 </u-tabs>
 ```
 
@@ -69,6 +93,7 @@
 | value.sync, v-model | Any | | 选中标签页的值 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
+| closable | Boolean | `false` | 是否可以关闭 |
 | router | Boolean | `false` | 是否根据vue-router对应的路由进行高亮显示 |
 
 ### Slots
@@ -76,6 +101,10 @@
 #### (default)
 
 在插槽中插入`<u-tab>`子组件
+
+#### extra
+
+在标签右侧可以附加组件
 
 ### Events
 
@@ -99,6 +128,28 @@
 | value | Any | 选中标签页的值 |
 | oldValue | Any | 旧的值 |
 | itemVM | Tab | 选中标签页实例 |
+
+#### @before-close
+
+关闭某一页前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| value | Any | 待关闭标签页的值 |
+| oldValue | Any | 旧的值 |
+| itemVM | Tab | 待关闭的标签页实例 |
+| $event.preventDefault | Function | 阻止关闭流程 |
+
+#### @close
+
+关闭某一页时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| value | Any | 关闭的标签页的值 |
+| oldValue | Any | 旧的值 |
+| itemVM | Tab | 关闭的标签页实例 |
+| $event.preventDefault | Function | 阻止关闭后自动选择页的流程 |
 
 ## Tab API
 ### Attrs/Props

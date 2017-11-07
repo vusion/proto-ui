@@ -8,7 +8,9 @@
             v-show="!itemVM.hidden"
             @click="select(itemVM)">
             {{ itemVM.title }}
+            <span v-if="closable" :class="$style.close" @click.stop="close(itemVM)"></span>
         </li>
+        <span :class="$style.extra"><slot name="extra"></slot></span>
     </ul>
     <div :class="$style.body">
         <slot></slot>
