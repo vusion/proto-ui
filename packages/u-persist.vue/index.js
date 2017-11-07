@@ -70,6 +70,8 @@ export default {
     methods: {
         enableSessionResume(persistKey) {
             this.sessionKey = persistKey || this.persistKey;
+            if (!this.sessionKey)
+                return;
             const sessionValue = getValue(this.sessionKey);
             if (isValid(sessionValue))
                 this.sessionValue = sessionValue;
@@ -90,15 +92,17 @@ export default {
         },
     },
     created() {
-        this.$on('session-resume:enablePersist', (persistKey, formVM) => {
-            if (!persistKey)
-                return;
-            if (this.formItemVM && formVM)
-                persistKey = persistKey + '_' + (this.formItemVM.name || formVM.itemVMs.indexOf(this.formItemVM));
-            this.enableSessionResume(persistKey);
-        });
         if (this.persistKey)
             this.enableSessionResume();
+        else {
+            this.$on('session-resume:enablePersist', (persistKey, formVM) => {
+                if (!persistKey)
+                    return;
+                if (this.formItemVM && formVM)
+                    persistKey = persistKey + '_' + (this.formItemVM.name || formVM.itemVMs.indexOf(this.formItemVM));
+                this.enableSessionResume(persistKey);
+            });
+        }
     },
     beforeDestroy() {
         if (this.sessionKey)
