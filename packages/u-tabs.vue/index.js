@@ -2,7 +2,7 @@ export default {
     name: 'u-tabs',
     childName: 'u-tab',
     props: {
-        index: { type: Number, default: 0, validator: (value) => Number.isInteger(value) && value >= 0 },
+        value: null,
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         router: { type: Boolean, default: false },
@@ -10,17 +10,16 @@ export default {
     data() {
         return {
             itemVMs: [],
-            currentIndex: this.index,
+            selectedVM: undefined,
         };
     },
-    computed: {
-        selectedVM() {
-            return this.itemVMs[this.currentIndex];
-        },
-    },
     watch: {
-        currentIndex(index, oldIndex) {
-            this.$emit('change', index, oldIndex);
+        value(value) {
+            this.watchValue(value);
+        },
+        itemVMs() {
+            this.selectedVM = undefined;
+            this.watchValue(this.value);
         },
     },
     created() {
@@ -32,35 +31,49 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
+        this.$nextTick(() => this.watchValue(this.value));
     },
     methods: {
-        select(index) {
-            if (this.readonly || this.disabled || this.itemVMs[index].disabled)
+        watchValue(value) {
+            if (this.selectedVM && this.selectedVM.value === value)
+                return;
+            if (value === undefined)
+                this.selectedVM = this.itemVMs[0];
+            else
+                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+        },
+        select(itemVM) {
+            if (this.readonly || this.disabled || itemVM.disabled)
                 return;
 
-            const oldIndex = this.currentIndex;
-
-            const tabVM = this.itemVMs[index];
-            this.currentIndex = index;
+            const oldValue = this.value;
 
             let cancel = false;
             this.$emit('before-select', {
-                index,
-                oldIndex,
-                tabVM,
+                value: itemVM && itemVM.value,
+                oldValue,
+                item: itemVM && itemVM.item,
+                itemVM,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.$emit('select', {
-                index,
-                oldIndex,
-                tabVM,
-            });
-            this.$emit('update:index', index);
+            this.selectedVM = itemVM;
 
-            this.router && tabVM.navigate();
+            const value = this.selectedVM && this.selectedVM.value;
+            const item = this.selectedVM && this.selectedVM.item;
+
+            this.$emit('input', value);
+            this.$emit('update:value', value);
+            this.$emit('select', {
+                value,
+                oldValue,
+                item,
+                itemVM: this.selectedVM,
+            });
+
+            this.router && itemVM.navigate();
         },
     },
 };

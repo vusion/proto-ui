@@ -7,6 +7,7 @@ export default {
     mixins: [Emitter, RouterItem],
     props: {
         title: String,
+        value: null,
         hidden: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },

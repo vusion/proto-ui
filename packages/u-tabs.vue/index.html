@@ -1,13 +1,13 @@
 <div :class="$style.root" :disabled="disabled">
     <ul :class="$style.head">
         <li :class="$style.item"
-            v-for="(tabVM, index) in itemVMs"
-            :title="tabVM.title"
-            :selected="router ? tabVM.active : currentIndex === index"
-            :disabled="tabVM.disabled || disabled"
-            v-show="!tabVM.hidden"
-            @click="select(index)">
-            {{ tabVM.title }}
+            v-for="itemVM in itemVMs"
+            :title="itemVM.title"
+            :selected="router ? itemVM.active : itemVM === selectedVM"
+            :disabled="itemVM.disabled || disabled"
+            v-show="!itemVM.hidden"
+            @click="select(itemVM)">
+            {{ itemVM.title }}
         </li>
     </ul>
     <div :class="$style.body">

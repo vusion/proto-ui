@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { mapComponents } from 'vusion-utils';
 
 export const createElement = () => {
     const elem = document.createElement('div');
@@ -28,6 +29,26 @@ export const createWrapVM = (Component, propsData) => {
         },
     });
 
+    const elem = createElement();
+    vm.$mount(elem);
+
+    return vm;
+};
+
+export const createVMFromTemplate = (template, data, Components) => {
+    const options = {
+        template,
+        destroyed() {
+            this.$el && this.$el.parentNode && this.$el.parentNode.removeChild(this.$el);
+        },
+    };
+    // if (data)
+    //     options.data = function () { return data; };
+
+    if (Components)
+        options.components = mapComponents(Components);
+
+    const vm = new Vue(options);
     const elem = createElement();
     vm.$mount(elem);
 

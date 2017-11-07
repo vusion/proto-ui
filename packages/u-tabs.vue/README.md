@@ -11,13 +11,13 @@
 </u-tabs>
 ```
 
-### 索引
+### Value
 
 ``` html
-<u-tabs :index="2">
-    <u-tab title="TabA">ContentA</u-tab>
-    <u-tab title="TabB">ContentB</u-tab>
-    <u-tab title="TabC">ContentC</u-tab>
+<u-tabs value="B">
+    <u-tab title="TabA" value="A">ContentA</u-tab>
+    <u-tab title="TabB" value="B">ContentB</u-tab>
+    <u-tab title="TabC" value="C">ContentC</u-tab>
 </u-tabs>
 ```
 
@@ -44,10 +44,10 @@
 ### 隐藏部分项
 
 ``` html
-<u-tabs :index="2">
-    <u-tab title="TabA">ContentA</u-tab>
-    <u-tab title="TabB" hidden>ContentB</u-tab>
-    <u-tab title="TabC">ContentC</u-tab>
+<u-tabs value="2">
+    <u-tab title="TabA" value="0">ContentA</u-tab>
+    <u-tab title="TabB" value="1" hidden>ContentB</u-tab>
+    <u-tab title="TabC" value="2">ContentC</u-tab>
 </u-tabs>
 ```
 
@@ -66,7 +66,7 @@
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| index.sync | Number | `0` | 选中的标签页索引 |
+| value.sync, v-model | Any | | 选中标签页的值 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 | router | Boolean | `false` | 是否根据vue-router对应的路由进行高亮显示 |
@@ -85,9 +85,9 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| index | Number | 选中的标签页索引 |
-| oldIndex | Number | 旧的标签页索引 |
-| tabVM | Tab | tab组件实例 |
+| value | Any | 选中标签页的值 |
+| oldValue | Any | 旧的值 |
+| itemVM | Tab | 选中标签页实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
 
 #### @select
@@ -96,18 +96,9 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| index | Number | 选中的标签页索引 |
-| oldIndex | Number | 旧的标签页索引 |
-| tabVM | Tab | tab组件实例 |
-
-#### @change
-
-标签页索引改变时触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| index | Number | 当前标签页索引 |
-| oldIndex | Number | 旧的标签页索引 |
+| value | Any | 选中标签页的值 |
+| oldValue | Any | 旧的值 |
+| itemVM | Tab | 选中标签页实例 |
 
 ## Tab API
 ### Attrs/Props
@@ -115,6 +106,7 @@
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | title | String | | 标签页标题 |
+| value | Any | | 标签页的值 |
 | hidden | Boolean | `false` | 是否隐藏此标签页 |
 | disabled | Boolean | `false` | 是否禁用此标签页 |
 | to | String \| Object | | vue-router的目标链接 |
