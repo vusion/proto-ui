@@ -103,10 +103,12 @@ export default {
             if (cancel)
                 return;
 
-            this.selectedVM = this.itemVMs[index] || this.itemVMs[index - 1];
-            const value = this.selectedVM && this.selectedVM.value;
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            if (this.selectedVM === itemVM) {
+                this.selectedVM = this.itemVMs[index] || this.itemVMs[index - 1];
+                const value = this.selectedVM && this.selectedVM.value;
+                this.$emit('input', value);
+                this.$emit('update:value', value);
+            }
         },
     },
 };
