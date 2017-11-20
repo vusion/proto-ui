@@ -1,0 +1,9 @@
+<div :class="$style.root">
+    <div :class="$style.head">
+        <span>{{ text }}</span>
+        <span :class="$style.expander" :expanded="currentExpanded" @click="currentExpanded = !currentExpanded"></span>
+    </div>
+    <div :class="$style.body" v-show="currentExpanded">
+        <slot></slot>
+    </div>
+</div>

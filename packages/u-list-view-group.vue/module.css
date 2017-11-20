@@ -1,0 +1,27 @@
+.root {
+    position: relative;
+}
+
+.head {
+    padding: 2px 4px;
+    background: $gray-base;
+}
+
+.expander {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.expander:before {
+    content: '▸';
+}
+
+.expander[expanded]:before {
+    content: '▾';
+}

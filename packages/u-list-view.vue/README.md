@@ -79,6 +79,32 @@
 ]"></u-list-view>
 ```
 
+#### 分隔符
+
+``` html
+<u-list-view>
+    <u-list-view-item>苹果</u-list-view-item>
+    <u-list-view-item>香蕉</u-list-view-item>
+    <u-list-view-divider></u-list-view-divider>
+    <u-list-view-item>蛋糕</u-list-view-item>
+</u-list-view>
+```
+
+#### 分组
+
+``` html
+<u-list-view>
+    <u-list-view-group text="水果">
+        <u-list-view-item>苹果</u-list-view-item>
+        <u-list-view-item>香蕉</u-list-view-item>
+    </u-list-view-group>
+    <u-list-view-group text="甜点">
+        <u-list-view-item>蛋糕</u-list-view-item>
+        <u-list-view-item>奶酪</u-list-view-item>
+    </u-list-view-group>
+</u-list-view>
+```
+
 ### 可取消
 
 尝试在同一个选项上点击两次。
@@ -100,7 +126,7 @@
     <u-list-view-item value="B">香蕉</u-list-view-item>
     <u-list-view-item value="C">蛋糕</u-list-view-item>
 </u-list-view>
-<p>value: {{ value }}<p>
+<p>value: {{ value }}</p>
 </template>
 
 <script>

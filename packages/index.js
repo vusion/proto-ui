@@ -15,6 +15,8 @@ import LinearProgress from './u-linear-progress.vue';
 import LinearLayout from './u-linear-layout.vue';
 import Link from './u-link.vue';
 import ListView from './u-list-view.vue';
+import ListViewDivider from './u-list-view-divider.vue';
+import ListViewGroup from './u-list-view-group.vue';
 import ListViewItem from './u-list-view-item.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
@@ -42,6 +44,8 @@ export {
     LinearLayout,
     Link,
     ListView,
+    ListViewDivider,
+    ListViewGroup,
     ListViewItem,
     TreeView,
     TreeViewNode,
