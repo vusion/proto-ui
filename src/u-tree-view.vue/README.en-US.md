@@ -189,9 +189,9 @@ It is recommended to use data pattern to generate tags easily.
 ```
 
 ## TreeView API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
 | value.sync, v-model | Any | | Value of selected item |
@@ -234,9 +234,9 @@ Emit when expanding or collapsing this node.
 | $node | TreeViewNode | Node to toggle |
 
 ## ListViewItem API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | Value of this item |
 | expanded.sync | Any | | Value of this item |

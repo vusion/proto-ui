@@ -1,6 +1,6 @@
 .root {
     /* @Private */
-    cursor: pointer;
+    cursor: $cursor-pointer;
 
     /* @Public */
     padding: 4px 12px;
@@ -22,7 +22,7 @@
 
 .root[disabled] {
     /* @Private */
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
     background: none;
     color: $brand-disabled;
 }

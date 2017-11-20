@@ -40,9 +40,9 @@ export default {
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Boolean \| null | `false` | 选中状态，`null`表示不确定状态  |
 | readonly | Boolean | `false` | 是否只读 |

@@ -22,9 +22,9 @@
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | direction | String | `'horizontal'` | 'horizontal' or 'vertical' |
 

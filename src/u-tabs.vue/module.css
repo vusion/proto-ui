@@ -7,7 +7,7 @@
 }
 
 .item {
-    cursor: pointer;
+    cursor: $cursor-pointer;
     display: inline-block;
     box-sizing: content-box;
 
@@ -35,7 +35,7 @@
 .item[disabled] {
     background: none;
     color: $brand-disabled;
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
 }
 
 .item[selected][disabled] {

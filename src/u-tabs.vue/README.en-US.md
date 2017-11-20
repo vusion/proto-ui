@@ -52,7 +52,7 @@
 ```
 
 ## Tabs API
-### Attrs/Props
+### Props/Attrs
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
@@ -87,9 +87,9 @@ Emit after selecting a tab.
 | index | Number | Index of selected tab |
 
 ## Tab API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | title | String | | Tab title |
 | hidden | Boolean | `false` | Hide this tab |

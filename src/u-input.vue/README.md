@@ -55,9 +55,9 @@ export default {
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | type | String | `'text'` | 输入框的类型，目前只支持两种：`'text'`和`'password'` |
 | value | String | | 输入框的值 |

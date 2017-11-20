@@ -113,9 +113,9 @@ export default {
 ```
 
 ## ListView API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array<{ text, value }> | | Pass a data list and no need to loop tags manually |
 | value.sync, v-model | Any | | Value of selected item |
@@ -152,9 +152,9 @@ Emit when selecting
 | value | Any | Value of selected item |
 
 ## ListViewItem API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | Value of this item |
 | disabled | Boolean | `false` | Disabled |

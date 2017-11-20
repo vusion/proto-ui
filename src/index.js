@@ -1,5 +1,5 @@
-import './u-base.vue/base.css';
-import * as directives from './u-base.vue/directives';
+import './base/index.css';
+import './base/directives';
 
 import Button from './u-button.vue';
 import Checkbox from './u-checkbox.vue';

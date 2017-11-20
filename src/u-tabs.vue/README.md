@@ -86,9 +86,9 @@
 ```
 
 ## Tabs API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Any | | 选中标签页的值 |
 | readonly | Boolean | `false` | 是否只读 |
@@ -152,9 +152,9 @@
 | $event.preventDefault | Function | 阻止关闭后自动选择页的流程 |
 
 ## Tab API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | title | String | | 标签页标题 |
 | value | Any | | 标签页的值 |

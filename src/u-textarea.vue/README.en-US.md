@@ -19,9 +19,9 @@ Most attributes are inherited from `<textarea>` element.
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | String | | The value |
 | placeholder | String | | Original attribute |

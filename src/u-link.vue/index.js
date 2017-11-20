@@ -28,7 +28,17 @@ export default {
                 return;
 
             if (!this.$router)
-                return console.warn('[proto-ui] Cannot find vue router.');
+                return console.warn('[proto-ui]', 'Cannot find vue-router.');
+
+            let cancel = false;
+            this.$emit('before-navigate', {
+                to: this.to,
+                replace: this.replace,
+                append: this.append,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
 
             const $router = this.$router;
             const { location } = $router.resolve(this.to, this.$route, this.append);
@@ -36,8 +46,8 @@ export default {
 
             this.$emit('navigate', {
                 to: this.to,
-                exact: this.exact,
                 replace: this.replace,
+                append: this.append,
             });
         },
     },

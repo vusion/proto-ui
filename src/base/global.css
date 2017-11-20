@@ -25,6 +25,3 @@ $focus-outline: none;
 /* Base Margins */
 $margin-bottom-base: 15px;
 $margin-right-base: 5px;
-
-/* @Deprecated */
-$disabled-color: #ccc;

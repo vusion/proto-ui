@@ -30,7 +30,7 @@ dl, dt, dd, ul, ol, li {
     padding: 0;
 }
 
-ol, ul {
+ol, ul, li {
     list-style: none;
 }
 

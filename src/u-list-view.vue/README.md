@@ -139,9 +139,9 @@ export default {
 ```
 
 ## ListView API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
 | value.sync, v-model | Any | | 当前选择的值 |
@@ -193,9 +193,9 @@ export default {
 | $event.itemVMs | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 
 ## ListViewItem API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | 此项的值 |
 | disabled | Boolean | `false` | 禁用此项 |

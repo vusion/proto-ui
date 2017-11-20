@@ -295,9 +295,9 @@ export default {
 ```
 
 ## TreeView API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
 | value.sync, v-model | Any | | 当前选择的值 |
@@ -386,9 +386,9 @@ export default {
 | expanded | Boolean | 选中/取消 |
 
 ## TreeViewNode API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | 此项的值 |
 | expanded.sync | Any | | 展开/收起状态 |

@@ -2,7 +2,7 @@
     display: inline-block;
     position: relative;
     user-select: none;
-    cursor: pointer;
+    cursor: $cursor-pointer;
     text-align: center;
     font-size: 16px;
     padding: 0 4px;

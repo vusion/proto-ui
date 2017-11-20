@@ -19,9 +19,9 @@ Most attributes are inherited from `<input>` element.
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | type | String | `'text'` | type of input, 'text'/'password' |
 | value | String | | The value |

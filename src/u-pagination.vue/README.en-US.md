@@ -28,9 +28,9 @@ Use `side` and `around` properties to change the count of displayed numbers.
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | page | Number | `1` | Current page number |
 | total | Number | `11` | Total count of pages |

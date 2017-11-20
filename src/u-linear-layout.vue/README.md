@@ -117,9 +117,9 @@
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | direction | String | `'horizontal'` | 排列方向，'horizontal'或'vertical' |
 | gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：'none', 'small', 'normal'或'large' |

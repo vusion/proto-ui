@@ -28,9 +28,9 @@
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | page | Number | `1` | 当前页码 |
 | total | Number | `11` | 总页数 |

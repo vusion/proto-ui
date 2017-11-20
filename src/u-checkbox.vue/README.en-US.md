@@ -40,9 +40,9 @@ export default {
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Boolean \| null | `false` | Checked status. `null` means indeterminate status.  |
 | readonly | Boolean | `false` | Readonly |

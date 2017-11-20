@@ -24,6 +24,6 @@
 }
 
 .input[disabled] {
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
     background: $gray-base;
 }

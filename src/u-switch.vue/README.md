@@ -32,9 +32,9 @@ export default {
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Boolean | `false` | 开关状态 |
 | readonly | Boolean | `false` | 是否只读 |

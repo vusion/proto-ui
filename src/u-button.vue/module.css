@@ -14,7 +14,7 @@
     /* Required for `a`. */
     text-decoration: none;
     /* Use pointer cursor at any time. */
-    cursor: pointer;
+    cursor: $cursor-pointer;
     /* Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214 */
     background: none;
     /* Others */
@@ -48,7 +48,7 @@
 
 .root[disabled] {
     /* @Private */
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
 
     /* @Public */
     background: white;

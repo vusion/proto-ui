@@ -1,7 +1,7 @@
 $height: 24px;
 
 .root {
-    cursor: pointer;
+    cursor: $cursor-pointer;
     margin-left: 20px;
 }
 
@@ -73,7 +73,7 @@ $height: 24px;
 
 .item[disabled] {
     /* @Private */
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
     color: $brand-disabled;
 }
 

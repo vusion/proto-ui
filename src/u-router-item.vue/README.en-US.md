@@ -4,9 +4,9 @@
 ### Basic
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
+| Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | to | String \| Object | | The target location of this link |
 | replace | Boolean | `false` | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |

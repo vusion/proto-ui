@@ -1,7 +1,7 @@
 .root {
     composes: item from '../u-sidebar.vue/module.css';
     display: block;
-    cursor: pointer;
+    cursor: $cursor-pointer;
     height: 52px;
     line-height: 52px;
     color: #8594aa;

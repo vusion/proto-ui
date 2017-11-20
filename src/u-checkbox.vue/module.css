@@ -2,7 +2,7 @@ $box-size: 18px;
 
 .root {
     user-select: none;
-    cursor: pointer;
+    cursor: $cursor-pointer;
 }
 
 .root:focus {
@@ -10,7 +10,7 @@ $box-size: 18px;
 }
 
 .root[disabled] {
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
 }
 
 .box {
