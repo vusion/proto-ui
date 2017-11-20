@@ -52,7 +52,7 @@ export default {
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | 在插槽中插入文本或HTML |
+| (default) | 插入文本或HTML |
 
 ### Events
 

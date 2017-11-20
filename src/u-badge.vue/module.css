@@ -1,0 +1,31 @@
+.root {
+    position: relative;
+    display: inline-block;
+}
+
+.value {
+    display: inline-block;
+    line-height: 18px;
+    min-width: 18px;
+    font-size: 12px;
+    padding: 0 6px;
+    border-radius: 100px;
+    background: $brand-error;
+    color: #fff;
+}
+
+.root[corner] .value {
+    position: absolute;
+    transform: translateX(50%);
+    right: 0;
+    top: -9px;
+}
+
+.root[dot] .value {
+    width: 6px;
+    height: 6px;
+    font-size: 0;
+    min-width: auto;
+    padding: 0;
+    top: -3px;
+}

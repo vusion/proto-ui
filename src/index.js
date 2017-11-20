@@ -1,6 +1,8 @@
 import './base/index.css';
 import './base/directives';
 
+import Badge from './u-badge.vue';
+import Block from './u-block.vue';
 import Button from './u-button.vue';
 import Checkbox from './u-checkbox.vue';
 import CircularProgress from './u-circular-progress.vue';
@@ -36,6 +38,8 @@ import Tab from './u-tab.vue';
 import Textarea from './u-textarea.vue';
 
 export {
+    Badge,
+    Block,
     Button,
     Checkbox,
     CircularProgress,

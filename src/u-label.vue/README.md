@@ -1,4 +1,4 @@
-# 标签（Label）
+# 标签 Label
 
 ## 示例
 ### 基本形式
@@ -15,4 +15,4 @@
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | 在插槽中插入文本或HTML |
+| (default) | 插入文本或HTML |

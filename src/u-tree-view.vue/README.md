@@ -311,7 +311,7 @@ export default {
 
 #### (default)
 
-在插槽中插入`<u-tree-view-node>`子组件
+插入`<u-tree-view-node>`子组件
 
 ### Events
 
@@ -400,7 +400,7 @@ export default {
 
 #### (default)
 
-在插槽中插入文本或HTML
+插入文本或HTML
 
 ### Events
 

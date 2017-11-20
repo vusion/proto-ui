@@ -1,11 +1,12 @@
-# Icon
+# 图标 Icon
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-icon name="arrow-up"></u-icon>
 <u-icon name="arrow-down"></u-icon>
+<u-icon name="arrow-left"></u-icon>
 <u-icon name="arrow-right"></u-icon>
 ```
 
@@ -14,10 +15,4 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| name | String | | Icon name |
-
-### Slots
-
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+| name | String | | 图标名称 |

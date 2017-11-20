@@ -155,7 +155,7 @@ export default {
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | 在插槽中插入`<u-list-view-item>`子组件 |
+| (default) | 插入`<u-list-view-item>`子组件 |
 
 ### Events
 
@@ -205,7 +205,7 @@ export default {
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | 在插槽中插入文本或HTML |
+| (default) | 插入文本或HTML |
 
 ### Events
 

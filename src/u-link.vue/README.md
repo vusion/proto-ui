@@ -51,7 +51,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.to | String \| Location | `to`属性的值 |
-| $event.replace | Boolan | `replace`属性的值 |
+| $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
 | $event.preventDefault | Function | 阻止切换流程 |
 
@@ -62,6 +62,5 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.to | String \| Location | `to`属性的值 |
-| $event.replace | Boolan | `replace`属性的值 |
+| $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
-

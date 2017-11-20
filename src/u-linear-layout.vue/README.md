@@ -23,7 +23,7 @@
 
 ### 间隙
 
-可以自行扩展`gap`属性，推荐几个常用的属性值：'none', 'small', 'normal', 'large'。
+可以自行扩展`gap`属性，推荐几个常用的属性值：`'none'`, `'small'`, `'normal'`, `'large'`。
 
 ### 水平分布方式
 
@@ -89,29 +89,29 @@
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout type="flex" alignment="start">
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
+        <u-block>Block</u-block>
+        <u-block size="large">Block</u-block>
+        <u-block size="huge">Block</u-block>
     </u-linear-layout>
     <u-linear-layout type="flex" alignment="center">
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
+        <u-block>Block</u-block>
+        <u-block size="large">Block</u-block>
+        <u-block size="huge">Block</u-block>
     </u-linear-layout>
     <u-linear-layout type="flex" alignment="end">
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
+        <u-block>Block</u-block>
+        <u-block size="large">Block</u-block>
+        <u-block size="huge">Block</u-block>
     </u-linear-layout>
     <u-linear-layout type="flex" alignment="baseline">
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
+        <u-block>Block</u-block>
+        <u-block size="large">Block</u-block>
+        <u-block size="huge">Block</u-block>
     </u-linear-layout>
     <u-linear-layout type="flex" alignment="stretch">
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
-        <u-button>Button</u-button>
+        <u-block>Block</u-block>
+        <u-block size="large">Block</u-block>
+        <u-block size="huge">Block</u-block>
     </u-linear-layout>
 </u-linear-layout>
 ```
@@ -121,14 +121,14 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| direction | String | `'horizontal'` | 排列方向，'horizontal'或'vertical' |
-| gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：'none', 'small', 'normal'或'large' |
-| type | String | | 布局模式，可选值：'flex' |
-| justify | String | `'start'` | 普通模式下可选值：'start', 'center', 'end'。flex布局模式下还支持：'space-between', 'space-around' |
-| alignment | String | `'stretch'` | flex布局模式的交叉轴对齐方式，可选值：'start', 'center', 'end', 'baseline', 'stretch' |
+| direction | String | `'horizontal'` | 排列方向。可选值：`'horizontal'`或`'vertical'` |
+| gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：`'none'`, `'small'`, `'normal'`或`'large'` |
+| type | String | | 布局模式。可选值：`'flex'`或不填 |
+| justify | String | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`。flex布局模式下还支持：`'space-between'`, `'space-around'` |
+| alignment | String | `'stretch'` | flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
 
 ### Slots
 
 | Slot | Description |
 | ---- | ----------- |
-| (default) | |
+| (default) | 插入需要布局的元素 |
