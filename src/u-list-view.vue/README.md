@@ -79,7 +79,7 @@
 ]"></u-list-view>
 ```
 
-#### 分隔符
+### 分隔符
 
 ``` html
 <u-list-view>
@@ -90,7 +90,7 @@
 </u-list-view>
 ```
 
-#### 分组
+### 分组
 
 ``` html
 <u-list-view>
