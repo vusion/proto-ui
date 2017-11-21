@@ -1,6 +1,7 @@
 export default {
     name: 'u-router-item',
     props: {
+        href: String,
         to: [String, Object],
         replace: { type: Boolean, default: false },
         exact: { type: Boolean, default: false },
@@ -21,19 +22,36 @@ export default {
     },
     methods: {
         navigate() {
+            if (this.href) {
+                if (this.target === '_blank')
+                    return window.open(this.href, this.target);
+                else
+                    return location.href = this.href;
+            }
+
             if (this.to === undefined)
                 return;
 
             if (!this.$router)
                 return console.warn('[proto-ui] Cannot find vue router.');
 
+            let cancel = false;
+            this.$emit('before-navigate', {
+                to: this.to,
+                replace: this.replace,
+                exact: this.exact,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
             const $router = this.$router;
             this.replace ? $router.replace(this.to) : $router.push(this.to);
 
             this.$emit('navigate', {
                 to: this.to,
-                exact: this.exact,
                 replace: this.replace,
+                exact: this.exact,
             });
         },
     },

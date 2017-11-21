@@ -52,21 +52,29 @@
 #### Tag方式
 
 ``` html
-<u-list-view value="C" readonly>
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B">香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
-</u-list-view>
-<u-list-view value="C" disabled>
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B">香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
-</u-list-view>
-<u-list-view value="C">
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B" disabled>香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
-</u-list-view>
+<u-grid-layout>
+    <u-grid-layout-column :span="4">
+        <u-list-view value="C" readonly>
+            <u-list-view-item value="A">苹果</u-list-view-item>
+            <u-list-view-item value="B">香蕉</u-list-view-item>
+            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        </u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-list-view value="C" disabled>
+            <u-list-view-item value="A">苹果</u-list-view-item>
+            <u-list-view-item value="B">香蕉</u-list-view-item>
+            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        </u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-list-view value="C">
+            <u-list-view-item value="A">苹果</u-list-view-item>
+            <u-list-view-item value="B" disabled>香蕉</u-list-view-item>
+            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        </u-list-view>
+    </u-grid-layout-column>
+</u-grid-layout>
 ```
 
 #### Data方式
@@ -219,3 +227,16 @@ export default {
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | ListViewItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+
+## ListViewGroup API
+
+### Props/Attrs
+
+| Prop/Attr | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| text | String |  | 显示的文本 |
+| expanded | Boolean | `false` | 是否展开 |
+
+## ListViewDivider API
+
+无

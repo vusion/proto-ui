@@ -28,5 +28,5 @@
 }
 
 .root[selected][disabled] {
-    background: $gray-base;
+    background: $gray-lighter;
 }

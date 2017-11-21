@@ -1,6 +1,14 @@
 .root { margin: -10px; }
 .root .column { padding: 10px; }
 
+.root:before, .root:after {
+    display: block;
+    content: '.';
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
 .root[gap^="none"] { margin-top: 0; margin-bottom: 0; }
 .root[gap^="none"] .column { padding-top: 0; padding-bottom: 0 }
 .root[gap$="none"] { margin-left: 0; margin-right: 0; }

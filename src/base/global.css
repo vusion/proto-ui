@@ -4,9 +4,13 @@ $brand-error: #f55;
 $brand-disabled: #ccc;
 
 /* Gray Colors */
-$gray-dark: #ccc;
-$gray-base: #ddd;
-$gray-light: #eee;
+$gray-darkest: #333;
+$gray-darker: #666;
+$gray-dark: #999;
+$gray-base: #aaa;
+$gray-light: #ccc;
+$gray-lighter: #ddd;
+$gray-lightest: #eee;
 
 /* Component Base Colors */
 $background-color-base: #eee;
@@ -18,7 +22,7 @@ $border-width-base: 1px;
 $height-base: 32px;
 
 /* Component Action Hints */
-$cursor-pointer: cursor-pointer;
+$cursor-pointer: pointer;
 $cursor-not-allowed: not-allowed;
 $focus-outline: none;
 

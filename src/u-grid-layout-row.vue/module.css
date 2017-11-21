@@ -2,7 +2,7 @@
     composes: row from '../u-grid-layout.vue/module.css';
 }
 
-.root:after,.root:before {
+.root:before, .root:after {
     display: block;
     content: '.';
     clear: both;

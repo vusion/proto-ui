@@ -57,5 +57,5 @@ $item_size: 32px;
 }
 
 .root[disabled] .item[selected] {
-    background: $gray-base;
+    background: $gray-lighter;
 }

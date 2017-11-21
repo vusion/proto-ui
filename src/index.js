@@ -24,6 +24,7 @@ import ListViewDivider from './u-list-view-divider.vue';
 import ListViewGroup from './u-list-view-group.vue';
 import ListViewItem from './u-list-view-item.vue';
 import Navbar from './u-navbar.vue';
+import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
@@ -64,6 +65,7 @@ export {
     ListViewGroup,
     ListViewItem,
     Navbar,
+    NavbarDivider,
     NavbarItem,
     TreeView,
     TreeViewNode,

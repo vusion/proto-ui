@@ -1,20 +1,29 @@
 .root {
-    composes: item from '../u-sidebar.vue/module.css';
-    display: block;
     cursor: $cursor-pointer;
-    height: 52px;
-    line-height: 52px;
-    color: #8594aa;
+    height: 32px;
+    line-height: 32px;
     padding-left: 20px;
-    transition: all $transition-duration;
 }
 
 .root:hover {
     color: $brand-primary;
-    /*background-color: $hover-color;*/
+}
+
+.root[readonly] {
+    cursor: default;
 }
 
 .root[selected] {
     background-color: $brand-primary;
     color: #fff;
+}
+
+.root[disabled] {
+    cursor: $cursor-not-allowed;
+    background: none;
+    color: $brand-disabled;
+}
+
+.root[selected][disabled] {
+    background: $gray-lighter;
 }

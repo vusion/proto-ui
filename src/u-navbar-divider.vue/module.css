@@ -1,0 +1,8 @@
+.root {
+    display: inline-block;
+    margin: 0 30px;
+    height: 20px;
+    width: 1px;
+    background: #ddd;
+    vertical-align: -4px;
+}

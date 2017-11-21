@@ -82,5 +82,5 @@ $height: 24px;
 }
 
 .item[selected][disabled] .back {
-    background: $gray-base;
+    background: $gray-lighter;
 }
