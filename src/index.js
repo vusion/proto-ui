@@ -10,6 +10,9 @@ import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form-item.vue';
+import GridLayout from './u-grid-layout.vue';
+import GridLayoutRow from './u-grid-layout-row.vue';
+import GridLayoutColumn from './u-grid-layout-column.vue';
 import Icon from './u-icon.vue';
 import Input from './u-input.vue';
 import Label from './u-label.vue';
@@ -47,6 +50,9 @@ export {
     Field,
     Form,
     FormItem,
+    GridLayout,
+    GridLayoutRow,
+    GridLayoutColumn,
     Icon,
     Input,
     Label,

@@ -1,4 +1,4 @@
-import * as _ from 'u-base.vue/utils';
+import * as _ from '../u-base.vue/utils';
 
 /**
  * @class BarChart

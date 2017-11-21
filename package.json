@@ -40,5 +40,8 @@
   },
   "vusion": {
     "type": "library"
+  },
+  "dependencies": {
+    "matchmedia-polyfill": "^0.3.0"
   }
 }

@@ -1,4 +1,4 @@
-import Field from 'u-field.vue';
+import Field from '../u-field.vue';
 
 const walk = (rootVM, func) => {
     let queue = [];

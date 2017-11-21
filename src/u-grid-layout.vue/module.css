@@ -1,0 +1,17 @@
+.root { margin: -10px; }
+.root .column { padding: 10px; }
+
+.root[gap^="none"] { margin-top: 0; margin-bottom: 0; }
+.root[gap^="none"] .column { padding-top: 0; padding-bottom: 0 }
+.root[gap$="none"] { margin-left: 0; margin-right: 0; }
+.root[gap$="none"] .column { padding-left: 0; padding-right: 0 }
+
+.root[gap^="small"] { margin-top: -5px; margin-bottom: -5px }
+.root[gap^="small"] .column { padding-top: 5px; padding-bottom: 5px; }
+.root[gap$="small"] { margin-left: -5px; margin-right: -5px; }
+.root[gap$="small"] .column { padding-left: 5px; padding-right: 5px; }
+
+.root[gap^="large"] { margin-top: -15px; margin-bottom: -15px; }
+.root[gap^="large"] .column { padding-top: 15px; padding-bottom: 15px; }
+.root[gap$="large"] { margin-left: -15px; margin-right: -15px; }
+.root[gap$="large"] .column { padding-left: 15px; padding-right: 15px; }

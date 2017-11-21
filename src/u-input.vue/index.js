@@ -1,4 +1,4 @@
-import Field from 'u-field.vue';
+import Field from '../u-field.vue';
 
 export default {
     name: 'u-input',
