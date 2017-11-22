@@ -122,5 +122,14 @@ export default {
                 });
             }
         },
+        onToggle(groupVM, expanded) {
+            this.$emit('toggle', {
+                expanded,
+                groupVM,
+            });
+        },
+        toggleAll(expanded) {
+            this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));
+        },
     },
 };

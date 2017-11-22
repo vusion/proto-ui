@@ -91,6 +91,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
+| router | Boolean | `true` | 是否根据vue-router来控制选择哪一项 |
 | href | String |  | 链接地址 |
 | target | String |  | 打开方式 |
 | to | String \| Location |  | 需要vue-router，与`<router-link>`的`to`属性相同。可以是一个字符串或者是描述目标位置的对象。 |
@@ -103,9 +104,9 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入`<u-navbar-item>`或`<u-navbar-divider>`子组件 |
+#### (default)
+
+插入`<u-navbar-item>`或`<u-navbar-divider>`子组件。
 
 ### Events
 
@@ -151,9 +152,9 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入文本或HTML |
+#### (default)
+
+插入文本或HTML。
 
 ### Events
 

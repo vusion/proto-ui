@@ -3,16 +3,16 @@
         :readonly="rootVM.readonly"
         :disabled="disabled || rootVM.disabled"
         :tabindex="disabled || rootVM.readonly || rootVM.disabled ? -1 : 0"
-        @click="select()"
+        @click="select(), rootVM.expandTrigger === 'click' && toggle()"
         @keyup.enter="select()"
         @keyup.left="toggle(false)"
         @keyup.right="toggle(true)">
         <div :class="$style.back"></div>
         <div :class="$style.expander" v-if="data || nodeVMs.length"
             :expanded="currentExpanded"
-            @click.stop="toggle()"></div>
+            @click="rootVM.expandTrigger === 'click-expander' && ($event.stopPropagation(), toggle())"></div>
         <div :class="$style.text">
-            <u-checkbox v-if="rootVM.checkable" :value="currentChecked" @check="check($event.value)"></u-checkbox>
+            <u-checkbox v-if="rootVM.checkable" :value="currentChecked" @check="check($event.value)" @click.native.stop></u-checkbox>
             <u-tree-view-text
                 :data="data"
                 :text="text"
@@ -24,8 +24,9 @@
             ></u-tree-view-text>
         </div>
     </div>
-    <div :class="$style.list" v-show="currentExpanded">
-        <u-tree-view-node v-if="data"
+    <u-collapse-transition>
+        <div :class="$style.list" v-show="currentExpanded">
+            <u-tree-view-node v-if="data"
             v-for="node in data"
             :text="node[rootVM.field]"
             :key="node.key"
@@ -35,7 +36,8 @@
             :disabled="node.disabled"
             :data="node.children"
             :node="node"
-        ></u-tree-view-node>
-        <slot></slot>
-    </div>
+            ></u-tree-view-node>
+            <slot></slot>
+        </div>
+    </u-collapse-transition>
 </div>

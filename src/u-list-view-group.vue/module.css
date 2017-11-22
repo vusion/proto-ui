@@ -35,3 +35,7 @@
 .expander[expanded]:before {
     content: '▾';
 }
+
+.root[disabled] .expander {
+    color: $brand-disabled;
+}

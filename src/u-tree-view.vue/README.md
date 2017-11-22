@@ -126,54 +126,62 @@
 #### Tag方式
 
 ``` html
-<u-tree-view readonly>
-    <u-tree-view-node text="节点1">
-        <u-tree-view-node text="节点1.1"></u-tree-view-node>
-        <u-tree-view-node text="节点1.2">
-            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
-        </u-tree-view-node>
-        <u-tree-view-node text="节点1.3"></u-tree-view-node>
-        <u-tree-view-node text="节点1.4"></u-tree-view-node>
-    </u-tree-view-node>
-    <u-tree-view-node text="节点2"></u-tree-view-node>
-    <u-tree-view-node text="节点3">
-        <u-tree-view-node text="节点3.1"></u-tree-view-node>
-        <u-tree-view-node text="节点3.2"></u-tree-view-node>
-    </u-tree-view-node>
-</u-tree-view>
-<u-tree-view disabled>
-    <u-tree-view-node text="节点1">
-        <u-tree-view-node text="节点1.1"></u-tree-view-node>
-        <u-tree-view-node text="节点1.2">
-            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
-        </u-tree-view-node>
-        <u-tree-view-node text="节点1.3"></u-tree-view-node>
-        <u-tree-view-node text="节点1.4"></u-tree-view-node>
-    </u-tree-view-node>
-    <u-tree-view-node text="节点2"></u-tree-view-node>
-    <u-tree-view-node text="节点3">
-        <u-tree-view-node text="节点3.1"></u-tree-view-node>
-        <u-tree-view-node text="节点3.2"></u-tree-view-node>
-    </u-tree-view-node>
-</u-tree-view>
-<u-tree-view>
-    <u-tree-view-node text="节点1">
-        <u-tree-view-node text="节点1.1"></u-tree-view-node>
-        <u-tree-view-node text="节点1.2" disabled>
-            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
-        </u-tree-view-node>
-        <u-tree-view-node text="节点1.3" disabled></u-tree-view-node>
-        <u-tree-view-node text="节点1.4"></u-tree-view-node>
-    </u-tree-view-node>
-    <u-tree-view-node text="节点2" disabled></u-tree-view-node>
-    <u-tree-view-node text="节点3">
-        <u-tree-view-node text="节点3.1"></u-tree-view-node>
-        <u-tree-view-node text="节点3.2"></u-tree-view-node>
-    </u-tree-view-node>
-</u-tree-view>
+<u-grid-layout>
+    <u-grid-layout-column :span="4">
+        <u-tree-view readonly>
+            <u-tree-view-node text="节点1">
+                <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                <u-tree-view-node text="节点1.2">
+                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                <u-tree-view-node text="节点1.4"></u-tree-view-node>
+            </u-tree-view-node>
+            <u-tree-view-node text="节点2"></u-tree-view-node>
+            <u-tree-view-node text="节点3">
+                <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                <u-tree-view-node text="节点3.2"></u-tree-view-node>
+            </u-tree-view-node>
+        </u-tree-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-tree-view disabled>
+            <u-tree-view-node text="节点1">
+                <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                <u-tree-view-node text="节点1.2">
+                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                <u-tree-view-node text="节点1.4"></u-tree-view-node>
+            </u-tree-view-node>
+            <u-tree-view-node text="节点2"></u-tree-view-node>
+            <u-tree-view-node text="节点3">
+                <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                <u-tree-view-node text="节点3.2"></u-tree-view-node>
+            </u-tree-view-node>
+        </u-tree-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-tree-view>
+            <u-tree-view-node text="节点1">
+                <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                <u-tree-view-node text="节点1.2" disabled>
+                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点1.3" disabled></u-tree-view-node>
+                <u-tree-view-node text="节点1.4"></u-tree-view-node>
+            </u-tree-view-node>
+            <u-tree-view-node text="节点2" disabled></u-tree-view-node>
+            <u-tree-view-node text="节点3">
+                <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                <u-tree-view-node text="节点3.2"></u-tree-view-node>
+            </u-tree-view-node>
+        </u-tree-view>
+    </u-grid-layout-column>
+</u-grid-layout>
 ```
 
 #### Data方式
@@ -195,6 +203,82 @@
         { text: '节点3.2'}
     ]}
 ]"></u-tree-view>
+```
+
+
+### 手风琴
+
+``` html
+<u-tree-view accordion>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1">
+            <u-tree-view-node text="节点1.1.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.1.2"></u-tree-view-node>
+        </u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+        </u-tree-view-node>
+        <u-tree-view-node text="节点1.3">
+            <u-tree-view-node text="节点1.3.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.3.2"></u-tree-view-node>
+        </u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
+    </u-tree-view-node>
+    <u-tree-view-node text="节点2" expanded>
+        <u-tree-view-node text="节点2.1"></u-tree-view-node>
+        <u-tree-view-node text="节点2.2"></u-tree-view-node>
+    </u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
+    </u-tree-view-node>
+</u-tree-view>
+```
+
+### 展开/折叠触发方式
+
+``` html
+<u-grid-layout>
+    <u-grid-layout-column :span="4" expand-trigger="click">
+        <p>整行点击均可触发（默认）</p>
+        <u-tree-view>
+            <u-tree-view-node text="节点1" expanded>
+                <u-tree-view-node text="节点1.1" expanded></u-tree-view-node>
+                <u-tree-view-node text="节点1.2" expanded>
+                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                <u-tree-view-node text="节点1.4"></u-tree-view-node>
+            </u-tree-view-node>
+            <u-tree-view-node text="节点2"></u-tree-view-node>
+            <u-tree-view-node text="节点3">
+                <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                <u-tree-view-node text="节点3.2"></u-tree-view-node>
+            </u-tree-view-node>
+        </u-tree-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <p>仅点击小箭头时触发</p>
+        <u-tree-view expand-trigger="click-expander">
+            <u-tree-view-node text="节点1" expanded>
+                <u-tree-view-node text="节点1.1" expanded></u-tree-view-node>
+                <u-tree-view-node text="节点1.2" expanded>
+                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                <u-tree-view-node text="节点1.4"></u-tree-view-node>
+            </u-tree-view-node>
+            <u-tree-view-node text="节点2"></u-tree-view-node>
+            <u-tree-view-node text="节点3">
+                <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                <u-tree-view-node text="节点3.2"></u-tree-view-node>
+            </u-tree-view-node>
+        </u-tree-view>
+    </u-grid-layout-column>
+</u-grid-layout>
 ```
 
 ### 可取消
@@ -304,6 +388,8 @@ export default {
 | field | String | `'text'` | 显示文本字段 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | checkable | Boolean | `false` | 是否可以选中/取消 |
+| accordion | Boolean | `false` | 是否每次只会展开一个分组 |
+| expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -348,11 +434,11 @@ export default {
 
 #### @toggle
 
-展开/收起某节点时触发
+展开/折叠某节点时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/收起状态 |
+| $event.expanded | Boolean | 展开/折叠状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
 
@@ -371,11 +457,11 @@ export default {
 
 #### toggleAll(expanded)
 
-展开/收起所有节点
+展开/折叠所有节点
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| expanded | Boolean | 展开/收起 |
+| expanded | Boolean | 展开/折叠 |
 
 #### checkAll(checked)
 
@@ -391,7 +477,7 @@ export default {
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value | Any | | 此项的值 |
-| expanded.sync | Any | | 展开/收起状态 |
+| expanded.sync | Any | | 展开/折叠状态 |
 | checked.sync | Any | | 选中/取消状态 |
 | disabled | Boolean | `false` | 禁用此项 |
 | node | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
@@ -400,7 +486,7 @@ export default {
 
 #### (default)
 
-插入文本或HTML
+插入文本或HTML。
 
 ### Events
 
@@ -417,22 +503,22 @@ export default {
 
 #### @before-toggle
 
-展开/收起此节点前触发
+展开/折叠此节点前触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/收起状态 |
+| $event.expanded | Boolean | 展开/折叠状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
-| $event.preventDefault | Function | 阻止选择流程 |
+| $event.preventDefault | Function | 阻止展开/折叠流程 |
 
 #### @toggle
 
-展开/收起某节点时触发
+展开/折叠某节点时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/收起状态 |
+| $event.expanded | Boolean | 展开/折叠状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
 

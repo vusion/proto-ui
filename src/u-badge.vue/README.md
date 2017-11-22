@@ -45,6 +45,6 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入需要附加徽章的元素 |
+#### (default)
+
+插入需要附加徽章的元素。

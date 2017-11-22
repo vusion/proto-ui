@@ -37,6 +37,9 @@ $height: 24px;
 .text {
     position: relative;
     padding: 4px 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .item:hover .back {
@@ -84,3 +87,4 @@ $height: 24px;
 .item[selected][disabled] .back {
     background: $gray-lighter;
 }
+

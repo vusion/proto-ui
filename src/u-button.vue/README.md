@@ -37,9 +37,9 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入文本或HTML |
+#### (default)
+
+插入文本或HTML。
 
 ### Events
 

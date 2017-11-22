@@ -94,15 +94,24 @@ export default {
                 return;
 
             this.currentExpanded = expanded;
-
             this.$emit('update:expanded', expanded);
+
+            if (this.rootVM.accordion) {
+                (this.parentVM || this.rootVM).nodeVMs.forEach((nodeVM) => {
+                    if (nodeVM !== this) {
+                        nodeVM.currentExpanded = false;
+                        nodeVM.$emit('update:expanded', false);
+                    }
+                });
+            }
+
             this.$emit('toggle', {
                 expanded,
                 node: this.node,
                 nodeVM: this,
             });
 
-            this.rootVM.toggle(this, expanded);
+            this.rootVM.onToggle(this, expanded);
         },
         check(checked, direction = 'up+down') {
             const oldChecked = this.currentChecked;
@@ -143,7 +152,7 @@ export default {
                     nodeVM: this,
                 });
 
-                this.rootVM.check(this, checked, oldChecked);
+                this.rootVM.onCheck(this, checked, oldChecked);
             }
         },
     },

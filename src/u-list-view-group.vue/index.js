@@ -3,6 +3,7 @@ import Emitter from '../u-emitter.vue';
 export default {
     name: 'u-list-view-group',
     parentName: 'u-list-view',
+    childName: 'u-list-view-item',
     mixins: [Emitter],
     props: {
         text: String,
@@ -76,7 +77,10 @@ export default {
                 groupVM: this,
             });
 
-            // this.parent
+            this.parentVM.onToggle({
+                expanded,
+                groupVM: this,
+            });
         },
     },
 };

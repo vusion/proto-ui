@@ -50,6 +50,14 @@ export default {
             return { width };
         },
     },
+    watch: {
+        currentSpan(span, oldSpan) {
+            this.$emit('responsive', {
+                span,
+                oldSpan,
+            });
+        },
+    },
     methods: {
         getPercent(numerator, denominator) {
             denominator = denominator || this.parentVM.repeat;
@@ -69,5 +77,4 @@ export default {
             this.currentSpan = span;
         },
     },
-
 };

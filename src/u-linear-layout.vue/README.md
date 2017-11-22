@@ -129,6 +129,6 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入需要布局的元素 |
+#### (default)
+
+插入需要布局的元素。

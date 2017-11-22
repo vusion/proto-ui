@@ -88,16 +88,16 @@
 
 ``` html
 <u-grid-layout>
-    <u-grid-layout-column :span="4" readonly>
-        <u-list-view value="towel" :data="[
+    <u-grid-layout-column :span="4">
+        <u-list-view value="towel" readonly :data="[
             { text: '水杯', value: 'cup' },
             { text: '坚果', value: 'nut' },
             { text: '毛巾', value: 'towel' },
             { text: '沙发', value: 'sofa' },
         ]"></u-list-view>
     </u-grid-layout-column>
-    <u-grid-layout-column :span="4" disabled>
-        <u-list-view value="towel" :data="[
+    <u-grid-layout-column :span="4">
+        <u-list-view value="towel" disabled :data="[
             { text: '水杯', value: 'cup' },
             { text: '坚果', value: 'nut' },
             { text: '毛巾', value: 'towel' },
@@ -138,7 +138,7 @@
 <u-grid-layout>
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
-            <p>默认，无展开/收起功能</p>
+            <p>默认，无折叠功能</p>
             <u-list-view>
                 <u-list-view-group text="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
@@ -155,13 +155,13 @@
             </u-list-view>
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
-            <p>开启展开/收起功能</p>
+            <p>开启折叠功能</p>
             <u-list-view collapsible>
                 <u-list-view-group text="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
                     <u-list-view-item>牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具" expanded>
+                <u-list-view-group text="杯具" expanded disabled>
                     <u-list-view-item>牙缸</u-list-view-item>
                     <u-list-view-item>水杯</u-list-view-item>
                 </u-list-view-group>
@@ -191,7 +191,7 @@
     </u-grid-layout-row>
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
-            <p>触发方式：热区为整体</p>
+            <p>触发方式：整行点击均可触发（默认）</p>
             <u-list-view collapsible expand-trigger="click">
                 <u-list-view-group text="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
@@ -204,7 +204,7 @@
             </u-list-view>
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
-            <p>触发方式：热区仅为小箭头</p>
+            <p>触发方式：仅点击小箭头时触发</p>
             <u-list-view collapsible expand-trigger="click-expander">
                 <u-list-view-group text="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
@@ -269,14 +269,17 @@ export default {
 | field | String | `'text'` | 显示文本字段 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | multiple | Boolean | `false` | 是否可以多选 |
+| collapsible | Boolean | `false` | 分组是否可以折叠 |
+| accordion | Boolean | `false` | 是否每次只会展开一个分组 |
+| expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入`<u-list-view-item>`子组件 |
+#### (default)
+
+插入`<u-list-view-item>`、`<u-list-view-divider>`或`<u-list-view-group>`子组件。
 
 ### Events
 
@@ -313,6 +316,25 @@ export default {
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 
+#### @toggle
+
+展开/折叠某分组时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.groupVM | ListViewGroup | 分组组件 |
+
+### Methods
+
+#### toggleAll(expanded)
+
+展开/折叠所有分组
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| expanded | Boolean | 展开/折叠 |
+
 ## ListViewItem API
 ### Props/Attrs
 
@@ -324,9 +346,9 @@ export default {
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入文本或HTML |
+#### (default)
+
+插入文本或HTML。
 
 ### Events
 
@@ -348,7 +370,36 @@ export default {
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | text | String |  | 显示的文本 |
-| expanded | Boolean | `false` | 是否展开 |
+| collapsible | Boolean |  | `false` | 是否可以折叠 |
+| expanded.sync | Boolean | `false` | 展开/折叠状态 |
+| disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
+
+### Slots
+
+#### (default)
+
+插入`<u-list-view-item>`或`<u-list-view-divider>`子组件。
+
+### Events
+
+#### @before-toggle
+
+展开/折叠此分组前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.groupVM | TreeViewNode | 分组组件 |
+| $event.preventDefault | Function | 阻止展开/折叠流程 |
+
+#### @toggle
+
+展开/折叠某分组时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.groupVM | TreeViewNode | 分组组件 |
 
 ## ListViewDivider API
 

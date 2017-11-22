@@ -227,6 +227,12 @@
 | --------- | ---- | ------- | ----------- |
 | gap | String | `'normal'` | 栅格之间的间隔，一个值（行列间隔）或两个值（行间隔 列间隔）。可选值: `'none'`, `'small'`, `'normal'`, `'large'` |
 
+### Slots
+
+#### (default)
+
+插入`<u-grid-layout-row>`或`<u-grid-layout-column>`子组件。
+
 ## GridLayoutRow API
 ### Props/Attrs
 
@@ -237,6 +243,12 @@
 | justify | String | `'start'` | flex布局模式的水平分布方式，可选值：`'start'`, `'center'`, `'end'`, `'space-between'`, `'space-around'` |
 | alignment | String | `'stretch'` | flex布局模式的垂直对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
 
+### Slots
+
+#### (default)
+
+插入`<u-grid-layout-column>`子组件。
+
 ## GridLayoutColumn API
 ### Props/Attrs
 
@@ -246,8 +258,25 @@
 | offset | Number | | 列左边偏移的栅格数 |
 | pull | Number | | 列向左移动栅格数 |
 | push | Number | | 列向右移动栅格数 |
-| media-huge | Number | | 响应式布局时`<=1440px`的列跨越栅格数 |
-| media-large | Number | | 响应式布局时`<=1200px`的列跨越栅格数 |
-| media-medium | Number | | 响应式布局时`<=960px`的列跨越栅格数 |
-| media-small | Number | | 响应式布局时`<=768px`的列跨越栅格数 |
-| media-mini | Number | | 响应式布局时`<=480px`的列跨越栅格数 |
+| media-huge | Number | | 响应式布局`<=1440px`的列跨越栅格数 |
+| media-large | Number | | 响应式布局`<=1200px`的列跨越栅格数 |
+| media-medium | Number | | 响应式布局`<=960px`的列跨越栅格数 |
+| media-small | Number | | 响应式布局`<=768px`的列跨越栅格数 |
+| media-mini | Number | | 响应式布局`<=480px`的列跨越栅格数 |
+
+### Slots
+
+#### (default)
+
+插入需要布局的元素。
+
+### Events
+
+#### @responsive
+
+响应式布局引发栅格变化时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.span | Number | 列跨越的栅格数 |
+| $event.oldSpan | Number | 旧的列跨越的栅格数 |

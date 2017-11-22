@@ -27,6 +27,8 @@ export default {
         field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
         checkable: { type: Boolean, default: false },
+        accordion: { type: Boolean, default: false },
+        expandTrigger: { type: String, default: 'click' },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -113,7 +115,7 @@ export default {
                 nodeVM: this.selectedVM,
             });
         },
-        toggle(nodeVM, expanded) {
+        onToggle(nodeVM, expanded) {
             this.$emit('toggle', {
                 expanded,
                 node: nodeVM.node,
@@ -123,7 +125,7 @@ export default {
         toggleAll(expanded) {
             walk(this, (nodeVM) => nodeVM.toggle(expanded));
         },
-        check(nodeVM, checked, oldChecked) {
+        onCheck(nodeVM, checked, oldChecked) {
             this.$emit('check', {
                 checked,
                 oldChecked,
