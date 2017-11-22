@@ -1,6 +1,8 @@
 <div :class="$style.root">
     <div :class="$style.head" @click="parentVM.expandTrigger === 'click' && toggle()">
-        <span>{{ text }}</span>
+         <div :class="$style.text">
+            <slot name="text">{{ text }}</slot>
+        </div>
         <span v-if="currentCollapsible" :class="$style.expander" :expanded="currentExpanded" @click="parentVM.expandTrigger === 'click-expander' && toggle()"></span>
     </div>
     <u-collapse-transition>

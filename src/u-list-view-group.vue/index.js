@@ -13,6 +13,7 @@ export default {
     data() {
         return {
             parentVM: undefined,
+            itemVMs: [],
             currentExpanded: this.expanded,
         };
     },
@@ -22,6 +23,14 @@ export default {
         },
     },
     created() {
+        this.$on('add-item-vm', (itemVM) => {
+            itemVM.groupVM = this;
+            this.itemVMs.push(itemVM);
+        });
+        this.$on('remove-item-vm', (itemVM) => {
+            itemVM.groupVM = undefined;
+            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
+        });
         this.dispatch(this.$options.parentName, 'add-group-vm', this);
     },
     destroyed() {

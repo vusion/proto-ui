@@ -4,6 +4,9 @@
 
     /* @Public */
     padding: 4px 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .root:hover {

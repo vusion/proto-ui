@@ -68,8 +68,10 @@ export default {
                     return;
                 if (value === undefined)
                     this.selectedVM = undefined;
-                else
+                else {
                     this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+                    this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
+                }
             }
         },
         select(itemVM) {

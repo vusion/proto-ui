@@ -9,9 +9,10 @@
 
 ``` html
 <u-list-view>
-    <u-list-view-item>苹果</u-list-view-item>
-    <u-list-view-item>香蕉</u-list-view-item>
-    <u-list-view-item>蛋糕</u-list-view-item>
+    <u-list-view-item>水杯</u-list-view-item>
+    <u-list-view-item>坚果</u-list-view-item>
+    <u-list-view-item>毛巾</u-list-view-item>
+    <u-list-view-item>沙发</u-list-view-item>
 </u-list-view>
 ```
 
@@ -19,9 +20,10 @@
 
 ``` html
 <u-list-view :data="[
-    { text: '苹果' },
-    { text: '香蕉' },
-    { text: '蛋糕' },
+    { text: '水杯' },
+    { text: '坚果' },
+    { text: '毛巾' },
+    { text: '沙发' },
 ]"></u-list-view>
 ```
 
@@ -30,20 +32,22 @@
 #### Tag方式
 
 ``` html
-<u-list-view value="C">
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B">香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
+<u-list-view value="towel">
+    <u-list-view-item value="cup">水杯</u-list-view-item>
+    <u-list-view-item value="nut">坚果</u-list-view-item>
+    <u-list-view-item value="towel">毛巾</u-list-view-item>
+    <u-list-view-item value="sofa">沙发</u-list-view-item>
 </u-list-view>
 ```
 
 #### Data方式
 
 ``` html
-<u-list-view value="C" :data="[
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B' },
-    { text: '蛋糕', value: 'C' },
+<u-list-view value="towel" :data="[
+    { text: '水杯', value: 'cup' },
+    { text: '坚果', value: 'nut' },
+    { text: '毛巾', value: 'towel' },
+    { text: '沙发', value: 'sofa' },
 ]"></u-list-view>
 ```
 
@@ -54,24 +58,27 @@
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">
-        <u-list-view value="C" readonly>
-            <u-list-view-item value="A">苹果</u-list-view-item>
-            <u-list-view-item value="B">香蕉</u-list-view-item>
-            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        <u-list-view value="towel" readonly>
+            <u-list-view-item value="cup">水杯</u-list-view-item>
+            <u-list-view-item value="nut">坚果</u-list-view-item>
+            <u-list-view-item value="towel">毛巾</u-list-view-item>
+            <u-list-view-item value="sofa">沙发</u-list-view-item>
         </u-list-view>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <u-list-view value="C" disabled>
-            <u-list-view-item value="A">苹果</u-list-view-item>
-            <u-list-view-item value="B">香蕉</u-list-view-item>
-            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        <u-list-view value="towel" disabled>
+            <u-list-view-item value="cup">水杯</u-list-view-item>
+            <u-list-view-item value="nut">坚果</u-list-view-item>
+            <u-list-view-item value="towel">毛巾</u-list-view-item>
+            <u-list-view-item value="sofa">沙发</u-list-view-item>
         </u-list-view>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <u-list-view value="C">
-            <u-list-view-item value="A">苹果</u-list-view-item>
-            <u-list-view-item value="B" disabled>香蕉</u-list-view-item>
-            <u-list-view-item value="C">蛋糕</u-list-view-item>
+        <u-list-view value="towel">
+            <u-list-view-item value="cup">水杯</u-list-view-item>
+            <u-list-view-item value="nut" disabled>坚果</u-list-view-item>
+            <u-list-view-item value="towel">毛巾</u-list-view-item>
+            <u-list-view-item value="sofa">沙发</u-list-view-item>
         </u-list-view>
     </u-grid-layout-column>
 </u-grid-layout>
@@ -80,114 +87,153 @@
 #### Data方式
 
 ``` html
-<u-list-view value="C" :data="[
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B', disabled: true },
-    { text: '蛋糕', value: 'C' },
-]"></u-list-view>
+<u-grid-layout>
+    <u-grid-layout-column :span="4" readonly>
+        <u-list-view value="towel" :data="[
+            { text: '水杯', value: 'cup' },
+            { text: '坚果', value: 'nut' },
+            { text: '毛巾', value: 'towel' },
+            { text: '沙发', value: 'sofa' },
+        ]"></u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4" disabled>
+        <u-list-view value="towel" :data="[
+            { text: '水杯', value: 'cup' },
+            { text: '坚果', value: 'nut' },
+            { text: '毛巾', value: 'towel' },
+            { text: '沙发', value: 'sofa' },
+        ]"></u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-list-view value="towel" :data="[
+            { text: '水杯', value: 'cup' },
+            { text: '坚果', value: 'nut', disabled: true },
+            { text: '毛巾', value: 'towel' },
+            { text: '沙发', value: 'sofa' },
+        ]"></u-list-view>
+    </u-grid-layout-column>
+</u-grid-layout>
 ```
 
 ### 分隔符
 
 ``` html
-<u-list-view>
-    <u-list-view-item>苹果</u-list-view-item>
-    <u-list-view-item>香蕉</u-list-view-item>
+<u-list-view value="nut">
+    <u-list-view-item value="cup">水杯</u-list-view-item>
+    <u-list-view-item value="cup">牙刷</u-list-view-item>
     <u-list-view-divider></u-list-view-divider>
-    <u-list-view-item>蛋糕</u-list-view-item>
+    <u-list-view-item value="nut">坚果</u-list-view-item>
+    <u-list-view-item value="towel">毛巾</u-list-view-item>
+    <u-list-view-item value="sofa">沙发</u-list-view-item>
 </u-list-view>
 ```
+
+#### Data方式
+
+暂不支持。
 
 ### 分组
 
 ``` html
 <u-grid-layout>
-    <u-grid-layout-column :span="3">
-        <p>默认，无展开/收起功能</p>
-        <u-list-view>
-            <u-list-view-group text="水果">
-                <u-list-view-item>苹果</u-list-view-item>
-                <u-list-view-item>香蕉</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="蔬菜">
-                <u-list-view-item>青菜</u-list-view-item>
-                <u-list-view-item>茄子</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="甜点">
-                <u-list-view-item>蛋糕</u-list-view-item>
-                <u-list-view-item>奶酪</u-list-view-item>
-            </u-list-view-group>
-        </u-list-view>
-    </u-grid-layout-column>
-    <u-grid-layout-column :span="3">
-        <p>开启展开/收起功能</p>
-        <u-list-view collapsible>
-            <u-list-view-group text="水果">
-                <u-list-view-item>苹果</u-list-view-item>
-                <u-list-view-item>香蕉</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="蔬菜" expanded>
-                <u-list-view-item>青菜</u-list-view-item>
-                <u-list-view-item>茄子</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="甜点" :collapsible="false">
-                <u-list-view-item>蛋糕</u-list-view-item>
-                <u-list-view-item>奶酪</u-list-view-item>
-            </u-list-view-group>
-        </u-list-view>
-    </u-grid-layout-column>
-    <u-grid-layout-column :span="3">
-        <p>手风琴模式</p>
-        <u-list-view collapsible accordion>
-            <u-list-view-group text="水果" expanded>
-                <u-list-view-item>苹果</u-list-view-item>
-                <u-list-view-item>香蕉</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="蔬菜">
-                <u-list-view-item>青菜</u-list-view-item>
-                <u-list-view-item>茄子</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="甜点">
-                <u-list-view-item>蛋糕</u-list-view-item>
-                <u-list-view-item>奶酪</u-list-view-item>
-            </u-list-view-group>
-        </u-list-view>
-    </u-grid-layout-column>
-    <u-grid-layout-column :span="3">
-        <p>展开/收起触发方式</p>
-        <u-list-view collapsible expand-trigger="click">
-            <u-list-view-group text="水果">
-                <u-list-view-item>苹果</u-list-view-item>
-                <u-list-view-item>香蕉</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="蔬菜">
-                <u-list-view-item>青菜</u-list-view-item>
-                <u-list-view-item>茄子</u-list-view-item>
-            </u-list-view-group>
-        </u-list-view>
-        <u-list-view collapsible expand-trigger="click-expander">
-            <u-list-view-group text="水果">
-                <u-list-view-item>苹果</u-list-view-item>
-                <u-list-view-item>香蕉</u-list-view-item>
-            </u-list-view-group>
-            <u-list-view-group text="蔬菜">
-                <u-list-view-item>青菜</u-list-view-item>
-                <u-list-view-item>茄子</u-list-view-item>
-            </u-list-view-group>
-        </u-list-view>
-    </u-grid-layout-column>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <p>默认，无展开/收起功能</p>
+            <u-list-view>
+                <u-list-view-group text="洗具">
+                    <u-list-view-item>毛巾</u-list-view-item>
+                    <u-list-view-item>牙刷</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="杯具">
+                    <u-list-view-item>牙缸</u-list-view-item>
+                    <u-list-view-item>水杯</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="餐具">
+                    <u-list-view-item>筷子</u-list-view-item>
+                    <u-list-view-item>碗</u-list-view-item>
+                </u-list-view-group>
+            </u-list-view>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <p>开启展开/收起功能</p>
+            <u-list-view collapsible>
+                <u-list-view-group text="洗具">
+                    <u-list-view-item>毛巾</u-list-view-item>
+                    <u-list-view-item>牙刷</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="杯具" expanded>
+                    <u-list-view-item>牙缸</u-list-view-item>
+                    <u-list-view-item>水杯</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="餐具" :collapsible="false">
+                    <u-list-view-item>筷子</u-list-view-item>
+                    <u-list-view-item>碗</u-list-view-item>
+                </u-list-view-group>
+            </u-list-view>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <p>手风琴模式</p>
+            <u-list-view collapsible accordion value="cup">
+                <u-list-view-group text="洗具">
+                    <u-list-view-item value="towel">毛巾</u-list-view-item>
+                    <u-list-view-item value="toothbrush">牙刷</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="杯具">
+                    <u-list-view-item value="toothcup">牙缸</u-list-view-item>
+                    <u-list-view-item value="cup">水杯</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="餐具">
+                    <u-list-view-item value="chopsticks">筷子</u-list-view-item>
+                    <u-list-view-item value="bowl">碗</u-list-view-item>
+                </u-list-view-group>
+            </u-list-view>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <p>触发方式：热区为整体</p>
+            <u-list-view collapsible expand-trigger="click">
+                <u-list-view-group text="洗具">
+                    <u-list-view-item>毛巾</u-list-view-item>
+                    <u-list-view-item>牙刷</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="杯具">
+                    <u-list-view-item>牙缸</u-list-view-item>
+                    <u-list-view-item>水杯</u-list-view-item>
+                </u-list-view-group>
+            </u-list-view>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <p>触发方式：热区仅为小箭头</p>
+            <u-list-view collapsible expand-trigger="click-expander">
+                <u-list-view-group text="洗具">
+                    <u-list-view-item>毛巾</u-list-view-item>
+                    <u-list-view-item>牙刷</u-list-view-item>
+                </u-list-view-group>
+                <u-list-view-group text="杯具">
+                    <u-list-view-item>牙缸</u-list-view-item>
+                    <u-list-view-item>水杯</u-list-view-item>
+                </u-list-view-group>
+            </u-list-view>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
 </u-grid-layout>
 ```
+
+#### Data方式
+
+暂不支持。
 
 ### 可取消
 
 尝试在同一个选项上点击两次。
 
 ``` html
-<u-list-view value="C" cancelable>
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B">香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
+<u-list-view value="towel" cancelable>
+    <u-list-view-item value="cup">水杯</u-list-view-item>
+    <u-list-view-item value="nut">坚果</u-list-view-item>
+    <u-list-view-item value="towel">毛巾</u-list-view-item>
+    <u-list-view-item value="sofa">沙发</u-list-view-item>
 </u-list-view>
 ```
 
@@ -196,9 +242,10 @@
 ``` vue
 <template>
 <u-list-view multiple v-model="value">
-    <u-list-view-item value="A">苹果</u-list-view-item>
-    <u-list-view-item value="B">香蕉</u-list-view-item>
-    <u-list-view-item value="C">蛋糕</u-list-view-item>
+    <u-list-view-item value="cup">水杯</u-list-view-item>
+    <u-list-view-item value="nut">坚果</u-list-view-item>
+    <u-list-view-item value="towel">毛巾</u-list-view-item>
+    <u-list-view-item value="sofa">沙发</u-list-view-item>
 </u-list-view>
 <p>value: {{ value }}</p>
 </template>
@@ -206,7 +253,7 @@
 <script>
 export default {
     data() {
-        return { value: ['B', 'C'] };
+        return { value: ['nut', 'towel'] };
     },
 };
 </script>

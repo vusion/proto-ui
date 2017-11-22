@@ -3,6 +3,7 @@ import Emitter from '../u-emitter.vue';
 export default {
     name: 'u-list-view-item',
     parentName: 'u-list-view',
+    groupName: 'u-list-view-group',
     mixins: [Emitter],
     props: {
         value: null,
@@ -22,9 +23,11 @@ export default {
     },
     created() {
         this.dispatch(this.$options.parentName, 'add-item-vm', this);
+        this.dispatch(this.$options.groupName, 'add-item-vm', this);
     },
     destroyed() {
         this.dispatch(this.$options.parentName, 'remove-item-vm', this);
+        this.dispatch(this.$options.groupName, 'remove-item-vm', this);
     },
     methods: {
         select() {

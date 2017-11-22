@@ -10,7 +10,7 @@
 ### 禁用
 
 ``` html
-<u-button disabled>按钮</u-button>
+<u-button disabled>禁用</u-button>
 ```
 
 ### 链接
