@@ -101,16 +101,82 @@
 ### 分组
 
 ``` html
-<u-list-view>
-    <u-list-view-group text="水果">
-        <u-list-view-item>苹果</u-list-view-item>
-        <u-list-view-item>香蕉</u-list-view-item>
-    </u-list-view-group>
-    <u-list-view-group text="甜点">
-        <u-list-view-item>蛋糕</u-list-view-item>
-        <u-list-view-item>奶酪</u-list-view-item>
-    </u-list-view-group>
-</u-list-view>
+<u-grid-layout>
+    <u-grid-layout-column :span="3">
+        <p>默认，无展开/收起功能</p>
+        <u-list-view>
+            <u-list-view-group text="水果">
+                <u-list-view-item>苹果</u-list-view-item>
+                <u-list-view-item>香蕉</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="蔬菜">
+                <u-list-view-item>青菜</u-list-view-item>
+                <u-list-view-item>茄子</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="甜点">
+                <u-list-view-item>蛋糕</u-list-view-item>
+                <u-list-view-item>奶酪</u-list-view-item>
+            </u-list-view-group>
+        </u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="3">
+        <p>开启展开/收起功能</p>
+        <u-list-view collapsible>
+            <u-list-view-group text="水果">
+                <u-list-view-item>苹果</u-list-view-item>
+                <u-list-view-item>香蕉</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="蔬菜" expanded>
+                <u-list-view-item>青菜</u-list-view-item>
+                <u-list-view-item>茄子</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="甜点" :collapsible="false">
+                <u-list-view-item>蛋糕</u-list-view-item>
+                <u-list-view-item>奶酪</u-list-view-item>
+            </u-list-view-group>
+        </u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="3">
+        <p>手风琴模式</p>
+        <u-list-view collapsible accordion>
+            <u-list-view-group text="水果" expanded>
+                <u-list-view-item>苹果</u-list-view-item>
+                <u-list-view-item>香蕉</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="蔬菜">
+                <u-list-view-item>青菜</u-list-view-item>
+                <u-list-view-item>茄子</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="甜点">
+                <u-list-view-item>蛋糕</u-list-view-item>
+                <u-list-view-item>奶酪</u-list-view-item>
+            </u-list-view-group>
+        </u-list-view>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="3">
+        <p>展开/收起触发方式</p>
+        <u-list-view collapsible expand-trigger="click">
+            <u-list-view-group text="水果">
+                <u-list-view-item>苹果</u-list-view-item>
+                <u-list-view-item>香蕉</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="蔬菜">
+                <u-list-view-item>青菜</u-list-view-item>
+                <u-list-view-item>茄子</u-list-view-item>
+            </u-list-view-group>
+        </u-list-view>
+        <u-list-view collapsible expand-trigger="click-expander">
+            <u-list-view-group text="水果">
+                <u-list-view-item>苹果</u-list-view-item>
+                <u-list-view-item>香蕉</u-list-view-item>
+            </u-list-view-group>
+            <u-list-view-group text="蔬菜">
+                <u-list-view-item>青菜</u-list-view-item>
+                <u-list-view-item>茄子</u-list-view-item>
+            </u-list-view-group>
+        </u-list-view>
+    </u-grid-layout-column>
+</u-grid-layout>
 ```
 
 ### 可取消

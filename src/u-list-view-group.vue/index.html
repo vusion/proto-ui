@@ -1,9 +1,11 @@
 <div :class="$style.root">
-    <div :class="$style.head">
+    <div :class="$style.head" @click="parentVM.expandTrigger === 'click' && toggle()">
         <span>{{ text }}</span>
-        <span :class="$style.expander" :expanded="currentExpanded" @click="currentExpanded = !currentExpanded"></span>
+        <span v-if="currentCollapsible" :class="$style.expander" :expanded="currentExpanded" @click="parentVM.expandTrigger === 'click-expander' && toggle()"></span>
     </div>
-    <div :class="$style.body" v-show="currentExpanded">
-        <slot></slot>
-    </div>
+    <u-collapse-transition>
+        <div :class="$style.body" v-show="currentCollapsible ? currentExpanded : true">
+            <slot></slot>
+        </div>
+    </u-collapse-transition>
 </div>

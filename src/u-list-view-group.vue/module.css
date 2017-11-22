@@ -7,6 +7,10 @@
     background: $gray-lighter;
 }
 
+.body {
+    /* transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out; */
+}
+
 .expander {
     position: absolute;
     right: 0;

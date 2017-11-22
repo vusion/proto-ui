@@ -6,6 +6,7 @@ import Block from './u-block.vue';
 import Button from './u-button.vue';
 import Checkbox from './u-checkbox.vue';
 import CircularProgress from './u-circular-progress.vue';
+import CollapseTransition from './u-collapse-transition.vue';
 import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Form from './u-form.vue';
@@ -47,6 +48,7 @@ export {
     Button,
     Checkbox,
     CircularProgress,
+    CollapseTransition,
     Emitter,
     Field,
     Form,

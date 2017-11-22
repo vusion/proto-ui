@@ -2,6 +2,7 @@ import Field from '../u-field.vue';
 
 export default {
     name: 'u-list-view',
+    groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
     mixins: [Field],
     props: {
@@ -10,12 +11,16 @@ export default {
         field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
+        collapsible: { type: Boolean, default: false },
+        accordion: { type: Boolean, default: false },
+        expandTrigger: { type: String, default: 'click' },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
     data() {
         return {
             ChildComponent: this.$options.childName,
+            groupVMs: [],
             itemVMs: [],
             selectedVM: undefined,
         };
@@ -33,6 +38,14 @@ export default {
         },
     },
     created() {
+        this.$on('add-group-vm', (groupVM) => {
+            groupVM.parentVM = this;
+            this.groupVMs.push(groupVM);
+        });
+        this.$on('remove-group-vm', (groupVM) => {
+            groupVM.parentVM = undefined;
+            this.groupVMs.splice(this.groupVMs.indexOf(groupVM), 1);
+        });
         this.$on('add-item-vm', (itemVM) => {
             itemVM.parentVM = this;
             this.itemVMs.push(itemVM);
