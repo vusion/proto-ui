@@ -5,6 +5,7 @@ import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
 import Checkbox from './u-checkbox.vue';
+import Checkbox0 from './u-checkbox--0.vue';
 import CircularProgress from './u-circular-progress.vue';
 import CollapseTransition from './u-collapse-transition.vue';
 import Emitter from './u-emitter.vue';
@@ -47,6 +48,7 @@ export {
     Block,
     Button,
     Checkbox,
+    Checkbox0,
     CircularProgress,
     CollapseTransition,
     Emitter,

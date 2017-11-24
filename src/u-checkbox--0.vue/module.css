@@ -1,0 +1,10 @@
+.root {}
+
+.box {
+    margin-right: 4px;
+    vertical-align: 1px;
+}
+
+.root:focus {
+    outline: $focus-outline;
+}

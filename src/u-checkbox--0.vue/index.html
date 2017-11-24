@@ -1,0 +1,7 @@
+<label :class="$style.root" :disabled="disabled" @click.prevent="check()"
+tabindex="0" @keydown.space.prevent @keyup.space.prevent="check()"
+@focus="onFocus" @blur="onBlur" v-on="listeners">
+    <input type="checkbox" :class="$style.box" ref="checkbox"
+        :checked="currentValue" :disabled="disabled">
+    <slot></slot>
+</label>
