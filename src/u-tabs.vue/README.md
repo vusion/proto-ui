@@ -5,9 +5,9 @@
 
 ``` html
 <u-tabs>
-    <u-tab title="TabA">ContentA</u-tab>
-    <u-tab title="TabB">ContentB</u-tab>
-    <u-tab title="TabC">ContentC</u-tab>
+    <u-tab title="模板">模板内容</u-tab>
+    <u-tab title="样式">样式内容</u-tab>
+    <u-tab title="逻辑">逻辑内容</u-tab>
 </u-tabs>
 ```
 
@@ -15,9 +15,9 @@
 
 ``` html
 <u-tabs value="B">
-    <u-tab title="TabA" value="A">ContentA</u-tab>
-    <u-tab title="TabB" value="B">ContentB</u-tab>
-    <u-tab title="TabC" value="C">ContentC</u-tab>
+    <u-tab title="模板" value="A">模板内容</u-tab>
+    <u-tab title="样式" value="B">样式内容</u-tab>
+    <u-tab title="逻辑" value="C">逻辑内容</u-tab>
 </u-tabs>
 ```
 
@@ -25,19 +25,19 @@
 
 ``` html
 <u-tabs readonly>
-    <u-tab title="TabA">Readonly</u-tab>
-    <u-tab title="TabB">Readonly</u-tab>
-    <u-tab title="TabC">Readonly</u-tab>
+    <u-tab title="模板">模板内容</u-tab>
+    <u-tab title="样式">样式内容</u-tab>
+    <u-tab title="逻辑">逻辑内容</u-tab>
 </u-tabs>
 <u-tabs disabled>
-    <u-tab title="TabA">Disabled All</u-tab>
-    <u-tab title="TabB">Disabled All</u-tab>
-    <u-tab title="TabC">Disabled All</u-tab>
+    <u-tab title="模板">模板内容</u-tab>
+    <u-tab title="样式">样式内容</u-tab>
+    <u-tab title="逻辑">逻辑内容</u-tab>
 </u-tabs>
 <u-tabs>
-    <u-tab title="TabA">Disabled Partially</u-tab>
-    <u-tab title="TabB" disabled>Disabled Partially</u-tab>
-    <u-tab title="TabC">Disabled Partially</u-tab>
+    <u-tab title="模板">模板内容</u-tab>
+    <u-tab title="样式" disabled>样式内容</u-tab>
+    <u-tab title="逻辑">逻辑内容</u-tab>
 </u-tabs>
 ```
 
@@ -45,9 +45,9 @@
 
 ``` html
 <u-tabs value="2">
-    <u-tab title="TabA" value="0">ContentA</u-tab>
-    <u-tab title="TabB" value="1" hidden>ContentB</u-tab>
-    <u-tab title="TabC" value="2">ContentC</u-tab>
+    <u-tab title="模板" value="0">模板内容</u-tab>
+    <u-tab title="样式" value="1" hidden>样式内容</u-tab>
+    <u-tab title="逻辑" value="2">逻辑内容</u-tab>
 </u-tabs>
 ```
 
@@ -55,11 +55,11 @@
 
 ``` html
 <u-tabs closable>
-    <u-tab title="TabA">ContentA</u-tab>
-    <u-tab title="TabB">ContentB</u-tab>
-    <u-tab title="TabC">ContentC</u-tab>
-    <u-tab title="TabD">ContentD</u-tab>
-    <u-tab title="TabE">ContentE</u-tab>
+    <u-tab title="模板">模板内容</u-tab>
+    <u-tab title="样式">样式内容</u-tab>
+    <u-tab title="逻辑">逻辑内容</u-tab>
+    <u-tab title="文档">文档内容</u-tab>
+    <u-tab title="资源">资源内容</u-tab>
 </u-tabs>
 ```
 
@@ -68,9 +68,9 @@
 
 ``` html
 <u-tabs router>
-    <u-tab title="Button" to="u-button">Button Content</u-tab>
-    <u-tab title="Checkbox" to="u-checkbox">Checkbox Content</u-tab>
-    <u-tab title="Tabs" to="u-tabs">Tabs Content</u-tab>
+    <u-tab title="Button" to="u-button"></u-tab>
+    <u-tab title="Checkbox" to="u-checkbox"></u-tab>
+    <u-tab title="Tabs" to="u-tabs"></u-tab>
 </u-tabs>
 ```
 
@@ -78,10 +78,10 @@
 
 ``` html
 <u-tabs value="1">
-    <u-tab title="TabA" value="0">ContentA</u-tab>
-    <u-tab title="TabB" value="1">ContentB</u-tab>
-    <u-tab title="TabC" value="2">ContentC</u-tab>
-    <u-checkbox slot="extra">All</u-checkbox>
+    <u-tab title="模板" value="0">模板内容</u-tab>
+    <u-tab title="样式" value="1">样式内容</u-tab>
+    <u-tab title="逻辑" value="2">逻辑内容</u-tab>
+    <u-checkbox slot="extra">全选</u-checkbox>
 </u-tabs>
 ```
 

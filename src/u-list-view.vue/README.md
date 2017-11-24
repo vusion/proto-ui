@@ -3,9 +3,9 @@
 ## 示例
 ### 基本形式
 
-有两种书写方式，这里推荐使用Tag方式，使用起来更加灵活。
+<!-- 有两种书写方式，这里推荐使用Tag方式，使用起来更加灵活。
 
-#### Tag方式
+#### Tag方式 -->
 
 ``` html
 <u-list-view>
@@ -16,7 +16,7 @@
 </u-list-view>
 ```
 
-#### Data方式
+<!-- #### Data方式
 
 ``` html
 <u-list-view :data="[
@@ -25,11 +25,11 @@
     { text: '毛巾' },
     { text: '沙发' },
 ]"></u-list-view>
-```
+``` -->
 
 ### 选项值
 
-#### Tag方式
+<!-- #### Tag方式 -->
 
 ``` html
 <u-list-view value="towel">
@@ -40,7 +40,7 @@
 </u-list-view>
 ```
 
-#### Data方式
+<!-- #### Data方式
 
 ``` html
 <u-list-view value="towel" :data="[
@@ -49,7 +49,7 @@
     { text: '毛巾', value: 'towel' },
     { text: '沙发', value: 'sofa' },
 ]"></u-list-view>
-```
+``` -->
 
 ### 只读、禁用、禁用某一项
 
@@ -84,7 +84,7 @@
 </u-grid-layout>
 ```
 
-#### Data方式
+<!-- #### Data方式
 
 ``` html
 <u-grid-layout>
@@ -113,7 +113,7 @@
         ]"></u-list-view>
     </u-grid-layout-column>
 </u-grid-layout>
-```
+``` -->
 
 ### 分隔符
 
@@ -128,9 +128,9 @@
 </u-list-view>
 ```
 
-#### Data方式
+<!-- #### Data方式
 
-暂不支持。
+暂不支持。 -->
 
 ### 分组
 
@@ -140,15 +140,15 @@
         <u-grid-layout-column :span="4">
             <p>默认，无折叠功能</p>
             <u-list-view>
-                <u-list-view-group text="洗具">
+                <u-list-view-group title="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
                     <u-list-view-item>牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具">
+                <u-list-view-group title="杯具">
                     <u-list-view-item>牙缸</u-list-view-item>
                     <u-list-view-item>水杯</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="餐具">
+                <u-list-view-group title="餐具">
                     <u-list-view-item>筷子</u-list-view-item>
                     <u-list-view-item>碗</u-list-view-item>
                 </u-list-view-group>
@@ -157,15 +157,15 @@
         <u-grid-layout-column :span="4">
             <p>开启折叠功能</p>
             <u-list-view collapsible>
-                <u-list-view-group text="洗具">
+                <u-list-view-group title="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
                     <u-list-view-item>牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具" expanded disabled>
+                <u-list-view-group title="杯具" expanded disabled>
                     <u-list-view-item>牙缸</u-list-view-item>
                     <u-list-view-item>水杯</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="餐具" :collapsible="false">
+                <u-list-view-group title="餐具" :collapsible="false">
                     <u-list-view-item>筷子</u-list-view-item>
                     <u-list-view-item>碗</u-list-view-item>
                 </u-list-view-group>
@@ -174,15 +174,15 @@
         <u-grid-layout-column :span="4">
             <p>手风琴模式</p>
             <u-list-view collapsible accordion value="cup">
-                <u-list-view-group text="洗具">
+                <u-list-view-group title="洗具">
                     <u-list-view-item value="towel">毛巾</u-list-view-item>
                     <u-list-view-item value="toothbrush">牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具">
+                <u-list-view-group title="杯具">
                     <u-list-view-item value="toothcup">牙缸</u-list-view-item>
                     <u-list-view-item value="cup">水杯</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="餐具">
+                <u-list-view-group title="餐具">
                     <u-list-view-item value="chopsticks">筷子</u-list-view-item>
                     <u-list-view-item value="bowl">碗</u-list-view-item>
                 </u-list-view-group>
@@ -193,11 +193,11 @@
         <u-grid-layout-column :span="4">
             <p>触发方式：整行点击均可触发（默认）</p>
             <u-list-view collapsible expand-trigger="click">
-                <u-list-view-group text="洗具">
+                <u-list-view-group title="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
                     <u-list-view-item>牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具">
+                <u-list-view-group title="杯具">
                     <u-list-view-item>牙缸</u-list-view-item>
                     <u-list-view-item>水杯</u-list-view-item>
                 </u-list-view-group>
@@ -206,11 +206,11 @@
         <u-grid-layout-column :span="4">
             <p>触发方式：仅点击小箭头时触发</p>
             <u-list-view collapsible expand-trigger="click-expander">
-                <u-list-view-group text="洗具">
+                <u-list-view-group title="洗具">
                     <u-list-view-item>毛巾</u-list-view-item>
                     <u-list-view-item>牙刷</u-list-view-item>
                 </u-list-view-group>
-                <u-list-view-group text="杯具">
+                <u-list-view-group title="杯具">
                     <u-list-view-item>牙缸</u-list-view-item>
                     <u-list-view-item>水杯</u-list-view-item>
                 </u-list-view-group>
@@ -220,9 +220,9 @@
 </u-grid-layout>
 ```
 
-#### Data方式
+<!-- #### Data方式
 
-暂不支持。
+暂不支持。 -->
 
 ### 可取消
 
@@ -369,7 +369,7 @@ export default {
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| text | String |  | 显示的文本 |
+| title | String |  | 显示的标题 |
 | collapsible | Boolean |  | `false` | 是否可以折叠 |
 | expanded.sync | Boolean | `false` | 展开/折叠状态 |
 | disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
@@ -379,6 +379,10 @@ export default {
 #### (default)
 
 插入`<u-list-view-item>`或`<u-list-view-divider>`子组件。
+
+#### title
+
+自定义文本显示。
 
 ### Events
 

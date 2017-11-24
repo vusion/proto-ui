@@ -1,4 +1,4 @@
-# 单行输入
+# 单行输入 Input
 
 ## 示例
 ### 基本形式
@@ -17,7 +17,7 @@
 
 ### 数字
 
-使用`v-model`的`number`修饰符，可以很轻松的将输入值转成number类型。
+使用`v-model`的`number`修饰符，可以轻松将输入值转成number类型。
 
 ``` vue
 <template>
@@ -62,15 +62,12 @@ export default {
 | type | String | `'text'` | 输入框的类型，目前只支持两种：`'text'`和`'password'` |
 | value | String | | 输入框的值 |
 | placeholder | String | | 原生属性 |
+| minlength | Number | | 原生属性 |
 | maxlength | Number | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
 | readonly | Boolean | | 原生属性 |
 | disabled | Boolean | | 原生属性 |
 | size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`, `'full'`，或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding书写格式 |
-
-### Slots
-
-#### (default)
 
 #### @input
 

@@ -65,17 +65,17 @@
         <u-grid-layout-column :span="4">
             <p>默认，无折叠功能</p>
             <u-sidebar style="background: #f0f6fa;">
-                <u-sidebar-group text="Basic">
+                <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
                     <u-sidebar-item>标签</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Navigation">
+                <u-sidebar-group title="Navigation">
                     <u-sidebar-item>导航栏</u-sidebar-item>
                     <u-sidebar-item to="/proto-ui/u-sidebar">侧边栏</u-sidebar-item>
                     <u-sidebar-item>标签页</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Form">
+                <u-sidebar-group title="Form">
                     <u-sidebar-item>单行输入</u-sidebar-item>
                     <u-sidebar-item>多行输入</u-sidebar-item>
                     <u-sidebar-item>选择框</u-sidebar-item>
@@ -86,17 +86,17 @@
         <u-grid-layout-column :span="4">
             <p>开启折叠功能</p>
             <u-sidebar collapsible style="background: #f0f6fa;">
-                <u-sidebar-group text="Basic">
+                <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
                     <u-sidebar-item>标签</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Navigation" expanded disabled>
+                <u-sidebar-group title="Navigation" expanded disabled>
                     <u-sidebar-item>导航栏</u-sidebar-item>
                     <u-sidebar-item to="/proto-ui/u-sidebar">侧边栏</u-sidebar-item>
                     <u-sidebar-item>标签页</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Form" :collapsible="false">
+                <u-sidebar-group title="Form" :collapsible="false">
                     <u-sidebar-item>单行输入</u-sidebar-item>
                     <u-sidebar-item>多行输入</u-sidebar-item>
                     <u-sidebar-item>选择框</u-sidebar-item>
@@ -107,17 +107,17 @@
         <u-grid-layout-column :span="4">
             <p>手风琴模式</p>
             <u-sidebar collapsible accordion style="background: #f0f6fa;">
-                <u-sidebar-group text="Basic">
+                <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
                     <u-sidebar-item>标签</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Navigation">
+                <u-sidebar-group title="Navigation">
                     <u-sidebar-item>导航栏</u-sidebar-item>
                     <u-sidebar-item to="/proto-ui/u-sidebar">侧边栏</u-sidebar-item>
                     <u-sidebar-item>标签页</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Form">
+                <u-sidebar-group title="Form">
                     <u-sidebar-item>单行输入</u-sidebar-item>
                     <u-sidebar-item>多行输入</u-sidebar-item>
                     <u-sidebar-item>选择框</u-sidebar-item>
@@ -129,13 +129,13 @@
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
             <p>触发方式：整行点击均可触发（默认）</p>
-            <u-sidebar collapsible  expand-trigger="click" style="background: #f0f6fa;">
-                <u-sidebar-group text="Basic">
+            <u-sidebar collapsible expand-trigger="click" style="background: #f0f6fa;">
+                <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
                     <u-sidebar-item>标签</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Navigation">
+                <u-sidebar-group title="Navigation">
                     <u-sidebar-item>导航栏</u-sidebar-item>
                     <u-sidebar-item to="/proto-ui/u-sidebar">侧边栏</u-sidebar-item>
                     <u-sidebar-item>标签页</u-sidebar-item>
@@ -145,12 +145,12 @@
         <u-grid-layout-column :span="4">
             <p>触发方式：仅点击小箭头时触发</p>
             <u-sidebar collapsible expand-trigger="click-expander" style="background: #f0f6fa;">
-                <u-sidebar-group text="Basic">
+                <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
                     <u-sidebar-item>标签</u-sidebar-item>
                 </u-sidebar-group>
-                <u-sidebar-group text="Navigation">
+                <u-sidebar-group title="Navigation">
                     <u-sidebar-item>导航栏</u-sidebar-item>
                     <u-sidebar-item to="/proto-ui/u-sidebar">侧边栏</u-sidebar-item>
                     <u-sidebar-item>标签页</u-sidebar-item>
@@ -173,7 +173,7 @@
 | replace | Boolean | `false` | 需要vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。 |
 | exact | Boolean | `false` | 需要vue-router，与`<router-link>`的`exact`属性相同。是否与路由完全一致时才高亮显示。 |
 | value.sync, v-model | Any | | 当前选择的值 |
-| field | String | `'text'` | 显示文本字段 |
+| field | String | `'title'` | 显示文本字段 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |
 | accordion | Boolean | `false` | 是否每次只会展开一个分组 |
 | expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
@@ -295,7 +295,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| text | String |  | 显示的文本 |
+| title | String |  | 显示的标题 |
 | collapsible | Boolean |  | `false` | 是否可以折叠 |
 | expanded.sync | Boolean | `false` | 展开/折叠状态 |
 | disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
@@ -305,6 +305,10 @@
 #### (default)
 
 插入`<u-sidebar-item>`或`<u-sidebar-divider>`子组件。
+
+#### title
+
+自定义文本显示。
 
 ### Events
 

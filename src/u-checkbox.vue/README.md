@@ -1,10 +1,10 @@
-# 多选按钮（Checkbox）
+# 多选框 Checkbox
 
 ## 示例
 ### 基本形式
 
 ``` html
-<u-checkbox>Checkbox</u-checkbox>
+<u-checkbox>多选框</u-checkbox>
 ```
 
 ### Value绑定
@@ -28,15 +28,15 @@ export default {
 
 ``` html
 <u-linear-layout>
-    <u-checkbox :value="true" readonly>Readonly</u-checkbox>
-    <u-checkbox :value="true" disabled>Disabled</u-checkbox>
+    <u-checkbox :value="true" readonly>只读</u-checkbox>
+    <u-checkbox :value="true" disabled>禁用</u-checkbox>
 </u-linear-layout>
 ```
 
 ### 不确定状态
 
 ``` html
-<u-checkbox :value="null">Indeterminate</u-checkbox>
+<u-checkbox :value="null">不确定</u-checkbox>
 ```
 
 ## API
@@ -50,9 +50,9 @@ export default {
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | 插入文本或HTML |
+####　(default)
+
+插入文本或HTML。
 
 ### Events
 

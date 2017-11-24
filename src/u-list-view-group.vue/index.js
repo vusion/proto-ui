@@ -6,7 +6,7 @@ export default {
     childName: 'u-list-view-item',
     mixins: [Emitter],
     props: {
-        text: String,
+        title: String,
         collapsible: { type: Boolean, default: undefined },
         expanded: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
