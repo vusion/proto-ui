@@ -1,0 +1,49 @@
+.root {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    height: $height-base;
+    padding: 0 12px;
+    background: white;
+    border: 1px solid $border-color-base;
+    width: 160px;
+    max-width: 100%;
+}
+
+/* 控制对齐基线 */
+.root:before {
+    content: 'a';
+    font-size: 0;
+}
+
+.root:after {
+    position: absolute;
+    content: '▾';
+    right: 10px;
+    top: 0;
+    line-height: 28px;
+}
+
+.root[disabled] {
+    cursor: not-allowed;
+    background: $gray-lighter;
+}
+
+.text {
+    float: left;
+    width: 100%;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.popper {
+    width: 160px;
+    max-height: 180px;
+    overflow: auto;
+    background: white;
+    border: 1px solid $border-color-base;
+    z-index: 1050;
+}

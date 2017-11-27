@@ -42,6 +42,8 @@
     "type": "library"
   },
   "dependencies": {
-    "matchmedia-polyfill": "^0.3.0"
+    "async-validator": "^1.8.1",
+    "normalize.css": "^7.0.0",
+    "popper.js": "^1.12.9"
   }
 }

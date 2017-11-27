@@ -14,13 +14,13 @@ import Field from './u-field.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form-item.vue';
 import GridLayout from './u-grid-layout.vue';
-import GridLayoutRow from './u-grid-layout-row.vue';
 import GridLayoutColumn from './u-grid-layout-column.vue';
+import GridLayoutRow from './u-grid-layout-row.vue';
 import Icon from './u-icon.vue';
 import Input from './u-input.vue';
 import Label from './u-label.vue';
-import LinearProgress from './u-linear-progress.vue';
 import LinearLayout from './u-linear-layout.vue';
+import LinearProgress from './u-linear-progress.vue';
 import Link from './u-link.vue';
 import ListView from './u-list-view.vue';
 import ListViewDivider from './u-list-view-divider.vue';
@@ -29,23 +29,28 @@ import ListViewItem from './u-list-view-item.vue';
 import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
+import Pagination from './u-pagination.vue';
+import Popper from './u-popper.vue';
 import Radio from './u-radio.vue';
 import Radio0 from './u-radio--0.vue';
 import Radios from './u-radios.vue';
-import TreeView from './u-tree-view.vue';
-import TreeViewNode from './u-tree-view-node.vue';
-import TreeViewText from './u-tree-view-text.vue';
-import Pagination from './u-pagination.vue';
 import RouterItem from './u-router-item.vue';
 import Sample from './u-sample.vue';
+import Select from './u-select.vue';
+import SelectDivider from './u-select-divider.vue';
+import SelectGroup from './u-select-group.vue';
+import SelectItem from './u-select-item.vue';
 import Sidebar from './u-sidebar.vue';
 import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
 import SidebarItem from './u-sidebar-item.vue';
 import Switch from './u-switch.vue';
-import Tabs from './u-tabs.vue';
 import Tab from './u-tab.vue';
+import Tabs from './u-tabs.vue';
 import Textarea from './u-textarea.vue';
+import TreeView from './u-tree-view.vue';
+import TreeViewNode from './u-tree-view-node.vue';
+import TreeViewText from './u-tree-view-text.vue';
 
 export {
     Badge,
@@ -61,13 +66,13 @@ export {
     Form,
     FormItem,
     GridLayout,
-    GridLayoutRow,
     GridLayoutColumn,
+    GridLayoutRow,
     Icon,
     Input,
     Label,
-    LinearProgress,
     LinearLayout,
+    LinearProgress,
     Link,
     ListView,
     ListViewDivider,
@@ -76,21 +81,26 @@ export {
     Navbar,
     NavbarDivider,
     NavbarItem,
+    Pagination,
+    Popper,
     Radio,
     Radio0,
     Radios,
-    TreeView,
-    TreeViewNode,
-    TreeViewText,
-    Pagination,
     RouterItem,
     Sample,
+    Select,
+    SelectDivider,
+    SelectGroup,
+    SelectItem,
     Sidebar,
     SidebarDivider,
     SidebarGroup,
     SidebarItem,
     Switch,
-    Tabs,
     Tab,
+    Tabs,
     Textarea,
+    TreeView,
+    TreeViewNode,
+    TreeViewText,
 };
