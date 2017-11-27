@@ -30,6 +30,7 @@ import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
 import Radio from './u-radio.vue';
+import Radio0 from './u-radio--0.vue';
 import Radios from './u-radios.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
@@ -76,6 +77,7 @@ export {
     NavbarDivider,
     NavbarItem,
     Radio,
+    Radio0,
     Radios,
     TreeView,
     TreeViewNode,

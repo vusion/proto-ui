@@ -1,0 +1,7 @@
+<label :class="$style.root" :disabled="currentDisabled" @click.prevent="select()"
+tabindex="0" @keydown.space.prevent @keyup.space.prevent="select()"
+@focus="onFocus" @blur="onBlur" v-on="listeners">
+    <input type="radio" :name="parentVM && parentVM.name" :class="$style.radio"
+        :checked="selected" :disabled="currentDisabled">
+    <slot></slot>
+</label>
