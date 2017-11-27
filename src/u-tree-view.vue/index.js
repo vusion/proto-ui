@@ -108,6 +108,7 @@ export default {
             const node = this.selectedVM && this.selectedVM.node;
 
             this.$emit('input', value);
+            this.$emit('update:value', value);
             this.$emit('select', {
                 value,
                 oldValue,

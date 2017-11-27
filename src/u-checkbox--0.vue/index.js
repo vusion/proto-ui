@@ -6,14 +6,14 @@ export default {
 
     watch: {
         currentValue(value) {
-            this.watchCurrentValue(value);
+            this.watchValue(value);
         },
     },
     created() {
-        this.$nextTick(() => this.watchCurrentValue(this.currentValue));
+        this.$nextTick(() => this.watchValue(this.value));
     },
     methods: {
-        watchCurrentValue(value) {
+        watchValue(value) {
             this.$refs.checkbox.indeterminate = value === null;
         },
     },

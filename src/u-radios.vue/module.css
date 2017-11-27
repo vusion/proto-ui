@@ -1,0 +1,5 @@
+.root {}
+
+.root > * + * {
+    margin-left: 40px;
+}

@@ -98,6 +98,7 @@ export default {
                 const items = itemVMs.map((itemVM) => itemVM.item);
 
                 this.$emit('input', value);
+                this.$emit('update:value', value);
                 this.$emit('select', {
                     value,
                     oldValue,
@@ -114,6 +115,7 @@ export default {
                 const item = this.selectedVM && this.selectedVM.item;
 
                 this.$emit('input', value);
+                this.$emit('update:value', value);
                 this.$emit('select', {
                     value,
                     oldValue,

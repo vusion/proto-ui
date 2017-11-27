@@ -6,6 +6,7 @@ import Block from './u-block.vue';
 import Button from './u-button.vue';
 import Checkbox from './u-checkbox.vue';
 import Checkbox0 from './u-checkbox--0.vue';
+import Checkboxes from './u-checkboxes.vue';
 import CircularProgress from './u-circular-progress.vue';
 import CollapseTransition from './u-collapse-transition.vue';
 import Emitter from './u-emitter.vue';
@@ -28,6 +29,8 @@ import ListViewItem from './u-list-view-item.vue';
 import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
+import Radio from './u-radio.vue';
+import Radios from './u-radios.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
@@ -49,6 +52,7 @@ export {
     Button,
     Checkbox,
     Checkbox0,
+    Checkboxes,
     CircularProgress,
     CollapseTransition,
     Emitter,
@@ -71,6 +75,8 @@ export {
     Navbar,
     NavbarDivider,
     NavbarItem,
+    Radio,
+    Radios,
     TreeView,
     TreeViewNode,
     TreeViewText,

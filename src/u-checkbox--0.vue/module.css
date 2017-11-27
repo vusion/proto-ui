@@ -1,4 +1,6 @@
-.root {}
+.root {
+    user-select: none;
+}
 
 .box {
     margin-right: 4px;

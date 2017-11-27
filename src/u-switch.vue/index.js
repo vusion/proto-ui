@@ -55,6 +55,7 @@ export default {
             this.currentValue = value;
 
             this.$emit('input', value);
+            this.$emit('update:value', value);
             this.$emit('toggle', { value, oldValue });
         },
     },
