@@ -1,21 +1,23 @@
-# 表单
+# 表单 Form
 
 ## 示例
 ### 基本形式
 
 ``` html
 <u-form>
-    <u-form-item title="计费方式">
+    <u-form-item label="计费方式">
+        <u-radios value="按量付费">
+            <u-radio label="资源包">资源包</u-radio>
+            <u-radio label="按量付费">按量付费</u-radio>
+        </u-radios>
     </u-form-item>
-    <u-form-item title="实例名称">
+    <u-form-item label="实例名称">
         <u-input maxlength="63" placeholder="由1-63个小写字母，数字，中划线组成，以字母开头，字母或数字结尾"></u-input>
     </u-form-item>
-    <u-form-item title="规格">
-    </u-form-item>
-    <u-form-item title="端口号">
+    <u-form-item label="端口号">
         <u-input maxlength="5" placeholder="1150-65535" value="3306"></u-input>
     </u-form-item>
-    <u-form-item title="详情">
+    <u-form-item label="详情">
         <u-textarea></u-textarea>
     </u-form-item>
     <u-form-item>
@@ -28,13 +30,13 @@
 
 ``` html
 <u-form layout="inline" label-size="auto">
-    <u-form-item title="状态">
+    <u-form-item label="状态">
         <u-input maxlength="63" placeholder="认证中"></u-input>
     </u-form-item>
-    <u-form-item title="用户名">
+    <u-form-item label="用户名">
         <u-input maxlength="63" placeholder="请输入用户名"></u-input>
     </u-form-item>
-    <u-form-item title="联系号码">
+    <u-form-item label="联系号码">
         <u-input maxlength="63" placeholder="请输入联系号码"></u-input>
     </u-form-item>
     <u-form-item>
@@ -68,7 +70,7 @@
 
 ``` vue
 <template>
-<u-form-item title="用户名" :rules="rules">
+<u-form-item label="用户名" :rules="rules">
     <u-input maxlength="112" placeholder="4~12位字母、数字或中划线组成"></u-input>
 </u-form-item>
 </template>
@@ -97,10 +99,10 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
 </u-form>
@@ -158,10 +160,10 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
     <u-form-item>
@@ -204,10 +206,10 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
 </u-form>
@@ -242,10 +244,10 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
 </u-form>
@@ -277,7 +279,7 @@ export default {
 
 ``` html
 <u-form>
-    <u-form-item title="用户名">
+    <u-form-item label="用户名">
         <u-input maxlength="4" placeholder="不超过4个字符"></u-input>
     </u-form-item>
 </u-form>
@@ -298,13 +300,13 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input v-model="model.email" maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
-    <u-form-item title="手机号码" name="phone">
+    <u-form-item label="手机号码" name="phone">
         <u-input v-model="model.phone" maxlength="11" placeholder="请输入手机号码"></u-input>
     </u-form-item>
     <u-form-item>
@@ -357,13 +359,13 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input v-model="model.email" maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
-    <u-form-item title="手机号码" name="phone">
+    <u-form-item label="手机号码" name="phone">
         <u-input v-model="model.phone" maxlength="11" placeholder="请输入手机号码"></u-input>
     </u-form-item>
     <u-form-item>
@@ -421,13 +423,13 @@ export default {
 ``` vue
 <template>
 <u-form ref="form" :rules="rules" @validate="canSubmit = $event.valid">
-    <u-form-item title="用户名" name="username">
+    <u-form-item label="用户名" name="username">
         <u-input v-model="model.username" maxlength="12" placeholder="4~12个字符"></u-input>
     </u-form-item>
-    <u-form-item title="邮箱" name="email">
+    <u-form-item label="邮箱" name="email">
         <u-input v-model="model.email" maxlength="24" placeholder="请输入邮箱"></u-input>
     </u-form-item>
-    <u-form-item title="手机号码" name="phone">
+    <u-form-item label="手机号码" name="phone">
         <u-input v-model="model.phone" maxlength="11" placeholder="请输入手机号码"></u-input>
     </u-form-item>
     <u-form-item>
@@ -480,3 +482,69 @@ export default {
 };
 </script>
 ```
+
+## Form API
+### Props/Attrs
+
+| Prop/Attr | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| model | Object | | 表单数据模型 |
+| rules | Object | | 表单所有域的验证规则 |
+| layout | String | `block` | 表单布局方式。可选值：`block`、`inline`。 |
+| label-size | String | `normal` | 标签大小。可选值：`small`、`normal`、`large`。 |
+
+### Slots
+
+#### (default)
+
+插入`<u-form-item>`子组件。
+
+### Events
+
+#### @validate
+
+表单验证时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.valid | Boolean | 验证是否通过 |
+
+### Methods
+
+#### validate(slient)
+
+验证此表单。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| silent | Boolean | `false` | 是否仅验证无提示。 |
+
+
+## FormItem API
+### Props/Attrs
+
+| Prop/Attr | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| name | String | | 表单项名称，用于选择表单的模型数据和验证规则 |
+| label | String | | 标签 |
+| label-size | String | `normal` | 单独设置表单项的标签大小 |
+| rules | Array | | 表单项的验证规则。如果没有则会根据`name`属性从表单的`rules`中获取。 |
+| message | String | | 默认提示信息 |
+| required | Boolean | | 是否必填。仅显示样式，如果要验证必填项，需要在`rules`中添加必填规则。 |
+
+### Slots
+
+#### (default)
+
+插入`<u-form-item>`子组件。
+
+### Methods
+
+#### validate(trigger, slient)
+
+验证此表单项。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| trigger | String | `submit` | 触发方式，可选值：`submit`、`blur`和`input`之一，或者它们的任意组合。 |
+| silent | Boolean | `false` | 是否仅验证无提示。 |

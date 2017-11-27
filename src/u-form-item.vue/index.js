@@ -6,6 +6,7 @@ export default {
     mixins: [Emitter],
     props: {
         name: String,
+        label: String,
         title: String,
         rules: Array,
         message: String,

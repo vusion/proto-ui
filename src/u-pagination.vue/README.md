@@ -1,4 +1,4 @@
-# 分页（Pagination）
+# 分页 Pagination
 
 ## 示例
 ### 基本形式

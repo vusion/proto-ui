@@ -1,11 +1,11 @@
 .root {}
 
-.title {
+.label {
     display: inline-block;
     padding-right: 5px;
 }
 
-.title[required]:after {
+.label[required]:after {
     content: '*';
     color: $brand-error;
 }
@@ -33,7 +33,7 @@
     margin-left: 0;
 }
 
-.root[label-size$="normal"] .title { width: 80px; }
+.root[label-size$="normal"] .label { width: 80px; }
 .root[label-size$="normal"] .field { max-width: calc(100% - 80px); }
 
 .root[layout="block"] .field {
