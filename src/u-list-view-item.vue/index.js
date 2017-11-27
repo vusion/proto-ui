@@ -1,10 +1,12 @@
 import Emitter from '../u-emitter.vue';
+import { ellipsisTitle } from '../base/directives';
 
 export default {
     name: 'u-list-view-item',
     parentName: 'u-list-view',
     groupName: 'u-list-view-group',
     mixins: [Emitter],
+    directives: { ellipsisTitle },
     props: {
         value: null,
         disabled: { type: Boolean, default: false },

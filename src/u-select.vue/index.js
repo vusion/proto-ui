@@ -1,9 +1,11 @@
 import ListView from '../u-list-view.vue';
+import { ellipsisTitle } from '../base/directives';
 
 export default {
     name: 'u-select',
     childName: 'u-select-item',
     mixins: [ListView],
+    directives: { ellipsisTitle },
     props: {
         value: null,
         data: Array,
