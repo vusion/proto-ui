@@ -39,7 +39,9 @@
     "vue": "^2.4.0"
   },
   "vusion": {
-    "type": "library"
+    "type": "library",
+    "baseCSSPath": "./src/base/index.css",
+    "globalCSSPath": "./src/base/global.css"
   },
   "dependencies": {
     "async-validator": "^1.8.1",

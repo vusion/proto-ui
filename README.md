@@ -1,143 +1,20 @@
 # Vusion Proto UI
 
-## Components
+[![NPM Version][npm-img]][npm-url]
+[![Dependencies][david-img]][david-url]
+[![NPM Download][download-img]][download-url]
 
-<table>
-<thead><tr><th>Name</th><th>Version</th><th>Downloads</th></thead>
-<tbody>
-<tr>
-    <td>u-base.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-base.vue"><img src="https://img.shields.io/npm/v/u-base.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-base.vue"><img src="https://img.shields.io/npm/dm/u-base.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-button.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-button.vue"><img src="https://img.shields.io/npm/v/u-button.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-button.vue"><img src="https://img.shields.io/npm/dm/u-button.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-checkbox.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-checkbox.vue"><img src="https://img.shields.io/npm/v/u-checkbox.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-checkbox.vue"><img src="https://img.shields.io/npm/dm/u-checkbox.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-circular-progress.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-circular-progress.vue"><img src="https://img.shields.io/npm/v/u-circular-progress.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-circular-progress.vue"><img src="https://img.shields.io/npm/dm/u-circular-progress.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-emitter.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/v/u-emitter.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/dm/u-emitter.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-field.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-field.vue"><img src="https://img.shields.io/npm/v/u-field.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-field.vue"><img src="https://img.shields.io/npm/dm/u-field.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-form-item.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-form-item.vue"><img src="https://img.shields.io/npm/v/u-form-item.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-form-item.vue"><img src="https://img.shields.io/npm/dm/u-form-item.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-form.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-form.vue"><img src="https://img.shields.io/npm/v/u-form.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-form.vue"><img src="https://img.shields.io/npm/dm/u-form.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-input.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-input.vue"><img src="https://img.shields.io/npm/v/u-input.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-input.vue"><img src="https://img.shields.io/npm/dm/u-input.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-label.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-label.vue"><img src="https://img.shields.io/npm/v/u-label.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-label.vue"><img src="https://img.shields.io/npm/dm/u-label.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-linear-layout.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/v/u-linear-layout.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-linear-layout.vue"><img src="https://img.shields.io/npm/dm/u-linear-layout.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-linear-progress.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-linear-progress.vue"><img src="https://img.shields.io/npm/v/u-linear-progress.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-linear-progress.vue"><img src="https://img.shields.io/npm/dm/u-linear-progress.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-link.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-link.vue"><img src="https://img.shields.io/npm/v/u-link.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-link.vue"><img src="https://img.shields.io/npm/dm/u-link.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-list-view.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/v/u-list-view.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-list-view.vue"><img src="https://img.shields.io/npm/dm/u-list-view.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-list-view-item.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-list-view-item.vue"><img src="https://img.shields.io/npm/v/u-list-view-item.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-list-view-item.vue"><img src="https://img.shields.io/npm/dm/u-list-view-item.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-pagination.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/v/u-pagination.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-pagination.vue"><img src="https://img.shields.io/npm/dm/u-pagination.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-router-item.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-router-item.vue"><img src="https://img.shields.io/npm/v/u-router-item.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-router-item.vue"><img src="https://img.shields.io/npm/dm/u-router-item.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-sample.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-sample.vue"><img src="https://img.shields.io/npm/v/u-sample.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-sample.vue"><img src="https://img.shields.io/npm/dm/u-sample.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-switch.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-switch.vue"><img src="https://img.shields.io/npm/v/u-switch.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-switch.vue"><img src="https://img.shields.io/npm/dm/u-switch.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-tabs.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/v/u-tabs.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-tabs.vue"><img src="https://img.shields.io/npm/dm/u-tabs.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-tab.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/v/u-tab.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-tab.vue"><img src="https://img.shields.io/npm/dm/u-tab.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-textarea.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/v/u-emitter.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-emitter.vue"><img src="https://img.shields.io/npm/dm/u-emitter.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-tree-view.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view.vue"><img src="https://img.shields.io/npm/v/u-tree-view.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view.vue"><img src="https://img.shields.io/npm/dm/u-tree-view.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-tree-view-node.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view-node.vue"><img src="https://img.shields.io/npm/v/u-tree-view-node.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view-node.vue"><img src="https://img.shields.io/npm/dm/u-tree-view-node.vue.svg?style=flat-square"></a></td>
-</tr>
-<tr>
-    <td>u-tree-view-text.vue</td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view-text.vue"><img src="https://img.shields.io/npm/v/u-tree-view-text.vue.svg?style=flat-square"></a></td>
-    <td><a href="https://www.npmjs.com/package/u-tree-view-text.vue"><img src="https://img.shields.io/npm/dm/u-tree-view-text.vue.svg?style=flat-square"></a></td>
-</tr>
-</tbody>
-</table>
+[npm-img]: http://img.shields.io/npm/v/proto-ui.vusion.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/proto-ui.vusion
+[david-img]: http://img.shields.io/david/vusion/cloud-ui.svg?style=flat-square
+[david-url]: https://david-dm.org/vusion/cloud-ui
+[download-img]: https://img.shields.io/npm/dm/proto-ui.vusion.svg?style=flat-square
+[download-url]: https://npmjs.org/package/proto-ui.vusion
 
 ## Development
 
 ``` shell
 npm install
 npm install -g vusion-cli
-npm run bootstrap
 vusion dev
 ```
