@@ -1,9 +1,9 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.1.0",
+  "version": "0.2.0-alpha",
   "author": "Rainfore <rainforest92@126.com>",
-  "main": "./index.js",
+  "main": "./src/index.js",
   "scripts": {
     "precommit": "bash node_modules/vusion-hooks/pre-commit"
   },
