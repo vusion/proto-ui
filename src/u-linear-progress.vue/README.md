@@ -1,7 +1,7 @@
-# Linear Progress
+# 线型进度条 LinearProgress
 
-## Examples
-### Basic
+## 示例
+### 基本形式
 
 ``` html
 <u-linear-progress :percent="36"></u-linear-progress>
@@ -12,10 +12,10 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| percent | Number | `0` | The percentage of progress |
+| percent | Number | `0` | 百分比 |
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | Hold the text and can contain HTML |
+#### (default)
+
+插入文本或HTML。
