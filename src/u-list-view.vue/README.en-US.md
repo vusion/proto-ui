@@ -95,12 +95,14 @@ Try to click twice on an item.
 
 ``` vue
 <template>
-<u-list-view multiple v-model="value">
-    <u-list-view-item value="A">Apple</u-list-view-item>
-    <u-list-view-item value="B">Banana</u-list-view-item>
-    <u-list-view-item value="C">Cake</u-list-view-item>
-</u-list-view>
-<p>value: {{ value }}<p>
+<div>
+    <u-list-view multiple v-model="value">
+        <u-list-view-item value="A">Apple</u-list-view-item>
+        <u-list-view-item value="B">Banana</u-list-view-item>
+        <u-list-view-item value="C">Cake</u-list-view-item>
+    </u-list-view>
+    <p>value: {{ value }}<p>
+</div>
 </template>
 
 <script>

@@ -21,8 +21,10 @@
 
 ``` vue
 <template>
-<u-input v-model.number="value" maxlength="12" placeholder="请输入端口号" @input="onInput"></u-input>
-输出：{{ output }}
+<div>
+    <u-input v-model.number="value" maxlength="12" placeholder="请输入端口号" @input="onInput"></u-input>
+    输出：{{ output }}
+</div>
 </template>
 
 <script>

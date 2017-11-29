@@ -43,6 +43,7 @@ export default {
 
 ``` vue
 <template>
+<div>
     <u-checkboxes v-model="checkedList">
         <u-checkbox label="水杯">水杯</u-checkbox>
         <u-checkbox label="坚果">坚果</u-checkbox>
@@ -50,6 +51,7 @@ export default {
         <u-checkbox label="沙发">沙发</u-checkbox>
     </u-checkboxes>
     {{ checkedList }}
+</div>
 </template>
 <script>
 export default {
@@ -68,6 +70,7 @@ export default {
 
 ``` vue
 <template>
+<div>
     <u-checkboxes :min="1" :max="2" v-model="checkedList">
         <u-checkbox label="水杯">水杯</u-checkbox>
         <u-checkbox label="坚果">坚果</u-checkbox>
@@ -75,6 +78,7 @@ export default {
         <u-checkbox label="沙发">沙发</u-checkbox>
     </u-checkboxes>
     {{ checkedList }}
+</div>
 </template>
 <script>
 export default {
@@ -96,6 +100,7 @@ export default {
 
 ``` vue
 <template>
+<div>
     <u-checkbox v-model="allChecked" @check="checkAll($event.value)">全选</u-checkbox>
     <u-checkboxes v-model="checkedList" @check="onCheck($event.value)">
         <u-checkbox label="水杯">水杯</u-checkbox>
@@ -104,6 +109,7 @@ export default {
         <u-checkbox label="沙发">沙发</u-checkbox>
     </u-checkboxes>
     {{ checkedList }}
+</div>
 </template>
 <script>
 export default {
