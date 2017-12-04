@@ -62,6 +62,7 @@ export default {
         sessionValue: {
             set(value) {
                 this.currentValue = value;
+                this.$emit('input', value); // set value;
             },
             get() {
                 return this.currentValue;
@@ -76,7 +77,6 @@ export default {
             const sessionValue = getValue(this.sessionKey);
             if (isValid(sessionValue))
                 this.sessionValue = sessionValue;
-
             // store value in persistData
             sessionResumeBus.$on('session-resume:setSession', () => {
                 this.sessionKey && setValue(this.sessionKey, this.sessionValue);
