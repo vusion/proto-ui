@@ -27,7 +27,6 @@ export default {
         };
     },
     created() {
-        this.onResize = this.onResize.bind(this);
         window.addEventListener('resize', this.onResize);
         this.onResize();
     },

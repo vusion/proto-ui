@@ -4,7 +4,8 @@
 
 .box {
     margin-right: 4px;
-    vertical-align: 1px;
+    margin-bottom: 3px;
+    vertical-align: middle;
 }
 
 .root:focus {

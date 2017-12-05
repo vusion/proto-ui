@@ -6,7 +6,7 @@
 }
 
 .label[required]:after {
-    content: '*';
+    content: ' *';
     color: $brand-error;
 }
 
