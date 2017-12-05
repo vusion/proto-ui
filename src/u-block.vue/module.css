@@ -1,14 +1,42 @@
 .root {
-    padding: 5px;
-    background: $brand-primary;
+    padding: 8px 0;
+    background: $gray-base;
     color: white;
     text-align: center;
+    overflow: hidden;
 }
 
-.root[size="large"] {
-    padding: 10px;
+.root[size$="auto"] { width: auto; }
+.root[size^="auto"] { height: auto; }
+
+.root[size$="mini"] { width: 16px; }
+.root[size^="mini"] { height: 16px; }
+
+.root[size$="small"] { width: 32px; }
+.root[size^="small"] { height: 32px; }
+
+.root[size$="normal"] { width: 64px; }
+.root[size^="normal"] { height: 64px; }
+
+.root[size$="large"] { width: 128px; }
+.root[size^="large"] { height: 128px; }
+
+.root[color="primary"] {
+    background: $brand-primary;
 }
 
-.root[size="huge"] {
-    padding: 20px;
+.root[color="success"] {
+    background: $brand-success;
+}
+
+.root[color="warning"] {
+    background: $brand-warning;
+}
+
+.root[color="error"] {
+    background: $brand-error;
+}
+
+.root[inline] {
+    display: inline-block;
 }

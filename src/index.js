@@ -6,6 +6,9 @@ import Checkbox0 from './u-checkbox--0.vue';
 import Checkboxes from './u-checkboxes.vue';
 import CircularProgress from './u-circular-progress.vue';
 import CollapseTransition from './u-collapse-transition.vue';
+import Draggable from './u-draggable.vue';
+import Dragger from './u-dragger.vue';
+import Droppable from './u-droppable.vue';
 import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Form from './u-form.vue';
@@ -58,6 +61,9 @@ export {
     Checkboxes,
     CircularProgress,
     CollapseTransition,
+    Draggable,
+    Dragger,
+    Droppable,
     Emitter,
     Field,
     Form,

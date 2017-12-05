@@ -177,28 +177,28 @@
 <u-grid-layout gap="large small">
 	<u-grid-layout-row :repeat="6" type="flex" alignment="start">
 		<u-grid-layout-column :span="1"><u-block>start</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="large">start</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="huge">start</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="normal auto">start</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="large auto">start</u-block></u-grid-layout-column>
 	</u-grid-layout-row>
 	<u-grid-layout-row :repeat="6" type="flex" alignment="center">
 		<u-grid-layout-column :span="1"><u-block>center</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="large">center</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="huge">center</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="normal auto">center</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="large auto">center</u-block></u-grid-layout-column>
 	</u-grid-layout-row>
 	<u-grid-layout-row :repeat="6" type="flex" alignment="end">
 		<u-grid-layout-column :span="1"><u-block>end</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="large">end</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="huge">end</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="normal auto">end</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="large auto">end</u-block></u-grid-layout-column>
 	</u-grid-layout-row>
 	<u-grid-layout-row :repeat="6" type="flex" alignment="baseline">
 		<u-grid-layout-column :span="1"><u-block>baseline</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="large">baseline</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="huge">baseline</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="normal auto">baseline</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="large auto">baseline</u-block></u-grid-layout-column>
 	</u-grid-layout-row>
 	<u-grid-layout-row :repeat="6" type="flex" alignment="stretch">
 		<u-grid-layout-column :span="1"><u-block style="height: 100%">stretch</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="large" style="height: 100%">stretch</u-block></u-grid-layout-column>
-		<u-grid-layout-column :span="1"><u-block size="huge" style="height: 100%">stretch</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="normal auto" style="height: 100%">stretch</u-block></u-grid-layout-column>
+		<u-grid-layout-column :span="1"><u-block size="large auto" style="height: 100%">stretch</u-block></u-grid-layout-column>
 	</u-grid-layout-row>
 </u-grid-layout>
 ```
