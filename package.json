@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.2.0-beta",
+  "version": "0.2.0",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
@@ -25,6 +25,11 @@
     "ui",
     "proto-ui"
   ],
+  "dependencies": {
+    "async-validator": "^1.8.1",
+    "normalize.css": "^7.0.0",
+    "popper.js": "^1.12.9"
+  },
   "devDependencies": {
     "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.6.0",
@@ -42,10 +47,5 @@
     "type": "library",
     "baseCSSPath": "./src/base/index.css",
     "globalCSSPath": "./src/base/global.css"
-  },
-  "dependencies": {
-    "async-validator": "^1.8.1",
-    "normalize.css": "^7.0.0",
-    "popper.js": "^1.12.9"
   }
 }
