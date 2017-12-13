@@ -13,8 +13,9 @@
 
 /* 控制对齐基线 */
 .root:before {
-    content: 'a';
-    font-size: 0;
+    content: '\3000';
+    letter-spacing: -20px;
+    line-height: 30px;
 }
 
 .root:after {

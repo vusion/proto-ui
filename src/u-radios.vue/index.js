@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         watchValue(value) {
-            if (this.selectedVM && this.selectedVM.value === value)
+            if (this.selectedVM && this.selectedVM.label === value)
                 return;
             if (value === undefined)
                 this.selectedVM = undefined;
@@ -72,7 +72,7 @@ export default {
             else
                 this.selectedVM = itemVM;
 
-            const value = this.selectedVM && this.selectedVM.value;
+            const value = this.selectedVM && this.selectedVM.label;
 
             this.$emit('input', value);
             this.$emit('update:value', value);

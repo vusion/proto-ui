@@ -5,23 +5,23 @@
 
 ``` html
 <u-form>
-    <u-form-item label="计费方式">
-        <u-radios value="按量付费">
-            <u-radio label="资源包">资源包</u-radio>
-            <u-radio label="按量付费">按量付费</u-radio>
+    <u-form-item label="性别">
+        <u-radios value="男">
+            <u-radio label="男">男</u-radio>
+            <u-radio label="女">女</u-radio>
         </u-radios>
     </u-form-item>
-    <u-form-item label="实例名称">
-        <u-input maxlength="63" placeholder="由1-63个小写字母，数字，中划线组成，以字母开头，字母或数字结尾"></u-input>
+    <u-form-item label="昵称" required>
+        <u-input maxlength="20" placeholder="不得超过20个字符"></u-input>
     </u-form-item>
-    <u-form-item label="端口号">
-        <u-input maxlength="5" placeholder="1150-65535" value="3306"></u-input>
+    <u-form-item label="手机" required>
+        <u-input maxlength="11" placeholder="请输入手机号"></u-input>
     </u-form-item>
-    <u-form-item label="详情">
+    <u-form-item label="自我介绍">
         <u-textarea></u-textarea>
     </u-form-item>
     <u-form-item>
-        <u-button color="primary">立即创建</u-button>
+        <u-button color="primary">提交</u-button>
     </u-form-item>
 </u-form>
 ```
@@ -31,13 +31,17 @@
 ``` html
 <u-form layout="inline" label-size="auto">
     <u-form-item label="状态">
-        <u-input maxlength="63" placeholder="认证中"></u-input>
+        <u-select>
+            <u-select-item>创建中</u-select-item>
+            <u-select-item>成功</u-select-item>
+            <u-select-item>失败</u-select-item>
+        </u-select>
     </u-form-item>
     <u-form-item label="用户名">
-        <u-input maxlength="63" placeholder="请输入用户名"></u-input>
+        <u-input maxlength="20" placeholder="请输入用户名"></u-input>
     </u-form-item>
-    <u-form-item label="联系号码">
-        <u-input maxlength="63" placeholder="请输入联系号码"></u-input>
+    <u-form-item label="手机">
+        <u-input maxlength="11" placeholder="请输入手机"></u-input>
     </u-form-item>
     <u-form-item>
         <u-button color="primary">查询</u-button>
@@ -51,7 +55,7 @@
 每个表单项的验证行为用一个有序列表`rules`来声明，列表中包含若干条验证规则。结构如下：
 
 ``` javascript
-[{ type: 'string', required: true, ... }, { type: 'string', min: ... }, { type: 'string', pattern: ... }, ...]
+[{ type: 'string', required: true, ... }, { type: 'email', ... }, { type: 'string', pattern: ... }, ...]
 ```
 
 每条规则至少包含以下几个参数：

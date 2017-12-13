@@ -11,6 +11,7 @@
     border: 1px solid $border-color-base;
     border-radius: 0;
     line-height: $height-base;
+    width: 100%;
     height: $height-base;
 }
 
