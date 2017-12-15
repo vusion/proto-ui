@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "eslint": "^4.13.1",
     "eslint-config-vusion": "^2.0.0",
     "husky": "^0.13.3",
-    "vue": "^2.4.0",
+    "vue": "^2.5.0",
     "vusion-hooks": "^0.1.0",
     "vusion-utils": "^0.1.2"
   },
