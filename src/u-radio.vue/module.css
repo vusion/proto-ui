@@ -11,6 +11,7 @@ $radio-size: 18px;
 
 .root[disabled] {
     cursor: $cursor-not-allowed;
+    color: $brand-disabled;
 }
 
 .radio {

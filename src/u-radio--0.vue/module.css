@@ -11,3 +11,8 @@
 .root:focus {
     outline: $focus-outline;
 }
+
+.root[disabled] {
+    color: $brand-disabled;
+    cursor: $cursor-not-allowed;
+}
