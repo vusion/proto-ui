@@ -9,14 +9,19 @@ installComponents(Components, Vue);
 describe('Tabs, Tab', () => {
     let vm, tabs;
 
-    it('(default)', () => {
-        vm = createVMFromTemplate(`<u-tabs ref="tabs">
-            <u-tab title="TabA">ContentA</u-tab>
-            <u-tab title="TabB">ContentB</u-tab>
-            <u-tab title="TabC">ContentC</u-tab>
-        </u-tabs>`);
+    it('(default)', (done) => {
+        setTimeout(() => {
+            vm = createVMFromTemplate(`<u-tabs ref="tabs">
+                <u-tab title="TabA">ContentA</u-tab>
+                <u-tab title="TabB">ContentB</u-tab>
+                <u-tab title="TabC">ContentC</u-tab>
+            </u-tabs>`);
 
-        tabs = vm.$refs.tabs;
-        expect(tabs.selectedVM).to.equal(tabs.itemVMs[0]);
+            tabs = vm.$refs.tabs;
+            vm.$nextTick(() => {
+                expect(tabs.selectedVM).to.equal(tabs.itemVMs[0]);
+                done();
+            });
+        }, 0);
     });
 });
