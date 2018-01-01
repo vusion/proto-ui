@@ -98,7 +98,6 @@ export default {
         getOptions() {
             const options = Object.assign({}, this.options, {
                 placement: this.placement,
-                modifiers: this.modifiers || {},
             });
 
             options.modifiers.offset = this.offset;
@@ -119,6 +118,7 @@ export default {
 
             const options = this.getOptions();
             this.popper = new Popper(referenceEl, popperEl, options);
+            this.$emit('createPopper', this.popper);
         },
         destroyPopper() {
             const referenceEl = this.$el;
