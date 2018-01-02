@@ -33,9 +33,11 @@ export default {
     },
     methods: {
         onInput(e) {
-            this.currentValue = e.target.value;
-            this.$emit('input', this.currentValue);
-            this.$emit('update:value', this.currentValue);
+            if (!this.compositionInputing) {
+                this.currentValue = e.target.value;
+                this.$emit('input', this.currentValue);
+                this.$emit('update:value', this.currentValue);
+            }
         },
         onFocus(e) {
             this.$emit('focus', e);

@@ -102,9 +102,17 @@
 
 ### Events
 
+#### @before-select
+
+选择某一项前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止选择流程 |
+
 #### @toggle
 
-触发popper显示或隐藏
+popper显示或隐藏时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
@@ -114,7 +122,7 @@
 
 #### update
 
-触发popper实例的update方法
+更新popper实例
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |

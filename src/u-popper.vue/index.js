@@ -141,6 +141,11 @@ export default {
                 open = !this.currentOpen;
 
             const oldOpen = this.currentOpen;
+
+            this.$emit('before-toggle', {
+                preventDefault: () => open = oldOpen,
+            });
+
             if (open === oldOpen)
                 return;
 
