@@ -99,3 +99,22 @@
 | append-to | String | `body` | 指示添加到哪个元素 |
 | options | Object | `{ modifiers: {} }` | 补充popper.js的选项 |
 | disabled | Boolean | `false` | 是否禁用 |
+
+### Events
+
+#### @update
+
+触发popper实例的update方法
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.update | Function | popper实例的update方法 |
+
+#### @toggle
+
+展示或销毁popper
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.open | Boolean | popper实例的update方法 |
+

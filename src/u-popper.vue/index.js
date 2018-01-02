@@ -118,7 +118,12 @@ export default {
 
             const options = this.getOptions();
             this.popper = new Popper(referenceEl, popperEl, options);
-            this.$emit('createPopper', this.popper);
+            this.$emit('update', {
+                update: this.update,
+            });
+        },
+        update() {
+            this.popper.update();
         },
         destroyPopper() {
             const referenceEl = this.$el;
