@@ -102,7 +102,7 @@
 
 ### Events
 
-#### @before-select
+#### @before-toggle
 
 选择某一项前触发
 
