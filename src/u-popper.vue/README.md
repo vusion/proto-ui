@@ -102,19 +102,27 @@
 
 ### Events
 
-#### @update
+#### @toggle
+
+触发popper显示或隐藏
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.open | Boolean | true表示展示，false表示隐藏 |
+
+### Methods
+
+#### update
 
 触发popper实例的update方法
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.update | Function | popper实例的update方法 |
 
-#### @toggle
+#### toggle
 
-展示或销毁popper
+改变popper的状态：展开/隐藏
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.open | Boolean | popper实例的update方法 |
-
+| open | Boolean | 展开/隐藏 |
