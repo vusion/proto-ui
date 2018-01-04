@@ -120,7 +120,8 @@ export default {
             this.popper = new Popper(referenceEl, popperEl, options);
         },
         update() {
-            this.popper.update();
+            if (this.popper)
+                this.popper.update();
         },
         destroyPopper() {
             const referenceEl = this.$el;
