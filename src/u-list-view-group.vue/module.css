@@ -39,3 +39,7 @@
 .root[disabled] .expander {
     color: $brand-disabled;
 }
+
+.extra {
+    float: right;
+}

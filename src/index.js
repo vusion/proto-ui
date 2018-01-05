@@ -34,6 +34,7 @@ import Popper from './u-popper.vue';
 import Radio from './u-radio.vue';
 import Radio0 from './u-radio--0.vue';
 import Radios from './u-radios.vue';
+import Render from './u-render.vue';
 import RouterItem from './u-router-item.vue';
 import Sample from './u-sample.vue';
 import Select from './u-select.vue';
@@ -89,6 +90,7 @@ export {
     Radio,
     Radio0,
     Radios,
+    Render,
     RouterItem,
     Sample,
     Select,

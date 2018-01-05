@@ -7,6 +7,7 @@
             :expanded="currentExpanded"
             @click="parentVM.expandTrigger === 'click-expander' && ($event.stopPropagation(), toggle())"
         ></span>
+        <span :class="$style.extra"><slot name="extra"></slot></span>
     </div>
     <u-collapse-transition>
         <div :class="$style.body" v-show="currentCollapsible ? currentExpanded : true">
