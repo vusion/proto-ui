@@ -72,8 +72,10 @@ export default {
         validate(trigger = 'submit', silent = false) {
             let rules = this.currentRules;
             rules = rules && rules.filter((rule) => (rule.trigger + '+submit').includes(trigger));
-            if (!rules || !rules.length)
+            if (!rules || !rules.length) {
+                this.dispatch('u-form', 'validate-item-vm', true);
                 return Promise.resolve();
+            }
 
             this.state = 'validating';
             if (!silent)
