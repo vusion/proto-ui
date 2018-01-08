@@ -17,6 +17,10 @@ $background-color-base: #eee;
 $color-base: #345;
 $border-color-base: #ccc;
 
+/* Spacing Dimensions */
+$margin-bottom-base: 15px;
+$margin-right-base: 5px;
+
 /* Component Base Dimensions */
 $border-width-base: 1px;
 $height-base: 32px;
@@ -25,7 +29,3 @@ $height-base: 32px;
 $cursor-pointer: pointer;
 $cursor-not-allowed: not-allowed;
 $focus-outline: none;
-
-/* Base Margins */
-$margin-bottom-base: 15px;
-$margin-right-base: 5px;
