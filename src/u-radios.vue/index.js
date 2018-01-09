@@ -16,18 +16,16 @@ export default {
         };
     },
     watch: {
-        value(value) {
+        value(value, oldValue) {
             this.watchValue(value);
-        },
-        itemVMs() {
-            this.selectedVM = undefined;
-            this.watchValue(this.value);
-        },
-        currentValue(value, oldValue) {
             this.$emit('change', {
                 value,
                 oldValue,
             });
+        },
+        itemVMs() {
+            this.selectedVM = undefined;
+            this.watchValue(this.value);
         },
     },
     created() {

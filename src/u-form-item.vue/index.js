@@ -58,8 +58,8 @@ export default {
                 this.inputing = false;
             });
         },
-        onChange(value) {
-            this.value = value;
+        onChange($event) {
+            this.value = $event.value;
             !this.inputing && this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {

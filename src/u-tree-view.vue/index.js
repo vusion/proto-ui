@@ -42,8 +42,12 @@ export default {
     watch: {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
-        value(value) {
+        value(value, oldValue) {
             this.watchValue(value);
+            this.$emit('change', {
+                value,
+                oldValue,
+            });
         },
         // This method just run once after pushing many nodeVMs
         nodeVMs() {
