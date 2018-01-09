@@ -1,5 +1,5 @@
 import Emitter from '../u-emitter.vue';
-import Validator from 'async-validator';
+import Validator from 'vusion-async-validator';
 
 export default {
     name: 'u-form-item',

@@ -26,7 +26,7 @@
     "proto-ui"
   ],
   "dependencies": {
-    "async-validator": "^1.8.1",
+    "vusion-async-validator": "^1.8.8",
     "normalize.css": "^7.0.0",
     "popper.js": "^1.12.9"
   },
