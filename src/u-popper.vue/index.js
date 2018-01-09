@@ -138,16 +138,22 @@ export default {
             if (this.disabled)
                 return;
 
-            if (typeof open !== 'boolean')
-                open = !this.currentOpen;
-
             const oldOpen = this.currentOpen;
 
-            this.$emit('before-toggle', {
-                preventDefault: () => open = oldOpen,
-            });
+            if (open === undefined)
+                open = !this.currentOpen;
 
             if (open === oldOpen)
+                return;
+
+            let cancel = false;
+
+            this.$emit('before-toggle', {
+                open,
+                preventDefault: () => cancel = true,
+            });
+
+            if (cancel)
                 return;
 
             this.currentOpen = open;
