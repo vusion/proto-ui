@@ -44,9 +44,13 @@ export default {
         // so using watcher is better than computed property.
         value(value, oldValue) {
             this.watchValue(value);
+        },
+        selectedVM(selectedVM, oldVM) {
             this.$emit('change', {
-                value,
-                oldValue,
+                value: selectedVM ? selectedVM.value : undefined,
+                oldValue: oldVM ? oldVM.value : undefined,
+                item: selectedVM ? selectedVM.item : undefined,
+                itemVM: selectedVM,
             });
         },
         // This method just run once after pushing many nodeVMs

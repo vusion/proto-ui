@@ -18,9 +18,13 @@ export default {
     watch: {
         value(value, oldValue) {
             this.watchValue(value);
+        },
+        selectedVM(selectedVM, oldVM) {
             this.$emit('change', {
-                value,
-                oldValue,
+                value: selectedVM ? selectedVM.value : undefined,
+                oldValue: oldVM ? oldVM.value : undefined,
+                item: selectedVM ? selectedVM.item : undefined,
+                itemVM: selectedVM,
             });
         },
         itemVMs() {

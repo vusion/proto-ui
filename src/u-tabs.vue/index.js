@@ -22,6 +22,14 @@ export default {
             // this.selectedVM = undefined;
             this.watchValue(this.value);
         },
+        selectedVM(selectedVM, oldVM) {
+            this.$emit('change', {
+                value: selectedVM ? selectedVM.value : undefined,
+                oldValue: oldVM ? oldVM.value : undefined,
+                item: selectedVM ? selectedVM.item : undefined,
+                itemVM: selectedVM,
+            });
+        },
     },
     created() {
         this.$on('add-item-vm', (itemVM) => {
