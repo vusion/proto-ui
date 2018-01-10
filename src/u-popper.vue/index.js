@@ -120,8 +120,7 @@ export default {
             this.popper = new Popper(referenceEl, popperEl, options);
         },
         update() {
-            if (this.popper)
-                this.popper.update();
+            this.popper && this.popper.update();
         },
         destroyPopper() {
             const referenceEl = this.$el;
@@ -147,12 +146,10 @@ export default {
                 return;
 
             let cancel = false;
-
             this.$emit('before-toggle', {
                 open,
                 preventDefault: () => cancel = true,
             });
-
             if (cancel)
                 return;
 

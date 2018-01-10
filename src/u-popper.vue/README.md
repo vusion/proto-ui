@@ -104,19 +104,20 @@
 
 #### @before-toggle
 
-选择某一项前触发
+弹出/隐藏前触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.preventDefault | Function | 阻止选择流程 |
+| open | Boolean | 弹出/隐藏状态 |
+| $event.preventDefault | Function | 阻止弹出/隐藏流程 |
 
 #### @toggle
 
-popper显示或隐藏时触发
+弹出/隐藏时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.open | Boolean | true表示展示，false表示隐藏 |
+| $event.open | Boolean | 弹出/隐藏状态 |
 
 ### Methods
 
@@ -129,8 +130,8 @@ popper显示或隐藏时触发
 
 #### toggle
 
-改变popper的状态：展开/隐藏
+切换弹出/隐藏状态
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| open | Boolean | 展开/隐藏 |
+| open | Boolean | 弹出/隐藏状态 |
