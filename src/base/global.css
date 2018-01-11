@@ -23,6 +23,7 @@ $margin-right-base: 5px;
 
 /* Component Base Dimensions */
 $border-width-base: 1px;
+$width-base: 160px;
 $height-base: 32px;
 
 /* Component Action Hints */

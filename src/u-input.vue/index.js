@@ -9,6 +9,7 @@ export default {
     },
     data() {
         return {
+            focus: false,
             currentValue: this.value,
             compositionInputing: false,
         };
@@ -40,9 +41,11 @@ export default {
             }
         },
         onFocus(e) {
+            this.focus = true;
             this.$emit('focus', e);
         },
         onBlur(e) {
+            this.focus = false;
             this.$emit('blur', e);
         },
     },
