@@ -318,6 +318,17 @@ export default {
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 
+#### @change
+
+选择值改变时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.itemVM | ListViewItem | 选择项子组件 |
+
 #### @toggle
 
 展开/折叠某分组时触发
@@ -384,7 +395,11 @@ export default {
 
 #### title
 
-自定义文本显示。
+自定义标题文本。
+
+#### extra
+
+在右侧可以附加组件。
 
 ### Events
 

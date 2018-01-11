@@ -83,6 +83,17 @@
 | $event.oldValue | Any | 旧的值 |
 | $event.itemVM | ListViewItem |  选择项子组件 |
 
+#### @change
+
+选择值改变时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.itemVM | ListViewItem | 选择项子组件 |
+
 ## Radio API
 ### Props/Attrs
 
