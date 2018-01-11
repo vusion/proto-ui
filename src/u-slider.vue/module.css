@@ -1,11 +1,13 @@
-.root {
+.root {}
+
+.body {
     position: relative;
-    overflow: hidden;
+    margin: 0 10px;
+    padding: 6px 0;
 }
 
 .track {
-    position: relative;
-    margin: 6px 10px;
+    overflow: hidden;
     height: 8px;
     background: $background-color-base;
 }
@@ -21,7 +23,6 @@
     left: 0;
     top: 0;
     margin-left: -10px;
-    margin-top: -6px;
     width: 20px;
     height: 20px;
     background: #fff;

@@ -61,13 +61,17 @@ export default {
                 manager.range = this.getRange(transferEl);
 
                 const dimension = getDimension(transferEl);
-                if (!(dimension.left <= e.clientX && e.clientX < dimension.left + dimension.width))
-                    style.left += e.clientX - dimension.left - dimension.width / 2;
-                if (!(dimension.top <= e.clientY && e.clientY < dimension.top + dimension.height))
-                    style.top += e.clientY - dimension.top - dimension.height / 2;
 
-                transferEl.style.left = style.left + 'px';
-                transferEl.style.top = style.top + 'px';
+                if (this.axis === 'both' || this.axis === 'horizontal') {
+                    if (!(dimension.left <= e.clientX && e.clientX < dimension.left + dimension.width))
+                        style.left += e.clientX - dimension.left - dimension.width / 2;
+                    transferEl.style.left = style.left + 'px';
+                }
+                if (this.axis === 'both' || this.axis === 'vertical') {
+                    if (!(dimension.top <= e.clientY && e.clientY < dimension.top + dimension.height))
+                        style.top += e.clientY - dimension.top - dimension.height / 2;
+                    transferEl.style.top = style.top + 'px';
+                }
             }
 
             Object.assign(manager, {

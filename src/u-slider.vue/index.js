@@ -44,7 +44,7 @@ export default {
                 const isOutOfRange = this.isOutOfRange(value);
                 if (isOutOfRange)
                     this.currentValue = isOutOfRange;
-                this.currentValue = value.toFixed(4);
+                this.currentValue = +value.toFixed(4);
                 this.$emit('input', value);
                 this.$emit('update:value', value);
             },
