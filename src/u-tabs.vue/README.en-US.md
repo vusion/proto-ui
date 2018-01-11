@@ -94,7 +94,7 @@ Emit after selecting a tab.
 | title | String | | Tab title |
 | hidden | Boolean | `false` | Hide this tab |
 | disabled | Boolean | `false` | Disabled |
-| to | String \| Object | | The target location of this link |
+| to | String, Object | | The target location of this link |
 | replace | Boolean | `false` | Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked |
 | exact | Boolean | `false` | Active matching behavior is inclusive match |
 

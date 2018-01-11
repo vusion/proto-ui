@@ -94,7 +94,7 @@
 | offset | String | `undefined` | 弹出层偏移，"10px 10px","10% 10%" |
 | escape-with-reference | Boolean | `true` | 当触发元素离开边际时，弹出层是否跟随离开或保留在边际元素内 |
 | hover-delay | Number | `0` | trigger为hover时的延迟时间 |
-| boundaries-element | Element \| String | `scrollParent` | 弹出层所在的边框元素，定义弹出层的边际，默认为第一个滚动的父级元素 |
+| boundaries-element | Element, String | `scrollParent` | 弹出层所在的边框元素，定义弹出层的边际，默认为第一个滚动的父级元素 |
 | arrow-element | String | `'[u-arrow]'` | 箭头元素的query值，默认为u-arrow属性，定义该属性则组件会控制箭头元素的偏移量 |
 | append-to | String | `body` | 指示添加到哪个元素 |
 | options | Object | `{ modifiers: {} }` | 补充popper.js的选项 |

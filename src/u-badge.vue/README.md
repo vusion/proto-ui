@@ -38,7 +38,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Number \| String |  | 显示的值 |
+| value | Number, String |  | 显示的值 |
 | max | Number |  | 最大值，超过最大值会显示为`max+`的形式，要求`value`是 `Number`类型。 |
 | corner | Boolean | `false` | 是否插入到右上角 |
 | dot | Boolean | `false` | 是否显示为小圆点 |

@@ -44,7 +44,7 @@ export default {
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Boolean \| null | `false` | 选中状态，`null`表示不确定状态  |
+| value | Boolean, null | `false` | 选中状态，`null`表示不确定状态  |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -62,8 +62,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean \| null | 选中状态 |
-| $event.oldValue | Boolean \| null | 旧的选中状态 |
+| $event.value | Boolean, null | 选中状态 |
+| $event.oldValue | Boolean, null | 旧的选中状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
 
 #### @input
@@ -72,7 +72,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Boolean \| null | 切换后的选中状态 |
+| $event | Boolean, null | 切换后的选中状态 |
 
 #### @check
 
@@ -80,8 +80,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean \| null | 选中状态 |
-| $event.oldValue | Boolean \| null | 旧的选中状态 |
+| $event.value | Boolean, null | 选中状态 |
+| $event.oldValue | Boolean, null | 旧的选中状态 |
 
 #### @change
 
@@ -89,5 +89,5 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean \| null | 选中状态 |
-| $event.oldValue | Boolean \| null | 旧的选中状态 |
+| $event.value | Boolean, null | 选中状态 |
+| $event.oldValue | Boolean, null | 旧的选中状态 |

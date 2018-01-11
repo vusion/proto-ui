@@ -28,7 +28,7 @@
 | --------- | ---- | ------- | ----------- |
 | href | String |  | `href` property of link |
 | target | String |  | (native property) |
-| to | String \| Object |  | `to` property of `vue-router` |
+| to | String, Object |  | `to` property of `vue-router` |
 | replace | Boolean | `false` | |
 | append | Boolean | `false` | |
 | disabled | Boolean | `false` | Prevent action of this link |

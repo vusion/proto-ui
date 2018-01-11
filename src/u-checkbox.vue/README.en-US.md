@@ -44,7 +44,7 @@ export default {
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value | Boolean \| null | `false` | Checked status. `null` means indeterminate status.  |
+| value | Boolean, null | `false` | Checked status. `null` means indeterminate status.  |
 | readonly | Boolean | `false` | Readonly |
 | disabled | Boolean | `false` | Disabled |
 
@@ -62,7 +62,7 @@ Emit when checking.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| value | Boolean \| null | Checked value |
+| value | Boolean, null | Checked value |
 
 #### @change
 
@@ -70,5 +70,5 @@ Emit when change value.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| newValue | Boolean \| null | New value |
-| oldValue | Boolean \| null | Old value |
+| newValue | Boolean, null | New value |
+| oldValue | Boolean, null | Old value |
