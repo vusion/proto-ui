@@ -1,0 +1,38 @@
+.root {
+    position: relative;
+    overflow: hidden;
+}
+
+.track {
+    position: relative;
+    margin: 6px 10px;
+    height: 8px;
+    background: $background-color-base;
+}
+
+.trail {
+    float: left;
+    height: 100%;
+    background: $brand-primary;
+}
+
+.handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: -10px;
+    margin-top: -6px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+}
+
+.root[disabled] {
+    cursor: $cursor-not-allowed;
+}
+
+.root[disabled] .trail {
+    background: $brand-disabled;
+}
