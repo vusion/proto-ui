@@ -1,0 +1,11 @@
+.root {}
+
+.slider[class] {
+    display: inline-block;
+    width: 160px;
+}
+
+.input[class] {
+    margin-left: 10px;
+    width: 60px;
+}

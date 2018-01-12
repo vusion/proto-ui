@@ -1,0 +1,9 @@
+<div :class="$style.root">
+    <u-slider :class="$style.slider" :value="currentValue" @input="onInput"
+        :min="min" :max="max" :step="step" :readonly="readonly" :disabled="disabled"
+    ></u-slider>
+    <u-number-input :class="$style.input" :value="currentValue" @input="onInput"
+        :min="min" :max="max" :step="step || 1" :readonly="readonly" :disabled="disabled"
+    ></u-number-input>
+    <slot></slot>
+</div>

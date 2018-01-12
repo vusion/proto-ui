@@ -6,6 +6,7 @@ import Checkbox0 from './u-checkbox--0.vue';
 import Checkboxes from './u-checkboxes.vue';
 import CircularProgress from './u-circular-progress.vue';
 import CollapseTransition from './u-collapse-transition.vue';
+import ComboSlider from './u-combo-slider.vue';
 import Draggable from './u-draggable.vue';
 import Dragger from './u-dragger.vue';
 import Droppable from './u-droppable.vue';
@@ -64,6 +65,7 @@ export {
     Checkboxes,
     CircularProgress,
     CollapseTransition,
+    ComboSlider,
     Draggable,
     Dragger,
     Droppable,

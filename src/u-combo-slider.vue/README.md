@@ -1,27 +1,27 @@
-# 滑块 Slider
-
-## 示例
-### 基本形式
+# 复合滑块 ComboSlider
 
 ``` html
-<u-slider :value="36"></u-slider>
+<u-combo-slider></u-combo-slider>
 ```
 
 ### 最大值和最小值
 
 ``` html
-<u-slider :value="36" :min="10" :max="50"></u-slider>
+<u-combo-slider :value="36" :min="10" :max="50"></u-combo-slider>
 ```
 
 ### 连续和间隔
 
 ``` html
 <u-grid-layout>
-    <u-grid-layout-column :span="6">
-        <u-slider></u-slider>
+    <u-grid-layout-column :span="4">
+        <u-combo-slider></u-combo-slider>
     </u-grid-layout-column>
-    <u-grid-layout-column :span="6">
-        <u-slider :step="20"></u-slider>
+    <u-grid-layout-column :span="4">
+        <u-combo-slider :step="1"></u-combo-slider>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <u-combo-slider :step="20"></u-combo-slider>
     </u-grid-layout-column>
 </u-grid-layout>
 ```
@@ -30,10 +30,10 @@
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="6">
-        <u-slider :value="36" readonly></u-slider>
+        <u-combo-slider :value="36" readonly></u-combo-slider>
     </u-grid-layout-column>
     <u-grid-layout-column :span="6">
-        <u-slider :value="36" disabled></u-slider>
+        <u-combo-slider :value="36" disabled></u-combo-slider>
     </u-grid-layout-column>
 </u-grid-layout>
 ```
@@ -54,7 +54,7 @@
 
 #### @input
 
-拖动滑块时触发
+滑块的值改变时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
@@ -62,7 +62,7 @@
 
 #### @change
 
-滑块的值改变时触发
+滑块的值改变后触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |

@@ -1,4 +1,6 @@
-.root {}
+.root {
+    vertical-align: 1px;
+}
 
 .body {
     position: relative;
