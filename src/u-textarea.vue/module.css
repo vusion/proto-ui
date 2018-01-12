@@ -30,7 +30,7 @@
     border: none;
     border-radius: 0;
     cursor: inherit;
-    resize: vertical;
+    resize: none;
 }
 
 .root[focus] {
@@ -42,11 +42,11 @@
     outline: none;
 }
 
-.root[color="error"] {
+.input[color="error"] {
     border-color: $brand-error;
 }
 
-.root[disabled] {
+.input[disabled] {
     cursor: $cursor-not-allowed;
     background: $gray-lighter;
 }
