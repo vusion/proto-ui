@@ -29,6 +29,7 @@ import ListViewItem from './u-list-view-item.vue';
 import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
+import NumberInput from './u-number-input.vue';
 import Pagination from './u-pagination.vue';
 import Popper from './u-popper.vue';
 import Radio from './u-radio.vue';
@@ -86,6 +87,7 @@ export {
     Navbar,
     NavbarDivider,
     NavbarItem,
+    NumberInput,
     Pagination,
     Popper,
     Radio,

@@ -62,7 +62,7 @@ export default {
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | type | String | `'text'` | 输入框的类型，目前只支持两种：`'text'`和`'password'` |
-| value | String | | 输入框的值 |
+| value.sync, v-model | String | | 输入框的值 |
 | placeholder | String | | 原生属性 |
 | minlength | Number | | 原生属性 |
 | maxlength | Number | | 原生属性 |

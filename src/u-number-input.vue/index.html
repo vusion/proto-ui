@@ -1,0 +1,7 @@
+<u-input ref="input" :class="$style.root" :value="currentValue"
+    :readonly="readonly" :disabled="disabled"
+    @input="input" @blur="onBlur" v-on="listeners">
+    <span :class="$style.button" role="up" @click="increase()"></span>
+    <span :class="$style.button" role="down" @click="decrease()"></span>
+    <slot></slot>
+</u-input>

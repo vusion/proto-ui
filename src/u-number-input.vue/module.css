@@ -1,0 +1,48 @@
+.root {
+
+}
+
+.button {
+    position: absolute;
+    right: 1px;
+    height: 14px;
+    line-height: 14px;
+    padding: 0 4px;
+    cursor: pointer;
+    background: $background-color-base;
+}
+
+.button:hover {
+    background: $gray-lighter;
+}
+
+.button:active {
+    background: $gray-light;
+}
+
+.button[role="up"] {
+    top: 1px;
+}
+
+.button[role="up"]:before {
+    icon-font: url('../u-icon.vue/assets/arrow-up.svg');
+}
+
+.button[role="down"] {
+    bottom: 1px;
+}
+
+.button[role="down"]:before {
+    icon-font: url('../u-icon.vue/assets/arrow-down.svg');
+}
+
+.root[readonly] .button {
+    background: $background-color-base;
+    cursor: default;
+}
+
+.root[disabled] .button {
+    background: $background-color-base;
+    color: $brand-disabled;
+    cursor: $cursor-not-allowed;
+}
