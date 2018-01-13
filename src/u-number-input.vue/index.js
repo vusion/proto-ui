@@ -11,6 +11,7 @@ export default {
         min: { type: Number, default: -Infinity },
         max: { type: Number, default: Infinity },
         step: { type: Number, default: 1 },
+        fixed: { type: Number, default: 4 },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -42,7 +43,7 @@ export default {
             if (isNaN(value) || value === '' || value === null)
                 return this.currentValue;
             else {
-                value = +value;
+                value = +(+value).toFixed(this.fixed);
                 return Math.min(Math.max(this.min, value), this.max);
             }
         },
@@ -59,10 +60,10 @@ export default {
             this.$emit('update:value', value);
         },
         increase() {
-            this.input(+this.currentValue + this.step);
+            this.input(+(+this.currentValue + this.step).toFixed(this.fixed));
         },
         decrease() {
-            this.input(+this.currentValue - this.step);
+            this.input(+(+this.currentValue - this.step).toFixed(this.fixed));
         },
         onBlur(e) {
             this.$refs.input.currentValue = this.currentValue;

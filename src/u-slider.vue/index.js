@@ -9,8 +9,8 @@ export default {
         disabled: { type: Boolean, default: false },
         min: { type: Number, default: 0 },
         max: { type: Number, default: 100 },
-        step: { type: Number, default: 0 },
-        precision: { type: Number, default: 4 },
+        step: { type: Number, default: 1 },
+        fixed: { type: Number, default: 4 },
     },
     data() {
         return {
@@ -45,7 +45,7 @@ export default {
                 const isOutOfRange = this.isOutOfRange(value);
                 if (isOutOfRange)
                     this.currentValue = isOutOfRange;
-                value = +value.toFixed(this.precision);
+                value = +value.toFixed(this.fixed);
 
                 this.currentValue = value;
                 this.$emit('input', value);

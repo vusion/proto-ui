@@ -18,7 +18,7 @@
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="6">
-        <u-slider></u-slider>
+        <u-slider :step="0"></u-slider>
     </u-grid-layout-column>
     <u-grid-layout-column :span="6">
         <u-slider :step="20"></u-slider>
@@ -46,7 +46,8 @@
 | value.sync, v-model | Number | `0` | 滑块的值 |
 | min | Number | `0` | 最小值 |
 | max | Number | `0` | 最大值 |
-| step | Number | `0` | 间隔。`0`表示连续 |
+| step | Number | `1` | 间隔。`0`表示连续 |
+| fixed | Number | `4` | 如果值为小数，该属性表示需要保留的位数 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 

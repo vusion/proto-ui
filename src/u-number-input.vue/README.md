@@ -44,6 +44,7 @@
 | min | Number | `0` | 最小值 |
 | max | Number | `0` | 最大值 |
 | step | Number | `0` | 间隔。`0`表示连续 |
+| fixed | Number | `4` | 如果值为小数，该属性表示需要保留的位数 |
 | placeholder | String | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
 | readonly | Boolean | `false` | 是否只读 |
