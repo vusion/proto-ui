@@ -62,7 +62,7 @@ export default {
         // 绑定事件
         const offEvents = this.offEvents = [];
         if (this.trigger === 'click')
-            offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
+            offEvents.push(event.on(referenceEl, 'click', () => this.toggle(true)));
         else if (this.trigger === 'hover') {
             offEvents.push(event.on(referenceEl, 'mouseenter', () => {
                 setTimeout(() => this.toggle(true), this.hoverDelay);
@@ -71,16 +71,18 @@ export default {
                 !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
             }));
         } else if (this.trigger === 'double-click')
-            offEvents.push(event.on(referenceEl, 'dblclick', () => this.toggle()));
+            offEvents.push(event.on(referenceEl, 'dblclick', () => this.toggle(true)));
         else if (this.trigger === 'right-click') {
             offEvents.push(event.on(referenceEl, 'contextmenu', (e) => {
                 e.preventDefault();
-                this.toggle();
+                this.toggle(true);
             }));
         }
-        offEvents.push(event.on(document, 'click', (e) => {
-            !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+        offEvents.push(event.on(document, 'mousedown', (e) => {
+            !popperEl.contains(e.target) && this.toggle(false);
         }));
+
+        this.currentOpen && this.createPopper();
     },
     updated() {
         this.childVM.$forceUpdate();
