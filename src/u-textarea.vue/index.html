@@ -1,5 +1,5 @@
-<span :class="$style.root" :focus="focus" :color="color || this.formItemVM && this.formItemVM.color">
-    <textarea :class="$style.input" v-bind="$attrs"
+<span :class="$style.root" :focus="focused" :color="color || this.formItemVM && this.formItemVM.color">
+    <textarea ref="input" :class="$style.input" v-bind="$attrs"
         :value="currentValue"
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"

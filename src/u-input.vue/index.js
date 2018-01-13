@@ -9,7 +9,7 @@ export default {
     },
     data() {
         return {
-            focus: false,
+            focused: false,
             currentValue: this.value,
             compositionInputing: false,
         };
@@ -41,12 +41,18 @@ export default {
             }
         },
         onFocus(e) {
-            this.focus = true;
+            this.focused = true;
             this.$emit('focus', e);
         },
         onBlur(e) {
-            this.focus = false;
+            this.focused = false;
             this.$emit('blur', e);
+        },
+        focus() {
+            this.$refs.input.focus();
+        },
+        blur() {
+            this.$refs.blur.blur();
         },
     },
 };

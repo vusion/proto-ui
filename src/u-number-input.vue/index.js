@@ -1,8 +1,10 @@
 import Field from '../u-field.vue';
+import { repeatClick } from '../base/directives';
 
 export default {
     name: 'u-number-input',
     mixins: [Field],
+    directives: { repeatClick },
     props: {
         // 只能传入数字
         value: { type: Number, default: 0 },

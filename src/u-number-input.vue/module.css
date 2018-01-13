@@ -16,6 +16,10 @@
     background: $gray-lighter;
 }
 
+.button:focus {
+    outline: $focus-outline;
+}
+
 .button:active {
     background: $gray-light;
 }

@@ -25,7 +25,7 @@ export const to = {
 };
 
 export const ellipsisTitle = {
-    update(el, binding, vnode, oldVnode) {
+    update(el, binding, vnode) {
         const mouseenterHandler = function (e) {
             // 此处如果判断已存在title属性则不添加的话，会导致在u-select中场景下value不发生变化，text发生变化的title不会更新值
             const style = getComputedStyle(el);
@@ -38,5 +38,34 @@ export const ellipsisTitle = {
     },
     unbind(el, binding) {
         event.off(el, 'mouseenter', el.mouseenterHandler);
+    },
+};
+
+export const repeatClick = {
+    bind(el, binding, vnode) {
+        const wait = +binding.arg || 400;
+        const interval = 100;
+        const handler = vnode.context[binding.expression];
+        let pressing = false;
+        let timeout;
+
+        const fn = () => {
+            if (!pressing)
+                return;
+
+            handler();
+            timeout = setTimeout(fn, interval);
+        };
+
+        event.on(el, 'mousedown', (e) => {
+            if (e.button !== 0)
+                return;
+
+            event.once(document, 'mouseup', () => pressing = false);
+            clearTimeout(timeout);
+            pressing = true;
+            handler();
+            timeout = setTimeout(fn, wait);
+        });
     },
 };
