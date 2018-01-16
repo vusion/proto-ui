@@ -46,8 +46,6 @@
   },
   "vusion": {
     "version": "^0.5.0",
-    "type": "library",
-    "baseCSSPath": "./src/base/base.css",
-    "globalCSSPath": "./src/base/global.css"
+    "type": "library"
   }
 }
