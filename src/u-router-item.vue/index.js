@@ -2,6 +2,7 @@ export default {
     name: 'u-router-item',
     props: {
         href: String,
+        target: { type: String, default: '_self' },
         to: [String, Object],
         replace: { type: Boolean, default: false },
         exact: { type: Boolean, default: false },
