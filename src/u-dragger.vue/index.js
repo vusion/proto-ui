@@ -65,13 +65,19 @@ export default {
                 if (this.axis === 'both' || this.axis === 'horizontal') {
                     if (!(dimension.left <= e.clientX && e.clientX < dimension.left + dimension.width))
                         style.left += e.clientX - dimension.left - dimension.width / 2;
-                    transferEl.style.left = style.left + 'px';
                 }
                 if (this.axis === 'both' || this.axis === 'vertical') {
                     if (!(dimension.top <= e.clientY && e.clientY < dimension.top + dimension.height))
                         style.top += e.clientY - dimension.top - dimension.height / 2;
-                    transferEl.style.top = style.top + 'px';
                 }
+                const next = (this.constraint || this.defaultConstraint)({
+                    startLeft: style.left,
+                    startTop: style.top,
+                    dragX: 0,
+                    dragY: 0,
+                });
+                transferEl.style.left = next.left + 'px';
+                transferEl.style.top = next.top + 'px';
             }
 
             Object.assign(manager, {

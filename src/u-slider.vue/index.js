@@ -1,4 +1,4 @@
-import Field from 'proto-ui.vusion/src/u-field.vue';
+import Field from '../u-field.vue';
 
 export default {
     name: 'u-slider',
