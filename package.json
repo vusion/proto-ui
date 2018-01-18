@@ -45,7 +45,7 @@
     "vue": "^2.5.0"
   },
   "vusion": {
-    "version": "^0.5.0",
+    "version": ">=0.5.0",
     "type": "library"
   }
 }
