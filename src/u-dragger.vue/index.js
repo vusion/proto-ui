@@ -70,12 +70,14 @@ export default {
                     if (!(dimension.top <= e.clientY && e.clientY < dimension.top + dimension.height))
                         style.top += e.clientY - dimension.top - dimension.height / 2;
                 }
+
                 const next = (this.constraint || this.defaultConstraint)({
                     startLeft: style.left,
                     startTop: style.top,
                     dragX: 0,
                     dragY: 0,
                 });
+
                 transferEl.style.left = next.left + 'px';
                 transferEl.style.top = next.top + 'px';
             }

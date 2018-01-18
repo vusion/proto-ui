@@ -42,7 +42,7 @@
 | transfer | String, Element | `'clone'` | 拖拽时的移动元素。可选值：`'clone'`表示拖拽时拖起自身的一个拷贝，`'self'`表示拖拽时拖起自身，也可以直接传入一个元素，或者用slot来设置。 |
 | immediate | Boolean | `false` | 是否在鼠标按下时立即拖拽。默认为`false`，是为了防止鼠标单击等事件频繁触发拖拽操作。 |
 | disabled | Boolean | `false` | 是否禁用 |
-| constraint | Function | `...` | 拖拽时移动路径的约束函数 |
+| constraint | Function | `...` | 拖拽时移动路径的约束函数。需要传入一个对象，至少要包含：`startLeft`、`startTop`、`dragX`、`dragY`几个字段 |
 
 ### Slots
 
