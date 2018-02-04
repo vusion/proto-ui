@@ -3,5 +3,6 @@
     <div :class="$style.field">
         <slot></slot>
         <span v-if="currentMessage" :class="$style.message" :color="color">{{ currentMessage }}</span>
+        <span v-else-if="isFocus&&focusMessage" :class="$style.focusMessage">{{focusMessage}}</span>
     </div>
 </div>
