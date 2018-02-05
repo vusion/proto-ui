@@ -12,6 +12,7 @@ export default {
         message: String,
         required: { type: Boolean, default: false },
         labelSize: String,
+        focusMessage: String,
     },
     data() {
         return {
@@ -21,6 +22,7 @@ export default {
             currentMessage: '',
             inputing: false,
             parentVM: undefined,
+            isFocus:false
         };
     },
     computed: {
@@ -65,8 +67,10 @@ export default {
         onFocus() {
             this.color = this.state = '';
             this.currentMessage = this.message;
+            this.isFocus = true;
         },
         onBlur() {
+            this.isFocus = false
             this.$nextTick(() => this.validate('blur').catch((errors) => errors));
         },
         validate(trigger = 'submit', silent = false) {
