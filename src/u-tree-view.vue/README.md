@@ -393,7 +393,7 @@ export default {
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | checkable | Boolean | `false` | 是否可以选中/取消 |
 | accordion | Boolean | `false` | 是否每次只会展开一个分组 |
-| expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 

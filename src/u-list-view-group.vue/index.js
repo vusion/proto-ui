@@ -23,6 +23,11 @@ export default {
             return this.collapsible === undefined && this.parentVM ? this.parentVM.collapsible : this.collapsible;
         },
     },
+    watch: {
+        expanded(expanded) {
+            this.currentExpanded = expanded;
+        },
+    },
     created() {
         this.$on('add-item-vm', (itemVM) => {
             itemVM.groupVM = this;
@@ -53,8 +58,7 @@ export default {
             let cancel = false;
             this.$emit('before-toggle', {
                 expanded,
-                node: this.node,
-                nodeVM: this,
+                groupVM: this,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
