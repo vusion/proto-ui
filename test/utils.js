@@ -35,13 +35,13 @@ export const createWrapVM = (Component, propsData) => {
     return vm;
 };
 
-export const createVMFromTemplate = (template, data, Components) => {
-    const options = {
+export const createVMFromTemplate = (template, options, Components) => {
+    options = Object.assign({
         template,
         destroyed() {
             this.$el && this.$el.parentNode && this.$el.parentNode.removeChild(this.$el);
         },
-    };
+    }, options);
     // if (data)
     //     options.data = function () { return data; };
 
