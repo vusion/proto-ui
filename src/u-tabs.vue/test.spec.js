@@ -9,11 +9,13 @@ installComponents(Components, Vue);
 
 describe('Tabs, Tab', () => {
     it('(default)', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs">
+        const vm = createVMFromTemplate(`
+            <u-tabs ref="tabs">
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
-            </u-tabs>`);
+            </u-tabs>
+        `);
 
         const tabs = vm.$refs.tabs;
         vm.$nextTick(() => {
@@ -23,17 +25,19 @@ describe('Tabs, Tab', () => {
     });
 
     it('value && select', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs" :value.sync="value">
-                    <u-tab title="TabA" value="A">ContentA</u-tab>
-                    <u-tab title="TabB" value="B">ContentB</u-tab>
-                    <u-tab title="TabC" value="C">ContentC</u-tab>
-                </u-tabs>`, {
-            data() {
-                return {
-                    value: 'A',
-                };
-            },
-        });
+        const vm = createVMFromTemplate(
+            `<u-tabs ref="tabs" :value.sync="value">
+                <u-tab title="TabA" value="A">ContentA</u-tab>
+                <u-tab title="TabB" value="B">ContentB</u-tab>
+                <u-tab title="TabC" value="C">ContentC</u-tab>
+            </u-tabs>`, {
+                data() {
+                    return {
+                        value: 'A',
+                    };
+                },
+            }
+        );
 
         const tabs = vm.$refs.tabs;
         const spy = sinon.spy(tabs, 'select');
@@ -48,7 +52,8 @@ describe('Tabs, Tab', () => {
     });
 
     it('@before-select', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs" @before-select="beforeSelect">
+        const vm = createVMFromTemplate(`
+            <u-tabs ref="tabs" @before-select="beforeSelect">
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
@@ -58,7 +63,8 @@ describe('Tabs, Tab', () => {
                     e.preventDefault();
                 },
             },
-        });
+        }
+        );
 
         const tabs = vm.$refs.tabs;
         tabs.select(tabs.itemVMs[2]);
@@ -69,11 +75,13 @@ describe('Tabs, Tab', () => {
     });
 
     it('close', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs">
+        const vm = createVMFromTemplate(`
+            <u-tabs ref="tabs">
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
-            </u-tabs>`);
+            </u-tabs>`
+        );
 
         const tabs = vm.$refs.tabs;
         const selectedVM = tabs.itemVMs[1];
@@ -86,11 +94,13 @@ describe('Tabs, Tab', () => {
     });
 
     it('readonly', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs" readonly>
+        const vm = createVMFromTemplate(`
+            <u-tabs ref="tabs" readonly>
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
-            </u-tabs>`);
+            </u-tabs>
+        `);
 
         const tabs = vm.$refs.tabs;
         tabs.select(tabs.itemVMs[1]);
@@ -101,11 +111,13 @@ describe('Tabs, Tab', () => {
     });
 
     it('disabled', (done) => {
-        const vm = createVMFromTemplate(`<u-tabs ref="tabs" disabled>
+        const vm = createVMFromTemplate(`
+            <u-tabs ref="tabs" disabled>
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
-            </u-tabs>`);
+            </u-tabs>
+        `);
 
         const tabs = vm.$refs.tabs;
         tabs.select(tabs.itemVMs[1]);
