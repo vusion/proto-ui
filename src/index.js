@@ -46,6 +46,8 @@ import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
 import SidebarItem from './u-sidebar-item.vue';
 import Slider from './u-slider.vue';
+import Steps from './u-steps.vue';
+import Step from './u-step.vue';
 import Switch from './u-switch.vue';
 import Tab from './u-tab.vue';
 import Tabs from './u-tabs.vue';
@@ -103,6 +105,8 @@ export {
     SidebarGroup,
     SidebarItem,
     Slider,
+    Steps,
+    Step,
     Switch,
     Tab,
     Tabs,
