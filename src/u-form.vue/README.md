@@ -289,6 +289,35 @@ export default {
 </u-form>
 ```
 
+### 验证提示
+
+`<u-form-item>`的`message`属性用于设置默认提示，规则中的`message`字段用于设置验证不通过时提示。
+
+``` vue
+<template>
+<u-form ref="form" :rules="rules">
+    <u-form-item label="用户名" name="username" message="用户名是唯一的">
+        <u-input maxlength="12" placeholder="4~12个字符"></u-input>
+    </u-form-item>
+</u-form>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            rules: {
+                username: [
+                    { type: 'string', required: true, trigger: 'blur', message: '请输入用户名' },
+                    { type: 'string', min: 4, max: 12, trigger: 'blur', message: '请输入4~12个字符' },
+                ],
+            },
+        };
+    },
+};
+</script>
+```
+
 ## 案例
 
 前面的示例只是局部展示组件库表单验证体系的使用方法，达到的效果不一定符合实际情况。下面举几种比较合理的案例：
