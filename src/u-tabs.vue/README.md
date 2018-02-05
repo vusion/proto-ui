@@ -41,16 +41,6 @@
 </u-tabs>
 ```
 
-### 隐藏部分项
-
-``` html
-<u-tabs value="2">
-    <u-tab title="模板" value="0">模板内容</u-tab>
-    <u-tab title="样式" value="1" hidden>样式内容</u-tab>
-    <u-tab title="逻辑" value="2">逻辑内容</u-tab>
-</u-tabs>
-```
-
 ### 可关闭
 
 ``` html
@@ -63,7 +53,6 @@
 </u-tabs>
 ```
 
-
 ### 路由
 
 ``` html
@@ -74,13 +63,27 @@
 </u-tabs>
 ```
 
-### 额外的
+### 插槽扩展
+
+- 在`<u-tabs>`上可以使用`extra`插槽，在右侧添加额外的内容；
+- 在`<u-tab>`上可以使用`title`插槽，自定义标签页的标题。
+
+<p></p>
 
 ``` html
 <u-tabs value="1">
-    <u-tab title="模板" value="0">模板内容</u-tab>
-    <u-tab title="样式" value="1">样式内容</u-tab>
-    <u-tab title="逻辑" value="2">逻辑内容</u-tab>
+    <u-tab value="0">
+        <span slot="title">模板 <u-label>1</u-label></span>
+        模板内容
+    </u-tab>
+    <u-tab value="1">
+        <span slot="title">样式 <u-label>6</u-label></span>
+        样式内容
+    </u-tab>
+    <u-tab value="2">
+        <span slot="title">逻辑 <u-label>3</u-label></span>
+        逻辑内容
+    </u-tab>
     <u-checkbox slot="extra">全选</u-checkbox>
 </u-tabs>
 ```
@@ -163,7 +166,6 @@
 | --------- | ---- | ------- | ----------- |
 | title | String | | 标签页标题 |
 | value | Any | | 标签页的值 |
-| hidden | Boolean | `false` | 是否隐藏此标签页 |
 | disabled | Boolean | `false` | 是否禁用此标签页 |
 | to | String, Object | | vue-router的目标链接 |
 | replace | Boolean | `false` | 当切换路由时，调用`router.replace()`，而不是`router.push()` |
