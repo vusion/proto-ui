@@ -1,3 +1,5 @@
+import * as directives from './base/directives';
+
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
@@ -59,6 +61,7 @@ import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
 
 export {
+    directives,
     Badge,
     Block,
     Button,
