@@ -2,12 +2,24 @@ export default {
     name: 'u-link',
     props: {
         href: { type: String },
+        target: { type: String, default: '_self' },
         to: [String, Object],
         replace: { type: Boolean, default: false },
         append: { type: Boolean, default: false },
         disabled: { type: Boolean },
     },
     computed: {
+        /**
+         * 使用`to`时，也产生一个链接，尽可能向原生的`<a>`靠近
+         */
+        currentHref() {
+            if (this.href !== undefined)
+                return this.href;
+            else if (this.$router && this.to !== undefined)
+                return this.$router.resolve(this.to, this.$route, this.append).href;
+            else
+                return undefined;
+        },
         listeners() {
             const listeners = Object.assign({}, this.$listeners);
             delete listeners.click;
@@ -20,8 +32,20 @@ export default {
                 return e.preventDefault();
 
             this.$emit('click', e);
-            // 先执行事件，再执行to，最后判断href
-            this.navigate();
+
+            if (this.target !== '_self')
+                return;
+
+            // 使用`to`的时候走`$router`，否则走原生
+            if (this.href === undefined) {
+                // 使用浏览器的一些快捷键时，走原生
+                // @TODO: 考虑使用快捷键抛出事件，阻止流程的需求
+                if (e.ctrlKey || e.shiftKey || e.metaKey || e.altKey)
+                    return;
+
+                e.preventDefault();
+                this.navigate();
+            }
         },
         navigate() {
             if (this.to === undefined)
