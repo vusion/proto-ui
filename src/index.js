@@ -56,6 +56,7 @@ import Switch from './u-switch.vue';
 import Tab from './u-tab.vue';
 import Tabs from './u-tabs.vue';
 import Textarea from './u-textarea.vue';
+import Tooltip from './u-tooltip.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
@@ -118,6 +119,7 @@ export {
     Tab,
     Tabs,
     Textarea,
+    Tooltip,
     TreeView,
     TreeViewNode,
     TreeViewText,

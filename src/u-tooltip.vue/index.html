@@ -1,0 +1,9 @@
+<u-popper :trigger="trigger" :placement="placement" :reference="reference">
+    <slot></slot>
+    <div :class="$style.body" slot="popper">
+        <div :class="$style.arrow"></div>
+        <div :class="$style.wrap">
+            <slot name="content">{{ content }}</slot>
+        </div>
+    </div>
+</u-popper>

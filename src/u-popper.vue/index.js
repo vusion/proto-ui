@@ -5,13 +5,13 @@ import event from '../base/utils/event';
 export default {
     name: 'u-popper',
     props: {
+        open: { type: Boolean, default: false },
+        trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
         placement: {
             type: String, default: 'bottom-start',
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
-        trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
         reference: HTMLElement,
-        open: { type: Boolean, default: false },
         offset: { type: Number, default: 0 },
         escapeWithReference: { type: Boolean, default: false },
         hoverDelay: { type: Number, default: 0 },
