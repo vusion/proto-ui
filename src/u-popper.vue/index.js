@@ -10,7 +10,7 @@ export default {
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
-        reference: Object,
+        reference: HTMLElement,
         open: { type: Boolean, default: false },
         offset: { type: Number, default: 0 },
         escapeWithReference: { type: Boolean, default: false },
@@ -56,7 +56,7 @@ export default {
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
 
-        const referenceEl = this.$el;
+        const referenceEl = this.reference || this.$el;
         const popperEl = this.childVM.$el;
 
         // 绑定事件
@@ -111,7 +111,7 @@ export default {
             return options;
         },
         createPopper() {
-            const referenceEl = this.$el;
+            const referenceEl = this.reference || this.$el;
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 document.body.appendChild(popperEl);
@@ -125,7 +125,7 @@ export default {
             this.popper && this.popper.update();
         },
         destroyPopper() {
-            const referenceEl = this.$el;
+            const referenceEl = this.reference || this.$el;
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 popperEl.parentElement === document.body && document.body.removeChild(popperEl);

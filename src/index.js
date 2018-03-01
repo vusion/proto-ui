@@ -1,3 +1,5 @@
+import * as directives from './base/directives';
+
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
@@ -5,6 +7,8 @@ import Checkbox from './u-checkbox.vue';
 import Checkbox0 from './u-checkbox--0.vue';
 import Checkboxes from './u-checkboxes.vue';
 import CircularProgress from './u-circular-progress.vue';
+import Collapse from './u-collapse.vue';
+import CollapseItem from './u-collapse-item.vue';
 import CollapseTransition from './u-collapse-transition.vue';
 import ComboSlider from './u-combo-slider.vue';
 import Draggable from './u-draggable.vue';
@@ -48,6 +52,8 @@ import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
 import SidebarItem from './u-sidebar-item.vue';
 import Slider from './u-slider.vue';
+import Steps from './u-steps.vue';
+import Step from './u-step.vue';
 import Switch from './u-switch.vue';
 import Tab from './u-tab.vue';
 import Tabs from './u-tabs.vue';
@@ -57,6 +63,7 @@ import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
 
 export {
+    directives,
     Badge,
     Block,
     Button,
@@ -64,6 +71,8 @@ export {
     Checkbox0,
     Checkboxes,
     CircularProgress,
+    Collapse,
+    CollapseItem,
     CollapseTransition,
     ComboSlider,
     Draggable,
@@ -107,6 +116,8 @@ export {
     SidebarGroup,
     SidebarItem,
     Slider,
+    Steps,
+    Step,
     Switch,
     Tab,
     Tabs,

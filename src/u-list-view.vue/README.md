@@ -273,7 +273,7 @@ export default {
 | multiple | Boolean | `false` | 是否可以多选 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |
 | accordion | Boolean | `false` | 是否每次只会展开一个分组 |
-| expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -399,7 +399,7 @@ export default {
 
 #### extra
 
-在右侧可以附加组件。
+在右侧可以附加内容。
 
 ### Events
 
@@ -410,7 +410,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | TreeViewNode | 分组组件 |
+| $event.groupVM | ListViewGroup | 分组组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
 
 #### @toggle
@@ -420,7 +420,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | TreeViewNode | 分组组件 |
+| $event.groupVM | ListViewGroup | 分组组件 |
 
 ## ListViewDivider API
 

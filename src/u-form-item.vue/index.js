@@ -18,7 +18,7 @@ export default {
             value: undefined,
             state: '',
             color: '',
-            currentMessage: '',
+            currentMessage: this.message,
             inputing: false,
             parentVM: undefined,
         };
@@ -63,10 +63,11 @@ export default {
             !this.inputing && this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
-            this.color = this.state = '';
+            this.color = this.state = 'focus';
             this.currentMessage = this.message;
         },
         onBlur() {
+            this.color = this.state = '';
             this.$nextTick(() => this.validate('blur').catch((errors) => errors));
         },
         validate(trigger = 'submit', silent = false) {

@@ -40,7 +40,8 @@ export default {
         },
         getState() {
             const STATE_LEVEL = {
-                '': 3,
+                '': 4,
+                focus: 3,
                 validating: 2,
                 error: 1,
                 success: 0,

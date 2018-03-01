@@ -235,7 +235,7 @@
 
 #### extra
 
-在右侧可以附加组件。
+在右侧可以附加内容。
 
 ## SelectDivider API
 

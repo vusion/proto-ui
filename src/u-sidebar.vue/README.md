@@ -167,16 +167,10 @@
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | router | Boolean | `true` | 是否根据vue-router来控制选择哪一项 |
-| href | String |  | 链接地址 |
-| target | String |  | 打开方式 |
-| to | String, Location |  | 需要vue-router，与`<router-link>`的`to`属性相同。可以是一个字符串或者是描述目标位置的对象。 |
-| replace | Boolean | `false` | 需要vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。 |
-| exact | Boolean | `false` | 需要vue-router，与`<router-link>`的`exact`属性相同。是否与路由完全一致时才高亮显示。 |
 | value.sync, v-model | Any | | 当前选择的值 |
-| field | String | `'title'` | 显示文本字段 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |
 | accordion | Boolean | `false` | 是否每次只会展开一个分组 |
-| expandTrigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -248,6 +242,11 @@
 | value | Any | | 此项的值 |
 | disabled | Boolean | `false` | 禁用此项 |
 | item | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
+| href | String |  | 链接地址 |
+| target | String |  | 打开方式 |
+| to | String, Location |  | 需要vue-router，与`<router-link>`的`to`属性相同。可以是一个字符串或者是描述目标位置的对象。 |
+| replace | Boolean | `false` | 需要vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。 |
+| exact | Boolean | `false` | 需要vue-router，与`<router-link>`的`exact`属性相同。是否与路由完全一致时才高亮显示。 |
 
 ### Slots
 
@@ -312,7 +311,7 @@
 
 #### extra
 
-在右侧可以附加组件。
+在右侧可以附加内容。
 
 ### Events
 
@@ -323,7 +322,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | TreeViewNode | 分组组件 |
+| $event.groupVM | SidebarGroup | 分组组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
 
 #### @toggle
@@ -333,7 +332,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | TreeViewNode | 分组组件 |
+| $event.groupVM | SidebarGroup | 分组组件 |
 
 ## SidebarDivider API
 

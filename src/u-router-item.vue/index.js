@@ -2,6 +2,7 @@ export default {
     name: 'u-router-item',
     props: {
         href: String,
+        target: { type: String, default: '_self' },
         to: [String, Object],
         replace: { type: Boolean, default: false },
         exact: { type: Boolean, default: false },
@@ -12,7 +13,7 @@ export default {
                 return;
 
             if (!this.$router)
-                return console.warn('[proto-ui] Cannot find vue router.');
+                return console.warn('[proto-ui] Use `<u-router-item>` but cannot find vue router.');
 
             const current = this.$route;
             const location = this.$router.resolve(this.to).location;
@@ -33,7 +34,7 @@ export default {
                 return;
 
             if (!this.$router)
-                return console.warn('[proto-ui] Cannot find vue router.');
+                return console.warn('[proto-ui] Use `<u-router-item>` but cannot find vue router.');
 
             let cancel = false;
             this.$emit('before-navigate', {
