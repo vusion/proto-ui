@@ -13,7 +13,7 @@ export default {
         reference: HTMLElement,
         open: { type: Boolean, default: false },
         offset: { type: Number, default: 0 },
-        escapeWithReference: { type: Boolean, default: false },
+        escapeWithReference: { type: Boolean, default: true },
         hoverDelay: { type: Number, default: 0 },
         boundariesElement: { default: 'window' },
         arrowElement: { type: String, default: '[u-arrow]' },
