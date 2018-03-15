@@ -13,9 +13,9 @@ export default {
         },
         reference: HTMLElement,
         offset: { type: Number, default: 0 },
-        escapeWithReference: { type: Boolean, default: false },
+        escapeWithReference: { type: Boolean, default: true },
         hoverDelay: { type: Number, default: 0 },
-        boundariesElement: { default: 'scrollParent' },
+        boundariesElement: { default: 'window' },
         arrowElement: { type: String, default: '[u-arrow]' },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
         options: {

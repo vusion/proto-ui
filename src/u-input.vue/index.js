@@ -45,5 +45,12 @@ export default {
         onBlur(e) {
             this.$emit('blur', e);
         },
+        compositionend(e) {
+            // 中文输入的时候，会先触发onInput事件，再触发此事件，导致不能捕捉到中文输入（此时compositionInputing值为true），需要特殊处理
+            this.compositionInputing = false;
+            this.currentValue = e.target.value;
+            this.$emit('input', this.currentValue);
+            this.$emit('update:value', this.currentValue);
+        },
     },
 };
