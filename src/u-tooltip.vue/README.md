@@ -9,8 +9,8 @@
         <u-button>使用属性</u-button>
     </u-tooltip>
     <u-tooltip>
-        <span slot="content">使用 content <u-link>slot</u-link> 更加灵活</span>
         <u-button>使用 slot</u-button>
+        <span slot="content">使用 content <u-link>slot</u-link> 更加灵活</span>
     </u-tooltip>
     <u-button v-tooltip="'使用指令最简单'">使用指令</u-button>
 </u-linear-layout>
@@ -164,6 +164,24 @@ export default {
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | disabled | Boolean | `false` | 是否禁用 |
+
+### Slots
+
+#### (default)
+
+触发节点，该 slot 只能插入一个节点。Tooltip 除了会给该节点绑定触发事件，不会对它做任何事情。
+
+#### root
+
+自定义整体。
+
+#### body
+
+自定义滚动区域。
+
+#### content
+
+自定义内容文本。
 
 ### Events
 

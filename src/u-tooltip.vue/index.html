@@ -2,9 +2,13 @@
     :open="open" v-on="$listeners" :disabled="disabled || !hasContent">
     <slot></slot>
     <div :class="[$style.root, $style.popper]" slot="popper">
-        <div :class="$style.arrow"></div><!-- popper某些情况可以移动此元素 -->
-        <div :class="[$style.body, $style.wrap]">
-            <slot name="content">{{ content }}</slot>
-        </div>
+        <div :class="$style.arrow"></div><!-- popper在某些场景下可以移动该元素 -->
+        <slot name="root">
+            <div :class="[$style.body, $style.wrap]">
+                <slot name="body">
+                    <slot name="content">{{ content }}</slot>
+                </slot>
+            </div>
+        </slot>
     </div>
 </u-popper>

@@ -181,6 +181,16 @@ export default {
 | options | Object | `{ modifiers: {} }` | 补充 popper.js 的选项 |
 | disabled | Boolean | `false` | 是否禁用 |
 
+### Slots
+
+#### (default)
+
+触发节点，该 slot 只能插入一个节点。Popper 除了会给该节点绑定触发事件，不会对它做任何事情。
+
+#### popper
+
+弹出节点，该 slot 只能插入一个节点，作为弹出层的根节点。
+
 ### Events
 
 #### @before-toggle

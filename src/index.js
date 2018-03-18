@@ -34,6 +34,7 @@ import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
 import Pagination from './u-pagination.vue';
+import Popover from './u-popover.vue';
 import Popper from './u-popper.vue';
 import Radio from './u-radio.vue';
 import Radio0 from './u-radio--0.vue';
@@ -97,6 +98,7 @@ export {
     NavbarDivider,
     NavbarItem,
     Pagination,
+    Popover,
     Popper,
     Radio,
     Radio0,

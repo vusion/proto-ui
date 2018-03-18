@@ -32,31 +32,31 @@ $tooltip-arrow-offset: 10px;
 .root[x-placement^="bottom"] .arrow {
     top: -$tooltip-arrow-size;;
     margin-left: -$tooltip-arrow-size;
-    border-width: 0 $tooltip-arrow-size $tooltip-arrow-size ;
+    border-width: 0 $tooltip-arrow-size $tooltip-arrow-size;
     border-bottom-color: $tooltip-background-color;
 }
 .root[x-placement="bottom-start"] .arrow { left: $tooltip-arrow-offset; }
 .root[x-placement="bottom"] .arrow { left: 50%; }
 .root[x-placement="bottom-end"] .arrow { right: $tooltip-arrow-offset; }
 
-.popper[x-placement^="left"] { margin-right: $tooltip-arrow-size; }
-.popper[x-placement^="left"] .arrow {
+.root[x-placement^="left"] { margin-right: $tooltip-arrow-size; }
+.root[x-placement^="left"] .arrow {
     right: -$tooltip-arrow-size;
     margin-top: -$tooltip-arrow-size;
     border-width: $tooltip-arrow-size 0 $tooltip-arrow-size $tooltip-arrow-size;
     border-left-color: $tooltip-background-color;
 }
-.popper[x-placement="left-start"] .arrow { top: $tooltip-arrow-offset; }
-.popper[x-placement="left"] .arrow { top: 50%; }
-.popper[x-placement="left-end"] .arrow { bottom: $tooltip-arrow-offset; }
+.root[x-placement="left-start"] .arrow { top: $tooltip-arrow-offset; }
+.root[x-placement="left"] .arrow { top: 50%; }
+.root[x-placement="left-end"] .arrow { bottom: $tooltip-arrow-offset; }
 
-.popper[x-placement^="right"] { margin-left: $tooltip-arrow-size; }
-.popper[x-placement^="right"] .arrow {
+.root[x-placement^="right"] { margin-left: $tooltip-arrow-size; }
+.root[x-placement^="right"] .arrow {
     left: -$tooltip-arrow-size;
     margin-top: -$tooltip-arrow-size;
     border-width: $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size 0;
     border-right-color: $tooltip-background-color;
 }
-.popper[x-placement="right-start"] .arrow { top: $tooltip-arrow-offset; }
-.popper[x-placement="right"] .arrow { top: 50%; }
-.popper[x-placement="right-end"] .arrow { bottom: $tooltip-arrow-offset; }
+.root[x-placement="right-start"] .arrow { top: $tooltip-arrow-offset; }
+.root[x-placement="right"] .arrow { top: 50%; }
+.root[x-placement="right-end"] .arrow { bottom: $tooltip-arrow-offset; }
