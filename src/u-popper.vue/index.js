@@ -13,11 +13,11 @@ export default {
         },
         reference: HTMLElement,
         offset: { type: Number, default: 0 },
-        escapeWithReference: { type: Boolean, default: true },
         hoverDelay: { type: Number, default: 0 },
-        boundariesElement: { default: 'window' },
-        arrowElement: { type: String, default: '[u-arrow]' },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
+        boundariesElement: { default: 'window' },
+        escapeWithReference: { type: Boolean, default: true },
+        arrowElement: { type: String, default: '[u-arrow]' },
         options: {
             type: Object,
             default() {

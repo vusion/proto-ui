@@ -25,7 +25,16 @@ $margin-right-base: 5px;
 $border-width-base: 1px;
 $height-base: 32px;
 
+/* Z-Index */
+$z-index-popper: 8000;
+$z-index-toast: 7000;
+$z-index-modal: 5000;
+$z-index-plugin: 2000;
+$z-index-layout: 100;
+$z-index-base: 1;
+
 /* Component Action Hints */
 $cursor-pointer: pointer;
 $cursor-not-allowed: not-allowed;
 $focus-outline: none;
+

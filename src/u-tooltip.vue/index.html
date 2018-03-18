@@ -1,8 +1,9 @@
-<u-popper :trigger="trigger" :placement="placement" :reference="reference">
+<u-popper :trigger="trigger" :placement="placement" :reference="reference"
+    :open="open" v-on="$listeners" :disabled="disabled || !hasContent">
     <slot></slot>
-    <div :class="$style.body" slot="popper">
-        <div :class="$style.arrow"></div>
-        <div :class="$style.wrap">
+    <div :class="[$style.root, $style.popper]" slot="popper">
+        <div :class="$style.arrow"></div><!-- popper某些情况可以移动此元素 -->
+        <div :class="[$style.body, $style.wrap]">
             <slot name="content">{{ content }}</slot>
         </div>
     </div>
