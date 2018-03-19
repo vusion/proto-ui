@@ -171,9 +171,9 @@ export default {
 
 触发节点，该 slot 只能插入一个节点。Tooltip 除了会给该节点绑定触发事件，不会对它做任何事情。
 
-#### root
+#### popper
 
-自定义整体。
+自定义整个弹出层。
 
 #### body
 

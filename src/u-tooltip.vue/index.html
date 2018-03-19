@@ -3,7 +3,7 @@
     <slot></slot>
     <div :class="[$style.root, $style.popper]" slot="popper">
         <div :class="$style.arrow"></div><!-- popper在某些场景下可以移动该元素 -->
-        <slot name="root">
+        <slot name="popper">
             <div :class="[$style.body, $style.wrap]">
                 <slot name="body">
                     <slot name="content">{{ content }}</slot>
