@@ -51,6 +51,7 @@ export default {
         const parentVM = this;
         this.childVM = new Vue({
             name: 'u-popper-child',
+            parent: parentVM,
             render(h) { return parentVM.$slots.popper && parentVM.$slots.popper[0]; },
         });
         this.childVM.parentVM = parentVM;

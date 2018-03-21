@@ -1,33 +1,14 @@
 # 菜单 Menu
 
-菜单组件与 ListView 组件相比，支持了路由功能。
+菜单组件与 ListView 组件相比，支持了路由、触发关闭、多级菜单等功能。
 
 ## 示例
 ### 基本形式
 
-#### 路由模式
+#### 使用 Popup 或 Popper 弹出
 
 ``` html
-<u-menu style="width: 200px;">
-    <u-menu-item>指南</u-menu-item>
-    <u-menu-item>概念</u-menu-item>
-    <u-menu-item to="/proto-ui">组件</u-menu-item>
-</u-menu>
-```
-
-#### value 模式
-
-``` html
-<u-menu value="3" :router="false" style="width: 200px;">
-    <u-menu-item value="1">指南</u-menu-item>
-    <u-menu-item value="2">概念</u-menu-item>
-    <u-menu-item value="3">组件</u-menu-item>
-</u-menu>
-```
-
-#### 使用 Popup 弹出
-
-``` html
+<u-linear-layout>
 <u-popup>
     <u-button>Dropdown</u-button>
     <u-menu slot="popper" value="3" :router="false">
@@ -36,6 +17,15 @@
         <u-menu-item value="3">组件</u-menu-item>
     </u-menu>
 </u-popup>
+<u-popper>
+    <u-button>Dropdown</u-button>
+    <u-menu slot="popper" value="3" :router="false" style="width: 128px">
+        <u-menu-item value="1">指南</u-menu-item>
+        <u-menu-item value="2">概念</u-menu-item>
+        <u-menu-item value="3">组件</u-menu-item>
+    </u-menu>
+</u-popper>
+</u-linear-layout>
 ```
 
 ### 只读、禁用、禁用某一项

@@ -21,6 +21,8 @@ export const tooltip = {
                 propsData.trigger = key;
             if (/^(top|bottom|left|right)(-start|-end)?$/.test(key))
                 propsData.placement = key;
+            if (/^(mini|small|normal|large|huge|auto)(-(mini|small|normal|large|huge|auto))?$/.test(key))
+                propsData.size = key;
         });
 
         const Tooltip = Vue.component('u-tooltip');

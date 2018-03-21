@@ -18,7 +18,7 @@ export default {
         while (popperChildVM && popperChildVM.$options.name !== 'u-popper-child')
             popperChildVM = popperChildVM.$parent;
         if (popperChildVM && popperChildVM.parentVM)
-            this.parentVM = popperChildVM.parentVM.$parent;
+            this.parentVM = popperChildVM.parentVM;
 
         this.$on('select', ({ itemVM }) => {
             this.router && itemVM.navigate();
