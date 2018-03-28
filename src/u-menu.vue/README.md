@@ -5,26 +5,120 @@
 ## 示例
 ### 基本形式
 
-#### 使用 Popup 或 Popper 弹出
+可以结合 Popup 或 Popper 弹出菜单。
 
 ``` html
 <u-linear-layout>
-<u-popup>
-    <u-button>Dropdown</u-button>
-    <u-menu slot="popper" value="3" :router="false">
-        <u-menu-item value="1">指南</u-menu-item>
-        <u-menu-item value="2">概念</u-menu-item>
-        <u-menu-item value="3">组件</u-menu-item>
+    <u-popup>
+        <u-button>Popup 菜单</u-button>
+        <u-menu slot="popper">
+            <u-menu-item to="/guides/">指南</u-menu-item>
+            <u-menu-item to="/api/">API</u-menu-item>
+            <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+            <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
+        </u-menu>
+    </u-popup>
+    <u-popper>
+        <u-button>Popper 菜单</u-button>
+        <u-menu slot="popper" value="3" :router="false" style="width: 128px">
+            <u-menu-item to="/guides/">指南</u-menu-item>
+            <u-menu-item to="/api/">API</u-menu-item>
+            <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+            <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
+        </u-menu>
+    </u-popper>
+</u-linear-layout>
+```
+
+### 多级菜单
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-menu style="width: 200px;">
+        <u-menu-item>指南</u-menu-item>
+        <u-menu-item>API
+            <u-menu slot="sub">
+                <u-menu-item to="/api/cli">命令行工具（CLI）</u-menu-item>
+                <u-menu-item to="/api/config">配置</u-menu-item>
+            </u-menu>
+        </u-menu-item>
+        <u-menu-item>组件
+            <u-menu slot="sub">
+                <u-menu-item>原型组件
+                    <u-menu slot="sub">
+                        <u-menu-item>Basic
+                            <u-menu slot="sub">
+                                <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
+                            </u-menu>
+                        </u-menu-item>
+                        <u-menu-item>Navigation
+                            <u-menu slot="sub">
+                                <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
+                            </u-menu>
+                        </u-menu-item>
+                        <u-menu-item>Popper
+                            <u-menu slot="sub">
+                                <u-menu-item to="/proto-ui/u-popper">弹出层 Popper</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
+                                <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
+                            </u-menu>
+                        </u-menu-item>
+                    </u-menu>
+                </u-menu-item>
+                <u-menu-item to="/ui-design">组件设计方案</u-menu-item>
+            </u-menu>
+        </u-menu-item>
+        <u-menu-item target="_blank" href="https://github.com/vusion">GitHub</u-menu-item>
     </u-menu>
-</u-popup>
-<u-popper>
-    <u-button>Dropdown</u-button>
-    <u-menu slot="popper" value="3" :router="false" style="width: 128px">
-        <u-menu-item value="1">指南</u-menu-item>
-        <u-menu-item value="2">概念</u-menu-item>
-        <u-menu-item value="3">组件</u-menu-item>
-    </u-menu>
-</u-popper>
+    <div>
+        <u-popup>
+            <u-button>多级菜单</u-button>
+            <u-menu slot="popper" style="width: 200px;">
+                <u-menu-item>指南</u-menu-item>
+                <u-menu-item>API
+                    <u-menu slot="sub">
+                        <u-menu-item to="/api/cli">命令行工具（CLI）</u-menu-item>
+                        <u-menu-item to="/api/config">配置</u-menu-item>
+                    </u-menu>
+                </u-menu-item>
+                <u-menu-item>组件
+                    <u-menu slot="sub">
+                        <u-menu-item>原型组件
+                            <u-menu slot="sub">
+                                <u-menu-item>Basic
+                                    <u-menu slot="sub">
+                                        <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
+                                    </u-menu>
+                                </u-menu-item>
+                                <u-menu-item>Navigation
+                                    <u-menu slot="sub">
+                                        <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
+                                    </u-menu>
+                                </u-menu-item>
+                                <u-menu-item>Popper
+                                    <u-menu slot="sub">
+                                        <u-menu-item to="/proto-ui/u-popper">弹出层 Popper</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
+                                        <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
+                                    </u-menu>
+                                </u-menu-item>
+                            </u-menu>
+                        </u-menu-item>
+                        <u-menu-item to="/ui-design">组件设计方案</u-menu-item>
+                    </u-menu>
+                </u-menu-item>
+                <u-menu-item target="_blank" href="https://github.com/vusion">GitHub</u-menu-item>
+            </u-menu>
+        </u-popup>
+    </div>
 </u-linear-layout>
 ```
 

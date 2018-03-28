@@ -1,1 +1,32 @@
 @import '../u-list-view-item.vue/module.css';
+
+.root {
+    position: relative;
+    overflow: visible;
+    padding-right: 30px;
+}
+
+.root[has-sub]:after {
+    display: inline-block;
+    content: '▸';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.sub {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 1px;
+    margin-top: -1px;
+}
+
+.root:hover > .sub {
+    display: block;
+}
