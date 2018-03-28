@@ -9,9 +9,9 @@ export default {
         value: String,
         categories: { type: Array, default() { return []; } },
         autoSelect: { type: Boolean, default: true },
+        emptyHidden: { type: Boolean, default: false },
         converter: { type: [String, Object], default: 'join' },
         field: { type: String, default: 'text' },
-        cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -109,7 +109,7 @@ export default {
             const value = this.values[level];
             let item;
             if (list && list.length) {
-                item = list.find((item) => (item.exist === undefined || !!item.exist === true) && !!item.disabled && item.value === value);
+                item = list.find((item) => (item.exist === undefined || !!item.exist === true) && !item.disabled && item.value === value);
 
                 // 当找不到与 value 对应的 item 时
                 // 如果设置了自动选择，并且没有设置 placeholder 的情况下

@@ -44,6 +44,7 @@ import Popup from './u-popup.vue';
 import Radio from './u-radio.vue';
 import Radio0 from './u-radio--0.vue';
 import Radios from './u-radios.vue';
+import RegionSelect from './u-region-select.vue';
 import Render from './u-render.vue';
 import RouterItem from './u-router-item.vue';
 import Sample from './u-sample.vue';
@@ -113,6 +114,7 @@ export {
     Radio,
     Radio0,
     Radios,
+    RegionSelect,
     Render,
     RouterItem,
     Sample,
