@@ -1,0 +1,13 @@
+<u-linear-layout :class="$style.root">
+    <u-select v-for="(category, level) in categories" v-if="lists[level]" :key="level" :field="field" :cancelable="cancelable" :readonly="readonly" :disabled="disabled"
+        v-model="values[level]" @select="onSelect($event, level)">
+        <u-select-item v-if="category.placeholder !== undefined">{{ category.placeholder }}</u-select-item>
+        <u-select-item v-for="item in lists[level]" v-if="item.exist === undefined || !!item.exist === true"
+            :key="item.value"
+            :value="item.value"
+            :item="item"
+            :disabled="item.disabled">
+            <slot name="text" :item="item" :level="level">{{ item.text }}</slot>
+        </u-select-item>
+    </u-select>
+</u-linear-layout>

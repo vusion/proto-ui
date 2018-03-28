@@ -3,6 +3,7 @@ import * as directives from './base/directives';
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
+import CascadeSelect from './u-cascade-select.vue';
 import Checkbox from './u-checkbox.vue';
 import Checkbox0 from './u-checkbox--0.vue';
 import Checkboxes from './u-checkboxes.vue';
@@ -71,6 +72,7 @@ export {
     Badge,
     Block,
     Button,
+    CascadeSelect,
     Checkbox,
     Checkbox0,
     Checkboxes,
