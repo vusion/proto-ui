@@ -404,6 +404,10 @@
 
 插入`<u-menu-item>`或`<u-menu-divider>`子组件。
 
+#### sub
+
+插入子菜单`<u-menu>`。
+
 #### title
 
 自定义标题文本。
