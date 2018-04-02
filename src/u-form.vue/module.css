@@ -1,13 +1,13 @@
 .root {}
 
-.root[layout="block"] > * + * {
-    margin-top: 20px;
+.root[layout="block"] > *:not(:last-child) {
+    margin-bottom: 20px;
 }
 
 .root[layout="inline"] > * {
     display: inline-block;
 }
 
-.root[layout="inline"] > * + * {
-    margin-left: 20px;
+.root[layout="inline"] > *:not(:last-child) {
+    margin-right: 20px;
 }
