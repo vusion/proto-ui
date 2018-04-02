@@ -1,10 +1,13 @@
-.root[direction="horizontal"] > * + * {
-    margin-left: 20px;
+.root[direction="horizontal"] > *:not(:last-child) {
+    margin-right: 20px;
 }
 
-.root[direction="vertical"] > * + * {
+.root[direction="vertical"] > * {
     display: block;
-    margin-top: 20px;
+}
+
+.root[direction="vertical"] > *:not(:last-child) {
+    margin-bottom: 20px;
 }
 
 /* @deprecated */
