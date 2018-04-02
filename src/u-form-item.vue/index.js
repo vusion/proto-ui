@@ -21,6 +21,7 @@ export default {
             currentMessage: this.message,
             inputing: false,
             parentVM: undefined,
+            fieldVM: undefined,
         };
     },
     computed: {
@@ -37,12 +38,19 @@ export default {
     created() {
         this.dispatch('u-form', 'add-item-vm', this);
         this.$on('add-field-vm', (fieldVM) => {
+            // 一个`<u-form-item>`中，只注册一个`fieldVM`，其他的忽略
+            if (!this.fieldVM)
+                return;
+            this.fieldVM = fieldVM;
             fieldVM.formItemVM = this;
             this.value = fieldVM.value;
-            // 初始化的时候自行验证一次 fix #23
+            // 初始化的时候自行验证一次。Fix #23
             this.validate('submit', true).catch((errors) => errors);
         });
-        this.$on('remove-field-vm', (fieldVM) => fieldVM.formItemVM = undefined);
+        this.$on('remove-field-vm', (fieldVM) => {
+            this.fieldVM = undefined;
+            fieldVM.formItemVM = undefined;
+        });
         this.$on('input', this.onInput);
         this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
