@@ -46,7 +46,7 @@ export default {
         this.$on('focus', this.onFocus);
         this.$on('blur', this.onBlur);
         // 初始化的时候自行验证一次 fix #23
-        this.validate('submit', true);
+        this.validate('submit', true).catch((errors) => errors);
     },
     destroyed() {
         this.dispatch('u-form', 'remove-item-vm', this);
