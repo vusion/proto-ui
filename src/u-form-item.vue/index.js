@@ -39,7 +39,7 @@ export default {
         this.dispatch('u-form', 'add-item-vm', this);
         this.$on('add-field-vm', (fieldVM) => {
             // 一个`<u-form-item>`中，只注册一个`fieldVM`，其他的忽略
-            if (!this.fieldVM)
+            if (this.fieldVM)
                 return;
             this.fieldVM = fieldVM;
             fieldVM.formItemVM = this;
