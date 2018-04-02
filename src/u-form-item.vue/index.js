@@ -39,14 +39,14 @@ export default {
         this.$on('add-field-vm', (fieldVM) => {
             fieldVM.formItemVM = this;
             this.value = fieldVM.value;
+            // 初始化的时候自行验证一次 fix #23
+            this.validate('submit', true).catch((errors) => errors);
         });
         this.$on('remove-field-vm', (fieldVM) => fieldVM.formItemVM = undefined);
         this.$on('input', this.onInput);
         this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
         this.$on('blur', this.onBlur);
-        // 初始化的时候自行验证一次 fix #23
-        this.validate('submit', true).catch((errors) => errors);
     },
     destroyed() {
         this.dispatch('u-form', 'remove-item-vm', this);
