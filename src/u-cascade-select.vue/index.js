@@ -1,4 +1,4 @@
-import Field from 'proto-ui.vusion/src/u-field.vue';
+import Field from '../u-field.vue';
 import isNumber from 'lodash/isNumber';
 
 export default {
