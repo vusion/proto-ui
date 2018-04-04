@@ -1,23 +1,25 @@
 import Vue from 'vue';
+import raf from 'raf';
+raf.polyfill();
 import Popper from 'popper.js';
 import event from '../base/utils/event';
 
 export default {
     name: 'u-popper',
     props: {
+        open: { type: Boolean, default: false },
+        trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
         placement: {
             type: String, default: 'bottom-start',
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
-        trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
         reference: HTMLElement,
-        open: { type: Boolean, default: false },
         offset: { type: Number, default: 0 },
-        escapeWithReference: { type: Boolean, default: false },
         hoverDelay: { type: Number, default: 0 },
-        boundariesElement: { default: 'scrollParent' },
-        arrowElement: { type: String, default: '[u-arrow]' },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
+        boundariesElement: { default: 'window' },
+        escapeWithReference: { type: Boolean, default: true },
+        arrowElement: { type: String, default: '[u-arrow]' },
         options: {
             type: Object,
             default() {
@@ -51,6 +53,7 @@ export default {
         const parentVM = this;
         this.childVM = new Vue({
             name: 'u-popper-child',
+            parent: parentVM,
             render(h) { return parentVM.$slots.popper && parentVM.$slots.popper[0]; },
         });
         this.childVM.parentVM = parentVM;

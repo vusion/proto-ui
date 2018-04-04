@@ -13,6 +13,6 @@
 }
 
 .root[disabled] {
-    color: $brand-disabled;
+    color: #999;
     cursor: $cursor-not-allowed;
 }

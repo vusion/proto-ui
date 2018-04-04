@@ -3,6 +3,6 @@
         :value="currentValue"
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"
-        @compositionend="compositionInputing = false"></textarea>
+        @compositionend="compositionend"></textarea>
     <slot></slot>
 </span>

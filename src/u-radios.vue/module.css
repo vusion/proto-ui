@@ -1,5 +1,5 @@
 .root {}
 
-.root > * + * {
-    margin-left: 40px;
+.root > *:not(:last-child) {
+    margin-right: 40px;
 }

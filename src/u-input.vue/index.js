@@ -48,6 +48,14 @@ export default {
             this.focused = false;
             this.$emit('blur', e);
         },
+        onCompositionEnd(e) {
+            // 中文输入的时候，会先触发onInput事件，再触发此事件，导致不能捕捉到中文输入
+            // 因此需要特殊处理，此时compositionInputing值为true
+            this.compositionInputing = false;
+            this.currentValue = e.target.value;
+            this.$emit('input', this.currentValue);
+            this.$emit('update:value', this.currentValue);
+        },
         focus() {
             this.$refs.input.focus();
         },

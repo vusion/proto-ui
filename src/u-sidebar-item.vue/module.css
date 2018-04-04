@@ -18,7 +18,7 @@
 
 .root[selected] {
     background-color: $brand-primary;
-    color: #fff;
+    color: white;
 }
 
 .root[disabled] {

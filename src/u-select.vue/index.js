@@ -4,6 +4,7 @@ import { ellipsisTitle } from '../base/directives';
 export default {
     name: 'u-select',
     childName: 'u-select-item',
+    groupName: 'u-select-group',
     mixins: [ListView],
     directives: { ellipsisTitle },
     props: {

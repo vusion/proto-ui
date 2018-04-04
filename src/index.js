@@ -3,6 +3,7 @@ import * as directives from './base/directives';
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
+import CascadeSelect from './u-cascade-select.vue';
 import Checkbox from './u-checkbox.vue';
 import Checkbox0 from './u-checkbox--0.vue';
 import Checkboxes from './u-checkboxes.vue';
@@ -31,15 +32,21 @@ import ListView from './u-list-view.vue';
 import ListViewDivider from './u-list-view-divider.vue';
 import ListViewGroup from './u-list-view-group.vue';
 import ListViewItem from './u-list-view-item.vue';
+import Menu from './u-menu.vue';
+import MenuDivider from './u-menu-divider.vue';
+import MenuGroup from './u-menu-group.vue';
+import MenuItem from './u-menu-item.vue';
 import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
 import NumberInput from './u-number-input.vue';
 import Pagination from './u-pagination.vue';
 import Popper from './u-popper.vue';
+import Popup from './u-popup.vue';
 import Radio from './u-radio.vue';
 import Radio0 from './u-radio--0.vue';
 import Radios from './u-radios.vue';
+import RegionSelect from './u-region-select.vue';
 import Render from './u-render.vue';
 import RouterItem from './u-router-item.vue';
 import Sample from './u-sample.vue';
@@ -58,6 +65,7 @@ import Switch from './u-switch.vue';
 import Tab from './u-tab.vue';
 import Tabs from './u-tabs.vue';
 import Textarea from './u-textarea.vue';
+import Tooltip from './u-tooltip.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
@@ -67,6 +75,7 @@ export {
     Badge,
     Block,
     Button,
+    CascadeSelect,
     Checkbox,
     Checkbox0,
     Checkboxes,
@@ -95,15 +104,21 @@ export {
     ListViewDivider,
     ListViewGroup,
     ListViewItem,
+    Menu,
+    MenuDivider,
+    MenuGroup,
+    MenuItem,
     Navbar,
     NavbarDivider,
     NavbarItem,
     NumberInput,
     Pagination,
     Popper,
+    Popup,
     Radio,
     Radio0,
     Radios,
+    RegionSelect,
     Render,
     RouterItem,
     Sample,
@@ -122,6 +137,7 @@ export {
     Tab,
     Tabs,
     Textarea,
+    Tooltip,
     TreeView,
     TreeViewNode,
     TreeViewText,
