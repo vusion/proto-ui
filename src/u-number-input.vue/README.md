@@ -10,15 +10,6 @@
 </u-linear-layout>
 ```
 
-### 只读和禁用
-
-``` html
-<u-linear-layout>
-    <u-number-input :value="6" readonly></u-number-input>
-    <u-number-input :value="6" disabled></u-number-input>
-</u-linear-layout>
-```
-
 ### 最大值和最小值
 
 ``` html
@@ -27,11 +18,58 @@
 </u-linear-layout>
 ```
 
-### 间隔
+### 间隔与精度
+
+间隔表示点击按钮或按上下键所增加或减少的量。
+
+精度表示数字要保留的最小单位，整数、小数均可，输入框会根据它作较正。默认为`1`，即保留到整数。
+
+间隔最好为精度的整数倍。
 
 ``` html
 <u-linear-layout>
     <u-number-input :value="6" :step="10"></u-number-input>
+    <u-number-input :value="6" :precision="0.1" :step="0.5"></u-number-input>
+    <u-number-input :value="5" :precision="5" :step="10"></u-number-input>
+</u-linear-layout>
+```
+
+### 错误修复时机
+
+可以用`fixOn`属性设置错误在失焦时修复（默认）还是在输入时修复。
+
+``` html
+<u-linear-layout>
+    <u-number-input :value="20" :precision="10" :step="10"></u-number-input>
+    <u-number-input :value="20" :precision="10" :step="10" fix-on="input"></u-number-input>
+</u-linear-layout>
+```
+
+### 格式化
+
+通常可以用以下字符组成一个格式化字符串：
+
+- `0`表示数字占位符。如果整数部分长度小于占位符的数量，则用`0`补足。如果小数部分长度大于占位符数量，则会四舍五入。
+- `#`表示数字占位符。只显有意义的零而不显示无意义的零。
+- `.`表示小数点。
+- `,`表示千分位。
+
+也可以传入一个包含`get`和`set`方法的格式化对象。
+
+``` html
+<u-linear-layout>
+    <u-number-input :value="20" formatter="0000"></u-number-input>
+    <u-number-input :value="20" formatter="$#,##0,00"></u-number-input>
+    <u-number-input :value="20" :precision="0.1" formatter="0.0%"></u-number-input>
+</u-linear-layout>
+```
+
+### 只读和禁用
+
+``` html
+<u-linear-layout>
+    <u-number-input :value="6" readonly></u-number-input>
+    <u-number-input :value="6" disabled></u-number-input>
 </u-linear-layout>
 ```
 
@@ -44,9 +82,12 @@
 | min | Number | `0` | 最小值 |
 | max | Number | `0` | 最大值 |
 | step | Number | `0` | 间隔。`0`表示连续 |
-| fixed | Number | `4` | 如果值为小数，该属性表示需要保留的位数 |
+| precision | Number | `1` | 表示数字要保留的最小单位，整数、小数均可 |
+| formatter | String, Object |  | 格式化字符串或格式化对象 |
+| fixOn | String | `'blur'` | 错误修复时机。可选值：`'input'`表示在输入时修复，`'blur'`表示在失焦时修复 |
 | placeholder | String | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
+| hideButtons | Boolean | `false` | 是否隐藏按钮 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 

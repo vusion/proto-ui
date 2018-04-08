@@ -1,6 +1,4 @@
-.root {
-
-}
+.root {}
 
 .button {
     position: absolute;
@@ -38,6 +36,12 @@
 
 .button[role="down"]:before {
     icon-font: url('../u-icon.vue/assets/arrow-down.svg');
+}
+
+.button[disabled] {
+    background: $background-color-base;
+    color: $brand-disabled;
+    cursor: not-allowed;
 }
 
 .root[readonly] .button {

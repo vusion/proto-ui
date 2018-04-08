@@ -6,14 +6,14 @@ export const repeatClick = {
         const interval = 100;
         const handler = vnode.context[binding.expression];
         let pressing = false;
-        let timeout;
+        let timer;
 
         const fn = () => {
             if (!pressing)
                 return;
 
             handler();
-            timeout = setTimeout(fn, interval);
+            timer = setTimeout(fn, interval);
         };
 
         event.on(el, 'mousedown', (e) => {
@@ -21,10 +21,10 @@ export const repeatClick = {
                 return;
 
             event.once(document, 'mouseup', () => pressing = false);
-            clearTimeout(timeout);
+            clearTimeout(timer);
             pressing = true;
             handler();
-            timeout = setTimeout(fn, wait);
+            timer = setTimeout(fn, wait);
         });
     },
 };

@@ -9,7 +9,7 @@ export default {
         value: String,
         categories: { type: Array, default() { return []; } },
         autoSelect: { type: Boolean, default: true },
-        emptyHidden: { type: Boolean, default: false },
+        hideEmpty: { type: Boolean, default: false },
         converter: { type: [String, Object], default: 'join' },
         field: { type: String, default: 'text' },
         readonly: { type: Boolean, default: false },

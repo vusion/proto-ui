@@ -40,7 +40,7 @@
 | data | Array\<{ text, value }\> | 数据 | 数据列表 |
 | value.sync, v-model | Any | | 当前选择的值 |
 | categories | Array\<{ label, key, placeholder }\> | 数据 | 多级分类 |
-| emptyHidden | Boolean | `false` | 是否隐藏空列表 |
+| hideEmpty | Boolean | `false` | 是否隐藏空列表 |
 | converter | String, Object | `'join'` | value 与 values 的转换器。可选值：`'join'`表示将 values 数组 join 之后变成 value，`'join-number'`与`join`类似，只是会考虑它为数字的情况，`'last-value'`表示以最后一项的值作为 value。也可以传入一个包含 { get, set } 的一个对象 |
 | field | String | `'value'` | 显示文本字段 |
 | readonly | Boolean | `false` | 是否只读 |

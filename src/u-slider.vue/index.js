@@ -40,11 +40,11 @@ export default {
             },
             set(percent) {
                 let value = +this.min + (this.max - this.min) * percent / 100;
-                if (this.step)
-                    value = Math.round(value / this.step) * this.step;
-                const isOutOfRange = this.isOutOfRange(value);
-                if (isOutOfRange)
-                    this.currentValue = isOutOfRange;
+                // step 约束
+                this.step && (value = Math.round(value / this.step) * this.step);
+                // 最大最小约束
+                value = Math.min(Math.max(this.min, value), this.max);
+                // 保留小数
                 value = +value.toFixed(this.fixed);
 
                 this.currentValue = value;
@@ -61,16 +61,15 @@ export default {
         onDragStart($event) {
             this.grid.x = this.step / (this.max - this.min) * $event.range.width;
             this.percent = $event.left / $event.range.width * 100;
+            this.$emit('slide', {
+
+            });
         },
         onDrag($event) {
             this.percent = $event.left / $event.range.width * 100;
-        },
-        isOutOfRange(value) {
-            const min = +this.min;
-            const max = +this.max;
+            this.$emit('slide', {
 
-            // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
-            return (value < min && min) || (value > max && max);
+            });
         },
     },
 };
