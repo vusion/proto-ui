@@ -30,7 +30,27 @@ export default {
                     return values[values.length - 1];
                 },
                 set(value) {
-                    // @TODO
+                    const tempValue = [];
+                    let hasFind = false;
+                    const _findValue = (arr) => {
+                        if (!arr || hasFind)
+                            return;
+                        for (let i = 0; i < arr.length; ++i) {
+                            const cur = arr[i];
+                            tempValue.push(cur.value);
+                            if (!cur.children && cur.value === value) { // 最后一个元素，且值相等，则找到路径
+                                hasFind = true;
+                                return;
+                            } else if (cur.children)
+                                _findValue(cur.children);
+                            if (hasFind)
+                                return;
+                            else
+                                tempValue.pop();
+                        }
+                    };
+                    _findValue(this.data);
+                    return tempValue;
                 },
             };
         } else if (this.converter === 'join') {
@@ -54,8 +74,24 @@ export default {
         }
 
         // 首次传入需要从`value`中得出`values`
-        data.values = data.currentConverter.set(this.value);
+        data.values = data.currentConverter.set.bind(this)(this.value);
 
+        // 如果选中的值有disabled或者没有data.values的路径，则重置
+        if (data.values.length > 0) {
+            let curArr = this.data, level = 0;
+            // eslint-disable-next-line no-constant-condition
+            while (true) {
+                if (level >= data.values.length || !curArr)
+                    break;
+                const curItem = curArr.find((item) => item.value === data.values[level]);
+                if (!curItem || curItem.disabled) {
+                    data.values = [];
+                    break;
+                }
+                ++level;
+                curArr = curItem.children;
+            }
+        }
         return data;
     },
     watch: {
