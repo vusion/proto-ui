@@ -7,8 +7,11 @@ export default {
         value: { type: Number, default: 0 },
         min: { type: Number, default: 0 },
         max: { type: Number, default: 100 },
-        step: { type: Number, default: 1 },
-        fixed: { type: Number, default: 4 },
+        step: { type: Number, default: 1, validator: (step) => step >= 0 },
+        precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
+        formatter: { type: [String, Object] },
+        fixOn: { type: String, default: 'blur' },
+        hideButtons: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -30,12 +33,12 @@ export default {
     },
     methods: {
         onInput(value) {
-            if (this.currentValue === value)
-                return;
-
             this.currentValue = value;
             this.$emit('input', value);
             this.$emit('update:value', value);
+        },
+        onSlide($event) {
+            this.$emit('slide', $event);
         },
     },
 };

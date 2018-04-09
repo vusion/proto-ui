@@ -22,8 +22,8 @@ export default {
     },
     data() {
         const data = {
-            correctValue: this.value,
-            // formattedValue 就是 formattedValue，与`<input>`中的实际值保持一致
+            currentValue: this.value,
+            // 格式化后的 value，与`<input>`中的实际值保持一致
             formattedValue: this.value,
             currentFormatter: undefined,
         };
@@ -55,9 +55,12 @@ export default {
     },
     watch: {
         value(value) {
+            if (isNaN(value))
+                return;
+            this.currentValue = value;
             this.formattedValue = this.currentFormatter.get(value);
         },
-        correctValue(value, oldValue) {
+        currentValue(value, oldValue) {
             this.$emit('change', {
                 value,
                 oldValue,
@@ -71,7 +74,7 @@ export default {
     methods: {
         fix(value) {
             if (isNaN(value))
-                return this.correctValue;
+                return this.currentValue;
             else {
                 value = +value;
                 // 精度约束
@@ -93,7 +96,7 @@ export default {
 
             value = this.fix(value);
 
-            this.correctValue = value;
+            this.currentValue = value;
             this.formattedValue = this.currentFormatter.get(value);
             this.$refs.input.currentValue = this.formattedValue;
 
@@ -101,10 +104,10 @@ export default {
             this.$emit('update:value', value);
         },
         increase() {
-            this.input(+this.correctValue + this.step);
+            this.input(+this.currentValue + this.step);
         },
         decrease() {
-            this.input(+this.correctValue - this.step);
+            this.input(+this.currentValue - this.step);
         },
         onInput(value) {
             if (this.fixOn === 'input')
