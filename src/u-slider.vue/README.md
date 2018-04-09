@@ -45,9 +45,9 @@
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Number | `0` | 滑块的值 |
 | min | Number | `0` | 最小值 |
-| max | Number | `0` | 最大值 |
-| step | Number | `1` | 间隔。`0`表示连续 |
-| fixed | Number | `4` | 如果值为小数，该属性表示需要保留的位数 |
+| max | Number | `100` | 最大值 |
+| step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量。`0`表示连续 |
+| precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -60,6 +60,16 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Number | 滑块的值 |
+
+#### @slide
+
+拖动滑块时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Number | 滑块的值 |
+| $event.oldValue | Number | 旧的值 |
+| $event.percent | Number | 滑块位置所在的百分比 |
 
 #### @change
 

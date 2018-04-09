@@ -74,13 +74,12 @@ export default {
                 return this.correctValue;
             else {
                 value = +value;
-                // 最大最小约束
-                value = Math.min(Math.max(this.min, value), this.max);
                 // 精度约束
                 value = Math.round(value / this.precision) * this.precision;
+                // 最大最小约束
+                value = Math.min(Math.max(this.min, value), this.max);
                 // 保留小数位数
-                if (this.precision < 1)
-                    value = +value.toFixed(-Math.log10(this.precision));
+                value = +value.toFixed(this.precision < 1 ? -Math.log10(this.precision) : 0);
                 return value;
             }
         },

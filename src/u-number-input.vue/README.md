@@ -18,19 +18,17 @@
 </u-linear-layout>
 ```
 
-### 间隔与精度
+### 精度与间隔
 
-间隔表示点击按钮或按上下键所增加或减少的量。
+精度表示数字要保留的最小单位，整数、小数均可，输入框会根据它作四舍五入。默认为`1`，即保留到整数。
 
-精度表示数字要保留的最小单位，整数、小数均可，输入框会根据它作较正。默认为`1`，即保留到整数。
-
-间隔最好为精度的整数倍。
+间隔表示点击按钮或按上下键所增加或减少的量，最好为精度的整数倍。
 
 ``` html
 <u-linear-layout>
-    <u-number-input :value="6" :step="10"></u-number-input>
     <u-number-input :value="6" :precision="0.1" :step="0.5"></u-number-input>
     <u-number-input :value="5" :precision="5" :step="10"></u-number-input>
+    <u-number-input :value="6" :step="10"></u-number-input>
 </u-linear-layout>
 ```
 
@@ -59,8 +57,8 @@
 ``` html
 <u-linear-layout>
     <u-number-input :value="20" formatter="0000"></u-number-input>
-    <u-number-input :value="20" :precision="0.01" formatter="$#,##0.00"></u-number-input>
-    <u-number-input :value="20" :precision="0.1" formatter="0.0%"></u-number-input>
+    <u-number-input :value="20" :precision="0.01" :step="0.1" formatter="$ #,##0.00"></u-number-input>
+    <u-number-input :value="20" :precision="0.1" :step="0.1" formatter="0.0%"></u-number-input>
 </u-linear-layout>
 ```
 
@@ -81,13 +79,13 @@
 | value.sync, v-model | Number | `0` | 输入框的值 |
 | min | Number | `-Infinity` | 最小值 |
 | max | Number | `+Infinity` | 最大值 |
-| step | Number | `1` | 间隔。`0`表示连续 |
-| precision | Number | `1` | 表示数字要保留的最小单位，整数、小数均可 |
-| formatter | String, Object |  | 格式化字符串或格式化对象 |
-| fixOn | String | `'blur'` | 错误修复时机。可选值：`'input'`表示在输入时修复，`'blur'`表示在失焦时修复 |
+| step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量 |
+| precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
+| formatter | String, Object |  | 格式化字符串，具体参见示例。也可以传入一个包含`get`和`set`方法的格式化对象。 |
+| fix-on | String | `'blur'` | 错误修复时机。可选值：`'input'`表示在输入时修复，`'blur'`表示在失焦时修复 |
 | placeholder | String | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
-| hideButtons | Boolean | `false` | 是否隐藏按钮 |
+| hide-buttons | Boolean | `false` | 是否隐藏按钮 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
