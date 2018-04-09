@@ -61,7 +61,7 @@
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">
-        <u-combo-slider :value="6" formatter="00"></u-combo-slider>
+        <u-combo-slider :value="6" formatter="000"></u-combo-slider>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
         <u-combo-slider :value="20" formatter="0%" hide-buttons></u-combo-slider>

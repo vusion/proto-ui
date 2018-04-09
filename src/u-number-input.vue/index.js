@@ -82,7 +82,7 @@ export default {
                 // 最大最小约束
                 value = Math.min(Math.max(this.min, value), this.max);
                 // 保留小数位数
-                value = +value.toFixed(this.precision < 1 ? -Math.log10(this.precision) : 0);
+                value = +value.toFixed(this.precision < 1 ? -Math.floor(Math.log10(this.precision)) : 0);
                 return value;
             }
         },
