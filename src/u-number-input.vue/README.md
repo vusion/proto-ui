@@ -59,7 +59,7 @@
 ``` html
 <u-linear-layout>
     <u-number-input :value="20" formatter="0000"></u-number-input>
-    <u-number-input :value="20" formatter="$#,##0,00"></u-number-input>
+    <u-number-input :value="20" :precision="0.01" formatter="$#,##0.00"></u-number-input>
     <u-number-input :value="20" :precision="0.1" formatter="0.0%"></u-number-input>
 </u-linear-layout>
 ```
@@ -79,9 +79,9 @@
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Number | `0` | 输入框的值 |
-| min | Number | `0` | 最小值 |
-| max | Number | `0` | 最大值 |
-| step | Number | `0` | 间隔。`0`表示连续 |
+| min | Number | `-Infinity` | 最小值 |
+| max | Number | `+Infinity` | 最大值 |
+| step | Number | `1` | 间隔。`0`表示连续 |
 | precision | Number | `1` | 表示数字要保留的最小单位，整数、小数均可 |
 | formatter | String, Object |  | 格式化字符串或格式化对象 |
 | fixOn | String | `'blur'` | 错误修复时机。可选值：`'input'`表示在输入时修复，`'blur'`表示在失焦时修复 |
@@ -107,8 +107,9 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | String | 改变后的值 |
-| $event.oldValue | String | 旧的值 |
+| $event.value | Number | 改变后的值 |
+| $event.oldValue | Number | 旧的值 |
+| $event.formattedValue | String | 格式化后的值 |
 
 #### @focus
 

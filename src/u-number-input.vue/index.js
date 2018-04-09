@@ -23,8 +23,8 @@ export default {
     data() {
         const data = {
             correctValue: this.value,
-            // currentValue 就是 formattedValue，与`<input>`中的实际值保持一致
-            currentValue: this.value,
+            // formattedValue 就是 formattedValue，与`<input>`中的实际值保持一致
+            formattedValue: this.value,
             currentFormatter: undefined,
         };
 
@@ -39,7 +39,7 @@ export default {
             };
         }
 
-        data.currentValue = data.currentFormatter.get(this.value);
+        data.formattedValue = data.currentFormatter.get(this.value);
 
         return data;
     },
@@ -55,12 +55,13 @@ export default {
     },
     watch: {
         value(value) {
-            this.currentValue = this.currentFormatter.get(value);
+            this.formattedValue = this.currentFormatter.get(value);
         },
-        currentValue(value, oldValue) {
+        correctValue(value, oldValue) {
             this.$emit('change', {
-                value: this.currentFormatter.set(value),
-                oldValue: this.currentFormatter.set(oldValue),
+                value,
+                oldValue,
+                formattedValue: this.currentFormatter.get(value),
             });
         },
     },
@@ -94,8 +95,8 @@ export default {
             value = this.fix(value);
 
             this.correctValue = value;
-            this.currentValue = this.currentFormatter.get(value);
-            this.$refs.input.currentValue = this.currentValue;
+            this.formattedValue = this.currentFormatter.get(value);
+            this.$refs.input.currentValue = this.formattedValue;
 
             this.$emit('input', value);
             this.$emit('update:value', value);
@@ -111,7 +112,7 @@ export default {
                 this.debouncedInput(this.currentFormatter.set(value));
             else if (this.fixOn === 'blur') {
                 // 这种情况下直接透传
-                this.currentValue = value;
+                this.formattedValue = value;
                 this.$emit('input', value);
                 this.$emit('update:value', value);
             }
@@ -121,7 +122,7 @@ export default {
         },
         onBlur(e) {
             if (this.fixOn === 'blur')
-                this.input(this.currentFormatter.set(this.currentValue));
+                this.input(this.currentFormatter.set(this.formattedValue));
 
             this.$emit('blur', e);
         },
