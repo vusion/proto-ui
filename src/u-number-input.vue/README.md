@@ -70,6 +70,41 @@
     <u-number-input :value="6" disabled></u-number-input>
 </u-linear-layout>
 ```
+### 事件
+``` vue
+<template>
+<u-number-input :value.sync="value" formatter="00" @change="onChange" @select="onSelect"  @before-select="onBeforeSelect" @input="onInput"></u-number-input>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: 2,
+		};
+    },
+    watch: {
+        value(value, oldValue) { // fix-on: blur的情况下，直接在输入框输入，value值blur才变化
+            console.log('value watch: ', value, oldValue);
+        },
+    },
+    methods: {
+        onChange($event) {
+            console.log('change', $event); // 时间改变触发
+        },
+        onSelect($event) {
+        	console.log('select', $event); // 调整时间触发
+        },
+        onBeforeSelect($event) {
+        	console.log('before-select', $event);
+        },
+        onInput($event) { // fix-on: blur的情况下，直接在输入框输入input值随着输入值变化
+        	console.log('input', $event);
+        },
+    },
+};
+</script>
+```
 
 ## API
 ### Props/Attrs

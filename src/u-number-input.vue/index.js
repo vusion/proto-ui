@@ -50,6 +50,7 @@ export default {
             delete listeners.change;
             delete listeners.focus;
             delete listeners.blur;
+            delete listeners['update:value'];
             return listeners;
         },
     },
@@ -93,7 +94,6 @@ export default {
         input(value) {
             if (this.readonly || this.disabled)
                 return;
-
             value = this.fix(value);
 
             this.currentValue = value;
@@ -103,20 +103,41 @@ export default {
             this.$emit('input', value);
             this.$emit('update:value', value);
         },
+        /**
+         * 按上下按钮发送select事件
+         * @param {*} value
+         */
+        select(value) {
+            let cancel = false;
+            this.$emit('before-select', {
+                preventDefault: () => cancel = true,
+            });
+
+            if (cancel)
+                return;
+
+            this.$emit('select', {
+                value,
+                oldValue: this.currentValue,
+            });
+            this.input(value);
+        },
         increase() {
-            this.input(+this.currentValue + this.step);
+            this.select(+this.currentValue + this.step);
         },
         decrease() {
-            this.input(+this.currentValue - this.step);
+            this.select(+this.currentValue - this.step);
         },
         onInput(value) {
+            if (value !== undefined)
+                value = +value;
             if (this.fixOn === 'input')
                 this.debouncedInput(this.currentFormatter.set(value));
             else if (this.fixOn === 'blur') {
                 // 这种情况下直接透传
                 this.formattedValue = value;
                 this.$emit('input', value);
-                this.$emit('update:value', value);
+                // this.$emit('update:value', value);
             }
         },
         onFocus(e) {
