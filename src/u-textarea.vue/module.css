@@ -1,45 +1,23 @@
 .root {
     display: inline-block;
     position: relative;
+}
+
+.input {
     padding: 4px 8px;
     background: white;
     border: 1px solid $border-color-base;
     height: $height-base;
     width: 320px;
     height: 120px;
-}
-
-/* 保证原来文字居中对齐的特性 */
-.root:after {
-    content: '\3000';
-}
-
-.input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-    /* 为了让input边缘点击时能focus */
-    padding: inherit;
-    width: 100%;
-    height: 100%;
-    font: inherit;
-    color: inherit;
-    line-height: inherit;
-    background: inherit;
-    border: none;
     border-radius: 0;
     cursor: inherit;
-    resize: none;
-}
-
-.root[focus] {
-    outline: $focus-outline;
-    border-color: $brand-primary;
+    resize: vertical;
 }
 
 .input:focus {
-    outline: none;
+    outline: $focus-outline;
+    border-color: $brand-primary;
 }
 
 .input[color="error"] {

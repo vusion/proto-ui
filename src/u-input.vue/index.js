@@ -1,15 +1,15 @@
+import ClassStyleTransfer from '../u-class-style-transfer.vue';
 import Field from '../u-field.vue';
 
 export default {
     name: 'u-input',
-    mixins: [Field],
+    mixins: [ClassStyleTransfer, Field],
     props: {
         value: { type: [String, Number] },
         color: { type: String },
     },
     data() {
         return {
-            focused: false,
             currentValue: this.value,
             compositionInputing: false,
         };
@@ -40,11 +40,9 @@ export default {
             }
         },
         onFocus(e) {
-            this.focused = true;
             this.$emit('focus', e);
         },
         onBlur(e) {
-            this.focused = false;
             this.$emit('blur', e);
         },
         onCompositionEnd(e) {

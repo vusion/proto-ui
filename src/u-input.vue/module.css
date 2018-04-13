@@ -1,54 +1,31 @@
 .root {
     display: inline-block;
     position: relative;
-    padding: 0 8px;
-    background: white;
-    border: 1px solid $border-color-base;
-    height: $height-base;
-    width: $width-base;
-    line-height: calc($height-base - 2px);
-}
-
-/* 保证原来文字居中对齐的特性 */
-.root:after {
-    content: '\3000';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
 }
 
 .input {
-    position: absolute;
-    left: 0;
-    top: 0;
     margin: 0;
-    /* 为了让input边缘点击时能focus */
-    padding: inherit;
-    width: 100%;
-    height: 100%;
+    padding: 0 8px;
+    background: white;
     font: inherit;
     color: inherit;
-    line-height: inherit;
-    background: inherit;
-    border: none;
+    border: 1px solid $border-color-base;
     border-radius: 0;
-    cursor: inherit;
-}
-
-.root[focus] {
-    outline: $focus-outline;
-    border-color: $brand-primary;
+    line-height: calc($height-base - 2px);
+    width: $width-base;
+    height: $height-base;
 }
 
 .input:focus {
-    outline: none;
+    outline: $focus-outline;
+    border-color: $brand-primary;
 }
 
 .root[color="error"] {
     border-color: $brand-error;
 }
 
-.root[disabled] {
+.input[disabled] {
     cursor: $cursor-not-allowed;
     background: $gray-lighter;
 }
