@@ -17,10 +17,9 @@ export default {
     computed: {
         listeners() {
             const listeners = Object.assign({}, this.$listeners);
-            delete listeners.input;
-            delete listeners.change;
-            delete listeners.focus;
-            delete listeners.blur;
+            ['input', 'change', 'focus', 'blur', 'update:value'].forEach((prop) => {
+                delete listeners[prop];
+            });
             return listeners;
         },
     },
