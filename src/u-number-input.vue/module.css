@@ -2,7 +2,7 @@
 
 .button {
     position: absolute;
-    right: 1px;
+    right: 2px;
     height: 14px;
     line-height: 14px;
     padding: 0 4px;
@@ -23,7 +23,7 @@
 }
 
 .button[role="up"] {
-    top: 1px;
+    top: 2px;
 }
 
 .button[role="up"]:before {
@@ -31,7 +31,7 @@
 }
 
 .button[role="down"] {
-    bottom: 1px;
+    bottom: 2px;
 }
 
 .button[role="down"]:before {

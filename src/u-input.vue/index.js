@@ -11,6 +11,7 @@ export default {
     data() {
         return {
             currentValue: this.value,
+            currentColor: this.color,
             compositionInputing: false,
         };
     },
@@ -29,6 +30,9 @@ export default {
         },
         currentValue(value, oldValue) {
             this.$emit('change', { value, oldValue });
+        },
+        color(color) {
+            this.currentColor = color;
         },
     },
     methods: {
