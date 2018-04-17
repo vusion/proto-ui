@@ -36,12 +36,11 @@ export default {
         this.watchDisabled(this.disabled);
         this.$el.addEventListener('mousedown', this.onMouseDown);
     },
-    updated() {
+    beforeUpdate() {
         this.childVM.$forceUpdate();
     },
-    destroyed() {
-        this.childVM && this.childVM.destroy && this.childVM.destroy();
-        this.childVM = undefined;
+    beforeDestroy() {
+        this.childVM = this.childVM && this.childVM.$destroy();
     },
     methods: {
         watchDisabled(disabled) {

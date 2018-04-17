@@ -87,17 +87,16 @@ export default {
 
         this.currentOpen && this.createPopper();
     },
-    updated() {
+    beforeUpdate() {
+        // 先 update 子组件
         this.childVM.$forceUpdate();
     },
-    destroyed() {
+    beforeDestroy() {
         this.destroyPopper();
-
+        // 先 destroy 子组件
+        this.childVM = this.childVM && this.childVM.$destroy();
         // 取消绑定事件
         this.offEvents.forEach((off) => off());
-
-        this.childVM && this.childVM.destroy && this.childVM.destroy();
-        this.childVM = undefined;
     },
     methods: {
         getOptions() {
