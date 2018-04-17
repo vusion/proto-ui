@@ -30,72 +30,60 @@ export default {
                     return values[values.length - 1];
                 },
                 set(value) {
-                    const tempValue = [];
-                    let hasFind = false;
-                    const _findValue = (arr) => {
-                        if (!arr || hasFind)
+                    const values = [];
+
+                    const findValues = (list, level) => {
+                        if (!list || level >= this.categories.length)
                             return;
-                        for (let i = 0; i < arr.length; ++i) {
-                            const cur = arr[i];
-                            tempValue.push(cur.value);
-                            if (!cur.children && cur.value === value) { // 最后一个元素，且值相等，则找到路径
-                                hasFind = true;
-                                return;
-                            } else if (cur.children)
-                                _findValue(cur.children);
-                            if (hasFind)
-                                return;
+
+                        for (let i = 0; i < list.length; i++) {
+                            const item = list[i];
+                            values.push(item.value);
+
+                            if (level === this.categories.length - 1 && item.value === value) // 最后一个元素，且值相等，则找到路径
+                                return true;
+                            else if (item.children && findValues(item.children, level + 1))
+                                return true;
                             else
-                                tempValue.pop();
+                                values.pop();
                         }
                     };
-                    _findValue(this.data);
-                    return tempValue;
+
+                    findValues(this.data, 0);
+                    return values;
                 },
             };
-        } else if (this.converter === 'join') {
+        } else if (this.converter.startsWith('join')) {
+            const m = this.converter.match(/^join(\.number)?(:.+)?$/);
+            if (!m)
+                throw new Error('converter format error');
+
+            const number = !!m[1];
+            const sep = m[2] ? m[2].slice(1) : ',';
+
             data.currentConverter = {
                 get(values) {
-                    return values.join(',');
+                    return values.join(sep);
                 },
                 set(value) {
-                    return value ? value.split(',').map((i) => i) : [];
-                },
-            };
-        } else if (this.converter === 'join-number') {
-            data.currentConverter = {
-                get(values) {
-                    return values.join(',');
-                },
-                set(value) {
-                    return value ? value.split(',').map((i) => +i) : [];
+                    const values = value ? value.split(sep) : [];
+                    return number ? values.map((i) => +i) : values;
                 },
             };
         }
 
         // 首次传入需要从`value`中得出`values`
-        data.values = data.currentConverter.set.bind(this)(this.value);
+        data.values = data.currentConverter.set.call(this, this.value);
 
-        // 如果选中的值有disabled或者没有data.values的路径，则重置
-        if (data.values.length > 0) {
-            let curArr = this.data, level = 0;
-            // eslint-disable-next-line no-constant-condition
-            while (true) {
-                if (level >= data.values.length || !curArr)
-                    break;
-                const curItem = curArr.find((item) => item.value === data.values[level]);
-                if (!curItem || curItem.disabled) {
-                    data.values = [];
-                    break;
-                }
-                ++level;
-                curArr = curItem.children;
-            }
-        }
         return data;
     },
     watch: {
-        data(data) {
+        data(data, oldData) {
+            // @TODO: 同样的数据，不知道为什么会变
+            // @TODO: 该不该用 map 来查找 value
+            if (JSON.stringify(data) === JSON.stringify(oldData))
+                return;
+
             this.lists = [];
             this.values = this.currentConverter.set(this.value);
 
