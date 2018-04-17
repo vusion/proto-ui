@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.2.14",
+  "version": "0.3.0",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
@@ -29,7 +29,6 @@
     "lodash": "^4.17.5",
     "normalize.css": "^7.0.0",
     "@vusion/popper.js": "^1.14.1",
-    "raf": "^3.4.0",
     "vusion-async-validator": "^1.8.8"
   },
   "devDependencies": {
