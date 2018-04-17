@@ -1,19 +1,24 @@
 .root {
     display: inline-block;
     position: relative;
+    width: $width-base;
+    height: $height-base;
+    background: white;
+    border-radius: 0;
+    line-height: calc($height-base - 2px);
 }
 
 .input {
     margin: 0;
     padding: 0 8px;
-    background: white;
+    border: 1px solid $border-color-base;
+    width: 100%;
+    height: 100%;
+    background: inherit;
     font: inherit;
     color: inherit;
-    border: 1px solid $border-color-base;
-    border-radius: 0;
-    line-height: calc($height-base - 2px);
-    width: $width-base;
-    height: $height-base;
+    border-radius: inherit;
+    line-height: inherit;
 }
 
 .input:focus {

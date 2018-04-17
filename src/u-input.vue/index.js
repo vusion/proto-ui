@@ -1,9 +1,8 @@
-import ClassStyleTransfer from '../u-class-style-transfer.vue';
 import Field from '../u-field.vue';
 
 export default {
     name: 'u-input',
-    mixins: [ClassStyleTransfer, Field],
+    mixins: [Field],
     props: {
         value: { type: [String, Number] },
         color: { type: String },

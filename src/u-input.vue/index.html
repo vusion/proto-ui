@@ -1,5 +1,5 @@
 <span :class="$style.root">
-    <input ref="input" :class="[$style.input, ...$transferredClass]" :style="$transferredStyle" v-bind="$attrs"
+    <input ref="input" :class="$style.input" v-bind="$attrs"
         :value="currentValue" :color="currentColor || this.formItemVM && this.formItemVM.color"
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"
