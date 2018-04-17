@@ -102,40 +102,43 @@ export default {
             this.$emit('update:value', value);
         },
         /**
-         * 按上下按钮发送select事件
+         * 按上下按钮发送 adjust 事件
          * @param {*} value
          */
-        select(value) {
+        adjust(value) {
+            const oldValue = this.currentValue;
+
             let cancel = false;
-            this.$emit('before-select', {
+            this.$emit('before-adjust', {
+                value,
+                oldValue,
+                formattedValue: this.currentFormatter.get(value),
                 preventDefault: () => cancel = true,
             });
-
             if (cancel)
                 return;
 
-            this.$emit('select', {
-                value,
-                oldValue: this.currentValue,
-            });
             this.input(value);
+            this.$emit('adjust', {
+                value: this.currentValue,
+                oldValue,
+                formattedValue: this.formattedValue,
+            });
         },
         increase() {
-            this.select(+this.currentValue + this.step);
+            this.adjust(+this.currentValue + this.step);
         },
         decrease() {
-            this.select(+this.currentValue - this.step);
+            this.adjust(+this.currentValue - this.step);
         },
         onInput(value) {
-            if (value !== undefined)
-                value = +value;
             if (this.fixOn === 'input')
                 this.debouncedInput(this.currentFormatter.set(value));
             else if (this.fixOn === 'blur') {
                 // 这种情况下直接透传
                 this.formattedValue = value;
                 this.$emit('input', value);
-                // this.$emit('update:value', value);
+                this.$emit('update:value', value);
             }
         },
         onFocus(e) {

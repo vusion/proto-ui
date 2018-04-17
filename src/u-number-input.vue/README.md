@@ -70,6 +70,8 @@
     <u-number-input :value="6" disabled></u-number-input>
 </u-linear-layout>
 ```
+
+<!--
 ### 事件
 ``` vue
 <template>
@@ -104,7 +106,7 @@ export default {
     },
 };
 </script>
-```
+--```-->
 
 ## API
 ### Props/Attrs
