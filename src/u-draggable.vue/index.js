@@ -19,12 +19,14 @@ export default {
             this.watchDisabled(disabled);
         },
     },
-    created() {
+    beforeMount() {
+        // Vue 中一般子组件比父组件先 mounted
         // 创建VNode
         /* eslint-disable consistent-this */
         const parentVM = this;
         this.childVM = new Vue({
             name: 'u-draggable-child',
+            parent: parentVM,
             render(h) { return parentVM.$slots.transfer && parentVM.$slots.transfer[0]; },
         });
         this.childVM.parentVM = parentVM;

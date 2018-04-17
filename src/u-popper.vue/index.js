@@ -47,7 +47,8 @@ export default {
     render() {
         return this.$slots.default && this.$slots.default[0];
     },
-    mounted() {
+    beforeMount() {
+        // Vue 中一般子组件比父组件先 mounted
         // 创建VNode
         /* eslint-disable consistent-this */
         const parentVM = this;
@@ -58,7 +59,8 @@ export default {
         });
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
-
+    },
+    mounted() {
         const referenceEl = this.reference || this.$el;
         const popperEl = this.childVM.$el;
 

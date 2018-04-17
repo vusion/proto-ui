@@ -18,7 +18,6 @@ export default {
         };
     },
     created() {
-        console.log('u-checkboxes', 'created');
         this.$on('add-item-vm', (itemVM) => {
             itemVM.parentVM = this;
             this.itemVMs.push(itemVM);
@@ -29,7 +28,6 @@ export default {
         });
     },
     mounted() {
-        console.log('u-checkboxes', 'mounted');
         this.watchValue(this.value);
     },
     watch: {
