@@ -62,10 +62,11 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-        // @TODO: Suggest to add a nextTick option in Vue.js
-        // Must trigger `value` watcher at next tick.
+    },
+    mounted() {
+        // Must trigger `value` watcher at mounted hook.
         // If not, itemVMs have not been pushed.
-        this.$nextTick(() => this.watchValue(this.value));
+        this.watchValue(this.value);
     },
     methods: {
         watchValue(value) {

@@ -41,8 +41,9 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-
-        this.$nextTick(() => this.watchValue(this.value));
+    },
+    mounted() {
+        this.watchValue(this.value);
     },
     methods: {
         watchValue(value) {

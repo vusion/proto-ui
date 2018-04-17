@@ -68,10 +68,11 @@ export default {
             nodeVM.rootVM = undefined;
             this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
         });
-        // @TODO: Suggest to add a nextTick option in Vue.js
-        // Must trigger `value` watcher at next tick.
-        // If not, nodeVMs have not been pushed.
-        this.$nextTick(() => this.watchValue(this.value));
+    },
+    mounted() {
+        // Must trigger `value` watcher at mounted hook.
+        // If not, itemVMs have not been pushed.
+        this.watchValue(this.value);
     },
     methods: {
         watchValue(value) {

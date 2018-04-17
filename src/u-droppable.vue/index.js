@@ -16,7 +16,9 @@ export default {
     },
     created() {
         manager.droppables.push(this);
-        this.$nextTick(() => this.watchDisabled(this.disabled));
+    },
+    mounted() {
+        this.watchDisabled(this.disabled);
     },
     destroyed() {
         manager.droppables.splice(manager.droppables.indexOf(this), 1);

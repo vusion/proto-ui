@@ -19,7 +19,7 @@ export default {
             this.watchDisabled(disabled);
         },
     },
-    mounted() {
+    created() {
         // 创建VNode
         /* eslint-disable consistent-this */
         const parentVM = this;
@@ -29,8 +29,9 @@ export default {
         });
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
-
-        this.$nextTick(() => this.watchDisabled(this.disabled));
+    },
+    mounted() {
+        this.watchDisabled(this.disabled);
         this.$el.addEventListener('mousedown', this.onMouseDown);
     },
     updated() {

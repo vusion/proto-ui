@@ -11,8 +11,8 @@ export default {
             this.watchActive(active);
         },
     },
-    created() {
-        this.$nextTick(() => this.watchActive(this.active));
+    mounted() {
+        this.watchActive(this.active);
     },
     methods: {
         watchActive(active) {

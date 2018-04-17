@@ -18,6 +18,7 @@ export default {
         };
     },
     created() {
+        console.log('u-checkboxes', 'created');
         this.$on('add-item-vm', (itemVM) => {
             itemVM.parentVM = this;
             this.itemVMs.push(itemVM);
@@ -26,8 +27,10 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-
-        this.$nextTick(() => this.watchValue(this.value));
+    },
+    mounted() {
+        console.log('u-checkboxes', 'mounted');
+        this.watchValue(this.value);
     },
     watch: {
         value(value) {
