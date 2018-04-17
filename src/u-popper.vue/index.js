@@ -1,7 +1,5 @@
 import Vue from 'vue';
-import raf from 'raf';
-raf.polyfill();
-import Popper from 'popper.js';
+import Popper from '@vusion/popper.js';
 import event from '../base/utils/event';
 
 export default {
