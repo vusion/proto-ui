@@ -73,7 +73,7 @@ export default {
             !this.inputing && this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
-            this.color = this.state = 'focus';
+            this.color = 'focus';
             this.currentMessage = this.message;
         },
         onBlur() {
