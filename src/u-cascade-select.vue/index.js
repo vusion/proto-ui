@@ -29,7 +29,7 @@ export default {
                 get(values) {
                     return values[values.length - 1];
                 },
-                set(value) {
+                set: (value) => {
                     const values = [];
 
                     const findValues = (list, level) => {
@@ -73,7 +73,7 @@ export default {
         }
 
         // 首次传入需要从`value`中得出`values`
-        data.values = data.currentConverter.set.call(this, this.value);
+        data.values = data.currentConverter.set(this.value);
 
         return data;
     },
