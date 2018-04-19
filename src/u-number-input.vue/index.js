@@ -54,7 +54,7 @@ export default {
     },
     watch: {
         value(value) {
-            value = +value;
+            value = +value; // 防止出现`1.fabc`，转换成`1.`的情况
             if (isNaN(value))
                 return;
             this.currentValue = value;
