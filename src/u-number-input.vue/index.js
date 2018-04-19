@@ -54,6 +54,7 @@ export default {
     },
     watch: {
         value(value) {
+            value = +value;
             if (isNaN(value))
                 return;
             this.currentValue = value;
