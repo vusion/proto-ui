@@ -86,18 +86,19 @@ export default {
 
             this.lists = [];
             this.values = this.currentConverter.set(this.value);
-
             this.setList(data, 0);
             const value = this.currentConverter.get(this.values);
             this.$emit('input', value);
             this.$emit('update:value', value);
         },
         value(value, oldValue) {
-            if (value === oldValue)
+            if (value === this.currentConverter.get(this.values))
                 return;
 
-            const oldValues = this.currentConverter.set(oldValue);
+            const oldValues = this.values;
+            this.lists = [];
             this.values = this.currentConverter.set(value);
+            this.setList(this.data, 0);
             this.$emit('change', {
                 value,
                 oldValue,
