@@ -54,6 +54,10 @@ import Select from './u-select.vue';
 import SelectDivider from './u-select-divider.vue';
 import SelectGroup from './u-select-group.vue';
 import SelectItem from './u-select-item.vue';
+import Select0 from './u-select--0.vue';
+import Select0Divider from './u-select--0-divider.vue';
+import Select0Group from './u-select--0-group.vue';
+import Select0Item from './u-select--0-item.vue';
 import Sidebar from './u-sidebar.vue';
 import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
@@ -127,6 +131,10 @@ export {
     SelectDivider,
     SelectGroup,
     SelectItem,
+    Select0,
+    Select0Divider,
+    Select0Group,
+    Select0Item,
     Sidebar,
     SidebarDivider,
     SidebarGroup,

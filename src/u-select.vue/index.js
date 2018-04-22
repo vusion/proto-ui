@@ -16,7 +16,7 @@ export default {
     },
     created() {
         this.$on('select', () => {
-            this.$refs.popper.toggle(false);
+            this.$refs.popper && this.$refs.popper.toggle(false);
         });
     },
     methods: {

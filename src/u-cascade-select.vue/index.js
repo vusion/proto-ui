@@ -79,9 +79,8 @@ export default {
     },
     watch: {
         data(data, oldData) {
-            // @TODO: 同样的数据，不知道为什么会变
             // @TODO: 该不该用 map 来查找 value
-            if (JSON.stringify(data) === JSON.stringify(oldData))
+            if (data === oldData)
                 return;
 
             this.lists = [];

@@ -32,6 +32,9 @@ export default {
             this.watchValue(value);
         },
         selectedVM(selectedVM, oldVM) {
+            // @TODO: Vue 中 相同复杂类型也会认为是改变？
+            if (selectedVM === oldVM)
+                return;
             this.$emit('change', {
                 value: selectedVM ? selectedVM.value : undefined,
                 oldValue: oldVM ? oldVM.value : undefined,

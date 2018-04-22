@@ -132,35 +132,7 @@
         { label: '学科门类' },
         { label: '一级学科' },
         { label: '二级学科' },
-    ]" :data="[
-        { text: '理学', value: '理学', children: [
-            { text: '物理学', value: '物理学', children: [
-                { text: '理论物理', value: '理论物理' },
-                { text: '凝聚态物理', value: '凝聚态物理' },
-                { text: '材料物理', value: '材料物理' },
-            ]},
-            { text: '数学', value: '数学', children: [
-                { text: '基础数学', value: '基础数学' },
-                { text: '计算数学', value: '计算数学' },
-                { text: '应用数学', value: '应用数学' },
-            ]},
-            { text: '化学', value: '化学' },
-        ]},
-        { text: '工学', value: '工学', children: [
-            { text: '计算机科学与技术', value: '计算机科学与技术', children: [
-                { text: '计算机系统结构', value: '计算机系统结构' },
-                { text: '计算机软件与理论', value: '计算机软件与理论', disabled: true },
-                { text: '计算机应用技术', value: '计算机应用技术' },
-            ]},
-            { text: '软件工程', value: '软件工程', disabled: true },
-            { text: '机械工程', value: '机械工程', children: [
-                { text: '机械制造及其自动化', value: '机械制造及其自动化' },
-                { text: '机械电子工程', value: '机械电子工程' },
-                { text: '机械设计及理论', value: '机械设计及理论', disabled: true },
-                { text: '车辆工程', value: '车辆工程', disabled: true },
-            ]},
-        ]},
-    ]">
+    ]" :data="data">
     </u-cascade-select>
     <div>选择的值为：{{ value }}</div>
 </u-linear-layout>
@@ -170,6 +142,35 @@ export default {
     data() {
         return {
             value: '工学,计算机科学与技术,计算机应用技术',
+            data: [
+                { text: '理学', value: '理学', children: [
+                    { text: '物理学', value: '物理学', children: [
+                        { text: '理论物理', value: '理论物理' },
+                        { text: '凝聚态物理', value: '凝聚态物理' },
+                        { text: '材料物理', value: '材料物理' },
+                    ]},
+                    { text: '数学', value: '数学', children: [
+                        { text: '基础数学', value: '基础数学' },
+                        { text: '计算数学', value: '计算数学' },
+                        { text: '应用数学', value: '应用数学' },
+                    ]},
+                    { text: '化学', value: '化学' },
+                ]},
+                { text: '工学', value: '工学', children: [
+                    { text: '计算机科学与技术', value: '计算机科学与技术', children: [
+                        { text: '计算机系统结构', value: '计算机系统结构' },
+                        { text: '计算机软件与理论', value: '计算机软件与理论', disabled: true },
+                        { text: '计算机应用技术', value: '计算机应用技术' },
+                    ]},
+                    { text: '软件工程', value: '软件工程', disabled: true },
+                    { text: '机械工程', value: '机械工程', children: [
+                        { text: '机械制造及其自动化', value: '机械制造及其自动化' },
+                        { text: '机械电子工程', value: '机械电子工程' },
+                        { text: '机械设计及理论', value: '机械设计及理论', disabled: true },
+                        { text: '车辆工程', value: '车辆工程', disabled: true },
+                    ]},
+                ]},
+            ],
         };
     },
 };
@@ -187,38 +188,7 @@ export default {
         { label: 'CPU', key: 'cpu' },
         { label: '内存', key: 'memory' },
         { label: '系统盘', key: 'storage' },
-    ]" :data="[
-        { text: '1核', value: 1, children: [
-            { text: '1GB', value: 1, children: [
-                { text: '20GB', value: 20 },
-            ] },
-            { text: '2GB', value: 2, children: [
-                { text: '20GB', value: 20 },
-            ] },
-        ] },
-        { text: '2核', value: 2, children: [
-            { text: '2GB', value: 2, children: [
-                { text: '20GB', value: 20 },
-            ] },
-            { text: '4GB', value: 4, children: [
-                { text: '20GB', value: 20 },
-            ] },
-            { text: '8GB', value: 8, children: [
-                { text: '20GB', value: 20 },
-            ] },
-        ] },
-        { text: '4核', value: 4, children: [
-            { text: '4GB', value: 4, children: [
-                { text: '20GB', value: 20 },
-            ] },
-            { text: '8GB', value: 8, children: [
-                { text: '20GB', value: 20 },
-            ] },
-            { text: '16GB', value: 16, children: [
-                { text: '20GB', value: 20 },
-            ] },
-        ] },
-    ]">
+    ]" :data="data">
     </u-cascade-select>
     <div>选择的值为：{{ value }}</div>
 </u-linear-layout>
@@ -229,6 +199,38 @@ export default {
     data() {
         return {
             value: undefined,
+            data: [
+                { text: '1核', value: 1, children: [
+                    { text: '1GB', value: 1, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                    { text: '2GB', value: 2, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                ] },
+                { text: '2核', value: 2, children: [
+                    { text: '2GB', value: 2, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                    { text: '4GB', value: 4, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                    { text: '8GB', value: 8, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                ] },
+                { text: '4核', value: 4, children: [
+                    { text: '4GB', value: 4, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                    { text: '8GB', value: 8, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                    { text: '16GB', value: 16, children: [
+                        { text: '20GB', value: 20 },
+                    ] },
+                ] },
+            ],
         };
     },
 };
@@ -246,35 +248,7 @@ export default {
         { label: '学科门类' },
         { label: '一级学科' },
         { label: '二级学科' },
-    ]" :data="[
-        { text: '理学', value: '1', children: [
-            { text: '物理学', value: '11', children: [
-                { text: '理论物理', value: '111' },
-                { text: '凝聚态物理', value: '112' },
-                { text: '材料物理', value: '113' },
-            ]},
-            { text: '数学', value: '12', children: [
-                { text: '基础数学', value: '121' },
-                { text: '计算数学', value: '122' },
-                { text: '应用数学', value: '123' },
-            ]},
-            { text: '化学', value: '13' },
-        ]},
-        { text: '工学', value: '2', children: [
-            { text: '计算机科学与技术', value: '21', children: [
-                { text: '计算机系统结构', value: '211' },
-                { text: '计算机软件与理论', value: '212', disabled: true },
-                { text: '计算机应用技术', value: '213' },
-            ]},
-            { text: '软件工程', value: '22', disabled: true },
-            { text: '机械工程', value: '23', children: [
-                { text: '机械制造及其自动化', value: '231' },
-                { text: '机械电子工程', value: '232' },
-                { text: '机械设计及理论', value: '233', disabled: true },
-                { text: '车辆工程', value: '234', disabled: true },
-            ]},
-        ]},
-    ]">
+    ]" :data="data">
     </u-cascade-select>
     <div>选择的值为：{{ value }}</div>
 </u-linear-layout>
@@ -284,6 +258,35 @@ export default {
     data() {
         return {
             value: '213',
+            data: [
+                { text: '理学', value: '1', children: [
+                    { text: '物理学', value: '11', children: [
+                        { text: '理论物理', value: '111' },
+                        { text: '凝聚态物理', value: '112' },
+                        { text: '材料物理', value: '113' },
+                    ]},
+                    { text: '数学', value: '12', children: [
+                        { text: '基础数学', value: '121' },
+                        { text: '计算数学', value: '122' },
+                        { text: '应用数学', value: '123' },
+                    ]},
+                    { text: '化学', value: '13' },
+                ]},
+                { text: '工学', value: '2', children: [
+                    { text: '计算机科学与技术', value: '21', children: [
+                        { text: '计算机系统结构', value: '211' },
+                        { text: '计算机软件与理论', value: '212', disabled: true },
+                        { text: '计算机应用技术', value: '213' },
+                    ]},
+                    { text: '软件工程', value: '22', disabled: true },
+                    { text: '机械工程', value: '23', children: [
+                        { text: '机械制造及其自动化', value: '231' },
+                        { text: '机械电子工程', value: '232' },
+                        { text: '机械设计及理论', value: '233', disabled: true },
+                        { text: '车辆工程', value: '234', disabled: true },
+                    ]},
+                ]},
+            ],
         };
     },
 };
