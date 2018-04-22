@@ -7,8 +7,8 @@ export default {
     methods: {
         select($event) {
             const oldValue = this.value;
-            const value = $event.target.value;
-            this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+            const value = $event.target.value || undefined;
+            this.watchValue(value);
             const item = this.selectedVM && this.selectedVM.item;
 
             this.$emit('input', value);
