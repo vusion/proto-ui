@@ -27,15 +27,15 @@
 ### 文本换行
 
 ``` html
-<div style="width: 120px; background: #eee;">
+<p style="width: 120px; background: #eee;">
     <u-text wrap="ellipsis">天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为也，所以动心忍性，增益其所不能。</u-text>
-</div>
-<div style="width: 120px; background: #eee;">
+</p>
+<p style="width: 120px; background: #eee;">
     <u-text wrap="break">天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为也，所以动心忍性，增益其所不能。</u-text>
-</div>
-<div style="width: 120px; background: #eee;">
+</p>
+<p style="width: 120px; background: #eee;">
     <u-text wrap="nowrap">天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为也，所以动心忍性，增益其所不能。</u-text>
-</div>
+</p>
 ```
 
 ## API
