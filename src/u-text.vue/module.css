@@ -1,0 +1,37 @@
+.root {}
+
+.root[size="small"] {
+    font-size: 12px;
+}
+
+.root[size="large"] {
+    font-size: 18px;
+}
+
+.root[color="primary"] {
+    color: $brand-primary;
+}
+
+.root[color="error"] {
+    color: $brand-error;
+}
+
+.root[color="disabled"] {
+    color: $brand-disabled;
+}
+
+.root[wrap="ellipsis"] {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.root[wrap="break"] {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.root[wrap="nowrap"] {
+    white-space: nowrap;
+}

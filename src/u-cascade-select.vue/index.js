@@ -92,13 +92,13 @@ export default {
             this.$emit('update:value', value);
         },
         value(value, oldValue) {
-            if (value === this.currentConverter.get(this.values))
-                return;
+            if (value !== this.currentConverter.get(this.values)) {
+                this.lists = [];
+                this.values = this.currentConverter.set(value);
+                this.setList(this.data, 0);
+            }
 
             const oldValues = this.values;
-            this.lists = [];
-            this.values = this.currentConverter.set(value);
-            this.setList(this.data, 0);
             this.$emit('change', {
                 value,
                 oldValue,
