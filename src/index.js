@@ -3,6 +3,8 @@ import * as directives from './base/directives';
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
+import Carousel from './u-carousel.vue';
+import CarouselItem from './u-carousel-item.vue';
 import CascadeSelect from './u-cascade-select.vue';
 import Checkbox from './u-checkbox.vue';
 import Checkbox0 from './u-checkbox--0.vue';
@@ -62,6 +64,8 @@ import Sidebar from './u-sidebar.vue';
 import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
 import SidebarItem from './u-sidebar-item.vue';
+import Single from './u-single.vue';
+import SingleItem from './u-single-item.vue';
 import Slider from './u-slider.vue';
 import Steps from './u-steps.vue';
 import Step from './u-step.vue';
@@ -80,6 +84,8 @@ export {
     Badge,
     Block,
     Button,
+    Carousel,
+    CarouselItem,
     CascadeSelect,
     Checkbox,
     Checkbox0,
@@ -139,6 +145,8 @@ export {
     SidebarDivider,
     SidebarGroup,
     SidebarItem,
+    Single,
+    SingleItem,
     Slider,
     Steps,
     Step,

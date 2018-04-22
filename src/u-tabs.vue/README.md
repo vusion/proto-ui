@@ -58,7 +58,7 @@
 ``` html
 <u-tabs router>
     <u-tab title="Button" to="u-button"></u-tab>
-    <u-tab title="Checkbox" to="u-checkbox"></u-tab>
+    <u-tab title="Input" to="u-input"></u-tab>
     <u-tab title="Tabs" to="u-tabs"></u-tab>
 </u-tabs>
 ```

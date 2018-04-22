@@ -1,0 +1,15 @@
+<div :class="$style.root">
+    <div :class="$style.body">
+        <slot></slot>
+    </div>
+    <ul :class="$style.nav">
+        <li :class="$style['nav-item']"
+            v-for="itemVM in itemVMs"
+            :title="itemVM.title"
+            :selected="router ? itemVM.active : itemVM === selectedVM"
+            @click="select(itemVM)">
+        </li>
+    </ul>
+    <div v-show="!hideButtons" :class="$style.button" role="prev" @click="prev()"></div>
+    <div v-show="!hideButtons" :class="$style.button" role="next" @click="next()"></div>
+</div>
