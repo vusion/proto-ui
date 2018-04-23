@@ -7,7 +7,13 @@ export default {
     methods: {
         select($event) {
             const oldValue = this.value;
-            const value = $event.target.value || undefined;
+            let value = $event.target.value;
+            // @TODO: 原生<select>只能储存字符串
+            if (value === '' || value === undefined)
+                value = undefined;
+            else if (!isNaN(value))
+                value = +value;
+
             this.watchValue(value);
             const item = this.selectedVM && this.selectedVM.item;
 
