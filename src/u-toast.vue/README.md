@@ -12,7 +12,7 @@
 export default {
     methods: {
         show() {
-            this.$toast.show('This is a message.');
+            this.$toast.show('This is a text.');
         },
     },
 };
@@ -51,19 +51,19 @@ export default {
 
 ``` html
 <p><u-button @click="$refs.toast.show()">Static</u-button></p>
-<u-toast ref="toast" position="static" message="Static Toast"></u-toast>
+<u-toast ref="toast" position="static" text="Static Toast"></u-toast>
 ```
 
 ### 可关闭
 
 ``` html
 <p><u-button @click="$refs.toast.show()">Static</u-button></p>
-<u-toast ref="toast" position="static" message="Closable" :duration="0" closable></u-toast>
+<u-toast ref="toast" position="static" text="Closable" :duration="0" closable></u-toast>
 ```
 
-### 消息停留时间
+### 提示停留时间
 
-可以通过设置toast的`duration`参数设置所有消息的停留时间，也可以在`show`的时候单独设置该条消息的停留时间，单位为毫秒。
+可以通过设置toast的`duration`参数设置所有提示的停留时间，也可以在`show`的时候单独设置该条提示的停留时间，单位为毫秒。
 
 ``` vue
 <template>
@@ -88,7 +88,7 @@ export default {
 
 ### 始终显示一条
 
-将`single`设置为`true`，可以让toast始终只显示一条消息。
+将`single`设置为`true`，可以让toast始终只显示一条提示。
 
 ``` vue
 <template>
@@ -119,40 +119,40 @@ export default {
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | position | String | `'top-center'` | 显示的位置，可选值：`'top-center'`, `'top-left'`, `'top-right'`, `'bottom-center'`, `'bottom-left'`, `'bottom-right'`, `static` |
-| duration | Number | `2000` | 消息停留的时间。`0`表示常驻。 |
+| duration | Number | `2000` | 提示停留的时间。`0`表示常驻。 |
 | single | Boolean | `false` | 多个提示会合并为一个 |
-| color | String | `'default'` | 消息的颜色 |
-| message | String | '' | 默认提示内容 |
+| text | String | `''` | 默认提示内容 |
+| color | String | `'default'` | 提示的颜色 |
 | closable | Boolean | `false` | 是否可以关闭提示 |
 
 ### Events
 
 #### @open
 
-弹出消息时触发
+弹出提示时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| color | String | 消息的颜色 |
-| message | String | 消息的内容 |
-| duration | Number | 消息停留的时间 |
+| text | String | 提示的内容 |
+| color | String | 提示的颜色 |
+| duration | Number | 提示停留的时间 |
 
 #### @before-close
 
-关闭消息前触发
+关闭提示前触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| color | String | 消息的颜色 |
-| message | String | 消息的内容 |
-| duration | Number | 消息停留的时间 |
+| text | String | 提示的内容 |
+| color | String | 提示的颜色 |
+| duration | Number | 提示停留的时间 |
 | $event.preventDefault | Function | 阻止关闭流程 |
 
 #### @close
-关闭消息时触发
+关闭提示时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| color | String | 消息的颜色 |
-| message | String | 消息的内容 |
-| duration | Number | 消息停留的时间 |
+| text | String | 提示的内容 |
+| color | String | 提示的颜色 |
+| duration | Number | 提示停留的时间 |

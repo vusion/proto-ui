@@ -7,7 +7,7 @@ const Toast = {
         single: { type: Boolean, default: false },
         duration: { type: Number, default: 2000 },
         color: { type: String, default: 'default' },
-        message: String,
+        text: String,
         closable: { type: Boolean, default: false },
     },
     data() {
@@ -20,14 +20,14 @@ const Toast = {
             document.body.appendChild(this.$el);
     },
     methods: {
-        show(message, duration, color) {
+        show(text, duration, color) {
             if (!this.$el)
                 this.$mount(document.createElement('div'));
 
             this.open({
-                message: message || this.message,
-                duration: duration === undefined ? this.duration : duration,
+                text: text || this.text,
                 color,
+                duration: duration === undefined ? this.duration : duration,
             });
         },
         open(options) {
