@@ -38,6 +38,7 @@ import Menu from './u-menu.vue';
 import MenuDivider from './u-menu-divider.vue';
 import MenuGroup from './u-menu-group.vue';
 import MenuItem from './u-menu-item.vue';
+import Modal from './u-modal.vue';
 import Navbar from './u-navbar.vue';
 import NavbarDivider from './u-navbar-divider.vue';
 import NavbarItem from './u-navbar-item.vue';
@@ -119,6 +120,7 @@ export {
     MenuDivider,
     MenuGroup,
     MenuItem,
+    Modal,
     Navbar,
     NavbarDivider,
     NavbarItem,
