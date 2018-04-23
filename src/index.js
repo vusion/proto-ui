@@ -75,6 +75,7 @@ import Tab from './u-tab.vue';
 import Tabs from './u-tabs.vue';
 import Text from './u-text.vue';
 import Textarea from './u-textarea.vue';
+import Toast from './u-toast.vue';
 import Tooltip from './u-tooltip.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
@@ -157,6 +158,7 @@ export {
     Tabs,
     Text,
     Textarea,
+    Toast,
     Tooltip,
     TreeView,
     TreeViewNode,

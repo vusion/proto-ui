@@ -1,0 +1,57 @@
+$margin: 30px;
+
+.root {
+    position: fixed;
+    z-index: $z-index-toast;
+    top: $margin;
+    left: $margin;
+    width: 300px;
+}
+
+.root[position='top-center'], .root[position='bottom-center'] {
+    left: 50%;
+    margin-left: -150px;
+}
+
+.root[position='bottom-center'], .root[position='bottom-left'], .root[position='bottom-right'] {
+    top: auto;
+    bottom: $margin;
+}
+
+.root[position='top-right'], .root[position='bottom-right'] {
+    left: auto;
+    right: $margin;
+}
+
+.root[position='top-left'], .root[position='bottom-left'] {
+    left: $margin;
+    right: auto;
+}
+
+.root[position='top-left'], .root[position='top-center'], .root[position='top-right'] {
+    top: $margin;
+    bottom: auto;
+}
+
+.root[position=static] {
+    position: static;
+    width: auto;
+}
+
+.item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+}
+
+.close {
+    float: right;
+    color: white;
+}
+
+.close:before {
+    content: '×';
+    font-size: 18px;
+    line-height: 0.8;
+}
