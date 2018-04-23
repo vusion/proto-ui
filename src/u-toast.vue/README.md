@@ -119,8 +119,40 @@ export default {
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | position | String | `'top-center'` | 显示的位置，可选值：`'top-center'`, `'top-left'`, `'top-right'`, `'bottom-center'`, `'bottom-left'`, `'bottom-right'`, `static` |
-| duration | Number | `2000` | 默认的显示位置 |
+| duration | Number | `2000` | 消息停留的时间。`0`表示常驻。 |
 | single | Boolean | `false` | 多个提示会合并为一个 |
 | color | String | `'default'` | 消息的颜色 |
 | message | String | '' | 默认提示内容 |
-| closeable | Boolean | `false` | 是否可以关闭提示 |
+| closable | Boolean | `false` | 是否可以关闭提示 |
+
+### Events
+
+#### @open
+
+弹出消息时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| color | String | 消息的颜色 |
+| message | String | 消息的内容 |
+| duration | Number | 消息停留的时间 |
+
+#### @before-close
+
+关闭消息前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| color | String | 消息的颜色 |
+| message | String | 消息的内容 |
+| duration | Number | 消息停留的时间 |
+| $event.preventDefault | Function | 阻止关闭流程 |
+
+#### @close
+关闭消息时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| color | String | 消息的颜色 |
+| message | String | 消息的内容 |
+| duration | Number | 消息停留的时间 |
