@@ -7,6 +7,7 @@ export default {
         value: { type: Number, default: 0 },
         min: { type: Number, default: 0 },
         max: { type: Number, default: 100 },
+        start: { type: Number, default: 0 },
         step: { type: Number, default: 1 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
         readonly: { type: Boolean, default: false },
@@ -71,12 +72,23 @@ export default {
         },
         onDrag($event) {
             const oldValue = this.currentValue;
-            this.percent = $event.left / $event.range.width * 100;
-            this.$emit('slide', {
-                oldValue,
-                value: this.currentValue,
-                percent: this.percent,
-            });
+            const percent = $event.left / $event.range.width * 100;
+            const value = this.fix(+this.min + (this.max - this.min) * percent / 100);
+            if (value >= this.start) {
+                this.percent = percent;
+                this.$emit('slide', {
+                    oldValue,
+                    value: this.currentValue,
+                    percent: this.percent,
+                });
+            } else {
+                this.$nextTick(() => {
+                    const startPercent = (this.start - this.min) / (this.max - this.min) * 100;
+                    this.percent = startPercent;
+                    console.log('startPercent', startPercent);
+                    this.handleEl.style.left = startPercent + '%';
+                });
+            }
         },
     },
 };

@@ -10,6 +10,12 @@
 <u-combo-slider :value="36" :min="10" :max="50"></u-combo-slider>
 ```
 
+### 起始值
+
+``` html
+<u-combo-slider :value="50" :start="30"></u-combo-slider>
+```
+
 ### 精度与间隔
 
 精度表示数字要保留的最小单位，整数、小数均可，输入框会根据它作四舍五入。默认为`1`，即保留到整数。
@@ -89,6 +95,7 @@
 | value.sync, v-model | Number | `0` | 滑块的值 |
 | min | Number | `0` | 最小值 |
 | max | Number | `0` | 最大值 |
+| start | Number | `0` | 起始值, 滑动和输入时的最小值 |
 | step | Number | `1` | 间隔。`0`表示连续 |
 | precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
 | formatter | String, Object |  | 格式化字符串，具体参见示例。也可以传入一个包含`get`和`set`方法的格式化对象。 |

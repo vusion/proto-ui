@@ -4,13 +4,19 @@
 ### 基本形式
 
 ``` html
-<u-slider :value="36"></u-slider>
+<u-slider :value="76" :start="60"></u-slider>
 ```
 
 ### 最大值和最小值
 
 ``` html
 <u-slider :value="36" :min="10" :max="50"></u-slider>
+```
+
+### 起始值
+
+``` html
+<u-slider :value="50" :start="30"></u-slider>
 ```
 
 ### 连续和间隔
@@ -46,6 +52,7 @@
 | value.sync, v-model | Number | `0` | 滑块的值 |
 | min | Number | `0` | 最小值 |
 | max | Number | `100` | 最大值 |
+| start | Number | `0` | 起始值, 滑动和输入时的最小值 |
 | step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量。`0`表示连续 |
 | precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
 | readonly | Boolean | `false` | 是否只读 |

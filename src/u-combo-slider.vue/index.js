@@ -7,6 +7,7 @@ export default {
         value: { type: Number, default: 0 },
         min: { type: Number, default: 0 },
         max: { type: Number, default: 100 },
+        start: { type: Number, default: 0 },
         step: { type: Number, default: 1, validator: (step) => step >= 0 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
         formatter: { type: [String, Object] },
@@ -33,9 +34,15 @@ export default {
     },
     methods: {
         onInput(value) {
-            this.currentValue = value;
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            const oldValue = this.currentValue;
+            console.log('slider', oldValue);
+            if (value >= this.start) {
+                this.currentValue = value;
+                this.$emit('input', value);
+                this.$emit('update:value', value);
+            } else {
+                this.$refs.numberInput.input(oldValue);
+            }
         },
         onSlide($event) {
             this.$emit('slide', $event);
