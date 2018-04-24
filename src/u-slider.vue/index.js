@@ -85,7 +85,6 @@ export default {
                 this.$nextTick(() => {
                     const startPercent = (this.start - this.min) / (this.max - this.min) * 100;
                     this.percent = startPercent;
-                    console.log('startPercent', startPercent);
                     this.handleEl.style.left = startPercent + '%';
                 });
             }

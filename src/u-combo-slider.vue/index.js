@@ -35,7 +35,6 @@ export default {
     methods: {
         onInput(value) {
             const oldValue = this.currentValue;
-            console.log('slider', oldValue);
             if (value >= this.start) {
                 this.currentValue = value;
                 this.$emit('input', value);
