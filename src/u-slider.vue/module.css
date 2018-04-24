@@ -4,18 +4,25 @@
 
 .body {
     position: relative;
-    margin: 0 10px;
+    margin: 0px 10px;
     padding: 6px 0;
 }
 
 .track {
-    overflow: hidden;
+    position: relative;
+    overflow: hidden; /*  */
     height: 8px;
     background: $background-color-base;
 }
 
 .trail {
-    float: left;
+    position: absolute;
+    height: 100%;
+    background: $brand-primary;
+}
+
+.start-range {
+    position: absolute;
     height: 100%;
     background: $brand-primary;
 }
@@ -37,5 +44,9 @@
 }
 
 .root[disabled] .trail {
+    background: $brand-disabled;
+}
+
+.root[disabled] .start-range {
     background: $brand-disabled;
 }

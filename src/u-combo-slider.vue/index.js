@@ -32,10 +32,15 @@ export default {
             });
         },
     },
+    computed: {
+        startValue() {
+            return Math.ceil(this.start / this.step) * this.step;
+        },
+    },
     methods: {
         onInput(value) {
             const oldValue = this.currentValue;
-            if (value >= this.start) {
+            if (value >= this.startValue) {
                 this.currentValue = value;
                 this.$emit('input', value);
                 this.$emit('update:value', value);

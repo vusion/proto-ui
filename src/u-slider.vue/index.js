@@ -44,6 +44,10 @@ export default {
                 this.$emit('update:value', value);
             },
         },
+        startPercent() {
+            const start = Math.ceil(this.start / this.step) * this.step;
+            return (start - this.min) / (this.max - this.min) * 100;
+        },
     },
     mounted() {
         this.handleEl = this.$refs.handle;
@@ -63,12 +67,27 @@ export default {
             this.grid.x = this.step / (this.max - this.min) * $event.range.width;
 
             const oldValue = this.currentValue;
-            this.percent = $event.left / $event.range.width * 100;
-            this.$emit('slide', {
-                oldValue,
-                value: this.currentValue,
-                percent: this.percent,
-            });
+            const percent = $event.left / $event.range.width * 100;
+            const value = this.fix(+this.min + (this.max - this.min) * percent / 100);
+            if (value >= this.start) {
+                this.percent = percent;
+                this.$emit('slide', {
+                    oldValue,
+                    value: this.currentValue,
+                    percent: this.percent,
+                });
+            } else {
+                this.$nextTick(() => {
+                    this.percent = this.startPercent;
+                    this.handleEl.style.left = this.startPercent + '%';
+                });
+            }
+            // this.percent = $event.left / $event.range.width * 100;
+            // this.$emit('slide', {
+            //     oldValue,
+            //     value: this.currentValue,
+            //     percent: this.percent,
+            // });
         },
         onDrag($event) {
             const oldValue = this.currentValue;
@@ -83,9 +102,8 @@ export default {
                 });
             } else {
                 this.$nextTick(() => {
-                    const startPercent = (this.start - this.min) / (this.max - this.min) * 100;
-                    this.percent = startPercent;
-                    this.handleEl.style.left = startPercent + '%';
+                    this.percent = this.startPercent;
+                    this.handleEl.style.left = this.startPercent + '%';
                 });
             }
         },

@@ -13,7 +13,7 @@
 ### 起始值
 
 ``` html
-<u-combo-slider :value="50" :start="30"></u-combo-slider>
+<u-combo-slider :value="50" :start="27"  :step="5"></u-combo-slider>
 ```
 
 ### 精度与间隔
