@@ -4,13 +4,13 @@
 
 .body {
     position: relative;
-    margin: 0px 10px;
+    margin: 0 10px;
     padding: 6px 0;
 }
 
 .track {
     position: relative;
-    overflow: hidden; /*  */
+    overflow: hidden;
     height: 8px;
     background: $background-color-base;
 }
@@ -21,10 +21,18 @@
     background: $brand-primary;
 }
 
-.start-range {
+.bound[role="start"] {
     position: absolute;
+    left: 0;
     height: 100%;
-    background: $brand-primary;
+    background: rgba(255,255,255,0.4);
+}
+
+.bound[role="end"] {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
 }
 
 .handle {
@@ -44,9 +52,5 @@
 }
 
 .root[disabled] .trail {
-    background: $brand-disabled;
-}
-
-.root[disabled] .start-range {
     background: $brand-disabled;
 }

@@ -7,15 +7,17 @@ export default {
         value: { type: Number, default: 0 },
         min: { type: Number, default: 0 },
         max: { type: Number, default: 100 },
-        start: { type: Number, default: 0 },
         step: { type: Number, default: 1 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
+        // @TODO: 以后再考虑复杂的范围情况
+        range: { type: Array, default() { return []; } },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
     data() {
         return {
             currentValue: this.value,
+            currentRange: this.normalizeRange(this.range),
             grid: { x: 0, y: 0 },
             handleEl: undefined,
         };
@@ -29,6 +31,9 @@ export default {
             value = +value;
 
             this.$emit('change', { value, oldValue });
+        },
+        range(range) {
+            this.currentRange = this.normalizeRange(range);
         },
     },
     computed: {
@@ -44,9 +49,13 @@ export default {
                 this.$emit('update:value', value);
             },
         },
-        startPercent() {
-            const start = Math.ceil(this.start / this.step) * this.step;
+        rangeStartPercent() {
+            const start = Math.max(this.currentRange[0], this.min);
             return (start - this.min) / (this.max - this.min) * 100;
+        },
+        rangeEndPercent() {
+            const end = Math.min(this.currentRange[1], this.max);
+            return (this.max - end) / (this.max - this.min) * 100;
         },
     },
     mounted() {
@@ -54,9 +63,19 @@ export default {
         this.handleEl.style.left = this.percent + '%';
     },
     methods: {
+        normalizeRange(range) {
+            range = Array.from(range);
+            if (range[0] === undefined)
+                range[0] = -Infinity;
+            if (range[1] === undefined)
+                range[1] = Infinity;
+            return range;
+        },
         fix(value) {
             // 刻度约束
             this.step && (value = Math.round(value / this.step) * this.step);
+            // 范围约束
+            value = Math.min(Math.max(this.currentRange[0], value), this.currentRange[1]);
             // 最大最小约束
             value = Math.min(Math.max(this.min, value), this.max);
             // 保留小数位数
@@ -67,45 +86,25 @@ export default {
             this.grid.x = this.step / (this.max - this.min) * $event.range.width;
 
             const oldValue = this.currentValue;
-            const percent = $event.left / $event.range.width * 100;
-            const value = this.fix(+this.min + (this.max - this.min) * percent / 100);
-            if (value >= this.start) {
-                this.percent = percent;
-                this.$emit('slide', {
-                    oldValue,
-                    value: this.currentValue,
-                    percent: this.percent,
-                });
-            } else {
-                this.$nextTick(() => {
-                    this.percent = this.startPercent;
-                    this.handleEl.style.left = this.startPercent + '%';
-                });
-            }
-            // this.percent = $event.left / $event.range.width * 100;
-            // this.$emit('slide', {
-            //     oldValue,
-            //     value: this.currentValue,
-            //     percent: this.percent,
-            // });
+            this.percent = $event.left / $event.range.width * 100;
+            const percent = this.percent;
+            this.handleEl.style.left = percent + '%';
+            this.$emit('slide', {
+                oldValue,
+                value: this.currentValue,
+                percent,
+            });
         },
         onDrag($event) {
             const oldValue = this.currentValue;
-            const percent = $event.left / $event.range.width * 100;
-            const value = this.fix(+this.min + (this.max - this.min) * percent / 100);
-            if (value >= this.start) {
-                this.percent = percent;
-                this.$emit('slide', {
-                    oldValue,
-                    value: this.currentValue,
-                    percent: this.percent,
-                });
-            } else {
-                this.$nextTick(() => {
-                    this.percent = this.startPercent;
-                    this.handleEl.style.left = this.startPercent + '%';
-                });
-            }
+            this.percent = $event.left / $event.range.width * 100;
+            const percent = this.percent;
+            this.handleEl.style.left = percent + '%';
+            this.$emit('slide', {
+                oldValue,
+                value: this.currentValue,
+                percent,
+            });
         },
     },
 };
