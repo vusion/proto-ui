@@ -46,6 +46,15 @@
 
 监听所有`<a>`元素的事件。
 
+#### @click
+
+点击链接时触发，与原生 click 事件不同的是，它只会在非禁用状态下触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | MouseEvent | 鼠标事件对象 |
+
+
 #### @before-navigate
 
 使用router相关属性切换路由前触发
