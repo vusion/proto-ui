@@ -9,6 +9,7 @@ export default {
         max: { type: Number, default: 100 },
         step: { type: Number, default: 1, validator: (step) => step >= 0 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
+        range: { type: Array, default() { return []; } },
         formatter: { type: [String, Object] },
         fixOn: { type: String, default: 'blur' },
         hideButtons: { type: Boolean, default: false },
@@ -29,6 +30,14 @@ export default {
                 value: currentValue,
                 oldValue,
             });
+        },
+    },
+    computed: {
+        numberMin() {
+            return Math.max(this.min, this.range[0] === undefined ? -Infinity : this.range[0]);
+        },
+        numberMax() {
+            return Math.min(this.max, this.range[1] === undefined ? Infinity : this.range[1]);
         },
     },
     methods: {

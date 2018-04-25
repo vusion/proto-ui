@@ -9,12 +9,15 @@ export default {
         max: { type: Number, default: 100 },
         step: { type: Number, default: 1 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
+        // @TODO: 以后再考虑复杂的范围情况
+        range: { type: Array, default() { return []; } },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
     data() {
         return {
             currentValue: this.value,
+            currentRange: this.normalizeRange(this.range),
             grid: { x: 0, y: 0 },
             handleEl: undefined,
         };
@@ -28,6 +31,9 @@ export default {
             value = +value;
 
             this.$emit('change', { value, oldValue });
+        },
+        range(range) {
+            this.currentRange = this.normalizeRange(range);
         },
     },
     computed: {
@@ -43,15 +49,33 @@ export default {
                 this.$emit('update:value', value);
             },
         },
+        rangeStartPercent() {
+            const start = Math.max(this.currentRange[0], this.min);
+            return (start - this.min) / (this.max - this.min) * 100;
+        },
+        rangeEndPercent() {
+            const end = Math.min(this.currentRange[1], this.max);
+            return (this.max - end) / (this.max - this.min) * 100;
+        },
     },
     mounted() {
         this.handleEl = this.$refs.handle;
         this.handleEl.style.left = this.percent + '%';
     },
     methods: {
+        normalizeRange(range) {
+            range = Array.from(range);
+            if (range[0] === undefined)
+                range[0] = -Infinity;
+            if (range[1] === undefined)
+                range[1] = Infinity;
+            return range;
+        },
         fix(value) {
             // 刻度约束
             this.step && (value = Math.round(value / this.step) * this.step);
+            // 范围约束
+            value = Math.min(Math.max(this.currentRange[0], value), this.currentRange[1]);
             // 最大最小约束
             value = Math.min(Math.max(this.min, value), this.max);
             // 保留小数位数
@@ -63,19 +87,23 @@ export default {
 
             const oldValue = this.currentValue;
             this.percent = $event.left / $event.range.width * 100;
+            const percent = this.percent;
+            this.handleEl.style.left = percent + '%';
             this.$emit('slide', {
                 oldValue,
                 value: this.currentValue,
-                percent: this.percent,
+                percent,
             });
         },
         onDrag($event) {
             const oldValue = this.currentValue;
             this.percent = $event.left / $event.range.width * 100;
+            const percent = this.percent;
+            this.handleEl.style.left = percent + '%';
             this.$emit('slide', {
                 oldValue,
                 value: this.currentValue,
-                percent: this.percent,
+                percent,
             });
         },
     },

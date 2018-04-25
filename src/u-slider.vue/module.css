@@ -9,15 +9,30 @@
 }
 
 .track {
+    position: relative;
     overflow: hidden;
     height: 8px;
     background: $background-color-base;
 }
 
 .trail {
-    float: left;
+    position: absolute;
     height: 100%;
     background: $brand-primary;
+}
+
+.bound[role="start"] {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+}
+
+.bound[role="end"] {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
 }
 
 .handle {
