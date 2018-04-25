@@ -2,7 +2,7 @@
     :selected="parentVM.router ? active : selected || currentSelected"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"
-    @click="select()" :has-sub="!!$slots.sub">
+    @click="select(e)" :has-sub="!!$slots.sub">
     <slot></slot>
     <div :class="$style.sub">
         <slot name="sub"></slot>

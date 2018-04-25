@@ -105,6 +105,14 @@
 
 ### Events
 
+#### @click
+
+点击此项时触发，与原生 click 事件不同的是，它只会在非只读和禁用的情况下触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | MouseEvent | 鼠标事件对象 |
+
 #### @before-select
 
 选择某一项前触发

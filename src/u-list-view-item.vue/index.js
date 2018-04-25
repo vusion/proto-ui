@@ -32,9 +32,11 @@ export default {
         this.dispatch(this.$options.groupName, 'remove-item-vm', this);
     },
     methods: {
-        select() {
+        select(e) {
             if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)
                 return;
+
+            this.$emit('click', e);
 
             let cancel = false;
             this.$emit('before-select', {
