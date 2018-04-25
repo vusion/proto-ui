@@ -1,6 +1,6 @@
-<transition>
+<transition :name="animation">
     <div :class="$style.root"
-        :selected="selected"
+        v-show="!!selected"
         :animation="animation">
         <div :class="$style.body"><slot></slot></div>
     </div>

@@ -7,7 +7,7 @@ export default {
     props: {
         autoSelect: { type: Boolean, default: true },
         value: null,
-        autoPlay: { type: Boolean, default: true },
+        autoplay: { type: Boolean, default: true }, // Same with <video>
         interval: { type: Number, default: 4000, validator: (value) => Number.isInteger(value) && value >= 0 },
         direction: { type: String, default: 'right' },
         animation: String,
@@ -32,8 +32,9 @@ export default {
     },
     created() {
         this.$on('select', ($event) => {
-            this.router && $event.itemVM.navigate();
             clearTimeout(this.timer);
+            this.router && $event.itemVM.navigate();
+            this.play();
         });
     },
     mounted() {
@@ -41,17 +42,19 @@ export default {
     },
     methods: {
         prev() {
+            clearTimeout(this.timer);
             const length = this.itemVMs.length;
             this.selectedIndex = (this.selectedIndex - 1 + length) % length;
-            clearTimeout(this.timer);
+            this.play();
         },
         next() {
+            clearTimeout(this.timer);
             const length = this.itemVMs.length;
             this.selectedIndex = (this.selectedIndex + 1) % length;
-            clearTimeout(this.timer);
+            this.play();
         },
         play() {
-            if (!this.autoPlay)
+            if (!this.autoplay)
                 return;
 
             this.timer = setTimeout(() => {
