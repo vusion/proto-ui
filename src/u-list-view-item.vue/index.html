@@ -2,7 +2,7 @@
     :selected="selected || currentSelected"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"
-    @click="select(e)"
+    @click="select"
     v-ellipsis-title>
     <slot></slot>
 </li>
