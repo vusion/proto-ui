@@ -7,6 +7,13 @@ export default {
     groupName: 'u-menu-group',
     extends: SingleChoice,
     mixins: [RouterItem],
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.click;
+            return listeners;
+        },
+    },
     watch: {
         active(active) {
             this.watchActive(active);
