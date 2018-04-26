@@ -6,6 +6,13 @@ export default {
     parentName: 'u-menu',
     groupName: 'u-menu-group',
     mixins: [ListViewItem, RouterItem],
+    computed: {
+        listeners() {
+            const listeners = Object.assign({}, this.$listeners);
+            delete listeners.click;
+            return listeners;
+        },
+    },
     watch: {
         active(active) {
             this.watchActive(active);
