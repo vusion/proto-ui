@@ -1,5 +1,6 @@
 .root {
     user-select: none;
+    cursor: $cursor-pointer;
 }
 
 .box {
