@@ -9,6 +9,10 @@
     vertical-align: middle;
 }
 
+.box[disabled] {
+    cursor: $cursor-not-allowed;
+}
+
 .root:focus {
     outline: $focus-outline;
 }
