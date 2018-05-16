@@ -19,7 +19,7 @@
     <u-form-item label="手机" required>
         <u-input maxlength="11" placeholder="请输入手机号"></u-input>
     </u-form-item>
-    <u-form-item label="自我介绍">
+    <u-form-item label="自我介绍" layout="block">
         <u-textarea></u-textarea>
     </u-form-item>
     <u-form-item>
