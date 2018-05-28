@@ -65,6 +65,9 @@ const Modal = {
 
 Modal.alert = (content, title = '提示') => {
     const Ctor = Vue.component('u-modal');
+    if (!Ctor)
+        return;
+
     new Ctor({
         propsData: { content, title, cancelButton: '' },
     }).open();
@@ -72,6 +75,9 @@ Modal.alert = (content, title = '提示') => {
 
 Modal.confirm = (content, title = '提示') => new Promise((resolve, reject) => {
     const Ctor = Vue.component('u-modal');
+    if (!Ctor)
+        return;
+
     const instance = new Ctor({
         propsData: { content, title },
     });

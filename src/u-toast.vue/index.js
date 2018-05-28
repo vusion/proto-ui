@@ -77,6 +77,9 @@ const Toast = {
 
 Vue.nextTick(() => {
     const Ctor = Vue.component('u-toast');
+    if (!Ctor)
+        return;
+
     const toast = Toast.toast = new Ctor();
     Vue.prototype.$toast = toast;
 });
