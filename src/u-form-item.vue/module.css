@@ -33,9 +33,9 @@
     margin-left: 0;
 }
 
-.root[label-size$="normal"] .label { width: 80px; }
-.root[label-size$="normal"] .field { max-width: calc(100% - 80px); }
+.root[label-size$="normal"] > .label { width: 80px; }
+.root[label-size$="normal"] > .field { max-width: calc(100% - 80px); }
 
-.root[layout="block"] .field {
+.root[layout="block"] > .field {
     vertical-align: top;
 }
