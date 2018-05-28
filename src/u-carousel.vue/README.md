@@ -13,7 +13,19 @@
 </u-carousel>
 ```
 
-### 自动播放
+### 动画
+#### fade
+``` html
+<u-carousel animation="fade">
+    <u-carousel-item><img src="../assets/images/1.jpg"></u-carousel-item>
+    <u-carousel-item><img src="../assets/images/2.jpg"></u-carousel-item>
+    <u-carousel-item><img src="../assets/images/3.jpg"></u-carousel-item>
+    <u-carousel-item><img src="../assets/images/4.jpg"></u-carousel-item>
+    <u-carousel-item><img src="../assets/images/5.jpg"></u-carousel-item>
+</u-carousel>
+```
+
+### 自动播放与循环
 
 通过`interval`来设置播放间隔。
 
@@ -39,10 +51,10 @@
 </u-carousel>
 ```
 
-### 动画
-#### fade
+通过`loop`可以关闭循环播放。
+
 ``` html
-<u-carousel animation="fade">
+<u-carousel :autoplay="false" :loop="false">
     <u-carousel-item><img src="../assets/images/1.jpg"></u-carousel-item>
     <u-carousel-item><img src="../assets/images/2.jpg"></u-carousel-item>
     <u-carousel-item><img src="../assets/images/3.jpg"></u-carousel-item>
@@ -58,6 +70,7 @@
 | --------- | ---- | ------- | ----------- |
 | value.sync | Any |  | 播放位置 |
 | autoplay | Boolean | `true` | 是否自动播放 |
+| loop | Boolean | `true` | 是否循环播放，即首尾连接 |
 | interval | Number | `4000` | 幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换 |
 | direction | String | `'right'` | 幻灯片播放方向 |
 | animation | String | | 幻灯片过渡动画 |

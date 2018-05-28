@@ -8,6 +8,7 @@ export default {
         autoSelect: { type: Boolean, default: true },
         value: null,
         autoplay: { type: Boolean, default: true }, // Same with <video>
+        loop: { type: Boolean, default: true },
         interval: { type: Number, default: 4000, validator: (value) => Number.isInteger(value) && value >= 0 },
         direction: { type: String, default: 'right' },
         animation: String,
@@ -50,7 +51,10 @@ export default {
         next() {
             clearTimeout(this.timer);
             const length = this.itemVMs.length;
-            this.selectedIndex = (this.selectedIndex + 1) % length;
+            const index = this.selectedIndex + 1;
+            if (!this.loop && index >= length)
+                return;
+            this.selectedIndex = index % length;
             this.play();
         },
         play() {
@@ -59,7 +63,6 @@ export default {
 
             this.timer = setTimeout(() => {
                 this.next();
-                this.play();
             }, this.interval);
         },
     },

@@ -10,6 +10,6 @@
             @click="select(itemVM)">
         </li>
     </ul>
-    <div v-show="!hideButtons" :class="$style.button" role="prev" @click="prev()"></div>
-    <div v-show="!hideButtons" :class="$style.button" role="next" @click="next()"></div>
+    <div v-show="!hideButtons && !(!loop && selectedIndex === 0)" :class="$style.button" role="prev" @click="prev()"></div>
+    <div v-show="!hideButtons && !(!loop && selectedIndex === itemVMs.length - 1)" :class="$style.button" role="next" @click="next()"></div>
 </div>
