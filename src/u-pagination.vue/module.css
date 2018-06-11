@@ -18,6 +18,7 @@ $item_size: 32px;
     text-align: center;
     background: $background-color-base;
     color: $color-base;
+    cursor: $cursor-pointer;
 }
 
 .item:hover {
@@ -31,7 +32,6 @@ $item_size: 32px;
 
 .item[disabled] {
     cursor: $cursor-not-allowed;
-
     color: $brand-disabled;
 }
 
@@ -46,6 +46,7 @@ $item_size: 32px;
 .item[role="blank"] {
     background: none;
     color: $color-base;
+    cursor: initial;
 }
 
 .root[disabled] {
@@ -54,6 +55,12 @@ $item_size: 32px;
 
 .root[disabled] .item {
     color: $brand-disabled;
+    cursor: $cursor-not-allowed;
+}
+
+.root[disabled] .item[role="blank"] {
+    color: $brand-disabled;
+    cursor: initial;
 }
 
 .root[disabled] .item[selected] {
