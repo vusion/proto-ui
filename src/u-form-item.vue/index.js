@@ -9,6 +9,7 @@ export default {
         label: String,
         title: String,
         rules: Array,
+        ignoreRules: { type: Boolean, default: false },
         message: String,
         required: { type: Boolean, default: false },
         labelSize: String,
@@ -82,8 +83,8 @@ export default {
         },
         validate(trigger = 'submit', silent = false) {
             let rules = this.currentRules;
-            rules = rules && rules.filter((rule) => (rule.trigger + '+submit').includes(trigger));
-            if (!rules || !rules.length) {
+            rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
+            if (this.ignoreRules || !rules || !rules.length) {
                 this.dispatch('u-form', 'validate-item-vm', true);
                 return Promise.resolve();
             }
