@@ -64,6 +64,7 @@
 - `type`：数据类型
 - `trigger`：触发方式
 - `message`：验证不通过时的消息提示
+- `ignore`：忽略此条规则
 - ...
 
 下面举个例子，一个用户名输入框的验证包含以下规则：
@@ -563,9 +564,11 @@ export default {
 | name | String | | 表单项名称，用于选择表单的模型数据和验证规则 |
 | label | String | | 标签 |
 | label-size | String | `normal` | 单独设置表单项的标签大小 |
+| field-size | String | `normal` | 单独设置表单项的内容大小。可选值：`full` |
 | rules | Array | | 表单项的验证规则。如果没有则会根据`name`属性从表单的`rules`中获取。 |
+| ignoreRules | Boolean | `false` | 忽略验证规则。 |
 | message | String | | 默认提示信息 |
-| required | Boolean | | 是否必填。仅显示样式，如果要验证必填项，需要在`rules`中添加必填规则。 |
+| required | Boolean | `false` | 是否必填。仅显示样式，如果要验证必填项，需要在`rules`中添加必填规则。 |
 
 ### Slots
 

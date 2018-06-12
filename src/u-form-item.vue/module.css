@@ -36,6 +36,10 @@
 .root[label-size$="normal"] > .label { width: 80px; }
 .root[label-size$="normal"] > .field { max-width: calc(100% - 80px); }
 
+.root[field-size="full"] > .field {
+    width: 100%;
+}
+
 .root[layout="block"] > .field {
     vertical-align: top;
 }
