@@ -45,9 +45,9 @@ export default {
     render() {
         return this.$slots.default && this.$slots.default[0];
     },
-    beforeMount() {
-        // Vue 中一般子组件比父组件先 mounted
-        // 创建VNode
+    mounted() {
+        // 虽然 Vue 中一般子组件比父组件先 mounted，
+        // 但这里必须放到 mounted。不然可能在 v-if 的情况下出不来。。
         /* eslint-disable consistent-this */
         const parentVM = this;
         this.childVM = new Vue({
@@ -57,8 +57,7 @@ export default {
         });
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
-    },
-    mounted() {
+
         const referenceEl = this.reference || this.$el;
         const popperEl = this.childVM.$el;
 
