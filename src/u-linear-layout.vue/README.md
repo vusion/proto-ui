@@ -1,7 +1,15 @@
 # 线性布局 LinearLayout
 
+处理页面中各组件之间的间距，方法有很多，但经常会出现捉襟见肘的情况。
+
+比如一种常见的方法是，给一些默认组件如按钮之间添加`margin`样式。这种方法的问题在于，有时会出现间距多余的情况，使得之后样式处理常常要作一些减法，而且按钮周围的组件不一定继续是按钮，组件之间间距有n^2种情况，到最后开发者自己也摸不清处理了多少。另一种方法是，使用一些类似`margin-sm`简单的 class 来控制间距。它的典型问题是，class 经常会被滥用，而且污染了 html 结构，因为处理间距本来是一个样式问题，现在却要经常声明在 html 中，另一个问题是经常第一项或最后一项不加，缺乏一种对称性的美感。
+
+考虑到以上各种问题，我们参考一些 native 开发如 Andriod 的布局方式，总结出这个简单易用的布局组件——线性布局。
+
 ## 示例
 ### 基本形式
+
+一般具有`inline`特性的组件，可以直接在外面套一个`<u-linear-layout>`，就会拉开间隔。
 
 ``` html
 <u-linear-layout>
@@ -13,23 +21,69 @@
 
 ### 方向
 
+默认方向为`horizontal`，它只处理具有`inline`特性的组件，拉开横向的间隔；方向也可以设置为`vertical`，它只处理具有`block`特性的组件。
+
 ``` html
+<u-linear-layout direction="horizontal">
+    <u-button>Button</u-button>
+    <u-button>Button</u-button>
+    <u-button>Button</u-button>
+</u-linear-layout>
+<p></p>
 <u-linear-layout direction="vertical">
-    <u-pagination></u-pagination>
-    <u-pagination></u-pagination>
-    <u-pagination></u-pagination>
+    <u-linear-progress :percent="25"></u-linear-progress>
+    <u-linear-progress :percent="50"></u-linear-progress>
+    <u-linear-progress :percent="75"></u-linear-progress>
 </u-linear-layout>
 ```
 
-### 间隙
+### 间距
 
-可以自行扩展`gap`属性，推荐几个常用的属性值：`'none'`, `'small'`, `'normal'`, `'large'`。
+水平和垂直方向都可以通过设置`gap`属性，调整间距大小。
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-linear-layout>
+        <u-linear-layout inline gap="small">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+        <u-linear-layout inline gap="none">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+        <u-linear-layout inline gap="shrink">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+    </u-linear-layout>
+    <u-linear-layout direction="vertical" gap="large">
+        <u-linear-layout gap="normal">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+        <u-linear-layout gap="large">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+    </u-linear-layout>
+</u-linear-layout>
+```
 
 ### 水平分布方式
 
-普通的分布方式是用`inline-block`与`text-align`两个特性实现的，只支持水平方向。
+考虑到兼容 IE9，普通的分布方式是用`inline-block`与`text-align`两个特性实现的，只支持水平方向。
 
-如果想使用更灵活的分布方式，请使用下面的Flex模式，并确保您的浏览器支持该功能。
+> 没有用`float`的主要原因是：1. 需要外加父元素或后继元素清除浮动，2. 浮动之后`vertial-align`对齐不太可控。
+>
+> 但`text-align`也有个坑，就是会影响子元素默认的对齐方式。如果有更好的解决方案，欢迎提供。
+
+如果想使用没有坑、更灵活的分布方式，请使用后面的 Flex 模式，但要确保您的浏览器支持该功能。
 
 ``` html
 <u-linear-layout direction="vertical">
@@ -44,6 +98,28 @@
         <u-button>Button</u-button>
     </u-linear-layout>
     <u-linear-layout justify="end">
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+    </u-linear-layout>
+    <u-linear-layout justify="space-between">
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+    </u-linear-layout>
+</u-linear-layout>
+```
+
+> `space-between`目前只支持左右两个元素，为了兼容没办法。
+
+请不要忘记，`<u-linear-layout>`可以很方便的嵌套使用。
+
+``` html
+<u-linear-layout justify="space-between">
+    <u-linear-layout>
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+    </u-linear-layout>
+    <u-linear-layout gap="shrink">
         <u-button>Button</u-button>
         <u-button>Button</u-button>
         <u-button>Button</u-button>
@@ -122,9 +198,10 @@
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | direction | String | `'horizontal'` | 排列方向。可选值：`'horizontal'`或`'vertical'` |
-| gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：`'none'`, `'small'`, `'normal'`或`'large'` |
+| gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：`'shrink'`, `'none'`, `'small'`, `'normal'`或`'large'` |
+| inline | Boolean | `false` | 自身是否按照行内显示。|
 | type | String | | 布局模式。可选值：`'flex'`或不填 |
-| justify | String | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`。flex布局模式下还支持：`'space-between'`, `'space-around'` |
+| justify | String | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`, `'space-between'`。flex布局模式下还支持：`'space-around'`。普通模式下的`'space-between'`功能很弱，只支持左右分布。 |
 | alignment | String | `'stretch'` | flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
 
 ### Slots

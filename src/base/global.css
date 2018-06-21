@@ -18,8 +18,9 @@ $color-base: #345;
 $border-color-base: #ccc;
 
 /* Spacing Dimensions */
-$margin-bottom-base: 15px;
-$margin-right-base: 5px;
+$margin-small: 10px;
+$margin-base: 20px;
+$margin-large: 30px;
 
 /* Component Base Dimensions */
 $border-width-base: 1px;
