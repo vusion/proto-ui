@@ -177,6 +177,7 @@ export default {
 | placement | String | `'bottom'` | 弹出层的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | offset | String | | 弹出层偏移，如：'10px 10px', '10% 10%' |
 | hover-delay | Number | `0` | trigger 为 'hover' 时的延迟时间 |
+| hide-delay | Number | `0` | trigger 为 'hover' 时提示隐藏的延迟时间 |
 | append-to | String | `'body'` | 指示添加到哪个元素 |
 | boundaries-element | Element, String | `'window'` | 弹出层所在的边框元素，定义弹出层的边际，默认为第一个滚动的父级元素 |
 | escape-with-reference | Boolean | `true` | 当触发元素离开边际时，弹出层是否跟随离开或保留在边际元素内 |

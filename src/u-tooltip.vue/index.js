@@ -7,6 +7,7 @@ export default {
         placement: { type: String, default: 'bottom' },
         reference: HTMLElement, // 为了方便生成指令
         disabled: { type: Boolean, default: false },
+        hideDelay: { type: Number, default: 0 },
     },
     computed: {
         hasContent() {

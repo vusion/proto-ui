@@ -35,6 +35,15 @@
 </u-linear-layout>
 ```
 
+#### 延迟消失(hover)
+``` html
+<u-linear-layout>
+    <u-tooltip content="Tooltip" trigger="hover" :hide-delay="300">
+        <u-button>hover（默认）</u-button>
+    </u-tooltip>
+</u-linear-layout>
+```
+
 #### 指令形式
 
 ``` html
@@ -164,7 +173,7 @@ export default {
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | disabled | Boolean | `false` | 是否禁用 |
-
+| hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
 ### Slots
 
 #### (default)

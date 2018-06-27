@@ -14,6 +14,7 @@ export default {
         reference: HTMLElement,
         offset: { type: Number, default: 0 },
         hoverDelay: { type: Number, default: 0 },
+        hideDelay: { type: Number, default: 0 },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
         boundariesElement: { default: 'window' },
         escapeWithReference: { type: Boolean, default: true },
@@ -63,14 +64,25 @@ export default {
 
         // 绑定事件
         const offEvents = this.offEvents = [];
+        let timer = null;
         if (this.trigger === 'click')
             offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
         else if (this.trigger === 'hover') {
             offEvents.push(event.on(referenceEl, 'mouseenter', () => {
+                clearTimeout(timer);
+                timer = null;
                 setTimeout(() => this.toggle(true), this.hoverDelay);
             }));
+            if (this.hideDelay) {
+                offEvents.push(event.on(popperEl, 'mouseenter', () => {
+                    clearTimeout(timer);
+                    timer = null;
+                }));
+            }
             offEvents.push(event.on(document, 'mouseover', (e) => {
-                !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+                // !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+                if (this.currentOpen && !timer && !referenceEl.contains(e.target) && !popperEl.contains(e.target))
+                    timer = setTimeout(() => this.toggle(false), this.hideDelay);
             }));
         } else if (this.trigger === 'double-click')
             offEvents.push(event.on(referenceEl, 'dblclick', () => this.toggle()));
