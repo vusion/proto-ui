@@ -17,6 +17,15 @@
     <u-textarea value="禁用" disabled></u-textarea>
 </u-linear-layout>
 ```
+### 拖拽
+
+``` html
+<u-linear-layout>
+    <u-textarea value="none" resize="none"></u-textarea>
+    <u-textarea value="horizontal" resize="horizontal"></u-textarea>
+    <u-textarea value="vertical" resize="vertical"></u-textarea>
+</u-linear-layout>
+```
 
 ## API
 ### Props/Attrs
@@ -30,6 +39,7 @@
 | autofocus | Boolean | | 原生属性 |
 | readonly | Boolean | | 原生属性 |
 | disabled | Boolean | | 原生属性 |
+| resize | String | | 原生属性 |
 
 <!-- | autosize | String | `'none'` | 自适应内容宽高。可选值：`none`、`both`、`horizontal`、`vertical` | -->
 
