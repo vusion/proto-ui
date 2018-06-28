@@ -17,7 +17,7 @@
     <u-textarea value="禁用" disabled></u-textarea>
 </u-linear-layout>
 ```
-### 拖拽
+### 调整大小
 
 ``` html
 <u-linear-layout>
