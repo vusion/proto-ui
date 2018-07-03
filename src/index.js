@@ -1,168 +1,78 @@
 import * as directives from './base/directives';
+export { directives };
 
-import ERipple from './e-ripple.vue';
-import Badge from './u-badge.vue';
-import Block from './u-block.vue';
-import Button from './u-button.vue';
-import Carousel from './u-carousel.vue';
-import CarouselItem from './u-carousel-item.vue';
-import CascadeSelect from './u-cascade-select.vue';
-import Checkbox from './u-checkbox.vue';
-import Checkbox0 from './u-checkbox--0.vue';
-import Checkboxes from './u-checkboxes.vue';
-import CircularProgress from './u-circular-progress.vue';
-import Collapse from './u-collapse.vue';
-import CollapseItem from './u-collapse-item.vue';
-import CollapseTransition from './u-collapse-transition.vue';
-import ComboSlider from './u-combo-slider.vue';
-import Draggable from './u-draggable.vue';
-import Dragger from './u-dragger.vue';
-import Droppable from './u-droppable.vue';
-import Emitter from './u-emitter.vue';
-import Field from './u-field.vue';
-import Form from './u-form.vue';
-import FormItem from './u-form-item.vue';
-import GridLayout from './u-grid-layout.vue';
-import GridLayoutColumn from './u-grid-layout-column.vue';
-import GridLayoutRow from './u-grid-layout-row.vue';
-import Icon from './u-icon.vue';
-import Input from './u-input.vue';
-import Label from './u-label.vue';
-import LinearLayout from './u-linear-layout.vue';
-import LinearProgress from './u-linear-progress.vue';
-import Link from './u-link.vue';
-import ListView from './u-list-view.vue';
-import ListViewDivider from './u-list-view-divider.vue';
-import ListViewGroup from './u-list-view-group.vue';
-import ListViewItem from './u-list-view-item.vue';
-import Menu from './u-menu.vue';
-import MenuDivider from './u-menu-divider.vue';
-import MenuGroup from './u-menu-group.vue';
-import MenuItem from './u-menu-item.vue';
-import Modal from './u-modal.vue';
-import Navbar from './u-navbar.vue';
-import NavbarDivider from './u-navbar-divider.vue';
-import NavbarItem from './u-navbar-item.vue';
-import NumberInput from './u-number-input.vue';
-import Pagination from './u-pagination.vue';
-import Popper from './u-popper.vue';
-import Popup from './u-popup.vue';
-import Radio from './u-radio.vue';
-import Radio0 from './u-radio--0.vue';
-import Radios from './u-radios.vue';
-import RegionSelect from './u-region-select.vue';
-import Render from './u-render.vue';
-import RouterItem from './u-router-item.vue';
-import Sample from './u-sample.vue';
-import Select from './u-select.vue';
-import SelectDivider from './u-select-divider.vue';
-import SelectGroup from './u-select-group.vue';
-import SelectItem from './u-select-item.vue';
-import Select0 from './u-select--0.vue';
-import Select0Divider from './u-select--0-divider.vue';
-import Select0Group from './u-select--0-group.vue';
-import Select0Item from './u-select--0-item.vue';
-import Sidebar from './u-sidebar.vue';
-import SidebarDivider from './u-sidebar-divider.vue';
-import SidebarGroup from './u-sidebar-group.vue';
-import SidebarItem from './u-sidebar-item.vue';
-import Single from './u-single.vue';
-import SingleItem from './u-single-item.vue';
-import Slider from './u-slider.vue';
-import Steps from './u-steps.vue';
-import Step from './u-step.vue';
-import Switch from './u-switch.vue';
-import Tab from './u-tab.vue';
-import Tabs from './u-tabs.vue';
-import Text from './u-text.vue';
-import Textarea from './u-textarea.vue';
-import Toast from './u-toast.vue';
-import Tooltip from './u-tooltip.vue';
-import TreeView from './u-tree-view.vue';
-import TreeViewNode from './u-tree-view-node.vue';
-import TreeViewText from './u-tree-view-text.vue';
-
-export {
-    directives,
-    ERipple,
-    Badge,
-    Block,
-    Button,
-    Carousel,
-    CarouselItem,
-    CascadeSelect,
-    Checkbox,
-    Checkbox0,
-    Checkboxes,
-    CircularProgress,
-    Collapse,
-    CollapseItem,
-    CollapseTransition,
-    ComboSlider,
-    Draggable,
-    Dragger,
-    Droppable,
-    Emitter,
-    Field,
-    Form,
-    FormItem,
-    GridLayout,
-    GridLayoutColumn,
-    GridLayoutRow,
-    Icon,
-    Input,
-    Label,
-    LinearLayout,
-    LinearProgress,
-    Link,
-    ListView,
-    ListViewDivider,
-    ListViewGroup,
-    ListViewItem,
-    Menu,
-    MenuDivider,
-    MenuGroup,
-    MenuItem,
-    Modal,
-    Navbar,
-    NavbarDivider,
-    NavbarItem,
-    NumberInput,
-    Pagination,
-    Popper,
-    Popup,
-    Radio,
-    Radio0,
-    Radios,
-    RegionSelect,
-    Render,
-    RouterItem,
-    Sample,
-    Select,
-    SelectDivider,
-    SelectGroup,
-    SelectItem,
-    Select0,
-    Select0Divider,
-    Select0Group,
-    Select0Item,
-    Sidebar,
-    SidebarDivider,
-    SidebarGroup,
-    SidebarItem,
-    Single,
-    SingleItem,
-    Slider,
-    Steps,
-    Step,
-    Switch,
-    Tab,
-    Tabs,
-    Text,
-    Textarea,
-    Toast,
-    Tooltip,
-    TreeView,
-    TreeViewNode,
-    TreeViewText,
-};
+export { default as ERipple } from './e-ripple.vue';
+export { default as UBadge } from './u-badge.vue';
+export { default as UBlock } from './u-block.vue';
+export { default as UButton } from './u-button.vue';
+export { default as UCarousel } from './u-carousel.vue';
+export { default as UCarouselItem } from './u-carousel-item.vue';
+export { default as UCascadeSelect } from './u-cascade-select.vue';
+export { default as UCheckbox } from './u-checkbox.vue';
+export { default as UCheckboxes } from './u-checkboxes.vue';
+export { default as UCircularProgress } from './u-circular-progress.vue';
+export { default as UCollapse } from './u-collapse.vue';
+export { default as UCollapseItem } from './u-collapse-item.vue';
+export { default as UCollapseTransition } from './u-collapse-transition.vue';
+export { default as UComboSlider } from './u-combo-slider.vue';
+export { default as UDraggable } from './u-draggable.vue';
+export { default as UDragger } from './u-dragger.vue';
+export { default as UDroppable } from './u-droppable.vue';
+export { default as UEmitter } from './u-emitter.vue';
+export { default as UField } from './u-field.vue';
+export { default as UForm } from './u-form.vue';
+export { default as UFormItem } from './u-form-item.vue';
+export { default as UGridLayout } from './u-grid-layout.vue';
+export { default as UGridLayoutColumn } from './u-grid-layout-column.vue';
+export { default as UGridLayoutRow } from './u-grid-layout-row.vue';
+export { default as UIcon } from './u-icon.vue';
+export { default as UInput } from './u-input.vue';
+export { default as ULabel } from './u-label.vue';
+export { default as ULinearLayout } from './u-linear-layout.vue';
+export { default as ULinearProgress } from './u-linear-progress.vue';
+export { default as ULink } from './u-link.vue';
+export { default as UListView } from './u-list-view.vue';
+export { default as UListViewDivider } from './u-list-view-divider.vue';
+export { default as UListViewGroup } from './u-list-view-group.vue';
+export { default as UListViewItem } from './u-list-view-item.vue';
+export { default as UMenu } from './u-menu.vue';
+export { default as UMenuDivider } from './u-menu-divider.vue';
+export { default as UMenuGroup } from './u-menu-group.vue';
+export { default as UMenuItem } from './u-menu-item.vue';
+export { default as UModal } from './u-modal.vue';
+export { default as UNavbar } from './u-navbar.vue';
+export { default as UNavbarDivider } from './u-navbar-divider.vue';
+export { default as UNavbarItem } from './u-navbar-item.vue';
+export { default as UNumberInput } from './u-number-input.vue';
+export { default as UPagination } from './u-pagination.vue';
+export { default as UPopper } from './u-popper.vue';
+export { default as UPopup } from './u-popup.vue';
+export { default as URadio } from './u-radio.vue';
+export { default as URadios } from './u-radios.vue';
+export { default as URegionSelect } from './u-region-select.vue';
+export { default as URender } from './u-render.vue';
+export { default as URouterItem } from './u-router-item.vue';
+export { default as USample } from './u-sample.vue';
+export { default as USelect } from './u-select.vue';
+export { default as USelectDivider } from './u-select-divider.vue';
+export { default as USelectGroup } from './u-select-group.vue';
+export { default as USelectItem } from './u-select-item.vue';
+export { default as USidebar } from './u-sidebar.vue';
+export { default as USidebarDivider } from './u-sidebar-divider.vue';
+export { default as USidebarGroup } from './u-sidebar-group.vue';
+export { default as USidebarItem } from './u-sidebar-item.vue';
+export { default as USingle } from './u-single.vue';
+export { default as USingleItem } from './u-single-item.vue';
+export { default as USlider } from './u-slider.vue';
+export { default as USteps } from './u-steps.vue';
+export { default as UStep } from './u-step.vue';
+export { default as USwitch } from './u-switch.vue';
+export { default as UTab } from './u-tab.vue';
+export { default as UTabs } from './u-tabs.vue';
+export { default as UText } from './u-text.vue';
+export { default as UTextarea } from './u-textarea.vue';
+export { default as UToast } from './u-toast.vue';
+export { default as UTooltip } from './u-tooltip.vue';
+export { default as UTreeView } from './u-tree-view.vue';
+export { default as UTreeViewNode } from './u-tree-view-node.vue';
+export { default as UTreeViewText } from './u-tree-view-text.vue';
