@@ -1,5 +1,6 @@
 import * as directives from './base/directives';
 
+import ERipple from './e-ripple.vue';
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
 import Button from './u-button.vue';
@@ -83,6 +84,7 @@ import TreeViewText from './u-tree-view-text.vue';
 
 export {
     directives,
+    ERipple,
     Badge,
     Block,
     Button,

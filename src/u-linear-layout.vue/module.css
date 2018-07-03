@@ -40,7 +40,7 @@
     margin-bottom: $margin-large;
 }
 
-/* @trap: 不自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
+/* @TRAP: 不自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
  * 用户添加时需自行判断自己的组件是否为`block`类型
  */
 /* .root[direction="vertical"] > * {
@@ -53,7 +53,7 @@
 .root[alignment="center"] { text-align: center; }
 .root[alignment="right"] { text-align: right; }
 
-/* @trap: 使用 text-align 可能会造成使用子元素的默认对齐方式不是左对齐 */
+/* @TRAP: 使用 text-align 可能会造成使用子元素的默认对齐方式不是左对齐 */
 .root[justify="start"] { text-align: left; }
 .root[justify="center"] { text-align: center; }
 .root[justify="end"] { text-align: right; }
