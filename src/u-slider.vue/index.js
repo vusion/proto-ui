@@ -57,6 +57,12 @@ export default {
             const end = Math.min(this.currentRange[1], this.max);
             return (this.max - end) / (this.max - this.min) * 100;
         },
+        min(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
+        max(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
     },
     mounted() {
         this.handleEl = this.$refs.handle;
