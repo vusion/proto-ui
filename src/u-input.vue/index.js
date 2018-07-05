@@ -60,7 +60,7 @@ export default {
             this.$refs.input.focus();
         },
         blur() {
-            this.$refs.blur.blur();
+            this.$refs.input.blur();
         },
     },
 };
