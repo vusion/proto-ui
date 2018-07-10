@@ -26,7 +26,7 @@ $radio-size: 18px;
     text-align: center;
 }
 
-.radio:before {
+.radio::before {
     display: inline-block;
     content: '✓';
     width: 10px;
@@ -36,7 +36,7 @@ $radio-size: 18px;
     overflow: hidden;
 }
 
-.radio[selected]:before {
+.radio[selected]::before {
     background: $brand-primary;
 }
 

@@ -6,7 +6,7 @@
     padding-right: 30px;
 }
 
-.root[has-sub]:after {
+.root[has-sub]::after {
     display: inline-block;
     content: '▸';
     position: absolute;

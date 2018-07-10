@@ -47,7 +47,6 @@
     display: block;
 } */
 
-
 /* @deprecated */
 .root[alignment="left"] { text-align: left; }
 .root[alignment="center"] { text-align: center; }
@@ -59,7 +58,8 @@
 .root[justify="end"] { text-align: right; }
 .root[justify="space-between"] > *:first-child { float: left; }
 .root[justify="space-between"] > *:last-child { float: right; }
-.root[justify="space-between"]:after { display: block; content: ''; clear: both; }
+/* stylelint-disable-next-line declaration-block-single-line-max-declarations */
+.root[justify="space-between"]::after { display: block; content: ''; clear: both; }
 
 .root[type="flex"] { display: flex; text-align: inherit; }
 
@@ -69,7 +69,7 @@
 .root[type="flex"][justify="center"] { justify-content: center; }
 .root[type="flex"][justify="end"] { justify-content: flex-end; }
 .root[type="flex"][justify="space-between"] { justify-content: space-between; }
-.root[type="flex"][justify="space-between"]:after { display: none; }
+.root[type="flex"][justify="space-between"]::after { display: none; }
 .root[type="flex"][justify="space-around"] { justify-content: space-around; }
 
 .root[type="flex"][alignment="start"] { align-items: flex-start; }

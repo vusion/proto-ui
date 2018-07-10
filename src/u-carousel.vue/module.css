@@ -21,7 +21,6 @@
     text-align: center;
 }
 
-
 .nav-item {
     display: inline-block;
     cursor: pointer;
@@ -46,26 +45,27 @@
     z-index: 100;
     font-size: 50px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255,255,255,0.6);
     transition: all 0.3s;
     top: 36%;
 }
 
 .button:hover {
-    color: rgba(255, 255, 255, 1);
+    color: white;
 }
 
 .button[role='prev'] {
     left: 40px;
 }
 
-.button[role='prev']:before {
+.button[role='prev']::before {
     content: '⟨';
 }
 
 .button[role='next'] {
     right: 40px;
 }
-.button[role='next']:before {
+
+.button[role='next']::before {
     content: '⟩';
 }

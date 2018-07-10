@@ -26,11 +26,11 @@ $height: 24px;
     margin-left: -20px;
 }
 
-.expander:before {
+.expander::before {
     content: '▸';
 }
 
-.expander[expanded]:before {
+.expander[expanded]::before {
     content: '▾';
 }
 

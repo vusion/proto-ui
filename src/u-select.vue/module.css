@@ -12,13 +12,13 @@
 }
 
 /* 控制对齐基线 */
-.root:before {
+.root::before {
     content: '\3000';
     letter-spacing: -20px;
     line-height: 30px;
 }
 
-.root:after {
+.root::after {
     position: absolute;
     content: '▾';
     right: 10px;

@@ -25,19 +25,19 @@ $box-size: 18px;
     text-align: center;
 }
 
-.box[status="false"]:before {
+.box[status="false"]::before {
     font-family: 'Devanagari MT', 'Gujarati MT', monospace;
     content: '✓';
     color: transparent;
 }
 
-.box[status="true"]:before {
+.box[status="true"]::before {
     font-family: 'Devanagari MT', 'Gujarati MT', monospace;
     content: '✓';
     color: $brand-primary;
 }
 
-.box[status="null"]:before {
+.box[status="null"]::before {
     content: '■';
     color: $brand-primary;
 }

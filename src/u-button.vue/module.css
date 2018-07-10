@@ -23,6 +23,7 @@
     padding: 0 12px;
     height: $height-base;
     line-height: calc($height-base - $border-width-base * 2);
+    /* stylelint-disable declaration-block-no-duplicate-properties */
     background: white;
     color: $color-base;
     border: $border-width-base solid $border-color-base;

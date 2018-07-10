@@ -26,9 +26,9 @@
     "proto-ui"
   ],
   "dependencies": {
+    "@vusion/popper.js": "^1.14.1",
     "lodash": "^4.17.5",
     "normalize.css": "^7.0.0",
-    "@vusion/popper.js": "^1.14.1",
     "vusion-async-validator": "^1.8.8"
   },
   "devDependencies": {
@@ -41,6 +41,8 @@
     "eslint-config-vusion": "^2.0.2",
     "husky": "^0.13.3",
     "sinon": "^4.2.2",
+    "stylelint": "^9.3.0",
+    "stylelint-config-vusion": "^1.0.0",
     "vue": "^2.5.0",
     "vusion-hooks": "^0.1.0",
     "vusion-utils": "^0.2.1"

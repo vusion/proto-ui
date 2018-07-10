@@ -16,5 +16,5 @@ $height-base: 12px;
     background: $brand-primary;
     font-size: 12px;
     color: white;
-    transition: width .6s ease;
+    transition: width 0.6s ease;
 }

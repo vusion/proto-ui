@@ -33,7 +33,7 @@ $margin: 30px;
     bottom: auto;
 }
 
-.root[position=static] {
+.root[position="static"] {
     position: static;
     width: auto;
 }
@@ -50,7 +50,7 @@ $margin: 30px;
     color: white;
 }
 
-.close:before {
+.close::before {
     content: '×';
     font-size: 18px;
     line-height: 0.8;

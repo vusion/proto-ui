@@ -1,5 +1,5 @@
 :global .fade-enter-active, :global .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
 }
 
 :global .fade-enter, :global .fade-leave-to {
