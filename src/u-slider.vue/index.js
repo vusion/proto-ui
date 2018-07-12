@@ -35,6 +35,12 @@ export default {
         range(range) {
             this.currentRange = this.normalizeRange(range);
         },
+        min(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
+        max(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
     },
     computed: {
         percent: {
@@ -56,12 +62,6 @@ export default {
         rangeEndPercent() {
             const end = Math.min(this.currentRange[1], this.max);
             return (this.max - end) / (this.max - this.min) * 100;
-        },
-        min(value) {
-            this.handleEl.style.left = this.percent + '%';
-        },
-        max(value) {
-            this.handleEl.style.left = this.percent + '%';
         },
     },
     mounted() {
