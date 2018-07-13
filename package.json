@@ -5,7 +5,7 @@
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
-    "precommit": "bash node_modules/vusion-hooks/pre-commit"
+    "precommit": "node node_modules/vusion-hooks/precommit"
   },
   "repository": "vusion/proto-ui",
   "homepage": "http://vusion.github.io",
@@ -42,9 +42,9 @@
     "husky": "^0.13.3",
     "sinon": "^4.2.2",
     "stylelint": "^9.3.0",
-    "stylelint-config-vusion": "^1.0.0",
+    "stylelint-config-vusion": "^1.0.3",
     "vue": "^2.5.0",
-    "vusion-hooks": "^0.1.0",
+    "vusion-hooks": "^0.2.0",
     "vusion-utils": "^0.2.1"
   },
   "peerDependencies": {
