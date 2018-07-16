@@ -34,10 +34,12 @@ export default {
     watch: {
         model: {
             handler(val) {
-                if (this.comparedModel)
-                    this.$emit('modified', {
-                        isModified: this.deepCompare(val, this.comparedModel),
+                if (this.comparedModel) {
+                    // @TODO: 考虑到 @change 事件是基于子组件的 @change 事件的，所以 @modify 命名分开
+                    this.$emit('modify', {
+                        modified: this.deepCompare(val, this.comparedModel),
                     });
+                }
             },
             deep: true,
         },
@@ -68,7 +70,7 @@ export default {
 
             return state;
         },
-        save() {
+        record() {
             this.comparedModel = cloneDeep(this.model);
         },
         deepCompare(o = {}, compare) {
