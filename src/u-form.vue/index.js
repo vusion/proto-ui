@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash/cloneDeep';
 export default {
     name: 'u-form',
     props: {
@@ -11,6 +12,7 @@ export default {
             // @TODO: Optimize
             state: '',
             itemVMs: [],
+            comparedModel: null,
         };
     },
     created() {
@@ -28,6 +30,17 @@ export default {
                 valid: this.state === 'success',
             });
         });
+    },
+    watch: {
+        model: {
+            handler(val) {
+                if (this.comparedModel)
+                    this.$emit('modified', {
+                        isModified: this.deepCompare(val, this.comparedModel),
+                    });
+            },
+            deep: true,
+        },
     },
     methods: {
         validate(silent = false) {
@@ -54,6 +67,20 @@ export default {
             });
 
             return state;
+        },
+        save() {
+            this.comparedModel = cloneDeep(this.model);
+        },
+        deepCompare(o = {}, compare) {
+            if (!compare)
+                return false;
+            if (typeof o === 'object' && o !== null) {
+                if (Array.isArray(o))
+                    return o.length !== compare.length || o.some((m, i) => this.deepCompare(m, compare[i]));
+                else
+                    return Object.keys(o).some((key) => this.deepCompare(o[key], compare[key]));
+            } else
+                return o !== compare;
         },
     },
 };
