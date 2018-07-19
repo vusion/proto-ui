@@ -12,7 +12,7 @@ export default {
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
         reference: HTMLElement,
-        offset: { type: Number, default: 0 },
+        offset: { type: String, default: 0 },
         hoverDelay: { type: Number, default: 0 },
         hideDelay: { type: Number, default: 0 },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
@@ -23,7 +23,9 @@ export default {
             type: Object,
             default() {
                 return {
-                    modifiers: {},
+                    modifiers: {
+                        offset: {},
+                    },
                 };
             },
         },
@@ -115,7 +117,7 @@ export default {
                 placement: this.placement,
             });
 
-            options.modifiers.offset = this.offset;
+            options.modifiers.offset.offset = this.offset;
             options.escapeWithReference = this.escapeWithReference;
 
             options.modifiers.arrow = { element: this.arrowElement };

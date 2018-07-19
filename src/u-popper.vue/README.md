@@ -175,7 +175,7 @@ export default {
 | open.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 弹出层的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 弹出层的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
-| offset | String | | 弹出层偏移，如：'10px 10px', '10% 10%' |
+| offset | String | | 弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px` |
 | hover-delay | Number | `0` | trigger 为 'hover' 时的延迟时间 |
 | hide-delay | Number | `0` | trigger 为 'hover' 时提示隐藏的延迟时间 |
 | append-to | String | `'body'` | 指示添加到哪个元素 |

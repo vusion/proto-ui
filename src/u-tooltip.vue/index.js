@@ -8,6 +8,7 @@ export default {
         reference: HTMLElement, // 为了方便生成指令
         disabled: { type: Boolean, default: false },
         hideDelay: { type: Number, default: 0 },
+        offset: { type: String, default: 0 },
     },
     computed: {
         hasContent() {
