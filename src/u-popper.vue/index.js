@@ -12,7 +12,7 @@ export default {
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
         reference: HTMLElement,
-        offset: { type: String, default: 0 },
+        offset: { type: String, default: '0' },
         hoverDelay: { type: Number, default: 0 },
         hideDelay: { type: Number, default: 0 },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
