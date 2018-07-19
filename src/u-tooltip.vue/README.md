@@ -224,3 +224,20 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.open | Boolean | 弹出/隐藏状态 |
+
+### Methods
+
+#### update
+
+更新 popper 实例
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### toggle
+
+切换弹出/隐藏状态
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| open | Boolean | 弹出/隐藏状态 |
