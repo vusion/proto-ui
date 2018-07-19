@@ -11,6 +11,9 @@ export default {
         mergeBorders: { type: Boolean, default: true },
     },
     methods: {
+        update() {
+            this.$refs.popper.update();
+        },
         toggle(open) {
             this.$refs.popper.toggle(open);
         },

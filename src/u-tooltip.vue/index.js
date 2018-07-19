@@ -11,7 +11,15 @@ export default {
     },
     computed: {
         hasContent() {
-            return this.content !== undefined || this.$slots.content !== undefined;
+            return this.content !== undefined && this.content !== '' || this.$slots.content !== undefined;
+        },
+    },
+    methods: {
+        update() {
+            this.$refs.popper.update();
+        },
+        toggle(open) {
+            this.$refs.popper.toggle(open);
         },
     },
 };
