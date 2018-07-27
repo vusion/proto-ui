@@ -94,6 +94,7 @@ export default {
                 this.toggle();
             }));
         }
+        // @TODO: 有没有必要搞 focus-in
         offEvents.push(event.on(document, 'mousedown', (e) => {
             !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
         }));

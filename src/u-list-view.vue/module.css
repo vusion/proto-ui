@@ -1,8 +1,14 @@
 .root {
     /* @Private */
     user-select: none;
+    overflow: auto;
 
     /* @Public */
     background: white;
     border: 1px solid $border-color-base;
+}
+
+.loading {
+    color: $gray-dark;
+    text-align: center;
 }

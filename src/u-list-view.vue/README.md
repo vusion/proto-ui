@@ -261,6 +261,99 @@ export default {
 </script>
 ```
 
+### 数据源
+
+当数据量很大时，最好不要一次添加进来，推荐使用“分页加载”功能，这时需要使用`data-source`这个属性。
+
+``` vue
+<template>
+<u-grid-layout>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <p>没有使用分页功能</p>
+            <u-list-view :data="data"
+                style="height: 180px">
+            </u-list-view>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <p>使用分页加载功能</p>
+            <u-list-view :data-source="dataSource"
+                style="height: 180px">
+            </u-list-view>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
+</u-grid-layout>
+</template>
+<script>
+import { utils } from 'library';
+
+export default {
+    data() {
+        return { data: [] };
+    },
+    created() {
+        // 构造数量较多的 1000 条数据
+        let data = [];
+        for (let i = 1; i <= 1000; i++)
+            data.push('item' + i);
+        data = data.map((text) => ({ text, value: text }));
+
+        // 没有使用分页功能，直接传入
+        this.data = data;
+
+        // 使用`utils.DataSource`自动分页
+        this.dataSource = new utils.DataSource({
+            data,
+            limit: 50, // `limit`表示分页大小，默认为 50，可以不传。
+        });
+    },
+};
+</script>
+```
+
+#### 异步数据源
+
+如果要使用异步加载数据，在`new DataSource`时，可以直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+
+``` vue
+<template>
+<u-grid-layout>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <p>使用分页加载功能</p>
+            <u-list-view :data-source="dataSource"
+                style="height: 180px">
+            </u-list-view>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
+</u-grid-layout>
+</template>
+<script>
+import { utils } from 'library';
+
+export default {
+    created() {
+        // 构造数量较多的 1000 条数据
+        let data = [];
+        for (let i = 1; i <= 1000; i++)
+            data.push('item' + i);
+        data = data.map((text) => ({ text, value: text }));
+
+        this.dataSource = new utils.DataSource({
+            loadMore(params) {
+                // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(data.slice(params.offset, params.offset + params.limit));
+                    }, 500);
+                });
+            },
+        });
+    },
+};
+</script>
+```
+
 ## ListView API
 ### Props/Attrs
 

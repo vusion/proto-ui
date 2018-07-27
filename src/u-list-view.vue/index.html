@@ -1,10 +1,13 @@
-<ul :class="$style.root" :readonly="readonly" :disabled="disabled">
-    <component :is="ChildComponent" v-if="data"
-        v-for="item in data"
+<ul :class="$style.root" :readonly="readonly" :disabled="disabled" @scroll="onScroll">
+    <slot></slot>
+    <component :is="ChildComponent" v-if="currentData"
+        v-for="item in currentData"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled || disabled"
         :item="item"
     >{{ item[field] }}</component>
-    <slot></slot>
+    <div :class="$style.loading" v-if="loading">
+        <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
+    </div>
 </ul>

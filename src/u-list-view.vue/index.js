@@ -1,4 +1,6 @@
 import Field from '../u-field.vue';
+import DataSource from '../base/utils/DataSource';
+import debounce from 'lodash/debounce';
 
 export default {
     name: 'u-list-view',
@@ -7,6 +9,7 @@ export default {
     mixins: [Field],
     props: {
         data: Array,
+        dataSource: DataSource,
         value: null,
         field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
@@ -16,6 +19,7 @@ export default {
         expandTrigger: { type: String, default: 'click' },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        loadingText: { type: String, default: '加载中...' },
     },
     data() {
         return {
@@ -23,9 +27,14 @@ export default {
             groupVMs: [],
             itemVMs: [],
             selectedVM: undefined,
+            currentData: this.data,
+            loading: false,
         };
     },
     watch: {
+        data(data) {
+            this.currentData = data;
+        },
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value, oldValue) {
@@ -65,6 +74,11 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
+        this.debouncedFetchData = debounce(this.fetchData, 400, {
+            leading: true,
+            trailing: false,
+        });
+        this.dataSource && this.debouncedFetchData();
     },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
@@ -144,6 +158,24 @@ export default {
         },
         toggleAll(expanded) {
             this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));
+        },
+        fetchData() {
+            if (!this.dataSource)
+                return;
+
+            this.loading = true;
+            this.dataSource.fetch().then((data) => {
+                this.loading = false;
+                this.currentData = data;
+            }).catch(() => this.loading = false);
+        },
+        onScroll(e) {
+            if (!this.dataSource)
+                return;
+
+            const el = e.target;
+            if (el.scrollHeight === el.scrollTop + el.clientHeight)
+                this.debouncedFetchData();
         },
     },
 };
