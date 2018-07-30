@@ -41,10 +41,16 @@
 }
 
 .popper {
-    width: $width-base;
+    width: 100%;
+    box-sizing: content-box;
     max-height: 180px;
     overflow: auto;
     background: white;
     border: 1px solid $border-color-base;
     z-index: 1050;
+}
+
+.loading {
+    color: $gray-dark;
+    text-align: center;
 }

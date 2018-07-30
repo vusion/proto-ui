@@ -1,20 +1,13 @@
 export default class DataSource {
-    // data: [];
-    // currentData: [];
-    // currentValue: undefined;
-    // order: ,
-    // limit: ,
-    // offset: ,
-    // total: ,
-    // filter: {},
-
     constructor(options) {
         Object.assign(this, {
             data: [],
             cache: true,
             limit: 50,
-            offset: 0,
+            // offset: 0,
             total: Infinity, // 数据总量
+            // order
+            // filter
         }, options);
 
         // 没有 data 表示数据
@@ -22,25 +15,24 @@ export default class DataSource {
             this.total = options.data.length;
     }
 
-    fetch() {
-        const offset = this.offset + this.limit;
-        if (offset >= this.total) {
-            this.offset = offset;
-            return this.data;
-        }
-
-        return this.doLoadMore({
+    fetch(params = {}) {
+        params = Object.assign({
             limit: this.limit,
-            offset: this.offset,
-        }).then(() => {
-            this.offset = offset;
-            return this.data.slice(0, offset);
-        }); // 请求失败不改变 offset
+            offset: this.data.length,
+        }, params);
+        const newOffset = params.offset + params.limit;
+
+        // 超过总数，则不请求
+        if (params.offset >= this.total)
+            return this.data;
+        if (newOffset <= this.data.length)
+            return Promise.resolve(this.data.slice(0, newOffset));
+        else
+            return this.doLoadMore(params).then(() => this.data.slice(0, newOffset));
     }
 
     clear() {
         this.data = [];
-        this.offset = 0;
     }
 
     /**
@@ -75,8 +67,11 @@ export default class DataSource {
      */
     doLoadMore(params) {
         return this.loadMore(params).then((result) => {
+            if (params.offset + params.limit <= this.data.length)
+                return undefined;
+
             if (result instanceof Array) { // 只返回数组，没有 total 字段
-                if (!result.length)
+                if (!result.length) // 没有数据了，则记录下总数
                     this.total = this.data.length;
                 else
                     this.data.push(...result);

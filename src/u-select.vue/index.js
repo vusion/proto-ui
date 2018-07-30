@@ -5,15 +5,8 @@ export default {
     name: 'u-select',
     childName: 'u-select-item',
     groupName: 'u-select-group',
-    mixins: [ListView],
+    extends: ListView,
     directives: { ellipsisTitle },
-    props: {
-        value: null,
-        data: Array,
-        readonly: { type: Boolean, default: false },
-        disabled: { type: Boolean, default: false },
-        size: String,
-    },
     created() {
         this.$on('select', () => {
             this.$refs.popper && this.$refs.popper.toggle(false);

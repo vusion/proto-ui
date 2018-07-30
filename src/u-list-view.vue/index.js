@@ -8,10 +8,10 @@ export default {
     childName: 'u-list-view-item',
     mixins: [Field],
     props: {
-        data: Array,
-        dataSource: DataSource,
         value: null,
         field: { type: String, default: 'text' },
+        data: Array,
+        dataSource: DataSource,
         cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
         collapsible: { type: Boolean, default: false },
@@ -53,8 +53,10 @@ export default {
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
+            // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
+            const value = this.selectedVM ? this.selectedVM.value : this.value;
             this.selectedVM = undefined;
-            this.watchValue(this.value);
+            this.watchValue(value);
         },
     },
     created() {
@@ -164,7 +166,10 @@ export default {
                 return;
 
             this.loading = true;
-            this.dataSource.fetch().then((data) => {
+            this.dataSource.fetch({
+                // @TODO: 要不要设置 limit 属性
+                offset: this.currentData ? this.currentData.length : 0,
+            }).then((data) => {
                 this.loading = false;
                 this.currentData = data;
             }).catch(() => this.loading = false);

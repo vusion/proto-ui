@@ -3,10 +3,6 @@
 ## 示例
 ### 基本形式
 
-<!-- 有两种书写方式，这里推荐使用Tag方式，使用起来更加灵活。
-
-#### Tag方式 -->
-
 ``` html
 <u-linear-layout>
     <u-select>
@@ -23,26 +19,7 @@
 </u-linear-layout>
 ```
 
-<!-- #### Data方式
-`-`-` html
-<u-linear-layout>
-    <u-select :data="[
-        { text: '苹果' },
-        { text: '香蕉' },
-        { text: '蛋糕' },
-    ]"></u-select>
-    <u-select :data="[
-        { text: '请选择' },
-        { text: '苹果' },
-        { text: '香蕉' },
-        { text: '蛋糕' },
-    ]"></u-select>
-</u-linear-layout>
-`-`-` -->
-
 ### 选择值
-
-<!-- #### Tag方式 -->
 
 ``` html
 <u-select value="banana">
@@ -52,16 +29,6 @@
     <u-select-item value="cake">蛋糕</u-select-item>
 </u-select>
 ```
-
-<!-- #### Data方式
-`-`-` html
-<u-select value="cake" :data="[
-    { text: '请选择' },
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B' },
-    { text: '蛋糕', value: 'C' },
-]"></u-select>
-`-`-` -->
 
 ### 只读、禁用、禁用某一项
 
@@ -86,16 +53,6 @@
     </u-select>
 </u-linear-layout>
 ```
-
-<!-- #### Data方式
-
-`-`-` html
-<u-select value="cake" :data="[
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B', disabled: true },
-    { text: '蛋糕', value: 'C' },
-]"></u-select>
-`-`-` -->
 
 ### 分隔符
 
@@ -129,14 +86,103 @@
 </u-select>
 ```
 
+### 数据源
+
+当数据量不大时，除了用标签形式添加，也可以用`data`属性一次性传进来，`data`属性的格式为`Array<{ text, value }>`。
+
+但如果数据量很大时，推荐使用`data-source`属性进行“分页加载”。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select :data="data">
+        <u-select-item>没有使用分页功能</u-select-item>
+    </u-select>
+    <u-select :data-source="dataSource">
+        <u-select-item>使用分页加载功能</u-select-item>
+    </u-select>
+</u-linear-layout>
+</template>
+<script>
+import { utils } from 'library';
+
+export default {
+    data() {
+        return { data: [] };
+    },
+    created() {
+        // 构造数量较多的 1000 条数据
+        let data = [];
+        for (let i = 1; i <= 1000; i++)
+            data.push('item' + i);
+        data = data.map((text) => ({ text, value: text }));
+
+        // 没有使用分页功能，直接传入
+        this.data = data;
+
+        // 使用`utils.DataSource`自动分页
+        this.dataSource = new utils.DataSource({
+            data,
+            limit: 50, // `limit`表示分页大小，默认为 50，可以不传。
+        });
+    },
+};
+</script>
+```
+
+#### 异步数据源
+
+也可以使用异步加载数据，在`new DataSource`时，可以直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+
+有时会遇到多个`<u-select>`使用的数据相同，这时他们可以共享同一个数据源，避免重复发送请求。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select :data-source="dataSource">
+        <u-select-item>异步数据源</u-select-item>
+    </u-select>
+    <u-select :data-source="dataSource">
+        <u-select-item>共享数据源</u-select-item>
+    </u-select>
+</u-linear-layout>
+</template>
+<script>
+import { utils } from 'library';
+
+export default {
+    created() {
+        // 构造数量较多的 1000 条数据
+        let data = [];
+        for (let i = 1; i <= 1000; i++)
+            data.push('item' + i);
+        data = data.map((text) => ({ text, value: text }));
+
+        this.dataSource = new utils.DataSource({
+            loadMore(params) {
+                // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(data.slice(params.offset, params.offset + params.limit));
+                    }, 500);
+                });
+            },
+        });
+    },
+};
+</script>
+```
+
 ## Select API
 ### Attrs/Props
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
+| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
+| data-source | DataSource | | 多功能数据源 |
+| loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 

@@ -24,7 +24,7 @@
 ```
 
 <!-- #### Data方式
-``` html
+`-`-` html
 <u-linear-layout>
     <u-select--0 :data="[
         { text: '苹果' },
@@ -38,7 +38,7 @@
         { text: '蛋糕' },
     ]"></u-select--0>
 </u-linear-layout>
-``` -->
+`-`-` -->
 
 ### 选择值
 
@@ -54,14 +54,14 @@
 ```
 
 <!-- #### Data方式
-``` html
+`-`-` html
 <u-select--0 value="cake" :data="[
     { text: '请选择' },
     { text: '苹果', value: 'A' },
     { text: '香蕉', value: 'B' },
     { text: '蛋糕', value: 'C' },
 ]"></u-select--0>
-``` -->
+`-`-` -->
 
 ### 只读、禁用、禁用某一项
 
@@ -89,13 +89,13 @@
 
 <!-- #### Data方式
 
-``` html
+`-`-` html
 <u-select--0 value="cake" :data="[
     { text: '苹果', value: 'A' },
     { text: '香蕉', value: 'B', disabled: true },
     { text: '蛋糕', value: 'C' },
 ]"></u-select--0>
-``` -->
+`-`-` -->
 
 ### 分隔符
 
