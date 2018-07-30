@@ -149,6 +149,51 @@ export default {
                 });
             }
         },
+        shift(count) {
+            let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            let selectedVM;
+            if (count > 0) {
+                for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        selectedVM = itemVM;
+                        selectedIndex = i;
+                        break;
+                    }
+                }
+                if (selectedVM) {
+                    this.selectedVM = selectedVM;
+                    const selectedEl = selectedVM.$el;
+                    const parentEl = selectedEl.parentElement;
+                    if (parentEl.scrollTop < selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight) {
+                        parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
+                        if (selectedIndex === this.itemVMs.length - 1)
+                            this.dataSource && this.debouncedFetchData();
+                    }
+                }
+            } else if (count < 0) {
+                if (selectedIndex === -1)
+                    selectedIndex = this.itemVMs.length;
+                for (let i = selectedIndex + count; i >= 0; i--) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        selectedVM = itemVM;
+                        selectedIndex = i;
+                        break;
+                    }
+                }
+                if (selectedVM) {
+                    this.selectedVM = selectedVM;
+                    const selectedEl = this.selectedVM.$el;
+                    const parentEl = selectedEl.parentElement;
+                    if (parentEl.scrollTop > selectedEl.offsetTop) {
+                        parentEl.scrollTop = selectedEl.offsetTop;
+                        if (selectedIndex === this.itemVMs.length - 1)
+                            this.dataSource && this.debouncedFetchData();
+                    }
+                }
+            }
+        },
         onToggle(groupVM, expanded) {
             this.$emit('toggle', {
                 expanded,

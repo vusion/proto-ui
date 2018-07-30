@@ -38,7 +38,7 @@
     z-index: 1050;
 }
 
-.loading {
+.status {
     color: $gray-dark;
     text-align: center;
 }

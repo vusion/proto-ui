@@ -2,13 +2,19 @@
     /* @Private */
     user-select: none;
     overflow: auto;
+    position: relative;
 
     /* @Public */
     background: white;
     border: 1px solid $border-color-base;
 }
 
-.loading {
+.root:focus {
+    border-color: $brand-primary;
+    outline: $focus-outline;
+}
+
+.status {
     color: $gray-dark;
     text-align: center;
 }

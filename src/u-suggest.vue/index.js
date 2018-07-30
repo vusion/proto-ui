@@ -7,10 +7,12 @@ export default {
     extends: ListView,
     props: {
         value: { type: String, default: '' },
+        color: String,
         size: String,
         matchMethod: { type: [String, Function], default: 'includes' },
         caseInsensitive: { type: Boolean, default: false },
         strict: { type: Boolean, default: false },
+        noneText: { type: String, default: '无匹配数据' },
     },
     data() {
         return {

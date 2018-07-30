@@ -207,13 +207,13 @@ export default {
         <u-grid-layout-column :span="4">
             <p>没有使用分页功能</p>
             <u-list-view :data="data"
-                style="height: 180px">
+                style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
             <p>使用分页加载功能</p>
             <u-list-view :data-source="dataSource"
-                style="height: 180px">
+                style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
     </u-grid-layout-row>
@@ -257,7 +257,7 @@ export default {
         <u-grid-layout-column :span="4">
             <p>使用分页加载功能</p>
             <u-list-view :data-source="dataSource"
-                style="height: 180px">
+                style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
     </u-grid-layout-row>
