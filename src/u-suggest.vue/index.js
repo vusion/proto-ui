@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             currentValue: this.value,
-            matching: false, // 如果不是正在配置，则全部显示
+            filterValue: '', // 与 currentValue 分开，只有 input 时会改变它
         };
     },
     created() {
@@ -34,9 +34,9 @@ export default {
             this.$refs.popper && this.$refs.popper.toggle(open);
         },
         onToggle($event) {
-            // 刚打开时不 matching
+            // 刚打开时不 filterValue
             if ($event.open)
-                this.matching = false;
+                this.filterValue = '';
             this.$emit('toggle', $event);
             setTimeout(() => this.ensureSelectedInView(true));
         },
@@ -45,22 +45,22 @@ export default {
          * @param {*} item
          */
         match(item) {
-            if (!this.matching || this.dataSource)
+            if (!this.filterValue || this.dataSource)
                 return true;
 
             let matchMethod;
             if (typeof this.matchMethod === 'function')
                 matchMethod = this.matchMethod;
             else {
-                matchMethod = (itemValue, currentValue) => {
+                matchMethod = (itemValue, filterValue) => {
                     if (this.caseInsensitive) {
                         itemValue = itemValue.toLowerCase();
-                        currentValue = currentValue.toLowerCase();
+                        filterValue = filterValue.toLowerCase();
                     }
-                    return itemValue[this.matchMethod](currentValue);
+                    return itemValue[this.matchMethod](filterValue);
                 };
             }
-            return matchMethod(item.value, this.currentValue);
+            return matchMethod(item.value, this.filterValue);
         },
         fetchData(clear) {
             if (!this.dataSource)
@@ -71,10 +71,9 @@ export default {
                 clear() { /* nothing */ },
             };
 
-            this.loading = true;
-
             // dataSource 的多次 promise 必须串行
             dataSource.promise = dataSource.promise.then(() => {
+                this.loading = true;
                 if (clear) {
                     this.currentData = [];
                     dataSource.clear();
@@ -84,7 +83,7 @@ export default {
                     // @TODO: 要不要设置 limit 属性
                     offset: this.currentData ? this.currentData.length : 0,
                     filter: {
-                        value: this.currentValue,
+                        value: this.filterValue,
                     },
                     clear,
                 });
@@ -102,7 +101,7 @@ export default {
             });
         },
         onInput(value) {
-            this.matching = true;
+            this.filterValue = value;
             this.currentValue = value;
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);

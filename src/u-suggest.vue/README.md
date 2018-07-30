@@ -142,11 +142,14 @@ export default {
     methods: {
         fetchData({ filter }) {
             const prefix = filter.value.split('@')[0];
-            return Promise.resolve(['163.com', '126.com', 'vip.163.com', 'vip.126.com']
-                .map((suffix) => {
+            if (!prefix)
+                return [];
+            else {
+                return ['163.com', '126.com', 'vip.163.com', 'vip.126.com'].map((suffix) => {
                     const text = `${prefix}@${suffix}`;
                     return { text, value: text };
-                }));
+                });
+            }
         },
     },
 };
