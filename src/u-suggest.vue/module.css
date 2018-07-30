@@ -1,0 +1,44 @@
+.root[class] {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    height: $height-base;
+    /* padding: 0 12px; */
+    background: white;
+    /* border: 1px solid $border-color-base; */
+    width: $width-base;
+    max-width: 100%;
+}
+
+.root[class] > input {
+    padding-right: 26px;
+}
+
+.root::after {
+    position: absolute;
+    content: '▾';
+    right: 11px;
+    top: 1px;
+    line-height: 28px;
+}
+
+.root[disabled] {
+    cursor: not-allowed;
+    background: $gray-lighter;
+}
+
+.popper {
+    width: 100%;
+    line-height: 1.6;
+    max-height: 180px;
+    overflow: auto;
+    background: white;
+    border: 1px solid $border-color-base;
+    z-index: 1050;
+}
+
+.loading {
+    color: $gray-dark;
+    text-align: center;
+}

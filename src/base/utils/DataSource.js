@@ -8,6 +8,7 @@ export default class DataSource {
             total: Infinity, // 数据总量
             // order
             // filter
+            promise: Promise.resolve(),
         }, options);
 
         // 没有 data 表示数据
@@ -26,13 +27,14 @@ export default class DataSource {
         if (params.offset >= this.total)
             return this.data;
         if (newOffset <= this.data.length)
-            return Promise.resolve(this.data.slice(0, newOffset));
-        else
-            return this.doLoadMore(params).then(() => this.data.slice(0, newOffset));
+            return this.data.slice(0, newOffset);
+
+        return this.doLoadMore(params).then(() => this.data.slice(0, newOffset));
     }
 
     clear() {
         this.data = [];
+        this.total = Infinity;
     }
 
     /**

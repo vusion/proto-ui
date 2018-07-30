@@ -11,7 +11,7 @@ export default {
         value: null,
         field: { type: String, default: 'text' },
         data: Array,
-        dataSource: DataSource,
+        dataSource: [DataSource, Function],
         cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
         collapsible: { type: Boolean, default: false },
@@ -76,10 +76,7 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-        this.debouncedFetchData = debounce(this.fetchData, 400, {
-            leading: true,
-            trailing: false,
-        });
+        this.debouncedFetchData = debounce(this.fetchData, 100);
         this.dataSource && this.debouncedFetchData();
     },
     mounted() {
@@ -164,15 +161,23 @@ export default {
         fetchData() {
             if (!this.dataSource)
                 return;
+            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
+                fetch: this.dataSource,
+            };
 
             this.loading = true;
-            this.dataSource.fetch({
+            const result = dataSource.fetch({
                 // @TODO: 要不要设置 limit 属性
                 offset: this.currentData ? this.currentData.length : 0,
-            }).then((data) => {
-                this.loading = false;
-                this.currentData = data;
-            }).catch(() => this.loading = false);
+            });
+            const then = (data) => this.currentData = data;
+
+            if (result instanceof Promise)
+                return result.then(then).finally(() => this.loading = false);
+            else if (result instanceof Array)
+                then(result);
+            else
+                throw new TypeError('Wrong type of `dataSource.fetch` result!');
         },
         onScroll(e) {
             if (!this.dataSource)

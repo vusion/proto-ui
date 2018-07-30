@@ -297,7 +297,7 @@ export default {
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | data | Array\<{ text, value }\> | | Data 书写方式中的数据列表 |
-| data-source | DataSource | | 多功能数据源 |
+| data-source | DataSource, Function | | 多功能数据源 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | multiple | Boolean | `false` | 是否可以多选 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |

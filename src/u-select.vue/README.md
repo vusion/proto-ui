@@ -132,7 +132,7 @@ export default {
 
 #### 异步数据源
 
-也可以使用异步加载数据，在`new DataSource`时，可以直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+也可以使用异步加载数据，在`new DataSource`时，直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
 
 有时会遇到多个`<u-select>`使用的数据相同，这时他们可以共享同一个数据源，避免重复发送请求。
 
@@ -181,7 +181,7 @@ export default {
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
-| data-source | DataSource | | 多功能数据源 |
+| data-source | DataSource, Function | | 多功能数据源 |
 | loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |

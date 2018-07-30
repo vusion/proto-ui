@@ -1,4 +1,5 @@
 import * as directives from './base/directives';
+import * as utils from './base/utils';
 
 import Badge from './u-badge.vue';
 import Block from './u-block.vue';
@@ -34,6 +35,7 @@ import ListView from './u-list-view.vue';
 import ListViewDivider from './u-list-view-divider.vue';
 import ListViewGroup from './u-list-view-group.vue';
 import ListViewItem from './u-list-view-item.vue';
+import Loading from './u-loading.vue';
 import Menu from './u-menu.vue';
 import MenuDivider from './u-menu-divider.vue';
 import MenuGroup from './u-menu-group.vue';
@@ -61,6 +63,8 @@ import Select0 from './u-select--0.vue';
 import Select0Divider from './u-select--0-divider.vue';
 import Select0Group from './u-select--0-group.vue';
 import Select0Item from './u-select--0-item.vue';
+import Suggest from './u-suggest.vue';
+import SuggestItem from './u-suggest-item.vue';
 import Sidebar from './u-sidebar.vue';
 import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
@@ -68,6 +72,7 @@ import SidebarItem from './u-sidebar-item.vue';
 import Single from './u-single.vue';
 import SingleItem from './u-single-item.vue';
 import Slider from './u-slider.vue';
+import Spinner from './u-spinner.vue';
 import Steps from './u-steps.vue';
 import Step from './u-step.vue';
 import Switch from './u-switch.vue';
@@ -83,6 +88,7 @@ import TreeViewText from './u-tree-view-text.vue';
 
 export {
     directives,
+    utils,
     Badge,
     Block,
     Button,
@@ -117,6 +123,7 @@ export {
     ListViewDivider,
     ListViewGroup,
     ListViewItem,
+    Loading,
     Menu,
     MenuDivider,
     MenuGroup,
@@ -144,6 +151,8 @@ export {
     Select0Divider,
     Select0Group,
     Select0Item,
+    Suggest,
+    SuggestItem,
     Sidebar,
     SidebarDivider,
     SidebarGroup,
@@ -151,6 +160,7 @@ export {
     Single,
     SingleItem,
     Slider,
+    Spinner,
     Steps,
     Step,
     Switch,

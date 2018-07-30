@@ -1,0 +1,18 @@
+<u-popper ref="popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference">
+    <u-input :class="$style.root" ref="input" :readonly="readonly" :disabled="disabled" :size="size"
+        :value="currentValue" @input="onInput" @focus="onFocus" @blur="onBlur"
+        v-bind="$attrs"></u-input>
+    <ul :class="$style.popper" slot="popper" :size="size" @click.stop @scroll="onScroll">
+        <slot></slot>
+        <component :is="ChildComponent" v-if="currentData"
+        v-for="item in currentData"
+        :key="item.value"
+        :value="item.value"
+        :disabled="item.disabled || disabled"
+        :item="item"
+        >{{ item[field] }}</component>
+        <div :class="$style.loading" v-if="loading">
+            <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
+        </div>
+    </ul>
+</u-popper>
