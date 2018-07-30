@@ -1,10 +1,15 @@
 <u-popper ref="popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference">
-    <div :class="$style.root" :readonly="readonly" :disabled="disabled">
+    <div :class="$style.root" :readonly="readonly" :disabled="disabled"
+        :tabindex="readonly || disabled ? '' : 0"
+        @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
+        @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
+        @keydown.stop.enter="toggle()"
+        @keydown.stop.esc="toggle(false)">
         <span :class="$style.text" v-ellipsis-title>
             <u-render :vnode="selectedVM && selectedVM.$slots.default"></u-render>
         </span>
     </div>
-    <ul :class="$style.popper" slot="popper" @click.stop @scroll="onScroll">
+    <ul :class="$style.popper" slot="popper" @click.stop @scroll.stop="onScroll">
         <slot></slot>
         <component :is="ChildComponent" v-if="currentData"
             v-for="item in currentData"

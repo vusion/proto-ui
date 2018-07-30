@@ -23,16 +23,22 @@ export default {
     created() {
         this.$on('select', ($event) => {
             this.currentValue = $event.value;
-            this.dataSource && this.debouncedFetchData(true);
-            this.$refs.popper && this.$refs.popper.toggle(false);
+            this.toggle(false);
+        });
+        this.$on('shift', ($event) => {
+            this.currentValue = $event.value;
         });
     },
     methods: {
+        toggle(open) {
+            this.$refs.popper && this.$refs.popper.toggle(open);
+        },
         onToggle($event) {
             // 刚打开时不 matching
             if ($event.open)
                 this.matching = false;
             this.$emit('toggle', $event);
+            setTimeout(() => this.ensureSelectedInView(true));
         },
         /**
          * 判断某一项是否匹配
@@ -82,10 +88,13 @@ export default {
                     },
                     clear,
                 });
-                const then = (data) => this.currentData = data;
+                const then = (data) => {
+                    this.currentData = data;
+                    this.loading = false;
+                };
 
                 if (result instanceof Promise)
-                    return result.then(then).finally(() => this.loading = false);
+                    return result.then(then).catch(() => this.loading = false);
                 else if (result instanceof Array)
                     return then(result);
                 else
@@ -96,10 +105,7 @@ export default {
             this.matching = true;
             this.currentValue = value;
             this.dataSource && this.debouncedFetchData(true);
-            this.$refs.popper && this.$refs.popper.toggle(true);
-        },
-        onFocus(e) {
-            this.$refs.input.$refs.input.select();
+            this.toggle(true);
         },
         onBlur() {
             this.$nextTick(() => {

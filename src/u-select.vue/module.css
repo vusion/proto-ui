@@ -11,6 +11,11 @@
     max-width: 100%;
 }
 
+.root:focus {
+    outline: none;
+    border-color: $brand-primary;
+}
+
 /* 控制对齐基线 */
 .root::before {
     content: '\3000';
@@ -41,6 +46,7 @@
 }
 
 .popper {
+    position: absolute;
     width: 100%;
     box-sizing: content-box;
     max-height: 180px;

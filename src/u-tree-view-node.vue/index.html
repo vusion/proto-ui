@@ -2,7 +2,7 @@
     <div :class="$style.item" :selected="selected"
         :readonly="rootVM.readonly"
         :disabled="disabled || rootVM.disabled"
-        :tabindex="disabled || rootVM.readonly || rootVM.disabled ? -1 : 0"
+        :tabindex="disabled || rootVM.readonly || rootVM.disabled ? '' : 0"
         @click="select(), rootVM.expandTrigger === 'click' && toggle()"
         @keyup.enter="select()"
         @keyup.left="toggle(false)"

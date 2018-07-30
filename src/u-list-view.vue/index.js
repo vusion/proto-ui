@@ -151,24 +151,18 @@ export default {
         },
         shift(count) {
             let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
-            let selectedVM;
             if (count > 0) {
                 for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
                     const itemVM = this.itemVMs[i];
                     if (!itemVM.disabled) {
-                        selectedVM = itemVM;
-                        selectedIndex = i;
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
                         break;
-                    }
-                }
-                if (selectedVM) {
-                    this.selectedVM = selectedVM;
-                    const selectedEl = selectedVM.$el;
-                    const parentEl = selectedEl.parentElement;
-                    if (parentEl.scrollTop < selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight) {
-                        parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
-                        if (selectedIndex === this.itemVMs.length - 1)
-                            this.dataSource && this.debouncedFetchData();
                     }
                 }
             } else if (count < 0) {
@@ -177,22 +171,37 @@ export default {
                 for (let i = selectedIndex + count; i >= 0; i--) {
                     const itemVM = this.itemVMs[i];
                     if (!itemVM.disabled) {
-                        selectedVM = itemVM;
-                        selectedIndex = i;
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
                         break;
                     }
                 }
-                if (selectedVM) {
-                    this.selectedVM = selectedVM;
-                    const selectedEl = this.selectedVM.$el;
-                    const parentEl = selectedEl.parentElement;
-                    if (parentEl.scrollTop > selectedEl.offsetTop) {
-                        parentEl.scrollTop = selectedEl.offsetTop;
-                        if (selectedIndex === this.itemVMs.length - 1)
-                            this.dataSource && this.debouncedFetchData();
-                    }
+            }
+        },
+        ensureSelectedInView(natural) {
+            if (!this.selectedVM)
+                return;
+
+            const selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            const selectedEl = this.selectedVM.$el;
+            const parentEl = selectedEl.parentElement;
+            if (parentEl.scrollTop < selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight) {
+                if (natural)
+                    parentEl.scrollTop = selectedEl.offsetTop - selectedEl.offsetHeight;
+                else
+                    parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
+                if (selectedIndex === this.itemVMs.length - 1) {
+                    this.dataSource && this.debouncedFetchData();
+                    setTimeout(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight, 200);
                 }
             }
+            if (parentEl.scrollTop > selectedEl.offsetTop)
+                parentEl.scrollTop = selectedEl.offsetTop;
         },
         onToggle(groupVM, expanded) {
             this.$emit('toggle', {
@@ -215,10 +224,13 @@ export default {
                 // @TODO: 要不要设置 limit 属性
                 offset: this.currentData ? this.currentData.length : 0,
             });
-            const then = (data) => this.currentData = data;
+            const then = (data) => {
+                this.loading = false;
+                this.currentData = data;
+            };
 
             if (result instanceof Promise)
-                return result.then(then).finally(() => this.loading = false);
+                return result.then(then).catch(() => this.loading = false);
             else if (result instanceof Array)
                 then(result);
             else
