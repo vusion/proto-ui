@@ -1,4 +1,4 @@
-# 选择框（Select）
+# 选择框 Select
 
 ## 示例
 ### 基本形式
@@ -31,8 +31,6 @@
 ```
 
 ### 只读、禁用、禁用某一项
-
-<!-- #### Tag方式 -->
 
 ``` html
 <u-linear-layout>
@@ -246,7 +244,7 @@ export default {
 
 #### (default)
 
-插入文本或HTML。
+插入文本或 HTML。
 
 ### Events
 

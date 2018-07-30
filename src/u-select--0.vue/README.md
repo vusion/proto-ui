@@ -1,11 +1,7 @@
-# 选择框（Select）
+# 选择框 Select
 
 ## 示例
 ### 基本形式
-
-<!-- 有两种书写方式，这里推荐使用Tag方式，使用起来更加灵活。
-
-#### Tag方式 -->
 
 ``` html
 <u-linear-layout>
@@ -23,26 +19,7 @@
 </u-linear-layout>
 ```
 
-<!-- #### Data方式
-`-`-` html
-<u-linear-layout>
-    <u-select--0 :data="[
-        { text: '苹果' },
-        { text: '香蕉' },
-        { text: '蛋糕' },
-    ]"></u-select--0>
-    <u-select--0 :data="[
-        { text: '请选择' },
-        { text: '苹果' },
-        { text: '香蕉' },
-        { text: '蛋糕' },
-    ]"></u-select--0>
-</u-linear-layout>
-`-`-` -->
-
 ### 选择值
-
-<!-- #### Tag方式 -->
 
 ``` html
 <u-select--0 value="banana">
@@ -53,19 +30,7 @@
 </u-select--0>
 ```
 
-<!-- #### Data方式
-`-`-` html
-<u-select--0 value="cake" :data="[
-    { text: '请选择' },
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B' },
-    { text: '蛋糕', value: 'C' },
-]"></u-select--0>
-`-`-` -->
-
 ### 只读、禁用、禁用某一项
-
-<!-- #### Tag方式 -->
 
 ``` html
 <u-linear-layout>
@@ -86,16 +51,6 @@
     </u-select--0>
 </u-linear-layout>
 ```
-
-<!-- #### Data方式
-
-`-`-` html
-<u-select--0 value="cake" :data="[
-    { text: '苹果', value: 'A' },
-    { text: '香蕉', value: 'B', disabled: true },
-    { text: '蛋糕', value: 'C' },
-]"></u-select--0>
-`-`-` -->
 
 ### 分隔符
 
@@ -200,7 +155,7 @@
 
 #### (default)
 
-插入文本或HTML。
+插入文本或 HTML。
 
 ### Events
 

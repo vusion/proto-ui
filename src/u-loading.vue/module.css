@@ -1,0 +1,31 @@
+.root {
+    display: inline-block;
+    text-align: center;
+    color: $gray-dark;
+}
+
+.root[size="small"] .icon { font-size: 14px; }
+.root .icon { font-size: 24px; vertical-align: -4px; }
+.root[size="large"] .icon { font-size: 48px; }
+
+.root[full] {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    background: rgba(255,255,255,0.8);
+}
+
+.root[full] .body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.root[full="window"] {
+    position: fixed;
+    z-index: $z-index-loading;
+}

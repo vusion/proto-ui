@@ -39,7 +39,7 @@
 
 #### (default)
 
-插入文本或HTML。
+插入文本或 HTML。
 
 ### Events
 
