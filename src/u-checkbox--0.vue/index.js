@@ -2,7 +2,7 @@ import Checkbox from '../u-checkbox.vue';
 
 export default {
     name: 'u-checkbox--0',
-    mixins: [Checkbox],
+    extends: Checkbox,
     watch: {
         currentValue(value) {
             this.watchValue(value);

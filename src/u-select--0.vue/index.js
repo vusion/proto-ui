@@ -3,7 +3,7 @@ import Select from '../u-select.vue';
 export default {
     name: 'u-select--0',
     childName: 'u-select--0-item',
-    mixins: [Select],
+    extends: Select,
     methods: {
         select($event) {
             const oldValue = this.value;

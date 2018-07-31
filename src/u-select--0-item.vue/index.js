@@ -4,5 +4,5 @@ export default {
     name: 'u-select--0-item',
     parentName: 'u-select--0',
     groupName: 'u-select--0-group',
-    mixins: [SelectItem],
+    extends: SelectItem,
 };

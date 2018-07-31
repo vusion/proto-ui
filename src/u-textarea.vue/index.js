@@ -2,7 +2,7 @@ import Input from '../u-input.vue';
 
 export default {
     name: 'u-textarea',
-    mixins: [Input],
+    extends: Input,
     props: {
         resize: String,
     },

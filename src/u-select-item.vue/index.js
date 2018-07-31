@@ -4,5 +4,5 @@ export default {
     name: 'u-select-item',
     parentName: 'u-select',
     groupName: 'u-select-group',
-    mixins: [ListViewItem],
+    extends: ListViewItem,
 };
