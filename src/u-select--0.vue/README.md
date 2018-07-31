@@ -57,7 +57,7 @@
 ``` html
 <u-select--0 value="nut">
     <u-select--0-item value="cup">水杯</u-select--0-item>
-    <u-select--0-item value="cup">牙刷</u-select--0-item>
+    <u-select--0-item value="toothbrush">牙刷</u-select--0-item>
     <u-select--0-divider></u-select--0-divider>
     <u-select--0-item value="nut">坚果</u-select--0-item>
     <u-select--0-item value="towel">毛巾</u-select--0-item>

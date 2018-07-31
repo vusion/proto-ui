@@ -1,11 +1,12 @@
-import ListViewItem from '../u-list-view-item.vue';
+import SingleChoice from '../u-single-choice.vue';
 import RouterItem from '../u-router-item.vue';
 
 export default {
     name: 'u-sidebar-item',
     parentName: 'u-sidebar',
     groupName: 'u-sidebar-group',
-    mixins: [ListViewItem, RouterItem],
+    extends: SingleChoice,
+    mixins: [RouterItem],
     watch: {
         active(active) {
             this.watchActive(active);

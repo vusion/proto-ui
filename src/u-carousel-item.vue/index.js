@@ -1,10 +1,11 @@
-import SingleItem from '../u-single-item.vue';
+import SingleChoice from '../u-single-choice.vue';
 import RouterItem from '../u-router-item.vue';
 
 export default {
     name: 'u-carousel-item',
     parentName: 'u-carousel',
-    mixins: [SingleItem, RouterItem],
+    extends: SingleChoice,
+    mixins: [RouterItem],
     props: {
         title: String,
     },

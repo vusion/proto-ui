@@ -69,8 +69,10 @@ import Sidebar from './u-sidebar.vue';
 import SidebarDivider from './u-sidebar-divider.vue';
 import SidebarGroup from './u-sidebar-group.vue';
 import SidebarItem from './u-sidebar-item.vue';
-import Single from './u-single.vue';
-import SingleItem from './u-single-item.vue';
+import SingleChoices from './u-single-choices.vue';
+import SingleChoice from './u-single-choice.vue';
+import SingleChoiceGroup from './u-single-choice-group.vue';
+import SingleChoiceDivider from './u-single-choice-divider.vue';
 import Slider from './u-slider.vue';
 import Spinner from './u-spinner.vue';
 import Steps from './u-steps.vue';
@@ -157,8 +159,10 @@ export {
     SidebarDivider,
     SidebarGroup,
     SidebarItem,
-    Single,
-    SingleItem,
+    SingleChoices,
+    SingleChoice,
+    SingleChoiceGroup,
+    SingleChoiceDivider,
     Slider,
     Spinner,
     Steps,

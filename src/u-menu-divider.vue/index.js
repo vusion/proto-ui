@@ -1,6 +1,6 @@
-import ListViewDivider from '../u-list-view-divider.vue';
+import SingleChoiceDivider from '../u-single-choice-divider.vue';
 
 export default {
     name: 'u-menu-divider',
-    mixins: [ListViewDivider],
+    extends: SingleChoiceDivider,
 };

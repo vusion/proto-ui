@@ -1,0 +1,35 @@
+.root {
+    /* @Private */
+    cursor: $cursor-pointer;
+
+    /* @Public */
+    padding: 4px 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.root:hover {
+    background: $background-color-base;
+}
+
+.root[readonly] {
+    cursor: default;
+    background: none;
+}
+
+.root[selected] {
+    background: $brand-primary;
+    color: white;
+}
+
+.root[disabled] {
+    /* @Private */
+    cursor: $cursor-not-allowed;
+    background: none;
+    color: $brand-disabled;
+}
+
+.root[selected][disabled] {
+    background: $gray-lighter;
+}

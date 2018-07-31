@@ -1,0 +1,10 @@
+.root {
+    /* @Private */
+    user-select: none;
+    overflow: auto;
+    position: relative;
+
+    /* @Public */
+    background: white;
+    border: 1px solid $border-color-base;
+}

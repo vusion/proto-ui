@@ -1,0 +1,5 @@
+.root {
+    margin: 9px 0;
+    height: 1px;
+    background: $gray-lighter;
+}
