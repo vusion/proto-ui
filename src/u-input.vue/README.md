@@ -67,8 +67,8 @@ export default {
 | minlength | Number | | 原生属性 |
 | maxlength | Number | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
-| readonly | Boolean | | 原生属性 |
-| disabled | Boolean | | 原生属性 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 | size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`, `'full'`，或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding书写格式 |
 
 #### @input

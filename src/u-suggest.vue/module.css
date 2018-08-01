@@ -1,17 +1,5 @@
 .root[class] {
-    display: inline-block;
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    height: $height-base;
-    /* padding: 0 12px; */
-    background: white;
-    /* border: 1px solid $border-color-base; */
-    width: $width-base;
-    max-width: 100%;
-}
-
-.root[class] > input {
+    padding: 0 12px;
     padding-right: 26px;
 }
 

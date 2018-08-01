@@ -38,9 +38,9 @@
 | minlength | Number | | 原生属性 |
 | maxlength | Number | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
-| readonly | Boolean | | 原生属性 |
-| disabled | Boolean | | 原生属性 |
-| resize | String | | 原生属性 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
+| resize | String | `'none'` | 是否可以调整大小。可选值：`'none'`、`'both'`、`'horizontal'`、`'vertical'` |
 
 <!-- | autosize | String | `'none'` | 自适应内容宽高。可选值：`none`、`both`、`horizontal`、`vertical` | -->
 
