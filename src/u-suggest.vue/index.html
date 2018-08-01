@@ -3,7 +3,7 @@
         :value="currentValue" @input="onInput" @blur="onBlur"
         @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
         @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
-        @keydown.stop.enter="toggle()"
+        @keydown.stop.enter="toggle(false)"
         @keydown.stop.esc="toggle(false)"
         v-bind="$attrs"></u-input>
     <ul :class="$style.popper" slot="popper" :size="size" @click.stop @scroll.stop="onScroll">

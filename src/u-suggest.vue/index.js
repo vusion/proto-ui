@@ -20,13 +20,24 @@ export default {
             filterValue: '', // 与 currentValue 分开，只有 input 时会改变它
         };
     },
+    watch: {
+        currentValue(value, oldValue) {
+            this.$emit('change', { value, oldValue });
+        },
+    },
     created() {
         this.$on('select', ($event) => {
             this.currentValue = $event.value;
             this.toggle(false);
+
+            this.$emit('input', $event.value);
+            this.$emit('update:value', $event.value);
         });
         this.$on('shift', ($event) => {
             this.currentValue = $event.value;
+
+            this.$emit('input', $event.value);
+            this.$emit('update:value', $event.value);
         });
     },
     methods: {
@@ -105,6 +116,9 @@ export default {
             this.currentValue = value;
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);
+
+            this.$emit('input', value);
+            this.$emit('update:value', value);
         },
         onBlur() {
             this.$nextTick(() => {
