@@ -20,6 +20,12 @@ export default {
             filterValue: '', // 与 currentValue 分开，只有 input 时会改变它
         };
     },
+    computed: {
+        // @TODO: 只能再过滤一遍数组，暂时没有好的解决方案
+        matchedVMs() {
+            return this.itemVMs.filter((item) => item.matched);
+        },
+    },
     watch: {
         currentValue(value, oldValue) {
             this.$emit('change', { value, oldValue });
@@ -41,6 +47,40 @@ export default {
         });
     },
     methods: {
+        shift(count) {
+            let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            if (count > 0) {
+                for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled && itemVM.matched) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            } else if (count < 0) {
+                if (selectedIndex === -1)
+                    selectedIndex = this.itemVMs.length;
+                for (let i = selectedIndex + count; i >= 0; i--) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            }
+        },
         toggle(open) {
             this.$refs.popper && this.$refs.popper.toggle(open);
         },
@@ -71,7 +111,7 @@ export default {
                     return itemValue[this.matchMethod](filterValue);
                 };
             }
-            return matchMethod(item.value, this.filterValue);
+            return !!matchMethod(item.value, this.filterValue);
         },
         fetchData(clear) {
             if (!this.dataSource)
