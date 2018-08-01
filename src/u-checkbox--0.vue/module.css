@@ -1,12 +1,12 @@
 .root {
     user-select: none;
-    cursor: $cursor-pointer;
 }
 
 .box {
     margin-right: 4px;
     margin-bottom: 2px;
     vertical-align: middle;
+    cursor: $cursor-pointer;
 }
 
 .box[disabled] {
@@ -19,5 +19,4 @@
 
 .root[disabled] {
     color: #999;
-    cursor: $cursor-not-allowed;
 }
