@@ -7,11 +7,7 @@
     margin-right: 4px;
     margin-bottom: 2px;
     vertical-align: middle;
-    cursor: $cursor-pointer;
-}
-
-.box[disabled] {
-    cursor: $cursor-not-allowed;
+    cursor: inherit;
 }
 
 .root:focus {
