@@ -1,5 +1,6 @@
 .root {
     user-select: none;
+    cursor: $cursor-pointer;
 }
 
 .box {
@@ -19,4 +20,5 @@
 
 .root[disabled] {
     color: #999;
+    cursor: $cursor-not-allowed;
 }
