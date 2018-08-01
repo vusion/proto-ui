@@ -10,7 +10,7 @@ export default {
         color: String,
         size: String,
         matchMethod: { type: [String, Function], default: 'includes' },
-        caseInsensitive: { type: Boolean, default: false },
+        caseSensitive: { type: Boolean, default: false },
         strict: { type: Boolean, default: false },
         noneText: { type: String, default: '无匹配数据' },
     },
@@ -104,7 +104,7 @@ export default {
                 matchMethod = this.matchMethod;
             else {
                 matchMethod = (itemValue, filterValue) => {
-                    if (this.caseInsensitive) {
+                    if (!this.caseSensitive) {
                         itemValue = itemValue.toLowerCase();
                         filterValue = filterValue.toLowerCase();
                     }

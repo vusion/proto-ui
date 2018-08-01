@@ -1,5 +1,6 @@
-<span :class="$style.root">
-    <input ref="input" :class="$style.input" v-bind="$attrs"
+<span :class="$style.root" :readonly="readonly" :disabled="disabled"
+    :focus="focused" @click.self="!focused && focus()">b<!-- 用于基线对齐 -->
+    <input ref="input" :class="$style.input" v-bind="$attrs" :readonly="readonly" :disabled="disabled"
         :value="currentValue" :color="currentColor || this.formItemVM && this.formItemVM.color"
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"

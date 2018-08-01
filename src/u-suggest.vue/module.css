@@ -18,8 +18,8 @@
 .root::after {
     position: absolute;
     content: '▾';
-    right: 11px;
-    top: 1px;
+    right: 10px;
+    top: 0;
     line-height: 28px;
 }
 
@@ -30,9 +30,10 @@
 
 .popper {
     position: absolute;
+    box-sizing: content-box;
     width: 100%;
     line-height: 1.6;
-    max-height: 182px;
+    max-height: 180px;
     overflow: auto;
     background: white;
     border: 1px solid $border-color-base;

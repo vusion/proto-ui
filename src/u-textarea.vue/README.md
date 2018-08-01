@@ -20,10 +20,11 @@
 ### 调整大小
 
 ``` html
-<u-linear-layout>
-    <u-textarea value="none" resize="none"></u-textarea>
-    <u-textarea value="horizontal" resize="horizontal"></u-textarea>
-    <u-textarea value="vertical" resize="vertical"></u-textarea>
+<u-linear-layout direction="vertical">
+    <div><u-textarea value="none" resize="none"></u-textarea></div>
+    <div><u-textarea value="vertical（默认）" resize="vertical"></u-textarea></div>
+    <div><u-textarea value="horizontal" resize="horizontal"></u-textarea></div>
+    <div><u-textarea value="both" resize="both"></u-textarea></div>
 </u-linear-layout>
 ```
 
