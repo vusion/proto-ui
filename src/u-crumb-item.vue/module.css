@@ -1,0 +1,21 @@
+.root {
+    display: inline;
+}
+
+.root:not(:last-child)::after {
+    content: '>';
+    margin: 0 5px;
+}
+
+.link {
+    color: $brand-primary;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.current {
+    color: $gray-base;
+    cursor: default;
+}

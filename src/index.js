@@ -15,6 +15,8 @@ import Collapse from './u-collapse.vue';
 import CollapseItem from './u-collapse-item.vue';
 import CollapseTransition from './u-collapse-transition.vue';
 import ComboSlider from './u-combo-slider.vue';
+import Crumb from './u-crumb.vue';
+import CrumbItem from './u-crumb-item.vue';
 import Draggable from './u-draggable.vue';
 import Dragger from './u-dragger.vue';
 import Droppable from './u-droppable.vue';
@@ -106,6 +108,8 @@ export {
     CollapseItem,
     CollapseTransition,
     ComboSlider,
+    Crumb,
+    CrumbItem,
     Draggable,
     Dragger,
     Droppable,

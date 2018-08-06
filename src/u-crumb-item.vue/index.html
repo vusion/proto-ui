@@ -1,0 +1,8 @@
+<li :class="$style.root">
+    <span :class="$style.current" v-if="current">
+        <slot></slot>
+    </span>
+    <a v-else :class="$style.link" :href="currentHref" :target="target" :current="current" @click="onClick" v-on="listeners">
+        <slot></slot>
+    </a>
+</li>
