@@ -25,8 +25,6 @@
 
 ### 只读、禁用、禁用某一项
 
-#### Tag方式
-
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">

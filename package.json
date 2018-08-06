@@ -5,10 +5,11 @@
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
+    "lint": "eslint --fix ./src/**/*.{js,vue} && stylelint --fix ./src/**/*.css",
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
   "repository": "vusion/proto-ui",
-  "homepage": "http://vusion.github.io",
+  "homepage": "http://vusion.github.io/proto-ui",
   "bugs": {
     "url": "http://github.com/vusion/proto-ui/issues"
   },
@@ -38,11 +39,11 @@
     "babel-preset-es3": "^1.0.1",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.19.1",
-    "eslint-config-vusion": "^2.1.1",
+    "eslint-config-vusion": "^2.1.2",
     "husky": "^0.13.3",
     "sinon": "^4.2.2",
     "stylelint": "^9.3.0",
-    "stylelint-config-vusion": "^1.0.3",
+    "stylelint-config-vusion": "^1.0.5",
     "vue": "^2.5.0",
     "vusion-hooks": "^0.2.0",
     "vusion-utils": "^0.2.1"
@@ -52,6 +53,7 @@
   },
   "vusion": {
     "version": ">=0.5.0",
-    "type": "library"
+    "type": "library",
+    "lint": true
   }
 }

@@ -199,7 +199,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -379,7 +379,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -443,7 +443,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -502,17 +502,18 @@ export default {
     mounted() {
         // 必须初始化时或在获取数据到时安静验证一次
         this.$refs.form.validate(true)
-            .catch(() => {});
+            .catch(() => { /* noop */ });
+
         // 在获取数据到时如下
         // this.getData().then(...)
         //  .then(() => this.$refs.form.validate(true))
-        //  .catch(() => {});
+        //  .catch(() => { /* noop */ });
     },
     methods: {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
