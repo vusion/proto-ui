@@ -19,6 +19,7 @@ import Crumb from './u-crumb.vue';
 import CrumbItem from './u-crumb-item.vue';
 import Draggable from './u-draggable.vue';
 import Dragger from './u-dragger.vue';
+import Drawer from './u-drawer.vue';
 import Droppable from './u-droppable.vue';
 import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
@@ -112,6 +113,7 @@ export {
     CrumbItem,
     Draggable,
     Dragger,
+    Drawer,
     Droppable,
     Emitter,
     Field,
