@@ -3,7 +3,7 @@
         @click="maskClosable && cancel()"
         tabindex="1" @keydown.esc="cancel()">
         <transition :name="'fly-' + placement">
-            <div :class="$style.drawer" v-show="drawerVisible">
+            <div :class="$style.drawer" v-show="drawerVisible" v-bind="$attrs" v-on="$listeners" @click.stop>
                 <slot name="drawer">
                     <div :class="$style.head">
                         <slot name="head">

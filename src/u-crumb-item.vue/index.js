@@ -1,5 +1,5 @@
-import Link from 'proto-ui.vusion/src/u-link.vue';
-import Emitter from 'proto-ui.vusion/src/u-emitter.vue';
+import Link from '../u-link.vue';
+import Emitter from '../u-emitter.vue';
 
 export default {
     name: 'u-crumb-item',
