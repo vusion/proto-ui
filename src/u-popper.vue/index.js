@@ -118,7 +118,17 @@ export default {
                 placement: this.placement,
             });
 
-            options.modifiers.offset.offset = this.offset;
+            // 这里用户自定义options 也可能传入offset参数
+            if (options.modifiers.offset && !options.modifiers.offset.offset)
+                options.modifiers.offset.offset = this.offset;
+
+            // 自定义options 传入offset值情况
+            if (!options.modifiers.offset && this.offset) {
+                options.modifiers.offset = {
+                    offset: this.offset,
+                };
+            }
+
             options.escapeWithReference = this.escapeWithReference;
 
             options.modifiers.arrow = { element: this.arrowElement };
