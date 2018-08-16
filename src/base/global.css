@@ -29,8 +29,9 @@ $height-base: 32px;
 
 /* Z-Index */
 $z-index-loading: 9000;
-$z-index-popper: 8000;
-$z-index-toast: 7000;
+$z-index-toast: 8000;
+$z-index-tooltip: 7010;
+$z-index-popper: 7000;
 $z-index-modal: 5000;
 $z-index-plugin: 2000;
 $z-index-layout: 100;
