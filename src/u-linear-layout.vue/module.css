@@ -1,4 +1,15 @@
-.root[inline] {
+/* 默认为 block */
+.root[display="inline"], .root[inline] {
+    display: inline-block;
+}
+
+/* @trap: 不能自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
+ * 用一个属性来添加是否使用`block`
+ */
+.root[layout="block"] > * {
+    display: block;
+}
+.root[layout="inline"] > * {
     display: inline-block;
 }
 
@@ -39,13 +50,6 @@
 .root[direction="vertical"][gap="large"] > *:not(:last-child) {
     margin-bottom: $margin-large;
 }
-
-/* @trap: 不自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
- * 用户添加时需自行判断自己的组件是否为`block`类型
- */
-/* .root[direction="vertical"] > * {
-    display: block;
-} */
 
 /* @deprecated */
 .root[alignment="left"] { text-align: left; }

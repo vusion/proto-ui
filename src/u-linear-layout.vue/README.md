@@ -37,6 +37,29 @@
 </u-linear-layout>
 ```
 
+### 展示方式与布局方式
+
+展示方式`display`用于控制`<u-linear-layout>`本身是否为块级元素或行内元素，而布局方式`layout`用于迅速调整子元素或组件的展示方式。
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-linear-layout>
+        <u-linear-layout display="inline">
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+            <u-button>Button</u-button>
+        </u-linear-layout>
+        <span><code>&lt;u-linear-layout&gt;</code>本身为<code>&lt;block&gt;</code>类型，修改<code>display</code>可以拥有行内的特性。</span>
+    </u-linear-layout>
+    <u-linear-layout direction="vertical" layout="block">
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+        <u-button>Button</u-button>
+        <span>这个<code>&lt;u-linear-layout&gt;</code>中的元素本来都是行内元素，添加<code>layout</code>属性后可全部变成块级元素。</span>
+    </u-linear-layout>
+</u-linear-layout>
+```
+
 ### 间距
 
 水平和垂直方向都可以通过设置`gap`属性，调整间距大小。
@@ -44,17 +67,17 @@
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-linear-layout inline gap="small">
+        <u-linear-layout display="inline" gap="small">
             <u-button>Button</u-button>
             <u-button>Button</u-button>
             <u-button>Button</u-button>
         </u-linear-layout>
-        <u-linear-layout inline gap="none">
+        <u-linear-layout display="inline" gap="none">
             <u-button>Button</u-button>
             <u-button>Button</u-button>
             <u-button>Button</u-button>
         </u-linear-layout>
-        <u-linear-layout inline gap="shrink">
+        <u-linear-layout display="inline" gap="shrink">
             <u-button>Button</u-button>
             <u-button>Button</u-button>
             <u-button>Button</u-button>
@@ -199,7 +222,8 @@
 | --------- | ---- | ------- | ----------- |
 | direction | String | `'horizontal'` | 排列方向。可选值：`'horizontal'`或`'vertical'` |
 | gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：`'shrink'`, `'none'`, `'small'`, `'normal'`或`'large'` |
-| inline | Boolean | `false` | 自身是否按照行内显示。|
+| display | String | `'block'` | 展示方式。可选值：`'inline'`, `'block'` |
+| layout | String | `'none'` | 布局方式，用于迅速调整子元素或组件的展示方式。可选值：`'none'`, `'inline'`, `'block'` |
 | type | String | | 布局模式。可选值：`'flex'`或不填 |
 | justify | String | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`, `'space-between'`。flex布局模式下还支持：`'space-around'`。普通模式下的`'space-between'`功能很弱，只支持左右分布。 |
 | alignment | String | `'stretch'` | flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |

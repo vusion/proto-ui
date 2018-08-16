@@ -56,3 +56,8 @@
     border-color: $brand-disabled;
     color: $brand-disabled;
 }
+
+.root[display="block"] {
+    display: block;
+    width: auto;
+}
