@@ -69,9 +69,21 @@ export default {
 
 ### Events
 
+#### @transfer
+
+数据转移时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.source | Array\<{ text, value }\> | 原数据列表 |
+| $event.target | Array\<{ text, value }\> | 目标数据列表 |
+| $event.transfer | Array\<{ text, value }\> | 移动的项 |
+| $event.transferValues | Array | 移动项的值 |
+
+
 #### @change
 
-选择值改变时触发
+数据改变时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |

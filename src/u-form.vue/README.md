@@ -556,6 +556,15 @@ export default {
 | ----- | ---- | ------- | ----------- |
 | silent | Boolean | `false` | 是否仅验证无提示。 |
 
+#### validateItem(name, trigger, slient)
+
+验证表单中的某一项。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| name | String | | 表单项的 name |
+| trigger | String | `submit` | 触发方式，可选值：`submit`、`blur`和`input`之一，或者它们的任意组合。 |
+| silent | Boolean | `false` | 是否仅验证无提示。 |
 
 ## FormItem API
 ### Props/Attrs
