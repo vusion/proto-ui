@@ -23,6 +23,12 @@ export default {
             }
             const transferValues = Array.from(this.targetValues);
             this.targetValues = [];
+            this.$emit('transfer', {
+                source: this.source,
+                target: this.target,
+                transfer,
+                transferValues,
+            });
             this.$emit('change', {
                 source: this.source,
                 target: this.target,
@@ -42,6 +48,12 @@ export default {
             }
             const transferValues = Array.from(this.sourceValues);
             this.sourceValues = [];
+            this.$emit('transfer', {
+                source: this.source,
+                target: this.target,
+                transfer,
+                transferValues,
+            });
             this.$emit('change', {
                 source: this.source,
                 target: this.target,
