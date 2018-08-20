@@ -44,7 +44,7 @@
 | data-type | String | `'json'` | 接收数据类型。可选值：`text`、`xml`、`json` |
 | data | Object | `{}` | 附加数据 |
 | name | String | `'file'` | 上传文件的名称，后端一般需要这个字段 |
-| extensions | String, Array | `''` | 可上传的扩展名。默认为空，表示可上传任意文件类型的文件。可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：`['png', 'jpg', 'gif']` |
+| extensions | String, Array | `''` | 可上传的扩展名。默认为空，表示可上传任意文件类型的文件。可以为字符串，多个扩展名用`,`隔开，如：`'png,jpg,gif'`；也可以为数组，如：`['png', 'jpg', 'gif']` |
 | max-size | String, Number | `Infinity` | 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB` |
 | disabled | Boolean | `false` | 是否禁用 |
 
