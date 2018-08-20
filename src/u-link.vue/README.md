@@ -66,7 +66,6 @@
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
 
-
 #### @before-navigate
 
 使用router相关属性切换路由前触发

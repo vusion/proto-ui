@@ -18,8 +18,8 @@
 ``` html
 <u-linear-layout>
     <u-text>默认颜色</u-text>
-    <u-text color="primary">主要文字</u-text>
-    <u-text color="error">错误文字</u-text>
+    <u-text color="primary">主要文本</u-text>
+    <u-text color="error">错误文本</u-text>
     <u-text color="disabled">禁默文本</u-text>
 </u-linear-layout>
 ```
@@ -51,6 +51,6 @@
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | size | String | `'normal'` | 大小扩展。可选值：`'small'`, `'normal'`, `'large'` |
-| color | String | `'default'` | 颜色扩展。可选值：`'default'`, `'primary'`, `'error'` |
+| color | String | `'default'` | 颜色扩展。可选值：`'default'`, `'primary'`, `'error'`, `'disabled'` |
 | display | String | `'inline'` | 展示方式。可选值：`'inline'`, `'block'` |
 | wrap | String | `false` | 换行方式。可选值：`'normal'`表示默认方式，`'ellipsis'`表示多余的文本省略，`'break'`表示强制换行且英文自动添加换行符，`'nowrap'`表示始终不换行。 |
