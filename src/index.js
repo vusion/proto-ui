@@ -91,6 +91,7 @@ import Transfer from './u-transfer.vue';
 import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
+import Uploader from './u-uploader.vue';
 
 export {
     directives,
@@ -185,4 +186,5 @@ export {
     TreeView,
     TreeViewNode,
     TreeViewText,
+    Uploader,
 };
