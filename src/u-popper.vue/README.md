@@ -159,6 +159,54 @@ export default {
 </u-linear-layout>
 ```
 
+### 弹出位置随鼠标位置而改变
+添加`'follow-cursor'`属性即可，`'cursor-offset-x'`用来修正水平方向的位置，`'cursor-offset-y'`用来修正垂直方向的位置
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-linear-layout>
+        <u-popper trigger="hover" follow-cursor placement="top-start" :cursor-offset-x="-60">
+            <u-button>top-start</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="top" follow-cursor>
+            <u-button>top</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" follow-cursor placement="top-end" :cursor-offset-x="60">
+            <u-button>top-end</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-popper trigger="hover" follow-cursor placement="left-start" :cursor-offset-y="-60">
+            <u-button>left-start</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="left" follow-cursor>
+            <u-button>left</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" follow-cursor placement="left-end" :cursor-offset-y="60">
+            <u-button>left-end</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+    </u-linear-layout>
+</u-linear-layout>
+```
+
 ### 禁用
 
 ``` html
@@ -183,6 +231,9 @@ export default {
 | escape-with-reference | Boolean | `true` | 当触发元素离开边际时，弹出层是否跟随离开或保留在边际元素内 |
 | options | Object | `{ modifiers: {} }` | 补充 popper.js 的选项 |
 | disabled | Boolean | `false` | 是否禁用 |
+| followCursor | Boolean | `false` | 是否开启跟随鼠标位置模式 |
+| cursorOffsetX | Number | `0` | 配合跟随鼠标位置模式，用来设置水平方向偏离距离 |
+| cursorOffsetY | Number | `0` | 配合跟随鼠标位置模式，用来设置垂直方向偏离距离 |
 
 ### Slots
 

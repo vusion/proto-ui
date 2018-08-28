@@ -9,6 +9,9 @@ export default {
         disabled: { type: Boolean, default: false },
         hideDelay: { type: Number, default: 0 },
         offset: { type: String, default: '0' },
+        followCursor: { type: Boolean, default: false },
+        cursorOffsetX: { type: Number, default: 0 },
+        cursorOffsetY: { type: Number, default: 0 },
     },
     computed: {
         hasContent() {

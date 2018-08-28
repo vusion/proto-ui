@@ -47,6 +47,21 @@
 </u-linear-layout>
 ```
 
+#### 指定位置跟随鼠标变化
+``` html
+<u-linear-layout>
+    <u-tooltip placement="bottom-start" content="Tooltip" follow-cursor :cursor-offset-x="-10" trigger="hover">
+        <u-button>bottom-start</u-button>
+    </u-tooltip>
+    <u-tooltip content="Tooltip" follow-cursor trigger="hover">
+        <u-button>bottom</u-button>
+    </u-tooltip>
+    <u-tooltip placement="bottom-end" content="Tooltip" follow-cursor :cursor-offset-x="10" trigger="hover">
+        <u-button>bottom-end</u-button>
+    </u-tooltip>
+</u-linear-layout>
+```
+
 
 #### 延迟消失(hover)
 ``` html
@@ -188,6 +203,9 @@ export default {
 | disabled | Boolean | `false` | 是否禁用 |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
 | offset | String | `'0'` | 弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px` |
+| followCursor | Boolean | `false` | 是否开启跟随鼠标位置模式 |
+| cursorOffsetX | Number | `0` | 配合跟随鼠标位置模式，用来设置水平方向偏离距离 |
+| cursorOffsetY | Number | `0` | 配合跟随鼠标位置模式，用来设置垂直方向偏离距离 |
 ### Slots
 
 #### (default)

@@ -30,10 +30,16 @@ export default {
             },
         },
         disabled: { type: Boolean, default: false },
+        followCursor: { type: Boolean, default: false },
+        cursorOffsetX: { type: Number, default: 0 },
+        cursorOffsetY: { type: Number, default: 0 },
     },
     data() {
         return {
             currentOpen: this.open,
+            popper: undefined,
+            // 在出现滚动条的时候 需要特殊处理下
+            mouseenterEvent: {},
         };
     },
     watch: {
@@ -64,16 +70,23 @@ export default {
         const referenceEl = this.reference || this.$el;
         const popperEl = this.childVM.$el;
 
+        if (this.followCursor)
+            event.on(document.body, 'mousemove', this.onMouseMove);
+
         // 绑定事件
         const offEvents = this.offEvents = [];
         let timer = null;
         if (this.trigger === 'click')
             offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
         else if (this.trigger === 'hover') {
-            offEvents.push(event.on(referenceEl, 'mouseenter', () => {
+            offEvents.push(event.on(referenceEl, 'mouseenter', (e) => {
                 clearTimeout(timer);
                 timer = null;
-                setTimeout(() => this.toggle(true), this.hoverDelay);
+                setTimeout(() => {
+                    this.toggle(true);
+                    // 页面有滚动条的时候 会出现滚动到reference元素上这是会触发mouseenter事件，这个时候需要重新设置reference的位置
+                    this.mouseenterEvent = e;
+                }, this.hoverDelay);
             }));
             if (this.hideDelay) {
                 offEvents.push(event.on(popperEl, 'mouseenter', () => {
@@ -111,6 +124,7 @@ export default {
         this.childVM = this.childVM && this.childVM.$destroy();
         // 取消绑定事件
         this.offEvents.forEach((off) => off());
+        event.off(document.body, 'mousemove', this.onMouseMove);
     },
     methods: {
         getOptions() {
@@ -146,6 +160,9 @@ export default {
 
             const options = this.getOptions();
             this.popper = new Popper(referenceEl, popperEl, options);
+            // 特殊处理滚动条的情况
+            if (this.followCursor)
+                this.onMouseMove(this.mouseenterEvent);
         },
         update() {
             this.popper && this.popper.update();
@@ -186,6 +203,43 @@ export default {
             this.$emit('toggle', {
                 open,
             });
+        },
+        onMouseMove(e) {
+            const referenceEl = this.reference || this.$el;
+            if (e.target === referenceEl && this.popper) {
+                let top = e.clientY;
+                let left = e.clientX;
+                let right = e.clientX;
+                let bottom = e.clientY;
+                this.$nextTick(() => {
+                    if (this.placement.includes('top')) {
+                        top = bottom -= this.cursorOffsetY || 20;
+                        left = right += this.cursorOffsetX || 0;
+                    } else if (this.placement.includes('bottom')) {
+                        top = bottom += this.cursorOffsetY || 20;
+                        right = left += this.cursorOffsetX || 0;
+                    } else if (this.placement.includes('left')) {
+                        right = left -= this.cursorOffsetX || 20;
+                        bottom = top += this.cursorOffsetY || 0;
+                    } else if (this.placement.includes('right')) {
+                        left = right += this.cursorOffsetX || 20;
+                        bottom = top += this.cursorOffsetY || 0;
+                    }
+                    this.popper.reference = {
+                        getBoundingClientRect: () => ({
+                            width: 0,
+                            height: 0,
+                            top,
+                            left,
+                            right,
+                            bottom,
+                        }),
+                        clientWidth: 0,
+                        clientHeight: 0,
+                    };
+                    this.popper.scheduleUpdate();
+                });
+            }
         },
     },
 };
