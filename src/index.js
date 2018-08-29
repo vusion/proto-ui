@@ -39,6 +39,7 @@ import ListViewDivider from './u-list-view-divider.vue';
 import ListViewGroup from './u-list-view-group.vue';
 import ListViewItem from './u-list-view-item.vue';
 import Loading from './u-loading.vue';
+import Logo from './u-logo.vue';
 import Menu from './u-menu.vue';
 import MenuDivider from './u-menu-divider.vue';
 import MenuGroup from './u-menu-group.vue';
@@ -134,6 +135,7 @@ export {
     ListViewGroup,
     ListViewItem,
     Loading,
+    Logo,
     Menu,
     MenuDivider,
     MenuGroup,
