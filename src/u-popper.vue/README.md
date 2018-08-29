@@ -159,13 +159,14 @@ export default {
 </u-linear-layout>
 ```
 
-### 弹出位置随鼠标位置而改变
-添加`'follow-cursor'`属性即可，`'cursor-offset-x'`用来修正水平方向的位置，`'cursor-offset-y'`用来修正垂直方向的位置
+### 跟随鼠标
+
+将`'follow-cursor'`属性设置为`true`可以跟随鼠标。也可以传一个数字或对象调整位置偏移。
 
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-popper trigger="hover" follow-cursor placement="top-start" :cursor-offset-x="-60">
+        <u-popper trigger="hover" placement="top-start" follow-cursor>
             <u-button>top-start</u-button>
             <div slot="popper">
                 <u-block>popper</u-block>
@@ -177,7 +178,7 @@ export default {
                 <u-block>popper</u-block>
             </div>
         </u-popper>
-        <u-popper trigger="hover" follow-cursor placement="top-end" :cursor-offset-x="60">
+        <u-popper trigger="hover" placement="top-end" follow-cursor>
             <u-button>top-end</u-button>
             <div slot="popper">
                 <u-block>popper</u-block>
@@ -185,7 +186,7 @@ export default {
         </u-popper>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popper trigger="hover" follow-cursor placement="left-start" :cursor-offset-y="-60">
+        <u-popper trigger="hover" placement="left-start" follow-cursor>
             <u-button>left-start</u-button>
             <div slot="popper">
                 <u-block>popper</u-block>
@@ -197,8 +198,56 @@ export default {
                 <u-block>popper</u-block>
             </div>
         </u-popper>
-        <u-popper trigger="hover" follow-cursor placement="left-end" :cursor-offset-y="60">
+        <u-popper trigger="hover" placement="left-end" follow-cursor>
             <u-button>left-end</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-popper trigger="hover" placement="right-start" follow-cursor>
+            <u-button>right-start</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="right" follow-cursor>
+            <u-button>right</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="right-end" follow-cursor>
+            <u-button>right-end</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-popper trigger="hover" placement="bottom-start" follow-cursor>
+            <u-button>bottom-start</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="bottom" follow-cursor>
+            <u-button>bottom</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+        <u-popper trigger="hover" placement="bottom-end" follow-cursor>
+            <u-button>bottom-end</u-button>
+            <div slot="popper">
+                <u-block>popper</u-block>
+            </div>
+        </u-popper>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-popper trigger="hover" placement="bottom-start" :follow-cursor="50">
+            <u-button>custom</u-button>
             <div slot="popper">
                 <u-block>popper</u-block>
             </div>
@@ -224,6 +273,7 @@ export default {
 | trigger | String | `'click'` | 弹出层的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 弹出层的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | offset | String | `'0'` | 弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px` |
+| follow-cursor | Boolean, Number, Object | `false` | 是否跟随鼠标 |
 | hover-delay | Number | `0` | trigger 为 'hover' 时的延迟时间 |
 | hide-delay | Number | `0` | trigger 为 'hover' 时提示隐藏的延迟时间 |
 | append-to | String | `'body'` | 指示添加到哪个元素 |
@@ -231,9 +281,6 @@ export default {
 | escape-with-reference | Boolean | `true` | 当触发元素离开边际时，弹出层是否跟随离开或保留在边际元素内 |
 | options | Object | `{ modifiers: {} }` | 补充 popper.js 的选项 |
 | disabled | Boolean | `false` | 是否禁用 |
-| followCursor | Boolean | `false` | 是否开启跟随鼠标位置模式 |
-| cursorOffsetX | Number | `0` | 配合跟随鼠标位置模式，用来设置水平方向偏离距离 |
-| cursorOffsetY | Number | `0` | 配合跟随鼠标位置模式，用来设置垂直方向偏离距离 |
 
 ### Slots
 

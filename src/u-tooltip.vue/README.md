@@ -35,43 +35,6 @@
 </u-linear-layout>
 ```
 
-#### 指定偏移距离
-``` html
-<u-linear-layout>
-    <u-tooltip offset="10" content="Tooltip" trigger="hover">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-    <u-tooltip offset="10% 10px" content="Tooltip" trigger="hover">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-</u-linear-layout>
-```
-
-#### 指定位置跟随鼠标变化
-``` html
-<u-linear-layout>
-    <u-tooltip placement="bottom-start" content="Tooltip" follow-cursor :cursor-offset-x="-10" trigger="hover">
-        <u-button>bottom-start</u-button>
-    </u-tooltip>
-    <u-tooltip content="Tooltip" follow-cursor trigger="hover">
-        <u-button>bottom</u-button>
-    </u-tooltip>
-    <u-tooltip placement="bottom-end" content="Tooltip" follow-cursor :cursor-offset-x="10" trigger="hover">
-        <u-button>bottom-end</u-button>
-    </u-tooltip>
-</u-linear-layout>
-```
-
-
-#### 延迟消失(hover)
-``` html
-<u-linear-layout>
-    <u-tooltip content="Tooltip" trigger="hover" :hide-delay="300">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-</u-linear-layout>
-```
-
 #### 指令形式
 
 ``` html
@@ -183,6 +146,82 @@ export default {
 </u-linear-layout>
 ```
 
+#### 修改偏移距离
+
+``` html
+<u-linear-layout>
+    <u-tooltip offset="10" content="Tooltip" trigger="hover">
+        <u-button>hover（默认）</u-button>
+    </u-tooltip>
+    <u-tooltip offset="10% 10px" content="Tooltip" trigger="hover">
+        <u-button>hover（默认）</u-button>
+    </u-tooltip>
+</u-linear-layout>
+```
+
+#### 跟随鼠标
+
+将`'follow-cursor'`属性设置为`true`可以跟随鼠标。也可以传一个数字或对象调整位置偏移。
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-linear-layout>
+        <u-tooltip content="Tooltip" placement="top-start" follow-cursor>
+            <u-button>top-start</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="top" follow-cursor>
+            <u-button>top</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="top-end" follow-cursor>
+            <u-button>top-end</u-button>
+        </u-tooltip>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-tooltip content="Tooltip" placement="left-start" follow-cursor>
+            <u-button>left-start</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="left" follow-cursor>
+            <u-button>left</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="left-end" follow-cursor>
+            <u-button>left-end</u-button>
+        </u-tooltip>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-tooltip content="Tooltip" placement="right-start" follow-cursor>
+            <u-button>right-start</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="right" follow-cursor>
+            <u-button>right</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="right-end" follow-cursor>
+            <u-button>right-end</u-button>
+        </u-tooltip>
+    </u-linear-layout>
+    <u-linear-layout>
+        <u-tooltip content="Tooltip" placement="bottom-start" follow-cursor>
+            <u-button>bottom-start</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="bottom" follow-cursor>
+            <u-button>bottom</u-button>
+        </u-tooltip>
+        <u-tooltip content="Tooltip" placement="bottom-end" follow-cursor>
+            <u-button>bottom-end</u-button>
+        </u-tooltip>
+    </u-linear-layout>
+</u-linear-layout>
+```
+
+### Hover 时延迟消失
+
+``` html
+<u-linear-layout>
+    <u-tooltip content="Tooltip" trigger="hover" :hide-delay="300">
+        <u-button>hover（默认）</u-button>
+    </u-tooltip>
+</u-linear-layout>
+```
+
 ### 禁用
 
 ``` html
@@ -200,12 +239,11 @@ export default {
 | open.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
-| disabled | Boolean | `false` | 是否禁用 |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
 | offset | String | `'0'` | 弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px` |
-| followCursor | Boolean | `false` | 是否开启跟随鼠标位置模式 |
-| cursorOffsetX | Number | `0` | 配合跟随鼠标位置模式，用来设置水平方向偏离距离 |
-| cursorOffsetY | Number | `0` | 配合跟随鼠标位置模式，用来设置垂直方向偏离距离 |
+| follow-cursor | Boolean, Number, Object | `false` | 是否跟随鼠标 |
+| disabled | Boolean | `false` | 是否禁用 |
+
 ### Slots
 
 #### (default)

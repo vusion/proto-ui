@@ -12,7 +12,7 @@ export default {
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
         reference: HTMLElement,
-        offset: { type: String, default: '0' },
+        offset: { type: [Number, String], default: 0 },
         hoverDelay: { type: Number, default: 0 },
         hideDelay: { type: Number, default: 0 },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
@@ -23,24 +23,48 @@ export default {
             type: Object,
             default() {
                 return {
-                    modifiers: {
-                        offset: {},
-                    },
+                    modifiers: {},
                 };
             },
         },
         disabled: { type: Boolean, default: false },
-        followCursor: { type: Boolean, default: false },
-        cursorOffsetX: { type: Number, default: 0 },
-        cursorOffsetY: { type: Number, default: 0 },
+        followCursor: { type: [Boolean, Number, Object], default: false },
     },
     data() {
         return {
             currentOpen: this.open,
-            popper: undefined,
+            // popper: undefined,
             // 在出现滚动条的时候 需要特殊处理下
-            mouseenterEvent: {},
+            mouseEnterEvent: {},
         };
+    },
+    computed: {
+        currentFollowCursor() {
+            if (typeof this.followCursor === 'object')
+                return this.followCursor;
+            else {
+                let followCursor;
+                if (typeof this.followCursor === 'boolean')
+                    followCursor = { offsetX: 10, offsetY: 10 };
+                else if (typeof this.followCursor === 'number')
+                    followCursor = { offsetX: this.followCursor, offsetY: this.followCursor };
+
+                if (this.placement.startsWith('top'))
+                    followCursor.offsetY = -followCursor.offsetY;
+                if (this.placement.startsWith('left'))
+                    followCursor.offsetX = -followCursor.offsetX;
+                if (this.placement === 'top' || this.placement === 'bottom')
+                    followCursor.offsetX = 0;
+                if (this.placement === 'top-end' || this.placement === 'bottom-end')
+                    followCursor.offsetX = -followCursor.offsetX;
+                if (this.placement === 'left' || this.placement === 'right')
+                    followCursor.offsetY = 0;
+                if (this.placement === 'left-end' || this.placement === 'right-end')
+                    followCursor.offsetY = -followCursor.offsetY;
+
+                return followCursor;
+            }
+        },
     },
     watch: {
         open(value) {
@@ -70,11 +94,10 @@ export default {
         const referenceEl = this.reference || this.$el;
         const popperEl = this.childVM.$el;
 
-        if (this.followCursor)
-            event.on(document.body, 'mousemove', this.onMouseMove);
-
         // 绑定事件
         const offEvents = this.offEvents = [];
+        if (this.followCursor)
+            offEvents.push(event.on(document.body, 'mousemove', this.onMouseMove));
         let timer = null;
         if (this.trigger === 'click')
             offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
@@ -84,8 +107,8 @@ export default {
                 timer = null;
                 setTimeout(() => {
                     this.toggle(true);
-                    // 页面有滚动条的时候 会出现滚动到reference元素上这是会触发mouseenter事件，这个时候需要重新设置reference的位置
-                    this.mouseenterEvent = e;
+                    // 页面有滚动条的时候，会出现滚动到 reference 的元素上。这时会触发 mouseenter 事件，需要重新设置 reference 的位置。
+                    this.mouseEnterEvent = e;
                 }, this.hoverDelay);
             }));
             if (this.hideDelay) {
@@ -124,17 +147,12 @@ export default {
         this.childVM = this.childVM && this.childVM.$destroy();
         // 取消绑定事件
         this.offEvents.forEach((off) => off());
-        event.off(document.body, 'mousemove', this.onMouseMove);
     },
     methods: {
         getOptions() {
             const options = Object.assign({}, this.options, {
                 placement: this.placement,
             });
-
-            // 这里用户自定义options 也可能传入offset参数
-            if (options.modifiers.offset && !options.modifiers.offset.offset)
-                options.modifiers.offset.offset = this.offset;
 
             // 自定义options 传入offset值情况
             if (!options.modifiers.offset && this.offset) {
@@ -162,7 +180,7 @@ export default {
             this.popper = new Popper(referenceEl, popperEl, options);
             // 特殊处理滚动条的情况
             if (this.followCursor)
-                this.onMouseMove(this.mouseenterEvent);
+                this.onMouseMove(this.mouseEnterEvent);
         },
         update() {
             this.popper && this.popper.update();
@@ -205,41 +223,32 @@ export default {
             });
         },
         onMouseMove(e) {
+            // @TODO: 支持其它 trigger 的情况
+            // @TODO: 两种 offset 属性有些冗余
+
             const referenceEl = this.reference || this.$el;
-            if (e.target === referenceEl && this.popper) {
-                let top = e.clientY;
-                let left = e.clientX;
-                let right = e.clientX;
-                let bottom = e.clientY;
-                this.$nextTick(() => {
-                    if (this.placement.includes('top')) {
-                        top = bottom -= this.cursorOffsetY || 20;
-                        left = right += this.cursorOffsetX || 0;
-                    } else if (this.placement.includes('bottom')) {
-                        top = bottom += this.cursorOffsetY || 20;
-                        right = left += this.cursorOffsetX || 0;
-                    } else if (this.placement.includes('left')) {
-                        right = left -= this.cursorOffsetX || 20;
-                        bottom = top += this.cursorOffsetY || 0;
-                    } else if (this.placement.includes('right')) {
-                        left = right += this.cursorOffsetX || 20;
-                        bottom = top += this.cursorOffsetY || 0;
-                    }
-                    this.popper.reference = {
-                        getBoundingClientRect: () => ({
-                            width: 0,
-                            height: 0,
-                            top,
-                            left,
-                            right,
-                            bottom,
-                        }),
-                        clientWidth: 0,
-                        clientHeight: 0,
-                    };
-                    this.popper.scheduleUpdate();
-                });
-            }
+            if (!(e.target === referenceEl && this.popper))
+                return;
+
+            const top = e.clientY + this.currentFollowCursor.offsetY;
+            const left = e.clientX + this.currentFollowCursor.offsetX;
+            const right = e.clientX + this.currentFollowCursor.offsetX;
+            const bottom = e.clientY + this.currentFollowCursor.offsetY;
+
+            this.popper.reference = {
+                getBoundingClientRect: () => ({
+                    width: 0,
+                    height: 0,
+                    top,
+                    left,
+                    right,
+                    bottom,
+                }),
+                clientWidth: 0,
+                clientHeight: 0,
+            };
+            this.popper.scheduleUpdate();
+            // });
         },
     },
 };
