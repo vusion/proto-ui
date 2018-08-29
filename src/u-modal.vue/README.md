@@ -44,9 +44,9 @@ export default {
         },
         confirm() {
             this.$confirm('是否要删除该任务？').then(() => {
-                console.log('用户点击了确定。');
+                console.info('用户点击了确定。');
             }).catch(() => {
-                console.log('用户点击了取消。');
+                console.info('用户点击了取消。');
             });
         },
     },

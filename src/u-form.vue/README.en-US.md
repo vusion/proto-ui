@@ -48,8 +48,8 @@ export default {
     methods: {
         submit() {
             this.$refs.form.validate()
-                .then((result) => console.log('success'))
-                .catch((errors) => console.log('error'));
+                .then((result) => console.info('success'))
+                .catch((errors) => console.info('error'));
         },
     },
 };

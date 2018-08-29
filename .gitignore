@@ -8,3 +8,7 @@ lerna-debug.log
 
 yarn.lock
 package-lock.json
+
+# editors
+.vscode
+.idea

@@ -89,9 +89,9 @@ export default {
     },
     methods: {
         add() {
-            this.checkedList.push('水杯')
-        }
-    }
+            this.checkedList.push('水杯');
+        },
+    },
 };
 </script>
 ```
@@ -130,7 +130,7 @@ export default {
                 this.allChecked = false;
             else
                 this.allChecked = null;
-        }
+        },
     },
 };
 </script>

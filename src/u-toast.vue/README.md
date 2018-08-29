@@ -108,7 +108,7 @@ export default {
             this.$toast.show('number: ' + this.number);
             this.number++;
         },
-    }
+    },
 };
 </script>
 ```

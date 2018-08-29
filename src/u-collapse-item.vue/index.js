@@ -31,7 +31,7 @@ export default {
             if (this.disabled || this.parentVM.disabled)
                 return;
 
-            const oldExpanded = this.currentExpanded;
+            // const oldExpanded = this.currentExpanded;
 
             if (expanded === undefined)
                 expanded = !this.currentExpanded;

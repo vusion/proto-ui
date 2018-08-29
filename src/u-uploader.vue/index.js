@@ -123,8 +123,6 @@ export default {
             if (!file || !file.name || !this.checkExtensions(file) || !this.checkSize(file))
                 return;
 
-            this.sending = true;
-
             const fileName = file.name;
             this.file = {
                 name: fileName,
@@ -146,6 +144,7 @@ export default {
             if (cancel)
                 return;
 
+            this.sending = true;
             if (typeof FormData === 'undefined') // IE9 不支持 XHR2 相关功能
                 this.$refs.form.submit();
             else {
