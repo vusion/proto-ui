@@ -1,7 +1,7 @@
 /* Brand Colors */
-$brand-primary: #1abc9c;
-$brand-error: #f55;
-$brand-disabled: #ccc;
+$brand-primary: #457cd0;
+$brand-error: #f22d4e;
+$brand-disabled: #e7e9ec;
 
 /* Gray Colors */
 $gray-darkest: #333;
@@ -26,6 +26,10 @@ $margin-large: 30px;
 $border-width-base: 1px;
 $width-base: 160px;
 $height-base: 32px;
+
+/* Specific Dimensions */
+$navbar-height: 70px;
+$sidebar-width: 240px;
 
 /* Z-Index */
 $z-index-loading: 9000;

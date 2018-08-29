@@ -1,6 +1,10 @@
 .root {
     display: inline-block;
-    width: 200px;
-    height: 64px;
-    background: url('./assets/logo.svg') no-repeat;
+    width: $sidebar-width;
+    height: $navbar-height;
+    background: url('./assets/logo.svg') 20px center no-repeat;
+}
+
+.root[color="inverse"] {
+    background: $brand-primary url('./assets/logo-inverse.svg') 20px center no-repeat;
 }

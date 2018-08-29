@@ -2,10 +2,22 @@ module.exports = {
     version: '>=0.5.0',
     type: 'library',
     lint: true,
+    webpack: {
+        output: {
+            publicPath: '/proto-ui/',
+        },
+    },
+    webpackDevServer: {
+        historyApiFallback: {
+            index: '/proto-ui/',
+        },
+    },
     docs: {
+        mode: 'history',
+        base: '/proto-ui/',
         navbar: [
             { text: '组件', to: '/components' },
-            { text: '设计思路', to: '/' },
+            { text: '设计思路', to: '/ui-design' },
         ],
         components: [
             { group: 'Basic', name: 'base', alias: '基础', path: 'library/base/README.md' },

@@ -6,7 +6,7 @@
 #### 路由模式
 
 ``` html
-<u-sidebar style="width: 200px; background: #f0f6fa;">
+<u-sidebar style="width: 200px;">
     <u-sidebar-item>指南</u-sidebar-item>
     <u-sidebar-item>概念</u-sidebar-item>
     <u-sidebar-item to="/proto-ui">组件</u-sidebar-item>
@@ -16,7 +16,7 @@
 #### value模式
 
 ``` html
-<u-sidebar value="3" :router="false" style="width: 200px; background: #f0f6fa;">
+<u-sidebar value="3" :router="false" style="width: 200px;">
     <u-sidebar-item value="1">指南</u-sidebar-item>
     <u-sidebar-item value="2">概念</u-sidebar-item>
     <u-sidebar-item value="3">组件</u-sidebar-item>
@@ -64,7 +64,7 @@
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
             <p>默认，无折叠功能</p>
-            <u-sidebar style="background: #f0f6fa;">
+            <u-sidebar>
                 <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
@@ -85,7 +85,7 @@
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
             <p>开启折叠功能</p>
-            <u-sidebar collapsible style="background: #f0f6fa;">
+            <u-sidebar collapsible>
                 <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
@@ -106,7 +106,7 @@
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
             <p>手风琴模式</p>
-            <u-sidebar collapsible accordion style="background: #f0f6fa;">
+            <u-sidebar collapsible accordion>
                 <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
@@ -129,7 +129,7 @@
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
             <p>触发方式：整行点击均可触发（默认）</p>
-            <u-sidebar collapsible expand-trigger="click" style="background: #f0f6fa;">
+            <u-sidebar collapsible expand-trigger="click">
                 <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>
@@ -144,7 +144,7 @@
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
             <p>触发方式：仅点击小箭头时触发</p>
-            <u-sidebar collapsible expand-trigger="click-expander" style="background: #f0f6fa;">
+            <u-sidebar collapsible expand-trigger="click-expander">
                 <u-sidebar-group title="Basic">
                     <u-sidebar-item>链接</u-sidebar-item>
                     <u-sidebar-item>按钮</u-sidebar-item>

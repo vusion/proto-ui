@@ -2,7 +2,9 @@
 @import './animation.css';
 
 body {
+    color: #575962;
     font: 14px/1.6 "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 h6 {
