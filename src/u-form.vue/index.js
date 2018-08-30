@@ -50,7 +50,7 @@ export default {
                 .catch((errors) => errors)
             )).then((results) => {
                 if (results.some((result) => !!result))
-                    throw new Error(results);
+                    throw results;
             });
         },
         validateItem(name, trigger = 'submit', silent = false) {
