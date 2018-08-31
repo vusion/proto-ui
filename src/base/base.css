@@ -2,7 +2,7 @@
 @import './animation.css';
 
 body {
-    color: #575962;
+    color: $color-base;
     font: 14px/1.6 "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
@@ -20,5 +20,5 @@ blockquote {
     margin-left: 0;
     margin-right: 0;
     padding: 8px 16px;
-    border-left: 4px solid #eee;
+    border-left: 4px solid $border-color-base;
 }

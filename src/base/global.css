@@ -1,7 +1,8 @@
 /* Brand Colors */
 $brand-primary: #457cd0;
 $brand-error: #f22d4e;
-$brand-disabled: #e7e9ec;
+$brand-disabled: #c4ccd8;
+$brand-disabled-light: #e7eaef;
 
 /* Gray Colors */
 $gray-darkest: #333;
@@ -13,9 +14,9 @@ $gray-lighter: #ddd;
 $gray-lightest: #eee;
 
 /* Component Base Colors */
-$background-color-base: #eee;
-$color-base: #345;
-$border-color-base: #ccc;
+$background-color-base: #f2f3f8;
+$color-base: #565b61;
+$border-color-base: #dfe4ec;
 
 /* Spacing Dimensions */
 $margin-small: 10px;

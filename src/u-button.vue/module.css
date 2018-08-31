@@ -53,7 +53,7 @@
 
     /* @Public */
     background: white;
-    border-color: $brand-disabled;
+    border-color: $border-color-base;
     color: $brand-disabled;
 }
 

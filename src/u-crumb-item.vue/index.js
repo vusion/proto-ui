@@ -6,7 +6,7 @@ export default {
     parentName: 'u-crumb',
     mixins: [Link, Emitter],
     props: {
-        current: { type: Boolean, default: false },
+        disabled: { type: Boolean, default: false },
     },
     data() {
         return {

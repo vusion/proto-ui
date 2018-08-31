@@ -14,6 +14,7 @@ module.exports = {
     },
     docs: {
         title: 'Proto UI 组件库',
+        logo: '原型组件',
         mode: 'history',
         base: '/proto-ui/',
         navbar: [

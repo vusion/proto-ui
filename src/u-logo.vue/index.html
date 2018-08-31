@@ -1,3 +1,3 @@
-<a :class="$style.root" href="/">
-    <slot></slot>
+<a :class="$style.root" :href="currentHref" :target="target" :disabled="disabled" @click="onClick" v-on="listeners">
+    <span :class="$style.sub"><slot></slot></span>
 </a>

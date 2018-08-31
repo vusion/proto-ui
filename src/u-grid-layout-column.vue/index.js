@@ -9,8 +9,7 @@ const breakpoints = [
 export default {
     name: 'u-grid-layout-column',
     props: {
-        column: String,
-        span: Number,
+        span: { type: Number, default: 1 },
         pull: Number,
         push: Number,
         offset: Number,

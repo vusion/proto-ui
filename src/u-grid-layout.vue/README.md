@@ -254,7 +254,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| span | Number | | 列跨越的栅格数 |
+| span | Number | `1` | 列跨越的栅格数 |
 | offset | Number | | 列左边偏移的栅格数 |
 | pull | Number | | 列向左移动栅格数 |
 | push | Number | | 列向右移动栅格数 |

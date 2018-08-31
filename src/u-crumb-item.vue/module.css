@@ -5,6 +5,7 @@
 .root:not(:last-child)::after {
     content: '>';
     margin: 0 5px;
+    vertical-align: 1px;
 }
 
 .link {
@@ -15,7 +16,7 @@
     text-decoration: underline;
 }
 
-.current {
-    color: $gray-base;
+.disabled {
+    color: $brand-disabled;
     cursor: default;
 }

@@ -1,8 +1,8 @@
 <li :class="$style.root">
-    <span :class="$style.current" v-if="current">
+    <span :class="$style.disabled" v-if="disabled">
         <slot></slot>
     </span>
-    <a v-else :class="$style.link" :href="currentHref" :target="target" :current="current" @click="onClick" v-on="listeners">
+    <a v-else :class="$style.link" :href="currentHref" :target="target" :disabled="disabled" @click="onClick" v-on="listeners">
         <slot></slot>
     </a>
 </li>
