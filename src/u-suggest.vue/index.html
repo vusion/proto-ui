@@ -18,6 +18,6 @@
         <div :class="$style.status" status="loading" v-if="loading">
             <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
         </div>
-        <div :class="$style.status" status="none" v-else-if="!matchedVMs.length">{{ noneText }}</div>
+        <div :class="$style.status" status="empty" v-else-if="!matchedVMs.length">{{ emptyText }}</div>
     </ul>
 </u-popper>

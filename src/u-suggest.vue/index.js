@@ -12,7 +12,7 @@ export default {
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
         strict: { type: Boolean, default: false },
-        noneText: { type: String, default: '无匹配数据' },
+        emptyText: { type: String, default: '无匹配数据' },
     },
     data() {
         return {

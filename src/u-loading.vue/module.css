@@ -8,7 +8,11 @@
 .root .icon { font-size: 24px; vertical-align: -4px; }
 .root[size="large"] .icon { font-size: 48px; }
 
-.root[full] {
+.root[display="block"] {
+    display: block;
+}
+
+.root[display="full"] {
     position: absolute;
     left: 0;
     right: 0;
@@ -18,14 +22,26 @@
     background: rgba(255,255,255,0.8);
 }
 
-.root[full] .body {
+.root[display="full"] .body {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
-.root[full="window"] {
+.root[display="fullWindow"] {
     position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     z-index: $z-index-loading;
+    background: rgba(255,255,255,0.6);
+}
+
+.root[display="fullWindow"] .body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
