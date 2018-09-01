@@ -2,16 +2,21 @@ import Vue from 'vue';
 import Popper from '@vusion/popper.js';
 import event from '../base/utils/event';
 
+/**
+ * @TODO: <u-popper> 套在外面的书写方式往往会影响原有模板结构，考虑一个 break change，
+ * 将 <u-popper> 插入到父节点内部
+ */
 export default {
     name: 'u-popper',
     props: {
         open: { type: Boolean, default: false },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
+        triggerElement: { type: [String, HTMLElement, Function], default: 'reference' },
         placement: {
             type: String, default: 'bottom-start',
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
-        reference: HTMLElement,
+        reference: [String, HTMLElement],
         offset: { type: [Number, String], default: 0 },
         hoverDelay: { type: Number, default: 0 },
         hideDelay: { type: Number, default: 0 },
@@ -75,7 +80,10 @@ export default {
             value ? this.createPopper() : this.destroyPopper();
         },
     },
-    render() {
+    render(h) {
+        if (this.reference === 'parent')
+            return h('div', { style: { display: 'none' } });
+
         return this.$slots.default && this.$slots.default[0];
     },
     mounted() {
@@ -91,8 +99,9 @@ export default {
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
 
-        const referenceEl = this.reference || this.$el;
+        const referenceEl = this.getReferenceEl();
         const popperEl = this.childVM.$el;
+        const triggerEl = this.getTriggerEl(referenceEl);
 
         // 绑定事件
         const offEvents = this.offEvents = [];
@@ -100,9 +109,9 @@ export default {
             offEvents.push(event.on(document.body, 'mousemove', this.onMouseMove));
         let timer = null;
         if (this.trigger === 'click')
-            offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
+            offEvents.push(event.on(triggerEl, 'click', () => this.toggle()));
         else if (this.trigger === 'hover') {
-            offEvents.push(event.on(referenceEl, 'mouseenter', (e) => {
+            offEvents.push(event.on(triggerEl, 'mouseenter', (e) => {
                 clearTimeout(timer);
                 timer = null;
                 setTimeout(() => {
@@ -119,20 +128,20 @@ export default {
             }
             offEvents.push(event.on(document, 'mouseover', (e) => {
                 // !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
-                if (this.currentOpen && !timer && !referenceEl.contains(e.target) && !popperEl.contains(e.target))
+                if (this.currentOpen && !timer && !triggerEl.contains(e.target) && !popperEl.contains(e.target))
                     timer = setTimeout(() => this.toggle(false), this.hideDelay);
             }));
         } else if (this.trigger === 'double-click')
-            offEvents.push(event.on(referenceEl, 'dblclick', () => this.toggle()));
+            offEvents.push(event.on(triggerEl, 'dblclick', () => this.toggle()));
         else if (this.trigger === 'right-click') {
-            offEvents.push(event.on(referenceEl, 'contextmenu', (e) => {
+            offEvents.push(event.on(triggerEl, 'contextmenu', (e) => {
                 e.preventDefault();
                 this.toggle();
             }));
         }
         // @TODO: 有没有必要搞 focus-in
         offEvents.push(event.on(document, 'mousedown', (e) => {
-            !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+            !triggerEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
         }));
 
         this.currentOpen && this.createPopper();
@@ -168,8 +177,22 @@ export default {
 
             return options;
         },
+        getReferenceEl() {
+            if (this.reference === 'parent')
+                return this.$el.parentElement;
+            else
+                return this.reference || this.$el;
+        },
+        getTriggerEl(referenceEl) {
+            if (this.triggerElement === 'reference')
+                return referenceEl;
+            else if (this.triggerElement instanceof HTMLElement)
+                return this.triggerElement;
+            else if (this.triggerElement instanceof Function)
+                return this.triggerElement(referenceEl);
+        },
         createPopper() {
-            const referenceEl = this.reference || this.$el;
+            const referenceEl = this.getReferenceEl();
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 document.body.appendChild(popperEl);
@@ -186,7 +209,7 @@ export default {
             this.popper && this.popper.update();
         },
         destroyPopper() {
-            const referenceEl = this.reference || this.$el;
+            const referenceEl = this.getReferenceEl();
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 popperEl.parentElement === document.body && document.body.removeChild(popperEl);
@@ -226,7 +249,7 @@ export default {
             // @TODO: 支持其它 trigger 的情况
             // @TODO: 两种 offset 属性有些冗余
 
-            const referenceEl = this.reference || this.$el;
+            const referenceEl = this.getReferenceEl();
             if (!(e.target === referenceEl && this.popper))
                 return;
 

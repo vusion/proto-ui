@@ -16,6 +16,17 @@
 </u-linear-layout>
 ```
 
+<!--
+#### 下一版的书写方式
+
+`-`-` html
+
+<u-button>
+    使用属性
+    <u-tooltip reference="parent" content="使用 content 属性比较方便"></u-tooltip>
+</u-button>
+`-`-` -->
+
 ### 触发方式
 
 ``` html
