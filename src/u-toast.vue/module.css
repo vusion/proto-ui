@@ -3,7 +3,7 @@ $margin: 30px;
 .root {
     position: fixed;
     z-index: $z-index-toast;
-    top: $margin;
+    top: 90px;
     left: $margin;
     width: 300px;
 }
@@ -29,7 +29,7 @@ $margin: 30px;
 }
 
 .root[position='top-left'], .root[position='top-center'], .root[position='top-right'] {
-    top: $margin;
+    top: 90px;
     bottom: auto;
 }
 

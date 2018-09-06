@@ -161,6 +161,35 @@
 </u-grid-layout>
 ```
 
+### 颜色扩展
+
+``` html
+<u-grid-layout>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <u-sidebar style="width: 200px;">
+                <u-sidebar-item>指南</u-sidebar-item>
+                <u-sidebar-item>概念</u-sidebar-item>
+                <u-sidebar-item>配置</u-sidebar-item>
+                <u-sidebar-divider></u-sidebar-divider>
+                <u-sidebar-item to="/proto-ui">组件</u-sidebar-item>
+                <u-sidebar-item to="/libraries">组件库</u-sidebar-item>
+            </u-sidebar>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <u-sidebar style="width: 200px;" color="inverse">
+                <u-sidebar-item>指南</u-sidebar-item>
+                <u-sidebar-item>概念</u-sidebar-item>
+                <u-sidebar-item>配置</u-sidebar-item>
+                <u-sidebar-divider></u-sidebar-divider>
+                <u-sidebar-item to="/proto-ui">组件</u-sidebar-item>
+                <u-sidebar-item to="/libraries">组件库</u-sidebar-item>
+            </u-sidebar>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
+</u-grid-layout>
+```
+
 ## Sidebar API
 ### Props/Attrs
 
