@@ -33,6 +33,8 @@ export default {
         upload() {
             if (this.disabled || this.sending)
                 return;
+
+            this.$refs.file.value = '';
             this.$refs.file.click();
         },
         /**
