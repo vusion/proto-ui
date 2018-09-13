@@ -23,6 +23,7 @@
     padding: 0 12px;
     height: $height-base;
     line-height: calc($height-base - $border-width-base * 2);
+    /* stylelint-disable declaration-block-no-duplicate-properties */
     background: white;
     color: $color-base;
     border: $border-width-base solid $border-color-base;
@@ -52,6 +53,11 @@
 
     /* @Public */
     background: white;
-    border-color: $brand-disabled;
+    border-color: $border-color-base;
     color: $brand-disabled;
+}
+
+.root[display="block"] {
+    display: block;
+    width: auto;
 }

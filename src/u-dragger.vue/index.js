@@ -4,7 +4,7 @@ import manager from '../u-draggable.vue/manager';
 
 export default {
     name: 'u-dragger',
-    mixins: [Draggable],
+    extends: Draggable,
     props: {
         axis: { type: String, default: 'both', validator: (value) => ['both', 'horizontal', 'vertical'].includes(value) },
         grid: { type: Object, default: () => ({ x: 0, y: 0 }) },

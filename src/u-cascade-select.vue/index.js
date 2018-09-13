@@ -80,8 +80,6 @@ export default {
     watch: {
         data(data, oldData) {
             // @TODO: 该不该用 map 来查找 value
-            if (data === oldData)
-                return;
 
             this.lists = [];
             this.values = this.currentConverter.set(this.value);

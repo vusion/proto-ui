@@ -13,7 +13,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit; /* 1 */
+    box-sizing: inherit; /* 1 */
 }
 
 /**

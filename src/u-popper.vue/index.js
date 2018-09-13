@@ -2,18 +2,24 @@ import Vue from 'vue';
 import Popper from '@vusion/popper.js';
 import event from '../base/utils/event';
 
+/**
+ * @TODO: <u-popper> 套在外面的书写方式往往会影响原有模板结构，考虑一个 break change，
+ * 将 <u-popper> 插入到父节点内部
+ */
 export default {
     name: 'u-popper',
     props: {
         open: { type: Boolean, default: false },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
+        triggerElement: { type: [String, HTMLElement, Function], default: 'reference' },
         placement: {
             type: String, default: 'bottom-start',
             validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
         },
-        reference: HTMLElement,
-        offset: { type: Number, default: 0 },
+        reference: [String, HTMLElement],
+        offset: { type: [Number, String], default: 0 },
         hoverDelay: { type: Number, default: 0 },
+        hideDelay: { type: Number, default: 0 },
         appendTo: { type: String, default: 'body', validator: (value) => ['body', 'reference'].includes(value) },
         boundariesElement: { default: 'window' },
         escapeWithReference: { type: Boolean, default: true },
@@ -27,11 +33,43 @@ export default {
             },
         },
         disabled: { type: Boolean, default: false },
+        followCursor: { type: [Boolean, Number, Object], default: false },
     },
     data() {
         return {
             currentOpen: this.open,
+            // popper: undefined,
+            // 在出现滚动条的时候 需要特殊处理下
+            mouseEnterEvent: {},
         };
+    },
+    computed: {
+        currentFollowCursor() {
+            if (typeof this.followCursor === 'object')
+                return this.followCursor;
+            else {
+                let followCursor;
+                if (typeof this.followCursor === 'boolean')
+                    followCursor = { offsetX: 10, offsetY: 10 };
+                else if (typeof this.followCursor === 'number')
+                    followCursor = { offsetX: this.followCursor, offsetY: this.followCursor };
+
+                if (this.placement.startsWith('top'))
+                    followCursor.offsetY = -followCursor.offsetY;
+                if (this.placement.startsWith('left'))
+                    followCursor.offsetX = -followCursor.offsetX;
+                if (this.placement === 'top' || this.placement === 'bottom')
+                    followCursor.offsetX = 0;
+                if (this.placement === 'top-end' || this.placement === 'bottom-end')
+                    followCursor.offsetX = -followCursor.offsetX;
+                if (this.placement === 'left' || this.placement === 'right')
+                    followCursor.offsetY = 0;
+                if (this.placement === 'left-end' || this.placement === 'right-end')
+                    followCursor.offsetY = -followCursor.offsetY;
+
+                return followCursor;
+            }
+        },
     },
     watch: {
         open(value) {
@@ -42,7 +80,10 @@ export default {
             value ? this.createPopper() : this.destroyPopper();
         },
     },
-    render() {
+    render(h) {
+        if (this.reference === 'parent')
+            return h('div', { style: { display: 'none' } });
+
         return this.$slots.default && this.$slots.default[0];
     },
     mounted() {
@@ -58,30 +99,49 @@ export default {
         this.childVM.parentVM = parentVM;
         this.childVM.$mount();
 
-        const referenceEl = this.reference || this.$el;
+        const referenceEl = this.getReferenceEl();
         const popperEl = this.childVM.$el;
+        const triggerEl = this.getTriggerEl(referenceEl);
 
         // 绑定事件
         const offEvents = this.offEvents = [];
+        if (this.followCursor)
+            offEvents.push(event.on(document.body, 'mousemove', this.onMouseMove));
+        let timer = null;
         if (this.trigger === 'click')
-            offEvents.push(event.on(referenceEl, 'click', () => this.toggle()));
+            offEvents.push(event.on(triggerEl, 'click', () => this.toggle()));
         else if (this.trigger === 'hover') {
-            offEvents.push(event.on(referenceEl, 'mouseenter', () => {
-                setTimeout(() => this.toggle(true), this.hoverDelay);
+            offEvents.push(event.on(triggerEl, 'mouseenter', (e) => {
+                clearTimeout(timer);
+                timer = null;
+                setTimeout(() => {
+                    this.toggle(true);
+                    // 页面有滚动条的时候，会出现滚动到 reference 的元素上。这时会触发 mouseenter 事件，需要重新设置 reference 的位置。
+                    this.mouseEnterEvent = e;
+                }, this.hoverDelay);
             }));
+            if (this.hideDelay) {
+                offEvents.push(event.on(popperEl, 'mouseenter', () => {
+                    clearTimeout(timer);
+                    timer = null;
+                }));
+            }
             offEvents.push(event.on(document, 'mouseover', (e) => {
-                !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+                // !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+                if (this.currentOpen && !timer && !triggerEl.contains(e.target) && !popperEl.contains(e.target))
+                    timer = setTimeout(() => this.toggle(false), this.hideDelay);
             }));
         } else if (this.trigger === 'double-click')
-            offEvents.push(event.on(referenceEl, 'dblclick', () => this.toggle()));
+            offEvents.push(event.on(triggerEl, 'dblclick', () => this.toggle()));
         else if (this.trigger === 'right-click') {
-            offEvents.push(event.on(referenceEl, 'contextmenu', (e) => {
+            offEvents.push(event.on(triggerEl, 'contextmenu', (e) => {
                 e.preventDefault();
                 this.toggle();
             }));
         }
+        // @TODO: 有没有必要搞 focus-in
         offEvents.push(event.on(document, 'mousedown', (e) => {
-            !referenceEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+            !triggerEl.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
         }));
 
         this.currentOpen && this.createPopper();
@@ -103,7 +163,13 @@ export default {
                 placement: this.placement,
             });
 
-            options.modifiers.offset = this.offset;
+            // 自定义options 传入offset值情况
+            if (!options.modifiers.offset && this.offset) {
+                options.modifiers.offset = {
+                    offset: this.offset,
+                };
+            }
+
             options.escapeWithReference = this.escapeWithReference;
 
             options.modifiers.arrow = { element: this.arrowElement };
@@ -111,8 +177,22 @@ export default {
 
             return options;
         },
+        getReferenceEl() {
+            if (this.reference === 'parent')
+                return this.$el.parentElement;
+            else
+                return this.reference || this.$el;
+        },
+        getTriggerEl(referenceEl) {
+            if (this.triggerElement === 'reference')
+                return referenceEl;
+            else if (this.triggerElement instanceof HTMLElement)
+                return this.triggerElement;
+            else if (this.triggerElement instanceof Function)
+                return this.triggerElement(referenceEl);
+        },
         createPopper() {
-            const referenceEl = this.reference || this.$el;
+            const referenceEl = this.getReferenceEl();
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 document.body.appendChild(popperEl);
@@ -121,12 +201,15 @@ export default {
 
             const options = this.getOptions();
             this.popper = new Popper(referenceEl, popperEl, options);
+            // 特殊处理滚动条的情况
+            if (this.followCursor)
+                this.onMouseMove(this.mouseEnterEvent);
         },
         update() {
             this.popper && this.popper.update();
         },
         destroyPopper() {
-            const referenceEl = this.reference || this.$el;
+            const referenceEl = this.getReferenceEl();
             const popperEl = this.childVM.$el;
             if (this.appendTo === 'body')
                 popperEl.parentElement === document.body && document.body.removeChild(popperEl);
@@ -161,6 +244,34 @@ export default {
             this.$emit('toggle', {
                 open,
             });
+        },
+        onMouseMove(e) {
+            // @TODO: 支持其它 trigger 的情况
+            // @TODO: 两种 offset 属性有些冗余
+
+            const referenceEl = this.getReferenceEl();
+            if (!(e.target === referenceEl && this.popper))
+                return;
+
+            const top = e.clientY + this.currentFollowCursor.offsetY;
+            const left = e.clientX + this.currentFollowCursor.offsetX;
+            const right = e.clientX + this.currentFollowCursor.offsetX;
+            const bottom = e.clientY + this.currentFollowCursor.offsetY;
+
+            this.popper.reference = {
+                getBoundingClientRect: () => ({
+                    width: 0,
+                    height: 0,
+                    top,
+                    left,
+                    right,
+                    bottom,
+                }),
+                clientWidth: 0,
+                clientHeight: 0,
+            };
+            this.popper.scheduleUpdate();
+            // });
         },
     },
 };

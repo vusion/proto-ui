@@ -1,9 +1,9 @@
-import Single from '../u-single.vue';
+import SingleChoices from '../u-single-choices.vue';
 
 export default {
     name: 'u-tabs',
     childName: 'u-tab',
-    mixins: [Single],
+    extends: SingleChoices,
     props: {
         autoSelect: { type: Boolean, default: true },
         closable: { type: Boolean, default: false },

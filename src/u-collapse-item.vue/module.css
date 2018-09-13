@@ -25,11 +25,11 @@
     text-align: center;
 }
 
-.expander:before {
+.expander::before {
     content: '▸';
 }
 
-.expander[expanded]:before {
+.expander[expanded]::before {
     content: '▾';
 }
 

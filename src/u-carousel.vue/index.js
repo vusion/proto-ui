@@ -1,9 +1,9 @@
-import Single from '../u-single.vue';
+import SingleChoices from '../u-single-choices.vue';
 
 export default {
     name: 'u-carousel',
     childName: 'u-carousel-item',
-    mixins: [Single],
+    extends: SingleChoices,
     props: {
         autoSelect: { type: Boolean, default: true },
         value: null,

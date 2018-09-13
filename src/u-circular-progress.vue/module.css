@@ -4,7 +4,6 @@ $font-size-base: 18px;
 .root {
     display: inline-block;
     position: relative;
-
     width: $size-base;
     height: $size-base;
 }
@@ -17,14 +16,12 @@ $font-size-base: 18px;
 .track {
     fill: none;
     stroke-width: 6px;
-
     stroke: #eee;
 }
 
 .trail {
     fill: none;
     stroke-width: 6px;
-
     stroke: $brand-primary;
     transition: stroke 0.6s ease, stroke-dasharray 0.6s ease;
 }

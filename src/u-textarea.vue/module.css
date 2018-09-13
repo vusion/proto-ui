@@ -1,36 +1,35 @@
+@import '../u-input.vue/module.css';
+
 .root {
-    display: inline-block;
-    position: relative;
     width: 320px;
     height: 120px;
-    background: white;
-    border-radius: 0;
+    min-width: $width-base;
+    min-height: $height-base;
+    padding: 4px 8px;
+    line-height: inherit;
 }
 
 .input {
-    margin: 0;
-    padding: 4px 8px;
-    border: 1px solid $border-color-base;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    font: inherit;
-    color: inherit;
-    border-radius: inherit;
-    line-height: inherit;
-    resize: vertical;
+    resize: none;
 }
 
-.input:focus {
-    outline: $focus-outline;
-    border-color: $brand-primary;
+.handle {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
+    cursor: default;
 }
 
-.input[color="error"] {
-    border-color: $brand-error;
-}
-
-.input[disabled] {
-    cursor: $cursor-not-allowed;
-    background: $gray-lighter;
+.handle::before {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 12px;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    transform: rotate(-45deg) translate(-2px, 2px);
 }

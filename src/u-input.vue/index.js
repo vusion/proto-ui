@@ -6,9 +6,12 @@ export default {
     props: {
         value: { type: [String, Number] },
         color: { type: String },
+        readonly: { type: Boolean, default: false },
+        disabled: { type: Boolean, default: false },
     },
     data() {
         return {
+            focused: false,
             currentValue: this.value,
             currentColor: this.color,
             compositionInputing: false,
@@ -43,9 +46,11 @@ export default {
             }
         },
         onFocus(e) {
+            this.focused = true;
             this.$emit('focus', e);
         },
         onBlur(e) {
+            this.focused = false;
             this.$emit('blur', e);
         },
         onCompositionEnd(e) {
@@ -60,7 +65,7 @@ export default {
             this.$refs.input.focus();
         },
         blur() {
-            this.$refs.blur.blur();
+            this.$refs.input.blur();
         },
     },
 };

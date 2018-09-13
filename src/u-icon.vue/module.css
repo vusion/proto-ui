@@ -1,17 +1,17 @@
 .root {}
 
-.root[name="arrow-up"]:before {
+.root[name="arrow-up"]::before {
     icon-font: url('./assets/arrow-up.svg');
 }
 
-.root[name="arrow-down"]:before {
+.root[name="arrow-down"]::before {
     icon-font: url('./assets/arrow-down.svg');
 }
 
-.root[name="arrow-left"]:before {
+.root[name="arrow-left"]::before {
     icon-font: url('./assets/arrow-left.svg');
 }
 
-.root[name="arrow-right"]:before {
+.root[name="arrow-right"]::before {
     icon-font: url('./assets/arrow-right.svg');
 }

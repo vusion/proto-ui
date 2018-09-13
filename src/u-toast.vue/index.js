@@ -72,6 +72,18 @@ const Toast = {
         closeAll() {
             this.items = [];
         },
+        success(message, duration) {
+            this.show(message, duration, 'success');
+        },
+        warning(message, duration) {
+            this.show(message, duration, 'warning');
+        },
+        info(message, duration) {
+            this.show(message, duration, 'info');
+        },
+        error(message, duration) {
+            this.show(message, duration, 'error');
+        },
     },
 };
 
@@ -80,8 +92,10 @@ Vue.nextTick(() => {
     if (!Ctor)
         return;
 
-    const toast = Toast.toast = new Ctor();
-    Vue.prototype.$toast = toast;
+    Vue.prototype.$toast = Toast.toast = new Ctor();
+
+    const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
+    METHODS.forEach((method) => Toast[method] = Toast.toast[method].bind(Toast.toast));
 });
 
 export default Toast;

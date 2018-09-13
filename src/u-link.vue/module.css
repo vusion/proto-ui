@@ -11,3 +11,7 @@
     color: $brand-disabled;
     text-decoration: none;
 }
+
+.root[display="block"] {
+    display: block;
+}

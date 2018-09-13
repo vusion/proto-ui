@@ -1,4 +1,15 @@
-.root[inline] {
+/* 默认为 block */
+.root[display="inline"], .root[inline] {
+    display: inline-block;
+}
+
+/* @trap: 不能自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
+ * 用一个属性来添加是否使用`block`
+ */
+.root[layout="block"] > * {
+    display: block;
+}
+.root[layout="inline"] > * {
     display: inline-block;
 }
 
@@ -40,14 +51,6 @@
     margin-bottom: $margin-large;
 }
 
-/* @TRAP: 不自动添加`display: block`了，因为`display`有好多种如`table``flex``grid`，有覆盖掉的风险。
- * 用户添加时需自行判断自己的组件是否为`block`类型
- */
-/* .root[direction="vertical"] > * {
-    display: block;
-} */
-
-
 /* @deprecated */
 .root[alignment="left"] { text-align: left; }
 .root[alignment="center"] { text-align: center; }
@@ -59,7 +62,8 @@
 .root[justify="end"] { text-align: right; }
 .root[justify="space-between"] > *:first-child { float: left; }
 .root[justify="space-between"] > *:last-child { float: right; }
-.root[justify="space-between"]:after { display: block; content: ''; clear: both; }
+/* stylelint-disable-next-line declaration-block-single-line-max-declarations */
+.root[justify="space-between"]::after { display: block; content: ''; clear: both; }
 
 .root[type="flex"] { display: flex; text-align: inherit; }
 
@@ -69,7 +73,7 @@
 .root[type="flex"][justify="center"] { justify-content: center; }
 .root[type="flex"][justify="end"] { justify-content: flex-end; }
 .root[type="flex"][justify="space-between"] { justify-content: space-between; }
-.root[type="flex"][justify="space-between"]:after { display: none; }
+.root[type="flex"][justify="space-between"]::after { display: none; }
 .root[type="flex"][justify="space-around"] { justify-content: space-around; }
 
 .root[type="flex"][alignment="start"] { align-items: flex-start; }

@@ -199,7 +199,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -379,7 +379,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -443,7 +443,7 @@ export default {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -502,17 +502,18 @@ export default {
     mounted() {
         // 必须初始化时或在获取数据到时安静验证一次
         this.$refs.form.validate(true)
-            .catch(() => {});
+            .catch(() => { /* noop */ });
+
         // 在获取数据到时如下
         // this.getData().then(...)
         //  .then(() => this.$refs.form.validate(true))
-        //  .catch(() => {});
+        //  .catch(() => { /* noop */ });
     },
     methods: {
         submit() {
             this.$refs.form.validate()
                 .then(() => alert('提交成功'))
-                .catch(() => {});
+                .catch(() => { /* noop */ });
         },
     },
 };
@@ -555,6 +556,15 @@ export default {
 | ----- | ---- | ------- | ----------- |
 | silent | Boolean | `false` | 是否仅验证无提示。 |
 
+#### validateItem(name, trigger, slient)
+
+验证表单中的某一项。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| name | String | | 表单项的 name |
+| trigger | String | `submit` | 触发方式，可选值：`submit`、`blur`和`input`之一，或者它们的任意组合。 |
+| silent | Boolean | `false` | 是否仅验证无提示。 |
 
 ## FormItem API
 ### Props/Attrs

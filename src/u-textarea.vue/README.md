@@ -17,6 +17,16 @@
     <u-textarea value="禁用" disabled></u-textarea>
 </u-linear-layout>
 ```
+### 调整大小
+
+``` html
+<u-linear-layout direction="vertical">
+    <div><u-textarea value="none" resize="none"></u-textarea></div>
+    <div><u-textarea value="vertical（默认）" resize="vertical"></u-textarea></div>
+    <div><u-textarea value="horizontal" resize="horizontal"></u-textarea></div>
+    <div><u-textarea value="both" resize="both"></u-textarea></div>
+</u-linear-layout>
+```
 
 ## API
 ### Props/Attrs
@@ -28,8 +38,9 @@
 | minlength | Number | | 原生属性 |
 | maxlength | Number | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
-| readonly | Boolean | | 原生属性 |
-| disabled | Boolean | | 原生属性 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
+| resize | String | `'none'` | 是否可以调整大小。可选值：`'none'`、`'both'`、`'horizontal'`、`'vertical'` |
 
 <!-- | autosize | String | `'none'` | 自适应内容宽高。可选值：`none`、`both`、`horizontal`、`vertical` | -->
 

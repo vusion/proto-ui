@@ -1,9 +1,9 @@
-import ListView from '../u-list-view.vue';
+import SingleChoices from '../u-single-choices.vue';
 
 export default {
     name: 'u-navbar',
     childName: 'u-navbar-item',
-    mixins: [ListView],
+    extends: SingleChoices,
     props: {
         router: { type: Boolean, default: true },
     },

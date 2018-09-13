@@ -1,0 +1,89 @@
+.root {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $z-index-modal;
+    -webkit-overflow-scrolling: touch;
+    touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+    overflow: hidden;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.root::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.root:focus {
+    outline: none;
+}
+
+.drawer {
+    float: left;
+    width: 240px;
+    height: 100%;
+    background: white;
+}
+
+.root[placement="right"] .drawer {
+    float: right;
+}
+
+.drawer[size="small"] {
+    width: 160px;
+}
+
+.drawer[size="large"] {
+    width: 400px;
+}
+
+.drawer[size="auto"] {
+    width: auto;
+}
+
+.head {
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid $gray-lightest;
+}
+
+.title {
+    margin: 0;
+    font-size: 14px;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: $gray-light;
+}
+
+.close::before {
+    content: '×';
+    font-size: 24px;
+    line-height: 0.8;
+}
+
+.close:hover {
+    color: $gray-dark;
+}
+
+.body {
+    padding: 15px;
+}
+
+.foot {
+    text-align: center;
+    padding: 20px 15px;
+}
+
+.root[static] {
+    position: static;
+    padding: $margin-base;
+}

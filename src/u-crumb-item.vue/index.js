@@ -1,22 +1,17 @@
+import Link from '../u-link.vue';
 import Emitter from '../u-emitter.vue';
 
 export default {
-    name: 'u-single-item',
-    parentName: 'u-single',
-    mixins: [Emitter],
+    name: 'u-crumb-item',
+    parentName: 'u-crumb',
+    mixins: [Link, Emitter],
     props: {
-        value: null,
         disabled: { type: Boolean, default: false },
     },
     data() {
         return {
             parentVM: undefined,
         };
-    },
-    computed: {
-        selected() {
-            return this.parentVM.selectedVM === this;
-        },
     },
     created() {
         this.dispatch(this.$options.parentName, 'add-item-vm', this);

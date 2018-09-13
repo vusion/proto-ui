@@ -18,8 +18,8 @@ export default {
         change() {
             this.className = this.className === 'test' ? 'test2' : 'test';
             this.width = this.width === '60px' ? '120px' : '60px';
-        }
-    }
+        },
+    },
 };
 </script>
 <style module>

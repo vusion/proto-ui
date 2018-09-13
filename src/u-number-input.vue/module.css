@@ -2,7 +2,7 @@
 
 .button {
     position: absolute;
-    right: 2px;
+    right: 1px;
     height: 14px;
     line-height: 14px;
     padding: 0 4px;
@@ -23,18 +23,18 @@
 }
 
 .button[role="up"] {
-    top: 2px;
+    top: 1px;
 }
 
-.button[role="up"]:before {
+.button[role="up"]::before {
     icon-font: url('../u-icon.vue/assets/arrow-up.svg');
 }
 
 .button[role="down"] {
-    bottom: 2px;
+    bottom: 1px;
 }
 
-.button[role="down"]:before {
+.button[role="down"]::before {
     icon-font: url('../u-icon.vue/assets/arrow-down.svg');
 }
 

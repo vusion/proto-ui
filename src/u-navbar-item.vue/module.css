@@ -5,9 +5,9 @@
     cursor: $cursor-pointer;
     text-align: center;
     font-size: 16px;
-    padding: 0 4px;
-    height: 60px;
-    line-height: 60px;
+    padding: 0 10px;
+    height: $navbar-height;
+    line-height: $navbar-height;
 }
 
 .root + .root {

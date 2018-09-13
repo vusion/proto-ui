@@ -321,7 +321,7 @@ export default {
                     { text: '节点1.1', expanded: false, checked: false },
                     { text: '节点1.2', expanded: true, checked: false, children: [
                         { text: '节点1.2.1', expanded: false, checked: false },
-                        { text: '节点1.2.2', expanded: false, checked: false }
+                        { text: '节点1.2.2', expanded: false, checked: false },
                     ] },
                     { text: '节点1.3', expanded: false, checked: false },
                     { text: '节点1.4', expanded: false, checked: false },
@@ -360,7 +360,7 @@ export default {
                     { text: '节点1.1', expanded: false, checked: false },
                     { text: '节点1.2', expanded: true, checked: false, children: [
                         { text: '节点1.2.1', expanded: false, checked: false },
-                        { text: '节点1.2.2', expanded: false, checked: false }
+                        { text: '节点1.2.2', expanded: false, checked: false },
                     ] },
                     { text: '节点1.3', expanded: false, checked: false },
                     { text: '节点1.4', expanded: false, checked: false },
@@ -376,7 +376,7 @@ export default {
         },
         toggleAll(expanded) {
             this.$refs.treeView.toggleAll(expanded);
-        }
+        },
     },
 };
 </script>
@@ -501,7 +501,7 @@ export default {
 
 #### (default)
 
-插入文本或HTML。
+插入文本或 HTML。
 
 ### Events
 

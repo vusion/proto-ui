@@ -1,5 +1,9 @@
 .root {}
 
+.root[display="block"] {
+    display: block;
+}
+
 .root[size="small"] {
     font-size: 12px;
 }

@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash/cloneDeep';
 export default {
     name: 'u-form',
     props: {
@@ -11,6 +12,7 @@ export default {
             // @TODO: Optimize
             state: '',
             itemVMs: [],
+            comparedModel: null,
         };
     },
     created() {
@@ -29,14 +31,33 @@ export default {
             });
         });
     },
+    watch: {
+        model: {
+            handler(val) {
+                if (this.comparedModel) {
+                    // @TODO: 考虑到 @change 事件是基于子组件的 @change 事件的，所以 @modify 命名分开
+                    this.$emit('modify', {
+                        modified: this.deepCompare(val, this.comparedModel),
+                    });
+                }
+            },
+            deep: true,
+        },
+    },
     methods: {
         validate(silent = false) {
             return Promise.all(this.itemVMs.map((itemVM) => itemVM.validate('submit', silent)
                 .catch((errors) => errors)
             )).then((results) => {
                 if (results.some((result) => !!result))
-                    throw new Error(results);
+                    throw results;
             });
+        },
+        validateItem(name, trigger = 'submit', silent = false) {
+            const itemVM = this.itemVMs.find((itemVM) => itemVM.name === name);
+            if (!itemVM)
+                return;
+            itemVM.validate(trigger, silent);
         },
         getState() {
             const STATE_LEVEL = {
@@ -54,6 +75,20 @@ export default {
             });
 
             return state;
+        },
+        record() {
+            this.comparedModel = cloneDeep(this.model);
+        },
+        deepCompare(o = {}, compare) {
+            if (!compare)
+                return false;
+            if (typeof o === 'object' && o !== null) {
+                if (Array.isArray(o))
+                    return o.length !== compare.length || o.some((m, i) => this.deepCompare(m, compare[i]));
+                else
+                    return Object.keys(o).some((key) => this.deepCompare(o[key], compare[key]));
+            } else
+                return o !== compare;
         },
     },
 };

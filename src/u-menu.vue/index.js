@@ -1,10 +1,10 @@
-import ListView from '../u-list-view.vue';
+import SingleChoices from '../u-single-choices.vue';
 
 export default {
     name: 'u-menu',
     groupName: 'u-menu-group',
     childName: 'u-menu-item',
-    mixins: [ListView],
+    extends: SingleChoices,
     props: {
         router: { type: Boolean, default: true },
     },

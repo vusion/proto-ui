@@ -24,7 +24,7 @@
 ### 隐藏空列表
 
 ``` html
-<u-region-select empty-hidden :categories="[
+<u-region-select hide-empty :categories="[
     { label: '省', placeholder: '请选择省份' },
     { label: '市', placeholder: '请选择城市' },
     { label: '区', placeholder: '请选择县区' },

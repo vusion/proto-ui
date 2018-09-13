@@ -11,14 +11,19 @@
     max-width: 100%;
 }
 
+.root:focus {
+    outline: none;
+    border-color: $brand-primary;
+}
+
 /* 控制对齐基线 */
-.root:before {
+.root::before {
     content: '\3000';
     letter-spacing: -20px;
     line-height: 30px;
 }
 
-.root:after {
+.root::after {
     position: absolute;
     content: '▾';
     right: 10px;
@@ -41,10 +46,17 @@
 }
 
 .popper {
-    width: $width-base;
+    position: absolute;
+    box-sizing: content-box;
+    width: 100%;
     max-height: 180px;
     overflow: auto;
     background: white;
     border: 1px solid $border-color-base;
-    z-index: 1050;
+    z-index: $z-index-popper;
+}
+
+.status {
+    color: $gray-dark;
+    text-align: center;
 }

@@ -1,4 +1,6 @@
 import Field from '../u-field.vue';
+import DataSource from '../base/utils/DataSource';
+import debounce from 'lodash/debounce';
 
 export default {
     name: 'u-list-view',
@@ -6,9 +8,10 @@ export default {
     childName: 'u-list-view-item',
     mixins: [Field],
     props: {
-        data: Array,
         value: null,
         field: { type: String, default: 'text' },
+        data: Array,
+        dataSource: [DataSource, Function],
         cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
         collapsible: { type: Boolean, default: false },
@@ -16,6 +19,7 @@ export default {
         expandTrigger: { type: String, default: 'click' },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        loadingText: { type: String, default: '加载中...' },
     },
     data() {
         return {
@@ -23,9 +27,14 @@ export default {
             groupVMs: [],
             itemVMs: [],
             selectedVM: undefined,
+            currentData: this.data,
+            loading: false,
         };
     },
     watch: {
+        data(data) {
+            this.currentData = data;
+        },
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value, oldValue) {
@@ -44,8 +53,10 @@ export default {
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
+            // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
+            const value = this.selectedVM ? this.selectedVM.value : this.value;
             this.selectedVM = undefined;
-            this.watchValue(this.value);
+            this.watchValue(value);
         },
     },
     created() {
@@ -65,6 +76,8 @@ export default {
             itemVM.parentVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
+        this.debouncedFetchData = debounce(this.fetchData, 100);
+        this.dataSource && this.debouncedFetchData();
     },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
@@ -136,6 +149,60 @@ export default {
                 });
             }
         },
+        shift(count) {
+            let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            if (count > 0) {
+                for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            } else if (count < 0) {
+                if (selectedIndex === -1)
+                    selectedIndex = this.itemVMs.length;
+                for (let i = selectedIndex + count; i >= 0; i--) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        });
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            }
+        },
+        ensureSelectedInView(natural) {
+            if (!this.selectedVM)
+                return;
+
+            const selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            const selectedEl = this.selectedVM.$el;
+            const parentEl = selectedEl.parentElement;
+            if (parentEl.scrollTop < selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight) {
+                if (natural)
+                    parentEl.scrollTop = selectedEl.offsetTop - selectedEl.offsetHeight;
+                else
+                    parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
+                if (selectedIndex === this.itemVMs.length - 1) {
+                    this.dataSource && this.debouncedFetchData();
+                    setTimeout(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight, 200);
+                }
+            }
+            if (parentEl.scrollTop > selectedEl.offsetTop)
+                parentEl.scrollTop = selectedEl.offsetTop;
+        },
         onToggle(groupVM, expanded) {
             this.$emit('toggle', {
                 expanded,
@@ -144,6 +211,38 @@ export default {
         },
         toggleAll(expanded) {
             this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));
+        },
+        fetchData() {
+            if (!this.dataSource)
+                return;
+            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
+                fetch: this.dataSource,
+            };
+
+            this.loading = true;
+            const result = dataSource.fetch({
+                // @TODO: 要不要设置 limit 属性
+                offset: this.currentData ? this.currentData.length : 0,
+            });
+            const then = (data) => {
+                this.loading = false;
+                this.currentData = data;
+            };
+
+            if (result instanceof Promise)
+                return result.then(then).catch(() => this.loading = false);
+            else if (result instanceof Array)
+                then(result);
+            else
+                throw new TypeError('Wrong type of `dataSource.fetch` result!');
+        },
+        onScroll(e) {
+            if (!this.dataSource)
+                return;
+
+            const el = e.target;
+            if (el.scrollHeight === el.scrollTop + el.clientHeight)
+                this.debouncedFetchData();
         },
     },
 };

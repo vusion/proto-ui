@@ -42,7 +42,7 @@
     background: white;
 }
 
-.close:before {
+.close::before {
     display: inline-block;
     content: '✕';
 }

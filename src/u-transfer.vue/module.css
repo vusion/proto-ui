@@ -1,0 +1,63 @@
+.listView[class] {
+    display: inline-block;
+    width: $width-base;
+    height: 182px;
+}
+
+.buttons {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    margin-top: 54px;
+}
+
+.button {
+    display: block;
+    text-align: center;
+    width: $height-base;
+    height: $height-base;
+    line-height: calc($height-base - $border-width-base * 2);
+    background: white;
+    color: $color-base;
+    border: $border-width-base solid $border-color-base;
+}
+
+.button:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    /* Required for `a` elements */
+    text-decoration: none;
+    color: $brand-primary;
+    border-color: $brand-primary;
+}
+
+.button:focus {
+    /* Remove default focus style */
+    outline: $focus-outline;
+    /* Required for `a` elements */
+    text-decoration: none;
+}
+
+.button:active {
+    background: $background-color-base;
+}
+
+.button[disabled] {
+    /* @Private */
+    cursor: $cursor-not-allowed;
+
+    /* @Public */
+    background: white;
+    border-color: $brand-disabled;
+    color: $brand-disabled;
+}
+
+.button[role="reverse"]::before {
+    content: '❮';
+}
+
+.button[role="forward"]::after {
+    content: '❯';
+}

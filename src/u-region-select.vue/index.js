@@ -3,7 +3,7 @@ import region from './region.json';
 
 export default {
     name: 'u-region-select',
-    mixins: [CascadeSelect],
+    extends: CascadeSelect,
     props: {
         data: { type: Array, default() { return region; } },
         field: { type: String, default: 'value' },

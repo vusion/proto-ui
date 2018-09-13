@@ -87,21 +87,21 @@ export default {
     },
     watch: {
         value(value, oldValue) { // fix-on: blur的情况下，直接在输入框输入，value值blur才变化
-            console.log('value watch: ', value, oldValue);
+            console.info('value watch: ', value, oldValue);
         },
     },
     methods: {
         onChange($event) {
-            console.log('change', $event); // 时间改变触发
+            console.info('change', $event); // 时间改变触发
         },
         onSelect($event) {
-        	console.log('select', $event); // 调整时间触发
+        	console.info('select', $event); // 调整时间触发
         },
         onBeforeSelect($event) {
-        	console.log('before-select', $event);
+        	console.info('before-select', $event);
         },
         onInput($event) { // fix-on: blur的情况下，直接在输入框输入input值随着输入值变化
-        	console.log('input', $event);
+        	console.info('input', $event);
         },
     },
 };

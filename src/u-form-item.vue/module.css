@@ -5,7 +5,7 @@
     padding-right: 5px;
 }
 
-.label[required]:after {
+.label[required]::after {
     content: '*';
     color: $brand-error;
 }

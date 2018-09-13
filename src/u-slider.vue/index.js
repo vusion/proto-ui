@@ -35,6 +35,12 @@ export default {
         range(range) {
             this.currentRange = this.normalizeRange(range);
         },
+        min(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
+        max(value) {
+            this.handleEl.style.left = this.percent + '%';
+        },
     },
     computed: {
         percent: {

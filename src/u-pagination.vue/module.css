@@ -35,11 +35,11 @@ $item_size: 32px;
     color: $brand-disabled;
 }
 
-.item[role="prev"]:before {
+.item[role="prev"]::before {
     content: '‹';
 }
 
-.item[role="next"]:before {
+.item[role="next"]::before {
     content: '›';
 }
 

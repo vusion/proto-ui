@@ -1,0 +1,14 @@
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.root {
+    display: inline-block;
+    animation: spin 1.5s infinite linear;
+}
+
+.root::before {
+    icon-font: url('./assets/spinner.svg');
+    vertical-align: -1px;
+}
