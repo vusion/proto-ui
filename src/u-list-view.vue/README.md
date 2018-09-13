@@ -18,14 +18,14 @@
 
 <!-- #### Data方式
 
-``` html
+`-`-` html
 <u-list-view :data="[
     { text: '水杯' },
     { text: '坚果' },
     { text: '毛巾' },
     { text: '沙发' },
 ]"></u-list-view>
-``` -->
+`-`-` -->
 
 ### 选项值
 
@@ -42,14 +42,14 @@
 
 <!-- #### Data方式
 
-``` html
+`-`-` html
 <u-list-view value="towel" :data="[
     { text: '水杯', value: 'cup' },
     { text: '坚果', value: 'nut' },
     { text: '毛巾', value: 'towel' },
     { text: '沙发', value: 'sofa' },
 ]"></u-list-view>
-``` -->
+`-`-` -->
 
 ### 只读、禁用、禁用某一项
 
@@ -86,7 +86,7 @@
 
 <!-- #### Data方式
 
-``` html
+`-`-` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">
         <u-list-view value="towel" readonly :data="[
@@ -113,7 +113,7 @@
         ]"></u-list-view>
     </u-grid-layout-column>
 </u-grid-layout>
-``` -->
+`-`-` -->
 
 ### 分隔符
 

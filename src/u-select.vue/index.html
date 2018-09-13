@@ -4,7 +4,6 @@
             <u-render :vnode="selectedVM && selectedVM.$slots.default"></u-render>
         </span>
     </div>
-    <!-- 这个地方以后可能要改用render实现 -->
     <ul :class="$style.popper" slot="popper" :size="size" @click.stop>
         <component :is="ChildComponent" v-if="data"
             v-for="item in data"
