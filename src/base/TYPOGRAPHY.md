@@ -1,4 +1,4 @@
-# 排印 Typography
+# 排版 Typography
 
 ## 示例
 ### 标题

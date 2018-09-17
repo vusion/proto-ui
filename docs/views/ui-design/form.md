@@ -619,7 +619,7 @@ export default {
 </style>
 ```
 
-#### 继承Field
+#### 继承 UField
 
 到目前为止，我们仅仅是描述了如何按规范实现了一个表单控件，但还没有与Vusion的表单体系联系在一起。
 
@@ -638,12 +638,12 @@ export default {
 </template>
 
 <script>
-import { Field } from 'library';
+import { UField } from 'library';
 
 export default {
     components: {
         'e-checkbox': {
-            mixins: [Field],
+            extends: UField,
             template: `<div @click="check()">{{ currentValue ? '✓' : '&nbsp;' }}</div>`,
             props: {
                 value: { type: Boolean, default: false },
@@ -709,11 +709,11 @@ export default {
 </template>
 
 <script>
-import { Field } from 'library';
+import { UField } from 'library';
 
 export default {
     name: 'e-checkbox',
-    mixins: [Field],
+    extends: UField,
     props: {
         value: { type: Boolean, default: false },
     },
@@ -897,12 +897,12 @@ export default {
 </template>
 
 <script>
-import { Field } from 'library';
+import { UField } from 'library';
 
 export default {
     components: {
         'e-ip-input': {
-            mixins: [Field],
+            extends: UField,
             template: `<div style="display: inline-block">
                 <u-input maxlength="3" v-model="parts[0]"
                     @input="onInput()" @change="onChange()" @focus="onFocus($event)" @blur="onBlur($event)"
