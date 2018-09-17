@@ -619,11 +619,11 @@ export default {
 </style>
 ```
 
-#### 继承 UField
+#### 继承 MField
 
 到目前为止，我们仅仅是描述了如何按规范实现了一个表单控件，但还没有与Vusion的表单体系联系在一起。
 
-有关触发验证等功能已经封装在`<u-field>`这个基类组件（或叫Mixin）中了，我们要做的只需继承一下它即可。
+有关触发验证等功能已经封装在`<m-field>`这个基类组件（或叫Mixin）中了，我们要做的只需继承一下它即可。
 
 下面是一个很简单的复选框与表单验证相关的例子——验证是否同意了服务条款。
 
@@ -638,12 +638,12 @@ export default {
 </template>
 
 <script>
-import { UField } from 'library';
+import { MField } from 'library';
 
 export default {
     components: {
         'e-checkbox': {
-            extends: UField,
+            extends: MField,
             template: `<div @click="check()">{{ currentValue ? '✓' : '&nbsp;' }}</div>`,
             props: {
                 value: { type: Boolean, default: false },
@@ -709,11 +709,11 @@ export default {
 </template>
 
 <script>
-import { UField } from 'library';
+import { MField } from 'library';
 
 export default {
     name: 'e-checkbox',
-    extends: UField,
+    extends: MField,
     props: {
         value: { type: Boolean, default: false },
     },
@@ -897,12 +897,12 @@ export default {
 </template>
 
 <script>
-import { UField } from 'library';
+import { MField } from 'library';
 
 export default {
     components: {
         'e-ip-input': {
-            extends: UField,
+            extends: MField,
             template: `<div style="display: inline-block">
                 <u-input maxlength="3" v-model="parts[0]"
                     @input="onInput()" @change="onChange()" @focus="onFocus($event)" @blur="onBlur($event)"
@@ -985,6 +985,6 @@ export default {
 
 ## FAQ
 
-#### 为什么要将验证逻辑放在`<u-form-item>`而不是`<u-field>`中？
+#### 为什么要将验证逻辑放在`<u-form-item>`而不是`<m-field>`中？
 
-验证有一部分功能是关于消息提示的，这牵扯到模板的实现。如果验证逻辑放在`<u-field>`中，那么就要求每个子类的模板都要实现这部分功能。一个组件最好只干一件事情，所以我们把它划到了`<u-form-item>`中，虽然要添加一些组件间的通信逻辑，但这些都是必要的。
+验证有一部分功能是关于消息提示的，这牵扯到模板的实现。如果验证逻辑放在`<m-field>`中，那么就要求每个子类的模板都要实现这部分功能。一个组件最好只干一件事情，所以我们把它划到了`<u-form-item>`中，虽然要添加一些组件间的通信逻辑，但这些都是必要的。

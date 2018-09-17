@@ -7,7 +7,7 @@
             :disabled="itemVM.disabled || disabled"
             v-show="!itemVM.hidden"
             @click="select(itemVM)">
-            <span :class="$style.title"><u-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</u-render></span>
+            <span :class="$style.title"><f-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</f-render></span>
             <span v-if="closable" :class="$style.close" @click.stop="close(itemVM)"></span>
         </li>
         <span :class="$style.extra"><slot name="extra"></slot></span>

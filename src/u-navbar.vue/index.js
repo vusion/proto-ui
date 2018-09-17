@@ -1,4 +1,4 @@
-import SingleChoices from '../u-single-choices.vue';
+import SingleChoices from '../m-single-choices.vue';
 
 export default {
     name: 'u-navbar',

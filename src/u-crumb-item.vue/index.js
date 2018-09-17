@@ -1,5 +1,5 @@
 import Link from '../u-link.vue';
-import Emitter from '../u-emitter.vue';
+import Emitter from '../m-emitter.vue';
 
 export default {
     name: 'u-crumb-item',

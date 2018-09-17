@@ -1,4 +1,4 @@
-import SingleChoiceGroup from '../u-single-choice-group.vue';
+import SingleChoiceGroup from '../m-single-choice-group.vue';
 
 export default {
     name: 'u-menu-group',

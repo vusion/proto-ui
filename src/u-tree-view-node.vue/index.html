@@ -24,7 +24,7 @@
             ></u-tree-view-text>
         </div>
     </div>
-    <u-collapse-transition>
+    <f-collapse-transition>
         <div :class="$style.list" v-show="currentExpanded">
             <u-tree-view-node v-if="data"
             v-for="node in data"
@@ -39,5 +39,5 @@
             ></u-tree-view-node>
             <slot></slot>
         </div>
-    </u-collapse-transition>
+    </f-collapse-transition>
 </div>

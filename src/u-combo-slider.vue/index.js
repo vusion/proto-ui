@@ -1,4 +1,4 @@
-import Field from '../u-field.vue';
+import Field from '../m-field.vue';
 
 export default {
     name: 'u-combo-slider',

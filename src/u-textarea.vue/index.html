@@ -5,7 +5,7 @@
         @compositionstart="compositionInputing = true"
         @compositionend="onCompositionEnd"></textarea>
     <slot></slot>
-    <u-dragger @dragstart="onDragStart" @drag="onDrag" :disabled="readonly || disabled">
+    <f-dragger @dragstart="onDragStart" @drag="onDrag" :disabled="readonly || disabled">
         <div ref="handle" :class="$style.handle" v-show="resize !== 'none'"></div>
-    </u-dragger>
+    </f-dragger>
 </span>

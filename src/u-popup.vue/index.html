@@ -1,4 +1,4 @@
-<u-popper ref="popper" :trigger="trigger" :placement="placement" :reference="reference"
+<f-popper ref="popper" :trigger="trigger" :placement="placement" :reference="reference"
     :open="open" :hide-delay="hideDelay" :follow-cursor="followCursor" :offset="offset" v-on="$listeners" :disabled="disabled">
     <slot></slot>
     <div :class="[$style.root, $style.popper]" slot="popper" :merge-borders="mergeBorders">
@@ -23,4 +23,4 @@
             </div>
         </slot>
     </div>
-</u-popper>
+</f-popper>

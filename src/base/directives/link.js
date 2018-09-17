@@ -1,6 +1,6 @@
 /**
  * 给任意元素添加`<a>`链接效果
- * 该指令适合在某些场景下临时使用，推荐直接使用`<u-link>`或者从`<u-router-item>`继承新组件
+ * 该指令适合在某些场景下临时使用，推荐直接使用`<u-link>`或者从`<m-router-item>`继承新组件
  * @modifier blank - 是否打开新的窗口
  */
 export const href = {
@@ -22,7 +22,7 @@ export const href = {
 
 /**
  * 给任意元素添加`<router-link>`的`to`效果
- * 该指令适合在某些场景下临时使用，推荐直接使用`<u-link>`或者从`<u-router-item>`继承新组件
+ * 该指令适合在某些场景下临时使用，推荐直接使用`<u-link>`或者从`<m-router-item>`继承新组件
  * @modifier replace - History 使用`push`方式还是`replace`方式
  */
 export const to = {

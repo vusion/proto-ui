@@ -1,4 +1,4 @@
-import SingleChoiceDivider from '../u-single-choice-divider.vue';
+import SingleChoiceDivider from '../m-single-choice-divider.vue';
 
 export default {
     name: 'u-sidebar-divider',

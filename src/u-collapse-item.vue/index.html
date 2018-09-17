@@ -9,9 +9,9 @@
         ></span>
         <span :class="$style.extra"><slot name="extra"></slot></span>
     </div>
-    <u-collapse-transition>
+    <f-collapse-transition>
         <div :class="$style.body" v-show="currentExpanded">
             <slot></slot>
         </div>
-    </u-collapse-transition>
+    </f-collapse-transition>
 </div>

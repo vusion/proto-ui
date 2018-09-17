@@ -1,4 +1,4 @@
-import Field from '../u-field.vue';
+import Field from '../m-field.vue';
 import DataSource from '../base/utils/DataSource';
 import debounce from 'lodash/debounce';
 

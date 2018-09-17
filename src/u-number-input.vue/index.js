@@ -1,4 +1,4 @@
-import Field from '../u-field.vue';
+import Field from '../m-field.vue';
 import debounce from 'lodash/debounce';
 import { repeatClick } from '../base/directives';
 import { generateStringFormatter } from '../base/utils/formatter';

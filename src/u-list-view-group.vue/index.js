@@ -1,4 +1,4 @@
-import Emitter from '../u-emitter.vue';
+import Emitter from '../m-emitter.vue';
 
 export default {
     name: 'u-list-view-group',

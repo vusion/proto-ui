@@ -1,4 +1,4 @@
-<u-popper ref="popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference">
+<f-popper ref="popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference">
     <u-input :class="$style.root" ref="input" :readonly="readonly" :disabled="disabled" :color="color" :size="size"
         :value="currentValue" @input="onInput" @blur="onBlur"
         @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
@@ -20,4 +20,4 @@
         </div>
         <div :class="$style.status" status="empty" v-else-if="!matchedVMs.length">{{ emptyText }}</div>
     </ul>
-</u-popper>
+</f-popper>

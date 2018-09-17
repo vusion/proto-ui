@@ -1,5 +1,5 @@
 <div :class="$style.root" :disabled="disabled">
-    <u-dragger :disabled="readonly || disabled" :transfer="handleEl" immediate
+    <f-dragger :disabled="readonly || disabled" :transfer="handleEl" immediate
         axis="horizontal" :grid="grid"
         range="offset-parent" range-mode="center"
         @dragstart="onDragStart($event)"
@@ -12,5 +12,5 @@
             </div>
             <div :class="$style.handle" ref="handle"></div>
         </div>
-    </u-dragger>
+    </f-dragger>
 </div>

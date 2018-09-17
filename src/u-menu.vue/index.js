@@ -1,4 +1,4 @@
-import SingleChoices from '../u-single-choices.vue';
+import SingleChoices from '../m-single-choices.vue';
 
 export default {
     name: 'u-menu',
@@ -15,7 +15,7 @@ export default {
     },
     created() {
         let popperChildVM = this.$parent;
-        while (popperChildVM && popperChildVM.$options.name !== 'u-popper-child')
+        while (popperChildVM && popperChildVM.$options.name !== 'f-popper-child')
             popperChildVM = popperChildVM.$parent;
         if (popperChildVM && popperChildVM.parentVM)
             this.parentVM = popperChildVM.parentVM;

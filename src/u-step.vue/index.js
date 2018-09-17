@@ -1,5 +1,5 @@
-import Emitter from '../u-emitter.vue';
-import RouterItem from '../u-router-item.vue';
+import Emitter from '../m-emitter.vue';
+import RouterItem from '../m-router-item.vue';
 
 export default {
     name: 'u-step',

@@ -4,7 +4,7 @@
             v-for="(itemVM, index) in itemVMs"
             :title="itemVM.title"
             :pass="index <= value">
-            <span :class="$style.title"><u-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</u-render></span>
+            <span :class="$style.title"><f-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</f-render></span>
         </li>
     </ul>
     <div :class="$style.body">

@@ -1,4 +1,4 @@
-import Emitter from '../u-emitter.vue';
+import Emitter from '../m-emitter.vue';
 import Validator from 'vusion-async-validator';
 
 export default {

@@ -1,5 +1,5 @@
-import SingleChoice from '../u-single-choice.vue';
-import RouterItem from '../u-router-item.vue';
+import SingleChoice from '../m-single-choice.vue';
+import RouterItem from '../m-router-item.vue';
 
 export default {
     name: 'u-carousel-item',

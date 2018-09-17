@@ -27,7 +27,7 @@
 }
 
 .button[role="up"]::before {
-    icon-font: url('../u-icon.vue/assets/arrow-up.svg');
+    icon-font: url('../i-icon.vue/assets/arrow-up.svg');
 }
 
 .button[role="down"] {
@@ -35,7 +35,7 @@
 }
 
 .button[role="down"]::before {
-    icon-font: url('../u-icon.vue/assets/arrow-down.svg');
+    icon-font: url('../i-icon.vue/assets/arrow-down.svg');
 }
 
 .button[disabled] {
