@@ -38,7 +38,7 @@ export default {
             this.$emit('change', {
                 value,
                 oldValue,
-            });
+            }, this);
         },
     },
     methods: {
@@ -69,12 +69,12 @@ export default {
             else if (!value && this.currentValue.includes(label))
                 this.currentValue.splice(this.currentValue.indexOf(label), 1);
 
-            this.$emit('input', this.currentValue);
-            this.$emit('update:value', this.currentValue);
+            this.$emit('input', this.currentValue, this);
+            this.$emit('update:value', this.currentValue, this);
             this.$emit('check', {
                 value: this.currentValue,
                 itemVM: $event.itemVM,
-            });
+            }, this);
         },
     },
 };

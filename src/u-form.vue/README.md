@@ -545,6 +545,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.valid | Boolean | 验证是否通过 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 

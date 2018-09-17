@@ -281,8 +281,9 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| open | Boolean | 弹出/隐藏状态 |
+| $event.open | Boolean | 弹出/隐藏状态 |
 | $event.preventDefault | Function | 阻止弹出/隐藏流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -291,6 +292,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.open | Boolean | 弹出/隐藏状态 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 

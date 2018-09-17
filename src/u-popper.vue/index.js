@@ -235,15 +235,15 @@ export default {
             this.$emit('before-toggle', {
                 open,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentOpen = open;
-            this.$emit('update:open', open);
+            this.$emit('update:open', open, this);
             this.$emit('toggle', {
                 open,
-            });
+            }, this);
         },
         onMouseMove(e) {
             // @TODO: 支持其它 trigger 的情况

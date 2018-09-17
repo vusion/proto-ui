@@ -26,7 +26,7 @@ export default {
             this.$emit('toggle', {
                 expanded,
                 itemVM,
-            });
+            }, this);
         },
         toggleAll(expanded) {
             this.itemVMs.forEach((itemVM) => itemVM.toggle(expanded));

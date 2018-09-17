@@ -64,6 +64,7 @@
 | $event.oldValue | Any | 旧的值 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -72,6 +73,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -82,6 +84,7 @@
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.itemVM | ListViewItem |  选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -93,6 +96,7 @@
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ## Radio API
 ### Props/Attrs
@@ -120,3 +124,4 @@
 | $event.label | Any | 此项的标签 |
 | $event.itemVM | ListViewItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |

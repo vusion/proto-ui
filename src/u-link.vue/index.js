@@ -31,7 +31,7 @@ export default {
             if (this.disabled)
                 return e.preventDefault();
 
-            this.$emit('click', e);
+            this.$emit('click', e, this);
 
             if (this.target !== '_self')
                 return;
@@ -60,7 +60,7 @@ export default {
                 replace: this.replace,
                 append: this.append,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -72,7 +72,7 @@ export default {
                 to: this.to,
                 replace: this.replace,
                 append: this.append,
-            });
+            }, this);
         },
     },
 };

@@ -110,6 +110,7 @@
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.itemVM | CollapseItem | 面板组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -119,3 +120,4 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.itemVM | CollapseItem | 面板组件 |
+| senderVM | Vue | 发送事件实例 |

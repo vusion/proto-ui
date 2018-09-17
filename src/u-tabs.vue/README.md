@@ -121,6 +121,7 @@
 | oldValue | Any | 旧的值 |
 | itemVM | Tab | 选中标签页实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -131,6 +132,7 @@
 | value | Any | 选中标签页的值 |
 | oldValue | Any | 旧的值 |
 | itemVM | Tab | 选中标签页实例 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-close
 
@@ -142,6 +144,7 @@
 | oldValue | Any | 旧的值 |
 | itemVM | Tab | 待关闭的标签页实例 |
 | $event.preventDefault | Function | 阻止关闭流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @close
 
@@ -153,6 +156,7 @@
 | oldValue | Any | 旧的值 |
 | itemVM | Tab | 关闭的标签页实例 |
 | $event.preventDefault | Function | 阻止关闭后自动选择页的流程 |
+| senderVM | Vue | 发送事件实例 |
 
 ## Tab API
 ### Props/Attrs

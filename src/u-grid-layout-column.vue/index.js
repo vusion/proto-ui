@@ -53,7 +53,7 @@ export default {
             this.$emit('responsive', {
                 span,
                 oldSpan,
-            });
+            }, this);
         },
     },
     methods: {

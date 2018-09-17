@@ -51,7 +51,7 @@ export default {
                 oldValue: oldVM ? oldVM.value : undefined,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
-            });
+            }, this);
         },
         // This method just run once after pushing many nodeVMs
         nodeVMs() {
@@ -104,7 +104,7 @@ export default {
                 node: nodeVM && nodeVM.node,
                 nodeVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -116,21 +116,21 @@ export default {
             const value = this.selectedVM && this.selectedVM.value;
             const node = this.selectedVM && this.selectedVM.node;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
             this.$emit('select', {
                 value,
                 oldValue,
                 node,
                 nodeVM: this.selectedVM,
-            });
+            }, this);
         },
         onToggle(nodeVM, expanded) {
             this.$emit('toggle', {
                 expanded,
                 node: nodeVM.node,
                 nodeVM,
-            });
+            }, this);
         },
         toggleAll(expanded) {
             walk(this, (nodeVM) => nodeVM.toggle(expanded));
@@ -141,7 +141,7 @@ export default {
                 oldChecked,
                 node: nodeVM.node,
                 nodeVM,
-            });
+            }, this);
         },
         checkAll(checked) {
             this.nodeVMs.forEach((nodeVM) => nodeVM.check(checked));

@@ -25,7 +25,7 @@ export default {
             this.$refs.popper && this.$refs.popper.toggle(open);
         },
         onToggle($event) {
-            this.$emit('toggle', $event);
+            this.$emit('toggle', $event, this);
             setTimeout(() => this.ensureSelectedInView(true));
         },
     },

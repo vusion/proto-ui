@@ -49,7 +49,7 @@ export default {
                 oldValue: oldVM ? oldVM.value : undefined,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
-            });
+            }, this);
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
@@ -112,7 +112,7 @@ export default {
                 item: itemVM && itemVM.item,
                 itemVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -122,14 +122,14 @@ export default {
                 const value = itemVMs.map((itemVM) => itemVM.value);
                 const items = itemVMs.map((itemVM) => itemVM.item);
 
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
                 this.$emit('select', {
                     value,
                     oldValue,
                     items,
                     itemVMs,
-                });
+                }, this);
             } else {
                 if (this.cancelable && this.selectedVM === itemVM)
                     this.selectedVM = undefined;
@@ -139,14 +139,14 @@ export default {
                 const value = this.selectedVM && this.selectedVM.value;
                 const item = this.selectedVM && this.selectedVM.item;
 
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
                 this.$emit('select', {
                     value,
                     oldValue,
                     item,
                     itemVM: this.selectedVM,
-                });
+                }, this);
             }
         },
         shift(count) {
@@ -160,7 +160,7 @@ export default {
                             selectedIndex,
                             selectedVM: itemVM,
                             value: itemVM.value,
-                        });
+                        }, this);
                         this.ensureSelectedInView();
                         break;
                     }
@@ -176,7 +176,7 @@ export default {
                             selectedIndex,
                             selectedVM: itemVM,
                             value: itemVM.value,
-                        });
+                        }, this);
                         this.ensureSelectedInView();
                         break;
                     }
@@ -207,7 +207,7 @@ export default {
             this.$emit('toggle', {
                 expanded,
                 groupVM,
-            });
+            }, this);
         },
         toggleAll(expanded) {
             this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));

@@ -29,7 +29,7 @@ export default {
             this.$emit('change', {
                 value: currentValue,
                 oldValue,
-            });
+            }, this);
         },
     },
     computed: {
@@ -43,11 +43,11 @@ export default {
     methods: {
         onInput(value) {
             this.currentValue = value;
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         onSlide($event) {
-            this.$emit('slide', $event);
+            this.$emit('slide', $event, this);
         },
     },
 };

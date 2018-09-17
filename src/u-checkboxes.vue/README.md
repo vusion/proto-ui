@@ -180,6 +180,7 @@ export default {
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -188,6 +189,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Boolean, null | 切换后的选中状态 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @check
 
@@ -198,6 +200,7 @@ export default {
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
 | $event.label | Any | 此选框的标签 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -207,3 +210,4 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
+| senderVM | Vue | 发送事件实例 |

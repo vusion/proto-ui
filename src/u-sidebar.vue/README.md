@@ -218,6 +218,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-select
 
@@ -230,6 +231,7 @@
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | SidebarItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -238,6 +240,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -251,6 +254,7 @@
 | $event.itemVM | SidebarItem |  单选模式中，选择项子组件 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<SidebarItem\> | 多选模式中，所有选中项子组件的数组 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -260,6 +264,7 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SidebarGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 
@@ -303,6 +308,7 @@
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | SidebarItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-navigate
 
@@ -314,6 +320,7 @@
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.exact | Boolean | `exact`属性的值 |
 | $event.preventDefault | Function | 阻止切换流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @navigate
 
@@ -324,6 +331,7 @@
 | $event.to | String, Location | `to`属性的值 |
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.exact | Boolean | `exact`属性的值 |
+| senderVM | Vue | 发送事件实例 |
 
 ## SidebarGroup API
 
@@ -361,6 +369,7 @@
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SidebarGroup | 分组组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -370,6 +379,7 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SidebarGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ## SidebarDivider API
 

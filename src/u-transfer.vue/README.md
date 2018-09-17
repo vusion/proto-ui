@@ -79,7 +79,7 @@ export default {
 | $event.target | Array\<{ text, value }\> | 目标数据列表 |
 | $event.transfer | Array\<{ text, value }\> | 移动的项 |
 | $event.transferValues | Array | 移动项的值 |
-
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -91,3 +91,5 @@ export default {
 | $event.target | Array\<{ text, value }\> | 目标数据列表 |
 | $event.transfer | Array\<{ text, value }\> | 移动的项 |
 | $event.transferValues | Array | 移动项的值 |
+| senderVM | Vue | 发送事件实例 |
+

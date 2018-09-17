@@ -85,8 +85,8 @@ export default {
             this.values = this.currentConverter.set(this.value);
             this.setList(data, 0);
             const value = this.currentConverter.get(this.values);
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         value(value, oldValue) {
             if (value !== this.currentConverter.get(this.values)) {
@@ -101,7 +101,7 @@ export default {
                 oldValue,
                 values: this.values,
                 oldValues,
-            });
+            }, this);
         },
     },
     created() {
@@ -110,8 +110,8 @@ export default {
         if (this.autoSelect && this.value === undefined) {
             const value = this.currentConverter.get(this.values);
             if (value !== '') {
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
             }
         }
     },
@@ -166,15 +166,15 @@ export default {
             this.setList($event.item ? $event.item.children : undefined, level + 1);
 
             const value = this.currentConverter.get(this.values);
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
             this.$emit('select', {
                 level,
                 value,
                 values: Array.from(this.values),
                 item: $event.item,
                 itemVM: $event.itemVM,
-            });
+            }, this);
         },
     },
 };

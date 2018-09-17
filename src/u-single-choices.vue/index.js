@@ -34,7 +34,7 @@ export default {
                 oldValue: oldVM ? oldVM.value : undefined,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
-            });
+            }, this);
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
@@ -91,7 +91,7 @@ export default {
                 item: itemVM && itemVM.item,
                 itemVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -103,20 +103,20 @@ export default {
             const value = this.selectedVM && this.selectedVM.value;
             const item = this.selectedVM && this.selectedVM.item;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
             this.$emit('select', {
                 value,
                 oldValue,
                 item,
                 itemVM: this.selectedVM,
-            });
+            }, this);
         },
         onToggle(groupVM, expanded) {
             this.$emit('toggle', {
                 expanded,
                 groupVM,
-            });
+            }, this);
         },
         toggleAll(expanded) {
             this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));

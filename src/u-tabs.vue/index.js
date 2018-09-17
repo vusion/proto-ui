@@ -27,7 +27,7 @@ export default {
                 oldValue,
                 itemVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -41,15 +41,15 @@ export default {
                 oldValue,
                 itemVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             if (this.selectedVM === itemVM) {
                 this.selectedVM = this.itemVMs[index] || this.itemVMs[index - 1];
                 const value = this.selectedVM && this.selectedVM.value;
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
             }
         },
     },

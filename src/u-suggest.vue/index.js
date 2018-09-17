@@ -28,7 +28,7 @@ export default {
     },
     watch: {
         currentValue(value, oldValue) {
-            this.$emit('change', { value, oldValue });
+            this.$emit('change', { value, oldValue }, this);
         },
     },
     created() {
@@ -36,14 +36,14 @@ export default {
             this.currentValue = $event.value;
             this.toggle(false);
 
-            this.$emit('input', $event.value);
-            this.$emit('update:value', $event.value);
+            this.$emit('input', $event.value, this);
+            this.$emit('update:value', $event.value, this);
         });
         this.$on('shift', ($event) => {
             this.currentValue = $event.value;
 
-            this.$emit('input', $event.value);
-            this.$emit('update:value', $event.value);
+            this.$emit('input', $event.value, this);
+            this.$emit('update:value', $event.value, this);
         });
     },
     methods: {
@@ -58,7 +58,7 @@ export default {
                             selectedIndex,
                             selectedVM: itemVM,
                             value: itemVM.value,
-                        });
+                        }, this);
                         this.ensureSelectedInView();
                         break;
                     }
@@ -74,7 +74,7 @@ export default {
                             selectedIndex,
                             selectedVM: itemVM,
                             value: itemVM.value,
-                        });
+                        }, this);
                         this.ensureSelectedInView();
                         break;
                     }
@@ -88,7 +88,7 @@ export default {
             // 刚打开时不 filterValue
             if ($event.open)
                 this.filterValue = '';
-            this.$emit('toggle', $event);
+            this.$emit('toggle', $event, this);
             setTimeout(() => this.ensureSelectedInView(true));
         },
         /**
@@ -157,8 +157,8 @@ export default {
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         onBlur() {
             this.$nextTick(() => {
@@ -174,8 +174,8 @@ export default {
                 } else
                     this.selectedVM = selectedVM;
 
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
             });
         },
     },

@@ -41,12 +41,12 @@ export default {
                 expanded,
                 itemVM: this,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentExpanded = expanded;
-            this.$emit('update:expanded', this.currentExpanded);
+            this.$emit('update:expanded', this.currentExpanded, this);
 
             if (this.parentVM.accordion) {
                 this.parentVM.itemVMs.forEach((itemVM) => {
@@ -60,7 +60,7 @@ export default {
             this.$emit('toggle', {
                 expanded,
                 itemVM: this,
-            });
+            }, this);
 
             this.parentVM.onToggle({
                 expanded,

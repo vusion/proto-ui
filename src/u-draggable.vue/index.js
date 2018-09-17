@@ -250,7 +250,7 @@ export default {
                 originVM: this,
                 sourceEl,
                 preventDefault: () => cancel = true,
-            }, manager));
+            }, manager), this);
 
             if (cancel)
                 return this.cancel();
@@ -259,7 +259,7 @@ export default {
             this.$emit('drag', Object.assign({
                 originVM: this,
                 sourceEl: this.$el,
-            }, manager));
+            }, manager), this);
         },
         dragEnd() {
             const sourceEl = this.$el;
@@ -268,7 +268,7 @@ export default {
             this.$emit('dragend', Object.assign({
                 originVM: this,
                 sourceEl,
-            }, manager));
+            }, manager), this);
 
             if (manager.transferEl) {
                 if (this.$slots.transfer || this.transfer === 'clone')

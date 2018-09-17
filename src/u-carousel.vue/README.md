@@ -91,10 +91,11 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| value | Any | 选中项的值 |
-| oldValue | Any | 旧的值 |
-| itemVM | Tab | 选中项实例 |
+| $event.value | Any | 选中项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.itemVM | Tab | 选中项实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -102,9 +103,10 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| value | Any | 选中项的值 |
-| oldValue | Any | 旧的值 |
-| itemVM | Tab | 选中项实例 |
+| $event.value | Any | 选中项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.itemVM | Tab | 选中项实例 |
+| senderVM | Vue | 发送事件实例 |
 
 ## CollapseItem API
 

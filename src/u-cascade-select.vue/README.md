@@ -316,6 +316,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -328,6 +329,7 @@ export default {
 | $event.values | Array | 改变后每项值的数组 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -339,3 +341,4 @@ export default {
 | $event.oldValue | Any | 旧的值 |
 | $event.values | Array | 改变后每项值的数组 |
 | $event.oldValues | Array | 旧的每项值的数组 |
+| senderVM | Vue | 发送事件实例 |

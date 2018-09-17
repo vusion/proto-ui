@@ -324,6 +324,7 @@ export default {
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -332,6 +333,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -345,6 +347,7 @@ export default {
 | $event.itemVM | ListViewItem |  单选模式中，选择项子组件 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<ListViewItem\> | 多选模式中，所有选中项子组件的数组 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -356,6 +359,7 @@ export default {
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -365,6 +369,7 @@ export default {
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | ListViewGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 
@@ -400,6 +405,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-select
 
@@ -411,6 +417,7 @@ export default {
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | ListViewItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 ## ListViewGroup API
 
@@ -448,6 +455,7 @@ export default {
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | ListViewGroup | 分组组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -457,6 +465,7 @@ export default {
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | ListViewGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ## ListViewDivider API
 

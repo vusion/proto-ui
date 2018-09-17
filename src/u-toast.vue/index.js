@@ -50,20 +50,20 @@ const Toast = {
                 }, item.duration);
             }
 
-            this.$emit('open', item);
+            this.$emit('open', item, this);
         },
         close(item) {
             let cancel = false;
             this.$emit('before-close', Object.assign({
                 preventDefault: () => cancel = true,
-            }, item));
+            }, item), this);
             if (cancel)
                 return;
 
             const index = this.items.indexOf(item);
             ~index && this.items.splice(index, 1);
 
-            this.$emit('close', item);
+            this.$emit('close', item, this);
         },
         /**
          * @method closeAll() 关闭所有消息

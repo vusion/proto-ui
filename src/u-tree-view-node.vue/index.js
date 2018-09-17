@@ -65,7 +65,7 @@ export default {
                 node: this.node,
                 nodeVM: this,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -89,12 +89,12 @@ export default {
                 node: this.node,
                 nodeVM: this,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentExpanded = expanded;
-            this.$emit('update:expanded', expanded);
+            this.$emit('update:expanded', expanded, this);
 
             if (this.rootVM.accordion) {
                 (this.parentVM || this.rootVM).nodeVMs.forEach((nodeVM) => {
@@ -109,14 +109,14 @@ export default {
                 expanded,
                 node: this.node,
                 nodeVM: this,
-            });
+            }, this);
 
             this.rootVM.onToggle(this, expanded);
         },
         check(checked, direction = 'up+down') {
             const oldChecked = this.currentChecked;
             this.currentChecked = checked;
-            this.$emit('update:checked', checked);
+            this.$emit('update:checked', checked, this);
 
             // down
             if (direction.includes('down')) {
@@ -150,7 +150,7 @@ export default {
                     oldChecked,
                     node: this.node,
                     nodeVM: this,
-                });
+                }, this);
 
                 this.rootVM.onCheck(this, checked, oldChecked);
             }

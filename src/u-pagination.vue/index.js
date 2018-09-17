@@ -18,7 +18,7 @@ export default {
             this.currentPage = page;
         },
         currentPage(page, oldPage) {
-            this.$emit('change', { page, oldPage });
+            this.$emit('change', { page, oldPage }, this);
         },
     },
     computed: {
@@ -73,17 +73,17 @@ export default {
                 page,
                 oldPage,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentPage = page;
 
-            this.$emit('update:page', page);
+            this.$emit('update:page', page, this);
             this.$emit('select', {
                 page,
                 oldPage,
-            });
+            }, this);
         },
     },
 };

@@ -76,6 +76,7 @@ export default {
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @dragleave
 
@@ -103,6 +104,7 @@ export default {
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @dragover
 
@@ -132,6 +134,7 @@ export default {
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @drop
 
@@ -161,6 +164,7 @@ export default {
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 

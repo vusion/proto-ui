@@ -1,6 +1,6 @@
 .root {
     padding: 5px;
-    background: $gray-base;
+    background: $border-color-base;
     color: white;
     text-align: center;
     overflow: hidden;

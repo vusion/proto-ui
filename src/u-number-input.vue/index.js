@@ -65,7 +65,7 @@ export default {
                 value,
                 oldValue,
                 formattedValue: this.currentFormatter.get(value),
-            });
+            }, this);
         },
     },
     created() {
@@ -99,8 +99,8 @@ export default {
             this.formattedValue = this.currentFormatter.get(value);
             this.$refs.input.currentValue = this.formattedValue;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         /**
          * 按上下按钮发送 adjust 事件
@@ -115,7 +115,7 @@ export default {
                 oldValue,
                 formattedValue: this.currentFormatter.get(value),
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -124,7 +124,7 @@ export default {
                 value: this.currentValue,
                 oldValue,
                 formattedValue: this.formattedValue,
-            });
+            }, this);
         },
         increase() {
             this.adjust(+this.currentValue + this.step);
@@ -138,18 +138,18 @@ export default {
             else if (this.fixOn === 'blur') {
                 // 这种情况下直接透传
                 this.formattedValue = value;
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
             }
         },
         onFocus(e) {
-            this.$emit('focus', e);
+            this.$emit('focus', e, this);
         },
         onBlur(e) {
             if (this.fixOn === 'blur')
                 this.input(this.currentFormatter.set(this.formattedValue));
 
-            this.$emit('blur', e);
+            this.$emit('blur', e, this);
         },
     },
 };

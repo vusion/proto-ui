@@ -55,7 +55,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
-
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-navigate
 
@@ -67,6 +67,7 @@
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
 | $event.preventDefault | Function | 阻止切换流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @navigate
 
@@ -77,3 +78,4 @@
 | $event.to | String, Location | `to`属性的值 |
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
+| senderVM | Vue | 发送事件实例 |

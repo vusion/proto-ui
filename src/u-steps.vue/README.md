@@ -54,6 +54,7 @@
 | ----- | ---- | ----------- |
 | value | Number | 当前步骤数 |
 | oldValue | Number | 旧的步骤数 |
+| senderVM | Vue | 发送事件实例 |
 
 
 ## Step API

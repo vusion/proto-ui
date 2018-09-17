@@ -118,6 +118,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
+| senderVM | Vue | 发送事件实例 |
 
 #### @ok
 
@@ -125,6 +126,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
+| senderVM | Vue | 发送事件实例 |
 
 #### @cancel
 
@@ -132,6 +134,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-close
 
@@ -139,15 +142,17 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| ok | Boolean | 是否确定 |
+| $event.ok | Boolean | 是否确定 |
 | $event.preventDefault | Function | 阻止关闭流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @close
 关闭弹窗时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| ok | Boolean | 是否确定 |
+| $event.ok | Boolean | 是否确定 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Static Methods
 

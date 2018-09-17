@@ -34,30 +34,30 @@ const Modal = {
                 this.$mount(document.createElement('div'));
 
             this.currentVisible = true;
-            this.$emit('update:visible', true);
-            this.$emit('open');
+            this.$emit('update:visible', true, this);
+            this.$emit('open', this);
         },
         close(ok) {
             let cancel = false;
             this.$emit('before-close', {
                 ok,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentVisible = false;
-            this.$emit('update:visible', false);
+            this.$emit('update:visible', false, this);
             this.$emit('close', {
                 ok,
-            });
+            }, this);
         },
         ok() {
-            this.$emit('ok');
+            this.$emit('ok', undefined, this);
             this.close(true);
         },
         cancel() {
-            this.$emit('cancel');
+            this.$emit('cancel', undefined, this);
             this.close(false);
         },
     },

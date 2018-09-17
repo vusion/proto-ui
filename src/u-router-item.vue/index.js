@@ -42,7 +42,7 @@ export default {
                 replace: this.replace,
                 exact: this.exact,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -53,7 +53,7 @@ export default {
                 to: this.to,
                 replace: this.replace,
                 exact: this.exact,
-            });
+            }, this);
         },
     },
 };

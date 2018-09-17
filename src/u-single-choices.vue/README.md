@@ -202,6 +202,7 @@
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | SingleChoice | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -210,6 +211,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -223,6 +225,7 @@
 | $event.itemVM | SingleChoice |  单选模式中，选择项子组件 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<SingleChoice\> | 多选模式中，所有选中项子组件的数组 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -234,6 +237,7 @@
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | SingleChoice | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -243,6 +247,7 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SingleChoiceGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 
@@ -278,6 +283,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-select
 
@@ -289,6 +295,7 @@
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | SingleChoice | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 ## SingleChoiceGroup API
 
@@ -300,6 +307,7 @@
 | collapsible | Boolean |  | `false` | 是否可以折叠 |
 | expanded.sync | Boolean | `false` | 展开/折叠状态 |
 | disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Slots
 
@@ -326,6 +334,7 @@
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SingleChoiceGroup | 分组组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -335,6 +344,7 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | SingleChoiceGroup | 分组组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ## SingleChoiceDivider API
 

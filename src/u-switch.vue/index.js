@@ -27,15 +27,15 @@ export default {
             this.currentValue = value;
         },
         currentValue(value, oldValue) {
-            this.$emit('change', { value, oldValue });
+            this.$emit('change', { value, oldValue }, this);
         },
     },
     methods: {
         onFocus(e) {
-            this.$emit('focus', e);
+            this.$emit('focus', e, this);
         },
         onBlur(e) {
-            this.$emit('blur', e);
+            this.$emit('blur', e, this);
         },
         toggle() {
             if (this.readonly || this.disabled)
@@ -49,15 +49,15 @@ export default {
                 value,
                 oldValue,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentValue = value;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
-            this.$emit('toggle', { value, oldValue });
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
+            this.$emit('toggle', { value, oldValue }, this);
         },
     },
 };

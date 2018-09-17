@@ -36,10 +36,10 @@ export default {
     },
     methods: {
         onFocus(e) {
-            this.$emit('focus', e);
+            this.$emit('focus', e, this);
         },
         onBlur(e) {
-            this.$emit('blur', e);
+            this.$emit('blur', e, this);
         },
         select() {
             if (this.readonly || this.disabled)
@@ -52,7 +52,7 @@ export default {
                 label: this.label,
                 itemVM: this,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 

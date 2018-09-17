@@ -40,7 +40,7 @@ export default {
                 sourceEl: originVM.$el,
                 targetEl,
                 preventDefault: () => cancel = true,
-            }, manager));
+            }, manager), this);
 
             if (cancel)
                 return originVM.cancel();
@@ -55,7 +55,7 @@ export default {
                 sourceEl: originVM.$el,
                 targetEl,
                 preventDefault: () => cancel = true,
-            }, manager));
+            }, manager), this);
 
             if (cancel)
                 return originVM.cancel();
@@ -72,7 +72,7 @@ export default {
                 ratioX: (manager.clientX - dimension.left) / dimension.width,
                 ratioY: (manager.clientY - dimension.top) / dimension.height,
                 preventDefault: () => cancel = true,
-            }, manager));
+            }, manager), this);
 
             if (cancel)
                 return originVM.cancel();
@@ -88,7 +88,7 @@ export default {
                 targetEl,
                 ratioX: (manager.clientX - dimension.left) / dimension.width,
                 ratioY: (manager.clientY - dimension.top) / dimension.height,
-            }, manager));
+            }, manager), this);
         },
     },
 };

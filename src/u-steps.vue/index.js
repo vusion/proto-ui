@@ -16,7 +16,7 @@ export default {
         value(value, oldValue) {
             // this.currentValue = +value;
             this.watchValue(value, oldValue);
-            this.$emit('change', { value, oldValue });
+            this.$emit('change', { value, oldValue }, this);
         },
         itemVMs() {
             this.watchValue(this.value);
@@ -30,7 +30,7 @@ export default {
         //     this.$emit('change', {
         //         value,
         //         oldValue,
-        //     });
+        //     }, this);
         // },
     },
     created() {

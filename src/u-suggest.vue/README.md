@@ -261,6 +261,7 @@ export default {
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | SuggestItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -269,6 +270,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -280,6 +282,7 @@ export default {
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | SuggestItem | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -288,6 +291,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.open | Boolean | 展开/收起状态 |
+| senderVM | Vue | 发送事件实例 |
 
 ## SuggestItem API
 ### Attrs/Props
@@ -316,3 +320,4 @@ export default {
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | SelectItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |

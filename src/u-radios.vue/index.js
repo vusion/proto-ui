@@ -25,7 +25,7 @@ export default {
                 oldValue: oldVM ? oldVM.value : undefined,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
-            });
+            }, this);
         },
         itemVMs() {
             this.selectedVM = undefined;
@@ -66,7 +66,7 @@ export default {
                 oldValue,
                 itemVM,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
@@ -77,13 +77,13 @@ export default {
 
             const value = this.selectedVM && this.selectedVM.label;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
             this.$emit('select', {
                 value,
                 oldValue,
                 itemVM: this.selectedVM,
-            });
+            }, this);
         },
     },
 };

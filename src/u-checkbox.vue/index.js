@@ -30,7 +30,7 @@ export default {
             this.currentValue = value;
         },
         currentValue(value, oldValue) {
-            this.$emit('change', { value, oldValue });
+            this.$emit('change', { value, oldValue }, this);
         },
     },
     created() {
@@ -41,10 +41,10 @@ export default {
     },
     methods: {
         onFocus(e) {
-            this.$emit('focus', e);
+            this.$emit('focus', e, this);
         },
         onBlur(e) {
-            this.$emit('blur', e);
+            this.$emit('blur', e, this);
         },
         check() {
             if (this.readonly || this.disabled)
@@ -67,15 +67,15 @@ export default {
                 oldValue,
                 label: this.label,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 
             this.currentValue = value;
 
-            this.$emit('input', value);
-            this.$emit('update:value', value);
-            this.$emit('check', { value, oldValue });
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
+            this.$emit('check', { value, oldValue }, this);
 
             this.parentVM && this.parentVM.onCheck({
                 value,

@@ -36,7 +36,7 @@ export default {
             if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)
                 return;
 
-            this.$emit('click', e);
+            this.$emit('click', e, this);
 
             let cancel = false;
             this.$emit('before-select', {
@@ -44,7 +44,7 @@ export default {
                 item: this.item,
                 itemVM: this,
                 preventDefault: () => cancel = true,
-            });
+            }, this);
             if (cancel)
                 return;
 

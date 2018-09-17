@@ -122,6 +122,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Number | 滑块的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @slide
 
@@ -132,6 +133,7 @@
 | $event.value | Number | 滑块的值 |
 | $event.oldValue | Number | 旧的值 |
 | $event.percent | Number | 滑块位置所在的百分比 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -141,3 +143,4 @@
 | ----- | ---- | ----------- |
 | $event.value | Number | 改变后的值 |
 | $event.oldValue | Number | 旧的值 |
+| senderVM | Vue | 发送事件实例 |

@@ -30,7 +30,7 @@ export default {
         currentValue(value, oldValue) {
             value = +value;
 
-            this.$emit('change', { value, oldValue });
+            this.$emit('change', { value, oldValue }, this);
         },
         range(range) {
             this.currentRange = this.normalizeRange(range);
@@ -51,8 +51,8 @@ export default {
                 const value = this.fix(+this.min + (this.max - this.min) * percent / 100);
 
                 this.currentValue = value;
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', value, this);
+                this.$emit('update:value', value, this);
             },
         },
         rangeStartPercent() {
@@ -99,7 +99,7 @@ export default {
                 oldValue,
                 value: this.currentValue,
                 percent,
-            });
+            }, this);
         },
         onDrag($event) {
             const oldValue = this.currentValue;
@@ -110,7 +110,7 @@ export default {
                 oldValue,
                 value: this.currentValue,
                 percent,
-            });
+            }, this);
         },
     },
 };

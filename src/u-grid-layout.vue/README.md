@@ -280,3 +280,4 @@
 | ----- | ---- | ----------- |
 | $event.span | Number | 列跨越的栅格数 |
 | $event.oldSpan | Number | 旧的列跨越的栅格数 |
+| senderVM | Vue | 发送事件实例 |

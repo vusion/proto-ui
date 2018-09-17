@@ -28,13 +28,13 @@ export default {
                 target: this.target,
                 transfer,
                 transferValues,
-            });
+            }, this);
             this.$emit('change', {
                 source: this.source,
                 target: this.target,
                 transfer,
                 transferValues,
-            });
+            }, this);
         },
         forward() {
             const transfer = [];
@@ -53,13 +53,13 @@ export default {
                 target: this.target,
                 transfer,
                 transferValues,
-            });
+            }, this);
             this.$emit('change', {
                 source: this.source,
                 target: this.target,
                 transfer,
                 transferValues,
-            });
+            }, this);
         },
     },
 };

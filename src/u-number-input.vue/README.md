@@ -136,6 +136,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | String | 输入框的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -146,6 +147,7 @@ export default {
 | $event.value | Number | 改变后的值 |
 | $event.oldValue | Number | 旧的值 |
 | $event.formattedValue | String | 格式化后的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @focus
 
@@ -154,6 +156,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | String | 原生事件对象 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @blur
 
@@ -162,3 +165,4 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | String | 原生事件对象 |
+| senderVM | Vue | 发送事件实例 |

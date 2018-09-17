@@ -416,6 +416,7 @@ export default {
 | $event.node | Object | 选择项相关对象 |
 | $event.nodeVM | TreeViewNode | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @input
 
@@ -424,6 +425,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @select
 
@@ -435,6 +437,7 @@ export default {
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
 | $event.nodeVM | TreeViewNode |  选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @change
 
@@ -446,6 +449,7 @@ export default {
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -456,6 +460,7 @@ export default {
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @check
 
@@ -467,6 +472,7 @@ export default {
 | $event.oldChecked | Boolean | 旧的选中/取消状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
+| senderVM | Vue | 发送事件实例 |
 
 ### Methods
 
@@ -515,6 +521,7 @@ export default {
 | $event.node | Object | 此项的相关对象 |
 | $event.nodeVM | TreeViewNode | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @before-toggle
 
@@ -526,6 +533,7 @@ export default {
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @toggle
 
@@ -536,6 +544,7 @@ export default {
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
+| senderVM | Vue | 发送事件实例 |
 
 #### @check
 
@@ -547,3 +556,4 @@ export default {
 | $event.oldChecked | Boolean | 旧的选中状态 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | TreeViewNode | 节点组件 |
+| senderVM | Vue | 发送事件实例 |
