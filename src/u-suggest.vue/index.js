@@ -1,5 +1,5 @@
 import ListView from '../u-list-view.vue';
-import DataSource from '../base/utils/DataSource';
+import DataSource from '../utils/DataSource';
 
 export default {
     name: 'u-suggest',

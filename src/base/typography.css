@@ -1,0 +1,23 @@
+@import './normalize.css';
+
+body {
+    color: $color-base;
+    font: 14px/1.6 "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h6 {
+    margin: 2em 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid $border-color-base;
+}
+
+blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 8px 16px;
+    border-left: 4px solid $border-color-base;
+}

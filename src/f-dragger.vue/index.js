@@ -1,5 +1,5 @@
 import Draggable from '../f-draggable.vue';
-import { getSize, getComputedStyle, getDimension } from '../base/utils/style';
+import { getSize, getComputedStyle, getDimension } from '../utils/style';
 import manager from '../f-draggable.vue/manager';
 
 export default {

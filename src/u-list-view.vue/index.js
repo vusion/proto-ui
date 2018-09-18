@@ -1,5 +1,5 @@
 import Field from '../m-field.vue';
-import DataSource from '../base/utils/DataSource';
+import DataSource from '../utils/DataSource';
 import debounce from 'lodash/debounce';
 
 export default {

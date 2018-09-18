@@ -1,5 +1,5 @@
 import Input from '../u-input.vue';
-import { getSize } from '../base/utils/style';
+import { getSize } from '../utils/style';
 
 export default {
     name: 'u-textarea',

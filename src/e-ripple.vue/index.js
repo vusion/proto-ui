@@ -1,5 +1,5 @@
-import { addClass } from '../base/utils/dom';
-import { getPosition } from '../base/utils/style';
+import { addClass } from '../utils/dom';
+import { getPosition } from '../utils/style';
 
 export default {
     name: 'e-ripple',

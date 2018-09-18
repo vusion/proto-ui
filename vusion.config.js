@@ -25,7 +25,7 @@ module.exports = {
             { group: 'Guide', name: 'quickstart', alias: '快速开始', path: './docs/views/guide/quickstart.md' },
             { group: 'Guide', name: 'pattern', alias: '设计模式', path: './docs/views/guide/pattern.md' },
             { group: 'Guide', name: 'changelog', alias: '更新日志', href: 'https://github.com/vusion/proto-ui/releases', target: '_blank' },
-            { group: 'Basic', name: 'typography', alias: '排版', path: 'library/base/TYPOGRAPHY.md' },
+            { group: 'Basic', name: 'typography', alias: '排版', path: 'library/base/typography.md' },
             { group: 'Basic', name: 'u-text', alias: '文本' },
             { group: 'Basic', name: 'u-link', alias: '链接' },
             { group: 'Basic', name: 'u-button', alias: '按钮' },

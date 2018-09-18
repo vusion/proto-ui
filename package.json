@@ -3,7 +3,6 @@
   "description": "Vusion Proto UI",
   "version": "0.3.31",
   "author": "Rainfore <rainforest92@126.com>",
-  "main": "./src/index.js",
   "scripts": {
     "lint": "eslint --fix ./src/**/*.{js,vue} && stylelint --fix ./src/**/*.css",
     "precommit": "node node_modules/vusion-hooks/precommit"

@@ -1,4 +1,4 @@
-import * as _ from '../base/utils';
+import * as _ from '../utils';
 
 /**
  * @class BarChart

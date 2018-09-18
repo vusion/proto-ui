@@ -1,4 +1,4 @@
-import { getDimension } from '../base/utils/style';
+import { getDimension } from '../utils/style';
 import manager from '../f-draggable.vue/manager';
 
 export default {

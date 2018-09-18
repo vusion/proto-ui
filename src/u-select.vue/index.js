@@ -1,5 +1,5 @@
 import ListView from '../u-list-view.vue';
-import { ellipsisTitle } from '../base/directives';
+import { ellipsisTitle } from '../directives';
 
 export default {
     name: 'u-select',

@@ -1,5 +1,5 @@
 import Emitter from '../m-emitter.vue';
-import { ellipsisTitle } from '../base/directives';
+import { ellipsisTitle } from '../directives';
 
 export default {
     name: 'u-list-view-item',

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { getPosition, getSize, getComputedStyle } from '../base/utils/style';
+import { getPosition, getSize, getComputedStyle } from '../utils/style';
 import manager from './manager';
 
 export default {
