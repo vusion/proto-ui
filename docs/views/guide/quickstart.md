@@ -42,14 +42,10 @@ install(ProtoUI, Vue); // 全局安装组件库中的组件、指令等
 
 ``` js
 import Vue from 'vue';
-import { UButton, UText, UInput } from 'proto-ui.vusion';
+import { directives, UButton, UText, UInput } from 'proto-ui.vusion';
 import { install } from 'vusion-utils';
 
-install({
-    UButton,
-    UText,
-    UInput,
-}, Vue); // 全局安装组件库中的组件、指令等
+install({ directives, UButton, UText, UInput }, Vue); // 全局安装组件库中的组件、指令等
 ```
 
 > 我们没有使用 Vue 的 plugin 设计，主要是考虑 TreeShaking 机制。
