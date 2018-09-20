@@ -27,7 +27,7 @@ export default {
             return this.rootVM.selectedVM === this;
         },
         currentDisabled() {
-            return this.disabled || this.rootVM.disabled || (this.parentVM && (this.parentVM.disabled || this.parentVM.currentDisabled));
+            return this.disabled || this.rootVM.disabled || (this.parentVM && this.parentVM.currentDisabled);
         },
     },
     watch: {
