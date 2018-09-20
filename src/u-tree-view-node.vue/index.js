@@ -26,6 +26,9 @@ export default {
         selected() {
             return this.rootVM.selectedVM === this;
         },
+        currentDisabled() {
+            return this.disabled || this.rootVM.disabled || (this.parentVM && (this.parentVM.disabled || this.parentVM.currentDisabled));
+        },
     },
     watch: {
         expanded(expanded) {
@@ -56,7 +59,7 @@ export default {
     },
     methods: {
         select() {
-            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
+            if (this.currentDisabled || this.rootVM.readonly)
                 return;
 
             let cancel = false;
@@ -72,7 +75,7 @@ export default {
             this.rootVM.select(this);
         },
         toggle(expanded) {
-            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
+            if (this.currentDisabled || this.rootVM.readonly)
                 return;
 
             const oldExpanded = this.currentExpanded;

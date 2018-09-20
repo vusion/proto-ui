@@ -1,7 +1,7 @@
 <div :class="$style.root">
     <div :class="$style.item" :selected="selected"
         :readonly="rootVM.readonly"
-        :disabled="disabled || rootVM.disabled"
+        :disabled="currentDisabled"
         :tabindex="disabled || rootVM.readonly || rootVM.disabled ? '' : 0"
         @click="select(), rootVM.expandTrigger === 'click' && toggle()"
         @keyup.enter="select()"
@@ -12,14 +12,14 @@
             :expanded="currentExpanded"
             @click="rootVM.expandTrigger === 'click-expander' && ($event.stopPropagation(), toggle())"></div>
         <div :class="$style.text">
-            <u-checkbox v-if="rootVM.checkable" :value="currentChecked" @check="check($event.value)" @click.native.stop></u-checkbox>
+            <u-checkbox v-if="rootVM.checkable" :value="currentChecked" :disabled="currentDisabled" @check="check($event.value)" @click.native.stop></u-checkbox>
             <u-tree-view-text
                 :data="data"
                 :text="text"
                 :value="value"
                 :expanded="currentExpanded"
                 :checked="currentChecked"
-                :disabled="disabled"
+                :disabled="currentDisabled"
                 :node="node"
             ></u-tree-view-text>
         </div>
