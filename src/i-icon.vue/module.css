@@ -15,3 +15,7 @@
 .root[name="arrow-right"]::before {
     icon-font: url('./assets/arrow-right.svg');
 }
+
+.root[name="github"]::before {
+    icon-font: url('./assets/github.svg');
+}

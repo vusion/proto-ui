@@ -60,3 +60,21 @@
     color: $gray-dark;
     text-align: center;
 }
+
+.root[size="small"] {
+    width: 120px;
+    height: 30px;
+    line-height: 28px;
+}
+
+.root[size="small"] .text {
+    line-height: 28px;
+}
+
+.root[size="small"]::after {
+    line-height: 26px;
+}
+
+.root[size="small"] .popper {
+    line-height: 1.6;
+}
