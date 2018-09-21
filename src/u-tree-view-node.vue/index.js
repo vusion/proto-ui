@@ -124,7 +124,7 @@ export default {
             // down
             if (direction.includes('down')) {
                 this.nodeVMs.forEach((nodeVM) => {
-                    nodeVM.check(checked, 'down');
+                    !nodeVM.currentDisabled && nodeVM.check(checked, 'down');
                 });
             }
 
