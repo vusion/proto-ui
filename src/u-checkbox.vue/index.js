@@ -1,9 +1,10 @@
-import Field from '../m-field.vue';
+import MChild from '../m-child.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-checkbox',
     parentName: 'u-checkboxes',
-    mixins: [Field],
+    mixins: [MChild, MField],
     props: {
         value: { type: Boolean, default: false },
         label: null,
@@ -12,7 +13,7 @@ export default {
     },
     data() {
         return {
-            parentVM: undefined,
+            // @inherit: parentVM: undefined,
             currentValue: this.value,
         };
     },
@@ -32,12 +33,6 @@ export default {
         currentValue(value, oldValue) {
             this.$emit('change', { value, oldValue }, this);
         },
-    },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
     methods: {
         onFocus(e) {

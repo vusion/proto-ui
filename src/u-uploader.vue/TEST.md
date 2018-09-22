@@ -11,7 +11,7 @@
 export default {
     methods: {
         onBeforeSend($event) {
-            console.log($event);
+            console.info($event);
         },
     },
 };

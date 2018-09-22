@@ -1,8 +1,8 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-input',
-    mixins: [Field],
+    mixins: [MField],
     props: {
         value: { type: [String, Number] },
         color: { type: String },

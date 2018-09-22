@@ -1,9 +1,9 @@
-import Emitter from '../m-emitter.vue';
+import MEmitter from '../m-emitter.vue';
 
 export default {
     name: 'm-field',
     isField: true,
-    mixins: [Emitter],
+    mixins: [MEmitter],
     data() {
         return {
             formItemVM: undefined,

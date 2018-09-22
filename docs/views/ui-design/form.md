@@ -643,7 +643,7 @@ import { MField } from 'library';
 export default {
     components: {
         'e-checkbox': {
-            extends: MField,
+            mixins: [MField],
             template: `<div @click="check()">{{ currentValue ? '✓' : '&nbsp;' }}</div>`,
             props: {
                 value: { type: Boolean, default: false },
@@ -713,7 +713,7 @@ import { MField } from 'library';
 
 export default {
     name: 'e-checkbox',
-    extends: MField,
+    mixins: [MField],
     props: {
         value: { type: Boolean, default: false },
     },
@@ -902,7 +902,7 @@ import { MField } from 'library';
 export default {
     components: {
         'e-ip-input': {
-            extends: MField,
+            mixins: [MField],
             template: `<div style="display: inline-block">
                 <u-input maxlength="3" v-model="parts[0]"
                     @input="onInput()" @change="onChange()" @focus="onFocus($event)" @blur="onBlur($event)"

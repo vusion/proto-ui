@@ -1,10 +1,10 @@
-import Emitter from '../m-emitter.vue';
+import MGroup from '../m-group.vue';
 
 export default {
     name: 'm-single-choice-group',
     parentName: 'm-single-choices',
     childName: 'm-single-choice',
-    mixins: [Emitter],
+    mixins: [MGroup],
     props: {
         title: String,
         collapsible: { type: Boolean, default: undefined },
@@ -13,8 +13,8 @@ export default {
     },
     data() {
         return {
-            parentVM: undefined,
-            itemVMs: [],
+            // @inherit: parentVM: undefined,
+            // @inherit: itemVMs: [],
             currentExpanded: this.expanded,
         };
     },
@@ -27,20 +27,6 @@ export default {
         expanded(expanded) {
             this.currentExpanded = expanded;
         },
-    },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.groupVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.groupVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
-        this.dispatch(this.$options.parentName, 'add-group-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-group-vm', this);
     },
     methods: {
         toggle(expanded) {

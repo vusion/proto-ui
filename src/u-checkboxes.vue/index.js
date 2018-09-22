@@ -1,9 +1,10 @@
-import Field from '../m-field.vue';
+import MParent from '../m-parent.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-checkboxes',
     childName: 'u-checkbox',
-    mixins: [Field],
+    mixins: [MParent, MField],
     props: {
         value: { type: Array, default() { return []; } },
         min: { type: Number, default: 0 },
@@ -13,19 +14,9 @@ export default {
     },
     data() {
         return {
+            // @inherit: itemVMs: [],
             currentValue: this.value,
-            itemVMs: [],
         };
-    },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
     },
     mounted() {
         this.watchValue(this.value);

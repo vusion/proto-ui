@@ -1,4 +1,4 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 import DataSource from '../utils/DataSource';
 import debounce from 'lodash/debounce';
 
@@ -6,7 +6,7 @@ export default {
     name: 'u-list-view',
     groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
-    mixins: [Field],
+    mixins: [MField],
     props: {
         value: null,
         field: { type: String, default: 'text' },

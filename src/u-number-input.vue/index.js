@@ -1,11 +1,11 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 import debounce from 'lodash/debounce';
 import { repeatClick } from '../directives';
 import { generateStringFormatter } from '../utils/formatter';
 
 export default {
     name: 'u-number-input',
-    mixins: [Field],
+    mixins: [MField],
     directives: { repeatClick },
     props: {
         // 只能传入数字

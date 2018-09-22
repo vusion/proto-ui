@@ -1,9 +1,9 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 import isNumber from 'lodash/isNumber';
 
 export default {
     name: 'u-cascade-select',
-    mixins: [Field],
+    mixins: [MField],
     props: {
         data: Array,
         value: String,

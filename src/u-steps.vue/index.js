@@ -1,13 +1,16 @@
+import MParent from '../m-parent.vue';
+
 export default {
     name: 'u-steps',
     childName: 'u-step',
+    mixins: [MParent],
     props: {
         value: { type: Number, default: 0 },
         router: { type: Boolean, default: false },
     },
     data() {
         return {
-            itemVMs: [],
+            // inherit: itemVMs: [],
             selectedVM: undefined,
             // currentValue: this.value,
         };
@@ -32,16 +35,6 @@ export default {
         //         oldValue,
         //     }, this);
         // },
-    },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
     },
     mounted() {
         this.watchValue(this.value);

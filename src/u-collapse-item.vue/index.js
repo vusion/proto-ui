@@ -1,9 +1,9 @@
-import Emitter from '../m-emitter.vue';
+import MChild from '../m-child.vue';
 
 export default {
     name: 'u-collapse-item',
     parentName: 'u-collapse',
-    mixins: [Emitter],
+    mixins: [MChild],
     props: {
         title: String,
         expanded: { type: Boolean, default: false },
@@ -11,7 +11,7 @@ export default {
     },
     data() {
         return {
-            parentVM: undefined,
+            // @inherit: parentVM: undefined,
             currentExpanded: this.expanded,
         };
     },
@@ -19,12 +19,6 @@ export default {
         expanded(expanded) {
             this.currentExpanded = expanded;
         },
-    },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
     methods: {
         toggle(expanded) {

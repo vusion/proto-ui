@@ -1,19 +1,12 @@
+import MParent from '../m-parent.vue';
+
 export default {
     name: 'u-crumb',
     childName: 'u-crumb-item',
+    mixins: [MParent],
     data() {
         return {
-            itemVMs: [],
+            // @inherit: itemVMs: [],
         };
-    },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
     },
 };

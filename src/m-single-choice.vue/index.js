@@ -1,4 +1,4 @@
-import MEmitter from '../m-emitter.vue';
+import MChild from '../m-child.vue';
 import ULink from '../u-link.vue';
 import { ellipsisTitle } from '../directives';
 
@@ -6,7 +6,7 @@ export default {
     name: 'm-single-choice',
     parentName: 'm-single-choices',
     groupName: 'm-single-choice-group',
-    mixins: [MEmitter, ULink],
+    mixins: [MChild, ULink],
     directives: { ellipsisTitle },
     props: {
         value: null,
@@ -16,21 +16,13 @@ export default {
     data() {
         return {
             currentSelected: false,
-            parentVM: undefined,
+            // @inherit: parentVM: undefined,
         };
     },
     computed: {
         selected() {
             return this.parentVM.selectedVM === this;
         },
-    },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-        this.dispatch(this.$options.groupName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
-        this.dispatch(this.$options.groupName, 'remove-item-vm', this);
     },
     methods: {
         select(e) {

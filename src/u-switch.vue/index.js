@@ -1,8 +1,8 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-switch',
-    mixins: [Field],
+    mixins: [MField],
     props: {
         value: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },

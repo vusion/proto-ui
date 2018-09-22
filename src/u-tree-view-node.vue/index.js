@@ -1,9 +1,9 @@
-import Emitter from '../m-emitter.vue';
+import MNode from '../m-node.vue';
 
 export default {
     name: 'u-tree-view-node',
     rootName: 'u-tree-view',
-    mixins: [Emitter],
+    mixins: [MNode],
     props: {
         data: Array,
         text: String,
@@ -15,11 +15,11 @@ export default {
     },
     data() {
         return {
-            nodeVMs: [],
+            // @inherit: nodeVMs: [],
+            // @inherit: rootVM: undefined,
+            // @inherit: parentVM: undefined,
             currentExpanded: this.expanded,
             currentChecked: this.checked,
-            parentVM: undefined,
-            rootVM: undefined,
         };
     },
     computed: {
@@ -34,25 +34,6 @@ export default {
         checked(checked) {
             this.currentChecked = checked;
         },
-    },
-    created() {
-        this.dispatch(this.$options.name, 'add-node-vm', this);
-        !this.parentVM && this.dispatch(this.$options.rootName, 'add-node-vm', this);
-
-        this.$on('add-node-vm', (nodeVM) => {
-            nodeVM.rootVM = this.rootVM;
-            nodeVM.parentVM = this;
-            this.nodeVMs.push(nodeVM);
-        });
-        this.$on('remove-node-vm', (nodeVM) => {
-            nodeVM.rootVM = undefined;
-            nodeVM.parentVM = undefined;
-            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
-        });
-    },
-    destroyed() {
-        this.dispatch(this.$options.rootName, 'remove-node-vm', this);
-        this.dispatch(this.$options.name, 'remove-node-vm', this);
     },
     methods: {
         select() {

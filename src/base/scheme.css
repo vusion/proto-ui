@@ -29,6 +29,7 @@ $margin-large: 30px;
 $border-width-base: 1px;
 $width-base: 160px;
 $height-base: 32px;
+$border-radius-base: 0;
 
 /* Specific Dimensions */
 $navbar-height: 70px;

@@ -1,9 +1,9 @@
-import Emitter from '../m-emitter.vue';
+import MEmitter from '../m-emitter.vue';
 import Validator from 'vusion-async-validator';
 
 export default {
     name: 'u-form-item',
-    mixins: [Emitter],
+    mixins: [MEmitter],
     props: {
         name: String,
         label: String,

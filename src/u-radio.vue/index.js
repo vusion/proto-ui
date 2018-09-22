@@ -1,9 +1,10 @@
-import Field from '../m-field.vue';
+import MChild from '../m-child.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-radio',
     parentName: 'u-radios',
-    mixins: [Field],
+    mixins: [MChild, MField],
     props: {
         label: null,
         readonly: { type: Boolean, default: false },
@@ -11,7 +12,7 @@ export default {
     },
     data() {
         return {
-            parentVM: undefined,
+            // inherit: parentVM: undefined,
         };
     },
     computed: {
@@ -27,12 +28,6 @@ export default {
         currentDisabled() {
             return this.disabled || this.parentVM && this.parentVM.disabled;
         },
-    },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
     methods: {
         onFocus(e) {

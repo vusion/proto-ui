@@ -1,8 +1,8 @@
-import Field from '../m-field.vue';
+import MField from '../m-field.vue';
 
 export default {
     name: 'u-combo-slider',
-    mixins: [Field],
+    mixins: [MField],
     props: {
         value: { type: Number, default: 0 },
         min: { type: Number, default: 0 },

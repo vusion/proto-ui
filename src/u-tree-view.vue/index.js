@@ -1,4 +1,5 @@
-import Field from '../m-field.vue';
+import MRoot from '../m-root.vue';
+import MField from '../m-field.vue';
 
 const walk = (rootVM, func) => {
     let queue = [];
@@ -19,8 +20,8 @@ const find = (rootVM, func) => walk(rootVM, (nodeVM) => {
 
 export default {
     name: 'u-tree-view',
-    childName: 'u-tree-view-node',
-    mixins: [Field],
+    nodeName: 'u-tree-view-node',
+    mixins: [MRoot, MField],
     props: {
         data: Array,
         value: null,
@@ -34,8 +35,8 @@ export default {
     },
     data() {
         return {
-            ChildComponent: this.$options.childName, // easy for SubComponent inheriting
-            nodeVMs: [],
+            ChildComponent: this.$options.nodeName, // easy for SubComponent inheriting
+            // @inherit: nodeVMs: [],
             selectedVM: undefined,
         };
     },
@@ -59,19 +60,9 @@ export default {
             this.watchValue(this.value);
         },
     },
-    created() {
-        this.$on('add-node-vm', (nodeVM) => {
-            nodeVM.rootVM = this;
-            this.nodeVMs.push(nodeVM);
-        });
-        this.$on('remove-node-vm', (nodeVM) => {
-            nodeVM.rootVM = undefined;
-            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
-        });
-    },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
-        // If not, itemVMs have not been pushed.
+        // If not, nodeVMs have not been pushed.
         this.watchValue(this.value);
     },
     methods: {
