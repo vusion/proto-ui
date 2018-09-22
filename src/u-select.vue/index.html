@@ -1,15 +1,13 @@
-<f-popper ref="popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference">
-    <div :class="$style.root" :readonly="readonly" :disabled="disabled"
-        :tabindex="readonly || disabled ? '' : 0"
-        @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
-        @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
-        @keydown.stop.enter="toggle(false)"
-        @keydown.stop.esc="toggle(false)">
-        <span :class="$style.text" v-ellipsis-title>
-            <f-render :vnode="selectedVM && selectedVM.$slots.default"></f-render>
-        </span>
-    </div>
-    <ul :class="$style.popper" slot="popper" @click.stop @scroll.stop="onScroll">
+<div :class="$style.root" :readonly="readonly" :disabled="disabled"
+:tabindex="readonly || disabled ? '' : 0"
+    @keydown.prevent.up="$refs.popper.currentOpened ? shift(-1) : toggle(true)"
+    @keydown.prevent.down="$refs.popper.currentOpened ? shift(+1) : toggle(true)"
+    @keydown.stop.enter="toggle(false)"
+    @keydown.stop.esc="toggle(false)">
+    <span :class="$style.text" v-ellipsis-title>
+        <f-render :vnode="selectedVM && selectedVM.$slots.default"></f-render>
+    </span>
+    <m-popper :class="$style.popper" ref="popper" append-to="reference" :disabled="readonly || disabled" @toggle="onToggle($event)" @click.stop @scroll.stop="onScroll">
         <slot></slot>
         <component :is="ChildComponent" v-if="currentData"
             v-for="item in currentData"
@@ -21,5 +19,5 @@
         <div :class="$style.status" status="loading" v-if="loading">
             <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
         </div>
-    </ul>
-</f-popper>
+    </m-popper>
+</div>

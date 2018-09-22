@@ -18,7 +18,7 @@
             <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
         </u-menu>
     </u-popup>
-    <f-popper>
+    <m-popper>
         <u-button>Popper 菜单</u-button>
         <u-menu slot="popper" value="3" :router="false" style="width: 128px">
             <u-menu-item to="/guides/">指南</u-menu-item>
@@ -26,7 +26,7 @@
             <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
             <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
         </u-menu>
-    </f-popper>
+    </m-popper>
 </u-linear-layout>
 ```
 
@@ -62,7 +62,7 @@
                         </u-menu-item>
                         <u-menu-item>Popper
                             <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/f-popper">弹出层 Popper</u-menu-item>
+                                <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
                                 <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
                                 <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
                             </u-menu>
@@ -105,7 +105,7 @@
                                 </u-menu-item>
                                 <u-menu-item>Popper
                                     <u-menu slot="sub">
-                                        <u-menu-item to="/proto-ui/f-popper">弹出层 Popper</u-menu-item>
+                                        <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
                                         <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
                                         <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
                                     </u-menu>

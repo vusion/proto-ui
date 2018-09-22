@@ -21,11 +21,11 @@
 
 ## 功能设计
 
-### 弹出层 [Popper](/proto-ui/f-popper)
+### 弹出层 [Popper](/proto-ui/m-popper)
 
 目前市面上有的一个流行的开源库 [Popper.js](https://popper.js.org/)，它较好地解决了边缘情况、位置计算等问题。
 
-Proto UI 中的 [Popper 组件](/proto-ui/f-popper)就是用 Vue 对它作了一层封装。
+Proto UI 中的 [Popper 组件](/proto-ui/m-popper)就是用 Vue 对它作了一层封装。
 
 #### 插槽
 
@@ -33,15 +33,15 @@ Proto UI 中的 [Popper 组件](/proto-ui/f-popper)就是用 Vue 对它作了一
 
 > 这里使用“触发节点”一词比“触发元素”更合适，因为有时节点是一个组件。
 
-`<f-popper>`就是这样设计的，它的基本用法如下：
+`<m-popper>`就是这样设计的，它的基本用法如下：
 
 ``` html
-<f-popper>
+<m-popper>
     <u-button>click</u-button>
     <div slot="popper">
         <u-block>popper</u-block>
     </div>
-</f-popper>
+</m-popper>
 ```
 
 默认的 slot 用于表示触发节点（参考节点），popper slot 用于表示弹出层节点。由于 Vue 的限制，每个 slot 中只能有一个根节点。
@@ -60,7 +60,7 @@ Proto UI 中设计了5种触发方式：`'click'`, `'hover'`, `'right-click'`, `
 
 ### 弹出框 [Popup](/proto-ui/u-popup)
 
-`<f-popper>`它本身没有模板和样式，是解决弹出层问题的抽象组件。`<u-popup>`在它的基础上具体化，带有三角箭头，并可以在不同插槽填充一些内容。
+`<m-popper>`它本身没有模板和样式，是解决弹出层问题的抽象组件。`<u-popup>`在它的基础上具体化，带有三角箭头，并可以在不同插槽填充一些内容。
 
 ``` html
 <u-linear-layout>
@@ -151,7 +151,7 @@ export default {
 </script>
 ```
 
-> 具体业务中可以扩展箭头样式，如果不需要可直接使用`<f-popper>`。
+> 具体业务中可以扩展箭头样式，如果不需要可直接使用`<m-popper>`。
 
 ## 相关组件
 
@@ -163,7 +163,7 @@ export default {
 
 ### 菜单 [Menu](/proto-ui/u-menu)
 
-Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点是不确定的，而且完全可以由`<f-popper>`或`<u-popup>`与`<u-menu>`组合来实现。
+Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点是不确定的，而且完全可以由`<m-popper>`或`<u-popup>`与`<u-menu>`组合来实现。
 
 ``` html
 <u-linear-layout>
@@ -176,7 +176,7 @@ Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点�
             <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
         </u-menu>
     </u-popup>
-    <f-popper>
+    <m-popper>
         <u-button>Popper 菜单</u-button>
         <u-menu slot="popper" value="3" :router="false" style="width: 128px">
             <u-menu-item to="/guides/">指南</u-menu-item>
@@ -184,7 +184,7 @@ Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点�
             <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
             <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
         </u-menu>
-    </f-popper>
+    </m-popper>
 </u-linear-layout>
 ```
 
@@ -221,7 +221,7 @@ Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点�
                         </u-menu-item>
                         <u-menu-item>Popper
                             <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/f-popper">弹出层 Popper</u-menu-item>
+                                <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
                                 <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
                                 <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
                             </u-menu>
@@ -238,7 +238,7 @@ Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点�
 
 ### 其它组件
 
-以下这些是在`<f-popper>`或`<u-popup>`基础上封装后的组件，`<u-date-picker>`、`<u-color-picker>`正在路上。。
+以下这些是在`<m-popper>`或`<u-popup>`基础上封装后的组件，`<u-date-picker>`、`<u-color-picker>`正在路上。。
 
 ``` html
 <u-linear-layout>

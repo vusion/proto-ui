@@ -7,17 +7,21 @@
 
 ``` html
 <u-linear-layout>
-    <u-popup content="使用 content 属性添加内容">
-        <u-button>内容</u-button>
-    </u-popup>
-    <u-popup title="标题" content="使用 title 属性添加标题">
-        <u-button>标题</u-button>
-    </u-popup>
-    <u-popup>
-        <u-button>使用 slot</u-button>
-        <span slot="title">标题 <u-badge :value="3"></u-badge></span>
-        <span slot="content">使用 <u-link>slot</u-link> 可以添加一些复杂功能</span>
-    </u-popup>
+    <u-button>
+        内容
+        <u-popup>使用 content 属性添加内容</u-popup>
+    </u-button>
+    <u-button>
+        标题
+        <u-popup title="标题">使用 title 属性添加标题</u-popup>
+    </u-button>
+    <u-button>
+        使用 slot
+        <u-popup>
+            <span slot="title">标题 <u-badge :value="3"></u-badge></span>
+            <span>使用 <u-link>slot</u-link> 可以添加一些复杂功能</span>
+        </u-popup>
+    </u-button>
 </u-linear-layout>
 ```
 
@@ -25,37 +29,43 @@
 
 ``` html
 <u-linear-layout>
-    <u-popup>
-        <u-button>Dropdown</u-button>
-        <u-menu slot="popper" value="3" :router="false">
-            <u-menu-item value="1">指南</u-menu-item>
-            <u-menu-item value="2">概念</u-menu-item>
-            <u-menu-item value="3">组件</u-menu-item>
-        </u-menu>
-    </u-popup>
-    <u-popup>
-        <u-button>Textarea</u-button>
-        <u-textarea slot="popper"></u-textarea>
-    </u-popup>
-    <u-popup>
-        <u-button>TreeView</u-button>
-        <u-tree-view slot="popper">
-            <u-tree-view-node text="节点1">
-                <u-tree-view-node text="节点1.1"></u-tree-view-node>
-                <u-tree-view-node text="节点1.2">
-                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+    <u-button>
+        Dropdown
+        <u-popup>
+            <u-menu slot="root" value="3" :router="false">
+                <u-menu-item value="1">指南</u-menu-item>
+                <u-menu-item value="2">概念</u-menu-item>
+                <u-menu-item value="3">组件</u-menu-item>
+            </u-menu>
+        </u-popup>
+    </u-button>
+    <u-button>
+        Textarea
+        <u-popup>
+            <u-textarea slot="root"></u-textarea>
+        </u-popup>
+    </u-button>
+    <u-button>
+        TreeView
+        <u-popup>
+            <u-tree-view slot="root">
+                <u-tree-view-node text="节点1">
+                    <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2">
+                        <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                        <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                    </u-tree-view-node>
+                    <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.4"></u-tree-view-node>
                 </u-tree-view-node>
-                <u-tree-view-node text="节点1.3"></u-tree-view-node>
-                <u-tree-view-node text="节点1.4"></u-tree-view-node>
-            </u-tree-view-node>
-            <u-tree-view-node text="节点2"></u-tree-view-node>
-            <u-tree-view-node text="节点3">
-                <u-tree-view-node text="节点3.1"></u-tree-view-node>
-                <u-tree-view-node text="节点3.2"></u-tree-view-node>
-            </u-tree-view-node>
-        </u-tree-view>
-    </u-popup>
+                <u-tree-view-node text="节点2"></u-tree-view-node>
+                <u-tree-view-node text="节点3">
+                    <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点3.2"></u-tree-view-node>
+                </u-tree-view-node>
+            </u-tree-view>
+        </u-popup>
+    </u-button>
 </u-linear-layout>
 ```
 
@@ -63,18 +73,22 @@
 
 ``` html
 <u-linear-layout>
-    <u-popup content="Popup" trigger="hover">
-        <u-button>hover</u-button>
-    </u-popup>
-    <u-popup content="Popup" trigger="click">
-        <u-button>click（默认）</u-button>
-    </u-popup>
-    <u-popup content="Popup" trigger="right-click">
-        <u-button>right-click</u-button>
-    </u-popup>
-    <u-popup content="Popup" trigger="double-click">
-        <u-button>double-click</u-button>
-    </u-popup>
+    <u-button>
+        hover
+        <u-popup trigger="hover">Popup</u-popup>
+    </u-button>
+    <u-button>
+        click（默认）
+        <u-popup trigger="click">Popup</u-popup>
+    </u-button>
+    <u-button>
+        right-click
+        <u-popup trigger="right-click">Popup</u-popup>
+    </u-button>
+    <u-button>
+        double-click
+        <u-popup trigger="double-click">Popup</u-popup>
+    </u-button>
 </u-linear-layout>
 ```
 
@@ -84,16 +98,16 @@
 
 ``` vue
 <template>
-<u-popup content="Popup" trigger="manual" :open.sync="open">
-    <u-button @click="open = !open">{{ open ? '隐藏' : '弹出' }}</u-button>
-</u-popup>
+<u-button @click="opened = !opened">
+    {{ opened ? '隐藏' : '弹出' }}
+    <u-popup trigger="manual" :opened.sync="opened">Popup</u-popup>
+</u-button>
 </template>
-
 <script>
 export default {
     data() {
         return {
-            open: false,
+            opened: false,
         };
     },
 };
@@ -105,112 +119,136 @@ export default {
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-popup content="Popup" placement="top-start">
-            <u-button>top-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="top">
-            <u-button>top</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="top-end">
-            <u-button>top-end</u-button>
-        </u-popup>
+        <u-button>
+            top-start
+            <u-popup placement="top-start">Popup</u-popup>
+        </u-button>
+        <u-button>
+            top
+            <u-popup placement="top">Popup</u-popup>
+        </u-button>
+        <u-button>
+            top-end
+            <u-popup placement="top-end">Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="left-start">
-            <u-button>left-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="left">
-            <u-button>left</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="left-end">
-            <u-button>left-end</u-button>
-        </u-popup>
+        <u-button>
+            left-start
+            <u-popup placement="left-start">Popup</u-popup>
+        </u-button>
+        <u-button>
+            left
+            <u-popup placement="left">Popup</u-popup>
+        </u-button>
+        <u-button>
+            left-end
+            <u-popup placement="left-end">Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="right-start">
-            <u-button>right-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="right">
-            <u-button>right</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="right-end">
-            <u-button>right-end</u-button>
-        </u-popup>
+        <u-button>
+            right-start
+            <u-popup placement="right-start">Popup</u-popup>
+        </u-button>
+        <u-button>
+            right
+            <u-popup placement="right">Popup</u-popup>
+        </u-button>
+        <u-button>
+            right-end
+            <u-popup placement="right-end">Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="bottom-start">
-            <u-button>bottom-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="bottom">
-            <u-button>bottom</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="bottom-end">
-            <u-button>bottom-end</u-button>
-        </u-popup>
+        <u-button>
+            bottom-start
+            <u-popup placement="bottom-start">Popup</u-popup>
+        </u-button>
+        <u-button>
+            bottom
+            <u-popup placement="bottom">Popup</u-popup>
+        </u-button>
+        <u-button>
+            bottom-end
+            <u-popup placement="bottom-end">Popup</u-popup>
+        </u-button>
     </u-linear-layout>
 </u-linear-layout>
 ```
-
-<!-- `-`-` html
 
 #### 跟随鼠标
 
 将`'follow-cursor'`属性设置为`true`可以跟随鼠标。也可以传一个数字或对象调整位置偏移。
 
+``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-popup content="Popup" placement="top-start" follow-cursor>
-            <u-button>top-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="top" follow-cursor>
-            <u-button>top</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="top-end" follow-cursor>
-            <u-button>top-end</u-button>
-        </u-popup>
+        <u-button>
+            top-start
+            <u-popup placement="top-start" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            top
+            <u-popup placement="top" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            top-end
+            <u-popup placement="top-end" follow-cursor>Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="left-start" follow-cursor>
-            <u-button>left-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="left" follow-cursor>
-            <u-button>left</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="left-end" follow-cursor>
-            <u-button>left-end</u-button>
-        </u-popup>
+        <u-button>
+            left-start
+            <u-popup placement="left-start" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            left
+            <u-popup placement="left" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            left-end
+            <u-popup placement="left-end" follow-cursor>Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="right-start" follow-cursor>
-            <u-button>right-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="right" follow-cursor>
-            <u-button>right</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="right-end" follow-cursor>
-            <u-button>right-end</u-button>
-        </u-popup>
+        <u-button>
+            right-start
+            <u-popup placement="right-start" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            right
+            <u-popup placement="right" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            right-end
+            <u-popup placement="right-end" follow-cursor>Popup</u-popup>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-popup content="Popup" placement="bottom-start" follow-cursor>
-            <u-button>bottom-start</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="bottom" follow-cursor>
-            <u-button>bottom</u-button>
-        </u-popup>
-        <u-popup content="Popup" placement="bottom-end" follow-cursor>
-            <u-button>bottom-end</u-button>
-        </u-popup>
+        <u-button>
+            bottom-start
+            <u-popup placement="bottom-start" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            bottom
+            <u-popup placement="bottom" follow-cursor>Popup</u-popup>
+        </u-button>
+        <u-button>
+            bottom-end
+            <u-popup placement="bottom-end" follow-cursor>Popup</u-popup>
+        </u-button>
     </u-linear-layout>
 </u-linear-layout>
-`-`-` -->
+```
 
 ### 禁用
 
 ``` html
-<u-popup content="Popup" disabled>
-    <u-button disabled>disabled</u-button>
-</u-popup>
+<u-button disabled>
+    disabled
+    <u-popup disabled>Popup</u-popup>
+</u-button>
 ```
 
 ## API
@@ -218,8 +256,8 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| content | String | `'提示内容'` | 提示内容 |
-| open.sync | Boolean | `false` | 弹出/隐藏状态 |
+| title | String | `'标题'` | 弹出框标题 |
+| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 弹出框的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 弹出框的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
@@ -234,7 +272,7 @@ export default {
 
 触发节点，该 slot 只能插入一个节点。Tooltip 除了会给该节点绑定触发事件，不会对它做任何事情。
 
-#### popper
+#### root
 
 自定义整个弹出层。
 
@@ -254,9 +292,9 @@ export default {
 
 自定义标题文本。
 
-#### content
+#### default
 
-自定义内容文本。
+自定义内容。
 
 ### Events
 

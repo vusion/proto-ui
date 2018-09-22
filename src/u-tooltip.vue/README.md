@@ -5,44 +5,34 @@
 
 ``` html
 <u-linear-layout>
-    <u-tooltip content="使用 content 属性比较方便">
-        <u-button>使用属性</u-button>
-    </u-tooltip>
-    <u-tooltip>
-        <u-button>使用 slot</u-button>
-        <span slot="content">使用 content <u-link>slot</u-link> 更加灵活</span>
-    </u-tooltip>
-    <u-button v-tooltip="'使用指令最简单'">使用指令</u-button>
+    <u-button>
+        直接插入
+        <u-tooltip>直接插入<u-link>文本</u-link>或<u-link>HTML</u-link></u-tooltip>
+    </u-button>
+    <u-button v-tooltip="'指令中只能插入文本'">指令</u-button>
 </u-linear-layout>
 ```
-
-<!--
-#### 下一版的书写方式
-
-`-`-` html
-
-<u-button>
-    使用属性
-    <u-tooltip reference="parent" content="使用 content 属性比较方便"></u-tooltip>
-</u-button>
-`-`-` -->
 
 ### 触发方式
 
 ``` html
 <u-linear-layout>
-    <u-tooltip content="Tooltip" trigger="hover">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-    <u-tooltip content="Tooltip" trigger="click">
-        <u-button>click</u-button>
-    </u-tooltip>
-    <u-tooltip content="Tooltip" trigger="right-click">
-        <u-button>right-click</u-button>
-    </u-tooltip>
-    <u-tooltip content="Tooltip" trigger="double-click">
-        <u-button>double-click</u-button>
-    </u-tooltip>
+    <u-button>
+        hover（默认）
+        <u-tooltip trigger="hover">Tooltip</u-tooltip>
+    </u-button>
+    <u-button>
+        click
+        <u-tooltip trigger="click">Tooltip</u-tooltip>
+    </u-button>
+    <u-button>
+        right-click
+        <u-tooltip trigger="right-click">Tooltip</u-tooltip>
+    </u-button>
+    <u-button>
+        double-click
+        <u-tooltip trigger="double-click">Tooltip</u-tooltip>
+    </u-button>
 </u-linear-layout>
 ```
 
@@ -63,16 +53,17 @@
 
 ``` vue
 <template>
-<u-tooltip content="Tooltip" trigger="manual" :open.sync="open">
-    <u-button @click="open = !open">{{ open ? '隐藏' : '弹出' }}</u-button>
-</u-tooltip>
+<u-button @click="opened = !opened">
+    {{ opened ? '隐藏' : '弹出' }}
+    <u-tooltip trigger="manual" :opened.sync="opened">Tooltip</u-tooltip>
+</u-button>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            open: false,
+            opened: false,
         };
     },
 };
@@ -84,48 +75,60 @@ export default {
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="top-start">
-            <u-button>top-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="top">
-            <u-button>top</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="top-end">
-            <u-button>top-end</u-button>
-        </u-tooltip>
+        <u-button>
+            top-start
+            <u-tooltip placement="top-start">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            top
+            <u-tooltip placement="top">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            top-end
+            <u-tooltip placement="top-end">Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="left-start">
-            <u-button>left-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="left">
-            <u-button>left</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="left-end">
-            <u-button>left-end</u-button>
-        </u-tooltip>
+        <u-button>
+            left-start
+            <u-tooltip placement="left-start">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            left
+            <u-tooltip placement="left">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            left-end
+            <u-tooltip placement="left-end">Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="right-start">
-            <u-button>right-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="right">
-            <u-button>right</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="right-end">
-            <u-button>right-end</u-button>
-        </u-tooltip>
+        <u-button>
+            right-start
+            <u-tooltip placement="right-start">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            right
+            <u-tooltip placement="right">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            right-end
+            <u-tooltip placement="right-end">Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="bottom-start">
-            <u-button>bottom-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="bottom">
-            <u-button>bottom</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="bottom-end">
-            <u-button>bottom-end</u-button>
-        </u-tooltip>
+        <u-button>
+            bottom-start
+            <u-tooltip placement="bottom-start">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            bottom
+            <u-tooltip placement="bottom">Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            bottom-end
+            <u-tooltip placement="bottom-end">Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
 </u-linear-layout>
 ```
@@ -157,19 +160,6 @@ export default {
 </u-linear-layout>
 ```
 
-#### 修改偏移距离
-
-``` html
-<u-linear-layout>
-    <u-tooltip offset="10" content="Tooltip" trigger="hover">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-    <u-tooltip offset="10% 10px" content="Tooltip" trigger="hover">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
-</u-linear-layout>
-```
-
 #### 跟随鼠标
 
 将`'follow-cursor'`属性设置为`true`可以跟随鼠标。也可以传一个数字或对象调整位置偏移。
@@ -177,48 +167,60 @@ export default {
 ``` html
 <u-linear-layout direction="vertical">
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="top-start" follow-cursor>
-            <u-button>top-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="top" follow-cursor>
-            <u-button>top</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="top-end" follow-cursor>
-            <u-button>top-end</u-button>
-        </u-tooltip>
+        <u-button>
+            top-start
+            <u-tooltip placement="top-start" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            top
+            <u-tooltip placement="top" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            top-end
+            <u-tooltip placement="top-end" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="left-start" follow-cursor>
-            <u-button>left-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="left" follow-cursor>
-            <u-button>left</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="left-end" follow-cursor>
-            <u-button>left-end</u-button>
-        </u-tooltip>
+        <u-button>
+            left-start
+            <u-tooltip placement="left-start" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            left
+            <u-tooltip placement="left" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            left-end
+            <u-tooltip placement="left-end" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="right-start" follow-cursor>
-            <u-button>right-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="right" follow-cursor>
-            <u-button>right</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="right-end" follow-cursor>
-            <u-button>right-end</u-button>
-        </u-tooltip>
+        <u-button>
+            right-start
+            <u-tooltip placement="right-start" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            right
+            <u-tooltip placement="right" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            right-end
+            <u-tooltip placement="right-end" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
     <u-linear-layout>
-        <u-tooltip content="Tooltip" placement="bottom-start" follow-cursor>
-            <u-button>bottom-start</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="bottom" follow-cursor>
-            <u-button>bottom</u-button>
-        </u-tooltip>
-        <u-tooltip content="Tooltip" placement="bottom-end" follow-cursor>
-            <u-button>bottom-end</u-button>
-        </u-tooltip>
+        <u-button>
+            bottom-start
+            <u-tooltip placement="bottom-start" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            bottom
+            <u-tooltip placement="bottom" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
+        <u-button>
+            bottom-end
+            <u-tooltip placement="bottom-end" follow-cursor>Tooltip</u-tooltip>
+        </u-button>
     </u-linear-layout>
 </u-linear-layout>
 ```
@@ -227,18 +229,19 @@ export default {
 
 ``` html
 <u-linear-layout>
-    <u-tooltip content="Tooltip" trigger="hover" :hide-delay="300">
-        <u-button>hover（默认）</u-button>
-    </u-tooltip>
+    <u-button>Hover Delay
+        <u-tooltip trigger="hover" :hide-delay="300">Tooltip</u-tooltip>
+    </u-button>
 </u-linear-layout>
 ```
 
 ### 禁用
 
 ``` html
-<u-tooltip content="Tooltip" disabled>
-    <u-button disabled>disabled</u-button>
-</u-tooltip>
+<u-button disabled>
+    disabled
+    <u-tooltip content="Tooltip" disabled>disabled</u-tooltip>
+</u-button>
 ```
 
 ## API
@@ -246,8 +249,7 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| content | String | `'提示内容'` | 提示内容 |
-| open.sync | Boolean | `false` | 弹出/隐藏状态 |
+| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |

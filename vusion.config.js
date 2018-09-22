@@ -64,7 +64,7 @@ module.exports = {
             // { group: 'DateTime', name: 'u-date-picker', alias: '日期选择' },
             // { group: 'DateTime', name: 'u-time-picker', alias: '时间选择' },
             // { group: 'DateTime', name: 'u-date-time-picker', alias: '日期时间' },
-            { group: 'Popper', name: 'f-popper', alias: '弹出层' },
+            { group: 'Popper', name: 'm-popper', alias: '弹出层' },
             { group: 'Popper', name: 'u-popup', alias: '弹出框' },
             { group: 'Popper', name: 'u-tooltip', alias: '工具提示' },
             { group: 'Feedback', name: 'u-spinner', alias: '加载图标' },

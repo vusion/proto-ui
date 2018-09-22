@@ -3,7 +3,7 @@ export { default as FCollapseTransition } from './f-collapse-transition.vue';
 export { default as FDraggable } from './f-draggable.vue';
 export { default as FDragger } from './f-dragger.vue';
 export { default as FDroppable } from './f-droppable.vue';
-export { default as FPopper } from './f-popper.vue';
+export { default as MPopper } from './m-popper.vue';
 export { default as FRender } from './f-render.vue';
 export { default as IIcon } from './i-icon.vue';
 export { default as MEmitter } from './m-emitter.vue';

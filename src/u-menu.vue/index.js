@@ -15,7 +15,7 @@ export default {
     },
     created() {
         let popperChildVM = this.$parent;
-        while (popperChildVM && popperChildVM.$options.name !== 'f-popper-child')
+        while (popperChildVM && popperChildVM.$options.name !== 'm-popper-child')
             popperChildVM = popperChildVM.$parent;
         if (popperChildVM && popperChildVM.parentVM)
             this.parentVM = popperChildVM.parentVM;
