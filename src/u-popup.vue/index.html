@@ -1,4 +1,4 @@
-<div :class="$style.root" :merge-borders="mergeBorders" v-show="currentOpened">
+<div :class="$style.root" :merge-borders="mergeBorders" v-show="currentOpen">
     <span :class="$style.arrow"></span><!-- popper在某些场景下可以移动该元素 -->
     <slot name="root">
         <div :class="$style.head" v-if="title || $slots.head || $slots.title">

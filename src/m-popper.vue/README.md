@@ -56,9 +56,9 @@
 
 ``` vue
 <template>
-    <u-button @click="opened = !opened">
-        {{ opened ? '隐藏' : '弹出' }}
-        <m-popper trigger="manual" :opened.sync="opened">
+    <u-button @click="open = !open">
+        {{ open ? '隐藏' : '弹出' }}
+        <m-popper trigger="manual" :open.sync="open">
             <u-block>popper</u-block>
         </m-popper>
     </u-button>
@@ -68,7 +68,7 @@
 export default {
     data() {
         return {
-            opened: false,
+            open: false,
         };
     },
 };
@@ -286,7 +286,7 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
+| open.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | reference | String, HTMLElement, Function | `'parent'` | 参考元素。可选值：`'parent'`表示父元素，`'prev'`表示上一个元素，`'next'`表示下一个元素。也可以传一个 HTML 元素，或用于返回元素的方法 |
 | placement | String | `'bottom'` | 弹出方位。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |

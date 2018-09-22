@@ -1,8 +1,8 @@
 <u-input :class="$style.root" ref="input" :readonly="readonly" :disabled="disabled" :color="color" :size="size"
 :value="currentValue" @input="onInput" @blur="onBlur"
-@keydown.prevent.up="$refs.popper.currentOpened ? shift(-1) : toggle(true)"
-        @keydown.prevent.down="$refs.popper.currentOpened ? shift(+1) : toggle(true)"
-        @keydown.stop.enter="$refs.popper.currentOpened && select(selectedVM)"
+@keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
+        @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
+        @keydown.stop.enter="$refs.popper.currentOpen && select(selectedVM)"
         @keydown.stop.esc="toggle(false)"
         v-bind="$attrs">
     <m-popper ref="popper" :class="$style.popper" :disabled="readonly || disabled" @toggle="onToggle($event)" append-to="reference"

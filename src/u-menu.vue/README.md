@@ -15,7 +15,7 @@
             <u-menu slot="root">
                 <u-menu-item to="/guides/">指南</u-menu-item>
                 <u-menu-item to="/api/">API</u-menu-item>
-                <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+                <u-menu-item to="/components/">原型组件</u-menu-item>
                 <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
             </u-menu>
         </u-popup>
@@ -26,7 +26,7 @@
             <u-menu value="3" :router="false" style="width: 128px;">
                 <u-menu-item to="/guides/">指南</u-menu-item>
                 <u-menu-item to="/api/">API</u-menu-item>
-                <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+                <u-menu-item to="/components/">原型组件</u-menu-item>
                 <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
             </u-menu>
         </m-popper>
@@ -52,23 +52,23 @@
                     <u-menu slot="sub">
                         <u-menu-item>Basic
                             <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
+                                <u-menu-item to="/components/u-link">链接 Link</u-menu-item>
+                                <u-menu-item to="/components/u-button">按钮 Button</u-menu-item>
+                                <u-menu-item to="/components/u-badge">徽章 Badge</u-menu-item>
                             </u-menu>
                         </u-menu-item>
                         <u-menu-item>Navigation
                             <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
+                                <u-menu-item to="/components/u-navbar">导航栏 Navbar</u-menu-item>
+                                <u-menu-item to="/components/u-sidebar">侧边栏 Sidebar</u-menu-item>
+                                <u-menu-item to="/components/u-menu">菜单 Menu</u-menu-item>
                             </u-menu>
                         </u-menu-item>
                         <u-menu-item>Popper
                             <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
+                                <u-menu-item to="/components/m-popper">弹出层 Popper</u-menu-item>
+                                <u-menu-item to="/components/u-tooltip">工具提示 Tooltip</u-menu-item>
+                                <u-menu-item to="/components/u-popup">弹出框 Popup</u-menu-item>
                             </u-menu>
                         </u-menu-item>
                     </u-menu>
@@ -96,23 +96,23 @@
                                 <u-menu slot="sub">
                                     <u-menu-item>Basic
                                         <u-menu slot="sub">
-                                            <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
+                                            <u-menu-item to="/components/u-link">链接 Link</u-menu-item>
+                                            <u-menu-item to="/components/u-button">按钮 Button</u-menu-item>
+                                            <u-menu-item to="/components/u-badge">徽章 Badge</u-menu-item>
                                         </u-menu>
                                     </u-menu-item>
                                     <u-menu-item>Navigation
                                         <u-menu slot="sub">
-                                            <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
+                                            <u-menu-item to="/components/u-navbar">导航栏 Navbar</u-menu-item>
+                                            <u-menu-item to="/components/u-sidebar">侧边栏 Sidebar</u-menu-item>
+                                            <u-menu-item to="/components/u-menu">菜单 Menu</u-menu-item>
                                         </u-menu>
                                     </u-menu-item>
                                     <u-menu-item>Popper
                                         <u-menu slot="sub">
-                                            <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
-                                            <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
+                                            <u-menu-item to="/components/m-popper">弹出层 Popper</u-menu-item>
+                                            <u-menu-item to="/components/u-tooltip">工具提示 Tooltip</u-menu-item>
+                                            <u-menu-item to="/components/u-popup">弹出框 Popup</u-menu-item>
                                         </u-menu>
                                     </u-menu-item>
                                 </u-menu>
@@ -177,7 +177,7 @@
                 </u-menu-group>
                 <u-menu-group title="Navigation">
                     <u-menu-item>导航栏</u-menu-item>
-                    <u-menu-item to="/proto-ui/u-menu">侧边栏</u-menu-item>
+                    <u-menu-item to="/components/u-menu">侧边栏</u-menu-item>
                     <u-menu-item>标签页</u-menu-item>
                 </u-menu-group>
                 <u-menu-group title="Form">
@@ -198,7 +198,7 @@
                 </u-menu-group>
                 <u-menu-group title="Navigation" expanded disabled>
                     <u-menu-item>导航栏</u-menu-item>
-                    <u-menu-item to="/proto-ui/u-menu">侧边栏</u-menu-item>
+                    <u-menu-item to="/components/u-menu">侧边栏</u-menu-item>
                     <u-menu-item>标签页</u-menu-item>
                 </u-menu-group>
                 <u-menu-group title="Form" :collapsible="false">
@@ -219,7 +219,7 @@
                 </u-menu-group>
                 <u-menu-group title="Navigation">
                     <u-menu-item>导航栏</u-menu-item>
-                    <u-menu-item to="/proto-ui/u-menu">侧边栏</u-menu-item>
+                    <u-menu-item to="/components/u-menu">侧边栏</u-menu-item>
                     <u-menu-item>标签页</u-menu-item>
                 </u-menu-group>
                 <u-menu-group title="Form">
@@ -242,7 +242,7 @@
                 </u-menu-group>
                 <u-menu-group title="Navigation">
                     <u-menu-item>导航栏</u-menu-item>
-                    <u-menu-item to="/proto-ui/u-menu">侧边栏</u-menu-item>
+                    <u-menu-item to="/components/u-menu">侧边栏</u-menu-item>
                     <u-menu-item>标签页</u-menu-item>
                 </u-menu-group>
             </u-menu>
@@ -257,7 +257,7 @@
                 </u-menu-group>
                 <u-menu-group title="Navigation">
                     <u-menu-item>导航栏</u-menu-item>
-                    <u-menu-item to="/proto-ui/u-menu">侧边栏</u-menu-item>
+                    <u-menu-item to="/components/u-menu">侧边栏</u-menu-item>
                     <u-menu-item>标签页</u-menu-item>
                 </u-menu-group>
             </u-menu>

@@ -21,8 +21,8 @@ export default {
             else
                 this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
         },
-        toggle(opened) {
-            this.$refs.popper && this.$refs.popper.toggle(opened);
+        toggle(open) {
+            this.$refs.popper && this.$refs.popper.toggle(open);
         },
         onToggle($event) {
             this.$emit('toggle', $event, this);

@@ -1,12 +1,12 @@
 <div :class="$style.root">
-    <ul :class="$style.head">
-        <li :class="$style.item"
+    <nav :class="$style.head">
+        <a :class="$style.item"
             v-for="(itemVM, index) in itemVMs"
             :title="itemVM.title"
             :pass="index <= value">
             <span :class="$style.title"><f-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</f-render></span>
-        </li>
-    </ul>
+        </a>
+    </nav>
     <div :class="$style.body">
         <slot></slot>
     </div>

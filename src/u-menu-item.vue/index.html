@@ -1,11 +1,9 @@
-<li :class="$style.root"
-    :selected="parentVM.router ? active : selected || currentSelected"
-    :readonly="parentVM.readonly"
-    :disabled="disabled || parentVM.disabled"
-    v-on="listeners"
-    @click="select" :has-sub="!!$slots.sub">
+<a :class="$style.root"
+    :selected="parentVM.router ? active : selected || currentSelected" :readonly="parentVM.readonly" :disabled="disabled || parentVM.disabled"
+    :href="currentHref" :target="target" @click="parentVM.router ? onClick($event) : select($event)" v-on="listeners"
+    v-ellipsis-title :has-sub="!!$slots.sub">
     <slot></slot>
     <div :class="$style.sub">
         <slot name="sub"></slot>
     </div>
-</li>
+</a>

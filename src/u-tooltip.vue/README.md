@@ -53,9 +53,9 @@
 
 ``` vue
 <template>
-<u-button @click="opened = !opened">
-    {{ opened ? '隐藏' : '弹出' }}
-    <u-tooltip trigger="manual" :opened.sync="opened">Tooltip</u-tooltip>
+<u-button @click="open = !open">
+    {{ open ? '隐藏' : '弹出' }}
+    <u-tooltip trigger="manual" :open.sync="open">Tooltip</u-tooltip>
 </u-button>
 </template>
 
@@ -63,7 +63,7 @@
 export default {
     data() {
         return {
-            opened: false,
+            open: false,
         };
     },
 };
@@ -249,7 +249,7 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
+| open.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |

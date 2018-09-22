@@ -1,6 +1,7 @@
 @import '../u-list-view-item.vue/module.css';
 
 .root {
+    display: block;
     position: relative;
     overflow: visible;
     padding-right: 30px;

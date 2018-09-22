@@ -1,11 +1,12 @@
-import Emitter from '../m-emitter.vue';
+import MEmitter from '../m-emitter.vue';
+import ULink from '../u-link.vue';
 import { ellipsisTitle } from '../directives';
 
 export default {
     name: 'm-single-choice',
     parentName: 'm-single-choices',
     groupName: 'm-single-choice-group',
-    mixins: [Emitter],
+    mixins: [MEmitter, ULink],
     directives: { ellipsisTitle },
     props: {
         value: null,

@@ -1,7 +1,7 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled"
 :tabindex="readonly || disabled ? '' : 0"
-    @keydown.prevent.up="$refs.popper.currentOpened ? shift(-1) : toggle(true)"
-    @keydown.prevent.down="$refs.popper.currentOpened ? shift(+1) : toggle(true)"
+    @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
+    @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
     @keydown.stop.enter="toggle(false)"
     @keydown.stop.esc="toggle(false)">
     <span :class="$style.text" v-ellipsis-title>

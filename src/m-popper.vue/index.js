@@ -4,7 +4,7 @@ import ev from '../utils/event';
 export default {
     name: 'm-popper',
     props: {
-        opened: { type: Boolean, default: false },
+        open: { type: Boolean, default: false },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
         reference: { type: [String, HTMLElement, Function], default: 'parent', validator: (value) => {
             if (typeof value !== 'string')
@@ -36,7 +36,7 @@ export default {
     },
     data() {
         return {
-            currentOpened: this.opened,
+            currentOpen: this.open,
             referenceEl: undefined,
             triggers: [], // 所有的触发器，为了方便，第一项始终为默认的
             // popper: undefined,
@@ -74,12 +74,12 @@ export default {
         },
     },
     watch: {
-        opened(opened) {
-            this.currentOpened = opened;
+        open(open) {
+            this.currentOpen = open;
         },
-        currentOpened(currentOpened) {
+        currentOpen(currentOpen) {
             // 不直接用样式的显隐，而是用 popper 的 create 和 destroy，是因为 popper 有可能是从不同的地方触发的，reference 对象会变
-            currentOpened ? this.createPopper() : this.destroyPopper();
+            currentOpen ? this.createPopper() : this.destroyPopper();
         },
         reference(reference) {
             this.referenceEl = this.getReferenceEl();
@@ -90,7 +90,7 @@ export default {
         this.referenceEl = this.getReferenceEl();
         this.addTrigger(this.trigger, this.referenceEl);
 
-        this.currentOpened && this.createPopper();
+        this.currentOpen && this.createPopper();
     },
     beforeDestroy() {
         this.destroyPopper();
@@ -156,7 +156,7 @@ export default {
                     }, this.hoverDelay);
                 }));
                 this.offEvents.push(ev.on(document, 'mouseover', (e) => {
-                    if (this.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target))
+                    if (this.currentOpen && !timer && !el.contains(e.target) && !popperEl.contains(e.target))
                         timer = setTimeout(() => this.toggle(false), this.hideDelay);
                 }));
             } else if (event === 'double-click')
@@ -225,30 +225,30 @@ export default {
             };
             this.popper.scheduleUpdate();
         },
-        toggle(opened) {
+        toggle(open) {
             if (this.disabled)
                 return;
 
-            const oldOpen = this.currentOpened;
+            const oldOpen = this.currentOpen;
 
-            if (opened === undefined)
-                opened = !this.currentOpened;
+            if (open === undefined)
+                open = !this.currentOpen;
 
-            if (opened === oldOpen)
+            if (open === oldOpen)
                 return;
 
             let cancel = false;
             this.$emit('before-toggle', {
-                opened,
+                open,
                 preventDefault: () => cancel = true,
             }, this);
             if (cancel)
                 return;
 
-            this.currentOpened = opened;
-            this.$emit('update:opened', opened, this);
+            this.currentOpen = open;
+            this.$emit('update:open', open, this);
             this.$emit('toggle', {
-                opened,
+                open,
             }, this);
         },
     },

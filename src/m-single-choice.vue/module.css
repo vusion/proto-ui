@@ -1,5 +1,6 @@
 .root {
     /* @Private */
+    display: block;
     cursor: $cursor-pointer;
 
     /* @Public */

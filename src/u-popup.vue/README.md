@@ -98,16 +98,16 @@
 
 ``` vue
 <template>
-<u-button @click="opened = !opened">
-    {{ opened ? '隐藏' : '弹出' }}
-    <u-popup trigger="manual" :opened.sync="opened">Popup</u-popup>
+<u-button @click="open = !open">
+    {{ open ? '隐藏' : '弹出' }}
+    <u-popup trigger="manual" :open.sync="open">Popup</u-popup>
 </u-button>
 </template>
 <script>
 export default {
     data() {
         return {
-            opened: false,
+            open: false,
         };
     },
 };
@@ -257,7 +257,7 @@ export default {
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | title | String | `'标题'` | 弹出框标题 |
-| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
+| open.sync | Boolean | `false` | 弹出/隐藏状态 |
 | trigger | String | `'click'` | 弹出框的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 弹出框的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |

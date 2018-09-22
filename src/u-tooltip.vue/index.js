@@ -5,7 +5,7 @@ export default {
     extends: MPopper,
     props: {
         content: String,
-        // @inherit: opened
+        // @inherit: open
         trigger: { type: String, default: 'hover' },
         placement: { type: String, default: 'bottom' },
         // @inherit: reference

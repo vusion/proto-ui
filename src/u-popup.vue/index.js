@@ -6,7 +6,7 @@ export default {
     props: {
         title: String,
         content: String,
-        // @inherit: opened
+        // @inherit: open
         // @inherit: trigger: { type: String, default: 'click' },
         // @inherit: placement: { type: String, default: 'bottom-start' },
         // @inherit: reference: HTMLElement, // 为了方便生成指令

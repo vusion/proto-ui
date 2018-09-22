@@ -1,6 +1,6 @@
 <div :class="$style.root" :disabled="disabled">
-    <ul :class="$style.head">
-        <li :class="$style.item"
+    <nav :class="$style.head">
+        <a :class="$style.item"
             v-for="itemVM in itemVMs"
             :title="itemVM.title"
             :selected="router ? itemVM.active : itemVM === selectedVM"
@@ -9,9 +9,9 @@
             @click="select(itemVM)">
             <span :class="$style.title"><f-render :vnode="itemVM.$slots.title">{{ itemVM.title }}</f-render></span>
             <span v-if="closable" :class="$style.close" @click.stop="close(itemVM)"></span>
-        </li>
+        </a>
         <span :class="$style.extra"><slot name="extra"></slot></span>
-    </ul>
+    </nav>
     <div :class="$style.body">
         <slot></slot>
     </div>
