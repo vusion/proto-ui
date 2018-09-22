@@ -29,5 +29,5 @@
 }
 
 .root[selected][disabled] {
-    background: $gray-lighter;
+    background: $brand-disabled-light;
 }

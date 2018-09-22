@@ -35,6 +35,7 @@ module.exports = {
             { group: 'Basic', name: 'u-logo', alias: '标识' },
             { group: 'Layout', name: 'u-linear-layout', alias: '线性布局' },
             { group: 'Layout', name: 'u-grid-layout', alias: '栅格布局' },
+            { group: 'Layout', name: 'u-article', alias: '文章' },
             { group: 'Navigation', name: 'u-navbar', alias: '导航栏' },
             { group: 'Navigation', name: 'u-sidebar', alias: '侧边栏' },
             { group: 'Navigation', name: 'u-menu', alias: '菜单' },

@@ -11,7 +11,7 @@
 }
 
 .button:hover {
-    background: $gray-lighter;
+    background: $background-color-dark;
 }
 
 .button:focus {
@@ -19,7 +19,7 @@
 }
 
 .button:active {
-    background: $gray-light;
+    background: $background-color-dark;
 }
 
 .button[role="up"] {

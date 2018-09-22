@@ -13,7 +13,7 @@
 
 .root[disabled] {
     cursor: not-allowed;
-    background: $gray-lighter;
+    background: $brand-disabled-light;
 }
 
 .popper {

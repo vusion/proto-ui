@@ -64,5 +64,5 @@ $item_size: 32px;
 }
 
 .root[disabled] .item[selected] {
-    background: $gray-lighter;
+    background: $brand-disabled-light;
 }

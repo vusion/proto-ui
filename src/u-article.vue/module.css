@@ -1,0 +1,61 @@
+
+.root {}
+
+.root > h1 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 60px;
+}
+
+.root > h2 {
+    font-size: 20px;
+    padding: 0 60px;
+    margin: 80px -60px 40px;
+}
+
+.root > h3 {
+    font-size: 16px;
+    margin: 40px -60px 20px;
+    padding-left: 60px;
+    color: $brand-primary;
+}
+
+.root > h4 {
+    font-size: 14px;
+    margin: 25px 0 10px;
+    margin-left: -9px;
+}
+
+.root > h4::before {
+    content: '';
+    margin-right: 6px;
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    vertical-align: middle;
+    background: $brand-primary;
+}
+
+.root > h5 {
+    font-size: 12px;
+    margin: 0.3em 0;
+}
+
+.root img {
+    max-width: 100%;
+}
+
+.root table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.root > table th, .root > table td {
+    border: 1px solid #f4f4f4;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.root table img {
+    max-width: none;
+}

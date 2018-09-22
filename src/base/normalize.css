@@ -16,40 +16,12 @@ html {
     box-sizing: inherit; /* 1 */
 }
 
-/**
- * Black List
- * =============================================
- */
-
-/* body {
-    margin: 0;
-} */
-
-dl, dt, dd, ul, ol, li {
-    margin: 0;
-    padding: 0;
-}
-
-ol, ul, li {
-    list-style: none;
-}
-
-table {
-    border-collapse: collapse;
-}
-
 a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-/**
- * White List
- * =============================================
- */
-
-/*
-h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,figure,caption,thead,tbody,th,td
-header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details
-*/
+table {
+    border-collapse: collapse;
+}

@@ -7,7 +7,7 @@ body {
 }
 
 h6 {
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 hr {
@@ -20,4 +20,43 @@ blockquote {
     margin-right: 0;
     padding: 8px 16px;
     border-left: 4px solid $border-color-base;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+pre {
+    tab-size: 4;
+    /* Contain overflow in all browsers. */
+    overflow: auto;
+    background: $background-color-light;
+    border-radius: $border-radius-base;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+code {
+    padding: 0 3px;
+    font-size: 12px;
+    background: $background-color-light;
+    color: #e0276e;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+    /* white-space: pre-wrap; */
 }

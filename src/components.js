@@ -13,6 +13,7 @@ export { default as MSingleChoice } from './m-single-choice.vue';
 export { default as MSingleChoiceDivider } from './m-single-choice-divider.vue';
 export { default as MSingleChoiceGroup } from './m-single-choice-group.vue';
 export { default as MSingleChoices } from './m-single-choices.vue';
+export { default as UArticle } from './u-article.vue';
 export { default as UBadge } from './u-badge.vue';
 export { default as UBlock } from './u-block.vue';
 export { default as UButton } from './u-button.vue';

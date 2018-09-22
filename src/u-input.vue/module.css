@@ -44,5 +44,5 @@
 
 .root[disabled] {
     cursor: $cursor-not-allowed;
-    background: $gray-lighter;
+    background: $brand-disabled-light;
 }

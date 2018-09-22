@@ -6,7 +6,7 @@
     user-select: none;
     cursor: $cursor-pointer;
     padding: 2px 4px;
-    background: $gray-lighter;
+    background: $background-color-dark;
     overflow: hidden;
 }
 

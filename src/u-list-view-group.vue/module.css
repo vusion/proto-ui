@@ -4,7 +4,7 @@
 
 .head {
     padding: 2px 4px;
-    background: $gray-lighter;
+    background: $background-color-dark;
 }
 
 .text {

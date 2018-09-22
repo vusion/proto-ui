@@ -47,6 +47,46 @@
 </u-linear-layout>
 ```
 
+### 列表
+
+``` html
+<ul>
+    <li>选项1</li>
+    <li>选项2
+        <ul>
+            <li>选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+        </ul>
+    </li>
+    <li>选项3</li>
+</ul>
+<ol>
+    <li>选项1</li>
+    <li>选项2
+        <ol>
+            <li>选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+        </ol>
+    </li>
+    <li>选项3</li>
+</ol>
+```
+
+### 描述列表
+
+``` html
+<dl>
+    <dt>Web前端</dt>
+    <dd>通常是指网站的前台部分，包括网站的表现层和结构层。因此前端技术一般分为前端设计和前端开发，前端设计一般可以理解为网站的视觉设计，前端开发则是网站的前台代码实现，包括基本的HTML、CSS和JavaScript。</dd>
+    <dt>CSS</dt>
+    <dd>级联样式表，是一种用来表现HTML或XML等文件样式的计算机语言。目前最新版本为CSS3，是能够真正做到网页表现与内容分离的一种样式设计语言。</dd>
+    <dt>JavaScript</dt>
+    <dd>一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型，广泛用于客户端的脚本语言，最早是在HTML网页上使用，用来给HTML网页增加动态功能。</dd>
+</dl>
+```
+
 ### 引用块
 
 ``` html
@@ -55,10 +95,17 @@
 </blockquote>
 ```
 
-### 列表
+### 代码块
 
-由于`<li>`在组件中用途广泛，在业务中请使用[u-list](./u-list)。
+``` html
+<pre>
+factorial = (num) -&gt;
+    if not /^\d+$/.test(num)
+        throw 'Error: Not an integer!'
 
-### 描述列表
+    _factorial = (num) -&gt;
+        return (if num &lt;= 1 then 1 else num * _factorial(num - 1))
 
-原因同上，在业务中请使用[u-desc-list](./u-desc-list)。
+    return _factorial(num)
+</pre>
+```
