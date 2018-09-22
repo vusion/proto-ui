@@ -5,4 +5,5 @@
         <a v-else :class="$style.item" role="blank">...</a>
     </template>
     <a :class="$style.item" role="next" :disabled="currentPage >= total" @click="select(currentPage + 1)"></a>
+    <slot></slot>
 </nav>

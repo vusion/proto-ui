@@ -3,23 +3,30 @@ import { getPosition } from '../utils/style';
 
 export default {
     name: 'e-ripple',
-    render() {
-        return this.$slots.default && this.$slots.default[0];
+    props: {
+        reference: { type: [String], default: 'parent' },
+    },
+    data() {
+        return {
+            referenceEl: undefined,
+        };
     },
     mounted() {
-        addClass(this.$el, this.$style.root);
-        this.rippleEl = document.createElement('div');
-        addClass(this.rippleEl, this.$style.ripple);
-        this.$el.appendChild(this.rippleEl);
-        this.$el.addEventListener('click', this.onClick);
+        this.referenceEl = this.$el.parentElement;
+
+        addClass(this.referenceEl, this.$style.reference);
+        this.referenceEl.addEventListener('click', this.onClick);
+    },
+    destroyed() {
+        this.referenceEl.removeEventListener('click', this.onClick);
     },
     methods: {
         onClick(e) {
-            this.rippleEl.removeAttribute('animated');
-            const pos = getPosition(this.$el);
-            this.rippleEl.style.left = e.clientX - pos.left + 'px';
-            this.rippleEl.style.top = e.clientY - pos.top + 'px';
-            this.rippleEl.setAttribute('animated', 'animated');
+            this.$el.removeAttribute('animated');
+            const pos = getPosition(this.referenceEl);
+            this.$el.style.left = e.clientX - pos.left + 'px';
+            this.$el.style.top = e.clientY - pos.top + 'px';
+            this.$el.setAttribute('animated', 'animated');
         },
     },
 };
