@@ -1,7 +1,6 @@
 .root {
     /* @Private */
     user-select: none;
-    overflow: auto;
     position: relative;
 
     /* @Public */
