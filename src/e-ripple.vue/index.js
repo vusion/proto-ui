@@ -1,5 +1,4 @@
-import { addClass } from '../utils/dom';
-import { getPosition } from '../utils/style';
+import { getPosition, getComputedStyle } from '../utils/style';
 
 export default {
     name: 'e-ripple',
@@ -14,7 +13,12 @@ export default {
     mounted() {
         this.referenceEl = this.$el.parentElement;
 
-        addClass(this.referenceEl, this.$style.reference);
+        const computedStyle = getComputedStyle(this.referenceEl);
+        if (computedStyle.overflow !== 'hidden')
+            this.referenceEl.style.overflow = 'hidden';
+        if (computedStyle.position === 'static')
+            this.referenceEl.style.position = 'relative';
+
         this.referenceEl.addEventListener('click', this.onClick);
     },
     destroyed() {

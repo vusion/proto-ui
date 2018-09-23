@@ -1,8 +1,3 @@
-.reference {
-    position: relative !important;
-    overflow: hidden !important;
-}
-
 .root {
     display: block;
     position: absolute;
@@ -25,4 +20,9 @@
     transition: transform 1s, background-color 1s;
     transform: scale(12);
     background-color: transparent;
+}
+
+.reference {
+    position: relative !important;
+    overflow: hidden !important;
 }

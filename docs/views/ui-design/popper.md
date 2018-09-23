@@ -36,12 +36,12 @@ Proto UI 中的 [Popper 组件](/proto-ui/m-popper)就是用 Vue 对它作了一
 `<m-popper>`就是这样设计的，它的基本用法如下：
 
 ``` html
-<m-popper>
-    <u-button>click</u-button>
-    <div slot="popper">
+<u-button>
+    click
+    <m-popper>
         <u-block>popper</u-block>
-    </div>
-</m-popper>
+    </m-popper>
+</u-button>
 ```
 
 默认的 slot 用于表示触发节点（参考节点），popper slot 用于表示弹出层节点。由于 Vue 的限制，每个 slot 中只能有一个根节点。
@@ -64,53 +64,61 @@ Proto UI 中设计了5种触发方式：`'click'`, `'hover'`, `'right-click'`, `
 
 ``` html
 <u-linear-layout>
-    <u-popup content="使用 content 属性添加内容">
-        <u-button>内容</u-button>
-    </u-popup>
-    <u-popup title="标题" content="使用 title 属性添加标题">
-        <u-button>标题</u-button>
-    </u-popup>
-    <u-popup>
-        <u-button>使用 slot</u-button>
-        <span slot="title">标题 <u-badge :value="3"></u-badge></span>
-        <span slot="content">使用 <u-link>slot</u-link> 可以添加一些复杂功能</span>
-    </u-popup>
+    <u-button>
+        内容
+        <u-popup>使用 content 属性添加内容</u-popup>
+    </u-button>
+    <u-button>
+        标题
+        <u-popup title="标题">使用 title 属性添加标题</u-popup>
+    </u-button>
+    <u-button>
+        使用 slot
+        <u-popup>
+            <span slot="title">标题 <u-badge :value="3"></u-badge></span>
+            <span>使用 <u-link>slot</u-link> 可以添加一些复杂功能</span>
+        </u-popup>
+    </u-button>
 </u-linear-layout>
 ```
 
 #### 自定义
 
-使用 popper slot 可以很方便的重新自定义内容，与`<u-menu>`组件结合就是 Dropdown 下拉菜单，与`<u-calendar>`组件结合就是 DatePicker，与`<u-pallette>`组件（调色板）结合就是 ColorPicker，与`<u-tree-view>`组件结合就是树型选择。
+使用 root slot 可以很方便的重新自定义内容，与`<u-menu>`组件结合就是 Dropdown 下拉菜单，与`<u-calendar>`组件结合就是 DatePicker，与`<u-pallette>`组件（调色板）结合就是 ColorPicker，与`<u-tree-view>`组件结合就是树型选择。
 
 ``` html
 <u-linear-layout>
-    <u-popup>
-        <u-button>Dropdown</u-button>
-        <u-menu slot="popper" value="3" :router="false">
-            <u-menu-item value="1">指南</u-menu-item>
-            <u-menu-item value="2">概念</u-menu-item>
-            <u-menu-item value="3">组件</u-menu-item>
-        </u-menu>
-    </u-popup>
-    <u-popup>
-        <u-button>TreeView</u-button>
-        <u-tree-view slot="popper">
-            <u-tree-view-node text="节点1">
-                <u-tree-view-node text="节点1.1"></u-tree-view-node>
-                <u-tree-view-node text="节点1.2">
-                    <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-                    <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+    <u-button>
+        Dropdown
+        <u-popup>
+            <u-menu slot="root" value="3" :router="false">
+                <u-menu-item value="1">指南</u-menu-item>
+                <u-menu-item value="2">概念</u-menu-item>
+                <u-menu-item value="3">组件</u-menu-item>
+            </u-menu>
+        </u-popup>
+    </u-button>
+    <u-button>
+        TreeView
+        <u-popup>
+            <u-tree-view slot="root">
+                <u-tree-view-node text="节点1">
+                    <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2">
+                        <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                        <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                    </u-tree-view-node>
+                    <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.4"></u-tree-view-node>
                 </u-tree-view-node>
-                <u-tree-view-node text="节点1.3"></u-tree-view-node>
-                <u-tree-view-node text="节点1.4"></u-tree-view-node>
-            </u-tree-view-node>
-            <u-tree-view-node text="节点2"></u-tree-view-node>
-            <u-tree-view-node text="节点3">
-                <u-tree-view-node text="节点3.1"></u-tree-view-node>
-                <u-tree-view-node text="节点3.2"></u-tree-view-node>
-            </u-tree-view-node>
-        </u-tree-view>
-    </u-popup>
+                <u-tree-view-node text="节点2"></u-tree-view-node>
+                <u-tree-view-node text="节点3">
+                    <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点3.2"></u-tree-view-node>
+                </u-tree-view-node>
+            </u-tree-view>
+        </u-popup>
+    </u-button>
 </u-linear-layout>
 ```
 
@@ -118,25 +126,27 @@ Proto UI 中设计了5种触发方式：`'click'`, `'hover'`, `'right-click'`, `
 
 ``` vue
 <template>
-<u-popup ref="popup">
-    <u-button>TreeView</u-button>
-    <u-tree-view slot="popper" @select="onSelect">
-        <u-tree-view-node text="节点1">
-            <u-tree-view-node text="节点1.1"></u-tree-view-node>
-            <u-tree-view-node text="节点1.2">
-                <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
-                <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
-            </u-tree-view-node>
-            <u-tree-view-node text="节点1.3"></u-tree-view-node>
-            <u-tree-view-node text="节点1.4"></u-tree-view-node>
-        </u-tree-view-node>
-        <u-tree-view-node text="节点2"></u-tree-view-node>
-        <u-tree-view-node text="节点3">
-            <u-tree-view-node text="节点3.1"></u-tree-view-node>
-            <u-tree-view-node text="节点3.2"></u-tree-view-node>
-        </u-tree-view-node>
-    </u-tree-view>
-</u-popup>
+    <u-button>
+        TreeView
+        <u-popup ref="popup">
+            <u-tree-view slot="root" @select="onSelect">
+                <u-tree-view-node text="节点1">
+                    <u-tree-view-node text="节点1.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.2">
+                        <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+                        <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+                    </u-tree-view-node>
+                    <u-tree-view-node text="节点1.3"></u-tree-view-node>
+                    <u-tree-view-node text="节点1.4"></u-tree-view-node>
+                </u-tree-view-node>
+                <u-tree-view-node text="节点2"></u-tree-view-node>
+                <u-tree-view-node text="节点3">
+                    <u-tree-view-node text="节点3.1"></u-tree-view-node>
+                    <u-tree-view-node text="节点3.2"></u-tree-view-node>
+                </u-tree-view-node>
+            </u-tree-view>
+        </u-popup>
+    </u-button>
 </template>
 
 <script>
@@ -167,73 +177,79 @@ Proto UI 中没有专门设计 Dropdown 组件，因为它本身的触发节点�
 
 ``` html
 <u-linear-layout>
-    <u-popup>
-        <u-button>Popup 菜单</u-button>
-        <u-menu slot="popper">
-            <u-menu-item to="/guides/">指南</u-menu-item>
-            <u-menu-item to="/api/">API</u-menu-item>
-            <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
-            <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
-        </u-menu>
-    </u-popup>
-    <m-popper>
-        <u-button>Popper 菜单</u-button>
-        <u-menu slot="popper" value="3" :router="false" style="width: 128px">
-            <u-menu-item to="/guides/">指南</u-menu-item>
-            <u-menu-item to="/api/">API</u-menu-item>
-            <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
-            <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
-        </u-menu>
-    </m-popper>
+    <u-button>
+        Popup 菜单
+        <u-popup>
+            <u-menu slot="root">
+                <u-menu-item to="/guides/">指南</u-menu-item>
+                <u-menu-item to="/api/">API</u-menu-item>
+                <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+                <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
+            </u-menu>
+        </u-popup>
+    </u-button>
+    <u-button>
+        Popper 菜单
+        <m-popper>
+            <u-menu value="3" :router="false" style="width: 128px;">
+                <u-menu-item to="/guides/">指南</u-menu-item>
+                <u-menu-item to="/api/">API</u-menu-item>
+                <u-menu-item to="/proto-ui/">原型组件</u-menu-item>
+                <u-menu-item href="https://github.com/vusion">GitHub</u-menu-item>
+            </u-menu>
+        </m-popper>
+    </u-button>
 </u-linear-layout>
 ```
 
 并且目前也支持多级菜单：
 
 ``` html
-<u-popup>
-    <u-button>多级菜单</u-button>
-    <u-menu slot="popper" style="width: 200px;">
-        <u-menu-item>指南</u-menu-item>
-        <u-menu-item>API
-            <u-menu slot="sub">
-                <u-menu-item to="/api/cli">命令行工具（CLI）</u-menu-item>
-                <u-menu-item to="/api/config">配置</u-menu-item>
-            </u-menu>
-        </u-menu-item>
-        <u-menu-item>组件
-            <u-menu slot="sub">
-                <u-menu-item>原型组件
-                    <u-menu slot="sub">
-                        <u-menu-item>Basic
-                            <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
-                            </u-menu>
-                        </u-menu-item>
-                        <u-menu-item>Navigation
-                            <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
-                            </u-menu>
-                        </u-menu-item>
-                        <u-menu-item>Popper
-                            <u-menu slot="sub">
-                                <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
-                                <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
-                            </u-menu>
-                        </u-menu-item>
-                    </u-menu>
-                </u-menu-item>
-                <u-menu-item to="/ui-design">组件设计方案</u-menu-item>
-            </u-menu>
-        </u-menu-item>
-        <u-menu-item target="_blank" href="https://github.com/vusion">GitHub</u-menu-item>
-    </u-menu>
-</u-popup>
+<u-button>
+    多级菜单
+    <u-popup>
+        <u-menu slot="root" style="width: 200px;">
+            <u-menu-item>指南</u-menu-item>
+            <u-menu-item>API
+                <u-menu slot="sub">
+                    <u-menu-item to="/api/cli">命令行工具（CLI）</u-menu-item>
+                    <u-menu-item to="/api/config">配置</u-menu-item>
+                </u-menu>
+            </u-menu-item>
+            <u-menu-item>组件
+                <u-menu slot="sub">
+                    <u-menu-item>原型组件
+                        <u-menu slot="sub">
+                            <u-menu-item>Basic
+                                <u-menu slot="sub">
+                                    <u-menu-item to="/proto-ui/u-link">链接 Link</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-button">按钮 Button</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-badge">徽章 Badge</u-menu-item>
+                                </u-menu>
+                            </u-menu-item>
+                            <u-menu-item>Navigation
+                                <u-menu slot="sub">
+                                    <u-menu-item to="/proto-ui/u-navbar">导航栏 Navbar</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-sidebar">侧边栏 Sidebar</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-menu">菜单 Menu</u-menu-item>
+                                </u-menu>
+                            </u-menu-item>
+                            <u-menu-item>Popper
+                                <u-menu slot="sub">
+                                    <u-menu-item to="/proto-ui/m-popper">弹出层 Popper</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-tooltip">工具提示 Tooltip</u-menu-item>
+                                    <u-menu-item to="/proto-ui/u-popup">弹出框 Popup</u-menu-item>
+                                </u-menu>
+                            </u-menu-item>
+                        </u-menu>
+                    </u-menu-item>
+                    <u-menu-item to="/ui-design">组件设计方案</u-menu-item>
+                </u-menu>
+            </u-menu-item>
+            <u-menu-item target="_blank" href="https://github.com/vusion">GitHub</u-menu-item>
+        </u-menu>
+    </u-popup>
+</u-button>
 ```
 
 ### 其它组件
