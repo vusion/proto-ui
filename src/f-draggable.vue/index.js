@@ -6,13 +6,29 @@ export default {
     name: 'f-draggable',
     props: {
         value: null,
-        transfer: { type: [String, Element], default: 'clone' },
+        source: { type: [String, HTMLElement, Function], default: 'self', validator: (value) => {
+            if (typeof value !== 'string')
+                return true;
+            else
+                return ['self', 'parent', '$parent', 'context-parent', 'prev', 'next'].includes(value);
+        } },
+        transfer: { type: [String, HTMLElement], default: 'clone', validator: (value) => {
+            if (typeof value !== 'string')
+                return true;
+            else
+                return ['self', 'parent', 'clone'].includes(value);
+        } },
         immediate: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         constraint: Function,
     },
-    render() {
-        return this.$slots.default && this.$slots.default[0];
+    render(h) {
+        return this.$slots.default ? this.$slots.default[0] : h('div');
+    },
+    data() {
+        return {
+            sourceEl: undefined,
+        };
     },
     watch: {
         disabled(disabled) {
@@ -20,6 +36,8 @@ export default {
         },
     },
     mounted() {
+        this.sourceEl = this.getSourceEl();
+
         // 虽然 Vue 中一般子组件比父组件先 mounted，
         // 但这里必须放到 mounted。不然可能在 v-if 的情况下出不来。。
         /* eslint-disable consistent-this */
@@ -33,7 +51,7 @@ export default {
         this.childVM.$mount();
 
         this.watchDisabled(this.disabled);
-        this.$el.addEventListener('mousedown', this.onMouseDown);
+        this.sourceEl.addEventListener('mousedown', this.onMouseDown);
     },
     beforeUpdate() {
         this.childVM.$forceUpdate();
@@ -44,19 +62,59 @@ export default {
     methods: {
         watchDisabled(disabled) {
             if (disabled)
-                this.$el.removeAttribute && this.$el.removeAttribute('draggable');
+                this.sourceEl.removeAttribute && this.sourceEl.removeAttribute('draggable');
             else
-                this.$el.setAttribute && this.$el.setAttribute('draggable', 'draggable');
+                this.sourceEl.setAttribute && this.sourceEl.setAttribute('draggable', 'draggable');
+        },
+        getSourceEl() {
+            if (this.source instanceof HTMLElement)
+                return this.source;
+            else if (this.source instanceof Function)
+                return this.source(this.$el);
+            else if (this.$el) {
+                if (this.source === 'self')
+                    return this.$el;
+                else if (this.source === 'parent')
+                    return this.$el.parentElement;
+                else if (this.source === '$parent')
+                    return this.$parent.$el;
+                else if (this.source === 'offset-parent')
+                    return this.$el.offsetParent;
+                else if (this.source === 'context-parent') {
+                    // 求上下文中的 parent
+                    if (this.$parent === this.$vnode.context)
+                        return this.$el.parentElement;
+
+                    // Vue 的 vnode.parent 没有连接起来，需要自己找，不知道有没有更好的方法
+                    let parentVNode = this.$parent._vnode;
+                    while (parentVNode && !parentVNode.children.includes(this.$vnode))
+                        parentVNode = parentVNode.children.find((child) => child.elm.contains(this.$el));
+                    // if (!parentVNode)
+                    if (parentVNode.context === this.$vnode.context)
+                        return parentVNode.elm;
+
+                    // 否则，找第一个上下文一致的组件
+                    let parentVM = this.$parent;
+                    while (parentVM && parentVM.$vnode.context !== this.$vnode.context)
+                        parentVM = parentVM.$parent;
+                    return parentVM.$el;
+                } else if (this.source === 'prev')
+                    return this.$el.previousElementSibling;
+                else if (this.source === 'next')
+                    return this.$el.nextElementSibling;
+            }
         },
         getTransferEl() {
             let transferEl;
-            const sourceEl = this.$el;
+            const sourceEl = this.sourceEl;
 
             if (this.$slots.transfer)
                 transferEl = this.childVM.$el;
-            else if (this.transfer instanceof Element)
+            else if (this.transfer instanceof HTMLElement)
                 transferEl = this.transfer;
             else if (this.transfer === 'self')
+                transferEl = this.$el;
+            else if (this.transfer === 'source')
                 transferEl = sourceEl;
             else if (this.transfer === 'clone')
                 transferEl = sourceEl.cloneNode(true);
@@ -241,7 +299,7 @@ export default {
             });
         },
         dragStart() {
-            const sourceEl = this.$el;
+            const sourceEl = this.sourceEl;
             sourceEl.setAttribute('draggable-source', 'draggable-source');
             manager.transferEl && manager.transferEl.setAttribute('draggable-transfer', 'draggable-transfer');
 
@@ -258,11 +316,11 @@ export default {
         drag() {
             this.$emit('drag', Object.assign({
                 originVM: this,
-                sourceEl: this.$el,
+                sourceEl: this.sourceEl,
             }, manager), this);
         },
         dragEnd() {
-            const sourceEl = this.$el;
+            const sourceEl = this.sourceEl;
             sourceEl && sourceEl.removeAttribute('draggable-source');
 
             this.$emit('dragend', Object.assign({

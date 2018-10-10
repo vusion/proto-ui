@@ -6,11 +6,11 @@ export default {
     props: {
         open: { type: Boolean, default: false },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
-        reference: { type: [String, HTMLElement, Function], default: 'parent', validator: (value) => {
+        reference: { type: [String, HTMLElement, Function], default: 'context-parent', validator: (value) => {
             if (typeof value !== 'string')
                 return true;
             else
-                return ['parent', 'prev', 'next'];
+                return ['parent', '$parent', 'context-parent', 'prev', 'next'].includes(value);
         } },
         placement: {
             type: String, default: 'bottom-start',
@@ -81,7 +81,7 @@ export default {
             // 不直接用样式的显隐，而是用 popper 的 create 和 destroy，是因为 popper 有可能是从不同的地方触发的，reference 对象会变
             currentOpen ? this.createPopper() : this.destroyPopper();
         },
-        reference(reference) {
+        reference() {
             this.referenceEl = this.getReferenceEl();
         },
     },
@@ -125,7 +125,27 @@ export default {
             else if (this.$el) {
                 if (this.reference === 'parent')
                     return this.$el.parentElement;
-                else if (this.reference === 'prev')
+                else if (this.reference === '$parent')
+                    return this.$parent.$el;
+                else if (this.reference === 'context-parent') {
+                    // 求上下文中的 parent
+                    if (this.$parent === this.$vnode.context)
+                        return this.$el.parentElement;
+
+                    // Vue 的 vnode.parent 没有连接起来，需要自己找，不知道有没有更好的方法
+                    let parentVNode = this.$parent._vnode;
+                    while (parentVNode && !parentVNode.children.includes(this.$vnode))
+                        parentVNode = parentVNode.children.find((child) => child.elm.contains(this.$el));
+                    // if (!parentVNode)
+                    if (parentVNode.context === this.$vnode.context)
+                        return parentVNode.elm;
+
+                    // 否则，找第一个上下文一致的组件
+                    let parentVM = this.$parent;
+                    while (parentVM && parentVM.$vnode.context !== this.$vnode.context)
+                        parentVM = parentVM.$parent;
+                    return parentVM.$el;
+                } else if (this.reference === 'prev')
                     return this.$el.previousElementSibling;
                 else if (this.reference === 'next')
                     return this.$el.nextElementSibling;
