@@ -174,8 +174,8 @@ export default {
                 } else
                     this.selectedVM = selectedVM;
 
-                this.$emit('input', value);
-                this.$emit('update:value', value);
+                this.$emit('input', this.currentValue);
+                this.$emit('update:value', this.currentValue);
             });
         },
     },
