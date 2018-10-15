@@ -1,29 +1,133 @@
 # 导航条 Navbar
 
+通常用于页面顶部的导航菜单，放置 Logo、导航链接、用户信息等。
+
 ## 示例
 ### 基本形式
 
-#### 路由模式
+下面展示了导航条的一些基本特性，如配置链接、添加分隔线、禁用选项等。
 
 ``` html
 <u-navbar>
-    <u-navbar-item>指南</u-navbar-item>
+    <u-navbar-item to="/components">组件</u-navbar-item>
     <u-navbar-item>概念</u-navbar-item>
-    <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+    <u-navbar-item disabled>指令</u-navbar-item>
+    <u-navbar-divider></u-navbar-divider>
+    <u-navbar-item>配置</u-navbar-item>
+    <u-navbar-item href="https://github.com/vusion/proto-ui">GitHub</u-navbar-item>
 </u-navbar>
 ```
 
-#### value模式
+### 选择控制
+
+通过`router`属性开关来决定，导航条的选择项是直接与路由绑定，还是由`value`属性来控制。
+
+#### 路由模式
+
+默认为此种模式，即导航条的选择项通过`to`属性直接与路由绑定的，这样就不需要操作额外的变量。这种模式下每个`<u-navbar-item>`类似 VueRouter 的`<router-link>`。
 
 ``` html
-<u-navbar value="3" :router="false">
-    <u-navbar-item value="1">指南</u-navbar-item>
-    <u-navbar-item value="2">概念</u-navbar-item>
-    <u-navbar-item value="3">组件</u-navbar-item>
+<u-navbar>
+    <u-navbar-item to="/components">组件</u-navbar-item>
+    <u-navbar-item>概念</u-navbar-item>
+    <u-navbar-item disabled>指令</u-navbar-item>
+    <u-navbar-item href="https://github.com/vusion/proto-ui">GitHub</u-navbar-item>
 </u-navbar>
 ```
 
-### 只读、禁用、禁用某一项
+#### value 模式
+
+将`router`属性设置为`false`时，导航条的选择项则由`value`属性来控制。类似于常用的`<u-select>`操作，`value`可以用`v-model`或`.sync`进行双向绑定。
+
+``` html
+<u-navbar value="Concepts" :router="false">
+    <u-navbar-item value="Components">组件</u-navbar-item>
+    <u-navbar-item value="Concepts">概念</u-navbar-item>
+    <u-navbar-item value="Directives" disabled>指令</u-navbar-item>
+    <u-navbar-item value="GitHub">GitHub</u-navbar-item>
+</u-navbar>
+```
+
+### 布局
+#### 左右插槽
+
+导航条内容有左中右三块区域。
+
+通过`left`和`right`两个 slot，可以快速进行布局。
+
+``` html
+<u-navbar>
+    <u-logo slot="left"></u-logo>
+    <u-navbar-item to="/components">组件</u-navbar-item>
+    <u-navbar-item>概念</u-navbar-item>
+    <u-navbar-item disabled>指令</u-navbar-item>
+    <u-navbar-item slot="right" href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
+</u-navbar>
+```
+
+#### 对齐方式
+
+通过设置`alignment`属性，可以调整中部区域的对齐方式。
+
+``` html
+<u-linear-layout direction="vertical">
+    <u-navbar alignment="left">
+        <u-logo slot="left"></u-logo>
+        <u-navbar-item>指南</u-navbar-item>
+        <u-navbar-item>概念</u-navbar-item>
+        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+        <u-navbar-item slot="right" href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
+    </u-navbar>
+    <u-navbar alignment="center">
+        <u-logo slot="left"></u-logo>
+        <u-navbar-item>指南</u-navbar-item>
+        <u-navbar-item>概念</u-navbar-item>
+        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+        <u-navbar-item slot="right" href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
+    </u-navbar>
+    <u-navbar alignment="right">
+        <u-logo slot="left"></u-logo>
+        <u-navbar-item>指南</u-navbar-item>
+        <u-navbar-item>概念</u-navbar-item>
+        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+        <u-navbar-item slot="right" href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
+    </u-navbar>
+</u-linear-layout>
+```
+
+### 下拉菜单
+
+``` html
+<u-navbar>
+    <u-navbar-item to="/components">组件</u-navbar-item>
+    <u-navbar-item>组件库
+        <m-popper>
+            <u-navbar-menu>
+                <u-navbar-menu-item>ABC</u-navbar-menu-item>
+                <u-navbar-menu-item>ABB</u-navbar-menu-item>
+                <u-navbar-menu-item>ACC
+                    <u-navbar-menu slot="sub">
+                        <u-navbar-menu-item>ABC</u-navbar-menu-item>
+                        <u-navbar-menu-item>ABB</u-navbar-menu-item>
+                        <u-navbar-menu-item>ACC</u-navbar-menu-item>
+                    </u-navbar-menu>
+                </u-navbar-menu-item>
+            </u-navbar-menu>
+        </m-popper>
+    </u-navbar-item>
+    <u-navbar-item disabled>指令</u-navbar-item>
+    <u-navbar-select>
+        <u-navbar-select-item>中文</u-navbar-select-item>
+        <u-navbar-select-item>English</u-navbar-select-item>
+        <u-navbar-select-item>Français</u-navbar-select-item>
+        <u-navbar-select-item>Русский</u-navbar-select-item>
+    </u-navbar-select>
+    <u-navbar-item href="https://github.com/vusion/proto-ui">GitHub</u-navbar-item>
+</u-navbar>
+```
+
+### 其他
+#### 只读与禁用
 
 ``` html
 <u-linear-layout direction="vertical">
@@ -38,52 +142,6 @@
         <u-navbar-item to="/proto-ui">组件</u-navbar-item>
     </u-navbar>
 </u-linear-layout>
-```
-
-### 位置
-
-``` html
-<u-linear-layout direction="vertical">
-    <u-navbar alignment="left">
-        <u-navbar-item>指南</u-navbar-item>
-        <u-navbar-item>概念</u-navbar-item>
-        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
-    </u-navbar>
-    <u-navbar alignment="center">
-        <u-navbar-item>指南</u-navbar-item>
-        <u-navbar-item>概念</u-navbar-item>
-        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
-    </u-navbar>
-    <u-navbar alignment="right">
-        <u-navbar-item>指南</u-navbar-item>
-        <u-navbar-item>概念</u-navbar-item>
-        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
-    </u-navbar>
-</u-linear-layout>
-```
-
-### 分隔符
-
-``` html
-<u-navbar>
-    <u-navbar-item>指南</u-navbar-item>
-    <u-navbar-item>概念</u-navbar-item>
-    <u-navbar-item>配置</u-navbar-item>
-    <u-navbar-divider></u-navbar-divider>
-    <u-navbar-item to="/proto-ui">组件</u-navbar-item>
-    <u-navbar-item to="/libraries">组件库</u-navbar-item>
-</u-navbar>
-```
-
-### 与Logo结合
-
-``` html
-<u-navbar>
-    <u-logo slot="left"></u-logo>
-    <u-navbar-item>指南</u-navbar-item>
-    <u-navbar-item>概念</u-navbar-item>
-    <u-navbar-item to="/proto-ui">组件</u-navbar-item>
-</u-navbar>
 ```
 
 ## Navbar API
@@ -101,7 +159,15 @@
 
 #### (default)
 
-插入`<u-navbar-item>`或`<u-navbar-divider>`子组件。
+中部区域，可插入`<u-navbar-item>`、`<u-navbar-divider>`等子组件，或其他 HTML。
+
+#### left
+
+左部区域。
+
+#### right
+
+右部区域。
 
 ### Events
 

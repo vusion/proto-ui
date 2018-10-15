@@ -1,15 +1,17 @@
 .root {
     user-select: none;
-    display: flex;
-    justify-content: space-between;
+    height: $navbar-height;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 .left {
+    float: left;
+    margin-right: 40px;
 }
 
 .middle {
-    flex: auto;
-    margin: 0 50px;
+    margin: 0 40px;
 }
 
 .root[alignment="center"] .middle {
@@ -21,4 +23,22 @@
 }
 
 .right {
+    float: right;
+    margin-left: 40px;
+}
+
+.root[color="inverse"] {
+    background-color: $brand-primary;
+}
+
+.root[color="inverse"] .item {
+    color: white;
+}
+
+.root[color="inverse"] .item:hover {
+    color: white;
+}
+
+.root[color="inverse"] .item[selected] {
+    color: white;
 }

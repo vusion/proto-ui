@@ -10,7 +10,7 @@ export default {
             if (typeof value !== 'string')
                 return true;
             else
-                return ['self', 'parent', '$parent', 'context-parent', 'prev', 'next'].includes(value);
+                return ['self', 'parent', '$parent', 'offset-parent', 'context-parent', 'prev', 'next'].includes(value);
         } },
         transfer: { type: [String, HTMLElement], default: 'clone', validator: (value) => {
             if (typeof value !== 'string')

@@ -49,3 +49,6 @@ $z-index-base: 1;
 $cursor-pointer: pointer;
 $cursor-not-allowed: not-allowed;
 $focus-outline: none;
+
+/* Transition Duration */
+$transition-duration-base: 0;

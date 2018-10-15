@@ -16,7 +16,7 @@ $font-size-base: 18px;
 .track {
     fill: none;
     stroke-width: 6px;
-    stroke: #eee;
+    stroke: $background-color-base;
 }
 
 .trail {

@@ -14,7 +14,7 @@
         </u-sidebar>
     </u-drawer>
     <u-linear-layout>
-        <u-button @click="visible = true">drawer</u-button>
+        <u-button @click="visible = true">Drawer</u-button>
     </u-linear-layout>
 </div>
 </template>
