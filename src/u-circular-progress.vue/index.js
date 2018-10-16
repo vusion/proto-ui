@@ -1,4 +1,4 @@
-export default {
+const UCircularProgress = {
     name: 'u-circular-progress',
     props: {
         percent: { type: Number, default: 0 },
@@ -14,3 +14,5 @@ export default {
         },
     },
 };
+
+export default UCircularProgress;

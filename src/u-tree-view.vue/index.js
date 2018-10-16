@@ -1,4 +1,4 @@
-import MRoot from '../m-root.vue';
+import { MRoot } from '../m-root.vue';
 import MField from '../m-field.vue';
 
 const walk = (rootVM, func) => {
@@ -18,7 +18,7 @@ const find = (rootVM, func) => walk(rootVM, (nodeVM) => {
         return nodeVM;
 });
 
-export default {
+const UTreeView = {
     name: 'u-tree-view',
     nodeName: 'u-tree-view-node',
     mixins: [MRoot, MField],
@@ -139,3 +139,7 @@ export default {
         },
     },
 };
+
+export * from './node.vue';
+export * from './text.vue';
+export default UTreeView;

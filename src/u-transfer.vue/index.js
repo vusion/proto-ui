@@ -1,4 +1,4 @@
-export default {
+const UTransfer = {
     name: 'u-transfer',
     props: {
         source: { type: Array, default: () => [] },
@@ -63,3 +63,6 @@ export default {
         },
     },
 };
+
+export { UTransfer };
+export default UTransfer;

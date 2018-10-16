@@ -1,4 +1,4 @@
-export default {
+const MRoot = {
     name: 'm-root',
     nodeName: 'm-node',
     data() {
@@ -17,3 +17,7 @@ export default {
         });
     },
 };
+
+export * from './m-node.vue';
+export { MRoot };
+export default MRoot;

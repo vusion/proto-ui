@@ -1,9 +1,9 @@
-import SingleChoices from '../m-single-choices.vue';
+import { MSingleChoices } from '../m-single-choices.vue';
 
-export default {
+const UTabs = {
     name: 'u-tabs',
     childName: 'u-tab',
-    extends: SingleChoices,
+    extends: MSingleChoices,
     props: {
         autoSelect: { type: Boolean, default: true },
         closable: { type: Boolean, default: false },
@@ -54,3 +54,7 @@ export default {
         },
     },
 };
+
+export * from './tab.vue';
+export { UTabs };
+export default UTabs;

@@ -1,6 +1,6 @@
 import MPopper from '../m-popper.vue';
 
-export default {
+const UTooltip = {
     name: 'u-tooltip',
     extends: MPopper,
     props: {
@@ -16,3 +16,6 @@ export default {
         // @inherit: disabled
     },
 };
+
+export { UTooltip };
+export default UTooltip;

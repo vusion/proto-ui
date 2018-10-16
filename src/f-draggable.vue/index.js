@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { getPosition, getSize, getComputedStyle } from '../utils/style';
 import manager from './manager';
 
-export default {
+const FDraggable = {
     name: 'f-draggable',
     props: {
         value: null,
@@ -337,3 +337,6 @@ export default {
         },
     },
 };
+
+export { FDraggable };
+export default FDraggable;

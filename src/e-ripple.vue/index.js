@@ -1,6 +1,6 @@
 import { getPosition, getComputedStyle } from '../utils/style';
 
-export default {
+const ERipple = {
     name: 'e-ripple',
     props: {
         reference: { type: [String], default: 'parent' },
@@ -34,3 +34,6 @@ export default {
         },
     },
 };
+
+export { ERipple };
+export default ERipple;

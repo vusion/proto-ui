@@ -1,7 +1,7 @@
 import MField from '../m-field.vue';
 import isNumber from 'lodash/isNumber';
 
-export default {
+const UCascadeSelect = {
     name: 'u-cascade-select',
     mixins: [MField],
     props: {
@@ -178,3 +178,6 @@ export default {
         },
     },
 };
+
+export { UCascadeSelect };
+export default UCascadeSelect;

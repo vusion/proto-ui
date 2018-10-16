@@ -1,8 +1,8 @@
-import Modal from '../u-modal.vue';
+import UModal from '../u-modal.vue';
 
-export default {
+const UDrawer = {
     name: 'u-drawer',
-    extends: Modal,
+    extends: UModal,
     props: {
         placement: { type: String, default: 'left' },
         maskClosable: { type: Boolean, default: true },
@@ -19,3 +19,6 @@ export default {
         },
     },
 };
+
+export { UDrawer };
+export default UDrawer;

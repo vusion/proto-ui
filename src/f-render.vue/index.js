@@ -1,4 +1,4 @@
-export default {
+const FRender = {
     name: 'f-render',
     functional: true,
     props: {
@@ -8,3 +8,6 @@ export default {
         return context.props.vnode || context.children;
     },
 };
+
+export { FRender };
+export default FRender;

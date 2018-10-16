@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const Modal = {
+const UModal = {
     name: 'u-modal',
     props: {
         visible: { type: Boolean, default: false },
@@ -63,7 +63,7 @@ const Modal = {
     },
 };
 
-Modal.alert = (content, title = '提示') => {
+UModal.alert = (content, title = '提示') => {
     const Ctor = Vue.component('u-modal');
     if (!Ctor)
         return;
@@ -73,7 +73,7 @@ Modal.alert = (content, title = '提示') => {
     }).open();
 };
 
-Modal.confirm = (content, title = '提示') => new Promise((resolve, reject) => {
+UModal.confirm = (content, title = '提示') => new Promise((resolve, reject) => {
     const Ctor = Vue.component('u-modal');
     if (!Ctor)
         return;
@@ -86,7 +86,8 @@ Modal.confirm = (content, title = '提示') => new Promise((resolve, reject) => 
     instance.open();
 });
 
-Vue.prototype.$alert = Modal.alert;
-Vue.prototype.$confirm = Modal.confirm;
+Vue.prototype.$alert = UModal.alert;
+Vue.prototype.$confirm = UModal.confirm;
 
-export default Modal;
+export { UModal };
+export default UModal;

@@ -1,5 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
-export default {
+
+const UForm = {
     name: 'u-form',
     props: {
         model: Object,
@@ -92,3 +93,7 @@ export default {
         },
     },
 };
+
+export * from './item.vue';
+export { UForm };
+export default UForm;

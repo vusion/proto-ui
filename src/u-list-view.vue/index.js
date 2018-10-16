@@ -2,7 +2,7 @@ import MField from '../m-field.vue';
 import DataSource from '../utils/DataSource';
 import debounce from 'lodash/debounce';
 
-export default {
+const UListView = {
     name: 'u-list-view',
     groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
@@ -246,3 +246,9 @@ export default {
         },
     },
 };
+
+export * from './item.vue';
+export * from './group.vue';
+export * from './divider.vue';
+export { UListView };
+export default UListView;

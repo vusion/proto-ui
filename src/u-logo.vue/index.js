@@ -1,9 +1,12 @@
-import Link from '../u-link.vue';
+import ULink from '../u-link.vue';
 
-export default {
+const ULogo = {
     name: 'u-logo',
-    extends: Link,
+    extends: ULink,
     props: {
         href: { type: String, default: '/' },
     },
 };
+
+export { ULogo };
+export default ULogo;

@@ -1,6 +1,6 @@
 import MField from '../m-field.vue';
 
-export default {
+const UInput = {
     name: 'u-input',
     mixins: [MField],
     props: {
@@ -69,3 +69,6 @@ export default {
         },
     },
 };
+
+export { UInput };
+export default UInput;

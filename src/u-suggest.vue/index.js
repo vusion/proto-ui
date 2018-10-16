@@ -1,10 +1,10 @@
-import ListView from '../u-list-view.vue';
+import { UListView } from '../u-list-view.vue';
 import DataSource from '../utils/DataSource';
 
-export default {
+const USuggest = {
     name: 'u-suggest',
     childName: 'u-suggest-item',
-    extends: ListView,
+    extends: UListView,
     props: {
         value: { type: String, default: '' },
         color: String,
@@ -180,3 +180,7 @@ export default {
         },
     },
 };
+
+export * from './item.vue';
+export { USuggest };
+export default USuggest;

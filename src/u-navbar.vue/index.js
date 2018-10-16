@@ -1,9 +1,9 @@
-import SingleChoices from '../m-single-choices.vue';
+import { MSingleChoices } from '../m-single-choices.vue';
 
-export default {
+const UNavbar = {
     name: 'u-navbar',
     childName: 'u-navbar-item',
-    extends: SingleChoices,
+    extends: MSingleChoices,
     props: {
         router: { type: Boolean, default: true },
     },
@@ -11,3 +11,10 @@ export default {
         this.$on('select', ({ itemVM }) => this.router && itemVM.navigate());
     },
 };
+
+export * from './item.vue';
+export * from './divider.vue';
+//
+export * from './menu.vue';
+export * from './select.vue';
+export default UNavbar;

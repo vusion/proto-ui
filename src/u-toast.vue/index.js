@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const Toast = {
+const UToast = {
     name: 'u-toast',
     props: {
         position: { type: String, default: 'top-center' },
@@ -92,10 +92,11 @@ Vue.nextTick(() => {
     if (!Ctor)
         return;
 
-    Vue.prototype.$toast = Toast.toast = new Ctor();
+    Vue.prototype.$toast = UToast.toast = new Ctor();
 
     const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
-    METHODS.forEach((method) => Toast[method] = Toast.toast[method].bind(Toast.toast));
+    METHODS.forEach((method) => UToast[method] = UToast.toast[method].bind(UToast.toast));
 });
 
-export default Toast;
+export { UToast };
+export default UToast;

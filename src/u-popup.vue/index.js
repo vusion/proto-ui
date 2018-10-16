@@ -1,6 +1,6 @@
 import MPopper from '../m-popper.vue';
 
-export default {
+const UPopup = {
     name: 'u-popup',
     extends: MPopper,
     props: {
@@ -17,3 +17,6 @@ export default {
         mergeBorders: { type: Boolean, default: true },
     },
 };
+
+export { UPopup };
+export default UPopup;

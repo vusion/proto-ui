@@ -1,7 +1,7 @@
-import MParent from '../m-parent.vue';
+import { MParent } from '../m-parent.vue';
 import MField from '../m-field.vue';
 
-export default {
+const URadios = {
     name: 'u-radios',
     childName: 'u-radio',
     mixins: [MParent, MField],
@@ -78,3 +78,7 @@ export default {
         },
     },
 };
+
+export * from './radio.vue';
+export { URadios };
+export default URadios;

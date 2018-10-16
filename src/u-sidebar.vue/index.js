@@ -1,6 +1,6 @@
 import SingleChoices from '../m-single-choices.vue';
 
-export default {
+const USidebar = {
     name: 'u-sidebar',
     groupName: 'u-sidebar-group',
     childName: 'u-sidebar-item',
@@ -12,3 +12,9 @@ export default {
         this.$on('select', ({ itemVM }) => this.router && itemVM.navigate());
     },
 };
+
+export * from './item.vue';
+export * from './group.vue';
+export * from './divider.vue';
+export { USidebar };
+export default USidebar;

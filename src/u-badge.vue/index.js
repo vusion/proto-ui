@@ -1,4 +1,4 @@
-export default {
+const UBadge = {
     name: 'u-badge',
     props: {
         value: [Number, String],
@@ -13,3 +13,6 @@ export default {
         },
     },
 };
+
+export { UBadge };
+export default UBadge;

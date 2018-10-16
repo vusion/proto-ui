@@ -3,7 +3,7 @@ import debounce from 'lodash/debounce';
 import { repeatClick } from '../directives';
 import { generateStringFormatter } from '../utils/formatter';
 
-export default {
+const UNumberInput = {
     name: 'u-number-input',
     mixins: [MField],
     directives: { repeatClick },
@@ -153,3 +153,6 @@ export default {
         },
     },
 };
+
+export { UNumberInput };
+export default UNumberInput;

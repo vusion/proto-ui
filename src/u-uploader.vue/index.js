@@ -5,7 +5,7 @@ const SIZE_UNITS = {
     TB: Math.pow(1024, 4),
 };
 
-export default {
+const UUploader = {
     name: 'u-uploader',
     props: {
         url: String,
@@ -280,3 +280,6 @@ export default {
         },
     },
 };
+
+export { UUploader };
+export default UUploader;

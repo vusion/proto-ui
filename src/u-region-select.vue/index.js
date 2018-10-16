@@ -1,9 +1,9 @@
-import CascadeSelect from '../u-cascade-select.vue';
+import UCascadeSelect from '../u-cascade-select.vue';
 import region from './region.json';
 
-export default {
+const URegionSelect = {
     name: 'u-region-select',
-    extends: CascadeSelect,
+    extends: UCascadeSelect,
     props: {
         data: { type: Array, default() { return region; } },
         field: { type: String, default: 'value' },
@@ -16,3 +16,6 @@ export default {
         } },
     },
 };
+
+export { URegionSelect };
+export default URegionSelect;

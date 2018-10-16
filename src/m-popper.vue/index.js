@@ -1,7 +1,7 @@
 import Popper from '@vusion/popper.js';
 import ev from '../utils/event';
 
-export default {
+const MPopper = {
     name: 'm-popper',
     props: {
         open: { type: Boolean, default: false },
@@ -273,3 +273,6 @@ export default {
         },
     },
 };
+
+export { MPopper };
+export default MPopper;

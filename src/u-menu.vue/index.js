@@ -1,10 +1,10 @@
-import SingleChoices from '../m-single-choices.vue';
+import MSingleChoices from '../m-single-choices.vue';
 
-export default {
+const UMenu = {
     name: 'u-menu',
     groupName: 'u-menu-group',
     childName: 'u-menu-item',
-    extends: SingleChoices,
+    extends: MSingleChoices,
     props: {
         router: { type: Boolean, default: true },
     },
@@ -26,3 +26,9 @@ export default {
         });
     },
 };
+
+export * from './item.vue';
+export * from './group.vue';
+export * from './divider.vue';
+export { UMenu };
+export default UMenu;

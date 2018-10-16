@@ -1,9 +1,9 @@
-import SingleChoices from '../m-single-choices.vue';
+import { MSingleChoices } from '../m-single-choices.vue';
 
-export default {
+const UCarousel = {
     name: 'u-carousel',
     childName: 'u-carousel-item',
-    extends: SingleChoices,
+    extends: MSingleChoices,
     props: {
         autoSelect: { type: Boolean, default: true },
         value: null,
@@ -67,3 +67,7 @@ export default {
         },
     },
 };
+
+export * from './item.vue';
+export { UCarousel };
+export default UCarousel;

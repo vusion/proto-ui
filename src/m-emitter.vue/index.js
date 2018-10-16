@@ -7,7 +7,7 @@ const broadcast = function (condition, eventName, ...params) {
     });
 };
 
-export default {
+const MEmitter = {
     name: 'm-emitter',
     methods: {
         dispatch(condition, eventName, ...params) {
@@ -32,3 +32,6 @@ export default {
         },
     },
 };
+
+export { MEmitter };
+export default MEmitter;

@@ -1,11 +1,11 @@
-import ListView from '../u-list-view.vue';
+import { UListView } from '../u-list-view.vue';
 import { ellipsisTitle } from '../directives';
 
-export default {
+const USelect = {
     name: 'u-select',
     childName: 'u-select-item',
     groupName: 'u-select-group',
-    extends: ListView,
+    extends: UListView,
     directives: { ellipsisTitle },
     created() {
         this.$on('select', () => {
@@ -30,3 +30,9 @@ export default {
         },
     },
 };
+
+export * from './item.vue';
+export * from './group.vue';
+export * from './divider.vue';
+export { USelect };
+export default USelect;

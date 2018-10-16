@@ -1,6 +1,6 @@
 import MEmitter from '../m-emitter.vue';
 
-export default {
+const MField = {
     name: 'm-field',
     isField: true,
     mixins: [MEmitter],
@@ -20,3 +20,6 @@ export default {
         this.formItemVM && this.formItemVM.$emit('remove-field-vm', this);
     },
 };
+
+export { MField };
+export default MField;

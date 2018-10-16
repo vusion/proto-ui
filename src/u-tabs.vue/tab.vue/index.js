@@ -1,0 +1,23 @@
+import { MSingleChoice } from '../../m-single-choices.vue';
+import RouterItem from '../../m-router-item.vue';
+
+const UTab = {
+    name: 'u-tab',
+    parentName: 'u-tabs',
+    extends: MSingleChoice,
+    mixins: [RouterItem],
+    props: {
+        title: String,
+        /* @TODO: Remove this option */
+        hidden: { type: Boolean, default: false },
+    },
+    computed: {
+        selected() {
+            if (this.parentVM)
+                return this.parentVM.router ? this.active : this.parentVM.selectedVM === this;
+        },
+    },
+};
+
+export { UTab };
+export default UTab;

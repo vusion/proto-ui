@@ -1,4 +1,4 @@
-export default {
+const FCollapseTransition = {
     name: 'f-collapse-transition',
     functional: true,
     render(h, { children }) {
@@ -52,3 +52,6 @@ export default {
         }, children);
     },
 };
+
+export { FCollapseTransition };
+export default FCollapseTransition;

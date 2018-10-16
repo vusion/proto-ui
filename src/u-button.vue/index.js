@@ -1,6 +1,9 @@
-import Link from '../u-link.vue';
+import ULink from '../u-link.vue';
 
-export default {
+const UButton = {
     name: 'u-button',
-    extends: Link,
+    extends: ULink,
 };
+
+export { UButton };
+export default UButton;

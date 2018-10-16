@@ -1,4 +1,4 @@
-export default {
+const MRouterItem = {
     name: 'm-router-item',
     props: {
         href: String,
@@ -57,3 +57,6 @@ export default {
         },
     },
 };
+
+export { MRouterItem };
+export default MRouterItem;

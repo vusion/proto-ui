@@ -1,10 +1,10 @@
-import Draggable from '../f-draggable.vue';
+import FDraggable from '../f-draggable.vue';
 import { getSize, getComputedStyle, getDimension } from '../utils/style';
 import manager from '../f-draggable.vue/manager';
 
-export default {
+const FDragger = {
     name: 'f-dragger',
-    extends: Draggable,
+    extends: FDraggable,
     props: {
         axis: { type: String, default: 'both', validator: (value) => ['both', 'horizontal', 'vertical'].includes(value) },
         grid: { type: Object, default: () => ({ x: 0, y: 0 }) },
@@ -131,3 +131,6 @@ export default {
         },
     },
 };
+
+export { FDragger };
+export default FDragger;

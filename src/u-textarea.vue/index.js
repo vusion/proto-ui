@@ -1,9 +1,9 @@
-import Input from '../u-input.vue';
+import UInput from '../u-input.vue';
 import { getSize } from '../utils/style';
 
-export default {
+const UTextarea = {
     name: 'u-textarea',
-    extends: Input,
+    extends: UInput,
     props: {
         resize: { type: String, default: 'vertical', validator: (value) => ['none', 'horizontal', 'vertical', 'both'].includes(value) },
     },
@@ -31,3 +31,6 @@ export default {
         },
     },
 };
+
+export { UTextarea };
+export default UTextarea;

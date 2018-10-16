@@ -1,8 +1,8 @@
-import MParent from '../m-parent.vue';
+import { MParent } from '../m-parent.vue';
 
-export default {
+const MSingleChoices = {
     name: 'm-single-choices',
-    groupName: 'm-single-choice-group',
+    groupName: 'm-single-choices-group',
     childName: 'm-single-choice',
     mixins: [MParent],
     props: {
@@ -108,3 +108,9 @@ export default {
         },
     },
 };
+
+export * from './choice.vue';
+export * from './divider.vue';
+export * from './group.vue';
+export { MSingleChoices };
+export default MSingleChoices;

@@ -1,6 +1,6 @@
-import MParent from '../m-parent.vue';
+import { MParent } from '../m-parent.vue';
 
-export default {
+const USteps = {
     name: 'u-steps',
     childName: 'u-step',
     mixins: [MParent],
@@ -45,3 +45,7 @@ export default {
         },
     },
 };
+
+export * from './step.vue';
+export { USteps };
+export default USteps;
