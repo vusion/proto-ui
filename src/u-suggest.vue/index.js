@@ -30,6 +30,9 @@ export default {
         currentValue(value, oldValue) {
             this.$emit('change', { value, oldValue });
         },
+        value(value) {
+            this.currentValue = value;
+        },
     },
     created() {
         this.$on('select', ($event) => {
