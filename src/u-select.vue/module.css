@@ -20,15 +20,16 @@
 .root::before {
     content: '\3000';
     letter-spacing: -20px;
-    line-height: 30px;
+    line-height: $height-base;
 }
 
 .root::after {
     position: absolute;
-    content: '▾';
+    icon-font: url('../i-icon.vue/assets/arrow-down.svg');
+    font-size: 14px;
     right: 10px;
     top: 0;
-    line-height: 28px;
+    line-height: calc($height-base - 2px);
 }
 
 .root[disabled] {

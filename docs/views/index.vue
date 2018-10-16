@@ -6,11 +6,11 @@
                 <u-logo slot="left">{{ logo }}</u-logo>
                 <u-navbar-item v-for="item in navbar" :key="item.text" :to="item.to" :href="item.href" :target="item.target">{{ item.text }}</u-navbar-item>
                 <div slot="right" style="margin-right: 10px;">
-                    <u-select size="small" style="vertical-align: top; margin-top: 21px; margin-right: 10px;"
+                    <u-navbar-select style="vertical-align: top;"
                         @select="onSelectVersion">
-                        <u-select-item>0.4.x</u-select-item>
-                        <u-select-item value="0.3.x">0.3.x</u-select-item>
-                    </u-select>
+                        <u-navbar-select-item>0.4.x</u-navbar-select-item>
+                        <u-navbar-select-item value="0.3.x">0.3.x</u-navbar-select-item>
+                    </u-navbar-select>
                     <u-navbar-item href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
                 </div>
             </u-navbar>

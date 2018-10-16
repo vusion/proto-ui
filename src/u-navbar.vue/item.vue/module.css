@@ -10,8 +10,8 @@
     line-height: $navbar-height;
 }
 
-.root + .root {
-    margin-left: 30px;
+.root:not(:last-child) {
+    margin-right: 30px;
 }
 
 .root:hover {

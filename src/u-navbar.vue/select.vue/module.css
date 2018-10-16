@@ -1,20 +1,25 @@
 @import '../../u-select.vue/module.css';
 
 .root {
-    padding: 10px;
     border: none;
     height: $navbar-height;
-    width: 100px;
-    margin: 0 30px;
+    /* line-height: $navbar-height; */
+    padding-left: 10px;
+    padding-right: 30px;
+    width: auto;
+}
+
+.root:not(:last-child) {
+    margin-right: 30px;
 }
 
 .root::before {
+    font-size: 16px;
     line-height: $navbar-height;
 }
 
 .root::after {
     line-height: $navbar-height;
-    top: 8px;
 }
 
 .text {

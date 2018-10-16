@@ -1,0 +1,30 @@
+.root {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    border: none;
+    padding-left: 10px;
+    padding-right: 30px;
+    font-size: 16px;
+}
+
+.root:not(:last-child) {
+    margin-right: 30px;
+}
+
+.root::after {
+    position: absolute;
+    icon-font: url('../../i-icon.vue/assets/arrow-down.svg');
+    font-size: 14px;
+    right: 10px;
+    top: 0;
+    line-height: $navbar-height;
+}
+
+.popper {
+    width: 100%;
+    line-height: $line-height-base;
+}

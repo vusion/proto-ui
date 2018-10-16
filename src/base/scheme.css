@@ -30,6 +30,8 @@ $border-width-base: 1px;
 $width-base: 160px;
 $height-base: 32px;
 $border-radius-base: 0;
+$line-height-base: 1.6;
+$font-size-base: 14px;
 
 /* Specific Dimensions */
 $navbar-height: 70px;

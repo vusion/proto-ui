@@ -1,0 +1,6 @@
+<div :class="$style.root">
+    <div :class="$style.title"><slot name="title">{{ title }}</slot></div>
+    <m-popper :class="$style.popper" :trigger="trigger" append-to="reference">
+        <slot></slot>
+    </m-popper>
+</div>
