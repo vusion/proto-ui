@@ -4,6 +4,11 @@ const UNavbarDropdown = {
     props: {
         title: String,
         trigger: { type: String, default: 'hover' },
+        placement: {
+            type: String, default: 'bottom-start',
+            validator: (value) => /^(top|bottom|left|right)(-start|-end)?$/.test(value),
+        },
+        disabled: { type: Boolean, default: false },
     },
 };
 

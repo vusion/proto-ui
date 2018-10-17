@@ -17,4 +17,5 @@ export * from './divider.vue';
 export * from './dropdown.vue';
 export * from './menu.vue';
 export * from './select.vue';
+export { UNavbar };
 export default UNavbar;

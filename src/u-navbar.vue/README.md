@@ -95,7 +95,9 @@
 </u-linear-layout>
 ```
 
-### 下拉菜单
+### 下拉菜单与选择
+
+使用`<u-navbar-menu>`搭配`<u-navbar-dropdown>`来实现下拉菜单，使用`<u-navbar-select>`来实现下拉选择。
 
 ``` html
 <u-navbar>
@@ -103,13 +105,13 @@
     <u-navbar-item disabled>指令</u-navbar-item>
     <u-navbar-dropdown title="下拉菜单">
         <u-navbar-menu>
-            <u-navbar-menu-item>ABC</u-navbar-menu-item>
-            <u-navbar-menu-item>ABB</u-navbar-menu-item>
-            <u-navbar-menu-item>ACC
+            <u-navbar-menu-item>Basic</u-navbar-menu-item>
+            <u-navbar-menu-item>Layout</u-navbar-menu-item>
+            <u-navbar-menu-item>Navigation
                 <u-navbar-menu slot="sub">
-                    <u-navbar-menu-item>ABC</u-navbar-menu-item>
-                    <u-navbar-menu-item>ABB</u-navbar-menu-item>
-                    <u-navbar-menu-item>ACC</u-navbar-menu-item>
+                    <u-navbar-menu-item>Navbar</u-navbar-menu-item>
+                    <u-navbar-menu-item>Sidebar</u-navbar-menu-item>
+                    <u-navbar-menu-item>Menu</u-navbar-menu-item>
                 </u-navbar-menu>
             </u-navbar-menu-item>
         </u-navbar-menu>
@@ -124,30 +126,30 @@
 </u-navbar>
 ```
 
-### 其他
-#### 只读与禁用
+### 颜色扩展
 
 ``` html
 <u-linear-layout direction="vertical">
-    <u-navbar disabled>
-        <u-navbar-item>指南</u-navbar-item>
-        <u-navbar-item>概念</u-navbar-item>
-        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+    <u-navbar value="3" :router="false">
+        <u-navbar-item value="1">指南</u-navbar-item>
+        <u-navbar-item value="2">概念</u-navbar-item>
+        <u-navbar-item value="3">组件</u-navbar-item>
     </u-navbar>
-    <u-navbar>
-        <u-navbar-item>指南</u-navbar-item>
-        <u-navbar-item disabled>概念</u-navbar-item>
-        <u-navbar-item to="/proto-ui">组件</u-navbar-item>
+    <u-navbar value="3" :router="false" color="inverse">
+        <u-navbar-item value="1">指南</u-navbar-item>
+        <u-navbar-item value="2">概念</u-navbar-item>
+        <u-navbar-item value="3">组件</u-navbar-item>
     </u-navbar>
 </u-linear-layout>
 ```
+
 
 ## Navbar API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| router | Boolean | `true` | 是否根据vue-router来控制选择哪一项 |
+| router | Boolean | `true` | 是否根据 vue-router 来控制选择项 |
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | readonly | Boolean | `false` | 是否只读 |
@@ -272,3 +274,21 @@
 ## NavbarDivider API
 
 无
+
+## NavbarDropdown API
+
+### Attrs/Props
+
+| Attr/Prop | Type | Default | Description |
+| --------- | ---- | ------- | ----------- |
+| trigger | String | `'hover'` | 触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
+| placement | String | `'bottom'` | 弹出方位。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
+| disabled | Boolean | `false` | 是否禁用 |
+
+## NavbarMenu API
+
+同 [Menu API](u-menu)。
+
+## NavbarSelect API
+
+同 [Select API](u-select)。

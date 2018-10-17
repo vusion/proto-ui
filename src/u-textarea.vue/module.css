@@ -1,4 +1,4 @@
-@import '../u-input.vue/module.css';
+@extend '../u-input.vue/module.css';
 
 .root {
     width: 320px;

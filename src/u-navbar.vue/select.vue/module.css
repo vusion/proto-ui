@@ -1,4 +1,4 @@
-@import '../../u-select.vue/module.css';
+@extend '../../u-select.vue/module.css';
 
 .root {
     border: none;

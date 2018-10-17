@@ -142,4 +142,5 @@ const UTreeView = {
 
 export * from './node.vue';
 export * from './text.vue';
+export { UTreeView };
 export default UTreeView;
