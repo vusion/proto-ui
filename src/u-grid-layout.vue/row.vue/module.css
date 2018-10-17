@@ -1,6 +1,4 @@
-.root {
-    composes: row from '../module.css';
-}
+.root {}
 
 .root::before, .root::after {
     display: block;
