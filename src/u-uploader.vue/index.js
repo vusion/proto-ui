@@ -132,29 +132,28 @@ export default {
                 size: file.size,
             };
 
-            /**
-             * @event sending 发送前触发
-             * @property {object} data 待发送的数据
-             */
-            let cancel = false;
-            this.$emit('before-send', {
-                data: this.data,
-                file,
-                files: this.$refs.file.files,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
-                return;
+            if (typeof FormData === 'undefined') { // IE9 不支持 XHR2 相关功能
+                /**
+                 * @event sending 发送前触发
+                 * @property {object} data 待发送的数据
+                 */
+                let cancel = false;
+                this.$emit('before-send', {
+                    data: this.data,
+                    file,
+                    files: this.$refs.file.files,
+                    preventDefault: () => cancel = true,
+                }, this);
+                if (cancel)
+                    return;
 
-            this.sending = true;
-            if (typeof FormData === 'undefined') // IE9 不支持 XHR2 相关功能
+                this.sending = true;
                 this.$refs.form.submit();
-            else {
+            } else {
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData(this.$refs.form);
 
                 xhr.open('POST', this.url);
-
                 xhr.upload.onprogress = function (e) {
                     if (event.lengthComputable) {
                         /**
@@ -185,6 +184,23 @@ export default {
                     }
                 };
 
+                /**
+                 * @event sending 发送前触发
+                 * @property {object} data 待发送的数据
+                 */
+                let cancel = false;
+                this.$emit('before-send', {
+                    data: this.data,
+                    file,
+                    files: this.$refs.file.files,
+                    xhr,
+                    formData,
+                    preventDefault: () => cancel = true,
+                }, this);
+                if (cancel)
+                    return;
+
+                this.sending = true;
                 xhr.send(formData);
             }
 
