@@ -1,10 +1,10 @@
-import { MSingleChoicesGroup } from '../../m-single-choices.vue';
+import { MSinglexGroup } from '../../m-singlex.vue';
 
 const USidebarGroup = {
     name: 'u-sidebar-group',
     parentName: 'u-sidebar',
     childName: 'u-sidebar-item',
-    extends: MSingleChoicesGroup,
+    extends: MSinglexGroup,
 };
 
 export { USidebarGroup };

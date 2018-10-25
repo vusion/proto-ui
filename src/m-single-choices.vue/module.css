@@ -1,9 +1,0 @@
-.root {
-    /* @Private */
-    user-select: none;
-    position: relative;
-
-    /* @Public */
-    background: white;
-    border: 1px solid $border-color-base;
-}

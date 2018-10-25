@@ -1,8 +1,8 @@
-import { MSingleChoicesDivider } from '../../m-single-choices.vue';
+import { MSinglexDivider } from '../../m-singlex.vue';
 
 const UNavbarDivider = {
     name: 'u-navbar-divider',
-    extends: MSingleChoicesDivider,
+    extends: MSinglexDivider,
 };
 
 export { UNavbarDivider };

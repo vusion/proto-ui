@@ -1,10 +1,10 @@
-import MSingleChoices from '../m-single-choices.vue';
+import MSinglex from '../m-singlex.vue';
 
 const UMenu = {
     name: 'u-menu',
     groupName: 'u-menu-group',
     childName: 'u-menu-item',
-    extends: MSingleChoices,
+    extends: MSinglex,
     props: {
         router: { type: Boolean, default: true },
     },

@@ -1,10 +1,10 @@
-import { MSingleChoice } from '../../m-single-choices.vue';
+import { MSinglexItem } from '../../m-singlex.vue';
 import RouterItem from '../../m-router-item.vue';
 
 const UTab = {
     name: 'u-tab',
     parentName: 'u-tabs',
-    extends: MSingleChoice,
+    extends: MSinglexItem,
     mixins: [RouterItem],
     props: {
         title: String,

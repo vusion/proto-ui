@@ -9,7 +9,7 @@ export * from './i-icon.vue';
 export * from './m-emitter.vue';
 export * from './m-field.vue';
 export * from './m-router-item.vue';
-export * from './m-single-choices.vue';
+export * from './m-singlex.vue';
 export * from './u-article.vue';
 export * from './u-badge.vue';
 export * from './u-block.vue';

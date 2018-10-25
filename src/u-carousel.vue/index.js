@@ -1,9 +1,9 @@
-import { MSingleChoices } from '../m-single-choices.vue';
+import { MSinglex } from '../m-singlex.vue';
 
 const UCarousel = {
     name: 'u-carousel',
     childName: 'u-carousel-item',
-    extends: MSingleChoices,
+    extends: MSinglex,
     props: {
         autoSelect: { type: Boolean, default: true },
         value: null,

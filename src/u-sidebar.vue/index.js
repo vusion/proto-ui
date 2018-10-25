@@ -1,10 +1,10 @@
-import SingleChoices from '../m-single-choices.vue';
+import Singlex from '../m-singlex.vue';
 
 const USidebar = {
     name: 'u-sidebar',
     groupName: 'u-sidebar-group',
     childName: 'u-sidebar-item',
-    extends: SingleChoices,
+    extends: Singlex,
     props: {
         router: { type: Boolean, default: true },
     },

@@ -1,9 +1,9 @@
-import { MSingleChoice } from '../../m-single-choices.vue';
+import { MSinglexItem } from '../../m-singlex.vue';
 
 const UNavbarItem = {
     name: 'u-navbar-item',
     parentName: 'u-navbar',
-    extends: MSingleChoice,
+    extends: MSinglexItem,
 };
 
 export { UNavbarItem };

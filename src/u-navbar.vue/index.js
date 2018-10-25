@@ -1,9 +1,9 @@
-import { MSingleChoices } from '../m-single-choices.vue';
+import { MSinglex } from '../m-singlex.vue';
 
 const UNavbar = {
     name: 'u-navbar',
     childName: 'u-navbar-item',
-    extends: MSingleChoices,
+    extends: MSinglex,
     props: {
         router: { type: Boolean, default: true },
     },

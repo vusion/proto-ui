@@ -1,10 +1,10 @@
-import { MSingleChoice } from '../../m-single-choices.vue';
+import { MSinglexItem } from '../../m-singlex.vue';
 import MRouterItem from '../../m-router-item.vue';
 
 const UCarouselItem = {
     name: 'u-carousel-item',
     parentName: 'u-carousel',
-    extends: MSingleChoice,
+    extends: MSinglexItem,
     mixins: [MRouterItem],
     props: {
         title: String,

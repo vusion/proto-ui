@@ -1,11 +1,11 @@
-import { MSingleChoice } from '../../m-single-choices.vue';
+import { MSinglexItem } from '../../m-singlex.vue';
 import RouterItem from '../../m-router-item.vue';
 
 const UMenuItem = {
     name: 'u-menu-item',
     parentName: 'u-menu',
     groupName: 'u-menu-group',
-    extends: MSingleChoice,
+    extends: MSinglexItem,
     mixins: [RouterItem],
     computed: {
         listeners() {

@@ -2,10 +2,10 @@ import { MChild } from '../../m-parent.vue';
 import ULink from '../../u-link.vue';
 import { ellipsisTitle } from '../../directives';
 
-const MSingleChoice = {
-    name: 'm-single-choice',
-    parentName: 'm-single-choices',
-    groupName: 'm-single-choices-group',
+const MSinglexItem = {
+    name: 'm-singlex-item',
+    parentName: 'm-singlex',
+    groupName: 'm-singlex-group',
     mixins: [MChild, ULink],
     directives: { ellipsisTitle },
     props: {
@@ -46,5 +46,5 @@ const MSingleChoice = {
     },
 };
 
-export { MSingleChoice };
-export default MSingleChoice;
+export { MSinglexItem };
+export default MSinglexItem;

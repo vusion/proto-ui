@@ -80,6 +80,7 @@ module.exports = {
             { group: 'Progress & Charts', name: 'u-circular-progress', alias: '圆型进度条' },
             { group: 'Mixins & Functional', name: 'm-emitter', alias: '触发器' },
             { group: 'Mixins & Functional', name: 'm-router-item', alias: '路由项' },
+            { group: 'Mixins & Functional', name: 'm-singlex', alias: '单选子' },
             { group: 'Mixins & Functional', name: 'f-collapse-transition', alias: '折叠过渡' },
             { group: 'Mixins & Functional', name: 'f-draggable', alias: '拖拽' },
             { group: 'Mixins & Functional', name: 'f-droppable', alias: '拖放' },

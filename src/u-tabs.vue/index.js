@@ -1,9 +1,9 @@
-import { MSingleChoices } from '../m-single-choices.vue';
+import { MSinglex } from '../m-singlex.vue';
 
 const UTabs = {
     name: 'u-tabs',
     childName: 'u-tab',
-    extends: MSingleChoices,
+    extends: MSinglex,
     props: {
         autoSelect: { type: Boolean, default: true },
         closable: { type: Boolean, default: false },

@@ -1,9 +1,9 @@
 import { MParent } from '../m-parent.vue';
 
-const MSingleChoices = {
-    name: 'm-single-choices',
-    groupName: 'm-single-choices-group',
-    childName: 'm-single-choice',
+const MSinglex = {
+    name: 'm-singlex',
+    groupName: 'm-singlex-group',
+    childName: 'm-singlex-item',
     mixins: [MParent],
     props: {
         value: null,
@@ -109,8 +109,8 @@ const MSingleChoices = {
     },
 };
 
-export * from './choice.vue';
+export * from './item.vue';
 export * from './divider.vue';
 export * from './group.vue';
-export { MSingleChoices };
-export default MSingleChoices;
+export { MSinglex };
+export default MSinglex;

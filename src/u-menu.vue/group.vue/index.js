@@ -1,10 +1,10 @@
-import { MSingleChoicesGroup } from '../../m-single-choices.vue';
+import { MSinglexGroup } from '../../m-singlex.vue';
 
 const UMenuGroup = {
     name: 'u-menu-group',
     parentName: 'u-menu',
     childName: 'u-menu-item',
-    extends: MSingleChoicesGroup,
+    extends: MSinglexGroup,
 };
 
 export { UMenuGroup };

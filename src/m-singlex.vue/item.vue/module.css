@@ -1,13 +1,10 @@
 .root {
     /* @Private */
-    display: block;
+    display: inline-block;
     cursor: $cursor-pointer;
 
     /* @Public */
     padding: 4px 12px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .root:hover {

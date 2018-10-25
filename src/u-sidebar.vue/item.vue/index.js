@@ -1,10 +1,10 @@
-import { MSingleChoice } from '../../m-single-choices.vue';
+import { MSinglexItem } from '../../m-singlex.vue';
 
 const USidebarItem = {
     name: 'u-sidebar-item',
     parentName: 'u-sidebar',
     groupName: 'u-sidebar-group',
-    extends: MSingleChoice,
+    extends: MSinglexItem,
     watch: {
         active(active) {
             this.watchActive(active);

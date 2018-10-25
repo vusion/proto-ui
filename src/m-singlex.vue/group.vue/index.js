@@ -1,9 +1,9 @@
 import { MGroup } from '../../m-parent.vue';
 
-const MSingleChoicesGroup = {
-    name: 'm-single-choices-group',
-    parentName: 'm-single-choices',
-    childName: 'm-single-choice',
+const MSinglexGroup = {
+    name: 'm-singlex-group',
+    parentName: 'm-singlex',
+    childName: 'm-singlex-item',
     mixins: [MGroup],
     props: {
         title: String,
@@ -75,5 +75,5 @@ const MSingleChoicesGroup = {
     },
 };
 
-export { MSingleChoicesGroup };
-export default MSingleChoicesGroup;
+export { MSinglexGroup };
+export default MSinglexGroup;

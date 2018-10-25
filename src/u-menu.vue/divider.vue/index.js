@@ -1,9 +1,9 @@
-import { MSingleChoicesDivider } from '../../m-single-choices.vue';
+import { MSinglexDivider } from '../../m-singlex.vue';
 
 const UMenuDivider = {
     name: 'u-menu-divider',
     parentName: 'u-menu',
-    extends: MSingleChoicesDivider,
+    extends: MSinglexDivider,
 };
 
 export { UMenuDivider };
