@@ -30,6 +30,24 @@ const MEmitter = {
 
             broadcast.apply(this, [condition, eventName].concat(params));
         },
+        $dispatch(...args) {
+            this.dispatch(...args);
+        },
+        $broadcast(...args) {
+            this.broadcast(...args);
+        },
+        $contact(condition, callback) {
+            if (typeof condition === 'string') {
+                const name = condition;
+                condition = ($parent) => $parent.$options.name === name;
+            }
+
+            let $parent = this.$parent || this.$root;
+            while ($parent && !condition($parent))
+                $parent = $parent.$parent;
+
+            $parent && callback($parent);
+        },
     },
 };
 

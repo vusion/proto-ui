@@ -1,16 +1,15 @@
 ## MSinglex
 
-extends [MParent](../m-parent).
+继承 [MParent](../m-parent)。
 
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Any | | 当前选择的值 |
+| autoSelect | Boolean | `false` | 是否自动选择第一个非禁用的项 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
-| collapsible | Boolean | `false` | 分组是否可以折叠 |
-| accordion | Boolean | `false` | 是否每次只会展开一个分组 |
-| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| router | Boolean | `false` | 是否开启路由模式 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -33,7 +32,7 @@ extends [MParent](../m-parent).
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | MSinglexItem | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MSinglex | 发送事件实例 |
 
 #### @input
 
@@ -42,7 +41,7 @@ extends [MParent](../m-parent).
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MSinglex | 发送事件实例 |
 
 #### @select
 
@@ -52,11 +51,9 @@ extends [MParent](../m-parent).
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | MSinglexItem |  单选模式中，选择项子组件 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<MSinglexItem\> | 多选模式中，所有选中项子组件的数组 |
-| senderVM | Vue | 发送事件实例 |
+| $event.item | Object | 选择项相关对象 |
+| $event.itemVM | MSinglexItem | 选择项子组件 |
+| senderVM | MSinglex | 发送事件实例 |
 
 #### @change
 
@@ -68,7 +65,7 @@ extends [MParent](../m-parent).
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | MSinglexItem | 选择项子组件 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MSinglex | 发送事件实例 |
 
 #### @toggle
 
@@ -78,7 +75,7 @@ extends [MParent](../m-parent).
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | MSinglexGroup | 分组组件 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MSinglex | 发送事件实例 |
 
 ### Methods
 
@@ -92,7 +89,7 @@ extends [MParent](../m-parent).
 
 ## MSinglexItem
 
-extends [MChild](../m-parent/api#MChild).
+继承 [MChild](../m-parent/api#MChild).
 
 ### Props/Attrs
 
@@ -117,7 +114,7 @@ extends [MChild](../m-parent/api#MChild).
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MSinglexItem | 发送事件实例 |
 
 #### @before-select
 
@@ -129,59 +126,4 @@ extends [MChild](../m-parent/api#MChild).
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | MSinglexItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
-
-## MSinglexGroup API
-
-extends [MGroup](../m-parent/api#MGroup).
-
-### Props/Attrs
-
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String |  | 显示的标题 |
-| collapsible | Boolean |  | `false` | 是否可以折叠 |
-| expanded.sync | Boolean | `false` | 展开/折叠状态 |
-| disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
-| senderVM | Vue | 发送事件实例 |
-
-### Slots
-
-#### (default)
-
-插入`<m-singlex-item>`或`<m-singlex-divider>`子组件。
-
-#### title
-
-自定义标题文本。
-
-#### extra
-
-在右侧可以附加内容。
-
-### Events
-
-#### @before-toggle
-
-展开/折叠此分组前触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | MSinglexGroup | 分组组件 |
-| $event.preventDefault | Function | 阻止展开/折叠流程 |
-| senderVM | Vue | 发送事件实例 |
-
-#### @toggle
-
-展开/折叠某分组时触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | MSinglexGroup | 分组组件 |
-| senderVM | Vue | 发送事件实例 |
-
-## MSinglexDivider API
-
-无
+| senderVM | MSinglexItem | 发送事件实例 |

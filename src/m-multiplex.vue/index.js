@@ -1,15 +1,13 @@
 import { MParent } from '../m-parent.vue';
 
-const MSinglex = {
-    name: 'm-singlex',
-    groupName: 'm-singlex-group',
-    childName: 'm-singlex-item',
+const Multiplex = {
+    name: 'm-multiplex',
+    groupName: 'm-multiplex-group',
+    childName: 'm-multiplex-item',
     mixins: [MParent],
     props: {
         value: null,
         autoSelect: { type: Boolean, default: false },
-        cancelable: { type: Boolean, default: false },
-        router: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -17,7 +15,6 @@ const MSinglex = {
         return {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
-            selectedVM: undefined,
         };
     },
     watch: {
@@ -52,17 +49,7 @@ const MSinglex = {
     },
     methods: {
         watchValue(value) {
-            if (this.selectedVM && this.selectedVM.value === value)
-                return;
-            if (value === undefined) {
-                if (!this.autoSelect)
-                    this.selectedVM = undefined;
-                else
-                    this.selectedVM = this.itemVMs.find((itemVM) => !itemVM.disabled) || undefined;
-            } else {
-                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
-                this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
-            }
+            this.itemVMs.forEach((itemVM) => itemVM.currentSelected = !!(value && value.includes(itemVM.value)));
         },
         select(itemVM) {
             if (this.readonly || this.disabled)
@@ -81,26 +68,23 @@ const MSinglex = {
             if (cancel)
                 return;
 
-            if (this.cancelable && this.selectedVM === itemVM)
-                this.selectedVM = undefined;
-            else
-                this.selectedVM = itemVM;
-
-            const value = this.selectedVM && this.selectedVM.value;
-            const item = this.selectedVM && this.selectedVM.item;
+            itemVM.currentSelected = !itemVM.currentSelected;
+            const itemVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
+            const value = itemVMs.map((itemVM) => itemVM.value);
+            const items = itemVMs.map((itemVM) => itemVM.item);
 
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
             this.$emit('select', {
                 value,
                 oldValue,
-                item,
-                itemVM: this.selectedVM,
+                items,
+                itemVMs,
             }, this);
         },
     },
 };
 
 export * from './item.vue';
-export { MSinglex };
-export default MSinglex;
+export { Multiplex };
+export default Multiplex;

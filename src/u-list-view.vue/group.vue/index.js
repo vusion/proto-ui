@@ -1,4 +1,4 @@
-import { MGroup } from '../../m-parent.vue';
+import { MGroup } from '../../m-group.vue';
 
 const UListViewGroup = {
     name: 'u-list-view-group',

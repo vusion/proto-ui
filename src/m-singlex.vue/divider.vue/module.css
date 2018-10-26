@@ -1,8 +1,0 @@
-.root {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 12px;
-    width: 1px;
-    height: 30px;
-    background: $border-color-base;
-}

@@ -1,10 +1,11 @@
-import Singlex from '../m-singlex.vue';
+import MSinglex from '../m-singlex.vue';
+import { MGroupParent } from '../m-group.vue';
 
 const USidebar = {
     name: 'u-sidebar',
     groupName: 'u-sidebar-group',
     childName: 'u-sidebar-item',
-    extends: Singlex,
+    mixins: [MSinglex, MGroupParent],
     props: {
         router: { type: Boolean, default: true },
     },

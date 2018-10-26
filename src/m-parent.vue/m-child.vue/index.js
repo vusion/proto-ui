@@ -1,6 +1,7 @@
 import MEmitter from '../../m-emitter.vue';
 
 const MChild = {
+    name: 'm-child',
     parentName: 'm-parent',
     groupName: 'm-group',
     mixins: [MEmitter],
@@ -11,12 +12,24 @@ const MChild = {
         };
     },
     created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-        this.dispatch(this.$options.groupName, 'add-item-vm', this);
+        this.$contact(this.$options.parentName, (parentVM) => {
+            this.parentVM = parentVM;
+            parentVM.itemVMs.push(this);
+        });
+        this.$contact(this.$options.groupName, (groupVM) => {
+            this.groupVM = groupVM;
+            groupVM.itemVMs.push(this);
+        });
     },
     destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
-        this.dispatch(this.$options.groupName, 'remove-item-vm', this);
+        this.$contact(this.$options.parentName, (parentVM) => {
+            parentVM.itemVMs.splice(parentVM.itemVMs.indexOf(this), 1);
+            this.parentVM = undefined;
+        });
+        this.$contact(this.$options.groupName, (groupVM) => {
+            groupVM.itemVMs.splice(groupVM.itemVMs.indexOf(this), 1);
+            this.groupVM = undefined;
+        });
     },
 };
 

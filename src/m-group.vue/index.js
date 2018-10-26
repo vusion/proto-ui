@@ -1,10 +1,10 @@
-import { MGroup } from '../../m-parent.vue';
+import MEmitter from '../m-emitter.vue';
 
-const MSinglexGroup = {
-    name: 'm-singlex-group',
-    parentName: 'm-singlex',
-    childName: 'm-singlex-item',
-    mixins: [MGroup],
+const MGroup = {
+    name: 'm-group',
+    parentName: 'm-parent',
+    childName: 'm-child',
+    mixins: [MEmitter],
     props: {
         title: String,
         collapsible: { type: Boolean, default: undefined },
@@ -13,8 +13,8 @@ const MSinglexGroup = {
     },
     data() {
         return {
-            // @inherit: parentVM: undefined,
-            // @inherit: itemVMs: [],
+            parentVM: undefined,
+            itemVMs: [],
             currentExpanded: this.expanded,
         };
     },
@@ -27,6 +27,18 @@ const MSinglexGroup = {
         expanded(expanded) {
             this.currentExpanded = expanded;
         },
+    },
+    created() {
+        this.$contact(this.$options.parentName, (parentVM) => {
+            this.parentVM = parentVM;
+            parentVM.groupVMs.push(this);
+        });
+    },
+    destroyed() {
+        this.$contact(this.$options.parentName, (parentVM) => {
+            parentVM.groupVMs.splice(parentVM.groupVMs.indexOf(this), 1);
+            this.parentVM = undefined;
+        });
     },
     methods: {
         toggle(expanded) {
@@ -75,5 +87,6 @@ const MSinglexGroup = {
     },
 };
 
-export { MSinglexGroup };
-export default MSinglexGroup;
+export * from './parent.vue';
+export { MGroup };
+export default MGroup;

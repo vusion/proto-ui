@@ -25,18 +25,6 @@ const ULink = {
             delete listeners.click;
             return listeners;
         },
-        active() {
-            if (this.to === undefined)
-                return;
-
-            if (!this.$router)
-                return console.warn('[proto-ui] Use `<m-router-item>` but cannot find vue router.');
-
-            const current = this.$route;
-            const location = this.$router.resolve(this.to).location;
-
-            return this.exact ? location.path === current.path : current.path.startsWith(location.path);
-        },
     },
     methods: {
         onClick(e) {
