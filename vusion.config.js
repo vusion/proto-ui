@@ -82,7 +82,6 @@ module.exports = {
             { group: 'Mixins & Functional', name: 'm-parent', alias: '父子模式' },
             { group: 'Mixins & Functional', name: 'm-group', alias: '分组模式' },
             { group: 'Mixins & Functional', name: 'm-root', alias: '根节点模式' },
-            { group: 'Mixins & Functional', name: 'm-router-item', alias: '路由项' },
             { group: 'Mixins & Functional', name: 'm-singlex', alias: '单选模式' },
             { group: 'Mixins & Functional', name: 'm-multiplex', alias: '多选模式' },
             { group: 'Mixins & Functional', name: 'f-collapse-transition', alias: '折叠过渡' },

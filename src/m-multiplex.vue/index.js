@@ -7,7 +7,6 @@ const Multiplex = {
     mixins: [MParent],
     props: {
         value: null,
-        autoSelect: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -23,33 +22,20 @@ const Multiplex = {
         value(value) {
             this.watchValue(value);
         },
-        selectedVM(selectedVM, oldVM) {
-            // @TODO: Vue 中 相同复杂类型也会认为是改变？
-            if (selectedVM === oldVM)
-                return;
-            this.$emit('change', {
-                value: selectedVM ? selectedVM.value : undefined,
-                oldValue: oldVM ? oldVM.value : undefined,
-                item: selectedVM ? selectedVM.item : undefined,
-                itemVM: selectedVM,
-            }, this);
-        },
         // This method just run once after pushing many itemVMs
         itemVMs() {
-            // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
-            const value = this.selectedVM ? this.selectedVM.value : this.value;
-            this.selectedVM = undefined;
-            this.watchValue(value);
+            // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+            // this.watchValue(value);
         },
     },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
-        // If not, itemVMs have not been pushed.
+        // Because itemVMs haven't been pushed before it.
         this.watchValue(this.value);
     },
     methods: {
         watchValue(value) {
-            this.itemVMs.forEach((itemVM) => itemVM.currentSelected = !!(value && value.includes(itemVM.value)));
+            this.itemVMs.forEach((itemVM) => itemVM.currentSelected = !!(value && Array.isArray(value) && value.includes(itemVM.value)));
         },
         select(itemVM) {
             if (this.readonly || this.disabled)

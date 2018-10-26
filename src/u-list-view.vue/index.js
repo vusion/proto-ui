@@ -53,7 +53,7 @@ const UListView = {
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
-            // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
+            // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
             const value = this.selectedVM ? this.selectedVM.value : this.value;
             this.selectedVM = undefined;
             this.watchValue(value);
@@ -81,7 +81,7 @@ const UListView = {
     },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
-        // If not, itemVMs have not been pushed.
+        // Because itemVMs haven't been pushed before it.
         this.watchValue(this.value);
     },
     methods: {

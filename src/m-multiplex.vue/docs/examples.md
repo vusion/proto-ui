@@ -33,7 +33,7 @@
 export default {
     data() {
         return {
-            value: 'towel',
+            value: ['nut', 'towel'],
         };
     },
 };

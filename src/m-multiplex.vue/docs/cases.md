@@ -43,7 +43,7 @@
 export default {
     data() {
         return {
-            value: 'towel',
+            value: ['nut', 'towel'],
         };
     },
 };
@@ -69,7 +69,7 @@ export default {
 export default {
     data() {
         return {
-            value: 'towel',
+            value: ['nut', 'towel'],
         };
     },
 };

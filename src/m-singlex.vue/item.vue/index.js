@@ -38,10 +38,10 @@ const MSinglexItem = {
     },
     methods: {
         onClick(e) {
-            if (this.disabled || this.parentVM.disabled)
+            if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)
                 return e.preventDefault();
 
-            ULink.$options.methods.onClick.call(this, e);
+            ULink.methods.onClick.call(this, e);
         },
         select(e) {
             if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)

@@ -19,11 +19,6 @@ const MMultiplexItem = {
             // @inherit: parentVM: undefined,
         };
     },
-    computed: {
-        selected() {
-            return this.parentVM.selectedVM === this;
-        },
-    },
     methods: {
         select(e) {
             if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)

@@ -1,6 +1,5 @@
-<a :class="$style.root"
-    :selected="parentVM.router ? active : selected || currentSelected" :readonly="parentVM.readonly" :disabled="disabled || parentVM.disabled"
-    :href="currentHref" :target="target" @click="parentVM.router ? onClick($event) : select($event)" v-on="listeners"
-    v-ellipsis-title>
+<div :class="$style.root"
+    :selected="currentSelected" :readonly="parentVM.readonly" :disabled="disabled || parentVM.disabled"
+    @click="select($event)" v-ellipsis-title>
     <slot></slot>
-</a>
+</div>
