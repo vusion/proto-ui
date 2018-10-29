@@ -135,7 +135,7 @@ const UTreeView = {
             }, this);
         },
         checkAll(checked) {
-            this.nodeVMs.forEach((nodeVM) => nodeVM.check(checked));
+            this.nodeVMs.forEach((nodeVM) => !nodeVM.currentDisabled && nodeVM.check(checked));
         },
     },
 };

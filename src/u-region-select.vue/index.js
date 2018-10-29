@@ -1,11 +1,9 @@
 import UCascadeSelect from '../u-cascade-select.vue';
-import region from './region.json';
 
 const URegionSelect = {
     name: 'u-region-select',
     extends: UCascadeSelect,
     props: {
-        data: { type: Array, default() { return region; } },
         field: { type: String, default: 'value' },
         categories: { type: Array, default() {
             return [
@@ -14,6 +12,9 @@ const URegionSelect = {
                 { label: '区' },
             ];
         } },
+    },
+    created() {
+        import('./region.json').then((region) => this.currentData = region);
     },
 };
 

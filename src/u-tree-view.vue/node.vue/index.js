@@ -26,6 +26,9 @@ const UTreeViewNode = {
         selected() {
             return this.rootVM.selectedVM === this;
         },
+        currentDisabled() {
+            return this.disabled || this.rootVM.disabled || (this.parentVM && this.parentVM.currentDisabled);
+        },
     },
     watch: {
         expanded(expanded) {
@@ -37,7 +40,7 @@ const UTreeViewNode = {
     },
     methods: {
         select() {
-            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
+            if (this.currentDisabled || this.rootVM.readonly)
                 return;
 
             let cancel = false;
@@ -53,7 +56,7 @@ const UTreeViewNode = {
             this.rootVM.select(this);
         },
         toggle(expanded) {
-            if (this.disabled || this.rootVM.readonly || this.rootVM.disabled)
+            if (this.currentDisabled || this.rootVM.readonly)
                 return;
 
             const oldExpanded = this.currentExpanded;
@@ -102,7 +105,7 @@ const UTreeViewNode = {
             // down
             if (direction.includes('down')) {
                 this.nodeVMs.forEach((nodeVM) => {
-                    nodeVM.check(checked, 'down');
+                    !nodeVM.currentDisabled && nodeVM.check(checked, 'down');
                 });
             }
 

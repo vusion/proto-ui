@@ -346,7 +346,7 @@ export default {
     <u-button @click="checkAll(true)">全部选中</u-button>
     <u-button @click="checkAll(false)">全部取消</u-button>
     <u-button @click="toggleAll(true)">全部展开</u-button>
-    <u-button @click="toggleAll(false)">全部取消</u-button>
+    <u-button @click="toggleAll(false)">全部收起</u-button>
     <p>{{ data }}</p>
 </div>
 </template>
@@ -358,7 +358,7 @@ export default {
             data: [
                 { text: '节点1', expanded: true, checked: false, children: [
                     { text: '节点1.1', expanded: false, checked: false },
-                    { text: '节点1.2', expanded: true, checked: false, children: [
+                    { text: '节点1.2', expanded: true, checked: false, disabled: true, children: [
                         { text: '节点1.2.1', expanded: false, checked: false },
                         { text: '节点1.2.2', expanded: false, checked: false },
                     ] },

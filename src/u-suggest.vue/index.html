@@ -1,5 +1,5 @@
 <u-input :class="$style.root" ref="input" :readonly="readonly" :disabled="disabled" :color="color" :size="size"
-:value="currentValue" @input="onInput" @blur="onBlur"
+:value="currentText" @input="onInput" @blur="onBlur"
         @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
         @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
         @keydown.stop.enter="$refs.popper.currentOpen && select(selectedVM)"

@@ -17,6 +17,7 @@ const UCascadeSelect = {
     },
     data() {
         const data = {
+            currentData: this.data,
             values: [],
             lists: [],
             currentConverter: {},
@@ -49,7 +50,7 @@ const UCascadeSelect = {
                         }
                     };
 
-                    findValues(this.data, 0);
+                    findValues(this.currentData, 0);
                     return values;
                 },
             };
@@ -79,11 +80,13 @@ const UCascadeSelect = {
     },
     watch: {
         data(data, oldData) {
+            this.currentData = data;
+        },
+        currentData(currentData) {
             // @TODO: 该不该用 map 来查找 value
-
             this.lists = [];
             this.values = this.currentConverter.set(this.value);
-            this.setList(data, 0);
+            this.setList(currentData, 0);
             const value = this.currentConverter.get(this.values);
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
@@ -92,7 +95,7 @@ const UCascadeSelect = {
             if (value !== this.currentConverter.get(this.values)) {
                 this.lists = [];
                 this.values = this.currentConverter.set(value);
-                this.setList(this.data, 0);
+                this.setList(this.currentData, 0);
             }
 
             const oldValues = this.values;
@@ -105,7 +108,7 @@ const UCascadeSelect = {
         },
     },
     created() {
-        this.setList(this.data, 0);
+        this.setList(this.currentData, 0);
         // 如果没有传入 value，并且选择了 autoSelect，则自动触发一次同步事件
         if (this.autoSelect && this.value === undefined) {
             const value = this.currentConverter.get(this.values);

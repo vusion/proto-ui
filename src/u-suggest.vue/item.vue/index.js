@@ -11,6 +11,9 @@ const USuggestItem = {
         matched() {
             return this.parentVM && this.parentVM.match(this);
         },
+        innerText() {
+            return this.$el.innerText;
+        },
     },
 };
 

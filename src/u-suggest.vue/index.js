@@ -16,8 +16,8 @@ const USuggest = {
     },
     data() {
         return {
-            currentValue: this.value,
-            filterValue: '', // 与 currentValue 分开，只有 input 时会改变它
+            currentText: '',
+            filterText: '', // 与 currentText 分开，只有 input 时会改变它
         };
     },
     computed: {
@@ -27,21 +27,20 @@ const USuggest = {
         },
     },
     watch: {
-        currentValue(value, oldValue) {
-            this.$emit('change', { value, oldValue }, this);
+        selectedVM(selectedVM, oldVM) {
+            if (selectedVM === oldVM)
+                return;
+            if (selectedVM)
+                this.currentText = selectedVM.innerText;
+            else if (this.strict)
+                this.currentText = '';
         },
     },
     created() {
         this.$on('select', ($event) => {
-            this.currentValue = $event.value;
             this.toggle(false);
-
-            this.$emit('input', $event.value, this);
-            this.$emit('update:value', $event.value, this);
         });
         this.$on('shift', ($event) => {
-            this.currentValue = $event.value;
-
             this.$emit('input', $event.value, this);
             this.$emit('update:value', $event.value, this);
         });
@@ -85,9 +84,9 @@ const USuggest = {
             this.$refs.popper && this.$refs.popper.toggle(open);
         },
         onToggle($event) {
-            // 刚打开时不 filterValue
+            // 刚打开时不 filterText
             if ($event.open)
-                this.filterValue = '';
+                this.filterText = '';
             this.$emit('toggle', $event, this);
             setTimeout(() => this.ensureSelectedInView(true));
         },
@@ -96,22 +95,22 @@ const USuggest = {
          * @param {*} item
          */
         match(item) {
-            if (!this.filterValue || this.dataSource)
+            if (!this.filterText || this.dataSource)
                 return true;
 
             let matchMethod;
             if (typeof this.matchMethod === 'function')
                 matchMethod = this.matchMethod;
             else {
-                matchMethod = (itemValue, filterValue) => {
+                matchMethod = (itemValue, filterText) => {
                     if (!this.caseSensitive) {
                         itemValue = itemValue.toLowerCase();
-                        filterValue = filterValue.toLowerCase();
+                        filterText = filterText.toLowerCase();
                     }
-                    return itemValue[this.matchMethod](filterValue);
+                    return itemValue[this.matchMethod](filterText);
                 };
             }
-            return !!matchMethod(item.value, this.filterValue);
+            return !!matchMethod(item.innerText, this.filterText);
         },
         fetchData(clear) {
             if (!this.dataSource)
@@ -134,7 +133,7 @@ const USuggest = {
                     // @TODO: 要不要设置 limit 属性
                     offset: this.currentData ? this.currentData.length : 0,
                     filter: {
-                        value: this.filterValue,
+                        value: this.filterText,
                     },
                     clear,
                 });
@@ -152,30 +151,40 @@ const USuggest = {
             });
         },
         onInput(value) {
-            this.filterValue = value;
-            this.currentValue = value;
+            this.filterText = value;
+            this.currentText = value;
+            // if (!this.strict) {
+            //     this.currentValue = value;
+            //     this.$emit('input', value);
+            //     this.$emit('update:value', value);
+            // }
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);
-
-            this.$emit('input', value, this);
-            this.$emit('update:value', value, this);
         },
         onBlur() {
             this.$nextTick(() => {
-                const value = this.currentValue;
-                const selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
-                if (this.strict && !selectedVM) {
-                    if (this.selectedVM) { // 使用上一次正确的选项
-                        this.currentValue = this.selectedVM.value;
-                    } else { // 或者为空
-                        this.currentValue = '';
-                        this.selectedVM = selectedVM;
-                    }
-                } else
-                    this.selectedVM = selectedVM;
+                const oldVM = this.selectedVM;
+                let selectedVM = this.itemVMs.find((itemVM) => itemVM.innerText === this.currentText);
+
+                if (this.strict && !selectedVM && this.currentText) {
+                    selectedVM = oldVM;
+                }
+                this.selectedVM = selectedVM;
+                if (selectedVM)
+                    this.currentText = selectedVM.innerText;
+                else if (this.strict)
+                    this.currentText = '';
+
+                let value = selectedVM ? selectedVM.value : '';
+                if (!this.strict)
+                    value = this.currentText;
 
                 this.$emit('input', value, this);
                 this.$emit('update:value', value, this);
+                this.$emit('change', {
+                    value,
+                    oldValue: oldVM ? oldVM.value : undefined,
+                }, this);
             });
         },
     },
