@@ -12,19 +12,7 @@
 
 ### 选项值
 
-#### 静态绑定
-
-``` html
-<m-complex value="towel">
-    <m-complex-item value="cup">水杯</m-complex-item>
-    <m-complex-item value="coffee">咖啡</m-complex-item>
-    <m-complex-item value="nut">坚果</m-complex-item>
-    <m-complex-item value="towel">毛巾</m-complex-item>
-    <m-complex-item value="sofa">沙发</m-complex-item>
-</m-complex>
-```
-
-#### v-model
+#### 单选模式
 
 ``` vue
 <template>
@@ -43,19 +31,19 @@
 export default {
     data() {
         return {
-            value: ['nut', 'towel'],
+            value: 'towel',
         };
     },
 };
 </script>
 ```
 
-#### value.sync
+#### 多选模式
 
 ``` vue
 <template>
 <div>
-    <m-complex :value.sync="value">
+    <m-complex multiple v-model="value">
         <m-complex-item value="cup">水杯</m-complex-item>
         <m-complex-item value="coffee">咖啡</m-complex-item>
         <m-complex-item value="nut">坚果</m-complex-item>
@@ -108,4 +96,32 @@ export default {
         </m-complex>
     </u-grid-layout-column>
 </u-grid-layout>
+```
+
+### 可取消
+
+尝试在同一个选项上点击两次。
+
+``` html
+<m-complex value="towel" cancelable>
+    <m-complex-item value="cup">水杯</m-complex-item>
+    <m-complex-item value="coffee" disabled>咖啡</m-complex-item>
+    <m-complex-item value="nut">坚果</m-complex-item>
+    <m-complex-item value="towel">毛巾</m-complex-item>
+    <m-complex-item value="sofa">沙发</m-complex-item>
+</m-complex>
+```
+
+### 自动选择
+
+自动选择第一个非禁用的项。
+
+``` html
+<m-complex auto-select>
+    <m-complex-item value="cup" disabled>水杯</m-complex-item>
+    <m-complex-item value="coffee" disabled>咖啡</m-complex-item>
+    <m-complex-item value="nut">坚果</m-complex-item>
+    <m-complex-item value="towel">毛巾</m-complex-item>
+    <m-complex-item value="sofa">沙发</m-complex-item>
+</m-complex>
 ```

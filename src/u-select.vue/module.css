@@ -32,6 +32,10 @@
     line-height: calc($height-base - 2px);
 }
 
+.root[readonly] {
+    cursor: default;
+}
+
 .root[disabled] {
     cursor: not-allowed;
     background: $brand-disabled-light;

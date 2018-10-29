@@ -15,7 +15,7 @@
 #### 静态绑定
 
 ``` html
-<m-multiplex value="towel">
+<m-multiplex :value="['nut', 'towel']">
     <m-multiplex-item value="cup">水杯</m-multiplex-item>
     <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
     <m-multiplex-item value="nut">坚果</m-multiplex-item>

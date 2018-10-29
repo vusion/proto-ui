@@ -1,48 +1,11 @@
-import { MChild } from '../../m-parent.vue';
-import { ellipsisTitle } from '../../directives';
+import { MComplexItem } from '../../m-complex.vue';
+// import { ellipsisTitle } from '../../directives';
 
 const UListViewItem = {
     name: 'u-list-view-item',
     parentName: 'u-list-view',
     groupName: 'u-list-view-group',
-    mixins: [MChild],
-    directives: { ellipsisTitle },
-    props: {
-        value: null,
-        disabled: { type: Boolean, default: false },
-        item: Object,
-    },
-    data() {
-        return {
-            currentSelected: false,
-            // inherit: parentVM: undefined,
-        };
-    },
-    computed: {
-        selected() {
-            return this.parentVM.selectedVM === this;
-        },
-    },
-    methods: {
-        select(e) {
-            if (this.disabled || this.parentVM.readonly || this.parentVM.disabled)
-                return;
-
-            this.$emit('click', e, this);
-
-            let cancel = false;
-            this.$emit('before-select', {
-                value: this.value,
-                item: this.item,
-                itemVM: this,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
-                return;
-
-            this.parentVM.select(this);
-        },
-    },
+    mixins: [MComplexItem],
 };
 
 export { UListViewItem };

@@ -22,7 +22,7 @@ const UMenuItem = {
     },
     methods: {
         watchActive(active) {
-            active && this.groupVM && this.groupVM.toggle(true);
+            // active && this.groupVM && this.groupVM.toggle(true);
         },
     },
 };

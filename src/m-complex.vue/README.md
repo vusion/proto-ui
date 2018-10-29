@@ -1,6 +1,6 @@
-# MComplex 复选模式
+# MComplex 复合模式
 
-可以单选也可以复选的模式。
+可以单选也可以多选的模式。
 
 <u-h2-tabs router>
     <u-h2-tab title="基础示例" to="/components/m-complex/examples"></u-h2-tab>

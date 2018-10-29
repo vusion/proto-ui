@@ -1,12 +1,11 @@
 import { MChild } from '../../m-parent.vue';
-import ULink from '../../u-link.vue';
 import { ellipsisTitle } from '../../directives';
 
 const MMultiplexItem = {
     name: 'm-multiplex-item',
     parentName: 'm-multiplex',
     groupName: 'm-multiplex-group',
-    mixins: [MChild, ULink],
+    mixins: [MChild],
     directives: { ellipsisTitle },
     props: {
         value: null,

@@ -1,3 +1,5 @@
+import { MComplex } from '../m-complex.vue';
+import { MGroupParent } from '../m-group.vue';
 import MField from '../m-field.vue';
 import DataSource from '../utils/DataSource';
 import debounce from 'lodash/debounce';
@@ -6,27 +8,27 @@ const UListView = {
     name: 'u-list-view',
     groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
-    mixins: [MField],
+    mixins: [MComplex, MGroupParent, MField],
     props: {
-        value: null,
+        // @inherit: value: null,
         field: { type: String, default: 'text' },
         data: Array,
         dataSource: [DataSource, Function],
-        cancelable: { type: Boolean, default: false },
-        multiple: { type: Boolean, default: false },
-        collapsible: { type: Boolean, default: false },
-        accordion: { type: Boolean, default: false },
-        expandTrigger: { type: String, default: 'click' },
-        readonly: { type: Boolean, default: false },
-        disabled: { type: Boolean, default: false },
+        // @inherit: cancelable: { type: Boolean, default: false },
+        // @inherit: multiple: { type: Boolean, default: false },
+        // @inherit: collapsible: { type: Boolean, default: false },
+        // @inherit: accordion: { type: Boolean, default: false },
+        // @inherit: expandTrigger: { type: String, default: 'click' },
+        // @inherit: readonly: { type: Boolean, default: false },
+        // @inherit: disabled: { type: Boolean, default: false },
         loadingText: { type: String, default: '加载中...' },
     },
     data() {
         return {
             ChildComponent: this.$options.childName,
-            groupVMs: [],
-            itemVMs: [],
-            selectedVM: undefined,
+            // @inherit: groupVMs: [],
+            // @inherit: itemVMs: [],
+            // @inherit: selectedVM: undefined,
             currentData: this.data,
             loading: false,
         };
@@ -35,120 +37,12 @@ const UListView = {
         data(data) {
             this.currentData = data;
         },
-        // It is dynamic to find selected item by value
-        // so using watcher is better than computed property.
-        value(value, oldValue) {
-            this.watchValue(value);
-        },
-        selectedVM(selectedVM, oldVM) {
-            // @TODO: Vue 中 相同复杂类型也会认为是改变？
-            if (selectedVM === oldVM)
-                return;
-            this.$emit('change', {
-                value: selectedVM ? selectedVM.value : undefined,
-                oldValue: oldVM ? oldVM.value : undefined,
-                item: selectedVM ? selectedVM.item : undefined,
-                itemVM: selectedVM,
-            }, this);
-        },
-        // This method just run once after pushing many itemVMs
-        itemVMs() {
-            // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-            const value = this.selectedVM ? this.selectedVM.value : this.value;
-            this.selectedVM = undefined;
-            this.watchValue(value);
-        },
     },
     created() {
-        this.$on('add-group-vm', (groupVM) => {
-            groupVM.parentVM = this;
-            this.groupVMs.push(groupVM);
-        });
-        this.$on('remove-group-vm', (groupVM) => {
-            groupVM.parentVM = undefined;
-            this.groupVMs.splice(this.groupVMs.indexOf(groupVM), 1);
-        });
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
         this.debouncedFetchData = debounce(this.fetchData, 100);
         this.dataSource && this.debouncedFetchData();
     },
-    mounted() {
-        // Must trigger `value` watcher at mounted hook.
-        // Because itemVMs haven't been pushed before it.
-        this.watchValue(this.value);
-    },
     methods: {
-        watchValue(value) {
-            if (this.multiple)
-                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value && value.includes(itemVM.value));
-            else {
-                if (this.selectedVM && this.selectedVM.value === value)
-                    return;
-                if (value === undefined)
-                    this.selectedVM = undefined;
-                else {
-                    this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
-                    this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
-                }
-            }
-        },
-        select(itemVM) {
-            if (this.readonly || this.disabled)
-                return;
-
-            const oldValue = this.value;
-
-            let cancel = false;
-            this.$emit('before-select', {
-                value: itemVM && itemVM.value,
-                oldValue,
-                item: itemVM && itemVM.item,
-                itemVM,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
-                return;
-
-            if (this.multiple) {
-                itemVM.currentSelected = !itemVM.currentSelected;
-                const itemVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
-                const value = itemVMs.map((itemVM) => itemVM.value);
-                const items = itemVMs.map((itemVM) => itemVM.item);
-
-                this.$emit('input', value, this);
-                this.$emit('update:value', value, this);
-                this.$emit('select', {
-                    value,
-                    oldValue,
-                    items,
-                    itemVMs,
-                }, this);
-            } else {
-                if (this.cancelable && this.selectedVM === itemVM)
-                    this.selectedVM = undefined;
-                else
-                    this.selectedVM = itemVM;
-
-                const value = this.selectedVM && this.selectedVM.value;
-                const item = this.selectedVM && this.selectedVM.item;
-
-                this.$emit('input', value, this);
-                this.$emit('update:value', value, this);
-                this.$emit('select', {
-                    value,
-                    oldValue,
-                    item,
-                    itemVM: this.selectedVM,
-                }, this);
-            }
-        },
         shift(count) {
             let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
             if (count > 0) {
@@ -202,15 +96,6 @@ const UListView = {
             }
             if (parentEl.scrollTop > selectedEl.offsetTop)
                 parentEl.scrollTop = selectedEl.offsetTop;
-        },
-        onToggle(groupVM, expanded) {
-            this.$emit('toggle', {
-                expanded,
-                groupVM,
-            }, this);
-        },
-        toggleAll(expanded) {
-            this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));
         },
         fetchData() {
             if (!this.dataSource)

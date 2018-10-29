@@ -22,7 +22,7 @@ const UMenu = {
 
         this.$on('select', ({ itemVM }) => {
             this.router && itemVM.navigate();
-            this.parentVM && this.parentVM.toggle(false);
+            // this.parentVM && this.parentVM.toggle(false);
         });
     },
 };
