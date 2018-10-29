@@ -1,0 +1,33 @@
+.root {
+    /* @Private */
+    display: inline-block;
+    cursor: $cursor-pointer;
+
+    /* @Public */
+    padding: 4px 12px;
+}
+
+.root:hover {
+    background: $background-color-base;
+}
+
+.root[readonly] {
+    cursor: default;
+    background: none;
+}
+
+.root[selected] {
+    background: $brand-primary;
+    color: white;
+}
+
+.root[disabled] {
+    /* @Private */
+    cursor: $cursor-not-allowed;
+    background: none;
+    color: $brand-disabled;
+}
+
+.root[selected][disabled] {
+    background: $brand-disabled-light;
+}

@@ -84,6 +84,7 @@ module.exports = {
             { group: 'Mixins & Functional', name: 'm-root', alias: '根节点模式' },
             { group: 'Mixins & Functional', name: 'm-singlex', alias: '单选模式' },
             { group: 'Mixins & Functional', name: 'm-multiplex', alias: '多选模式' },
+            { group: 'Mixins & Functional', name: 'm-complex', alias: '复选模式' },
             { group: 'Mixins & Functional', name: 'f-collapse-transition', alias: '折叠过渡' },
             { group: 'Mixins & Functional', name: 'f-draggable', alias: '拖拽' },
             { group: 'Mixins & Functional', name: 'f-droppable', alias: '拖放' },

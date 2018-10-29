@@ -6,6 +6,7 @@ export * from './f-droppable.vue';
 export * from './f-render.vue';
 export * from './i-icon.vue';
 export * from './m-emitter.vue';
+export * from './m-complex.vue';
 export * from './m-field.vue';
 export * from './m-multiplex.vue';
 export * from './m-parent.vue';

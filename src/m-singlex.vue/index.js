@@ -45,11 +45,11 @@ const MSinglex = {
             this.watchValue(value);
         },
     },
-    mounted() {
-        // Must trigger `value` watcher at mounted hook.
-        // Because itemVMs haven't been pushed before it.
-        this.watchValue(this.value);
-    },
+    // mounted() {
+    // Don't need trigger `value` watcher at mounted hook.
+    // Because there's a watcher for itemVMs.
+    // this.watchValue(this.value);
+    // },
     methods: {
         watchValue(value) {
             if (this.selectedVM && this.selectedVM.value === value)
@@ -81,6 +81,9 @@ const MSinglex = {
             if (cancel)
                 return;
 
+            this.handleSelect(itemVM, oldValue);
+        },
+        handleSelect(itemVM, oldValue) {
             if (this.cancelable && this.selectedVM === itemVM)
                 this.selectedVM = undefined;
             else

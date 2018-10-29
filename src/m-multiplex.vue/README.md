@@ -1,6 +1,6 @@
-# MMultiplex 单选子
+# MMultiplex 多选模式
 
-常用的单项选择模式，用于快速派生出像`<u-navbar>`、`<u-tabs>`这样的组件。
+常见的多选模式，用于快速派生出像`<u-navbar>`、`<u-tabs>`这样的组件。
 
 <u-h2-tabs router>
     <u-h2-tab title="基础示例" to="/components/m-multiplex/examples"></u-h2-tab>

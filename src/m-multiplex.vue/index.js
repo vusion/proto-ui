@@ -1,6 +1,6 @@
 import { MParent } from '../m-parent.vue';
 
-const Multiplex = {
+const MMultiplex = {
     name: 'm-multiplex',
     groupName: 'm-multiplex-group',
     childName: 'm-multiplex-item',
@@ -25,14 +25,14 @@ const Multiplex = {
         // This method just run once after pushing many itemVMs
         itemVMs() {
             // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-            // this.watchValue(value);
+            this.watchValue(this.value);
         },
     },
-    mounted() {
-        // Must trigger `value` watcher at mounted hook.
-        // Because itemVMs haven't been pushed before it.
-        this.watchValue(this.value);
-    },
+    // mounted() {
+    // Don't need trigger `value` watcher at mounted hook.
+    // Because there's a watcher for itemVMs.
+    // this.watchValue(this.value);
+    // },
     methods: {
         watchValue(value) {
             this.itemVMs.forEach((itemVM) => itemVM.currentSelected = !!(value && Array.isArray(value) && value.includes(itemVM.value)));
@@ -54,6 +54,9 @@ const Multiplex = {
             if (cancel)
                 return;
 
+            this.handleSelect(itemVM, oldValue);
+        },
+        handleSelect(itemVM, oldValue) {
             itemVM.currentSelected = !itemVM.currentSelected;
             const itemVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
             const value = itemVMs.map((itemVM) => itemVM.value);
@@ -72,5 +75,5 @@ const Multiplex = {
 };
 
 export * from './item.vue';
-export { Multiplex };
-export default Multiplex;
+export { MMultiplex };
+export default MMultiplex;
