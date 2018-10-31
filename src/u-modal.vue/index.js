@@ -1,13 +1,15 @@
 import Vue from 'vue';
+import i18n from './i18n';
 
 const Modal = {
     name: 'u-modal',
+    i18n,
     props: {
         visible: { type: Boolean, default: false },
-        title: { type: String, default: '提示' },
+        title: { type: String, default() { return this.$t('dialog'); } },
         content: String,
-        okButton: { type: String, default: '确定' },
-        cancelButton: { type: String, default: '取消' },
+        okButton: { type: String, default() { return this.$t('ok'); } },
+        cancelButton: { type: String, default() { return this.$t('cancel'); } },
         static: { type: Boolean, default: false },
         maskClosable: { type: Boolean, default: false },
     },
@@ -63,7 +65,7 @@ const Modal = {
     },
 };
 
-Modal.alert = (content, title = '提示') => {
+Modal.alert = (content, title) => {
     const Ctor = Vue.component('u-modal');
     if (!Ctor)
         return;
@@ -73,7 +75,7 @@ Modal.alert = (content, title = '提示') => {
     }).open();
 };
 
-Modal.confirm = (content, title = '提示') => new Promise((resolve, reject) => {
+Modal.confirm = (content, title) => new Promise((resolve, reject) => {
     const Ctor = Vue.component('u-modal');
     if (!Ctor)
         return;

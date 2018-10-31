@@ -1,15 +1,17 @@
 import CascadeSelect from '../u-cascade-select.vue';
+import i18n from './i18n';
 
 export default {
     name: 'u-region-select',
     extends: CascadeSelect,
+    i18n,
     props: {
         field: { type: String, default: 'value' },
         categories: { type: Array, default() {
             return [
-                { label: '省' },
-                { label: '市' },
-                { label: '区' },
+                { label: this.$t('province') },
+                { label: this.$t('city') },
+                { label: this.$t('district') },
             ];
         } },
     },

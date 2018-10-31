@@ -1,10 +1,12 @@
 import ListView from '../u-list-view.vue';
 import DataSource from '../base/utils/DataSource';
+import i18n from './i18n';
 
 export default {
     name: 'u-suggest',
     childName: 'u-suggest-item',
     extends: ListView,
+    i18n,
     props: {
         value: { type: String, default: '' },
         color: String,
@@ -12,7 +14,7 @@ export default {
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
         strict: { type: Boolean, default: false },
-        emptyText: { type: String, default: '无匹配数据' },
+        emptyText: { type: String, default() { return this.$t('emptyText'); } },
     },
     data() {
         return {
