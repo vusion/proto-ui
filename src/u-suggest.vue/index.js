@@ -155,11 +155,10 @@ export default {
         onInput(value) {
             this.filterText = value;
             this.currentText = value;
-            // if (!this.strict) {
-            //     this.currentValue = value;
-            //     this.$emit('input', value);
-            //     this.$emit('update:value', value);
-            // }
+            if (!this.strict) {
+                this.$emit('input', value);
+                this.$emit('update:value', value);
+            }
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);
         },
