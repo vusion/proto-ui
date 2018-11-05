@@ -221,3 +221,16 @@ export default {
 };
 </script>
 ```
+
+### 可过滤
+
+``` html
+<u-select filterable>
+    <u-select-item value="abandon">abandon</u-select-item>
+    <u-select-item value="absent">absent</u-select-item>
+    <u-select-item value="bread">bread</u-select-item>
+    <u-select-item value="brief">brief</u-select-item>
+    <u-select-item value="calendar">calendar</u-select-item>
+    <u-select-item value="cancel">cancel</u-select-item>
+</u-select>
+```

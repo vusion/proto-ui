@@ -67,29 +67,9 @@
 | $event.itemVM | MSinglexItem | 选择项子组件 |
 | senderVM | MSinglex | 发送事件实例 |
 
-#### @toggle
-
-展开/折叠某分组时触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.groupVM | MSinglexGroup | 分组组件 |
-| senderVM | MSinglex | 发送事件实例 |
-
-### Methods
-
-#### toggleAll(expanded)
-
-展开/折叠所有分组
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| expanded | Boolean | 展开/折叠 |
-
 ## MSinglexItem
 
-继承 [MChild](../m-parent/api#MChild).
+继承 [MChild](../m-parent/api#MChild)。
 
 ### Props/Attrs
 
@@ -109,7 +89,7 @@
 
 #### @click
 
-点击此项时触发，与原生 click 事件不同的是，它只会在非只读和禁用的情况下触发。
+点击此项时触发。与原生 click 事件不同的是，它只会在非只读和禁用的情况下触发。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |

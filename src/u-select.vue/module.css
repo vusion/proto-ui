@@ -1,26 +1,7 @@
-.root {
-    display: inline-block;
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    height: $height-base;
+.root[class] {
     padding: 0 12px;
-    background: white;
-    border: 1px solid $border-color-base;
-    width: $width-base;
-    max-width: 100%;
-}
-
-.root:focus {
-    outline: none;
-    border-color: $brand-primary;
-}
-
-/* 控制对齐基线 */
-.root::before {
-    content: '\3000';
-    letter-spacing: -20px;
-    line-height: $height-base;
+    padding-right: 26px;
+    cursor: $cursor-pointer;
 }
 
 .root::after {
@@ -42,7 +23,11 @@
 }
 
 .text {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 12px;
+    padding-right: 26px;
     width: 100%;
     line-height: 30px;
     overflow: hidden;
@@ -54,6 +39,7 @@
     position: absolute;
     box-sizing: content-box;
     width: 100%;
+    line-height: 1.6;
     max-height: 180px;
     overflow: auto;
     background: white;

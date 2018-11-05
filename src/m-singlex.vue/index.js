@@ -27,12 +27,14 @@ const MSinglex = {
             this.watchValue(value);
         },
         selectedVM(selectedVM, oldVM) {
-            // @TODO: Vue 中 相同复杂类型也会认为是改变？
-            if (selectedVM === oldVM)
+            const value = selectedVM ? selectedVM.value : undefined;
+            const oldValue = oldVM ? oldVM.value : undefined;
+            if (value === oldValue)
                 return;
+
             this.$emit('change', {
-                value: selectedVM ? selectedVM.value : undefined,
-                oldValue: oldVM ? oldVM.value : undefined,
+                value,
+                oldValue,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
             }, this);

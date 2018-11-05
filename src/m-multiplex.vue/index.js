@@ -14,6 +14,7 @@ const MMultiplex = {
         return {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
+            selectedVMs: [],
         };
     },
     watch: {
@@ -24,8 +25,23 @@ const MMultiplex = {
         },
         // This method just run once after pushing many itemVMs
         itemVMs() {
-            // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+            // 更新列表之后，原来的选择可能已不存在，这里需要重新查找一遍
             this.watchValue(this.value);
+        },
+        selectedVMs(itemVMs, oldVMs) {
+            const oldValue = oldVMs.map((itemVM) => itemVM.value);
+            const value = itemVMs.map((itemVM) => itemVM.value);
+
+            if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
+                return;
+
+            const items = itemVMs.map((itemVM) => itemVM.item);
+            this.$emit('change', {
+                value,
+                oldValue,
+                items,
+                itemVMs,
+            });
         },
     },
     // mounted() {
@@ -35,7 +51,12 @@ const MMultiplex = {
     // },
     methods: {
         watchValue(value) {
-            this.itemVMs.forEach((itemVM) => itemVM.currentSelected = !!(value && Array.isArray(value) && value.includes(itemVM.value)));
+            if (Array.isArray(value))
+                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value.includes(itemVM.value));
+            this.watchSelectedChange();
+        },
+        watchSelectedChange() {
+            this.selectedVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
         },
         select(itemVM) {
             if (this.readonly || this.disabled)
@@ -58,7 +79,10 @@ const MMultiplex = {
         },
         handleSelect(itemVM, oldValue) {
             itemVM.currentSelected = !itemVM.currentSelected;
-            const itemVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
+            itemVM.$emit('update:selected', itemVM.currentSelected);
+            this.watchSelectedChange();
+
+            const itemVMs = this.selectedVMs;
             const value = itemVMs.map((itemVM) => itemVM.value);
             const items = itemVMs.map((itemVM) => itemVM.item);
 

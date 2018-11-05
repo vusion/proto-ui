@@ -21,7 +21,7 @@ const MSinglexItem = {
     },
     computed: {
         selected() {
-            return this.parentVM.selectedVM === this;
+            return this.parentVM && this.parentVM.selectedVM === this;
         },
         active() {
             if (this.to === undefined)

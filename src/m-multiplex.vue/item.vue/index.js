@@ -9,14 +9,21 @@ const MMultiplexItem = {
     directives: { ellipsisTitle },
     props: {
         value: null,
+        selected: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         item: Object,
     },
     data() {
         return {
-            currentSelected: false,
+            currentSelected: this.selected,
             // @inherit: parentVM: undefined,
         };
+    },
+    watch: {
+        selected(selected) {
+            this.currentSelected = selected;
+            this.parentVM && this.parentVM.watchSelectedChange();
+        },
     },
     methods: {
         select(e) {

@@ -76,6 +76,62 @@ export default {
 </script>
 ```
 
+#### selected
+
+``` vue
+<template>
+<div>
+    <m-multiplex>
+        <m-multiplex-item value="cup">水杯</m-multiplex-item>
+        <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
+        <m-multiplex-item value="nut" selected>坚果</m-multiplex-item>
+        <m-multiplex-item value="towel" selected>毛巾</m-multiplex-item>
+        <m-multiplex-item value="sofa">沙发</m-multiplex-item>
+    </m-multiplex>
+    <span>value: {{ value }}</span>
+</div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value: ['nut', 'towel'],
+        };
+    },
+};
+</script>
+```
+
+#### selected 绑定
+
+``` vue
+<template>
+<div>
+    <m-multiplex>
+        <m-multiplex-item v-for="item in list"
+            :key="item.value" :value="item.value" :selected.sync="item.selected">
+            {{ item.text }}</m-multiplex-item>
+    </m-multiplex>
+    <span>list: {{ list }}</span>
+</div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            list: [
+                { text: '水杯', value: 'cup', selected: false },
+                { text: '咖啡', value: 'coffee', selected: false },
+                { text: '坚果', value: 'nut', selected: true },
+                { text: '毛巾', value: 'towel', selected: true },
+                { text: '沙发', value: 'sofa', selected: false },
+            ],
+        };
+    },
+};
+</script>
+```
+
 ### 只读、禁用、禁用某一项
 
 ``` html
