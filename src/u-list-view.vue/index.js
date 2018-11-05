@@ -29,6 +29,8 @@ const UListView = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             // @inherit: selectedVM: undefined,
+            // @inherit: selectedVMs: undefined,
+            // @inherit: currentMultiple: this.multiple,
             currentData: this.data,
             loading: false,
         };

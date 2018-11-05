@@ -30,6 +30,11 @@
     cursor: inherit;
 }
 
+.input::placeholder {
+    font-size: inherit;
+    color: #a7afbb;
+}
+
 .input:focus {
     outline: $focus-outline;
 }

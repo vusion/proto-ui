@@ -1,12 +1,12 @@
 @extend '../../u-select.vue/module.css';
 
-.root {
+.root[class] {
     border: none;
     height: $navbar-height;
     /* line-height: $navbar-height; */
     padding-left: 10px;
     padding-right: 30px;
-    width: auto;
+    width: 90px;
 }
 
 .root:not(:last-child) {

@@ -1,4 +1,5 @@
 import { UListView } from '../u-list-view.vue';
+import DataSource from '../utils/DataSource';
 import { ellipsisTitle } from '../directives';
 
 const USelect = {
@@ -9,16 +10,17 @@ const USelect = {
     directives: { ellipsisTitle },
     props: {
         // @inherit: value: { type: String, default: '' },
+        placeholder: { type: String, default: '请选择' },
+        // @inherit: autoSelect: { type: Boolean, default: false },
         filterable: { type: Boolean, default: false },
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
-        strict: { type: Boolean, default: false },
         emptyText: { type: String, default: '无匹配数据' },
     },
     data() {
         return {
             currentText: '',
-            filterText: '', // 与 currentText 分开，只有 input 时会改变它
+            filterText: '', // 只有 input 时会改变它
         };
     },
     computed: {
@@ -27,32 +29,48 @@ const USelect = {
             return this.itemVMs.filter((item) => item.matched);
         },
     },
-    watch: {
-        selectedVM(selectedVM, oldVM) {
-            if (selectedVM === oldVM)
-                return;
-            this.currentText = selectedVM ? selectedVM.currentLabel : '';
-            this.$emit('change', {
-                value: selectedVM ? selectedVM.value : undefined,
-                oldValue: oldVM ? oldVM.value : undefined,
-                item: selectedVM ? selectedVM.item : undefined,
-                itemVM: selectedVM,
-            }, this);
-        },
-    },
     created() {
+        this.$watch('selectedVM', (selectedVM) => {
+            this.currentText = this.selectedVM ? this.selectedVM.currentLabel : '';
+        });
         this.$on('select', () => {
             this.toggle(false);
         });
     },
     methods: {
-        watchValue(value) {
-            if (this.selectedVM && this.selectedVM.value === value)
-                return;
-            if (value === undefined)
-                this.selectedVM = this.itemVMs[0];
-            else
-                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+        shift(count) {
+            let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
+            if (count > 0) {
+                for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled && itemVM.matched) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        }, this);
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            } else if (count < 0) {
+                if (selectedIndex === -1)
+                    selectedIndex = this.itemVMs.length;
+                for (let i = selectedIndex + count; i >= 0; i--) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled && itemVM.matched) {
+                        this.selectedVM = itemVM;
+                        this.$emit('shift', {
+                            selectedIndex,
+                            selectedVM: itemVM,
+                            value: itemVM.value,
+                        }, this);
+                        this.ensureSelectedInView();
+                        break;
+                    }
+                }
+            }
         },
         toggle(open) {
             this.$refs.popper && this.$refs.popper.toggle(open);
@@ -84,36 +102,85 @@ const USelect = {
                     return itemValue[this.matchMethod](filterText);
                 };
             }
-            return !!matchMethod(item.innerText, this.filterText);
+            return !!matchMethod(item.currentLabel, this.filterText);
+        },
+        fetchData(clear) {
+            if (!this.dataSource)
+                return;
+            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
+                fetch: this.dataSource,
+                promise: Promise.resolve(),
+                clear() { /* nothing */ },
+            };
+
+            // dataSource 的多次 promise 必须串行
+            dataSource.promise = dataSource.promise.then(() => {
+                this.loading = true;
+                if (clear) {
+                    this.currentData = [];
+                    dataSource.clear();
+                }
+
+                const result = dataSource.fetch({
+                    // @TODO: 要不要设置 limit 属性
+                    offset: this.currentData ? this.currentData.length : 0,
+                    filter: {
+                        value: this.filterText, // @compat
+                        text: this.filterText,
+                    },
+                    clear,
+                });
+                const then = (data) => {
+                    this.currentData = data;
+                    this.loading = false;
+                };
+
+                if (result instanceof Promise)
+                    return result.then(then).catch(() => this.loading = false);
+                else if (result instanceof Array)
+                    return then(result);
+                else
+                    throw new TypeError('Wrong type of `dataSource.fetch` result!');
+            });
         },
         onInput(value) {
             if (!this.filterable)
                 return;
-            this.filterText = value;
             this.currentText = value;
+            this.filterText = value;
+
+            let cancel = false;
+            this.$emit('before-filter', {
+                filterText: value,
+                preventDefault: () => cancel = true,
+            }, this);
+            if (cancel)
+                return;
+
             this.dataSource && this.debouncedFetchData(true);
             this.toggle(true);
+            this.$refs.popper.update();
         },
         onBlur() {
             if (!this.filterable)
                 return;
+
+            // 要在自 @select 之后完成
             this.$nextTick(() => {
                 const oldVM = this.selectedVM;
-                let selectedVM = this.itemVMs.find((itemVM) => itemVM.currentLabel === this.currentText);
 
-                if (!selectedVM && this.currentText)
+                const filterText = this.filterText || this.currentText;
+                let selectedVM = this.itemVMs.find((itemVM) => itemVM.currentLabel === filterText);
+
+                if (!selectedVM && filterText)
                     selectedVM = oldVM;
                 this.selectedVM = selectedVM;
-                this.currentText = selectedVM ? selectedVM.currentLabel : '';
+                this.currentText = selectedVM ? selectedVM.currentLabel : undefined;
 
                 const value = selectedVM ? selectedVM.value : undefined;
 
                 this.$emit('input', value, this);
                 this.$emit('update:value', value, this);
-                this.$emit('change', {
-                    value,
-                    oldValue: oldVM ? oldVM.value : undefined,
-                }, this);
             });
         },
     },

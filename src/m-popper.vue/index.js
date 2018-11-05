@@ -210,6 +210,9 @@ const MPopper = {
         update() {
             this.popper && this.popper.update();
         },
+        scheduleUpdate() {
+            this.popper && this.popper.scheduleUpdate();
+        },
         destroyPopper() {
             const referenceEl = this.referenceEl;
             const popperEl = this.$el;

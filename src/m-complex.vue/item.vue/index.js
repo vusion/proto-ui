@@ -1,26 +1,25 @@
 import { MSinglexItem } from '../../m-singlex.vue';
-// import { MMultiplexItem } from '../../m-multiplex.vue';
+import { MMultiplexItem } from '../../m-multiplex.vue';
 import { ellipsisTitle } from '../../directives';
 
 const MComplexItem = {
     name: 'm-complex-item',
     parentName: 'm-complex',
     groupName: 'm-complex-group',
-    mixins: [MSinglexItem],
+    mixins: [MSinglexItem, MMultiplexItem],
     directives: { ellipsisTitle },
-    props: {
-        // @inherit: value: null,
-        // @inherit: autoSelect: { type: Boolean, default: false },
-        // @inherit: cancelable: { type: Boolean, default: false },
-        // @inherit: disabled: { type: Boolean, default: false },
-        item: Object,
-    },
-    data() {
-        return {
-            currentSelected: false,
-            // @inherit: parentVM: undefined,
-        };
-    },
+    // props: {
+    //     @inherit: value: null,
+    //     @inherit: selected: { type: Boolean, default: false },
+    //     @inherit: disabled: { type: Boolean, default: false },
+    //     @inherit: item: Object,
+    // },
+    // data() {
+    //     return {
+    //         @inherit: currentSelected: this.selected,
+    //         @inherit: parentVM: undefined,
+    //     };
+    // },
 };
 
 export { MComplexItem };

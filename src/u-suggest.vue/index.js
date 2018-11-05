@@ -67,7 +67,7 @@ const USuggest = {
                     selectedIndex = this.itemVMs.length;
                 for (let i = selectedIndex + count; i >= 0; i--) {
                     const itemVM = this.itemVMs[i];
-                    if (!itemVM.disabled) {
+                    if (!itemVM.disabled && itemVM.matched) {
                         this.selectedVM = itemVM;
                         this.$emit('shift', {
                             selectedIndex,

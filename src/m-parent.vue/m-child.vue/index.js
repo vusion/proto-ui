@@ -12,11 +12,11 @@ const MChild = {
         };
     },
     created() {
-        this.$contact(this.$options.parentName, (parentVM) => {
+        !this.parentVM && this.$contact(this.$options.parentName, (parentVM) => {
             this.parentVM = parentVM;
             parentVM.itemVMs.push(this);
         });
-        this.$contact(this.$options.groupName, (groupVM) => {
+        !this.groupVM && this.$contact(this.$options.groupName, (groupVM) => {
             this.groupVM = groupVM;
             groupVM.itemVMs.push(this);
         });

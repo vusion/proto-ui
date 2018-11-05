@@ -1,4 +1,4 @@
-<div :class="$style.root"
+<div v-if="matched" :class="$style.root"
     :selected="isSelected || currentSelected"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"

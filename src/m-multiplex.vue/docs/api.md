@@ -14,7 +14,7 @@
 
 #### (default)
 
-插入`<m-multiplex-item>`、`<m-multiplex-divider>`或`<m-multiplex-group>`子组件。
+插入`<m-multiplex-item>`子组件。
 
 ### Events
 

@@ -20,7 +20,7 @@ const MSinglexItem = {
         };
     },
     computed: {
-        selected() {
+        isSelected() {
             return this.parentVM && this.parentVM.selectedVM === this;
         },
         active() {

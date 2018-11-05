@@ -17,7 +17,7 @@
 
 #### (default)
 
-插入`<m-singlex-item>`、`<m-singlex-divider>`或`<m-singlex-group>`子组件。
+插入`<m-singlex-item>`子组件。
 
 ### Events
 
