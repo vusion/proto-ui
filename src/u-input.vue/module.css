@@ -20,7 +20,7 @@
     padding: inherit;
     width: 100%;
     height: 100%;
-    background: inherit;
+    background: transparent;
     border: none;
     color: inherit;
     font: inherit;
@@ -30,8 +30,36 @@
     cursor: inherit;
 }
 
-.input::placeholder {
+.baseline {
+    color: transparent;
+}
+
+.placeholder, .input::placeholder {
     font-size: inherit;
+    color: #a7afbb;
+}
+
+.placeholder { /* for IE9 */
+    display: none;
+    display: block\9; /* stylelint-disable-line declaration-block-no-duplicate-properties */
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: inherit;
+    width: 100%;
+    height: 100%;
+    line-height: inherit;
+    text-align: inherit;
+}
+
+.clearable::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 8px;
+    icon-font: url('../i-icon.vue/assets/close-solid.svg');
+    cursor: pointer;
     color: #a7afbb;
 }
 

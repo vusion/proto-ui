@@ -5,7 +5,9 @@ const UInput = {
     mixins: [MField],
     props: {
         value: { type: [String, Number] },
-        color: { type: String },
+        color: String,
+        placeholder: String,
+        clearable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -66,6 +68,14 @@ const UInput = {
         },
         blur() {
             this.$refs.input.blur();
+        },
+        clear() {
+            this.currentValue = '';
+            this.$emit('input', '', this);
+            this.$emit('update:value', '', this);
+            this.focus();
+
+            this.$emit('clear', undefined, this);
         },
     },
 };

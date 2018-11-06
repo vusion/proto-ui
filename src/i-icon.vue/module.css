@@ -16,6 +16,10 @@
     icon-font: url('./assets/arrow-right.svg');
 }
 
+.root[name="close-solid"]::before {
+    icon-font: url('./assets/close-solid.svg');
+}
+
 .root[name="github"]::before {
     icon-font: url('./assets/github.svg');
 }

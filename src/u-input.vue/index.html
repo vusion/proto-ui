@@ -1,8 +1,12 @@
 <span :class="$style.root" :readonly="readonly" :disabled="disabled" :color="currentColor || this.formItemVM && this.formItemVM.color"
-    :focus="focused" @click.self="!focused && focus()">b<!-- 用于基线对齐 -->
-    <input ref="input" :class="$style.input" v-bind="$attrs" :readonly="readonly" :disabled="disabled" :value="currentValue"
+:focus="focused" @click.self="!focused && focus()">
+    <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
+    <span :class="$style.placeholder">{{ currentValue ? '' : placeholder }}</span><!-- 兼容 IE9 -->
+    <input ref="input" :class="$style.input" v-bind="$attrs" :value="currentValue"
+        :placeholder="placeholder" :readonly="readonly" :disabled="disabled"
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"
         @compositionend="onCompositionEnd">
+    <span v-if="clearable && currentValue" :class="$style.clearable" @click="clear"></span>
     <slot></slot>
 </span>

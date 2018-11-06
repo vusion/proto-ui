@@ -56,6 +56,12 @@ export default {
 </u-linear-layout>
 ```
 
+### 可清除
+
+``` html
+<u-input value="可清除" clearable></u-input>
+```
+
 ## API
 ### Props/Attrs
 

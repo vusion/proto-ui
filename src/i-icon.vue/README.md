@@ -8,6 +8,7 @@
 <i-icon name="arrow-down"></i-icon>
 <i-icon name="arrow-left"></i-icon>
 <i-icon name="arrow-right"></i-icon>
+<i-icon name="close-solid"></i-icon>
 <i-icon name="github"></i-icon>
 ```
 
