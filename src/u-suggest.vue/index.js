@@ -48,6 +48,18 @@ export default {
         });
     },
     methods: {
+        watchValue(value) {
+            if (this.selectedVM && this.selectedVM.value === value)
+                return;
+            if (value === undefined)
+                this.selectedVM = undefined;
+            else {
+                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
+                this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
+                if (!this.strict)
+                    this.currentText = value;
+            }
+        },
         shift(count) {
             let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
             if (count > 0) {
@@ -187,18 +199,6 @@ export default {
                     oldValue: oldVM ? oldVM.value : undefined,
                 });
             });
-        },
-        watchValue(value) {
-            if (this.selectedVM && this.selectedVM.value === value)
-                return;
-            if (value === undefined)
-                this.selectedVM = undefined;
-            else {
-                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
-                this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
-                if (!this.strict)
-                    this.currentText = value;
-            }
         },
     },
 };
