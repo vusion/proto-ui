@@ -8,10 +8,8 @@
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
   "repository": "vusion/proto-ui",
-  "homepage": "http://vusion.github.io/proto-ui",
-  "bugs": {
-    "url": "http://github.com/vusion/proto-ui/issues"
-  },
+  "homepage": "https://vusion.github.io/proto-ui",
+  "bugs": "https://github.com/vusion/proto-ui/issues",
   "license": "MIT",
   "keywords": [
     "vusion",

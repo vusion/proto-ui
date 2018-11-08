@@ -1,4 +1,5 @@
 export * from './click';
+export * from './focus';
 export * from './link';
 export * from './ellipsis';
 

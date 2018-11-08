@@ -10,8 +10,14 @@ const USelect = {
     directives: { ellipsisTitle },
     props: {
         // @inherit: value: { type: String, default: '' },
+        // @inherit: field: { type: String, default: 'text' },
+        // @inherit: data: Array,
+        // @inherit: dataSource: [DataSource, Function],
+        // @inherit: cancelable: { type: Boolean, default: false },
+        // @inherit: multiple: { type: Boolean, default: false },
+        autoSelect: { type: Boolean, default: true },
         placeholder: { type: String, default: '请选择' },
-        // @inherit: autoSelect: { type: Boolean, default: false },
+        clearable: { type: Boolean, default: false },
         filterable: { type: Boolean, default: false },
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
@@ -19,6 +25,14 @@ const USelect = {
     },
     data() {
         return {
+            // @inherit: ChildComponent: this.$options.childName,
+            // @inherit: groupVMs: [],
+            // @inherit: itemVMs: [],
+            // @inherit: selectedVM: undefined,
+            // @inherit: selectedVMs: undefined,
+            // @inherit: currentMultiple: this.multiple,
+            // @inherit: currentData: this.data,
+            // @inherit: loading: false,
             currentText: '',
             filterText: '', // 只有 input 时会改变它
         };
@@ -33,8 +47,11 @@ const USelect = {
         this.$watch('selectedVM', (selectedVM) => {
             this.currentText = this.selectedVM ? this.selectedVM.currentLabel : '';
         });
+        this.$watch('selectedVMs', (selectedVMs) => {
+            this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
+        });
         this.$on('select', () => {
-            this.toggle(false);
+            !this.multiple && this.toggle(false);
         });
     },
     methods: {
@@ -182,6 +199,29 @@ const USelect = {
                 this.$emit('input', value, this);
                 this.$emit('update:value', value, this);
             });
+        },
+        beforeClearInput($event) {
+            $event.preventDefault();
+            this.clear();
+        },
+        clear() {
+            let cancel = false;
+
+            const oldValue = this.value;
+            this.$emit('before-clear', {
+                oldValue,
+                value: undefined,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.selectedVM = undefined;
+            this.$emit('input', undefined, this);
+            this.$emit('update:value', undefined, this);
+            // this.focus();
+
+            this.$emit('clear', undefined, this);
         },
     },
 };

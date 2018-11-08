@@ -37,6 +37,11 @@ $font-size-base: 14px;
 $navbar-height: 70px;
 $sidebar-width: 240px;
 
+/* Fonts */
+/* stylelint-disable value-keyword-case */
+$font-family-zh-CN: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+$font-family-code: Menlo, Consolas, Monaco, monospace;
+
 /* Z-Index */
 $z-index-loading: 9000;
 $z-index-toast: 8000;

@@ -11,7 +11,7 @@
                         <u-navbar-select-item>0.4.x</u-navbar-select-item>
                         <u-navbar-select-item value="0.3.x">0.3.x</u-navbar-select-item>
                     </u-navbar-select>
-                    <u-navbar-item href="https://github.com/vusion/proto-ui" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
+                    <u-navbar-item :href="github" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
                 </div>
             </u-navbar>
         </div>
@@ -32,6 +32,7 @@ export default {
         return {
             logo: this.$docs.logo,
             navbar: this.$docs.navbar,
+            github: this.$docs.github,
             theme: window.theme,
         };
     },

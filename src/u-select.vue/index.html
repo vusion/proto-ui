@@ -1,13 +1,14 @@
 <u-input :class="$style.root" ref="input" :readonly="readonly || !filterable" :disabled="disabled"
     :placeholder="placeholder" :value="currentText" @input="onInput" @blur="onBlur"
+    :clearable="clearable" @before-clear="beforeClearInput"
     @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
     @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
     @keydown.stop.enter="$refs.popper.currentOpen && select(selectedVM)"
     @keydown.stop.esc="toggle(false)"
     v-bind="$attrs">
-    <span v-show="false" :class="$style.text" v-ellipsis-title>
+    <!-- <span :class="$style.text" v-ellipsis-title>
         <f-render :vnode="selectedVM ? selectedVM.$slots.default : placeholder"></f-render>
-    </span>
+    </span> -->
     <m-popper :class="$style.popper" ref="popper" append-to="reference" :disabled="readonly || disabled" @toggle="onToggle($event)" @click.stop @scroll.stop="onScroll">
         <slot></slot>
         <component :is="ChildComponent" v-if="currentData"

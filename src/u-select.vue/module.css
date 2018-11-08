@@ -11,7 +11,11 @@
     font-size: 14px;
     right: 10px;
     top: 0;
-    line-height: calc($height-base - 2px);
+    color: #a7afbb;
+}
+
+.root[class][clearable]::after {
+    display: none;
 }
 
 .root[readonly] {

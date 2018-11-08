@@ -17,6 +17,7 @@ module.exports = {
         logo: '原型组件',
         mode: 'history',
         base: '/proto-ui/',
+        github: 'https://github.com/vusion/proto-ui#next',
         navbar: [
             { text: '组件', to: '/components' },
             { text: '设计思路', to: '/ui-design' },

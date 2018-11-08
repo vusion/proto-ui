@@ -1,13 +1,17 @@
 import MField from '../m-field.vue';
+import { focus } from '../directives';
 
 const UInput = {
     name: 'u-input',
     mixins: [MField],
+    directives: { focus },
     props: {
-        value: { type: [String, Number] },
+        value: [String, Number],
+        defaultValue: [String, Number],
         color: String,
         placeholder: String,
         clearable: { type: Boolean, default: false },
+        autofocus: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -70,12 +74,50 @@ const UInput = {
             this.$refs.input.blur();
         },
         clear() {
-            this.currentValue = '';
-            this.$emit('input', '', this);
-            this.$emit('update:value', '', this);
+            if (this.readonly || this.disabled)
+                return;
+
+            const oldValue = this.currentValue;
+
+            let cancel = false;
+            this.$emit('before-clear', {
+                oldValue,
+                value: undefined,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.currentValue = undefined;
+            this.$emit('input', undefined, this);
+            this.$emit('update:value', undefined, this);
             this.focus();
 
-            this.$emit('clear', undefined, this);
+            this.$emit('clear', {
+                oldValue,
+                value: undefined,
+            }, this);
+        },
+        reset() {
+            const oldValue = this.currentValue;
+
+            let cancel = false;
+            this.$emit('before-reset', {
+                oldValue,
+                value: this.defaultValue,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.currentValue = this.defaultValue;
+            this.$emit('input', this.defaultValue, this);
+            this.$emit('update:value', this.defaultValue, this);
+
+            this.$emit('reset', {
+                oldValue,
+                value: this.defaultValue,
+            }, this);
         },
     },
 };

@@ -2,7 +2,7 @@
 
 body {
     color: $color-base;
-    font: 14px/1.6 "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    font: 14px/1.6 $font-family-zh-CN;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -40,13 +40,15 @@ pre {
     overflow: auto;
     background: $background-color-light;
     border-radius: $border-radius-base;
-    padding: 6px 12px;
+    padding: 5px 10px;
     font-size: 12px;
+    font-family: $font-family-code;
 }
 
 code {
     padding: 0 3px;
     font-size: 12px;
+    font-family: $font-family-code;
     background: $background-color-light;
     color: #e0276e;
 }

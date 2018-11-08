@@ -1,3 +1,5 @@
+## 单选模式
+
 ### 基本形式
 
 ``` html
@@ -7,9 +9,14 @@
         <u-select-item>香蕉</u-select-item>
         <u-select-item>蛋糕</u-select-item>
     </u-select>
+    <u-select placeholder="请选择">
+        <u-select-item>苹果</u-select-item>
+        <u-select-item>香蕉</u-select-item>
+        <u-select-item>蛋糕</u-select-item>
+    </u-select>
     <u-select>
         <u-select-item>请选择</u-select-item>
-        <u-select-item>苹果</u-select-item>
+        <u-select-item>兼容 0.3.x</u-select-item>
         <u-select-item>香蕉</u-select-item>
         <u-select-item>蛋糕</u-select-item>
     </u-select>
@@ -22,7 +29,6 @@
 
 ``` html
 <u-select value="banana">
-    <u-select-item>请选择</u-select-item>
     <u-select-item value="apple">苹果</u-select-item>
     <u-select-item value="banana">香蕉</u-select-item>
     <u-select-item value="cake">蛋糕</u-select-item>
@@ -135,6 +141,16 @@ export default {
 </u-select>
 ```
 
+### 可清除
+
+``` html
+<u-select value="banana" clearable>
+    <u-select-item value="apple">苹果</u-select-item>
+    <u-select-item value="banana">香蕉</u-select-item>
+    <u-select-item value="cake">蛋糕</u-select-item>
+</u-select>
+```
+
 ### 数据源
 
 当数据量不大时，除了用标签形式添加，也可以用`data`属性一次性传进来，`data`属性的格式为`Array<{ text, value }>`。
@@ -221,6 +237,97 @@ export default {
 };
 </script>
 ```
+
+## 多选模式
+
+### 基本形式
+
+``` html
+<u-linear-layout>
+    <u-select multiple>
+        <u-select-item>苹果</u-select-item>
+        <u-select-item>香蕉</u-select-item>
+        <u-select-item>蛋糕</u-select-item>
+    </u-select>
+    <u-select multiple placeholder="请选择">
+        <u-select-item>苹果</u-select-item>
+        <u-select-item>香蕉</u-select-item>
+        <u-select-item>蛋糕</u-select-item>
+    </u-select>
+    <u-select multiple>
+        <u-select-item>请选择</u-select-item>
+        <u-select-item>兼容 0.3.x</u-select-item>
+        <u-select-item>香蕉</u-select-item>
+        <u-select-item>蛋糕</u-select-item>
+    </u-select>
+</u-linear-layout>
+```
+
+### 选择值
+
+#### 静态绑定
+
+``` html
+<u-select multiple :value="['banana', 'cake']">
+    <u-select-item value="apple">苹果</u-select-item>
+    <u-select-item value="banana">香蕉</u-select-item>
+    <u-select-item value="cake">蛋糕</u-select-item>
+</u-select>
+```
+
+#### v-model
+
+``` vue
+<template>
+<div>
+    <u-select v-model="value">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+    <span>value: {{ value }}</span>
+</div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value: 'towel',
+        };
+    },
+};
+</script>
+```
+
+#### value.sync
+
+``` vue
+<template>
+<div>
+    <u-select :value.sync="value">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+    <span>value: {{ value }}</span>
+</div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value: 'towel',
+        };
+    },
+};
+</script>
+```
+
+## 过滤模式
 
 ### 可过滤
 

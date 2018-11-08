@@ -28,8 +28,8 @@ const MComplex = {
             this.currentMultiple = multiple;
         },
         // This method just run once after pushing many itemVMs
-        itemVMs() {
-            (this.currentMultiple ? MMultiplex : MSinglex).watch.itemVMs.call(this);
+        itemVMs(itemVMs, oldVMs) {
+            (this.currentMultiple ? MMultiplex : MSinglex).watch.itemVMs.call(this, itemVMs, oldVMs);
         },
     },
     methods: {

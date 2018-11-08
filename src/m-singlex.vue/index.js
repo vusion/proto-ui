@@ -40,11 +40,13 @@ const MSinglex = {
             }, this);
         },
         // This method just run once after pushing many itemVMs
-        itemVMs() {
-            // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-            const value = this.selectedVM ? this.selectedVM.value : this.value;
-            this.selectedVM = undefined;
-            this.watchValue(value);
+        itemVMs(itemVMs) {
+            if (!itemVMs.includes(this.selectedVM)) {
+                // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+                const value = this.selectedVM ? this.selectedVM.value : this.value;
+                this.selectedVM = undefined;
+                this.watchValue(value);
+            }
         },
     },
     // mounted() {
@@ -57,10 +59,10 @@ const MSinglex = {
             if (this.selectedVM && this.selectedVM.value === value)
                 return;
             if (value === undefined) {
-                if (!this.autoSelect)
-                    this.selectedVM = undefined;
-                else
+                if (this.autoSelect && !this.placeholder) // this.placeholder for select...
                     this.selectedVM = this.itemVMs.find((itemVM) => !itemVM.disabled) || undefined;
+                else
+                    this.selectedVM = undefined;
             } else {
                 this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
                 this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
