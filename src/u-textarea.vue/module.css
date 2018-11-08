@@ -13,6 +13,11 @@
     resize: none;
 }
 
+.clearable::before {
+    top: 2px;
+    right: 4px;
+}
+
 .handle {
     position: absolute;
     right: 1px;

@@ -33,7 +33,7 @@ const MSinglexItem = {
             const current = this.$route;
             const location = this.$router.resolve(this.to).location;
 
-            return this.exact ? location.path === current.path : current.path.startsWith(location.path);
+            return this.exact ? location.path === current.path : (current.path + '/').startsWith(location.path + '/');
         },
     },
     methods: {

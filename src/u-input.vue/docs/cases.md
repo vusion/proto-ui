@@ -24,7 +24,7 @@
 <template>
 <u-linear-layout>
     <u-input v-model="value" maxlength="12" placeholder="请输入端口号"></u-input>
-    <u-input :value.sync="syncValue" maxlength="12" placeholder="请输入端口号"></u-input>
+    <u-input :value.sync="value2" maxlength="12" placeholder="请输入端口号"></u-input>
     <u-input v-model.number="numberValue" maxlength="12" placeholder="请输入端口号"></u-input>
 </u-linear-layout>
 </template>
@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             value: '3306',
-            syncValue: '3306',
+            value2: '3306',
             numberValue: 3306,
         };
     },
@@ -90,13 +90,24 @@ export default {
 </script>
 ```
 
+### 展示方式
+
+默认为行内展示，可以将`display`设置为块级展示。
+
+``` html
+<u-linear-layout direction="vertical" gap="small">
+    <u-input maxlength="12" placeholder="行内展示（默认）"></u-input> 与文字对齐
+    <u-input display="block" maxlength="12" placeholder="块级展示"></u-input>
+</u-linear-layout>
+```
+
 ### 自定义样式
 
 ``` vue
 <template>
 <u-linear-layout>
-    <u-input :class="$style.custom" maxlength="12"></u-input>
-    <u-input style="background: #f7f8fc; width: 200px;" maxlength="12"></u-input>
+    <u-input :class="$style.custom" maxlength="12" placeholder="class"></u-input>
+    <u-input style="background: #f7f8fc; width: 200px;" maxlength="12" placeholder="style"></u-input>
 </u-linear-layout>
 </template>
 

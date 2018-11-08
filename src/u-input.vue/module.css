@@ -79,3 +79,8 @@
     cursor: $cursor-not-allowed;
     background: $brand-disabled-light;
 }
+
+.root[display="block"] {
+    display: block;
+    width: auto;
+}

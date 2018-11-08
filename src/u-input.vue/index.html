@@ -8,6 +8,6 @@
         @input="onInput" @focus="onFocus" @blur="onBlur" v-on="listeners"
         @compositionstart="compositionInputing = true"
         @compositionend="onCompositionEnd">
-    <span v-if="clearable && currentValue" :class="$style.clearable" @click="clear"></span>
     <slot></slot>
+    <span v-if="clearable && currentValue" :class="$style.clearable" @click="clear"></span>
 </span>
