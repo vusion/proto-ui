@@ -1,4 +1,4 @@
-<span ref="root" :class="$style.root" :readonly="readonly" :disabled="disabled" :style="{ width, height }" :color="currentColor || this.formItemVM && this.formItemVM.color"
+<div ref="root" :class="$style.root" :readonly="readonly" :disabled="disabled" :style="{ width, height }" :color="currentColor || this.formItemVM && this.formItemVM.color"
     :focus="focused" @click.self="!focused && focus()">
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
     <span :class="$style.placeholder">{{ currentValue ? '' : placeholder }}</span><!-- 兼容 IE9 -->
@@ -12,4 +12,4 @@
     <f-dragger @dragstart="onDragStart" @drag="onDrag" :disabled="readonly || disabled">
         <div ref="handle" :class="$style.handle" v-show="resize !== 'none'"></div>
     </f-dragger>
-</span>
+</div>

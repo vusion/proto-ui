@@ -50,8 +50,7 @@ const USelect = {
             this.currentText = this.selectedVM ? this.selectedVM.currentLabel : '';
         });
         this.$watch('selectedVMs', (selectedVMs) => {
-            if (this.multipleAppear === 'text')
-                this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
+            this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
         });
         this.$on('select', () => {
             !this.multiple && this.toggle(false);
@@ -211,20 +210,28 @@ const USelect = {
             let cancel = false;
 
             const oldValue = this.value;
+            const value = this.multiple ? [] : undefined;
+
             this.$emit('before-clear', {
                 oldValue,
-                value: undefined,
+                value,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.selectedVM = undefined;
-            this.$emit('input', undefined, this);
-            this.$emit('update:value', undefined, this);
+            if (this.multiple)
+                this.selectedVMs = [];
+            else
+                this.selectedVM = undefined;
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
             // this.focus();
 
-            this.$emit('clear', undefined, this);
+            this.$emit('clear', {
+                oldValue,
+                value,
+            }, this);
         },
     },
 };

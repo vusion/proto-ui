@@ -4,7 +4,8 @@
     max-width: 100%; /* 防止表格等小的地方超出区域 */
     width: $width-base;
     height: $height-base;
-    padding: 4px 8px;
+    padding: 0 8px;
+    line-height: calc($height-base - $border-width-base * 2);
     background: white;
     border: 1px solid $border-color-base;
     border-radius: 0;
@@ -44,20 +45,20 @@
     position: absolute;
     left: 0;
     top: 0;
-    margin: 0;
     padding: inherit;
     width: 100%;
     height: 100%;
-    line-height: inherit;
-    text-align: inherit;
 }
 
 .clearable::before {
     display: block;
     position: absolute;
-    top: 0;
     right: 8px;
-    padding: 4px 0;
+    top: 0;
+    bottom: 0;
+    line-height: 1;
+    height: 1em;
+    margin: auto;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
     cursor: pointer;
     color: #a7afbb;

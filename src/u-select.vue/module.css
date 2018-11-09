@@ -1,6 +1,4 @@
 .root[class] {
-    z-index: $z-index-base;
-    padding: 4px 12px;
     padding-right: 26px;
     cursor: $cursor-pointer;
 }
@@ -8,10 +6,12 @@
 .root::after {
     position: absolute;
     icon-font: url('../i-icon.vue/assets/arrow-down.svg');
-    font-size: 14px;
-    padding: 4px 0;
-    right: 10px;
+    right: 8px;
     top: 0;
+    bottom: 0;
+    line-height: 1;
+    height: 1em;
+    margin: auto;
     color: #a7afbb;
 }
 
@@ -28,7 +28,7 @@
     background: $brand-disabled-light;
 }
 
-.text {
+/* .text {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,23 +39,31 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
+} */
 
 .root[multiple-tags] {
-    vertical-align: top;
     height: auto;
-    padding-bottom: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    line-height: 26px;
 }
 
-.root[multiple-tags] > [class^="u-input_baseline"],
-.root[multiple-tags] > [class^="u-input_input"],
-.root[multiple-tags] > [class^="u-input_placeholder"] {
-    display: none;
+.root[multiple-tags] > [class^="u-input_baseline"] {
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.root[multiple-tags] > [class^="u-input_input"] {
+    color: transparent;
 }
 
 .tags {
-    display: block;
-    margin-left: -8px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-left: -4px;
+    vertical-align: top;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -71,7 +79,6 @@
     font-size: 12px;
     line-height: 22px;
     vertical-align: 1px;
-    margin-bottom: 4px;
     background: $background-color-base;
 }
 
