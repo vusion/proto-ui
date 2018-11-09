@@ -22,7 +22,7 @@ const MMultiplexItem = {
     watch: {
         selected(selected) {
             this.currentSelected = selected;
-            this.parentVM && this.parentVM.watchSelectedChange();
+            this.parentVM && this.parentVM.watchSelectedChange(this);
         },
     },
     methods: {

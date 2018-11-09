@@ -10,25 +10,13 @@
 </m-multiplex>
 ```
 
-### 选项值
+### 双向绑定
 
-#### 静态绑定
-
-``` html
-<m-multiplex :value="['nut', 'towel']">
-    <m-multiplex-item value="cup">水杯</m-multiplex-item>
-    <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
-    <m-multiplex-item value="nut">坚果</m-multiplex-item>
-    <m-multiplex-item value="towel">毛巾</m-multiplex-item>
-    <m-multiplex-item value="sofa">沙发</m-multiplex-item>
-</m-multiplex>
-```
-
-#### v-model
+使用`v-model`或`:value.sync`进行双向绑定。
 
 ``` vue
 <template>
-<div>
+<u-linear-layout direction="vertical" gap="small">
     <m-multiplex v-model="value">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
@@ -36,25 +24,6 @@
         <m-multiplex-item value="towel">毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <span>value: {{ value }}</span>
-</div>
-</template>
-<script>
-export default {
-    data() {
-        return {
-            value: ['nut', 'towel'],
-        };
-    },
-};
-</script>
-```
-
-#### value.sync
-
-``` vue
-<template>
-<div>
     <m-multiplex :value.sync="value">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
@@ -62,8 +31,7 @@ export default {
         <m-multiplex-item value="towel">毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <span>value: {{ value }}</span>
-</div>
+</u-linear-layout>
 </template>
 <script>
 export default {
@@ -126,6 +94,39 @@ export default {
                 { text: '毛巾', value: 'towel', selected: true },
                 { text: '沙发', value: 'sofa', selected: false },
             ],
+        };
+    },
+};
+</script>
+```
+
+### 保持顺序
+
+``` vue
+<template>
+<u-linear-layout direction="vertical" gap="small">
+    <m-multiplex v-model="value1">
+        <m-multiplex-item value="cup">水杯</m-multiplex-item>
+        <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
+        <m-multiplex-item value="nut">坚果</m-multiplex-item>
+        <m-multiplex-item value="towel">毛巾</m-multiplex-item>
+        <m-multiplex-item value="sofa">沙发</m-multiplex-item>
+    </m-multiplex>
+    <m-multiplex v-model="value2" keep-order>
+        <m-multiplex-item value="cup">水杯</m-multiplex-item>
+        <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
+        <m-multiplex-item value="nut">坚果</m-multiplex-item>
+        <m-multiplex-item value="towel">毛巾</m-multiplex-item>
+        <m-multiplex-item value="sofa">沙发</m-multiplex-item>
+    </m-multiplex>
+</u-linear-layout>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value1: ['nut', 'towel'],
+            value2: ['nut', 'towel'],
         };
     },
 };

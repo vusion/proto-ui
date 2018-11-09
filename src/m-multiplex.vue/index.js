@@ -7,6 +7,7 @@ const MMultiplex = {
     mixins: [MParent],
     props: {
         value: null,
+        keepOrder: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
@@ -55,8 +56,14 @@ const MMultiplex = {
                 this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value.includes(itemVM.value));
             this.watchSelectedChange();
         },
-        watchSelectedChange() {
-            this.selectedVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
+        watchSelectedChange(selectedVM) {
+            if (selectedVM && !this.keepOrder) {
+                if (selectedVM.currentSelected)
+                    this.selectedVMs.push(selectedVM);
+                else
+                    this.selectedVMs.splice(this.selectedVMs.indexOf(selectedVM), 1);
+            } else
+                this.selectedVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
         },
         select(itemVM) {
             if (this.readonly || this.disabled)
@@ -80,7 +87,7 @@ const MMultiplex = {
         handleSelect(itemVM, oldValue) {
             itemVM.currentSelected = !itemVM.currentSelected;
             itemVM.$emit('update:selected', itemVM.currentSelected);
-            this.watchSelectedChange();
+            this.watchSelectedChange(itemVM);
 
             const itemVMs = this.selectedVMs;
             const value = itemVMs.map((itemVM) => itemVM.value);

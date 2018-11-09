@@ -311,8 +311,6 @@ export default {
 
 #### 对齐和清空问题
 
-### Tags 风格
-
 ``` vue
 <template>
 <u-linear-layout>
