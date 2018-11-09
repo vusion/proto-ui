@@ -7,7 +7,7 @@ const MComplex = {
     childName: 'm-complex-item',
     mixins: [MSinglex, MMultiplex],
     props: {
-        // @inherit: value: null,
+        value: null,
         // @inherit: autoSelect: { type: Boolean, default: false },
         // @inherit: cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
@@ -24,6 +24,9 @@ const MComplex = {
         };
     },
     watch: {
+        value(value, oldValue) {
+            (this.currentMultiple ? MMultiplex : MSinglex).watch.value.call(this, value, oldValue);
+        },
         multiple(multiple) {
             this.currentMultiple = multiple;
         },

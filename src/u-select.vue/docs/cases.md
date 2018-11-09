@@ -141,6 +141,7 @@ export default {
     </u-select>
 </u-linear-layout>
 </template>
+
 <script>
 import { utils } from 'library';
 
@@ -185,6 +186,7 @@ export default {
     </u-select>
 </u-linear-layout>
 </template>
+
 <script>
 import { utils } from 'library';
 
@@ -259,6 +261,7 @@ export default {
     </u-select>
 </u-linear-layout>
 </template>
+
 <script>
 export default {
     data() {
@@ -298,6 +301,7 @@ export default {
     </u-select>
 </u-linear-layout>
 </template>
+
 <script>
 export default {
     data() {
@@ -338,6 +342,7 @@ export default {
     </u-select>
 </u-linear-layout>
 </template>
+
 <script>
 export default {
     data() {
@@ -348,6 +353,43 @@ export default {
 };
 </script>
 ```
+
+### 保持顺序
+
+开启`keep-order`属性，选项会保持列表中的先后顺序。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select multiple multiple-appear="tags" tags-overflow="visible" v-model="value1" placeholder="不保持顺序（默认）">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+    <u-select multiple multiple-appear="tags" tags-overflow="visible" keep-order v-model="value2" placeholder="保持顺序">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+</u-linear-layout>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            value1: ['towel', 'nut'],
+            value2: ['nut', 'towel'],
+        };
+    },
+};
+</script>
+```
+
 
 ## 过滤模式
 
@@ -430,6 +472,7 @@ export default {
 <template>
 <u-select filterable placeholder="请输入邮箱" :data-source="fetchData"></u-select>
 </template>
+
 <script>
 export default {
     methods: {
@@ -455,6 +498,7 @@ export default {
 <template>
 <u-select filterable placeholder="请输入地名" :data-source="dataSource"></u-select>
 </template>
+
 <script>
 import { utils } from 'library';
 
@@ -488,6 +532,7 @@ export default {
 <template>
 <u-select filterable placeholder="请输入 item, info 或 test" :data-source="dataSource"></u-select>
 </template>
+
 <script>
 import { utils } from 'library';
 

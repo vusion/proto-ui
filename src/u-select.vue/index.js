@@ -15,6 +15,7 @@ const USelect = {
         // @inherit: dataSource: [DataSource, Function],
         // @inherit: cancelable: { type: Boolean, default: false },
         // @inherit: multiple: { type: Boolean, default: false },
+        // @inherit: keepOrder: { type: Boolean, default: false },
         multipleAppear: { type: String, default: 'text' },
         tagsOverflow: { type: String, default: 'hidden' },
         autoSelect: { type: Boolean, default: true },

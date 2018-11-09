@@ -24,6 +24,7 @@ const MSinglex = {
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
         value(value) {
+            // 无需剪枝
             this.watchValue(value);
         },
         selectedVM(selectedVM, oldVM) {
@@ -56,7 +57,7 @@ const MSinglex = {
     // },
     methods: {
         watchValue(value) {
-            if (this.selectedVM && this.selectedVM.value === value)
+            if (this.selectedVM && this.selectedVM.value === value) // 下面需要走 value === undefined
                 return;
             if (value === undefined) {
                 if (this.autoSelect && !this.placeholder) // this.placeholder for select...
