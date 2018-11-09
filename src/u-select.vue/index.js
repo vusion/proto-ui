@@ -15,6 +15,8 @@ const USelect = {
         // @inherit: dataSource: [DataSource, Function],
         // @inherit: cancelable: { type: Boolean, default: false },
         // @inherit: multiple: { type: Boolean, default: false },
+        multipleAppear: { type: String, default: 'text' },
+        tagsOverflow: { type: String, default: 'hidden' },
         autoSelect: { type: Boolean, default: true },
         placeholder: { type: String, default: '请选择' },
         clearable: { type: Boolean, default: false },
@@ -48,7 +50,8 @@ const USelect = {
             this.currentText = this.selectedVM ? this.selectedVM.currentLabel : '';
         });
         this.$watch('selectedVMs', (selectedVMs) => {
-            this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
+            if (this.multipleAppear === 'text')
+                this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
         });
         this.$on('select', () => {
             !this.multiple && this.toggle(false);

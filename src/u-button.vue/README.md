@@ -26,8 +26,10 @@
 ### 展示方式
 
 ``` html
-<u-button display="block">块级按钮</u-button>
-<u-button display="inline">行内按钮（默认）</u-button>
+<u-linear-layout direction="vertical" gap="small">
+    <u-button display="inline">行内按钮（默认）</u-button> 与文字对齐
+    <u-button display="block">块级按钮</u-button>
+</u-linear-layout>
 ```
 
 ## API

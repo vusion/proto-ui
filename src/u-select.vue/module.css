@@ -1,6 +1,6 @@
 .root[class] {
     z-index: $z-index-base;
-    padding: 0 12px;
+    padding: 4px 12px;
     padding-right: 26px;
     cursor: $cursor-pointer;
 }
@@ -9,6 +9,7 @@
     position: absolute;
     icon-font: url('../i-icon.vue/assets/arrow-down.svg');
     font-size: 14px;
+    padding: 4px 0;
     right: 10px;
     top: 0;
     color: #a7afbb;
@@ -38,6 +39,58 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.root[multiple-tags] {
+    vertical-align: top;
+    height: auto;
+    padding-bottom: 0;
+}
+
+.root[multiple-tags] > [class^="u-input_baseline"],
+.root[multiple-tags] > [class^="u-input_input"],
+.root[multiple-tags] > [class^="u-input_placeholder"] {
+    display: none;
+}
+
+.tags {
+    display: block;
+    margin-left: -8px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tags[tags-overflow="visible"] {
+    overflow: visible;
+    white-space: normal;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 12px;
+    line-height: 22px;
+    vertical-align: 1px;
+    margin-bottom: 4px;
+    background: $background-color-base;
+}
+
+.tag:not(:last-child) {
+    margin-right: 4px;
+}
+
+.tag-remove {
+    margin-left: 4px;
+    color: #a7afbb;
+}
+
+.tag-remove::before {
+    icon-font: url('../i-icon.vue/assets/close.svg');
+    vertical-align: -2px;
+}
+
+.tag-remove:hover {
+    color: $color-base;
 }
 
 .popper {

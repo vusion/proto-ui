@@ -4,11 +4,10 @@
     max-width: 100%; /* 防止表格等小的地方超出区域 */
     width: $width-base;
     height: $height-base;
-    padding: 0 8px;
+    padding: 4px 8px;
     background: white;
     border: 1px solid $border-color-base;
     border-radius: 0;
-    line-height: calc($height-base - 2px);
     cursor: text;
 }
 
@@ -58,6 +57,7 @@
     position: absolute;
     top: 0;
     right: 8px;
+    padding: 4px 0;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
     cursor: pointer;
     color: #a7afbb;

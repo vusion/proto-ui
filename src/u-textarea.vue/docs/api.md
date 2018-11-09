@@ -1,4 +1,7 @@
 ## UTextarea
+
+继承自 [UInput](../u-input)。
+
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |

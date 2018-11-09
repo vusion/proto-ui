@@ -5,8 +5,6 @@
     height: 120px;
     min-width: $width-base;
     min-height: $height-base;
-    padding: 4px 8px;
-    line-height: inherit;
 }
 
 .input {

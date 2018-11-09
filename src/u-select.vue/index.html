@@ -1,5 +1,5 @@
-<u-input :class="$style.root" ref="input" :readonly="readonly || !filterable" :disabled="disabled"
-    :placeholder="placeholder" :value="currentText" @input="onInput" @blur="onBlur"
+<u-input :class="$style.root" ref="input" :postern-readonly="!filterable" :readonly="readonly" :disabled="disabled"
+    :placeholder="placeholder" :multiple-tags="multiple && this.multipleAppear === 'tags'" :value="currentText" @input="onInput" @blur="onBlur"
     :clearable="clearable" @before-clear="beforeClearInput"
     @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
     @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
@@ -9,6 +9,23 @@
     <!-- <span :class="$style.text" v-ellipsis-title>
         <f-render :vnode="selectedVM ? selectedVM.$slots.default : placeholder"></f-render>
     </span> -->
+    <div v-if="multiple && this.multipleAppear === 'tags'" :class="$style.tags" :tags-overflow="tagsOverflow">
+        <template v-if="tagsOverflow === 'hidden' || tagsOverflow === 'visible'">
+            <span :class="$style.tag" v-for="itemVM in selectedVMs" :key="itemVM.value">
+                <span :class="$style['tag-text']">{{ itemVM.currentLabel }}</span>
+                <span :class="$style['tag-remove']"></span>
+            </span>
+        </template>
+        <template v-else-if="tagsOverflow === 'collapse'">
+            <span :class="$style.tag" v-if="selectedVMs[0]" :key="selectedVMs[0].value">
+                <span :class="$style['tag-text']">{{ selectedVMs[0].currentLabel }}</span>
+                <span :class="$style['tag-remove']"></span>
+            </span>
+            <span :class="$style.tag" v-if="selectedVMs.length > 1">
+                <span :class="$style['tag-text']">+{{ selectedVMs.length - 1 }}</span>
+            </span>
+        </template>
+    </div>
     <m-popper :class="$style.popper" ref="popper" append-to="reference" :disabled="readonly || disabled" @toggle="onToggle($event)" @click.stop @scroll.stop="onScroll">
         <slot></slot>
         <component :is="ChildComponent" v-if="currentData"
