@@ -382,7 +382,7 @@ export default {
 export default {
     data() {
         return {
-            value1: ['towel', 'nut'],
+            value1: ['nut', 'towel'],
             value2: ['nut', 'towel'],
         };
     },
@@ -564,3 +564,32 @@ export default {
 };
 </script>
 ```
+
+## 多选过滤模式
+
+<!-- @TODO
+
+### 可过滤
+
+`-`-` html
+<u-select multiple filterable>
+    <u-select-item value="abandon">abandon</u-select-item>
+    <u-select-item value="absent">absent</u-select-item>
+    <u-select-item value="bread">bread</u-select-item>
+    <u-select-item value="brief">brief</u-select-item>
+    <u-select-item value="calendar">calendar</u-select-item>
+    <u-select-item value="cancel">cancel</u-select-item>
+</u-select>
+`-`-`
+ -->
+
+### 可过滤
+
+<u-select multiple multiple-appear="tags" tags-overflow="visible" filterable>
+    <u-select-item value="abandon">abandon</u-select-item>
+    <u-select-item value="absent">absent</u-select-item>
+    <u-select-item value="bread">bread</u-select-item>
+    <u-select-item value="brief">brief</u-select-item>
+    <u-select-item value="calendar">calendar</u-select-item>
+    <u-select-item value="cancel">cancel</u-select-item>
+</u-select>

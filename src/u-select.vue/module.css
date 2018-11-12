@@ -3,6 +3,10 @@
     cursor: $cursor-pointer;
 }
 
+.root[filterable] {
+    cursor: text;
+}
+
 .root::after {
     position: absolute;
     icon-font: url('../i-icon.vue/assets/arrow-down.svg');

@@ -4,7 +4,7 @@
     <u-label>UI 组件</u-label>
     <!-- <u-label>输入型</u-label> -->
     <u-label>表单类</u-label>
-    <u-label>默认行内</u-label>
+    <u-label>行内展示</u-label>
 </u-linear-layout>
 
 下拉选择框，支持支持单选、多选、搜索等功能，用于代替原生的选择框。

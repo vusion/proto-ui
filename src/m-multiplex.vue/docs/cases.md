@@ -125,8 +125,8 @@ export default {
 export default {
     data() {
         return {
-            value1: ['nut', 'towel'],
-            value2: ['nut', 'towel'],
+            value1: ['towel', 'nut'],
+            value2: ['towel', 'nut'],
         };
     },
 };

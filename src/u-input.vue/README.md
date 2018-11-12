@@ -4,7 +4,7 @@
     <u-label>UI 组件</u-label>
     <!-- <u-label>输入型</u-label> -->
     <u-label>表单类</u-label>
-    <u-label>默认行内</u-label>
+    <u-label>行内展示</u-label>
 </u-linear-layout>
 
 基本的表单输入组件，在原生`<input>`控件基础上进行了一些功能扩展。

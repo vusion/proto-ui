@@ -1,6 +1,6 @@
-<u-input :class="$style.root" ref="input" :postern-readonly="!filterable" :readonly="readonly" :disabled="disabled"
+<u-input :class="$style.root" ref="input" :filterable="filterable" :postern-readonly="!filterable" :readonly="readonly" :disabled="disabled"
     :placeholder="placeholder" :multiple-tags="multiple && this.multipleAppear === 'tags'"
-    :value="currentText" @input="onInput" @blur="onBlur"
+    :value="currentText" @input="onInput" @foucs="onFocus" @blur="onBlur"
     :clearable="!!currentText && clearable" @before-clear="beforeClearInput"
     @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
     @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"

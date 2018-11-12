@@ -163,10 +163,16 @@ const USelect = {
                     throw new TypeError('Wrong type of `dataSource.fetch` result!');
             });
         },
+        onFocus() {
+            // const inputEl = this.$refs.input;
+            // if (inputEl.selectionStart === inputEl.selectionEnd === 0)
+            //     inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+        },
         onInput(value) {
             if (!this.filterable)
                 return;
             this.currentText = value;
+            // value.split(',')
             this.filterText = value;
 
             let cancel = false;
@@ -185,18 +191,24 @@ const USelect = {
             if (!this.filterable)
                 return;
 
-            // 要在自 @select 之后完成
-            this.$nextTick(() => {
+            // 这边必须要用 setTimeout，$nextTick 也不行，需要保证在 @select 之后完成
+            setTimeout(() => {
                 const oldVM = this.selectedVM;
 
                 const filterText = this.filterText || this.currentText;
+                if ((oldVM && filterText === oldVM.currentLabel) || (!oldVM && !filterText))
+                    return;
+
                 let selectedVM = this.itemVMs.find((itemVM) => itemVM.currentLabel === filterText);
 
-                if (!selectedVM && filterText)
+                // 如果没有匹配项则恢复到上一个状态
+                if (!selectedVM && filterText) {
                     selectedVM = oldVM;
-                this.selectedVM = selectedVM;
-                this.currentText = selectedVM ? selectedVM.currentLabel : undefined;
+                    this.currentText = selectedVM ? selectedVM.currentLabel : undefined;
+                    return;
+                }
 
+                this.selectedVM = selectedVM;
                 const value = selectedVM ? selectedVM.value : undefined;
 
                 this.$emit('input', value, this);
