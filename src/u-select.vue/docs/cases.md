@@ -585,11 +585,19 @@ export default {
 
 ### 可过滤
 
+``` html
 <u-select multiple multiple-appear="tags" tags-overflow="visible" filterable>
     <u-select-item value="abandon">abandon</u-select-item>
     <u-select-item value="absent">absent</u-select-item>
     <u-select-item value="bread">bread</u-select-item>
+    <u-select-item value="break">break</u-select-item>
     <u-select-item value="brief">brief</u-select-item>
     <u-select-item value="calendar">calendar</u-select-item>
     <u-select-item value="cancel">cancel</u-select-item>
+    <u-select-item value="column">column</u-select-item>
+    <u-select-item value="dark">dark</u-select-item>
+    <u-select-item value="debug">debug</u-select-item>
+    <u-select-item value="door">door</u-select-item>
+    <u-select-item value="delete">delete</u-select-item>
 </u-select>
+```

@@ -54,11 +54,16 @@ const USelect = {
             this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
         });
         this.$on('select', () => {
-            !this.multiple && this.toggle(false);
+            if (!this.multiple)
+                this.toggle(false);
+            else if (this.filterable)
+                this.$refs.input.focus();
         });
     },
     methods: {
         shift(count) {
+            if (this.multiple)
+                return;
             let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
             if (count > 0) {
                 for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
@@ -97,8 +102,11 @@ const USelect = {
         },
         onToggle($event) {
             // 刚打开时不 filterText
-            if ($event.open)
+            if ($event.open) {
                 this.filterText = '';
+                if (this.filterable)
+                    this.$refs.input.focus();
+            }
             this.$emit('toggle', $event, this);
             setTimeout(() => this.ensureSelectedInView(true));
         },
@@ -215,9 +223,47 @@ const USelect = {
                 this.$emit('update:value', value, this);
             });
         },
-        beforeClearInput($event) {
-            $event.preventDefault();
-            this.clear();
+        onInputEnter() {
+            // @TODO: Use focusItemVM
+            const firstItemVM = this.matchedVMs[0];
+            if (!firstItemVM)
+                return;
+            this.select(firstItemVM);
+            if (firstItemVM.currentSelected)
+                this.filterText = '';
+        },
+        onInputDelete() {
+            if (this.filterable && this.filterText === '') {
+                const lastItemVM = this.selectedVMs.pop();
+                if (!lastItemVM)
+                    return;
+                lastItemVM.currentSelected = false;
+            }
+        },
+        remove(itemVM) {
+            if (this.readonly || this.disabled)
+                return;
+
+            const oldValue = this.value;
+
+            let cancel = false;
+            this.$emit('before-remove', {
+                value: itemVM && itemVM.value,
+                oldValue,
+                item: itemVM && itemVM.item,
+                itemVM,
+                preventDefault: () => cancel = true,
+            }, this);
+            if (cancel)
+                return;
+
+            itemVM.currentSelected = false;
+            itemVM.$emit('update:selected', false);
+            this.watchSelectedChange(itemVM);
+
+            // let cancel = false;
+
+            this.$emit('input');
         },
         clear() {
             let cancel = false;
@@ -233,9 +279,10 @@ const USelect = {
             if (cancel)
                 return;
 
-            if (this.multiple)
+            if (this.multiple) {
+                this.selectedVMs.forEach((itemVM) => itemVM.currentSelected = false);
                 this.selectedVMs = [];
-            else
+            } else
                 this.selectedVM = undefined;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
@@ -245,6 +292,14 @@ const USelect = {
                 oldValue,
                 value,
             }, this);
+        },
+        focus() {
+            if (this.filterable)
+                this.$refs.input.focus();
+        },
+        blur() {
+            if (this.filterable)
+                this.$refs.input.blur();
         },
     },
 };

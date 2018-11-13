@@ -1,32 +1,39 @@
-<u-input :class="$style.root" ref="input" :filterable="filterable" :postern-readonly="!filterable" :readonly="readonly" :disabled="disabled"
-    :placeholder="placeholder" :multiple-tags="multiple && this.multipleAppear === 'tags'"
-    :value="currentText" @input="onInput" @foucs="onFocus" @blur="onBlur"
-    :clearable="!!currentText && clearable" @before-clear="beforeClearInput"
+<div :class="$style.root" :readonly="readonly" :disabled="disabled"
+    :clearable="clearable && !!currentText" :multiple-tags="multiple && this.multipleAppear === 'tags'"
+    :tabindex="readonly || disabled ? '' : 0"
     @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
     @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
-    @keydown.stop.enter="$refs.popper.currentOpen && select(selectedVM)"
-    @keydown.stop.esc="toggle(false)"
-    v-bind="$attrs">
-    <!-- <span :class="$style.text" v-ellipsis-title>
-        <f-render :vnode="selectedVM ? selectedVM.$slots.default : placeholder"></f-render>
-    </span> -->
-    <div v-if="multiple && this.multipleAppear === 'tags'" :class="$style.tags" :tags-overflow="tagsOverflow">
-        <template v-if="tagsOverflow === 'hidden' || tagsOverflow === 'visible'">
-            <span :class="$style.tag" v-for="itemVM in selectedVMs" :key="itemVM.value">
-                <span :class="$style['tag-text']">{{ itemVM.currentLabel }}</span>
-                <span :class="$style['tag-remove']"></span>
-            </span>
+    @keydown.stop.enter="toggle(false)"
+    @keydown.stop.esc="toggle(false), filterText = ''">
+    <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
+    <span v-if="multiple ? !selectedVMs.length : !selectedVM" :class="$style.placeholder">{{ placeholder }}</span>
+    <div :class="$style.text" v-ellipsis-title :tags-overflow="tagsOverflow">
+        <u-render v-if="!multiple" :vnode="selectedVM && selectedVM.$slots.default"></u-render>
+        <span v-else-if="this.multipleAppear === 'text'">{{ currentText }}</span>
+        <template v-else-if="this.multipleAppear === 'tags'">
+            <template v-if="tagsOverflow === 'hidden' || tagsOverflow === 'visible'">
+                <span :class="$style.tag" v-for="itemVM in selectedVMs" :key="itemVM.value">
+                    <span :class="$style['tag-text']">{{ itemVM.currentLabel }}</span>
+                    <span :class="$style['tag-remove']"></span>
+                </span>
+            </template>
+            <template v-else-if="tagsOverflow === 'collapse'">
+                <span :class="$style.tag" v-if="selectedVMs[0]" :key="selectedVMs[0].value">
+                    <span :class="$style['tag-text']">{{ selectedVMs[0].currentLabel }}</span>
+                    <span :class="$style['tag-remove']"></span>
+                </span>
+                <span :class="$style.tag" v-if="selectedVMs.length > 1">
+                    <span :class="$style['tag-text']">+{{ selectedVMs.length - 1 }}</span>
+                </span>
+            </template>
         </template>
-        <template v-else-if="tagsOverflow === 'collapse'">
-            <span :class="$style.tag" v-if="selectedVMs[0]" :key="selectedVMs[0].value">
-                <span :class="$style['tag-text']">{{ selectedVMs[0].currentLabel }}</span>
-                <span :class="$style['tag-remove']"></span>
-            </span>
-            <span :class="$style.tag" v-if="selectedVMs.length > 1">
-                <span :class="$style['tag-text']">+{{ selectedVMs.length - 1 }}</span>
-            </span>
-        </template>
+        <u-input v-if="filterable" :class="$style.input" ref="input" :readonly="readonly" :disabled="disabled"
+            :placeholder="multiple && selectedVMs.length ? '' : placeholder" :filterable="filterable" :multiple-tags="multiple && this.multipleAppear === 'tags'"
+            :value="multiple ? filterText : currentText" @input="onInput" @foucs="onFocus" @blur="onBlur"
+            @keydown.stop.enter="onInputEnter" @keydown.stop.delete="onInputDelete">
+        </u-input>
     </div>
+    <span v-if="clearable && !!currentText" :class="$style.clearable" @click.stop="clear"></span>
     <m-popper :class="$style.popper" ref="popper" append-to="reference" :disabled="readonly || disabled" @toggle="onToggle($event)" @click.stop @scroll.stop="onScroll">
         <slot></slot>
         <component :is="ChildComponent" v-if="currentData"
@@ -41,3 +48,5 @@
         </div>
     </m-popper>
 </u-input>
+
+</div>

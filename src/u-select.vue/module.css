@@ -1,6 +1,52 @@
-.root[class] {
-    padding-right: 26px;
+.root {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    max-width: 100%;
     cursor: $cursor-pointer;
+    width: $width-base;
+    height: $height-base;
+    line-height: calc($height-base - $border-width-base * 2);
+    padding: 0 8px;
+    padding-right: 26px;
+    background: white;
+    border: 1px solid $border-color-base;
+}
+
+.root:focus {
+    outline: $focus-outline;
+}
+
+.baseline {
+    color: transparent;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.placeholder {
+    color: #a7afbb;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: inherit;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.clearable::before {
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    line-height: 1;
+    height: 1em;
+    margin: auto;
+    icon-font: url('../i-icon.vue/assets/close-solid.svg');
+    cursor: pointer;
+    color: #a7afbb;
 }
 
 .root[filterable] {
@@ -32,47 +78,22 @@
     background: $brand-disabled-light;
 }
 
-/* .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 12px;
-    padding-right: 26px;
+.text {
+    display: inline-block;
     width: 100%;
-    line-height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-} */
+    vertical-align: top;
+}
 
 .root[multiple-tags] {
     height: auto;
-    padding-bottom: 2px;
-    padding-top: 2px;
+    padding: 2px 26px 2px 4px;
     line-height: 26px;
 }
 
-.root[multiple-tags] > [class^="u-input_baseline"] {
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
-
-.root[multiple-tags] > [class^="u-input_input"] {
-    color: transparent;
-}
-
-.tags {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    margin-left: -4px;
-    vertical-align: top;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.tags[tags-overflow="visible"] {
+.text[tags-overflow="visible"] {
     overflow: visible;
     white-space: normal;
 }
@@ -102,6 +123,23 @@
 
 .tag-remove:hover {
     color: $color-base;
+}
+
+.input[class] {
+    position: absolute;
+    border: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.input[multiple-tags][filterable] {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    line-height: 26px;
+    padding: 0;
 }
 
 .popper {
