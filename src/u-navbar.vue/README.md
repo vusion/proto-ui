@@ -277,7 +277,7 @@
 
 ## NavbarDropdown API
 
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |

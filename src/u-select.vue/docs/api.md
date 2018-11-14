@@ -1,5 +1,5 @@
 ## USelect
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
@@ -63,7 +63,7 @@
 | senderVM | Vue | 发送事件实例 |
 
 ## USelectItem
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |

@@ -228,7 +228,7 @@ export default {
 ```
 
 ## Suggest API
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
@@ -294,7 +294,7 @@ export default {
 | senderVM | Vue | 发送事件实例 |
 
 ## SuggestItem API
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |

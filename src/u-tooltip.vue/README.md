@@ -245,7 +245,7 @@ export default {
 ```
 
 ## API
-### Attrs/Props
+### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
@@ -261,7 +261,7 @@ export default {
 
 #### (default)
 
-触发节点，该 slot 只能插入一个节点。Tooltip 除了会给该节点绑定触发事件，不会对它做任何事情。
+插入需要弹出的内容。
 
 #### popper
 
@@ -271,44 +271,86 @@ export default {
 
 自定义滚动区域。
 
-#### content
-
-自定义内容文本。
-
 ### Events
+
+#### @before-open
+
+弹出前触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止弹出流程 |
+| senderVM | UTooltip | 发送事件实例 |
+
+#### @open
+
+弹出时触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | UTooltip | 发送事件实例 |
+
+#### @before-close
+
+隐藏前触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止隐藏流程 |
+| senderVM | UTooltip | 发送事件实例 |
+
+#### @close
+
+隐藏时触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | UTooltip | 发送事件实例 |
 
 #### @before-toggle
 
-弹出/隐藏前触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.opened | Boolean | 弹出/隐藏状态 |
-| $event.preventDefault | Function | 阻止弹出/隐藏流程 |
-| senderVM | Vue | 发送事件实例 |
+@deprecated
 
 #### @toggle
 
-弹出/隐藏时触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.opened | Boolean | 弹出/隐藏状态 |
-| senderVM | Vue | 发送事件实例 |
+@deprecated
 
 ### Methods
 
-#### update
+#### open()
 
-更新 popper 实例
+弹出实例。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### close()
+
+关闭实例。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 
-#### toggle
+#### toggle(opened?)
 
-切换弹出/隐藏状态
+切换弹出/隐藏状态。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| opened | Boolean | 弹出/隐藏状态 |
+| opened? | Boolean | 可选。弹出/隐藏状态 |
+
+#### update()
+
+更新 popper 实例。参考 [Popper.update()](https://popper.js.org/popper-documentation.html#Popper.update)。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### scheduleUpdate()
+
+在下次 UI 渲染时一块更新 popper 实例，比`update()`性能要好。参考 [Popper.scheduleUpdate()](https://popper.js.org/popper-documentation.html#Popper.scheduleUpdate)。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |

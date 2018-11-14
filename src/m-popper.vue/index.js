@@ -1,8 +1,10 @@
 import Popper from '@vusion/popper.js';
+import MEmitter from '../m-emitter.vue';
 import ev from '../utils/event';
 
 const MPopper = {
     name: 'm-popper',
+    mixins: [MEmitter],
     props: {
         opened: { type: Boolean, default: false },
         trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
@@ -74,12 +76,18 @@ const MPopper = {
         },
     },
     watch: {
-        open(opened) {
+        opened(opened) {
             this.currentOpened = opened;
         },
         currentOpened(currentOpened) {
             // 不直接用样式的显隐，而是用 popper 的 create 和 destroy，是因为 popper 有可能是从不同的地方触发的，reference 对象会变
-            currentOpened ? this.createPopper() : this.destroyPopper();
+            if (currentOpened) {
+                this.createPopper();
+                this.$emit('open', undefined, this);
+            } else {
+                this.destroyPopper();
+                this.$emit('close', undefined, this);
+            }
         },
         reference() {
             this.referenceEl = this.getReferenceEl();
@@ -171,13 +179,13 @@ const MPopper = {
                 this.offEvents.push(ev.on(el, 'mouseenter', (e) => {
                     timer = clearTimeout(timer);
                     setTimeout(() => {
-                        this.toggle(true);
+                        this.open();
                         this.followCursor && this.$nextTick(() => this.updatePositionByCursor(e, el));
                     }, this.hoverDelay);
                 }));
                 this.offEvents.push(ev.on(document, 'mouseover', (e) => {
                     if (this.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target))
-                        timer = setTimeout(() => this.toggle(false), this.hideDelay);
+                        timer = setTimeout(() => this.close(), this.hideDelay);
                 }));
             } else if (event === 'double-click')
                 this.offEvents.push(ev.on(el, 'dblclick', (e) => {
@@ -193,7 +201,7 @@ const MPopper = {
             }
             // @TODO: 有没有必要搞 focus-in
             this.offEvents.push(ev.on(document, 'mousedown', (e) => {
-                !el.contains(e.target) && !popperEl.contains(e.target) && this.toggle(false);
+                !el.contains(e.target) && !popperEl.contains(e.target) && this.close();
             }));
         },
         createPopper() {
@@ -248,31 +256,65 @@ const MPopper = {
             };
             this.popper.scheduleUpdate();
         },
-        toggle(opened) {
+        open() {
+            // Check if enabled
             if (this.disabled)
                 return;
 
-            const oldOpen = this.currentOpened;
+            // Prevent replication
+            if (this.currentOpened)
+                return;
 
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-open', undefined, this))
+                return;
+
+            // Assign and sync `opened`
+            this.currentOpened = true;
+            this.$emit('update:opened', true, this);
+
+            // Emit `after-` events
+            // this.$emit('open', undefined, this);
+        },
+        close() {
+            // Check if enabled
+            if (this.disabled)
+                return;
+
+            // Prevent replication
+            if (!this.currentOpened)
+                return;
+
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-close', undefined, this))
+                return;
+
+            // Assign and sync `opened`
+            this.currentOpened = false;
+            this.$emit('update:opened', false, this);
+
+            // Emit `after-` events
+            // this.$emit('close', undefined, this);
+        },
+        toggle(opened) {
+            // Method overloading
             if (opened === undefined)
                 opened = !this.currentOpened;
 
-            if (opened === oldOpen)
+            // @deprecated start
+            if (this.disabled)
+                return;
+            const oldOpened = this.currentOpened;
+            if (opened === oldOpened)
                 return;
 
-            let cancel = false;
-            this.$emit('before-toggle', {
-                opened,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
+            if (this.$emitPrevent('before-toggle', { opened }, this))
                 return;
 
-            this.currentOpened = opened;
-            this.$emit('update:opened', opened, this);
-            this.$emit('toggle', {
-                opened,
-            }, this);
+            opened ? this.open() : this.close();
+
+            this.$emit('toggle', { opened }, this);
+            // @deprecated end
         },
     },
 };

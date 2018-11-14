@@ -81,6 +81,8 @@ const UCheckbox = {
                 this.$emit('check', { value, oldValue }, this);
             else if (value === false)
                 this.$emit('uncheck', { value, oldValue }, this);
+            // else indeterminate
+
             this.$emit('toggle', { value, oldValue }, this);
 
             // Call parentVM
