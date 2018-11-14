@@ -2,8 +2,9 @@
     :selected="parentVM.router ? active : selected || currentSelected"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"
-    v-on="listeners"
-    @click="select" :has-sub="!!$slots.sub">
+    v-on="listeners" @click="select"
+    v-ellipsis-title
+    :has-sub="!!$slots.sub">
     <slot></slot>
     <div :class="$style.sub">
         <slot name="sub"></slot>
