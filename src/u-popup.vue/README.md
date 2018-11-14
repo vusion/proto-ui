@@ -94,7 +94,7 @@
 
 #### 手动触发
 
-也可以手动触发弹出框的弹出/隐藏：
+也可以手动触发弹出框的弹出/关闭：
 
 ``` vue
 <template>
@@ -257,7 +257,7 @@ export default {
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | title | String | `'标题'` | 弹出框标题 |
-| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
+| opened.sync | Boolean | `false` | 弹出/关闭状态 |
 | trigger | String | `'click'` | 弹出框的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 弹出框的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
 | hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
@@ -356,11 +356,11 @@ export default {
 
 #### toggle(opened?)
 
-切换弹出/隐藏状态。
+切换弹出/关闭状态。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| opened? | Boolean | 可选。弹出/隐藏状态 |
+| opened? | Boolean | 可选。弹出/关闭状态 |
 
 #### update()
 

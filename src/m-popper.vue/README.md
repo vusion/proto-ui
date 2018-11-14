@@ -52,7 +52,7 @@
 
 #### 手动触发
 
-也可以手动触发弹出层的弹出/隐藏：
+也可以手动触发弹出层的弹出/关闭：
 
 ``` vue
 <template>
@@ -286,7 +286,7 @@ export default {
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| opened.sync | Boolean | `false` | 弹出/隐藏状态 |
+| opened.sync | Boolean | `false` | 弹出/关闭状态 |
 | trigger | String | `'click'` | 触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | reference | String, HTMLElement, Function | `'parent'` | 参考元素。可选值：`'parent'`表示父元素，`'prev'`表示上一个元素，`'next'`表示下一个元素。也可以传一个 HTML 元素，或用于返回元素的方法 |
 | placement | String | `'bottom'` | 弹出方位。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
@@ -370,11 +370,11 @@ export default {
 
 #### toggle(opened?)
 
-切换弹出/隐藏状态。
+切换弹出/关闭状态。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| opened? | Boolean | 可选。弹出/隐藏状态 |
+| opened? | Boolean | 可选。弹出/关闭状态 |
 
 #### update()
 

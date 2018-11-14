@@ -10,6 +10,7 @@
 | loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
+| opened.sync | Boolean | `false` | 弹出/关闭状态 |
 
 ### Slots
 
@@ -53,14 +54,73 @@
 | $event.itemVM | SelectItem | 选择项子组件 |
 | senderVM | Vue | 发送事件实例 |
 
-#### @toggle
+#### @before-open
 
-展开/收起选择框时触发
+弹出前触发。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.opened | Boolean | 展开/收起状态 |
-| senderVM | Vue | 发送事件实例 |
+| $event.preventDefault | Function | 阻止弹出流程 |
+| senderVM | USelect | 发送事件实例 |
+
+#### @open
+
+弹出时触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | USelect | 发送事件实例 |
+
+#### @before-close
+
+隐藏前触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止隐藏流程 |
+| senderVM | USelect | 发送事件实例 |
+
+#### @close
+
+隐藏时触发。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | USelect | 发送事件实例 |
+
+#### @before-toggle
+
+@deprecated
+
+#### @toggle
+
+@deprecated
+
+### Methods
+
+#### open()
+
+弹出选择框。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### close()
+
+关闭选择框。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### toggle(opened?)
+
+切换弹出/关闭状态。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| opened? | Boolean | 可选。弹出/关闭状态 |
 
 ## USelectItem
 ### Props/Attrs

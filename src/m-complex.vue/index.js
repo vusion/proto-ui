@@ -39,8 +39,8 @@ const MComplex = {
         watchValue(value) {
             (this.currentMultiple ? MMultiplex : MSinglex).methods.watchValue.call(this, value);
         },
-        handleSelect(itemVM, oldValue) {
-            (this.currentMultiple ? MMultiplex : MSinglex).methods.handleSelect.call(this, itemVM, oldValue);
+        select(itemVM, selected) {
+            (this.currentMultiple ? MMultiplex : MSinglex).methods.select.call(this, itemVM, selected);
         },
     },
 };

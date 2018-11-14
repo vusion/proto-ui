@@ -1,5 +1,5 @@
 <div v-if="matched" :class="$style.root"
-    :selected="isSelected || currentSelected"
+    :selected="parentVM.multiple ? currentSelected : isSelected"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"
     @click="select"

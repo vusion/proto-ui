@@ -1,10 +1,11 @@
+import MEmitter from '../m-emitter.vue';
 import { MParent } from '../m-parent.vue';
 
 const MSinglex = {
     name: 'm-singlex',
     groupName: 'm-singlex-group',
     childName: 'm-singlex-item',
-    mixins: [MParent],
+    mixins: [MEmitter, MParent],
     props: {
         value: null,
         autoSelect: { type: Boolean, default: false },
@@ -36,8 +37,10 @@ const MSinglex = {
             this.$emit('change', {
                 value,
                 oldValue,
-                item: selectedVM ? selectedVM.item : undefined,
-                itemVM: selectedVM,
+                selectedVM,
+                selectedItem: selectedVM ? selectedVM.item : undefined,
+                oldVM,
+                oldItem: oldVM && oldVM.item,
             }, this);
         },
         // This method just run once after pushing many itemVMs
@@ -70,40 +73,46 @@ const MSinglex = {
             }
         },
         select(itemVM) {
+            // Check if enabled
             if (this.readonly || this.disabled)
                 return;
 
+            // Prevent replication
             const oldValue = this.value;
-
-            let cancel = false;
-            this.$emit('before-select', {
-                value: itemVM && itemVM.value,
-                oldValue,
-                item: itemVM && itemVM.item,
-                itemVM,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
+            const oldVM = this.selectedVM;
+            if (!this.cancelable && itemVM === oldVM)
                 return;
 
-            this.handleSelect(itemVM, oldValue);
-        },
-        handleSelect(itemVM, oldValue) {
-            if (this.cancelable && this.selectedVM === itemVM)
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-select', {
+                value: itemVM && itemVM.value,
+                oldValue,
+                itemVM,
+                item: itemVM && itemVM.item,
+                oldVM,
+                oldItem: oldVM && oldVM.item,
+            }, this))
+                return;
+
+            if (this.cancelable && itemVM === oldVM)
                 this.selectedVM = undefined;
             else
                 this.selectedVM = itemVM;
 
+            // Assign and sync `value`
             const value = this.selectedVM && this.selectedVM.value;
-            const item = this.selectedVM && this.selectedVM.item;
-
+            const selectedItem = this.selectedVM && this.selectedVM.item;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
+
+            // Emit `after-` events
             this.$emit('select', {
                 value,
                 oldValue,
-                item,
-                itemVM: this.selectedVM,
+                selectedVM: this.selectedVM,
+                selectedItem,
+                itemVM,
+                item: itemVM && itemVM.item,
             }, this);
         },
     },

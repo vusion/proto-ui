@@ -1,10 +1,11 @@
+import MEmitter from '../m-emitter.vue';
 import { MParent } from '../m-parent.vue';
 
 const MMultiplex = {
     name: 'm-multiplex',
     groupName: 'm-multiplex-group',
     childName: 'm-multiplex-item',
-    mixins: [MParent],
+    mixins: [MEmitter, MParent],
     props: {
         value: Array,
         keepOrder: { type: Boolean, default: false },
@@ -36,19 +37,19 @@ const MMultiplex = {
             // 更新列表之后，原来的选择可能已不存在，这里需要重新查找一遍
             this.value && this.watchValue(this.value);
         },
-        selectedVMs(itemVMs, oldVMs) {
+        selectedVMs(selectedVMs, oldVMs) {
             const oldValue = oldVMs.map((itemVM) => itemVM.value);
-            const value = itemVMs.map((itemVM) => itemVM.value);
+            const value = selectedVMs.map((itemVM) => itemVM.value);
 
             if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
                 return;
 
-            const items = itemVMs.map((itemVM) => itemVM.item);
+            const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('change', {
                 value,
                 oldValue,
-                items,
-                itemVMs,
+                selectedVMs,
+                selectedItems,
             });
         },
     },
@@ -87,41 +88,77 @@ const MMultiplex = {
             } else
                 this.selectedVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
         },
-        select(itemVM) {
+        select(itemVM, selected) {
+            // Check if enabled
             if (this.readonly || this.disabled)
                 return;
 
-            const oldValue = this.value;
+            // Method overloading
+            if (selected === undefined)
+                selected = !itemVM.currentSelected;
 
-            let cancel = false;
-            this.$emit('before-select', {
-                value: itemVM && itemVM.value,
-                oldValue,
-                item: itemVM && itemVM.item,
-                itemVM,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
+            // Prevent replication
+            if (itemVM.currentSelected === selected)
                 return;
 
-            this.handleSelect(itemVM, oldValue);
-        },
-        handleSelect(itemVM, oldValue) {
-            itemVM.currentSelected = !itemVM.currentSelected;
-            itemVM.$emit('update:selected', itemVM.currentSelected);
+            const oldValue = this.value;
+            const oldVMs = this.selectedVMs;
+            const oldItems = oldVMs.map((itemVM) => itemVM.item);
+
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-select', {
+                oldValue,
+                selected,
+                itemVM,
+                item: itemVM && itemVM.item,
+                oldVMs,
+                oldItems,
+            }, this))
+                return;
+
+            // Assign and sync `selected`
+            itemVM.currentSelected = selected;
+            itemVM.$emit('update:selected', selected);
             this.watchSelectedChange(itemVM);
 
-            const itemVMs = this.selectedVMs;
-            const value = itemVMs.map((itemVM) => itemVM.value);
-            const items = itemVMs.map((itemVM) => itemVM.item);
-
+            // Assign and sync `value`
+            const selectedVMs = this.selectedVMs;
+            const value = selectedVMs.map((itemVM) => itemVM.value);
+            const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
+
+            // Emit `after-` events
+            if (itemVM.currentSelected) {
+                this.$emit('add', {
+                    itemVM,
+                    item: itemVM.item,
+                    value,
+                    oldValue,
+                    selectedVMs,
+                    selectedItems,
+                }, this);
+            } else {
+                this.$emit('remove', {
+                    itemVM,
+                    item: itemVM.item,
+                    value,
+                    oldValue,
+                    selectedVMs,
+                    selectedItems,
+                }, this);
+            }
+
             this.$emit('select', {
                 value,
                 oldValue,
-                items,
-                itemVMs,
+                selected: itemVM.currentSelected,
+                itemVM,
+                item: itemVM.item,
+                selectedVMs,
+                selectedItems,
+                itemVMs: selectedVMs, // @deprecated
+                items: selectedItems, // @deprecated
             }, this);
         },
     },

@@ -278,21 +278,21 @@ export default {
 ``` vue
 <template>
 <u-linear-layout>
-    <u-select multiple multiple-appear="tags" v-model="value" placeholder="过多时省略">
+    <u-select multiple multiple-appearance="tags" v-model="value" placeholder="过多时省略">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
         <u-select-item value="towel">毛巾</u-select-item>
         <u-select-item value="sofa">沙发</u-select-item>
     </u-select>
-    <u-select multiple multiple-appear="tags" tags-overflow="collapse" v-model="value" placeholder="过多时收缩">
+    <u-select multiple multiple-appearance="tags" tags-overflow="collapse" v-model="value" placeholder="过多时收缩">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
         <u-select-item value="towel">毛巾</u-select-item>
         <u-select-item value="sofa">沙发</u-select-item>
     </u-select>
-    <u-select multiple multiple-appear="tags" tags-overflow="visible" v-model="value" placeholder="过多时显示">
+    <u-select multiple multiple-appearance="tags" tags-overflow="visible" v-model="value" placeholder="过多时显示">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
@@ -318,14 +318,14 @@ export default {
 ``` vue
 <template>
 <u-linear-layout>
-    <u-select clearable multiple multiple-appear="tags" v-model="value" placeholder="过多时省略">
+    <u-select clearable multiple multiple-appearance="tags" v-model="value" placeholder="过多时省略">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
         <u-select-item value="towel">毛巾</u-select-item>
         <u-select-item value="sofa">沙发</u-select-item>
     </u-select>
-    <u-select clearable multiple multiple-appear="tags" tags-overflow="collapse" v-model="value" placeholder="过多时收缩">
+    <u-select clearable multiple multiple-appearance="tags" tags-overflow="collapse" v-model="value" placeholder="过多时收缩">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
@@ -333,7 +333,7 @@ export default {
         <u-select-item value="sofa">沙发</u-select-item>
     </u-select>
     <span>与文字对齐</span>
-    <u-select clearable multiple multiple-appear="tags" tags-overflow="visible" v-model="value" placeholder="过多时显示">
+    <u-select clearable multiple multiple-appearance="tags" tags-overflow="visible" v-model="value" placeholder="过多时显示">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
@@ -361,14 +361,14 @@ export default {
 ``` vue
 <template>
 <u-linear-layout>
-    <u-select multiple multiple-appear="tags" tags-overflow="visible" v-model="value1" placeholder="不保持顺序（默认）">
+    <u-select multiple multiple-appearance="tags" tags-overflow="visible" v-model="value1" placeholder="不保持顺序（默认）">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
         <u-select-item value="towel">毛巾</u-select-item>
         <u-select-item value="sofa">沙发</u-select-item>
     </u-select>
-    <u-select multiple multiple-appear="tags" tags-overflow="visible" keep-order v-model="value2" placeholder="保持顺序">
+    <u-select multiple multiple-appearance="tags" tags-overflow="visible" keep-order v-model="value2" placeholder="保持顺序">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>
@@ -586,7 +586,7 @@ export default {
 ### 可过滤
 
 ``` html
-<u-select multiple multiple-appear="tags" tags-overflow="visible" filterable>
+<u-select multiple multiple-appearance="tags" tags-overflow="visible" filterable>
     <u-select-item value="abandon">abandon</u-select-item>
     <u-select-item value="absent">absent</u-select-item>
     <u-select-item value="bread">bread</u-select-item>

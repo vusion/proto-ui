@@ -16,7 +16,7 @@ const USelect = {
         // @inherit: cancelable: { type: Boolean, default: false },
         // @inherit: multiple: { type: Boolean, default: false },
         // @inherit: keepOrder: { type: Boolean, default: false },
-        multipleAppear: { type: String, default: 'text' },
+        multipleAppearance: { type: String, default: 'text' },
         tagsOverflow: { type: String, default: 'hidden' },
         autoSelect: { type: Boolean, default: true },
         placeholder: { type: String, default: '请选择' },
@@ -25,6 +25,7 @@ const USelect = {
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
         emptyText: { type: String, default: '无匹配数据' },
+        opened: { type: Boolean, default: false },
     },
     data() {
         return {
@@ -52,10 +53,11 @@ const USelect = {
         });
         this.$watch('selectedVMs', (selectedVMs) => {
             this.currentText = selectedVMs.map((itemVM) => itemVM.currentLabel).join(', ');
+            this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
         });
         this.$on('select', () => {
             if (!this.multiple)
-                this.toggle(false);
+                this.close();
             else if (this.filterable)
                 this.$refs.input.focus();
         });
@@ -97,18 +99,23 @@ const USelect = {
                 }
             }
         },
+        open() {
+            this.$refs.popper && this.$refs.popper.open();
+        },
+        close() {
+            this.$refs.popper && this.$refs.popper.close();
+        },
         toggle(opened) {
             this.$refs.popper && this.$refs.popper.toggle(opened);
         },
-        onToggle($event) {
+        onOpen($event) {
             // 刚打开时不 filterText
-            if ($event.opened) {
-                this.filterText = '';
-                if (this.filterable)
-                    this.$refs.input.focus();
-            }
-            this.$emit('toggle', $event, this);
+            this.filterText = '';
+            if (this.filterable)
+                this.$refs.input.focus();
             setTimeout(() => this.ensureSelectedInView(true));
+
+            this.$emit('open', $event, this);
         },
         /**
          * 判断某一项是否匹配
@@ -192,8 +199,8 @@ const USelect = {
                 return;
 
             this.dataSource && this.debouncedFetchData(true);
-            this.toggle(true);
-            this.$refs.popper.update();
+            this.open();
+            // this.$refs.popper.scheduleUpdate();
         },
         onBlur() {
             if (!this.filterable)
@@ -234,36 +241,11 @@ const USelect = {
         },
         onInputDelete() {
             if (this.filterable && this.filterText === '') {
-                const lastItemVM = this.selectedVMs.pop();
-                if (!lastItemVM)
+                if (!this.selectedVMs.length)
                     return;
-                lastItemVM.currentSelected = false;
+                const lastItemVM = this.selectedVMs[this.selectedVMs.length - 1];
+                this.select(lastItemVM, false);
             }
-        },
-        remove(itemVM) {
-            if (this.readonly || this.disabled)
-                return;
-
-            const oldValue = this.value;
-
-            let cancel = false;
-            this.$emit('before-remove', {
-                value: itemVM && itemVM.value,
-                oldValue,
-                item: itemVM && itemVM.item,
-                itemVM,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
-                return;
-
-            itemVM.currentSelected = false;
-            itemVM.$emit('update:selected', false);
-            this.watchSelectedChange(itemVM);
-
-            // let cancel = false;
-
-            this.$emit('input');
         },
         clear() {
             let cancel = false;
