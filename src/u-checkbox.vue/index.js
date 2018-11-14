@@ -42,7 +42,7 @@ const UCheckbox = {
             this.$emit('blur', e, this);
         },
         toggle(value) {
-            // Check enable
+            // Check if enabled
             if (this.readonly || this.disabled)
                 return;
 

@@ -97,12 +97,12 @@ const USelect = {
                 }
             }
         },
-        toggle(open) {
-            this.$refs.popper && this.$refs.popper.toggle(open);
+        toggle(opened) {
+            this.$refs.popper && this.$refs.popper.toggle(opened);
         },
         onToggle($event) {
             // 刚打开时不 filterText
-            if ($event.open) {
+            if ($event.opened) {
                 this.filterText = '';
                 if (this.filterable)
                     this.$refs.input.focus();

@@ -1,8 +1,8 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled"
     :clearable="clearable && !!currentText" :multiple-tags="multiple && this.multipleAppear === 'tags'"
     :tabindex="readonly || disabled ? '' : 0"
-    @keydown.prevent.up="$refs.popper.currentOpen ? shift(-1) : toggle(true)"
-    @keydown.prevent.down="$refs.popper.currentOpen ? shift(+1) : toggle(true)"
+    @keydown.prevent.up="$refs.popper.currentOpened ? shift(-1) : toggle(true)"
+    @keydown.prevent.down="$refs.popper.currentOpened ? shift(+1) : toggle(true)"
     @keydown.stop.enter="toggle(false)"
     @keydown.stop.esc="toggle(false), filterText = ''">
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->

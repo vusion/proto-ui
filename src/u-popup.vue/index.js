@@ -6,7 +6,7 @@ const UPopup = {
     props: {
         title: String,
         content: String,
-        // @inherit: open
+        // @inherit: opened
         // @inherit: trigger: { type: String, default: 'click' },
         // @inherit: placement: { type: String, default: 'bottom-start' },
         // @inherit: reference: HTMLElement, // 为了方便生成指令

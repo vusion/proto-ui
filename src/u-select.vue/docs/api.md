@@ -59,7 +59,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.open | Boolean | 展开/收起状态 |
+| $event.opened | Boolean | 展开/收起状态 |
 | senderVM | Vue | 发送事件实例 |
 
 ## USelectItem

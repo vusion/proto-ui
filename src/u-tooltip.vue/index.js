@@ -5,7 +5,7 @@ const UTooltip = {
     extends: MPopper,
     props: {
         content: String,
-        // @inherit: open
+        // @inherit: opened
         trigger: { type: String, default: 'hover' },
         placement: { type: String, default: 'bottom' },
         // @inherit: reference

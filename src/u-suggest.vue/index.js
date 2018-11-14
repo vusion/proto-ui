@@ -80,12 +80,12 @@ const USuggest = {
                 }
             }
         },
-        toggle(open) {
-            this.$refs.popper && this.$refs.popper.toggle(open);
+        toggle(opened) {
+            this.$refs.popper && this.$refs.popper.toggle(opened);
         },
         onToggle($event) {
             // 刚打开时不 filterText
-            if ($event.open)
+            if ($event.opened)
                 this.filterText = '';
             this.$emit('toggle', $event, this);
             setTimeout(() => this.ensureSelectedInView(true));
