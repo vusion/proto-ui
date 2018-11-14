@@ -41,14 +41,21 @@ const UCheckbox = {
         onBlur(e) {
             this.$emit('blur', e, this);
         },
-        check() {
+        toggle(value) {
+            // Check enable
             if (this.readonly || this.disabled)
                 return;
 
-            const oldValue = this.currentValue;
-            const value = !this.currentValue;
+            // Method overloading
+            if (value === undefined)
+                value = !this.currentValue;
 
-            if (this.parentVM && !this.parentVM.canCheck({
+            // Prevent replication
+            const oldValue = this.currentValue;
+            if (value === oldValue)
+                return;
+
+            if (this.parentVM && !this.parentVM.canToggle({
                 value,
                 oldValue,
                 label: this.label,
@@ -56,23 +63,28 @@ const UCheckbox = {
             }))
                 return;
 
-            let cancel = false;
-            this.$emit('before-check', {
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-toggle', {
                 value,
                 oldValue,
                 label: this.label,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
+            }, this))
                 return;
 
+            // Assign and sync `value`
             this.currentValue = value;
-
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
-            this.$emit('check', { value, oldValue }, this);
 
-            this.parentVM && this.parentVM.onCheck({
+            // Emit `after-` events
+            if (value === true)
+                this.$emit('check', { value, oldValue }, this);
+            else if (value === false)
+                this.$emit('uncheck', { value, oldValue }, this);
+            this.$emit('toggle', { value, oldValue }, this);
+
+            // Call parentVM
+            this.parentVM && this.parentVM.onItemToggle({
                 value,
                 oldValue,
                 label: this.label,

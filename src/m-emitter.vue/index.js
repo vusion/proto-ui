@@ -48,6 +48,13 @@ const MEmitter = {
 
             $parent && callback($parent);
         },
+        $emitPrevent(name, $event, senderVM, ...args) {
+            let cancel = false;
+            this.$emit(name, Object.assign({
+                preventDefault: () => cancel = true,
+            }, $event), senderVM, ...args);
+            return cancel;
+        },
     },
 };
 

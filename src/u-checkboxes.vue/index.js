@@ -37,7 +37,7 @@ const UCheckboxes = {
             this.currentValue = value;
             this.itemVMs.forEach((itemVM) => itemVM.currentValue = value.includes(itemVM.label));
         },
-        canCheck($event) {
+        canToggle($event) {
             if (this.readonly || this.disabled)
                 return false;
 
@@ -51,7 +51,7 @@ const UCheckboxes = {
                 return this.min <= length && length <= this.max;
             }
         },
-        onCheck($event) {
+        onItemToggle($event) {
             const value = $event.value;
             const label = $event.itemVM.label;
 
@@ -62,7 +62,7 @@ const UCheckboxes = {
 
             this.$emit('input', this.currentValue, this);
             this.$emit('update:value', this.currentValue, this);
-            this.$emit('check', {
+            this.$emit('toggle', {
                 value: this.currentValue,
                 itemVM: $event.itemVM,
             }, this);

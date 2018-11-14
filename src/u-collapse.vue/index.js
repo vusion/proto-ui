@@ -15,14 +15,27 @@ const UCollapse = {
         };
     },
     methods: {
-        onToggle(itemVM, expanded) {
-            this.$emit('toggle', {
-                expanded,
+        onItemExpand(itemVM) {
+            this.$emit('expand', {
                 itemVM,
             }, this);
         },
-        toggleAll(expanded) {
-            this.itemVMs.forEach((itemVM) => itemVM.toggle(expanded));
+        onItemCollapse(itemVM) {
+            this.$emit('collapse', {
+                itemVM,
+            }, this);
+        },
+        expand(itemVM) {
+            itemVM.expand();
+        },
+        collapse(itemVM) {
+            itemVM.collapse();
+        },
+        expandAll() {
+            this.itemVMs.forEach((itemVM) => itemVM.expand());
+        },
+        collapseAll() {
+            this.itemVMs.forEach((itemVM) => itemVM.collapse());
         },
     },
 };

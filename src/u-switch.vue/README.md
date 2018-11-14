@@ -57,7 +57,7 @@ export default {
 | $event.value | Boolean | 开关状态 |
 | $event.oldValue | Boolean | 旧的开关状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | USwitch | 发送事件实例 |
 
 #### @input
 
@@ -66,7 +66,25 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Boolean | 切换后的开关状态 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | USwitch | 发送事件实例 |
+
+#### @on
+
+开关打开时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 无 |
+| senderVM | USwitch | 发送事件实例 |
+
+#### @off
+
+开关关闭时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 无 |
+| senderVM | USwitch | 发送事件实例 |
 
 #### @toggle
 
@@ -76,7 +94,7 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Boolean | 开关状态 |
 | $event.oldValue | Boolean | 旧的开关状态 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | USwitch | 发送事件实例 |
 
 #### @change
 
@@ -86,4 +104,4 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Boolean | 开关状态 |
 | $event.oldValue | Boolean | 旧的开关状态 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | USwitch | 发送事件实例 |

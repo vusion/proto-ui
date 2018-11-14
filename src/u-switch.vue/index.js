@@ -37,26 +37,34 @@ const USwitch = {
         onBlur(e) {
             this.$emit('blur', e, this);
         },
-        toggle() {
+        toggle(value) {
+            // Check enable
             if (this.readonly || this.disabled)
                 return;
 
-            const oldValue = this.currentValue;
-            const value = !this.currentValue;
+            // Method overloading
+            if (value === undefined)
+                value = !this.currentValue;
 
-            let cancel = false;
-            this.$emit('before-toggle', {
-                value,
-                oldValue,
-                preventDefault: () => cancel = true,
-            }, this);
-            if (cancel)
+            // Prevent replication
+            const oldValue = this.currentValue;
+            if (value === oldValue)
                 return;
 
-            this.currentValue = value;
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-toggle', { value, oldValue }, this))
+                return;
 
+            // Assign and sync `value`
+            this.currentValue = value;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
+
+            // Emit `after-` events
+            if (value)
+                this.$emit('on', undefined, this);
+            else
+                this.$emit('off', undefined, this);
             this.$emit('toggle', { value, oldValue }, this);
         },
     },
