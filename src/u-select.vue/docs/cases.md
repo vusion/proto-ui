@@ -601,3 +601,90 @@ export default {
     <u-select-item value="delete">delete</u-select-item>
 </u-select>
 ```
+
+### 数据源
+
+#### 异步数据源
+
+``` vue
+<template>
+<u-select multiple multiple-appearance="tags" tags-overflow="visible" filterable placeholder="请输入地名"
+    v-model="value" :data-source="dataSource"></u-select>
+</template>
+
+<script>
+import { utils } from 'library';
+
+export default {
+    data() {
+        return {
+            value: [],
+        };
+    },
+    created() {
+        const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
+
+        this.dataSource = new utils.DataSource({
+            fetch({ filter }) {
+                const value = filter.text.toLowerCase();
+                // 这里使用 Promise 和 setTimeout 模拟一个 fetch 异步请求
+                return new Promise((resolve, reject) => {
+                    setTimeout((result) => {
+                        resolve(data.filter((item) => item.value.toLowerCase().startsWith(value)));
+                    }, 500);
+                });
+            },
+        });
+    },
+};
+</script>
+```
+
+#### 异步分页数据源
+
+<!-- @TODO: 同步分页 -->
+
+当过滤后数据量仍然很大时，可以分页加载异步数据。在`new DataSource`时，直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+
+``` vue
+<template>
+<u-select multiple multiple-appearance="tags" tags-overflow="visible" filterable placeholder="请输入 item, info 或 test"
+    v-model="value" :data-source="dataSource"></u-select>
+</template>
+
+<script>
+import { utils } from 'library';
+
+export default {
+    data() {
+        return {
+            value: [],
+        };
+    },
+    created() {
+        let data = [];
+        for (let i = 1; i <= 1000; i++) {
+            data.push('item' + i);
+            data.push('info' + i);
+            data.push('detail' + i);
+        }
+        data = data.map((text) => ({ text, value: text }));
+
+        this.dataSource = new utils.DataSource({
+            loadMore(params) {
+                const value = params.filter.text.toLowerCase();
+
+                // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(data.filter((item) => item.value.includes(value))
+                            .slice(params.offset, params.offset + params.limit)
+                        );
+                    }, 500);
+                });
+            },
+        });
+    },
+};
+</script>
+```

@@ -27,7 +27,8 @@ const MMultiplex = {
                 throw new Error('`value` should be an Array!');
 
             // 剪枝
-            if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
+            if (value !== oldValue && value.length === oldValue.length
+                && value.every((val, index) => val === oldValue[index]))
                 return;
 
             this.watchValue(value);
@@ -41,15 +42,16 @@ const MMultiplex = {
             const oldValue = oldVMs.map((itemVM) => itemVM.value);
             const value = selectedVMs.map((itemVM) => itemVM.value);
 
-            if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
-                return;
+            // @TODO: 因为是同一个数组。。没有好的剪枝方法
+            // if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
+            //     return;
 
-            const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
+            // const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('change', {
                 value,
                 oldValue,
                 selectedVMs,
-                selectedItems,
+                // selectedItems,
             });
         },
     },
@@ -103,7 +105,7 @@ const MMultiplex = {
 
             const oldValue = this.value;
             const oldVMs = this.selectedVMs;
-            const oldItems = oldVMs.map((itemVM) => itemVM.item);
+            // const oldItems = oldVMs.map((itemVM) => itemVM.item);
 
             // Emit a `before-` event with preventDefault()
             if (this.$emitPrevent('before-select', {
@@ -112,7 +114,7 @@ const MMultiplex = {
                 itemVM,
                 item: itemVM && itemVM.item,
                 oldVMs,
-                oldItems,
+                // oldItems,
             }, this))
                 return;
 
@@ -124,7 +126,7 @@ const MMultiplex = {
             // Assign and sync `value`
             const selectedVMs = this.selectedVMs;
             const value = selectedVMs.map((itemVM) => itemVM.value);
-            const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
+            // const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
 
@@ -136,7 +138,7 @@ const MMultiplex = {
                     value,
                     oldValue,
                     selectedVMs,
-                    selectedItems,
+                    // selectedItems,
                 }, this);
             } else {
                 this.$emit('remove', {
@@ -145,7 +147,7 @@ const MMultiplex = {
                     value,
                     oldValue,
                     selectedVMs,
-                    selectedItems,
+                    // selectedItems,
                 }, this);
             }
 
@@ -156,9 +158,9 @@ const MMultiplex = {
                 itemVM,
                 item: itemVM.item,
                 selectedVMs,
-                selectedItems,
+                // selectedItems,
                 itemVMs: selectedVMs, // @deprecated
-                items: selectedItems, // @deprecated
+                // items: selectedItems, // @deprecated
             }, this);
         },
     },

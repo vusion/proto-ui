@@ -205,6 +205,8 @@ const USelect = {
         onBlur() {
             if (!this.filterable)
                 return;
+            if (this.multiple) // @TODO: 需要理清一下需求
+                return;
 
             // 这边必须要用 setTimeout，$nextTick 也不行，需要保证在 @select 之后完成
             setTimeout(() => {
