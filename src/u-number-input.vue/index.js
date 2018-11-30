@@ -9,7 +9,8 @@ export default {
     directives: { repeatClick },
     props: {
         // 只能传入数字
-        value: { type: Number, default: 0 },
+        value: { type: [Number, String], default: 0 },
+        defaultValue: Number,
         min: { type: Number, default: -Infinity },
         max: { type: Number, default: Infinity },
         step: { type: Number, default: 1, validator: (step) => step >= 0 },
@@ -22,7 +23,7 @@ export default {
     },
     data() {
         const data = {
-            currentValue: this.value,
+            currentValue: this.fix(this.value),
             // 格式化后的 value，与`<input>`中的实际值保持一致
             formattedValue: this.value,
             currentFormatter: undefined,
@@ -54,10 +55,7 @@ export default {
     },
     watch: {
         value(value) {
-            value = +value; // 防止出现`1.fabc`，转换成`1.`的情况
-            if (isNaN(value) || value === '' || value === null)
-                return;
-            this.currentValue = value;
+            this.currentValue = this.fix(value);
             this.formattedValue = this.currentFormatter.get(value);
         },
         currentValue(value, oldValue) {
@@ -73,18 +71,19 @@ export default {
     },
     methods: {
         fix(value) {
-            if (isNaN(value))
-                return this.currentValue;
-            else {
-                value = +value;
-                // 精度约束
-                value = Math.round(value / this.precision) * this.precision;
-                // 最大最小约束
-                value = Math.min(Math.max(this.min, value), this.max);
-                // 保留小数位数
-                value = +value.toFixed(this.precision < 1 ? -Math.floor(Math.log10(this.precision)) : 0);
-                return value;
-            }
+            // 为空时使用默认值
+            if (typeof value === 'string' && value.trim() === '' || value === null)
+                value = this.defaultValue !== undefined ? this.defaultValue : this.currentValue || 0;
+            else if (isNaN(value))
+                value = this.currentValue || this.defaultValue || 0;
+            value = +value;
+            // 精度约束
+            value = Math.round(value / this.precision) * this.precision;
+            // 最大最小约束
+            value = Math.min(Math.max(this.min, value), this.max);
+            // 保留小数位数
+            value = +value.toFixed(this.precision < 1 ? -Math.floor(Math.log10(this.precision)) : 0);
+            return value;
         },
         /**
          * 单纯输入
@@ -150,6 +149,28 @@ export default {
                 this.input(this.currentFormatter.set(this.formattedValue));
 
             this.$emit('blur', e);
+        },
+        reset() {
+            const oldValue = this.currentValue;
+
+            let cancel = false;
+            this.$emit('before-reset', {
+                oldValue,
+                value: this.defaultValue,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            this.currentValue = this.defaultValue;
+            this.formattedValue = this.currentFormatter.get(this.defaultValue);
+            this.$emit('input', this.defaultValue, this);
+            this.$emit('update:value', this.defaultValue, this);
+
+            this.$emit('reset', {
+                oldValue,
+                value: this.defaultValue,
+            }, this);
         },
     },
 };

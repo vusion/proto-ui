@@ -10,6 +10,22 @@
 </u-linear-layout>
 ```
 
+### 双向绑定
+``` vue
+<template>
+<u-number-input v-model="value"></u-number-input>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value: 6,
+        };
+    },
+};
+</script>
+```
+
 ### 最大值和最小值
 
 ``` html
@@ -107,6 +123,22 @@ export default {
 };
 </script>
 --```-->
+
+
+<!-- `-`-` vue
+<template>
+<u-number-input v-model="value" :default-value="3" :min="1"></u-number-input>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            value: '',
+        };
+    },
+};
+</script>
+`-`-` -->
 
 ## API
 ### Props/Attrs
