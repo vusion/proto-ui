@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.3.40",
+  "version": "0.3.41",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
