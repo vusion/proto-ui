@@ -85,6 +85,7 @@ export default {
             let rules = this.currentRules;
             rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
             if (this.ignoreRules || !rules || !rules.length) {
+                this.color = this.currentMessage = '';
                 this.dispatch('u-form', 'validate-item-vm', true);
                 return Promise.resolve();
             }
@@ -92,6 +93,8 @@ export default {
             this.state = 'validating';
             if (!silent)
                 this.color = this.state;
+            else
+                this.color = this.currentMessage = '';
 
             const name = this.name || 'field';
             const validator = new Validator({
