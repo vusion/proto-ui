@@ -1,21 +1,10 @@
 const event = {
     on(element, type, listener, options) {
-        if (element.addEventListener)
-            element.addEventListener(type, listener, options);
-        else if (element.attachEvent)
-            element.attachEvent('on' + type, listener);
-        else
-            element['on' + type] = listener;
-
+        element.addEventListener(type, listener, options);
         return () => event.off(element, type, listener, options);
     },
     off(element, type, listener, options) {
-        if (element.removeEventListener)
-            element.removeEventListener(type, listener, options);
-        else if (element.detachEvent)
-            element.detachEvent('on' + type, listener);
-        else
-            element['on' + type] = null;
+        element.removeEventListener(type, listener, options);
     },
     once(el, type, listener) {
         const fn = function (...args) {
