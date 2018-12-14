@@ -1,0 +1,89 @@
+$height: 24px;
+
+.root {
+    cursor: $cursor-pointer;
+    margin-left: 20px;
+}
+
+.item {
+    position: relative;
+}
+
+.back {
+    position: absolute;
+    left: -10000px;
+    right: -10000px;
+    height: 100%;
+}
+
+.expander {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    margin-left: -20px;
+}
+
+.expander::before {
+    content: '▸';
+}
+
+.expander[expanded]::before {
+    content: '▾';
+}
+
+.text {
+    position: relative;
+    padding: 4px 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item:hover .back {
+    background: $background-color-base;
+}
+
+.item:focus {
+    outline: $focus-outline;
+}
+
+.item:focus .back {
+    background: $background-color-base;
+}
+
+.item[readonly] {
+    cursor: default;
+}
+
+.item[readonly] .back {
+    background: none;
+}
+
+.item[selected] .back {
+    background: $brand-primary;
+}
+
+.item[selected] .text {
+    color: white;
+}
+
+.item[selected] .expander {
+    color: white;
+}
+
+.item[disabled] {
+    /* @Private */
+    cursor: $cursor-not-allowed;
+    color: $brand-disabled;
+}
+
+.item[disabled] .back {
+    background: none;
+}
+
+.item[selected][disabled] .back {
+    background: $brand-disabled-light;
+}
