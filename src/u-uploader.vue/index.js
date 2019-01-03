@@ -158,7 +158,7 @@ export default {
 
                 xhr.open('POST', this.url);
                 xhr.upload.onprogress = function (e) {
-                    if (event.lengthComputable) {
+                    if (e.lengthComputable) {
                         /**
                         * @event progress 发送中触发
                         * @property {object} data 待发送的数据
