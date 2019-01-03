@@ -39,8 +39,8 @@ export default {
                 set(value) { return value; },
             };
         }
-
-        data.formattedValue = data.currentFormatter.get(this.value);
+        // 初始值需要在最小值和最大值范围之内
+        data.formattedValue = this.fix(data.currentFormatter.get(this.value));
 
         return data;
     },
@@ -54,23 +54,18 @@ export default {
         },
     },
     watch: {
-        value: {
-            handler(value, oldValue) {
-                if (value !== undefined) {
-                    this.currentValue = this.fix(value);
-                    this.formattedValue = this.currentFormatter.get(value);
-                }
-                this.$emit('change', {
-                    value,
-                    oldValue,
-                    formattedValue: this.currentFormatter.get(value),
-                });
-            },
-            immediate: true,
+        value(value, oldValue) {
+            this.currentValue = this.fix(value);
+            this.formattedValue = this.currentFormatter.get(value);
         },
     },
     created() {
         this.debouncedInput = debounce(this.input, 400);
+        this.$emit('change', {
+            value: this.fix(this.value),
+            oldValue: undefined,
+            formattedValue: this.fix(this.currentFormatter.get(this.value)),
+        });
     },
     methods: {
         fix(value) {
@@ -96,13 +91,18 @@ export default {
             if (this.readonly || this.disabled)
                 return;
             value = this.fix(value);
-
+            const oldValue = this.currentValue;
             this.currentValue = value;
             this.formattedValue = this.currentFormatter.get(value);
             this.$refs.input.currentValue = this.formattedValue;
 
             this.$emit('input', value);
             this.$emit('update:value', value);
+            this.$emit('change', {
+                value,
+                oldValue,
+                formattedValue: this.currentFormatter.get(value),
+            });
         },
         /**
          * 按上下按钮发送 adjust 事件
@@ -142,6 +142,14 @@ export default {
                 this.formattedValue = value;
                 this.$emit('input', value);
                 this.$emit('update:value', value);
+                // 兼容以前 change事件抛出规则
+                if (!isNaN(value)) {
+                    this.$emit('change', {
+                        value: +value,
+                        oldValue: this.currentValue,
+                        formattedValue: this.currentFormatter.get(+value),
+                    });
+                }
             }
         },
         onFocus(e) {
@@ -169,6 +177,11 @@ export default {
             this.formattedValue = this.currentFormatter.get(this.defaultValue);
             this.$emit('input', this.defaultValue, this);
             this.$emit('update:value', this.defaultValue, this);
+            this.$emit('change', {
+                value: this.defaultValue,
+                oldValue,
+                formattedValue: this.formattedValue,
+            });
 
             this.$emit('reset', {
                 oldValue,
