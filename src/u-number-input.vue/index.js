@@ -54,14 +54,19 @@ export default {
         },
     },
     watch: {
-        value(value, oldValue) {
-            this.currentValue = this.fix(value);
-            this.formattedValue = this.currentFormatter.get(value);
-            this.$emit('change', {
-                value,
-                oldValue,
-                formattedValue: this.currentFormatter.get(value),
-            });
+        value: {
+            handler(value, oldValue) {
+                if (value !== undefined) {
+                    this.currentValue = this.fix(value);
+                    this.formattedValue = this.currentFormatter.get(value);
+                }
+                this.$emit('change', {
+                    value,
+                    oldValue,
+                    formattedValue: this.currentFormatter.get(value),
+                });
+            },
+            immediate: true,
         },
     },
     created() {
