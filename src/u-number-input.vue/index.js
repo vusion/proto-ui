@@ -54,11 +54,9 @@ export default {
         },
     },
     watch: {
-        value(value) {
+        value(value, oldValue) {
             this.currentValue = this.fix(value);
             this.formattedValue = this.currentFormatter.get(value);
-        },
-        currentValue(value, oldValue) {
             this.$emit('change', {
                 value,
                 oldValue,
