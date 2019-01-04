@@ -1,5 +1,4 @@
 import ListView from '../u-list-view.vue';
-import DataSource from '../base/utils/DataSource';
 import i18n from './i18n';
 
 export default {
@@ -51,7 +50,7 @@ export default {
         watchValue(value) {
             if (this.selectedVM && this.selectedVM.value === value)
                 return;
-            if (value === undefined)
+            if (value === undefined || value === '')
                 this.selectedVM = undefined;
             else {
                 this.selectedVM = this.itemVMs.find((itemVM) => itemVM.value === value);
@@ -109,7 +108,7 @@ export default {
          * @param {*} item
          */
         match(item) {
-            if (!this.filterText || this.dataSource)
+            if (!this.filterText || this.currentDataSource)
                 return true;
 
             let matchMethod;
@@ -127,14 +126,10 @@ export default {
             return !!matchMethod(item.innerText, this.filterText);
         },
         fetchData(clear) {
-            if (!this.dataSource)
+            if (!this.currentDataSource)
                 return;
-            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
-                fetch: this.dataSource,
-                promise: Promise.resolve(),
-                clear() { /* nothing */ },
-            };
 
+            const dataSource = this.currentDataSource;
             // dataSource 的多次 promise 必须串行
             dataSource.promise = dataSource.promise.then(() => {
                 this.loading = true;
@@ -159,7 +154,7 @@ export default {
                 if (result instanceof Promise)
                     return result.then(then).catch(() => this.loading = false);
                 else if (result instanceof Array)
-                    return then(result);
+                    return Promise.resolve(result).then(then);
                 else
                     throw new TypeError('Wrong type of `dataSource.fetch` result!');
             });
@@ -171,7 +166,7 @@ export default {
                 this.$emit('input', value);
                 this.$emit('update:value', value);
             }
-            this.dataSource && this.debouncedFetchData(true);
+            this.currentDataSource && this.debouncedFetchData(true);
             this.toggle(true);
         },
         onBlur() {

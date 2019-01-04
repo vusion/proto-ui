@@ -194,9 +194,11 @@ export default {
 
 ### 数据源
 
+#### 同步数据源
+
 当数据量不大时，除了用标签形式添加，也可以用`data`属性一次性传进来，`data`属性的格式为`Array<{ text, value }>`。
 
-但如果数据量很大时，推荐使用`data-source`属性进行“分页加载”。
+但如果数据量很大时，推荐使用`data-source`属性进行**前端分页**。
 
 ``` vue
 <template>
@@ -204,13 +206,15 @@ export default {
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
             <p>没有使用分页功能</p>
+            <!-- 没有使用分页功能，用`data`直接传入 -->
             <u-list-view :data="data"
                 style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
         <u-grid-layout-column :span="4">
             <p>使用分页加载功能</p>
-            <u-list-view :data-source="dataSource"
+            <!-- `limit`表示分页大小，默认为 50，可以不传。 -->
+            <u-list-view :data-source="{ data, limit: 50 }"
                 style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
@@ -218,43 +222,37 @@ export default {
 </u-grid-layout>
 </template>
 <script>
-import { utils } from 'library';
-
 export default {
     data() {
-        return { data: [] };
-    },
-    created() {
-        // 构造数量较多的 1000 条数据
+        // 构造数量较多的 500 条数据
         let data = [];
-        for (let i = 1; i <= 1000; i++)
+        for (let i = 1; i <= 500; i++)
             data.push('item' + i);
         data = data.map((text) => ({ text, value: text }));
 
-        // 没有使用分页功能，直接传入
-        this.data = data;
-
-        // 使用`utils.DataSource`自动分页
-        this.dataSource = new utils.DataSource({
-            data,
-            limit: 50, // `limit`表示分页大小，默认为 50，可以不传。
-        });
+        return { data };
     },
 };
 </script>
 ```
 
-#### 异步数据源
+#### 异步一次性数据源
 
-也可以使用异步加载数据，在`new DataSource`时，可以直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+如果要使用异步加载数据，一种方法是将请求后的数据直接传入`data`属性。另一种方法是给`data-source`传入一个方法，要求返回一个`Promise`对象，该方法在组件初始创建时会被调用一次。
 
 ``` vue
 <template>
 <u-grid-layout>
     <u-grid-layout-row>
         <u-grid-layout-column :span="4">
-            <p>使用分页加载功能</p>
-            <u-list-view :data-source="dataSource"
+            <p>使用`data`属性</p>
+            <u-list-view :data="data"
+                style="height: 182px">
+            </u-list-view>
+        </u-grid-layout-column>
+        <u-grid-layout-column :span="4">
+            <p>使用`data-source`属性</p>
+            <u-list-view :data-source="load"
                 style="height: 182px">
             </u-list-view>
         </u-grid-layout-column>
@@ -262,26 +260,66 @@ export default {
 </u-grid-layout>
 </template>
 <script>
-import { utils } from 'library';
+// 模拟构造远程数据
+const remoteData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
 
 export default {
+    data() {
+        return {
+            data: [],
+        };
+    },
     created() {
-        // 构造数量较多的 1000 条数据
-        let data = [];
-        for (let i = 1; i <= 1000; i++)
-            data.push('item' + i);
-        data = data.map((text) => ({ text, value: text }));
+        // 使用`data`属性
+        this.load().then((data) => this.data = data);
+    },
+    methods: {
+        load() {
+            // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(remoteData);
+                }, 500);
+            });
+        },
+    },
+};
+</script>
+```
 
-        this.dataSource = new utils.DataSource({
-            loadMore(params) {
-                // 这里使用 Promise 和 setTimeout 模拟一个异步请求
-                return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve(data.slice(params.offset, params.offset + params.limit));
-                    }, 500);
-                });
-            },
-        });
+#### 异步分页数据源（后端分页）
+
+如果要使用异步分页加载，需要给`data-source`传入一个对象，包含`loadMore`方法。该方法会接受一些相关的参数，要求返回一个`Promise`对象。
+
+``` vue
+<template>
+<u-grid-layout>
+    <u-grid-layout-row>
+        <u-grid-layout-column :span="4">
+            <u-list-view :data-source="{ loadMore }"
+                style="height: 182px">
+            </u-list-view>
+        </u-grid-layout-column>
+    </u-grid-layout-row>
+</u-grid-layout>
+</template>
+<script>
+// 模拟构造数量较多的 500 条远程数据
+let remoteData = [];
+for (let i = 1; i <= 500; i++)
+    remoteData.push('item' + i);
+remoteData = remoteData.map((text) => ({ text, value: text }));
+
+export default {
+    methods: {
+        loadMore(params) {
+            // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(remoteData.slice(params.offset, params.offset + params.limit));
+                }, 500);
+            });
+        },
     },
 };
 </script>
@@ -295,7 +333,7 @@ export default {
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | data | Array\<{ text, value }\> | | Data 书写方式中的数据列表 |
-| data-source | DataSource, Function | | 多功能数据源 |
+| data-source | DataSource, Function, Object | | 多功能数据源 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | multiple | Boolean | `false` | 是否可以多选 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |

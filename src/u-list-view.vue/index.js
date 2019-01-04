@@ -11,7 +11,7 @@ export default {
         value: null,
         field: { type: String, default: 'text' },
         data: Array,
-        dataSource: [DataSource, Function],
+        dataSource: [DataSource, Function, Object],
         cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
         collapsible: { type: Boolean, default: false },
@@ -28,12 +28,16 @@ export default {
             itemVMs: [],
             selectedVM: undefined,
             currentData: this.data,
+            currentDataSource: this.normalizeDataSource(this.dataSource),
             loading: false,
         };
     },
     watch: {
         data(data) {
             this.currentData = data;
+        },
+        dataSource(dataSource) {
+            this.currentDataSource = this.normalizeDataSource(dataSource);
         },
         // It is dynamic to find selected item by value
         // so using watcher is better than computed property.
@@ -77,7 +81,7 @@ export default {
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
         this.debouncedFetchData = debounce(this.fetchData, 100);
-        this.dataSource && this.debouncedFetchData();
+        this.currentDataSource && this.debouncedFetchData();
     },
     mounted() {
         // Must trigger `value` watcher at mounted hook.
@@ -85,6 +89,27 @@ export default {
         this.watchValue(this.value);
     },
     methods: {
+        normalizeDataSource(dataSource) {
+            if (dataSource instanceof DataSource)
+                return dataSource;
+            else if (dataSource instanceof Function) {
+                return new DataSource({
+                    load(params) {
+                        const result = dataSource(params);
+
+                        if (result instanceof Promise)
+                            return result.catch(() => this.loading = false);
+                        else if (result instanceof Array)
+                            return Promise.resolve(result);
+                        else
+                            throw new TypeError('Wrong type of `dataSource.fetch` result!');
+                    },
+                });
+            } else if (dataSource instanceof Object) {
+                return new DataSource(dataSource);
+            } else
+                return undefined;
+        },
         watchValue(value) {
             if (this.multiple)
                 this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value && value.includes(itemVM.value));
@@ -196,7 +221,7 @@ export default {
                 else
                     parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
                 if (selectedIndex === this.itemVMs.length - 1) {
-                    this.dataSource && this.debouncedFetchData();
+                    this.currentDataSource && this.debouncedFetchData();
                     setTimeout(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight, 200);
                 }
             }
@@ -213,14 +238,11 @@ export default {
             this.groupVMs.forEach((groupVM) => groupVM.toggle(expanded));
         },
         fetchData() {
-            if (!this.dataSource)
+            if (!this.currentDataSource)
                 return;
-            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
-                fetch: this.dataSource,
-            };
 
             this.loading = true;
-            const result = dataSource.fetch({
+            const result = this.currentDataSource.fetch({
                 // @TODO: 要不要设置 limit 属性
                 offset: this.currentData ? this.currentData.length : 0,
             });
@@ -237,11 +259,13 @@ export default {
                 throw new TypeError('Wrong type of `dataSource.fetch` result!');
         },
         onScroll(e) {
-            if (!this.dataSource)
+            if (!this.currentDataSource)
                 return;
 
             const el = e.target;
-            if (el.scrollHeight === el.scrollTop + el.clientHeight)
+            const offset = this.currentData ? this.currentData.length : 0;
+            if (el.scrollHeight === el.scrollTop + el.clientHeight
+                && this.currentDataSource.hasMore(offset))
                 this.debouncedFetchData();
         },
     },
