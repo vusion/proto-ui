@@ -40,7 +40,7 @@ export default {
             };
         }
         // 初始值需要在最小值和最大值范围之内
-        data.formattedValue = this.fix(data.currentFormatter.get(this.value));
+        data.formattedValue = data.currentFormatter.get(data.currentValue);
 
         return data;
     },
@@ -91,6 +91,7 @@ export default {
             if (this.readonly || this.disabled)
                 return;
             value = this.fix(value);
+
             const oldValue = this.currentValue;
             this.currentValue = value;
             this.formattedValue = this.currentFormatter.get(value);
@@ -101,7 +102,7 @@ export default {
             this.$emit('change', {
                 value,
                 oldValue,
-                formattedValue: this.currentFormatter.get(value),
+                formattedValue: this.formattedValue,
             });
         },
         /**
@@ -142,14 +143,12 @@ export default {
                 this.formattedValue = value;
                 this.$emit('input', value);
                 this.$emit('update:value', value);
-                // 兼容以前 change事件抛出规则
-                if (!isNaN(value)) {
-                    this.$emit('change', {
-                        value: +value,
-                        oldValue: this.currentValue,
-                        formattedValue: this.currentFormatter.get(+value),
-                    });
-                }
+                // @change 与 @input 保持一致
+                this.$emit('change', {
+                    value,
+                    oldValue: this.currentValue,
+                    formattedValue: this.currentFormatter.get(value),
+                });
             }
         },
         onFocus(e) {
@@ -177,16 +176,17 @@ export default {
             this.formattedValue = this.currentFormatter.get(this.defaultValue);
             this.$emit('input', this.defaultValue, this);
             this.$emit('update:value', this.defaultValue, this);
-            this.$emit('change', {
-                value: this.defaultValue,
-                oldValue,
-                formattedValue: this.formattedValue,
-            });
 
             this.$emit('reset', {
                 oldValue,
                 value: this.defaultValue,
             }, this);
+
+            this.$emit('change', {
+                value: this.defaultValue,
+                oldValue,
+                formattedValue: this.formattedValue,
+            });
         },
     },
 };
