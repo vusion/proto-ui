@@ -79,7 +79,7 @@ export default {
             }
         },
         select(itemVM) {
-            if (this.readonly || this.disabled)
+            if (this.readonly || this.disabled || (itemVM && itemVM.disabled))
                 return;
 
             const oldValue = this.value;
