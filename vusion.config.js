@@ -72,6 +72,8 @@ module.exports = {
             { group: 'Feedback', name: 'u-drawer', alias: '抽屉' },
             { group: 'Feedback', name: 'u-lightbox', alias: '灯箱' },
             { group: 'Effects', name: 'u-carousel', alias: '走马灯' },
+            { group: 'Effects', name: 'u-watermark', alias: '水印' },
+            { group: 'Effects', name: 'u-forbidden', alias: '禁用' },
             { group: 'Progress & Charts', name: 'u-linear-progress', alias: '线型进度条' },
             { group: 'Progress & Charts', name: 'u-circular-progress', alias: '圆型进度条' },
             { group: 'Mixins & Utils', name: 'u-emitter', alias: '触发器' },

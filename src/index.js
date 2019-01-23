@@ -23,6 +23,7 @@ import Drawer from './u-drawer.vue';
 import Droppable from './u-droppable.vue';
 import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
+import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form-item.vue';
 import GridLayout from './u-grid-layout.vue';
@@ -93,6 +94,7 @@ import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
 import Uploader from './u-uploader.vue';
+import Watermark from './u-watermark.vue';
 
 export {
     directives,
@@ -119,6 +121,7 @@ export {
     Droppable,
     Emitter,
     Field,
+    Forbidden,
     Form,
     FormItem,
     GridLayout,
@@ -189,4 +192,5 @@ export {
     TreeViewNode,
     TreeViewText,
     Uploader,
+    Watermark,
 };
