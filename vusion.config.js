@@ -4,19 +4,19 @@ module.exports = {
     lint: true,
     webpack: {
         output: {
-            publicPath: '/proto-ui@0.3.x/',
+            publicPath: '/proto-ui/',
         },
     },
     webpackDevServer: {
         historyApiFallback: {
-            index: '/proto-ui@0.3.x/',
+            index: '/proto-ui/',
         },
     },
     docs: {
         title: 'Proto UI 组件库',
         logo: '原型组件',
         mode: 'history',
-        base: '/proto-ui@0.3.x/',
+        base: '/proto-ui/',
         navbar: [
             { text: '组件', to: '/components' },
             { text: '设计思路', to: '/ui-design' },

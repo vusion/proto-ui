@@ -6,11 +6,11 @@ export default {
         opacity: { type: Number, default: 0.1 },
         image: { type: [
             HTMLImageElement,
-            SVGImageElement,
             HTMLVideoElement,
             HTMLCanvasElement,
-            ImageBitmap,
-            OffscreenCanvas,
+            window.SVGImageElement,
+            window.ImageBitmap,
+            window.OffscreenCanvas,
         ] },
     },
     watch: {
