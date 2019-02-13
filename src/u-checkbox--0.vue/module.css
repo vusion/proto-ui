@@ -1,6 +1,17 @@
 .root {
+    position: relative;
     user-select: none;
     cursor: $cursor-pointer;
+}
+
+.root::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 16px;
+    left: 0;
+    top: 0;
 }
 
 .box {
