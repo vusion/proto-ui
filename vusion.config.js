@@ -92,5 +92,17 @@ module.exports = {
             { group: 'Mixins & Functional', name: 'f-droppable', alias: '拖放' },
             { group: 'Mixins & Functional', name: 'f-dragger', alias: '拖拽器' },
         ],
+        blocks: [],
+        directives: [
+            { group: 'Directive', name: 'v-repeat-click' },
+            { group: 'Directive', name: 'v-click-outside' },
+            { group: 'Directive', name: 'v-ellipsis-title' },
+            { group: 'Directive', name: 'v-focus' },
+        ],
+        filters: [],
+        utils: [
+            { group: 'Utils', name: 'DataSource' },
+            { group: 'Utils', name: 'dom' },
+        ],
     },
 };

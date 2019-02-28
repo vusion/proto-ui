@@ -1,5 +1,6 @@
-export * from './click';
-export * from './focus';
+export * from './v-repeat-click';
+export * from './v-focus';
+
 export * from './link';
 export * from './ellipsis';
 
