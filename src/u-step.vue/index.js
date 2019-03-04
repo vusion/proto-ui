@@ -1,28 +1,15 @@
-import Emitter from '../u-emitter.vue';
-import RouterItem from '../u-router-item.vue';
+import Tab from '../u-tab.vue';
 
 export default {
     name: 'u-step',
     parentName: 'u-steps',
-    mixins: [Emitter, RouterItem],
+    extends: Tab,
     props: {
-        title: String,
-    },
-    data() {
-        return {
-            parentVM: undefined,
-        };
+        value: { type: Number, default: 0 },
     },
     computed: {
-        selected() {
-            if (this.parentVM)
-                return this.parentVM.router ? this.active : this.parentVM.selectedVM === this;
+        index() {
+            return this.parentVM.itemVMs.indexOf(this);
         },
-    },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
 };

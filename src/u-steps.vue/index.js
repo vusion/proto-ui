@@ -1,54 +1,76 @@
+import Tabs from '../u-tabs.vue';
+
 export default {
     name: 'u-steps',
     childName: 'u-step',
+    extends: Tabs,
     props: {
         value: { type: Number, default: 0 },
-        router: { type: Boolean, default: false },
-    },
-    data() {
-        return {
-            itemVMs: [],
-            selectedVM: undefined,
-            // currentValue: this.value,
-        };
+        readonly: { type: Boolean, default: true },
+        layout: { type: String, default: 'block' },
+        size: String,
     },
     watch: {
-        value(value, oldValue) {
-            // this.currentValue = +value;
-            this.watchValue(value, oldValue);
-            this.$emit('change', { value, oldValue });
-        },
+        // This method just run once after pushing many itemVMs
         itemVMs() {
-            this.watchValue(this.value);
+            // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
+            const value = this.selectedVM ? this.selectedVM.index : this.value;
+            this.selectedVM = undefined;
+            this.watchValue(value);
         },
-        // currentValue(value, oldValue) {
-        //     value = Math.max(0, Math.min(value, this.itemVMs.length));
-        //     if (value === oldValue)
-        //         return;
-
-        //     this.watchValue(value, oldValue);
-        //     this.$emit('change', {
-        //         value,
-        //         oldValue,
-        //     });
-        // },
     },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
-    },
-    mounted() {
-        this.watchValue(this.value);
+    computed: {
+        itemWidth() {
+            if (this.size === 'auto')
+                return (1 / this.itemVMs.length) * 100 + '%';
+            else
+                return undefined;
+        },
     },
     methods: {
         watchValue(value) {
-            this.selectedVM = this.itemVMs[value];
+            if (this.selectedVM && this.selectedVM.index === value)
+                return;
+            if (value === undefined)
+                this.selectedVM = this.autoSelect ? this.itemVMs[0] : undefined;
+            else {
+                this.selectedVM = this.itemVMs.find((itemVM) => itemVM.index === value);
+                this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
+            }
+        },
+        select(itemVM) {
+            if (this.readonly || this.disabled || (itemVM && itemVM.disabled))
+                return;
+
+            const oldValue = this.value;
+
+            let cancel = false;
+            this.$emit('before-select', {
+                value: itemVM && itemVM.index,
+                oldValue,
+                item: itemVM && itemVM.item,
+                itemVM,
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
+                return;
+
+            if (this.cancelable && this.selectedVM === itemVM)
+                this.selectedVM = undefined;
+            else
+                this.selectedVM = itemVM;
+
+            const value = this.selectedVM && this.selectedVM.index;
+            const item = this.selectedVM && this.selectedVM.item;
+
+            this.$emit('input', value);
+            this.$emit('update:value', value);
+            this.$emit('select', {
+                value,
+                oldValue,
+                item,
+                itemVM: this.selectedVM,
+            });
         },
     },
 };

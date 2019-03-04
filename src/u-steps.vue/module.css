@@ -8,41 +8,62 @@
     display: inline-block;
     position: relative;
     width: 200px;
-    padding-top: 8px;
 }
 
-.item::before {
-    display: block;
-    content: '';
-    position: absolute;
+.item-body {
+    display: inline-block;
+    cursor: $cursor-pointer;
+    position: relative;
     z-index: 2;
-    left: 50%;
-    top: -4px;
+}
+
+.root[readonly] .item-body {
+    cursor: default;
+}
+
+.item[disabled] .item-body {
+    color: $brand-disabled;
+    cursor: $cursor-not-allowed;
+}
+
+.radio {
+    display: inline-block;
+    content: '';
     width: 10px;
     height: 10px;
     border-radius: 100%;
-    margin-left: -5px;
     background: $gray-lighter;
 }
 
+.title {
+    display: block;
+}
+
+/* @TODO: use before */
 .item::after {
     display: block;
     content: '';
+    pointer-events: none;
     position: absolute;
     z-index: 1;
     right: 50%;
-    top: 0;
+    top: 10px;
     width: 100%;
     height: 2px;
     background-color: $gray-lighter;
 }
 
-.item[pass]::after, .item[pass]::before {
+.item[passed]::after {
     background-color: $brand-primary;
 }
 
 .item:first-child::after {
     display: none;
+}
+
+.item[passed] .radio {
+    background-color: $brand-primary;
+    color: white;
 }
 
 .body {
