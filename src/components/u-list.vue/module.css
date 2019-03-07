@@ -1,0 +1,15 @@
+.root {
+    list-style: none;
+}
+
+.root[line] .item:not(:last-child) {
+    border-bottom: 1px solid $border-color-base;
+}
+
+.root[striped] .item:nth-of-type(odd) {
+    background: $background-color-light;
+}
+
+.root[hover] .item:hover {
+    background: $background-color-base;
+}

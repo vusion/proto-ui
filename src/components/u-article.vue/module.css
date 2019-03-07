@@ -12,7 +12,7 @@
     padding: 6px 20px;
     margin: 40px -20px;
     color: #6a6f75;
-    border-bottom: 3px solid #f0f1f5;
+    border-bottom: 3px solid #f2f3f8;
 }
 
 .root > h3 {
@@ -58,13 +58,14 @@
 }
 
 .root > table th {
+    text-align: left;
     color: #a7afbb;
 }
 
 .root > table th, .root > table td {
-    border: 1px solid $border-color-base;
     padding: 4px 8px;
     font-size: 13px;
+    border: 1px solid $border-color-base;
 }
 
 .root > table img {

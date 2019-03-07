@@ -8,10 +8,28 @@
     color: #6a6f75;
 }
 
+.root th {
+    text-align: left;
+    border-bottom: 1px solid $border-color-base;
+}
+
 .root th, .root td {
-    border: 1px solid $border-color-base;
     padding: 6px 8px;
     font-size: 13px;
+}
+
+.root[line="both"] th, .root[line="both"] td {
+    border: 1px solid $border-color-base;
+}
+
+.root[line="horizontal"] th, .root[line="horizontal"] td {
+    border-top: 1px solid $border-color-base;
+    border-bottom: 1px solid $border-color-base;
+}
+
+.root[line="vertical"] th, .root[line="vertical"] td {
+    border-left: 1px solid $border-color-base;
+    border-right: 1px solid $border-color-base;
 }
 
 .root[striped] tbody tr:nth-of-type(odd) {

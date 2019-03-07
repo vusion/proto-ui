@@ -34,6 +34,7 @@ export * from './u-label.vue';
 export * from './u-linear-layout.vue';
 export * from './u-linear-progress.vue';
 export * from './u-link.vue';
+export * from './u-list.vue';
 export * from './u-list-view.vue';
 export * from './u-loading.vue';
 export * from './u-logo.vue';
