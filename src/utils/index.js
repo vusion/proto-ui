@@ -1,4 +1,5 @@
 export { default as DataSource } from './DataSource';
-export * from './dom.js';
-export * from './style.js';
-export * from './math.js';
+export * from './dom';
+export * from './style';
+export * from './math';
+export * from './edit';

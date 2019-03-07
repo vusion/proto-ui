@@ -103,6 +103,7 @@ module.exports = {
         utils: [
             { group: 'Utils', name: 'DataSource' },
             { group: 'Utils', name: 'dom' },
+            { group: 'Utils', name: 'edit' },
         ],
     },
 };
