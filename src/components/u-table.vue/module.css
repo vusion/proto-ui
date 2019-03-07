@@ -1,0 +1,23 @@
+.root {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.root caption {
+    font-size: 14px;
+    color: #6a6f75;
+}
+
+.root th, .root td {
+    border: 1px solid $border-color-base;
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
+.root[striped] tbody tr:nth-of-type(odd) {
+    background: $background-color-light;
+}
+
+.root[hover] tbody tr:hover {
+    background: $background-color-base;
+}

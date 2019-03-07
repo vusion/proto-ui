@@ -1,0 +1,48 @@
+<div :class="$style.root" ref="root" :border="border">
+    <div :class="$style.title" :style="{ textAlign: titleAlignment }">{{ title }}</div>
+    <div :class="$style.head">
+        <u-table :class="$style['head-table']">
+            <colgroup>
+                <col v-for="columnVM in columnVMs" :width="columnVM.currentWidth"></col>
+            </colgroup>
+            <thead><tr>
+                <th v-for="columnVM in columnVMs">
+                    <span>{{ columnVM.title }}</span>
+                </th>
+            </tr></thead>
+        </u-table>
+    </div>
+    <div :class="$style.body">
+        <u-table ref="bodyTable" :class="$style['body-table']">
+            <colgroup>
+                <col v-for="columnVM in columnVMs" :width="columnVM.currentWidth"></col>
+            </colgroup>
+            <tbody>
+                <tr v-if="data === undefined || loading">
+                    <td :class="$style.center" :colspan="columnVMs.length">
+                        <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
+                    </td>
+                </tr>
+                <tr v-else-if="data === null || error">
+                    <td :class="$style.center" :colspan="columnVMs.length">
+                        <slot name="error">{{ errorText }}</slot>
+                    </td>
+                </tr>
+                <tr v-else-if="!data.length">
+                    <td :class="$style.center" :colspan="columnVMs.length">
+                        <slot name="empty">{{ emptyText }}</slot>
+                    </td>
+                </tr>
+                <template v-else>
+                    <tr v-for="(item, index) in data">
+                        <td v-for="columnVM in columnVMs">
+                            <u-render v-if="columnVM.$scopedSlots.default" :vnode="columnVM.$scopedSlots.default({ item, columnVM, index })"></u-render>
+                            <span v-else>{{ item[columnVM.field] }}</span>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </u-table>
+    </div>
+    <div><slot></slot></div>
+</div>
