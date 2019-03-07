@@ -8,3 +8,37 @@
 .center {
     text-align: center;
 }
+
+.sort {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -1px;
+    color: $brand-disabled;
+    cursor: $cursor-pointer;
+}
+
+.sort::before {
+    position: absolute;
+    left: 0;
+    top: -3px;
+    line-height: 1;
+    icon-font: url('../i-icon.vue/assets/arrow-up.svg');
+}
+
+.sort::after {
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    line-height: 1;
+    icon-font: url('../i-icon.vue/assets/arrow-down.svg');
+}
+
+.sort[sorting][order="asc"]::before {
+    color: $brand-primary;
+}
+
+.sort[sorting][order="desc"]::after {
+    color: $brand-primary;
+}

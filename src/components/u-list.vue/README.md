@@ -1,6 +1,6 @@
 # 列表 UList
 
-对列表样式做了简单的修饰。如果需要类似选择等更多的功能，请使用 [UListView](./u-list-view)。
+对列表样式做了简单的修饰。如果需要类似选择等更多的功能，请使用 [UListView](../u-list-view)。
 
 <u-h2-tabs router>
     <u-h2-tab title="基础示例" to="/components/u-list/examples"></u-h2-tab>

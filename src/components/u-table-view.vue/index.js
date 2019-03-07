@@ -1,8 +1,5 @@
-import { MParent } from '../m-parent.vue';
-
 export const UTableView = {
     name: 'u-table-view',
-    mixins: [MParent],
     props: {
         data: { type: Array },
         title: String,
@@ -13,30 +10,34 @@ export const UTableView = {
         error: { type: Boolean, default: false },
         errorText: { type: String, default: '加载失败，请重试' },
         emptyText: { type: String, default: '暂无数据' },
+        //
+        sorting: { type: Object, default: () => ({ field: undefined, order: 'desc' }) },
+        defaultOrder: { type: String, default: 'asc' },
+        // filtering
+        // filterOptions
     },
     data() {
         return {
             columnVMs: [],
+            currentData: Array.from(this.data),
+            currentSorting: this.sorting,
         };
-    },
-    created() {
-        this.$on('add-column-vm', (columnVM) => {
-            columnVM.parentVM = this;
-            this.columnVMs.push(columnVM);
-        });
-        this.$on('remove-column-vm', (columnVM) => {
-            columnVM.parentVM = undefined;
-            this.columnVMs.splice(this.columnVMs.indexOf(columnVM), 1);
-        });
     },
     mounted() {
         this.handleResize();
     },
     watch: {
         data: {
+            // deep: true,
+            handler(data) {
+                this.currentData = Array.from(data);
+                // this.handleResize();
+            },
+        },
+        sorting: {
             deep: true,
-            handler() {
-                this.handleResize();
+            handler(sorting) {
+                this.currentSorting = sorting;
             },
         },
     },
@@ -84,7 +85,35 @@ export const UTableView = {
             // valueColumns.forEach((item) => valueWidthSum += parseFloat(item.copyWidth));
 
         },
+        onClickSort(columnVM) {
+            let order;
+            if (this.currentSorting.field === columnVM.field)
+                order = this.currentSorting.order === 'asc' ? 'desc' : 'asc';
+            else
+                order = columnVM.defaultOrder || this.defaultOrder;
+            this.sort(columnVM.field, order);
+        },
+        sort(field, order = 'asc') {
+            const columnVM = this.columnVMs.find((columnVM) => columnVM.field === field);
+            if (!columnVM)
+                throw new Error('Cannot find field in <u-table-view>: ' + field);
+
+            this.currentSorting = { field, order };
+
+            // if (columnVM.sortRemote)
+            const orderSign = order === 'asc' ? 1 : -1;
+            this.currentData.sort((item1, item2) => {
+                if (item1[field] === item2[field])
+                    return 0;
+                else
+                    return item1[field] > item2[field] ? orderSign : -orderSign;
+            });
+            this.$emit('sort', this.currentSorting, this);
+            this.$emit('update:sorting', this.currentSorting, this);
+        },
     },
 };
+
+export * from './column.vue';
 
 export default UTableView;

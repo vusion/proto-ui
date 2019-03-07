@@ -55,6 +55,7 @@ export * from './u-steps.vue';
 export * from './u-suggest.vue';
 export * from './u-switch.vue';
 export * from './u-table.vue';
+export * from './u-table-view.vue';
 export * from './u-tabs.vue';
 export * from './u-text.vue';
 export * from './u-textarea.vue';

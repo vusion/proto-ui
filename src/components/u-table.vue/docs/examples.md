@@ -47,7 +47,7 @@
 
 ### 表格线条
 
-设置`line="both"`属性，使表格单元格之间由线条隔开。也可以设置为`"horizontal"`，只显示水平线条。
+设置`line="both"`属性，使表格单元格之间由线条隔开。
 
 ``` html
 <u-table line="both">
@@ -93,6 +93,8 @@
     </tbody>
 </u-table>
 ```
+
+也可以设置为`"horizontal"`，只显示水平线条。
 
 ``` html
 <u-table line="horizontal">

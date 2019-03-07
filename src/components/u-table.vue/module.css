@@ -15,7 +15,6 @@
 
 .root th, .root td {
     padding: 6px 8px;
-    font-size: 13px;
 }
 
 .root[line="both"] th, .root[line="both"] td {
