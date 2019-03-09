@@ -40,6 +40,9 @@ export default {
                 oldValue,
             });
         },
+        itemVMs() {
+            this.watchValue(this.value);
+        },
     },
     methods: {
         watchValue(value) {
