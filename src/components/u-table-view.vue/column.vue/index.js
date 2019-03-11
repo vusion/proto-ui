@@ -10,6 +10,7 @@ export const UTableViewColumn = {
         width: [String, Number],
         sortable: { type: Boolean, default: false },
         defaultOrder: String,
+        ellipsis: { type: Boolean, default: false },
     },
     data() {
         return {

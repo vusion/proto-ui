@@ -106,9 +106,10 @@ module.exports = {
         ],
         filters: [],
         utils: [
-            { group: 'Utils', name: 'DataSource' },
-            { group: 'Utils', name: 'dom' },
-            { group: 'Utils', name: 'edit' },
+            { group: 'Utils', name: 'DataSource', alias: '数据源' },
+            { group: 'Utils', name: 'Formatters', alias: '格式器' },
+            { group: 'Utils', name: 'dom', alias: 'DOM 相关' },
+            { group: 'Utils', name: 'edit', alias: '编辑相关' },
         ],
     },
 };

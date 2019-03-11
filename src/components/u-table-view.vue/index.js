@@ -25,6 +25,8 @@ export const UTableView = {
     },
     mounted() {
         this.handleResize();
+        if (this.currentSorting.field)
+            this.sort(this.currentSorting.field, this.currentSorting.order);
     },
     watch: {
         data: {
@@ -96,7 +98,7 @@ export const UTableView = {
         sort(field, order = 'asc') {
             const columnVM = this.columnVMs.find((columnVM) => columnVM.field === field);
             if (!columnVM)
-                throw new Error('Cannot find field in <u-table-view>: ' + field);
+                return;
 
             this.currentSorting = { field, order };
 
