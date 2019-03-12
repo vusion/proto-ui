@@ -1,3 +1,5 @@
+import Formatter from './Formatter';
+
 /**
  * @TODO: use moment or some other library
  */
@@ -15,11 +17,9 @@ const replacers = {
 };
 const trunk = new RegExp(Object.keys(replacers).join('|'), 'g');
 
-export class DateFormatter {
-    // reversible: true;
-    // pattern: string;
+export class DateFormatter extends Formatter {
     constructor(pattern = 'yyyy-MM-dd HH:mm:ss') {
-        this.reversible = true;
+        super();
         this.pattern = pattern;
     }
 
@@ -41,3 +41,5 @@ export class DateFormatter {
 }
 
 export const dateFormatter = new DateFormatter();
+
+export default DateFormatter;

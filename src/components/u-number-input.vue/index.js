@@ -1,7 +1,7 @@
 import MField from '../m-field.vue';
 import debounce from 'lodash/debounce';
 import { repeatClick } from '../../directives';
-import { generateStringFormatter } from '../../utils/formatter';
+import { noopFormatter, NumberFormatter } from '../../utils/Formatters';
 
 const UNumberInput = {
     name: 'u-number-input',
@@ -31,15 +31,12 @@ const UNumberInput = {
         if (this.converter instanceof Object) {
             data.currentFormatter = this.formatter;
         } else if (typeof this.formatter === 'string') {
-            data.currentFormatter = generateStringFormatter(this.formatter);
+            data.currentFormatter = new NumberFormatter(this.formatter);
         } else {
-            data.currentFormatter = {
-                get(value) { return value; },
-                set(value) { return value; },
-            };
+            data.currentFormatter = noopFormatter;
         }
 
-        data.formattedValue = data.currentFormatter.get(this.value);
+        data.formattedValue = data.currentFormatter.format(this.value);
 
         return data;
     },
@@ -58,13 +55,13 @@ const UNumberInput = {
             if (isNaN(value) || value === '' || value === null)
                 return;
             this.currentValue = value;
-            this.formattedValue = this.currentFormatter.get(value);
+            this.formattedValue = this.currentFormatter.format(value);
         },
         currentValue(value, oldValue) {
             this.$emit('change', {
                 value,
                 oldValue,
-                formattedValue: this.currentFormatter.get(value),
+                formattedValue: this.currentFormatter.format(value),
             }, this);
         },
     },
@@ -96,7 +93,7 @@ const UNumberInput = {
             value = this.fix(value);
 
             this.currentValue = value;
-            this.formattedValue = this.currentFormatter.get(value);
+            this.formattedValue = this.currentFormatter.format(value);
             this.$refs.input.currentValue = this.formattedValue;
 
             this.$emit('input', value, this);
@@ -113,7 +110,7 @@ const UNumberInput = {
             this.$emit('before-adjust', {
                 value,
                 oldValue,
-                formattedValue: this.currentFormatter.get(value),
+                formattedValue: this.currentFormatter.format(value),
                 preventDefault: () => cancel = true,
             }, this);
             if (cancel)
@@ -134,7 +131,7 @@ const UNumberInput = {
         },
         onInput(value) {
             if (this.fixOn === 'input')
-                this.debouncedInput(this.currentFormatter.set(value));
+                this.debouncedInput(this.currentFormatter.parse(value));
             else if (this.fixOn === 'blur') {
                 // 这种情况下直接透传
                 this.formattedValue = value;
@@ -147,7 +144,7 @@ const UNumberInput = {
         },
         onBlur(e) {
             if (this.fixOn === 'blur')
-                this.input(this.currentFormatter.set(this.formattedValue));
+                this.input(this.currentFormatter.parse(this.formattedValue));
 
             this.$emit('blur', e, this);
         },

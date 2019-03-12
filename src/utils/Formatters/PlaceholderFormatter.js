@@ -1,7 +1,8 @@
-export class PlaceholderFormatter {
-    // reversible: false,
-    // placeholder: string;
+import Formatter from './Formatter';
+
+export class PlaceholderFormatter extends Formatter {
     constructor(placeholder = '-') {
+        super();
         this.reversible = false;
         this.placeholder = placeholder;
     }
