@@ -10,6 +10,8 @@ export const UTableView = {
         error: { type: Boolean, default: false },
         errorText: { type: String, default: '加载失败，请重试' },
         emptyText: { type: String, default: '暂无数据' },
+
+        // formatter: { type: [String, Function], default: 'text' },
         //
         sorting: { type: Object, default: () => ({ field: undefined, order: 'desc' }) },
         defaultOrder: { type: String, default: 'asc' },
@@ -19,7 +21,7 @@ export const UTableView = {
     data() {
         return {
             columnVMs: [],
-            currentData: Array.from(this.data),
+            currentData: this.data && Array.from(this.data),
             currentSorting: this.sorting,
         };
     },
@@ -32,7 +34,7 @@ export const UTableView = {
         data: {
             // deep: true,
             handler(data) {
-                this.currentData = Array.from(data);
+                this.currentData = data && Array.from(data);
                 // this.handleResize();
             },
         },

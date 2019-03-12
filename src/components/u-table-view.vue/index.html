@@ -42,7 +42,7 @@
                         <td :class="$style.cell" v-for="columnVM in columnVMs">
                             <div :class="$style.item" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <u-render v-if="columnVM.$scopedSlots.default" :vnode="columnVM.$scopedSlots.default({ item, columnVM, index })"></u-render>
-                                <span v-else>{{ item[columnVM.field] }}</span>
+                                <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </div>
                         </td>
                     </tr>

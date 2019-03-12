@@ -9,3 +9,5 @@ export * from './Formatter';
 export * from './DateFormatter';
 export * from './NumberFormatter';
 export * from './PlaceholderFormatter';
+
+export * from './formatterParser';

@@ -28,13 +28,12 @@ const UNumberInput = {
             currentFormatter: undefined,
         };
 
-        if (this.converter instanceof Object) {
+        if (this.formatter instanceof Object)
             data.currentFormatter = this.formatter;
-        } else if (typeof this.formatter === 'string') {
+        else if (typeof this.formatter === 'string')
             data.currentFormatter = new NumberFormatter(this.formatter);
-        } else {
+        else
             data.currentFormatter = noopFormatter;
-        }
 
         data.formattedValue = data.currentFormatter.format(this.value);
 

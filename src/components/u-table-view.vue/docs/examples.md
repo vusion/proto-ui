@@ -82,6 +82,25 @@
 </u-table-view>
 ```
 
+### 格式器
+
+``` html
+<u-table-view :data="[
+    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: 675388800000 },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: 675388800000 },
+    { id: 3, name: '', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: 675388800000 },
+    { id: 4, name: '李华', address: '', birthday: 675388800000 },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: 675388800000 },
+]">
+    <u-table-view-column title="序号" field="id" width="20%">
+        <div slot-scope="{ item }">test {{ item.id * 10 }}</div>
+    </u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column formatter="date('yyyy-MM-dd')" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
 ### Slot
 
 ``` html
