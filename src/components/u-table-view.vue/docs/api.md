@@ -48,5 +48,8 @@
 
 #### (default)
 
-在表格中插入`<thead>`、`<tbody>`、`<tr>`、`<th>`、`<td>`标签。
-
+| Prop/Attr | Type | Description |
+| --------- | ---- | ----------- |
+| item | Object | 循环中的当前项 |
+| columnVM | String | 该列组件实例 |
+| index | Number | 列的索引 |

@@ -76,7 +76,6 @@ export const UTableView = {
 
             setTimeout(() => {
                 const rootWidth = this.$el.offsetWidth;
-                const bodyWidth = this.$refs.body.offsetWidth;
 
                 // 分别获取有百分比、具体数值和无 width 的列
                 const percentColumnVMs = [];
