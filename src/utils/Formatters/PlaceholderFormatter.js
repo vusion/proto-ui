@@ -14,7 +14,7 @@ export class PlaceholderFormatter extends Formatter {
             return this.placeholder;
         else if (typeof value === 'number' && isNaN(value))
             return this.placeholder;
-        else if (value === '')
+        else if (value === '' || value === undefined)
             return this.placeholder;
         else
             return value;

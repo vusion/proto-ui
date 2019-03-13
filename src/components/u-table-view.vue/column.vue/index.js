@@ -9,6 +9,7 @@ export const UTableViewColumn = {
         title: String,
         field: String,
         width: [String, Number],
+        fixed: { type: Boolean, default: false },
         sortable: { type: Boolean, default: false },
         defaultOrder: String,
         ellipsis: { type: Boolean, default: false },
@@ -17,15 +18,14 @@ export const UTableViewColumn = {
     data() {
         const data = {
             parentVM: undefined,
-            tempWidth: this.width + '',
-            currentWidth: this.width,
+            currentWidth: this.width === undefined ? undefined : this.width + '',
+            computedWidth: this.width === undefined ? undefined : this.width + '',
             currentFormatter: undefined,
         };
 
         if (this.formatter instanceof Object)
             data.currentFormatter = this.formatter;
         else if (typeof this.formatter === 'string') {
-            console.log(this.formatter);
             data.currentFormatter = {
                 _format: parseFormatters(this.formatter),
                 format(value) {

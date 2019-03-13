@@ -17,25 +17,35 @@ export const UTableView = {
         defaultOrder: { type: String, default: 'asc' },
         // filtering
         // filterOptions
+        mouseWheel: { type: String, default: 'vertical' },
     },
     data() {
         return {
             columnVMs: [],
+            tableWidth: undefined,
+            bodyHeight: undefined,
             currentData: this.data && Array.from(this.data),
             currentSorting: this.sorting,
+            tableMetaList: [{
+                position: 'static',
+            }],
+            scrollXStart: true,
+            scrollXEnd: true,
         };
     },
     mounted() {
-        this.handleResize();
         if (this.currentSorting.field)
             this.sort(this.currentSorting.field, this.currentSorting.order);
+        this.resize();
+        window.addEventListener('resize', this.resize);
+        // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
     watch: {
         data: {
             // deep: true,
             handler(data) {
                 this.currentData = data && Array.from(data);
-                // this.handleResize();
+                // this.resize();
             },
         },
         sorting: {
@@ -46,7 +56,7 @@ export const UTableView = {
         },
     },
     methods: {
-        handleResize() {
+        resize() {
             // 判断是否会出现水平滚动条
             // let parentWidth = this.$el.offsetWidth;
             // let tableWidth = this.$refs.body.offsetWidth;
@@ -54,40 +64,143 @@ export const UTableView = {
             // if (parentWidth === 0)
             //     parentWidth = tableWidth = this.$refs.root.parentNode.offsetWidth;
 
-            // // 分别获取有百分比、具体数值、无 width 的 column 集合
-            // const percentColumnVMs = [];
-            // const valueColumnVMs = [];
-            // const noWidthColumnVMs = [];
-            // this.columnVMs.forEach((columnVM) => {
-            //     if (columnVM.tempWidth && columnVM.tempWidth.endsWith('%'))
-            //         percentColumnVMs.push(columnVM);
-            //     else if (columnVM.tempWidth)
-            //         valueColumnVMs.push(columnVM);
-            //     else
-            //         noWidthColumnVMs.push(columnVM);
-            // });
-
-            // let remainedWidth = 0;
-            // // 全部都是百分数
-            // if (percentColumnVMs.length === this.columnVMs.length) {
-            //     let sumWidth = this.columnVMs.reduce((prev, curr) => prev + parseFloat(curr.tempWidth), 0);
-            //     if (sumWidth !== 100) {
-            //         percentColumnVMs.forEach((columnVM) => {
-            //             columnVM.tempWidth = parseFloat(columnVM.tempWidth) / sumWidth * 100 + '%';
-            //         });
-            //     }
-            // }
-
             // let percentWidthSum = 0;
             // percentColumnVMs.forEach((columnVM) => {
-            //     const width = parseFloat(columnVM.tempWidth) / 100 * parentWidth;
-            //     columnVM.currentWidth = width;
+            //     const width = parseFloat(columnVM.currentWidth) / 100 * parentWidth;
+            //     columnVM.computedWidth = width;
             //     percentWidthSum += width;
             // });
 
             // let valueWidthSum = 0;
             // valueColumns.forEach((item) => valueWidthSum += parseFloat(item.copyWidth));
 
+            setTimeout(() => {
+                const rootWidth = this.$el.offsetWidth;
+                const bodyWidth = this.$refs.body.offsetWidth;
+
+                // 分别获取有百分比、具体数值和无 width 的列
+                const percentColumnVMs = [];
+                const valueColumnVMs = [];
+                const noWidthColumnVMs = [];
+                // 统计固定列的数量
+                let fixedLeftCount = 0;
+                let fixedRightCount = 0;
+                let lastIsFixed = false;
+
+                this.columnVMs.forEach((columnVM, index) => {
+                    if (!columnVM.currentWidth)
+                        noWidthColumnVMs.push(columnVM);
+                    else if (columnVM.currentWidth.endsWith('%'))
+                        percentColumnVMs.push(columnVM);
+                    else
+                        valueColumnVMs.push(columnVM);
+
+                    if (columnVM.fixed) {
+                        if (index === 0)
+                            fixedLeftCount = 1;
+                        else if (!fixedRightCount && lastIsFixed)
+                            fixedLeftCount++;
+                        else if (!lastIsFixed)
+                            fixedRightCount = 1;
+                        else
+                            fixedRightCount++;
+                    }
+                    lastIsFixed = columnVM.fixed;
+                });
+
+                // 全部都是百分数的情况，按比例缩小
+                if (percentColumnVMs.length === this.columnVMs.length) {
+                    const sumWidth = percentColumnVMs.reduce((prev, columnVM) => prev + parseFloat(columnVM.currentWidth), 0);
+                    if (sumWidth !== 100) {
+                        percentColumnVMs.forEach((columnVM) => {
+                            columnVM.currentWidth = parseFloat(columnVM.currentWidth) / sumWidth * 100 + '%';
+                        });
+                    }
+                }
+                // 全部都是数值的情况，按实际大小
+
+                const percentWidthSum = percentColumnVMs.reduce((prev, columnVM) => {
+                    columnVM.computedWidth = parseFloat(columnVM.currentWidth) * rootWidth / 100;
+                    return prev + columnVM.computedWidth;
+                }, 0);
+                const valueWidthSum = valueColumnVMs.reduce((prev, columnVM) => {
+                    columnVM.computedWidth = parseFloat(columnVM.currentWidth);
+                    return prev + columnVM.computedWidth;
+                }, 0);
+                const remainedWidth = rootWidth - percentWidthSum - valueWidthSum;
+
+                if (remainedWidth > 0 && noWidthColumnVMs.length) {
+                    const averageWidth = remainedWidth / noWidthColumnVMs.length;
+                    noWidthColumnVMs.forEach((columnVM) => columnVM.computedWidth = averageWidth);
+                }
+
+                // 如果所有列均有值，则总宽度有超出的可能。否则总宽度为根节点的宽度。
+                let tableWidth = '';
+                if (this.columnVMs.every((columnVM) => columnVM.currentWidth)) {
+                    tableWidth = this.columnVMs.reduce((prev, columnVM) => {
+                        if (columnVM.currentWidth.endsWith('%'))
+                            return prev + parseFloat(columnVM.currentWidth) * rootWidth / 100;
+                        else
+                            return prev + columnVM.computedWidth;
+                    }, 0);
+
+                    this.tableWidth = tableWidth;
+                }
+
+                const tableMetaList = [this.tableMetaList[0]];
+                if (fixedLeftCount) {
+                    tableMetaList.push({
+                        position: 'left',
+                        width: this.columnVMs.slice(0, fixedLeftCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
+                    });
+                }
+                if (fixedRightCount) {
+                    tableMetaList.push({
+                        position: 'right',
+                        width: this.columnVMs.slice(-fixedRightCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
+                    });
+                }
+                this.tableMetaList = tableMetaList;
+
+                /**
+                 * 根节点高度优先，头部固定，计算身体高度
+                 */
+                const rootHeight = this.$el.offsetHeight;
+                const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
+                const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
+                this.bodyHeight = rootHeight - titleHeight - headHeight;
+            });
+        },
+        onTableScroll(e) {
+            this.scrollXStart = e.target.scrollLeft === 0;
+            this.scrollXEnd = e.target.scrollLeft >= e.target.scrollWidth - e.target.clientWidth;
+        },
+        syncBodyScroll(scrollTop) {
+            this.$refs.body[0] && (this.$refs.body[0].scrollTop = scrollTop);
+            this.$refs.body[1] && (this.$refs.body[1].scrollTop = scrollTop);
+            this.$refs.body[2] && (this.$refs.body[2].scrollTop = scrollTop);
+        },
+        onBodyScroll(e) {
+            this.syncBodyScroll(e.target.scrollTop);
+            setTimeout(() => this.syncBodyScroll(e.target.scrollTop));
+        },
+        onMouseWheel(e) {
+            // const direction = e.wheelDelta > 0 ? -1 : 1;
+            // const rootWidth = this.$refs.root.offsetWidth;
+            // const scrollWidth = this.$refs.table[0].scrollWidth;
+            // const diffWidth = scrollWidth - rootWidth;
+            // console.log(e);
+            // if (tableWidth > parentWidth && this.over) {
+            //     e.preventDefault();
+            //     if (this.$refs.body.parentNode.scrollLeft >= diffWidth && direction === 1)
+            //         this.$refs.body.parentNode.scrollLeft = diffWidth;
+            //     else if (this.$refs.body.parentNode.scrollLeft < 0 && direction === -1)
+            //         this.$refs.body.parentNode.scrollLeft = 0;
+            //     else if (direction === -1)
+            //         this.$refs.body.parentNode.scrollLeft += -50;
+            //     else
+            //         this.$refs.body.parentNode.scrollLeft += 50;
+            // }
         },
         onClickSort(columnVM) {
             let order;

@@ -1,54 +1,59 @@
 <div :class="$style.root" ref="root" :border="border">
-    <div :class="$style.title" :style="{ textAlign: titleAlignment }">
-        <slot name="title">{{ title }}</slot></div>
-    <div :class="$style.head">
-        <u-table :class="$style['head-table']" v-bind="$attrs">
-            <colgroup>
-                <col v-for="columnVM in columnVMs" :width="columnVM.currentWidth"></col>
-            </colgroup>
-            <thead><tr>
-                <th v-for="columnVM in columnVMs">
-                    <span>{{ columnVM.title }}</span>
-                    <span v-if="columnVM.sortable" :class="$style.sort"
-                        :sorting="currentSorting.field === columnVM.field" :order="currentSorting.order"
-                        @click="onClickSort(columnVM)"></span>
-                </th>
-            </tr></thead>
-        </u-table>
+    <div v-if="title" :class="$style.title" ref="title" :style="{ textAlign: titleAlignment }">
+        <slot name="title">{{ title }}</slot>
     </div>
-    <div :class="$style.body">
-        <u-table ref="bodyTable" :class="$style['body-table']" v-bind="$attrs">
-            <colgroup>
-                <col v-for="columnVM in columnVMs" :width="columnVM.currentWidth"></col>
-            </colgroup>
-            <tbody>
-                <tr v-if="currentData === undefined || loading">
-                    <td :class="$style.center" :colspan="columnVMs.length">
-                        <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
-                    </td>
-                </tr>
-                <tr v-else-if="currentData === null || error">
-                    <td :class="$style.center" :colspan="columnVMs.length">
-                        <slot name="error">{{ errorText }}</slot>
-                    </td>
-                </tr>
-                <tr v-else-if="!currentData.length">
-                    <td :class="$style.center" :colspan="columnVMs.length">
-                        <slot name="empty">{{ emptyText }}</slot>
-                    </td>
-                </tr>
-                <template v-else>
-                    <tr v-for="(item, index) in currentData">
-                        <td :class="$style.cell" v-for="columnVM in columnVMs">
-                            <div :class="$style.item" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
-                                <u-render v-if="columnVM.$scopedSlots.default" :vnode="columnVM.$scopedSlots.default({ item, columnVM, index })"></u-render>
-                                <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
-                            </div>
+    <div :class="$style.table" v-for="tableMeta in tableMetaList" :key="tableMeta.position" :position="tableMeta.position"
+        :style="{ width: tableMeta.position !== 'static' && (tableMeta.width + 'px') }"
+        @scroll="onTableScroll" :shadow="(tableMeta.position === 'left' && !scrollXStart) || (tableMeta.position === 'right' && !scrollXEnd)">
+        <div :class="$style.head" ref="head" :style="{ width: tableWidth + 'px' }">
+            <u-table :class="$style['head-table']" v-bind="$attrs">
+                <colgroup>
+                    <col v-for="columnVM in columnVMs" :width="columnVM.computedWidth"></col>
+                </colgroup>
+                <thead><tr>
+                    <th v-for="columnVM in columnVMs">
+                        <span>{{ columnVM.title }}</span>
+                        <span v-if="columnVM.sortable" :class="$style.sort"
+                            :sorting="currentSorting.field === columnVM.field" :order="currentSorting.order"
+                            @click="onClickSort(columnVM)"></span>
+                    </th>
+                </tr></thead>
+            </u-table>
+        </div>
+        <div :class="$style.body" ref="body" :style="{ width: tableWidth + 'px', height: bodyHeight + 'px' }" @scroll="onBodyScroll">
+            <u-table ref="bodyTable" :class="$style['body-table']" v-bind="$attrs">
+                <colgroup>
+                    <col v-for="columnVM in columnVMs" :width="columnVM.computedWidth"></col>
+                </colgroup>
+                <tbody>
+                    <tr v-if="currentData === undefined || loading">
+                        <td :class="$style.center" :colspan="columnVMs.length">
+                            <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
                         </td>
                     </tr>
-                </template>
-            </tbody>
-        </u-table>
+                    <tr v-else-if="currentData === null || error">
+                        <td :class="$style.center" :colspan="columnVMs.length">
+                            <slot name="error">{{ errorText }}</slot>
+                        </td>
+                    </tr>
+                    <tr v-else-if="!currentData.length">
+                        <td :class="$style.center" :colspan="columnVMs.length">
+                            <slot name="empty">{{ emptyText }}</slot>
+                        </td>
+                    </tr>
+                    <template v-else>
+                        <tr v-for="(item, index) in currentData">
+                            <td :class="$style.cell" v-for="columnVM in columnVMs">
+                                <div :class="$style.item" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                                    <u-render v-if="columnVM.$scopedSlots.default" :vnode="columnVM.$scopedSlots.default({ item, columnVM, index })"></u-render>
+                                    <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </u-table>
+        </div>
     </div>
     <div><slot></slot></div>
 </div>
