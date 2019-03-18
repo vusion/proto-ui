@@ -39,8 +39,7 @@
     display: block;
 }
 
-/* @TODO: use before */
-.item::after {
+.item::before {
     display: block;
     content: '';
     pointer-events: none;
@@ -53,11 +52,11 @@
     background-color: $gray-lighter;
 }
 
-.item[passed]::after {
+.item[passed]::before {
     background-color: $brand-primary;
 }
 
-.item:first-child::after {
+.item:first-child::before {
     display: none;
 }
 
