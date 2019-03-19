@@ -46,10 +46,10 @@
     "stylelint-config-vusion": "^1.0.5",
     "vue": "^2.5.0",
     "vusion-hooks": "^0.2.0",
-    "vusion-utils": "^0.2.3"
+    "vusion-utils": "^0.2.4"
   },
   "peerDependencies": {
     "vue": "^2.5.0",
-    "vusion-utils": "^0.2.3"
+    "vusion-utils": "^0.2.4"
   }
 }

@@ -13,7 +13,7 @@ export default {
     watch: {
         // This method just run once after pushing many itemVMs
         itemVMs: {
-            override: true,
+            overwrite: true,
             handler() {
                 // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
                 const value = this.selectedVM ? this.selectedVM.index : this.value;
