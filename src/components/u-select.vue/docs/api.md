@@ -6,7 +6,7 @@
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
-| data-source | DataSource, Function | | 多功能数据源 |
+| data-source | DataSource, Function, Object | | 多功能数据源 |
 | loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |

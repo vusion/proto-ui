@@ -22,8 +22,8 @@ const URadios = {
         },
         selectedVM(selectedVM, oldVM) {
             this.$emit('change', {
-                value: selectedVM ? selectedVM.value : undefined,
-                oldValue: oldVM ? oldVM.value : undefined,
+                value: selectedVM ? selectedVM.label : undefined,
+                oldValue: oldVM ? oldVM.label : undefined,
                 item: selectedVM ? selectedVM.item : undefined,
                 itemVM: selectedVM,
             }, this);

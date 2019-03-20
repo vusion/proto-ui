@@ -11,7 +11,7 @@ export default class DataSource {
             promise: Promise.resolve(),
         }, options);
 
-        // 没有 data 表示数据
+        // 传 data 表示所有数据了
         if (options.data)
             this.total = options.data.length;
     }
@@ -23,13 +23,20 @@ export default class DataSource {
         }, params);
         const newOffset = params.offset + params.limit;
 
-        // 超过总数，则不请求
-        if (params.offset >= this.total)
-            return this.data;
-        if (newOffset <= this.data.length)
+        // 前端分页
+        if (!this.hasMore())
             return this.data.slice(0, newOffset);
 
-        return this.doLoadMore(params).then(() => this.data.slice(0, newOffset));
+        if (this.loadMore)
+            return this.doLoadMore(params).then(() => this.data.slice(0, newOffset));
+        else if (this.load)
+            return this.doLoad(params).then(() => this.data.slice(0, newOffset));
+    }
+
+    hasMore(offset) {
+        if (offset === undefined)
+            offset = this.data.length;
+        return offset < this.total;
     }
 
     clear() {
@@ -41,8 +48,8 @@ export default class DataSource {
      * 加载全部（内部调用）
      * @override
      */
-    doLoad() {
-        return this.load().then((result) => {
+    doLoad(params) {
+        return this.load && this.load(params).then((result) => {
             if (result instanceof Array) { // 只返回数组，没有 total 字段
                 this.total = result.length;
                 this.data = result;
@@ -57,9 +64,7 @@ export default class DataSource {
      * 加载全部（用于覆写）
      * @override
      */
-    load() {
-        return Promise.resolve();
-    }
+    // load: undefined,
 
     /**
      * 加载更多（内部调用）
@@ -68,7 +73,7 @@ export default class DataSource {
      * @param {*} params.offset 偏移数
      */
     doLoadMore(params) {
-        return this.loadMore(params).then((result) => {
+        return this.loadMore && this.loadMore(params).then((result) => {
             if (params.offset + params.limit <= this.data.length)
                 return undefined;
 
@@ -90,9 +95,7 @@ export default class DataSource {
      * @param {*} params.limit 分页数
      * @param {*} params.offset 偏移数
      */
-    loadMore(params) {
-        return Promise.resolve();
-    }
+    // loadMore: undefined,
 
     save() {
         // 保存

@@ -135,12 +135,12 @@
 
 ``` vue
 <template>
-<u-suggest placeholder="请输入邮箱" :data-source="fetchData"></u-suggest>
+<u-suggest placeholder="请输入邮箱" :data-source="load"></u-suggest>
 </template>
 <script>
 export default {
     methods: {
-        fetchData({ filter }) {
+        load({ filter }) {
             const prefix = filter.value.split('@')[0];
             if (!prefix)
                 return [];
@@ -156,72 +156,111 @@ export default {
 </script>
 ```
 
-#### 异步数据源
+#### 异步一次性数据源（前端过滤）
+
+如果要使用异步加载数据，只需将请求后的数据直接传入`data`属性。
+
+<!-- 另一种方法是给`data-source`传入一个方法，要求返回一个`Promise`对象，该方法在组件初始创建时会被调用一次。 -->
 
 ``` vue
 <template>
-<u-suggest placeholder="请输入地名" :data-source="dataSource"></u-suggest>
+<u-linear-layout>
+    <u-suggest :data="data" placeholder="使用`data`属性"></u-suggest>
+</u-linear-layout>
 </template>
 <script>
-import { utils } from 'library';
+// 模拟构造远程数据
+const remoteData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
 
 export default {
+    data() {
+        return {
+            data: [],
+        };
+    },
     created() {
-        const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
-
-        this.dataSource = new utils.DataSource({
-            fetch({ filter }) {
-                const value = filter.value.toLowerCase();
-                // 这里使用 Promise 和 setTimeout 模拟一个 fetch 异步请求
-                return new Promise((resolve, reject) => {
-                    setTimeout((result) => {
-                        resolve(data.filter((item) => item.value.toLowerCase().startsWith(value)));
-                    }, 500);
-                });
-            },
-        });
+        // 使用`data`属性
+        this.load().then((data) => this.data = data);
+    },
+    methods: {
+        load() {
+            // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(remoteData);
+                }, 500);
+            });
+        },
     },
 };
 </script>
 ```
 
-#### 异步分页数据源
+#### 异步过滤数据源（后端过滤）
 
-<!-- @TODO: 同步分页 -->
-
-当过滤后数据量仍然很大时，可以分页加载异步数据。在`new DataSource`时，直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+如果要使用异步过滤数据，需要给`data-source`传入一个方法，要求返回一个`Promise`对象，该方法在组件初始创建时会被调用一次。
 
 ``` vue
 <template>
-<u-suggest placeholder="请输入 item, info 或 test" :data-source="dataSource"></u-suggest>
+<u-linear-layout>
+    <u-suggest :data-source="load" placeholder="使用`data-source`属性"></u-suggest>
+</u-linear-layout>
 </template>
 <script>
-import { utils } from 'library';
+// 模拟构造远程数据
+const remoteData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
 
 export default {
-    created() {
-        let data = [];
-        for (let i = 1; i <= 1000; i++) {
-            data.push('item' + i);
-            data.push('info' + i);
-            data.push('detail' + i);
-        }
-        data = data.map((text) => ({ text, value: text }));
+    methods: {
+        load(params) {
+            const value = params.filter.value.toLowerCase();
 
-        this.dataSource = new utils.DataSource({
-            loadMore(params) {
-                const value = params.filter.value.toLowerCase();
+            // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(remoteData.filter((item) => item.value.toLowerCase().startsWith(value)));
+                }, 500);
+            });
+        },
+    },
+};
+</script>
+```
 
-                // 这里使用 Promise 和 setTimeout 模拟一个异步请求
-                return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve(data.filter((item) => item.value.includes(value))
-                            .slice(params.offset, params.offset + params.limit)
-                        );
-                    }, 500);
-                });
-            },
-        });
+#### 异步分页数据源（后端过滤 + 分页）
+
+<!-- @TODO: 同步分页 -->
+
+当过滤后数据量仍然很大时，推荐异步分页加载数据。在`new DataSource`时，直接重写`loadMore`这个方法。该方法会传入相关的参数，并要求返回一个`Promise`对象。
+
+``` vue
+<template>
+<u-suggest placeholder="请输入 item, info 或 test" :data-source="{ loadMore }"></u-suggest>
+</template>
+<script>
+// 模拟构造数量较多的 500 条远程数据
+let remoteData = [];
+for (let i = 1; i <= 500; i++) {
+    remoteData.push('item' + i);
+    remoteData.push('info' + i);
+    remoteData.push('detail' + i);
+}
+remoteData = remoteData.map((text) => ({ text, value: text }));
+
+export default {
+    methods: {
+        loadMore(params) {
+            const value = params.filter.value.toLowerCase();
+
+            // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(remoteData.filter((item) => item.value.includes(value))
+                        .slice(params.offset, params.offset + params.limit)
+                    );
+                }, 500);
+            });
+        },
     },
 };
 </script>
@@ -235,7 +274,7 @@ export default {
 | value.sync, v-model | Any | | 当前选择的值 |
 | field | String | `'text'` | 显示文本字段 |
 | data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
-| data-source | DataSource, Function | 多功能数据源 |
+| data-source | DataSource, Function, Object | | 多功能数据源 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 | match-method | String, Function | `'includes'` | 匹配方式。可选值：`includes`表示包含即可，`startsWith`表示只匹配开头，`endsWith`表示只匹配结尾。也可以传一个方法 |

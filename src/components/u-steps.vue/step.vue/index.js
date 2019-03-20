@@ -1,19 +1,17 @@
-import { MChild } from '../../m-parent.vue';
+import { UTab } from '../../u-tabs.vue';
 
-const UStep = {
+export const UStep = {
     name: 'u-step',
     parentName: 'u-steps',
-    mixins: [MChild],
+    extends: UTab,
     props: {
-        title: String,
+        value: { type: Number, default: 0 },
     },
     computed: {
-        selected() {
-            if (this.parentVM)
-                return this.parentVM.router ? this.active : this.parentVM.selectedVM === this;
+        index() {
+            return this.parentVM.itemVMs.indexOf(this);
         },
     },
 };
 
-export { UStep };
 export default UStep;

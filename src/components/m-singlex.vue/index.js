@@ -74,7 +74,7 @@ const MSinglex = {
         },
         select(itemVM) {
             // Check if enabled
-            if (this.readonly || this.disabled)
+            if (this.readonly || this.disabled || (itemVM && itemVM.disabled))
                 return;
 
             // Prevent replication

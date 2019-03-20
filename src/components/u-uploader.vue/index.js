@@ -1,3 +1,5 @@
+import i18n from './i18n';
+
 const SIZE_UNITS = {
     kB: 1024,
     MB: Math.pow(1024, 2),
@@ -7,6 +9,7 @@ const SIZE_UNITS = {
 
 const UUploader = {
     name: 'u-uploader',
+    i18n,
     props: {
         url: String,
         dataType: { type: String, default: 'json' },
@@ -65,7 +68,7 @@ const UUploader = {
              */
             this.$emit('error', {
                 name: 'ExtensionError',
-                message: '只能上传' + extensions.join(', ') + '类型的文件！',
+                message: this.$t('extensionError', { extensions: extensions.join(', ') }),
                 extensions,
             }, this);
 
@@ -155,7 +158,7 @@ const UUploader = {
 
                 xhr.open('POST', this.url);
                 xhr.upload.onprogress = function (e) {
-                    if (event.lengthComputable) {
+                    if (e.lengthComputable) {
                         /**
                         * @event progress 发送中触发
                         * @property {object} data 待发送的数据

@@ -1,51 +1,37 @@
-import { MParent } from '../m-parent.vue';
+import { UTabs } from '../u-tabs.vue';
 
-const USteps = {
+export const USteps = {
     name: 'u-steps',
     childName: 'u-step',
-    mixins: [MParent],
+    extends: UTabs,
     props: {
         value: { type: Number, default: 0 },
-        router: { type: Boolean, default: false },
-    },
-    data() {
-        return {
-            // inherit: itemVMs: [],
-            selectedVM: undefined,
-            // currentValue: this.value,
-        };
+        readonly: { type: Boolean, default: true },
+        layout: { type: String, default: 'block' },
+        size: String,
     },
     watch: {
-        value(value, oldValue) {
-            // this.currentValue = +value;
-            this.watchValue(value, oldValue);
-            this.$emit('change', { value, oldValue }, this);
+        // This method just run once after pushing many itemVMs
+        itemVMs: {
+            overwrite: true,
+            handler() {
+                // 更新列表之后，原来的选择可以已不存在，这里暂存然后重新查找一遍
+                const value = this.selectedVM ? this.selectedVM.index : this.value;
+                this.selectedVM = undefined;
+                this.watchValue(value);
+            },
         },
-        itemVMs() {
-            this.watchValue(this.value);
-        },
-        // currentValue(value, oldValue) {
-        //     value = Math.max(0, Math.min(value, this.itemVMs.length));
-        //     if (value === oldValue)
-        //         return;
-
-        //     this.watchValue(value, oldValue);
-        //     this.$emit('change', {
-        //         value,
-        //         oldValue,
-        //     }, this);
-        // },
     },
-    mounted() {
-        this.watchValue(this.value);
-    },
-    methods: {
-        watchValue(value) {
-            this.selectedVM = this.itemVMs[value];
+    computed: {
+        itemWidth() {
+            if (this.size === 'auto')
+                return (1 / this.itemVMs.length) * 100 + '%';
+            else
+                return undefined;
         },
     },
 };
 
 export * from './step.vue';
-export { USteps };
+
 export default USteps;

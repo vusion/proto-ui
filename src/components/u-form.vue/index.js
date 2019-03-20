@@ -56,9 +56,8 @@ const UForm = {
         },
         validateItem(name, trigger = 'submit', silent = false) {
             const itemVM = this.itemVMs.find((itemVM) => itemVM.name === name);
-            if (!itemVM)
-                return;
-            itemVM.validate(trigger, silent);
+            if (itemVM)
+                return itemVM.validate(trigger, silent);
         },
         getState() {
             const STATE_LEVEL = {

@@ -31,6 +31,9 @@ const UCheckboxes = {
                 oldValue,
             }, this);
         },
+        itemVMs() {
+            this.watchValue(this.value);
+        },
     },
     methods: {
         watchValue(value) {
