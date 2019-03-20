@@ -26,6 +26,8 @@ export class DateFormatter extends Formatter {
     format(value, pattern) {
         pattern = pattern || this.pattern;
 
+        if (value && !isNaN(value))
+            value = +value;
         const date = new Date(value);
         if (String(date) === 'Invalid Date')
             return value;

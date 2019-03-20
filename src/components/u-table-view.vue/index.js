@@ -45,7 +45,7 @@ export const UTableView = {
             // deep: true,
             handler(data) {
                 this.currentData = data && Array.from(data);
-                // this.resize();
+                this.resize();
             },
         },
         sorting: {
@@ -164,10 +164,12 @@ export const UTableView = {
                 /**
                  * 根节点高度优先，头部固定，计算身体高度
                  */
-                const rootHeight = this.$el.offsetHeight;
-                const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
-                const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
-                this.bodyHeight = rootHeight - titleHeight - headHeight;
+                if (this.$el.style.height !== '' && this.$el.style.height !== 'auto') {
+                    const rootHeight = this.$el.offsetHeight;
+                    const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
+                    const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
+                    this.bodyHeight = rootHeight - titleHeight - headHeight;
+                }
             });
         },
         onTableScroll(e) {
