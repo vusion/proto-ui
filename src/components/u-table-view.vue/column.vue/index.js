@@ -11,6 +11,7 @@ export const UTableViewColumn = {
         width: [String, Number],
         fixed: { type: Boolean, default: false },
         sortable: { type: Boolean, default: false },
+        sortCompare: { type: Function },
         defaultOrder: String,
         ellipsis: { type: Boolean, default: false },
         formatter: { type: [String, Object, Formatter], default: 'placeholder' },

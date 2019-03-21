@@ -134,8 +134,8 @@ const UListView = {
                 offset: this.currentData ? this.currentData.length : 0,
             });
             const then = (data) => {
+                this.currentData = (this.currentData || []).concat(data);
                 this.loading = false;
-                this.currentData = data;
             };
 
             if (result instanceof Promise)

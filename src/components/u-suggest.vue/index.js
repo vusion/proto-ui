@@ -1,5 +1,4 @@
 import { UListView } from '../u-list-view.vue';
-import ListView from '../u-list-view.vue';
 import i18n from './i18n';
 
 const USuggest = {
@@ -148,7 +147,7 @@ const USuggest = {
                     clear,
                 });
                 const then = (data) => {
-                    this.currentData = data;
+                    this.currentData = (this.currentData || []).concat(data);
                     this.loading = false;
                 };
 

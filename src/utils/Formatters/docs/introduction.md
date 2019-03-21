@@ -39,13 +39,13 @@ class SomeFormatter {
 import { utils } from 'library';
 
 export default {
+    filters: {
+        date: utils.dateFormatter.format,
+    },
     data() {
         return {
             now: new Date(),
         };
-    },
-    filters: {
-        date: utils.dateFormatter.format,
     },
 };
 </script>

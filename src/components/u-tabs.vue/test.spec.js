@@ -1,4 +1,4 @@
-import { createVMFromTemplate } from '../../test/utils';
+import { createVMFromTemplate } from '~/test/utils';
 
 import Vue from 'vue';
 import { installComponents } from 'vusion-utils';

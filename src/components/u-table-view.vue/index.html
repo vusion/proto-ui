@@ -55,5 +55,6 @@
             </u-table>
         </div>
     </div>
+    <u-pagination :class="$style.pagination" v-if="currentDataSource" :total="totalPage" :page="currentPage" @change="fetchData($event.page)"></u-pagination>
     <div><slot></slot></div>
 </div>

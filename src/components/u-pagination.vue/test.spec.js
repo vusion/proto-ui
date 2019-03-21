@@ -1,5 +1,5 @@
 import Pagination from './index';
-import { createVM, createWrapVM } from '../../test/utils';
+import { createVM, createWrapVM } from '~/test/utils';
 
 describe('Pagination', () => {
     let pagination;

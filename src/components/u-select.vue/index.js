@@ -166,7 +166,7 @@ const USelect = {
                     clear,
                 });
                 const then = (data) => {
-                    this.currentData = data;
+                    this.currentData = (this.currentData || []).concat(data);
                     this.loading = false;
                 };
 

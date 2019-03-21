@@ -1,7 +1,10 @@
+import DataSource from '../../utils/DataSource';
+
 export const UTableView = {
     name: 'u-table-view',
     props: {
         data: { type: Array },
+        dataSource: [DataSource, Function, Object],
         title: String,
         titleAlignment: { type: String, default: 'center' },
         border: { type: Boolean, default: false },
@@ -25,6 +28,8 @@ export const UTableView = {
             tableWidth: undefined,
             bodyHeight: undefined,
             currentData: this.data && Array.from(this.data),
+            currentDataSource: this.normalizeDataSource(this.dataSource),
+            currentPage: 1,
             currentSorting: this.sorting,
             tableMetaList: [{
                 position: 'static',
@@ -41,12 +46,12 @@ export const UTableView = {
         // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
     watch: {
-        data: {
-            // deep: true,
-            handler(data) {
-                this.currentData = data && Array.from(data);
-                this.resize();
-            },
+        data(data) {
+            this.currentData = data && Array.from(data);
+            this.resize();
+        },
+        dataSource(dataSource) {
+            this.currentDataSource = this.normalizeDataSource(dataSource);
         },
         sorting: {
             deep: true,
@@ -55,7 +60,56 @@ export const UTableView = {
             },
         },
     },
+    computed: {
+        offset() {
+            if (!this.currentDataSource)
+                return undefined;
+
+            return (this.currentPage - 1) * this.currentDataSource.limit;
+        },
+        totalPage() {
+            if (!this.currentDataSource)
+                return undefined;
+
+            return Math.ceil((this.currentDataSource.total || 0) / this.currentDataSource.limit) || 1;
+        },
+    },
+    created() {
+        this.currentDataSource && this.fetchData();
+    },
     methods: {
+        normalizeDataSource(dataSource) {
+            if (dataSource instanceof DataSource)
+                return dataSource;
+            else if (dataSource instanceof Function) {
+                return new DataSource({
+                    load(params) {
+                        const result = dataSource(params);
+
+                        if (result instanceof Promise)
+                            return result.catch(() => this.loading = false);
+                        else if (result instanceof Array)
+                            return Promise.resolve(result);
+                        else
+                            throw new TypeError('Wrong type of `dataSource.fetch` result!');
+                    },
+                });
+            } else if (dataSource instanceof Object) {
+                return new DataSource(Object.assign({ limit: 20 }, dataSource));
+            } else
+                return undefined;
+        },
+        fetchData(page) {
+            if (!this.currentDataSource)
+                return;
+
+            page = page || this.currentPage;
+            this.currentData = undefined;
+            this.currentDataSource.fetchPage(page).then((data) => {
+                this.currentPage = page;
+                this.currentData = data;
+            }).catch(() => this.currentData = null);
+        },
         resize() {
             // 判断是否会出现水平滚动条
             // let parentWidth = this.$el.offsetWidth;
@@ -164,7 +218,8 @@ export const UTableView = {
                 /**
                  * 根节点高度优先，头部固定，计算身体高度
                  */
-                if (this.$el.style.height !== '' && this.$el.style.height !== 'auto') {
+                if (this.$el.style.height !== '' && this.$el.style.height !== 'auto'
+                    || this.$el.style.maxHeight !== '' && this.$el.style.maxHeight !== 'auto') {
                     const rootHeight = this.$el.offsetHeight;
                     const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
                     const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
@@ -209,23 +264,26 @@ export const UTableView = {
                 order = this.currentSorting.order === 'asc' ? 'desc' : 'asc';
             else
                 order = columnVM.defaultOrder || this.defaultOrder;
-            this.sort(columnVM.field, order);
+            this.sort(columnVM.field, order, columnVM.sortCompare);
         },
-        sort(field, order = 'asc') {
+        sort(field, order = 'asc', compare) {
             const columnVM = this.columnVMs.find((columnVM) => columnVM.field === field);
             if (!columnVM)
                 return;
 
-            this.currentSorting = { field, order };
-
-            // if (columnVM.sortRemote)
-            const orderSign = order === 'asc' ? 1 : -1;
-            this.currentData.sort((item1, item2) => {
-                if (item1[field] === item2[field])
-                    return 0;
-                else
-                    return item1[field] > item2[field] ? orderSign : -orderSign;
-            });
+            this.currentSorting = { field, order, compare };
+            if (this.currentDataSource) {
+                this.currentDataSource.sort(this.currentSorting);
+                this.fetchData();
+            } else {
+                const orderSign = order === 'asc' ? 1 : -1;
+                this.currentData.sort((item1, item2) => {
+                    if (item1[field] === item2[field])
+                        return 0;
+                    else
+                        return item1[field] > item2[field] ? orderSign : -orderSign;
+                });
+            }
             this.$emit('sort', this.currentSorting, this);
             this.$emit('update:sorting', this.currentSorting, this);
         },

@@ -98,3 +98,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.pagination {
+    text-align: right;
+    margin-top: $margin-base;
+}
