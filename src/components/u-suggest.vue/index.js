@@ -138,25 +138,18 @@ const USuggest = {
                     dataSource.clear();
                 }
 
-                const result = dataSource.fetch({
+                dataSource.fetch({
                     // @TODO: 要不要设置 limit 属性
                     offset: this.currentData ? this.currentData.length : 0,
+                    limit: this.currentDataSource.limit || 50,
                     filter: {
                         value: this.filterText,
                     },
                     clear,
-                });
-                const then = (data) => {
+                }).then((data) => {
                     this.currentData = (this.currentData || []).concat(data);
                     this.loading = false;
-                };
-
-                if (result instanceof Promise)
-                    return result.then(then).catch(() => this.loading = false);
-                else if (result instanceof Array)
-                    return Promise.resolve(result).then(then);
-                else
-                    throw new TypeError('Wrong type of `dataSource.fetch` result!');
+                }).catch(() => this.loading = false);
             });
         },
         onInput(value) {

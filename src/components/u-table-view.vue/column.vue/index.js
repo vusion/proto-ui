@@ -13,12 +13,14 @@ export const UTableViewColumn = {
         sortable: { type: Boolean, default: false },
         sortCompare: { type: Function },
         defaultOrder: String,
+        filters: { type: Array },
         ellipsis: { type: Boolean, default: false },
         formatter: { type: [String, Object, Formatter], default: 'placeholder' },
     },
     data() {
         const data = {
             parentVM: undefined,
+            filterVM: undefined,
             currentWidth: this.width === undefined ? undefined : this.width + '',
             computedWidth: this.width === undefined ? undefined : this.width + '',
             currentFormatter: undefined,

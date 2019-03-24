@@ -11,11 +11,19 @@
                     <col v-for="columnVM in columnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <thead><tr>
-                    <th v-for="columnVM in columnVMs">
-                        <span>{{ columnVM.title }}</span>
+                    <th :class="$style['head-title']" v-for="columnVM in columnVMs">
+                        <!-- <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render> -->
+                        <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render>
+                        <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
+                        <span v-else>{{ columnVM.title }}</span>
                         <span v-if="columnVM.sortable" :class="$style.sort"
-                            :sorting="currentSorting.field === columnVM.field" :order="currentSorting.order"
+                            :sorting="currentSorting && currentSorting.field === columnVM.field" :order="currentSorting && currentSorting.order"
                             @click="onClickSort(columnVM)"></span>
+                        <span v-if="columnVM.filters" :class="$style.filter">
+                            <u-table-view-filters :value="getFiltersValue(columnVM.field)" @select="onSelectFilters(columnVM.field, $event)">
+                                <u-table-view-filter v-for="filter in columnVM.filters" :key="filter.value" :value="filter.value">{{ filter.text }}</u-table-view-filter>
+                            </u-table-view-filters>
+                        </span>
                     </th>
                 </tr></thead>
             </u-table>
@@ -43,11 +51,10 @@
                     </tr>
                     <template v-else>
                         <tr v-for="(item, index) in currentData">
-                            <td :class="$style.cell" v-for="columnVM in columnVMs">
-                                <div :class="$style.item" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
-                                    <f-render v-if="columnVM.$scopedSlots.default" :vnode="columnVM.$scopedSlots.default({ item, columnVM, index })"></f-render>
-                                    <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
-                                </div>
+                            <td :class="$style.cell" v-for="columnVM in columnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                                <f-render v-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, columnVM, index })"></f-render>
+                                <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
+                                <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </td>
                         </tr>
                     </template>
@@ -55,6 +62,6 @@
             </u-table>
         </div>
     </div>
-    <u-pagination :class="$style.pagination" v-if="currentDataSource" :total="totalPage" :page="currentPage" @change="fetchData($event.page)"></u-pagination>
+    <u-pagination :class="$style.pagination" v-if="currentDataSource && paging" :total="totalPage" :page="currentDataSource.paging.number" @change="page($event.page)"></u-pagination>
     <div><slot></slot></div>
 </div>

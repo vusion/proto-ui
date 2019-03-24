@@ -1,0 +1,10 @@
+.root[class] {
+    position: absolute;
+    box-sizing: content-box;
+    line-height: 1.6;
+    max-height: 180px;
+    overflow: auto;
+    background: white;
+    border: 1px solid $border-color-base;
+    z-index: $z-index-popper;
+}

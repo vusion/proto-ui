@@ -35,12 +35,24 @@ $item_size: 32px;
     color: $brand-disabled;
 }
 
+.item[role="prev"] {
+    font-size: 16px;
+    padding: 0 4px;
+    vertical-align: top;
+}
+
 .item[role="prev"]::before {
-    content: '‹';
+    icon-font: url('../i-icon.vue/assets/angle-left.svg');
+}
+
+.item[role="next"] {
+    font-size: 16px;
+    padding: 0 4px;
+    vertical-align: top;
 }
 
 .item[role="next"]::before {
-    content: '›';
+    icon-font: url('../i-icon.vue/assets/angle-right.svg');
 }
 
 .item[role="blank"] {

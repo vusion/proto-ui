@@ -1,4 +1,4 @@
-const solveCondition = (condition, obj) => {
+export const solveCondition = (condition, obj) => {
     if (Array.isArray(condition))
         return condition.some((cond) => solveCondition(cond, obj));
     else if (typeof condition === 'object') {
@@ -35,17 +35,16 @@ const solveCondition = (condition, obj) => {
 /**
  * @param {Array} data - 初始数据
  * @param {Boolean} cache - 是否从后端缓存
- * @param {Number=50} limit - 分页数
- * @param {Number=Infinity} total - 总数
+ * @param {Number=Infinity} originTotal - 总数
  */
 export default class DataSource {
     constructor(options) {
         Object.assign(this, {
             data: [],
             cache: true,
-            total: Infinity, // @readonly - total 作为很重要的判断有没有加载完所有数据的依据
-            limit: 50,
-            // offset: 0,
+            originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
+            limit: 20, // @deprecated
+            // offset: 0, // @deprecated
             paging: undefined, // @TODO
             sorting: undefined, // @readonly
             filtering: undefined, // @readonly
@@ -54,11 +53,12 @@ export default class DataSource {
             remoteSorting: false,
             remoteFiltering: false,
             // remoteGrouping: false,
-            forceRemote: false,
-            promise: Promise.resolve(),
         }, options);
 
         this._params = {};
+        if (!this.paging && this.limit)
+            this.paging = { size: this.limit, number: 1 };
+
         this.sorting && (this._params.sorting = this.sorting);
         this.filtering && (this._params.filtering = this.filtering);
 
@@ -66,7 +66,20 @@ export default class DataSource {
 
         // 传 data 为本地数据模式，此时已知所有数据
         if (options.data)
-            this.total = options.data.length;
+            this.originTotal = options.data.length;
+    }
+
+    page(number, size) {
+        if (typeof number === 'object') {
+            size = number.size;
+            number = number.number;
+        }
+
+        if (size === undefined)
+            size = this.paging ? this.paging.size : 20;
+
+        this.paging = Object.freeze({ number, size });
+        return this;
     }
 
     sort(field, order = 'asc', compare) {
@@ -112,6 +125,31 @@ export default class DataSource {
             return a > b ? sign : -sign;
     }
 
+    arrange() {
+        let arrangedData = Array.from(this.data);
+
+        const filtering = this.filtering;
+        if (!this.remoteFiltering && filtering && Object.keys(filtering).length)
+            arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
+
+        const sorting = this.sorting;
+        if (!this.remoteSorting && sorting && sorting.field) {
+            const field = sorting.field;
+            const orderSign = sorting.order === 'asc' ? 1 : -1;
+            if (sorting.compare)
+                arrangedData.sort((item1, item2) => sorting.compare(item1[field], item2[field], orderSign));
+            else
+                arrangedData.sort((item1, item2) => this.defaultCompare(item1[field], item2[field], orderSign));
+        }
+
+        this.arrangedData = arrangedData;
+
+        if (this.paging) {
+            if (this.paging.number > this.totalPage)
+                this.page(1);
+        }
+    }
+
     /**
      * 获取数据
      * 排序、过滤、分组等延迟计算
@@ -128,29 +166,13 @@ export default class DataSource {
         const newOffset = offset + limit;
 
         const queryChanged = Object.keys(this._params).length;
-        const mustRemote = this.forceRemote || !this.hasAllRemoteData()
-            || (this.remoteFiltering && this._params.filtering); // 过滤会影响数量的判断，因此必须要重新请求
+        const mustRemote = !this.hasAllRemoteData() || this.remoteFiltering || this.remoteSorting; // 过滤会影响数量的判断，因此必须要重新请求
 
         if (!mustRemote) {
             // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
             if (!this.arrangedData || queryChanged) {
-                let arrangedData = Array.from(this.data);
-
-                const filtering = this._fetchParam('filtering');
-                if (filtering && Object.keys(filtering).length)
-                    arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
-
-                const sorting = this._fetchParam('sorting');
-                if (sorting && sorting.field) {
-                    const field = sorting.field;
-                    const orderSign = sorting.order === 'asc' ? 1 : -1;
-                    if (sorting.compare)
-                        arrangedData.sort((item1, item2) => sorting.compare(item1[field], item2[field], orderSign));
-                    else
-                        arrangedData.sort((item1, item2) => this.defaultCompare(item1[field], item2[field], orderSign));
-                }
-
-                this.arrangedData = arrangedData;
+                this._params = {};
+                this.arrange();
             }
 
             return Promise.resolve(this.arrangedData.slice(offset, newOffset));
@@ -159,7 +181,7 @@ export default class DataSource {
             if (queryChanged)
                 this.clear();
 
-            const paging = { offset };
+            const paging = Object.assign({ offset }, this.paging);
             if (limit !== Infinity)
                 paging.limit = limit;
 
@@ -175,39 +197,59 @@ export default class DataSource {
             return this.load(params).then((result) => {
                 if (!this.remotePaging) { // 没有后端分页，认为是全部数据
                     if (result instanceof Array) { // 只返回数组，没有 total 字段
-                        this.total = result.length;
+                        this.originTotal = result.length;
                         this.data = result;
                     } else if (result instanceof Object) { // 返回 { total, data }
-                        this.total = result.total;
+                        this.originTotal = result.total;
                         this.data = result.data;
                     } // 否则什么都不做
 
+                    this.arrange();
                     return this.data.slice(offset, newOffset);
                 } else {
                     let partialData;
 
                     if (result instanceof Array) { // 只返回数组，没有 total 字段
                         if (!result.length) // 没有数据了，则记录下总数
-                            this.total = this.data.length;
+                            this.originTotal = this.data.length;
                         else
                             partialData = result;
                     } else if (result instanceof Object) { // 返回 { total, data }
-                        this.total = result.total;
+                        this.originTotal = result.total;
                         partialData = result.data;
                     } // 否则什么都不做
 
                     if (offset === this.data.length)
                         this.data.push(...partialData);
 
+                    this.arrange();
                     return partialData;
                 }
             });
         }
     }
 
-    fetchPage(number) {
-        const offset = (number - 1) * this.limit;
-        return this.fetch(offset, this.limit);
+    // fetchOrigin(offset, limit) {
+    //     // return Promise.resolve
+    // }
+
+    view() {
+        if (this.paging) {
+            const offset = (this.paging.number - 1) * this.paging.size;
+            return this.fetch(offset, this.paging.size);
+        } else
+            return this.fetch();
+    }
+
+    get total() {
+        if (this.remotePaging)
+            return this.originTotal !== Infinity ? this.originTotal : 0;
+        else
+            return this.arrangedData ? this.arrangedData.length : this.data.length;
+    }
+
+    get totalPage() {
+        return this.paging ? Math.ceil(this.total / this.paging.size) || 1 : 1;
     }
 
     /**
@@ -217,7 +259,7 @@ export default class DataSource {
     hasAllRemoteData(offset) {
         if (offset === undefined)
             offset = this.data.length;
-        return offset >= this.total;
+        return offset >= this.originTotal;
     }
 
     hasChanges() {
@@ -226,8 +268,12 @@ export default class DataSource {
 
     clear() {
         this.data = [];
-        this.total = Infinity;
-        this._data = undefined;
+        this.originTotal = Infinity;
+        this.arrangedData = undefined;
+    }
+
+    setData() {
+        //
     }
 
     /**

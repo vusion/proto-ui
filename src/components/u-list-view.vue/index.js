@@ -129,21 +129,14 @@ const UListView = {
                 return;
 
             this.loading = true;
-            const result = this.currentDataSource.fetch({
+            this.currentDataSource.fetch({
                 // @TODO: 要不要设置 limit 属性
                 offset: this.currentData ? this.currentData.length : 0,
-            });
-            const then = (data) => {
+                limit: this.currentDataSource.limit || 50,
+            }).then((data) => {
                 this.currentData = (this.currentData || []).concat(data);
                 this.loading = false;
-            };
-
-            if (result instanceof Promise)
-                return result.then(then).catch(() => this.loading = false);
-            else if (result instanceof Array)
-                then(result);
-            else
-                throw new TypeError('Wrong type of `dataSource.fetch` result!');
+            }).catch(() => this.loading = false);
         },
         onScroll(e) {
             if (!this.currentDataSource)

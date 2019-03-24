@@ -124,7 +124,7 @@
     { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
 ]">
     <u-table-view-column title="序号" field="id" width="20%">
-        <div slot-scope="{ item }">test {{ item.id * 10 }}</div>
+        <div slot="cell" slot-scope="{ item }">test {{ item.id * 10 }}</div>
     </u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>

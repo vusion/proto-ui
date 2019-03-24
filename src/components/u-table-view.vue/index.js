@@ -1,4 +1,4 @@
-import DataSource from '../../utils/DataSource';
+import DataSource, { solveCondition } from '../../utils/DataSource';
 
 export const UTableView = {
     name: 'u-table-view',
@@ -15,22 +15,28 @@ export const UTableView = {
         emptyText: { type: String, default: '暂无数据' },
 
         // formatter: { type: [String, Function], default: 'text' },
-        //
-        sorting: { type: Object, default: () => ({ field: undefined, order: 'desc' }) },
-        defaultOrder: { type: String, default: 'asc' },
-        // filtering
-        // filterOptions
+        initialLoad: { type: Boolean, default: true },
+        paging: { type: Object, default: () => ({ size: 20, number: 1 }) },
+        sorting: Object,
+        defaultOrder: { type: String, default: 'desc' },
+        filtering: Object,
+        remotePaging: { type: Boolean, default: false },
+        remoteSorting: { type: Boolean, default: false },
+        remoteFiltering: { type: Boolean, default: false },
         mouseWheel: { type: String, default: 'vertical' },
     },
     data() {
+        if (!this.paging.number)
+            this.paging.number = 1;
+
         return {
             columnVMs: [],
             tableWidth: undefined,
             bodyHeight: undefined,
             currentData: this.data && Array.from(this.data),
             currentDataSource: this.normalizeDataSource(this.dataSource),
-            currentPage: 1,
             currentSorting: this.sorting,
+            currentFiltering: this.filtering,
             tableMetaList: [{
                 position: 'static',
             }],
@@ -38,78 +44,58 @@ export const UTableView = {
             scrollXEnd: true,
         };
     },
-    mounted() {
-        if (this.currentSorting.field)
-            this.sort(this.currentSorting.field, this.currentSorting.order);
-        this.resize();
-        window.addEventListener('resize', this.resize);
-        // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
-    },
     watch: {
         data(data) {
-            this.currentData = data && Array.from(data);
+            this.arrangeData();
             this.resize();
         },
         dataSource(dataSource) {
             this.currentDataSource = this.normalizeDataSource(dataSource);
         },
+        paging: {
+            deep: true,
+            handler(paging, oldPaging) {
+                if (paging.size === oldPaging.size && paging.number === oldPaging.number)
+                    return;
+
+                this.page(paging);
+            },
+        },
         sorting: {
             deep: true,
-            handler(sorting) {
-                this.currentSorting = sorting;
+            handler(sorting, oldSorting) {
+                if (sorting.field === oldSorting.field && sorting.order === oldSorting.order)
+                    return;
+
+                this.sort(sorting);
+            },
+        },
+        filtering: {
+            deep: true,
+            handler(filtering, oldFiltering) {
+                if (filtering === oldFiltering)
+                    return;
+                this.filter(filtering);
             },
         },
     },
     computed: {
-        offset() {
-            if (!this.currentDataSource)
-                return undefined;
-
-            return (this.currentPage - 1) * this.currentDataSource.limit;
-        },
         totalPage() {
-            if (!this.currentDataSource)
-                return undefined;
-
-            return Math.ceil((this.currentDataSource.total || 0) / this.currentDataSource.limit) || 1;
+            return this.currentDataSource ? this.currentDataSource.totalPage : 1;
         },
     },
     created() {
-        this.currentDataSource && this.fetchData();
+        if (this.currentDataSource)
+            this.fetchData();
+        else
+            this.arrangeData();
+    },
+    mounted() {
+        this.resize();
+        window.addEventListener('resize', this.resize);
+        // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
     methods: {
-        normalizeDataSource(dataSource) {
-            if (dataSource instanceof DataSource)
-                return dataSource;
-            else if (dataSource instanceof Function) {
-                return new DataSource({
-                    load(params) {
-                        const result = dataSource(params);
-
-                        if (result instanceof Promise)
-                            return result.catch(() => this.loading = false);
-                        else if (result instanceof Array)
-                            return Promise.resolve(result);
-                        else
-                            throw new TypeError('Wrong type of `dataSource.fetch` result!');
-                    },
-                });
-            } else if (dataSource instanceof Object) {
-                return new DataSource(Object.assign({ limit: 20 }, dataSource));
-            } else
-                return undefined;
-        },
-        fetchData(page) {
-            if (!this.currentDataSource)
-                return;
-
-            page = page || this.currentPage;
-            this.currentData = undefined;
-            this.currentDataSource.fetchPage(page).then((data) => {
-                this.currentPage = page;
-                this.currentData = data;
-            }).catch(() => this.currentData = null);
-        },
         resize() {
             // 判断是否会出现水平滚动条
             // let parentWidth = this.$el.offsetWidth;
@@ -258,8 +244,71 @@ export const UTableView = {
             //         this.$refs.body.parentNode.scrollLeft += 50;
             // }
         },
+        normalizeDataSource(dataSource) {
+            if (dataSource instanceof DataSource)
+                return dataSource;
+            else if (dataSource instanceof Function) {
+                return new DataSource({
+                    paging: this.paging,
+                    sorting: this.sorting,
+                    filtering: this.filtering,
+                    remotePaging: this.remotePaging,
+                    remoteSorting: this.remoteSorting,
+                    remoteFiltering: this.remoteFiltering,
+                    load(params) {
+                        const result = dataSource(params);
+
+                        if (result instanceof Promise)
+                            return result.catch(() => this.loading = false);
+                        else if (result instanceof Array)
+                            return Promise.resolve(result);
+                        else
+                            throw new TypeError('Wrong type of `dataSource.load` result!');
+                    },
+                });
+            } else if (dataSource instanceof Object) {
+                return new DataSource(Object.assign({
+                    paging: this.paging,
+                    sorting: this.sorting,
+                    filtering: this.filtering,
+                    remotePaging: this.remotePaging,
+                    remoteSorting: this.remoteSorting,
+                    remoteFiltering: this.remoteFiltering,
+                }, dataSource));
+            } else
+                return undefined;
+        },
+        fetchData(page) {
+            if (!this.currentDataSource)
+                return;
+
+            page = page || this.currentPage;
+            if (this.remotePaging || this.remoteSorting || this.remoteFiltering)
+                this.currentData = undefined;
+            this.currentDataSource.view().then((data) => {
+                // 防止同步数据使页面抖动
+                setTimeout(() => this.currentData = data);
+            }).catch(() => this.currentData = null);
+        },
+        page(number, size) {
+            if (typeof number === 'object') {
+                size = number.size;
+                number = number.number;
+            }
+
+            if (this.currentDataSource) {
+                this.currentDataSource.page(number, size);
+                this.fetchData();
+            } else
+                return console.error(`[proto-ui] Paging only works with dataSource!`);
+
+            this.$emit('page', this.currentDataSource.paging, this);
+            this.$emit('update:paging', this.currentDataSource.paging, this);
+        },
         onClickSort(columnVM) {
             let order;
+            if (!this.currentSorting)
+                this.currentSorting = { field: undefined, order: columnVM.defaultOrder || this.defaultOrder };
             if (this.currentSorting.field === columnVM.field)
                 order = this.currentSorting.order === 'asc' ? 'desc' : 'asc';
             else
@@ -267,29 +316,64 @@ export const UTableView = {
             this.sort(columnVM.field, order, columnVM.sortCompare);
         },
         sort(field, order = 'asc', compare) {
-            const columnVM = this.columnVMs.find((columnVM) => columnVM.field === field);
-            if (!columnVM)
-                return;
-
             this.currentSorting = { field, order, compare };
+
             if (this.currentDataSource) {
                 this.currentDataSource.sort(this.currentSorting);
                 this.fetchData();
-            } else {
-                const orderSign = order === 'asc' ? 1 : -1;
-                this.currentData.sort((item1, item2) => {
-                    if (item1[field] === item2[field])
-                        return 0;
-                    else
-                        return item1[field] > item2[field] ? orderSign : -orderSign;
-                });
-            }
+            } else
+                this.arrangeData();
             this.$emit('sort', this.currentSorting, this);
             this.$emit('update:sorting', this.currentSorting, this);
+        },
+        onSelectFilters(field, $event) {
+            const filtering = $event.value || $event.value === 0 ? { [field]: $event.value } : undefined;
+            this.filter(filtering);
+        },
+        getFiltersValue(field) {
+            if (!this.currentFiltering)
+                return undefined;
+
+            const filterField = Object.keys(this.currentFiltering)[0];
+            if (filterField !== field)
+                return undefined;
+            else
+                return this.currentFiltering[field];
+        },
+        filter(filtering) {
+            if (this.currentDataSource) {
+                this.currentDataSource.filter(filtering);
+                this.fetchData();
+            } else
+                this.arrangeData();
+            this.$emit('filter', this.currentFiltering, this);
+            this.$emit('update:filtering', this.currentFiltering, this);
+        },
+        arrangeData() {
+            let arrangedData = this.data && Array.from(this.data);
+            if (!arrangedData)
+                return;
+
+            const filtering = this.currentFiltering;
+            if (filtering && Object.keys(filtering).length)
+                arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
+
+            const sorting = this.currentSorting;
+            if (sorting && sorting.field) {
+                const field = sorting.field;
+                const orderSign = sorting.order === 'asc' ? 1 : -1;
+                if (sorting.compare)
+                    arrangedData.sort((item1, item2) => sorting.compare(item1[field], item2[field], orderSign));
+                else
+                    arrangedData.sort((item1, item2) => this.defaultCompare(item1[field], item2[field], orderSign));
+            }
+
+            this.currentData = arrangedData;
         },
     },
 };
 
 export * from './column.vue';
+export * from './filters.vue';
 
 export default UTableView;

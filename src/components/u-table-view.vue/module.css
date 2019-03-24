@@ -43,6 +43,14 @@
     width: 100%;
 }
 
+.head-title {
+    position: relative;
+}
+
+.extra {
+    float: right;
+}
+
 .body {
     width: 100%;
     overflow-y: auto;
@@ -86,14 +94,28 @@
     color: $brand-primary;
 }
 
-.item {
+.filter {
+    float: right;
+    cursor: pointer;
+    padding-bottom: 6px;
+    margin-bottom: -6px;
+}
+
+.filter::before {
+    icon-font: url('../i-icon.vue/assets/filter.svg');
+    color: $brand-disabled;
+    font-size: 12px;
+    vertical-align: -2px;
+}
+
+.cell {
     white-space: normal;
     word-break: break-all;
     /* 解决在火狐浏览器下英文换行显示问题 */
     word-wrap: break-word;
 }
 
-.item[ellipsis] {
+.cell[ellipsis] {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
