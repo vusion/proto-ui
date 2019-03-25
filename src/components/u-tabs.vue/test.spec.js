@@ -63,8 +63,7 @@ describe('Tabs, Tab', () => {
                     e.preventDefault();
                 },
             },
-        }
-        );
+        });
 
         const tabs = vm.$refs.tabs;
         tabs.select(tabs.itemVMs[2]);
@@ -80,8 +79,7 @@ describe('Tabs, Tab', () => {
                 <u-tab title="TabA">ContentA</u-tab>
                 <u-tab title="TabB">ContentB</u-tab>
                 <u-tab title="TabC">ContentC</u-tab>
-            </u-tabs>`
-        );
+            </u-tabs>`);
 
         const tabs = vm.$refs.tabs;
         const selectedVM = tabs.itemVMs[1];
