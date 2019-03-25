@@ -1,16 +1,19 @@
-const broadcast = function (condition, eventName, ...params) {
+const broadcast = function (condition, eventName, ...args) {
     this.$children.forEach(($child) => {
         if (condition($child))
-            $child.$emit(eventName, ...params);
+            $child.$emit(eventName, ...args);
         else
-            broadcast.apply($child, [condition, eventName].concat(params));
+            broadcast.apply($child, [condition, eventName].concat(args));
     });
 };
 
-const MEmitter = {
+export const MEmitter = {
     name: 'm-emitter',
     methods: {
-        dispatch(condition, eventName, ...params) {
+        /**
+         * @deprecated
+         */
+        dispatch(condition, eventName, ...args) {
             if (typeof condition === 'string') {
                 const name = condition;
                 condition = ($parent) => $parent.$options.name === name;
@@ -20,15 +23,18 @@ const MEmitter = {
             while ($parent && !condition($parent))
                 $parent = $parent.$parent;
 
-            $parent && $parent.$emit(eventName, ...params);
+            $parent && $parent.$emit(eventName, ...args);
         },
-        broadcast(condition, eventName, ...params) {
+        /**
+         * @deprecated
+         */
+        broadcast(condition, eventName, ...args) {
             if (typeof condition === 'string') {
                 const name = condition;
                 condition = ($child) => $child.$options.name === name;
             }
 
-            broadcast.apply(this, [condition, eventName].concat(params));
+            broadcast.apply(this, [condition, eventName].concat(args));
         },
         $dispatch(...args) {
             this.dispatch(...args);
@@ -58,5 +64,4 @@ const MEmitter = {
     },
 };
 
-export { MEmitter };
 export default MEmitter;

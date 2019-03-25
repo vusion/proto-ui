@@ -1,6 +1,6 @@
 import MEmitter from '../../m-emitter.vue';
 
-const MChild = {
+export const MChild = {
     name: 'm-child',
     parentName: 'm-parent',
     groupName: 'm-group',
@@ -33,5 +33,4 @@ const MChild = {
     },
 };
 
-export { MChild };
 export default MChild;

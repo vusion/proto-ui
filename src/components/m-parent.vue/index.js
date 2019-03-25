@@ -1,4 +1,4 @@
-const MParent = {
+export const MParent = {
     name: 'm-parent',
     groupName: 'm-group',
     childName: 'm-child',
@@ -11,5 +11,5 @@ const MParent = {
 };
 
 export * from './m-child.vue';
-export { MParent };
+
 export default MParent;

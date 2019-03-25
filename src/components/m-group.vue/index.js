@@ -1,6 +1,6 @@
 import MEmitter from '../m-emitter.vue';
 
-const MGroup = {
+export const MGroup = {
     name: 'm-group',
     parentName: 'm-parent',
     childName: 'm-child',
@@ -88,5 +88,5 @@ const MGroup = {
 };
 
 export * from './parent.vue';
-export { MGroup };
+
 export default MGroup;

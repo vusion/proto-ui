@@ -1,4 +1,4 @@
-const MGroupParent = {
+export const MGroupParent = {
     name: 'm-group-parent',
     props: {
         collapsible: { type: Boolean, default: false },
@@ -18,5 +18,4 @@ const MGroupParent = {
     },
 };
 
-export { MGroupParent };
 export default MGroupParent;
