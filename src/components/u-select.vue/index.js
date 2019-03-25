@@ -165,7 +165,7 @@ const USelect = {
                         text: this.filterText,
                     },
                     clear,
-                }).then((data) => {
+                }, this.currentDataSource.limit || 50).then((data) => {
                     this.currentData = (this.currentData || []).concat(data);
                     this.loading = false;
                 }).catch(() => this.loading = false);

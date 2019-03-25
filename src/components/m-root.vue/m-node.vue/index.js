@@ -1,6 +1,6 @@
 import MEmitter from '../../m-emitter.vue';
 
-const MNode = {
+export const MNode = {
     name: 'm-node',
     rootName: 'm-root',
     mixins: [MEmitter],
@@ -12,25 +12,28 @@ const MNode = {
         };
     },
     created() {
-        this.dispatch(this.$options.name, 'add-node-vm', this);
-        !this.parentVM && this.dispatch(this.$options.rootName, 'add-node-vm', this);
-
-        this.$on('add-node-vm', (nodeVM) => {
-            nodeVM.rootVM = this.rootVM;
-            nodeVM.parentVM = this;
-            this.nodeVMs.push(nodeVM);
+        !this.parentVM && this.$contact(this.$options.name, (parentVM) => {
+            this.parentVM = parentVM;
+            this.rootVM = parentVM.rootVM;
+            parentVM.nodeVMs.push(this);
         });
-        this.$on('remove-node-vm', (nodeVM) => {
-            nodeVM.rootVM = undefined;
-            nodeVM.parentVM = undefined;
-            this.nodeVMs.splice(this.nodeVMs.indexOf(nodeVM), 1);
+        // 顺序不能换
+        !this.parentVM && this.$contact(this.$options.rootName, (rootVM) => {
+            this.rootVM = rootVM;
+            rootVM.nodeVMs.push(this);
         });
     },
     destroyed() {
-        this.dispatch(this.$options.rootName, 'remove-node-vm', this);
-        this.dispatch(this.$options.name, 'remove-node-vm', this);
+        this.$contact(this.$options.rootName, (rootVM) => {
+            rootVM.nodeVMs.splice(rootVM.nodeVMs.indexOf(this), 1);
+            this.rootVM = undefined;
+        });
+        this.$contact(this.$options.name, (parentVM) => {
+            parentVM.property.splice(parentVM.property.indexOf(this), 1);
+            this.rootVM = undefined;
+            this.parentVM = undefined;
+        });
     },
 };
 
-export { MNode };
 export default MNode;

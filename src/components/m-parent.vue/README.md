@@ -1,6 +1,6 @@
 # MParent 父子模式
 
-我们经常会遇到类似`<u-tabs>`和`<u-tab>`一对父子组件的场景，本对 Mixin：MParent 和 MChild 对这种模式做了抽象，用于快速开发和代码借鉴。
+对于常见的类似`<u-tabs>`和`<u-tab>`一对嵌套父子组件的场景，本对 Mixin：MParent 和 MChild 进行了抽象，用于快速开发和代码借鉴。
 
 ### 用法
 

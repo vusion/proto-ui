@@ -129,11 +129,10 @@ const UListView = {
                 return;
 
             this.loading = true;
-            this.currentDataSource.fetch({
-                // @TODO: 要不要设置 limit 属性
-                offset: this.currentData ? this.currentData.length : 0,
-                limit: this.currentDataSource.limit || 50,
-            }).then((data) => {
+            this.currentDataSource.fetch(
+                this.currentData ? this.currentData.length : 0,
+                this.currentDataSource.limit || 50,
+            ).then((data) => {
                 this.currentData = (this.currentData || []).concat(data);
                 this.loading = false;
             }).catch(() => this.loading = false);

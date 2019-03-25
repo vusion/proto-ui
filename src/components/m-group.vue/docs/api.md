@@ -42,6 +42,8 @@
 
 ## MGroup
 
+继承 [MEmitter](../m-emitter)。
+
 ### Options
 
 | Option | Type | Default | Description |
