@@ -93,6 +93,9 @@ const UCheckbox = {
                 itemVM: this,
             });
         },
+        check(value) {
+            this.toggle(value);
+        },
     },
 };
 

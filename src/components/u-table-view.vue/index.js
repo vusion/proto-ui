@@ -80,6 +80,9 @@ export const UTableView = {
         },
     },
     computed: {
+        visibleColumnVMs() {
+            return this.columnVMs.filter((columnVM) => !columnVM.hidden);
+        },
         totalPage() {
             return this.currentDataSource ? this.currentDataSource.totalPage : 1;
         },
@@ -126,7 +129,7 @@ export const UTableView = {
                 let fixedRightCount = 0;
                 let lastIsFixed = false;
 
-                this.columnVMs.forEach((columnVM, index) => {
+                this.visibleColumnVMs.forEach((columnVM, index) => {
                     if (!columnVM.currentWidth)
                         noWidthColumnVMs.push(columnVM);
                     else if (columnVM.currentWidth.endsWith('%'))
@@ -148,7 +151,7 @@ export const UTableView = {
                 });
 
                 // 全部都是百分数的情况，按比例缩小
-                if (percentColumnVMs.length === this.columnVMs.length) {
+                if (percentColumnVMs.length === this.visibleColumnVMs.length) {
                     const sumWidth = percentColumnVMs.reduce((prev, columnVM) => prev + parseFloat(columnVM.currentWidth), 0);
                     if (sumWidth !== 100) {
                         percentColumnVMs.forEach((columnVM) => {
@@ -175,8 +178,8 @@ export const UTableView = {
 
                 // 如果所有列均有值，则总宽度有超出的可能。否则总宽度为根节点的宽度。
                 let tableWidth = '';
-                if (this.columnVMs.every((columnVM) => columnVM.currentWidth)) {
-                    tableWidth = this.columnVMs.reduce((prev, columnVM) => {
+                if (this.visibleColumnVMs.every((columnVM) => columnVM.currentWidth)) {
+                    tableWidth = this.visibleColumnVMs.reduce((prev, columnVM) => {
                         if (columnVM.currentWidth.endsWith('%'))
                             return prev + parseFloat(columnVM.currentWidth) * rootWidth / 100;
                         else
@@ -190,13 +193,13 @@ export const UTableView = {
                 if (fixedLeftCount) {
                     tableMetaList.push({
                         position: 'left',
-                        width: this.columnVMs.slice(0, fixedLeftCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
+                        width: this.visibleColumnVMs.slice(0, fixedLeftCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
                     });
                 }
                 if (fixedRightCount) {
                     tableMetaList.push({
                         position: 'right',
-                        width: this.columnVMs.slice(-fixedRightCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
+                        width: this.visibleColumnVMs.slice(-fixedRightCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
                     });
                 }
                 this.tableMetaList = tableMetaList;

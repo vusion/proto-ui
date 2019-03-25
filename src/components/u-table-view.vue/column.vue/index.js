@@ -15,7 +15,8 @@ export const UTableViewColumn = {
         defaultOrder: String,
         filters: { type: Array },
         ellipsis: { type: Boolean, default: false },
-        formatter: { type: [String, Object, Formatter], default: 'placeholder' },
+        formatter: { type: [String, Object, Function, Formatter], default: 'placeholder' },
+        hidden: { type: Boolean, default: false },
     },
     data() {
         const data = {
@@ -26,7 +27,7 @@ export const UTableViewColumn = {
             currentFormatter: undefined,
         };
 
-        if (this.formatter instanceof Object)
+        if (typeof this.formatter === 'object')
             data.currentFormatter = this.formatter;
         else if (typeof this.formatter === 'string') {
             data.currentFormatter = {
@@ -34,6 +35,10 @@ export const UTableViewColumn = {
                 format(value) {
                     return this._format(value);
                 },
+            };
+        } else if (typeof this.formatter === 'function') {
+            data.currentFormatter = {
+                format: this.formatter,
             };
         } else
             data.currentFormatter = placeholderFormatter;

@@ -8,10 +8,10 @@
         <div :class="$style.head" ref="head" :style="{ width: tableWidth + 'px' }">
             <u-table :class="$style['head-table']" v-bind="$attrs">
                 <colgroup>
-                    <col v-for="columnVM in columnVMs" :width="columnVM.computedWidth"></col>
+                    <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <thead><tr>
-                    <th :class="$style['head-title']" v-for="columnVM in columnVMs">
+                    <th :class="$style['head-title']" v-for="columnVM in visibleColumnVMs">
                         <!-- <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render> -->
                         <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render>
                         <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
@@ -31,27 +31,27 @@
         <div :class="$style.body" ref="body" :style="{ width: tableWidth + 'px', height: bodyHeight + 'px' }" @scroll="onBodyScroll">
             <u-table ref="bodyTable" :class="$style['body-table']" v-bind="$attrs">
                 <colgroup>
-                    <col v-for="columnVM in columnVMs" :width="columnVM.computedWidth"></col>
+                    <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <tbody>
                     <tr v-if="currentData === undefined || loading">
-                        <td :class="$style.center" :colspan="columnVMs.length">
+                        <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
                         </td>
                     </tr>
                     <tr v-else-if="currentData === null || error">
-                        <td :class="$style.center" :colspan="columnVMs.length">
+                        <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="error">{{ errorText }}</slot>
                         </td>
                     </tr>
                     <tr v-else-if="!currentData.length">
-                        <td :class="$style.center" :colspan="columnVMs.length">
+                        <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="empty">{{ emptyText }}</slot>
                         </td>
                     </tr>
                     <template v-else>
                         <tr v-for="(item, index) in currentData">
-                            <td :class="$style.cell" v-for="columnVM in columnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                            <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <f-render v-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, columnVM, index })"></f-render>
                                 <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
                                 <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>

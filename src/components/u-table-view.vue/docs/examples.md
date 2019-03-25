@@ -109,6 +109,34 @@
 </u-table-view>
 ```
 
+支持简单传入一个函数：
+
+``` vue
+<template>
+<u-table-view :data="[
+    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: 675388800000 },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: 675388800000 },
+    { id: 3, name: '', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: 675388800000 },
+    { id: 4, name: '李华', address: '', birthday: undefined },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: 675388800000 },
+]">
+    <u-table-view-column :formatter="idFormatter" title="序号" field="id" width="20%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column formatter="placeholder | date('yyyy-MM-dd')" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+</template>
+<script>
+export default {
+    methods: {
+        idFormatter(value) {
+            return +value + 1;
+        },
+    },
+};
+</script>
+```
+
 ### 列插槽
 
 如果需要对数据进行更加自定义的展示，可以使用列的默认插槽，定制想要的格式。
@@ -250,4 +278,51 @@
     <u-table-view-column title="地址" field="address" width="400"></u-table-view-column>
     <u-table-view-column fixed title="出生日期" field="birthday" width="20%"></u-table-view-column>
 </u-table-view>
+```
+
+### 隐藏部分列
+
+``` vue
+<template>
+<u-linear-layout direction="vertical">
+    <u-checkboxes display="block">
+        <u-checkbox v-model="columnsVisible[0]">序号</u-checkbox>
+        <u-checkbox v-model="columnsVisible[1]">姓名</u-checkbox>
+        <u-checkbox v-model="columnsVisible[2]">省份</u-checkbox>
+        <u-checkbox v-model="columnsVisible[3]">城市</u-checkbox>
+        <u-checkbox v-model="columnsVisible[4]">区县</u-checkbox>
+        <u-checkbox v-model="columnsVisible[5]">地址</u-checkbox>
+        <u-checkbox v-model="columnsVisible[6]">出生日期</u-checkbox>
+    </u-checkboxes>
+    <u-table-view striped :data="[
+        { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
+        { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
+        { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
+        { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
+        { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
+        { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
+        { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
+        { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
+        { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
+        { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
+    ]" style="max-height: 300px;">
+        <u-table-view-column :hidden="!columnsVisible[0]" title="序号" field="id" width="5%"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[1]" title="姓名" field="name" width="10%"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[2]" title="省份" field="province" width="200"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[3]" title="城市" field="city" width="200"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[4]" title="区县" field="district" width="200"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[5]" title="地址" field="address"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[6]" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    </u-table-view>
+</u-linear-layout>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            columnsVisible: [true, true, false, false, true, true, true],
+        };
+    },
+};
+</script>
 ```
