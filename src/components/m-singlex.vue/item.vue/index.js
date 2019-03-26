@@ -2,7 +2,7 @@ import { MChild } from '../../m-parent.vue';
 import ULink from '../../u-link.vue';
 import { ellipsisTitle } from '../../../directives';
 
-const MSinglexItem = {
+export const MSinglexItem = {
     name: 'm-singlex-item',
     parentName: 'm-singlex',
     groupName: 'm-singlex-group',
@@ -64,5 +64,4 @@ const MSinglexItem = {
     },
 };
 
-export { MSinglexItem };
 export default MSinglexItem;

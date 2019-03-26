@@ -12,19 +12,19 @@
 
 ### 双向绑定
 
-使用`v-model`或`:value.sync`进行双向绑定。
+可以使用`v-model`或`:values.sync`两种方式进行双向绑定。
 
 ``` vue
 <template>
 <u-linear-layout direction="vertical" gap="small">
-    <m-multiplex v-model="value">
+    <m-multiplex v-model="values">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
         <m-multiplex-item value="nut">坚果</m-multiplex-item>
         <m-multiplex-item value="towel">毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <m-multiplex :value.sync="value">
+    <m-multiplex :values.sync="values">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
         <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -37,14 +37,14 @@
 export default {
     data() {
         return {
-            value: ['nut', 'towel'],
+            values: ['nut', 'towel'],
         };
     },
 };
 </script>
 ```
 
-#### selected
+#### selected 单向绑定
 
 ``` vue
 <template>
@@ -56,21 +56,21 @@ export default {
         <m-multiplex-item value="towel" selected>毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <span>value: {{ value }}</span>
+    <span>values: {{ values }}</span>
 </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            value: ['nut', 'towel'],
+            values: ['nut', 'towel'],
         };
     },
 };
 </script>
 ```
 
-#### selected 绑定
+#### selected 双向绑定
 
 ``` vue
 <template>
@@ -105,14 +105,14 @@ export default {
 ``` vue
 <template>
 <u-linear-layout direction="vertical" gap="small">
-    <m-multiplex v-model="value1">
+    <m-multiplex v-model="values1">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
         <m-multiplex-item value="nut">坚果</m-multiplex-item>
         <m-multiplex-item value="towel">毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <m-multiplex v-model="value2" keep-order>
+    <m-multiplex v-model="values2" keep-order>
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
         <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -125,8 +125,8 @@ export default {
 export default {
     data() {
         return {
-            value1: ['towel', 'nut'],
-            value2: ['towel', 'nut'],
+            values1: ['towel', 'nut'],
+            values2: ['towel', 'nut'],
         };
     },
 };
@@ -138,7 +138,7 @@ export default {
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">
-        <m-multiplex :value="['nut', 'towel']" readonly>
+        <m-multiplex :values="['nut', 'towel']" readonly>
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -147,7 +147,7 @@ export default {
         </m-multiplex>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <m-multiplex :value="['nut', 'towel']" disabled>
+        <m-multiplex :values="['nut', 'towel']" disabled>
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -156,7 +156,7 @@ export default {
         </m-multiplex>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <m-multiplex :value="['nut', 'towel']">
+        <m-multiplex :values="['nut', 'towel']">
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut" disabled>坚果</m-multiplex-item>
@@ -172,10 +172,9 @@ export default {
 ``` vue
 <template>
 <div>
-    <m-multiplex v-model="value">
+    <m-multiplex v-model="values">
         <m-multiplex-item v-for="item in list" :key="item.value" :value="item.value">{{ item.text }}</m-multiplex-item>
     </m-multiplex>
-    <span>value: {{ value }}</span>
     <u-button @click="updateList">更新列表</u-button>
 </div>
 </template>
@@ -190,7 +189,7 @@ export default {
                 { value: 'towel', text: '毛巾' },
                 { value: 'sofa', text: '沙发' },
             ],
-            value: ['nut', 'towel', 'toothbrush'],
+            values: ['nut', 'towel', 'toothbrush'],
         };
     },
     methods: {

@@ -1,6 +1,6 @@
 ### 基本用法
 
-下面展示了单选子的一些基本特性，添加分隔线、禁用选项等。
+下面展示了复合模式的一些基本特性。
 
 ``` html
 <m-complex>
@@ -12,30 +12,89 @@
 </m-complex>
 ```
 
-### 双向绑定
+### 选项值
 
-可以使用`v-model`或`:value.sync`两种方式进行双向绑定。
+- 单选绑定`value`属性，可以用`v-model`或`:value.sync`
+- 多选绑定`values`属性，不能用`v-model`，只能用`:values.sync`
+
+#### 单选模式
 
 ``` vue
 <template>
-<div>
-    <m-complex v-model="value">
-        <m-complex-item value="cup">水杯</m-complex-item>
-        <m-complex-item value="coffee">咖啡</m-complex-item>
-        <m-complex-item value="nut">坚果</m-complex-item>
-        <m-complex-item value="towel">毛巾</m-complex-item>
-        <m-complex-item value="sofa">沙发</m-complex-item>
-    </m-complex>
-    <span>value: {{ value }}</span>
-</div>
+<m-complex v-model="value">
+    <m-complex-item value="cup">水杯</m-complex-item>
+    <m-complex-item value="coffee">咖啡</m-complex-item>
+    <m-complex-item value="nut">坚果</m-complex-item>
+    <m-complex-item value="towel">毛巾</m-complex-item>
+    <m-complex-item value="sofa">沙发</m-complex-item>
+</m-complex>
 </template>
 <script>
 export default {
     data() {
         return {
-            value: ['nut', 'towel'],
+            value: 'towel',
         };
     },
 };
 </script>
 ```
+
+#### 多选模式
+
+``` vue
+<template>
+<m-complex multiple :values.sync="values">
+    <m-complex-item value="cup">水杯</m-complex-item>
+    <m-complex-item value="coffee">咖啡</m-complex-item>
+    <m-complex-item value="nut">坚果</m-complex-item>
+    <m-complex-item value="towel">毛巾</m-complex-item>
+    <m-complex-item value="sofa">沙发</m-complex-item>
+</m-complex>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            values: ['nut', 'towel'],
+        };
+    },
+};
+</script>
+```
+
+### 只读、禁用、禁用某一项
+
+``` html
+<u-grid-layout>
+    <u-grid-layout-column :span="4">
+        <m-complex value="towel" readonly>
+            <m-complex-item value="cup">水杯</m-complex-item>
+            <m-complex-item value="coffee">咖啡</m-complex-item>
+            <m-complex-item value="nut">坚果</m-complex-item>
+            <m-complex-item value="towel">毛巾</m-complex-item>
+            <m-complex-item value="sofa">沙发</m-complex-item>
+        </m-complex>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <m-complex value="towel" disabled>
+            <m-complex-item value="cup">水杯</m-complex-item>
+            <m-complex-item value="coffee">咖啡</m-complex-item>
+            <m-complex-item value="nut">坚果</m-complex-item>
+            <m-complex-item value="towel">毛巾</m-complex-item>
+            <m-complex-item value="sofa">沙发</m-complex-item>
+        </m-complex>
+    </u-grid-layout-column>
+    <u-grid-layout-column :span="4">
+        <m-complex value="towel">
+            <m-complex-item value="cup">水杯</m-complex-item>
+            <m-complex-item value="coffee">咖啡</m-complex-item>
+            <m-complex-item value="nut" disabled>坚果</m-complex-item>
+            <m-complex-item value="towel" disabled>毛巾</m-complex-item>
+            <m-complex-item value="sofa">沙发</m-complex-item>
+        </m-complex>
+    </u-grid-layout-column>
+</u-grid-layout>
+```
+
+其它与 [MSinglex](../m-singlex) 和 [MMultiplex](../m-multiplex) 相同的。

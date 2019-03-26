@@ -1,13 +1,16 @@
-import { MSinglex } from '../m-singlex.vue';
-import { MMultiplex } from '../m-multiplex.vue';
+import MSinglex from '../m-singlex.vue';
+import MMultiplex from '../m-multiplex.vue';
 
-const MComplex = {
+export const MComplex = {
     name: 'm-complex',
     groupName: 'm-complex-group',
     childName: 'm-complex-item',
     mixins: [MSinglex, MMultiplex],
+    model: {
+        prop: 'value',
+        event: 'input',
+    },
     props: {
-        value: null,
         // @inherit: autoSelect: { type: Boolean, default: false },
         // @inherit: cancelable: { type: Boolean, default: false },
         multiple: { type: Boolean, default: false },
@@ -24,9 +27,6 @@ const MComplex = {
         };
     },
     watch: {
-        value(value, oldValue) {
-            (this.currentMultiple ? MMultiplex : MSinglex).watch.value.call(this, value, oldValue);
-        },
         multiple(multiple) {
             this.currentMultiple = multiple;
         },
@@ -46,5 +46,5 @@ const MComplex = {
 };
 
 export * from './item.vue';
-export { MComplex };
+
 export default MComplex;

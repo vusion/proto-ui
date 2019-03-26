@@ -6,7 +6,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Array | | 当前选择的值 |
+| values.sync, v-model | Array | | 所有选中项的值 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -24,12 +24,12 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Array | 选择项的值 |
-| $event.oldValue | Array | 旧的值 |
+| $event.values | Array | 所有选中项的值 |
+| $event.oldValues | Array | 旧的值 |
 | $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MMultiplex | 发送事件实例 |
 
 #### @input
 
@@ -37,8 +37,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Array | 选择项的值 |
-| senderVM | Vue | 发送事件实例 |
+| $event | Array | 所有选中项的值 |
+| senderVM | MMultiplex | 发送事件实例 |
 
 #### @select
 
@@ -46,11 +46,11 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Array | 改变后的值 |
-| $event.oldValue | Array | 旧的值 |
+| $event.values | Array | 改变后的值 |
+| $event.oldValues | Array | 旧的值 |
 | $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MMultiplex | 发送事件实例 |
 
 #### @change
 
@@ -58,11 +58,11 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Array | 选择项的值 |
-| $event.oldValue | Array | 旧的值 |
+| $event.values | Array | 所有选中项的值 |
+| $event.oldValues | Array | 旧的值 |
 | $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MMultiplex | 发送事件实例 |
 
 ## MMultiplexItem
 
@@ -92,7 +92,7 @@ extends [MChild](../m-parent/api#MChild).
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MMultiplexItem | 发送事件实例 |
 
 #### @before-select
 
@@ -104,4 +104,4 @@ extends [MChild](../m-parent/api#MChild).
 | $event.item | Object | 此项的相关对象 |
 | $event.itemVM | MMultiplexItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MMultiplexItem | 发送事件实例 |

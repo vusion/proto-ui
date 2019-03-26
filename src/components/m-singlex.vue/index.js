@@ -1,11 +1,15 @@
 import MEmitter from '../m-emitter.vue';
 import { MParent } from '../m-parent.vue';
 
-const MSinglex = {
+export const MSinglex = {
     name: 'm-singlex',
     groupName: 'm-singlex-group',
     childName: 'm-singlex-item',
     mixins: [MEmitter, MParent],
+    model: {
+        prop: 'value',
+        event: 'input',
+    },
     props: {
         value: null,
         autoSelect: { type: Boolean, default: false },
@@ -119,5 +123,5 @@ const MSinglex = {
 };
 
 export * from './item.vue';
-export { MSinglex };
+
 export default MSinglex;

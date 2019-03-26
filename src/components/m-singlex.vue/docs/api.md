@@ -7,7 +7,7 @@
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Any | | 当前选择的值 |
-| autoSelect | Boolean | `false` | 是否自动选择第一个非禁用的项 |
+| auto-select | Boolean | `false` | 是否自动选择第一个非禁用的项 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | router | Boolean | `false` | 是否开启路由模式 |
 | readonly | Boolean | `false` | 是否只读 |

@@ -1,7 +1,7 @@
 import { MChild } from '../../m-parent.vue';
 import { ellipsisTitle } from '../../../directives';
 
-const MMultiplexItem = {
+export const MMultiplexItem = {
     name: 'm-multiplex-item',
     parentName: 'm-multiplex',
     groupName: 'm-multiplex-group',
@@ -47,5 +47,4 @@ const MMultiplexItem = {
     },
 };
 
-export { MMultiplexItem };
 export default MMultiplexItem;

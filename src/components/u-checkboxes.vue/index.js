@@ -1,7 +1,7 @@
 import { MParent } from '../m-parent.vue';
 import MField from '../m-field.vue';
 
-const UCheckboxes = {
+export const UCheckboxes = {
     name: 'u-checkboxes',
     childName: 'u-checkbox',
     mixins: [MParent, MField],
@@ -73,5 +73,4 @@ const UCheckboxes = {
     },
 };
 
-export { UCheckboxes };
 export default UCheckboxes;

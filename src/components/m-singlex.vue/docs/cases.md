@@ -12,7 +12,7 @@
 
 ### 选项值
 
-#### 静态绑定
+#### 单向绑定
 
 ``` html
 <m-singlex value="towel">
@@ -24,11 +24,13 @@
 </m-singlex>
 ```
 
-#### v-model
+#### 双向绑定
+
+可以使用`v-model`或`:value.sync`两种方式进行双向绑定。
 
 ``` vue
 <template>
-<div>
+<u-linear-layout direction="vertical" gap="small">
     <m-singlex v-model="value">
         <m-singlex-item value="cup">水杯</m-singlex-item>
         <m-singlex-item value="coffee">咖啡</m-singlex-item>
@@ -36,25 +38,6 @@
         <m-singlex-item value="towel">毛巾</m-singlex-item>
         <m-singlex-item value="sofa">沙发</m-singlex-item>
     </m-singlex>
-    <span>value: {{ value }}</span>
-</div>
-</template>
-<script>
-export default {
-    data() {
-        return {
-            value: 'towel',
-        };
-    },
-};
-</script>
-```
-
-#### value.sync
-
-``` vue
-<template>
-<div>
     <m-singlex :value.sync="value">
         <m-singlex-item value="cup">水杯</m-singlex-item>
         <m-singlex-item value="coffee">咖啡</m-singlex-item>
@@ -62,8 +45,7 @@ export default {
         <m-singlex-item value="towel">毛巾</m-singlex-item>
         <m-singlex-item value="sofa">沙发</m-singlex-item>
     </m-singlex>
-    <span>value: {{ value }}</span>
-</div>
+</u-linear-layout>
 </template>
 <script>
 export default {
@@ -138,13 +120,13 @@ export default {
 
 ### 可取消
 
-尝试在同一个选项上点击两次。
+`cancelable`属性开启时，在同一个选项上点击两次，会取消原来的选择。
 
 ``` html
 <m-singlex value="towel" cancelable>
     <m-singlex-item value="cup">水杯</m-singlex-item>
-    <m-singlex-item value="coffee" disabled>咖啡</m-singlex-item>
-    <m-singlex-item value="nut">坚果</m-singlex-item>
+    <m-singlex-item value="coffee">咖啡</m-singlex-item>
+    <m-singlex-item value="nut" disabled>坚果</m-singlex-item>
     <m-singlex-item value="towel">毛巾</m-singlex-item>
     <m-singlex-item value="sofa">沙发</m-singlex-item>
 </m-singlex>
@@ -152,7 +134,7 @@ export default {
 
 ### 自动选择
 
-自动选择第一个非禁用的项。
+在初始化或选项变更时，自动选择第一个非禁用的项。
 
 ``` html
 <m-singlex auto-select>

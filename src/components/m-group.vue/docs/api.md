@@ -28,7 +28,7 @@
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
 | $event.groupVM | MGroup | 分组组件 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | MGroupParent | 发送事件实例 |
 
 ### Methods
 
