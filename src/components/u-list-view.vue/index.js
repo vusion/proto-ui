@@ -4,13 +4,15 @@ import MField from '../m-field.vue';
 import DataSource from '../../utils/DataSource';
 import debounce from 'lodash/debounce';
 
-const UListView = {
+export const UListView = {
     name: 'u-list-view',
     groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
     mixins: [MComplex, MGroupParent, MField],
+    model: 'value',
     props: {
         // @inherit: value: null,
+        // @inherit: values: Array,
         field: { type: String, default: 'text' },
         data: Array,
         dataSource: [DataSource, Function, Object],
@@ -22,6 +24,9 @@ const UListView = {
         // @inherit: readonly: { type: Boolean, default: false },
         // @inherit: disabled: { type: Boolean, default: false },
         loadingText: { type: String, default: '加载中...' },
+        initialLoad: { type: Boolean, default: true },
+        pageSize: { type: Number, default: 50 },
+        remotePaging: { type: Boolean, default: false },
     },
     data() {
         return {
@@ -46,14 +51,24 @@ const UListView = {
     },
     created() {
         this.debouncedFetchData = debounce(this.fetchData, 100);
-        this.currentDataSource && this.debouncedFetchData();
+        if (this.currentDataSource && this.initialLoad)
+            this.debouncedFetchData();
     },
     methods: {
+        getExtraParams() {
+            return { // For convenience
+                filterText: this.filterText,
+            };
+        },
         normalizeDataSource(dataSource) {
             if (dataSource instanceof DataSource)
                 return dataSource;
             else if (dataSource instanceof Function) {
                 return new DataSource({
+                    paging: { size: +this.pageSize, number: 1 },
+                    remotePaging: this.remotePaging,
+                    remoteFiltering: this.remoteFiltering,
+                    getExtraParams: this.getExtraParams,
                     load(params) {
                         const result = dataSource(params);
 
@@ -66,7 +81,12 @@ const UListView = {
                     },
                 });
             } else if (dataSource instanceof Object) {
-                return new DataSource(dataSource);
+                return new DataSource(Object.assign({
+                    paging: { size: +this.pageSize, number: 1 },
+                    remotePaging: this.remotePaging,
+                    remoteFiltering: this.remoteFiltering,
+                    getExtraParams: this.getExtraParams,
+                }, dataSource));
             } else
                 return undefined;
         },
@@ -125,15 +145,16 @@ const UListView = {
                 parentEl.scrollTop = selectedEl.offsetTop;
         },
         fetchData() {
-            if (!this.currentDataSource)
+            const dataSource = this.currentDataSource;
+            if (!dataSource)
                 return;
 
             this.loading = true;
-            this.currentDataSource.fetch(
-                this.currentData ? this.currentData.length : 0,
-                this.currentDataSource.limit || 50,
-            ).then((data) => {
-                this.currentData = (this.currentData || []).concat(data);
+            const offset = this.currentData ? this.currentData.length : 0;
+            const limit = +this.pageSize;
+            dataSource.fetch(offset, limit).then((data) => {
+                // @TODO: 防止加载顺序不对
+                this.currentData = dataSource.slice(0, offset + limit);
                 this.loading = false;
             }).catch(() => this.loading = false);
         },
@@ -153,5 +174,5 @@ const UListView = {
 export * from './item.vue';
 export * from './group.vue';
 export * from './divider.vue';
-export { UListView };
+
 export default UListView;

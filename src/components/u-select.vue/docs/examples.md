@@ -116,13 +116,13 @@ export default {
 </u-select>
 ```
 
-### 多选
+### 多选模式
 
-通过设置`multiple`属性开启多选模式。多选模式下，`value`只接受数组类型的数据，返回的也是数组。
+通过设置`multiple`属性开启多选模式。在多选模式下，`values`属性不支持`v-model`，只能用`:values.sync`进行双向绑定。
 
 ``` vue
 <template>
-<u-select multiple v-model="value">
+<u-select multiple :values.sync="values">
     <u-select-item value="cup">水杯</u-select-item>
     <u-select-item value="coffee">咖啡</u-select-item>
     <u-select-item value="nut">坚果</u-select-item>
@@ -134,32 +134,7 @@ export default {
 export default {
     data() {
         return {
-            value: ['nut', 'towel'],
-        };
-    },
-};
-</script>
-```
-
-### 多选
-
-通过设置`multiple`属性开启多选模式。多选模式下，`value`只接受数组类型的数据，返回的也是数组。
-
-``` vue
-<template>
-<u-select multiple v-model="value">
-    <u-select-item value="cup">水杯</u-select-item>
-    <u-select-item value="coffee">咖啡</u-select-item>
-    <u-select-item value="nut">坚果</u-select-item>
-    <u-select-item value="towel">毛巾</u-select-item>
-    <u-select-item value="sofa">沙发</u-select-item>
-</u-select>
-</template>
-<script>
-export default {
-    data() {
-        return {
-            value: ['nut', 'towel'],
+            values: ['nut', 'towel'],
         };
     },
 };

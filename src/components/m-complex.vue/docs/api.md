@@ -6,9 +6,9 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Any | | 当前选择的值 |
-| values.sync | Any | | 多项选择的值 |
-| autoSelect | Boolean | `false` | 是否自动选择第一个非禁用的项 |
+| value.sync, v-model | Array | | 当前选择的值 |
+| values.sync | Array | | 多项选择的值 |
+| auto-select | Boolean | `false` | 是否自动选择第一个非禁用的项 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | multiple | Boolean | `false` | 是否切换为多选模式 |
 | readonly | Boolean | `false` | 是否只读 |
@@ -41,7 +41,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择项的值 |
+| $event | Any | 选择项的值。多选模式中，为数组 |
 | senderVM | MComplex | 发送事件实例 |
 
 #### @select
@@ -50,12 +50,12 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 改变后的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | Any | 单选模式中，改变后的值 |
+| $event.oldValue | Any | 单选模式中，旧的值 |
 | $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | MComplexItem |  单选模式中，选择项子组件 |
-| $event.values | Any | 改变后的值 |
-| $event.oldValues | Any | 旧的值 |
+| $event.itemVM | MComplexItem | 单选模式中，选择项子组件 |
+| $event.values | Array | 多选模式中，改变后的值 |
+| $event.oldValues | Array | 多选模式中，旧的值 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MComplexItem\> | 多选模式中，所有选中项子组件的数组 |
 | senderVM | MComplex | 发送事件实例 |
@@ -66,12 +66,12 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择项的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | Any | 单选模式中，选择项的值 |
+| $event.oldValue | Any | 单选模式中，旧的值 |
 | $event.item | Object | 单选模式中，选择项相关对象 |
 | $event.itemVM | MComplexItem |  单选模式中，选择项子组件 |
-| $event.values | Any | 改变后的值 |
-| $event.oldValues | Any | 旧的值 |
+| $event.values | Array | 多选模式中，改变后的值 |
+| $event.oldValues | Array | 多选模式中，旧的值 |
 | $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MComplexItem\> | 多选模式中，所有选中项子组件的数组 |
 | senderVM | MComplex | 发送事件实例 |

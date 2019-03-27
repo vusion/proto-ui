@@ -2,7 +2,7 @@ import { MSinglexItem } from '../../m-singlex.vue';
 import { MMultiplexItem } from '../../m-multiplex.vue';
 import { ellipsisTitle } from '../../../directives';
 
-const MComplexItem = {
+export const MComplexItem = {
     name: 'm-complex-item',
     parentName: 'm-complex',
     groupName: 'm-complex-group',
@@ -22,5 +22,4 @@ const MComplexItem = {
     // },
 };
 
-export { MComplexItem };
 export default MComplexItem;

@@ -1,8 +1,7 @@
 import { UListView } from '../u-list-view.vue';
-import DataSource from '../../utils/DataSource';
 import { ellipsisTitle } from '../../directives';
 
-const USelect = {
+export const USelect = {
     name: 'u-select',
     childName: 'u-select-item',
     groupName: 'u-select-group',
@@ -10,6 +9,7 @@ const USelect = {
     directives: { ellipsisTitle },
     props: {
         // @inherit: value: { type: String, default: '' },
+        // @inherit: values: Array,
         // @inherit: field: { type: String, default: 'text' },
         // @inherit: data: Array,
         // @inherit: dataSource: [DataSource, Function],
@@ -24,7 +24,12 @@ const USelect = {
         filterable: { type: Boolean, default: false },
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
+        // @inherit: loadingText: { type: String, default: '加载中...' },
         emptyText: { type: String, default: '无匹配数据' },
+        // @inherit: initialLoad: { type: Boolean, default: true },
+        // @inherit: pageSize: { type: Number, default: 50 },
+        // @inherit: remotePaging: { type: Boolean, default: false },
+        remoteFiltering: { type: Boolean, default: false },
         opened: { type: Boolean, default: false },
     },
     data() {
@@ -37,8 +42,8 @@ const USelect = {
             // @inherit: currentMultiple: this.multiple,
             // @inherit: currentData: this.data,
             // @inherit: loading: false,
-            currentText: '',
-            filterText: '', // 只有 input 时会改变它
+            currentText: '', // 显示文本
+            filterText: '', // 过滤文本，只有 input 时会改变它
         };
     },
     computed: {
@@ -110,7 +115,8 @@ const USelect = {
         },
         onOpen($event) {
             // 刚打开时不 filterText
-            this.filterText = '';
+            if (this.$refs.popper)
+                this.currentText = this.filterText = '';
             if (this.filterable)
                 this.$refs.input.focus();
             setTimeout(() => this.ensureSelectedInView(true));
@@ -122,7 +128,7 @@ const USelect = {
          * @param {*} item
          */
         match(item) {
-            if (!this.filterText || this.dataSource)
+            if (!this.filterText || this.currentDataSource)
                 return true;
 
             let matchMethod;
@@ -140,36 +146,28 @@ const USelect = {
             return !!matchMethod(item.currentLabel, this.filterText);
         },
         fetchData(clear) {
-            if (!this.dataSource)
+            const dataSource = this.currentDataSource;
+            if (!dataSource)
                 return;
-            const dataSource = this.dataSource instanceof DataSource ? this.dataSource : {
-                fetch: this.dataSource,
-                promise: Promise.resolve(),
-                clear() { /* nothing */ },
-            };
 
             // dataSource 的多次 promise 必须串行
-            dataSource.promise = dataSource.promise.then(() => {
-                this.loading = true;
-                if (clear) {
-                    this.currentData = [];
-                    dataSource.clear();
-                }
+            // dataSource.promise = dataSource.promise.then(() => {
+            if (clear) {
+                this.currentData = [];
+                dataSource.clear();
+            }
 
-                dataSource.fetch({
-                    // @TODO: 要不要设置 limit 属性
-                    offset: this.currentData ? this.currentData.length : 0,
-                    limit: this.currentDataSource.limit || 50,
-                    filter: {
-                        value: this.filterText, // @compat
-                        text: this.filterText,
-                    },
-                    clear,
-                }, this.currentDataSource.limit || 50).then((data) => {
-                    this.currentData = (this.currentData || []).concat(data);
+            this.loading = true;
+            const offset = this.currentData ? this.currentData.length : 0;
+            const limit = +this.pageSize;
+
+            console.log(this.filterText);
+            dataSource.filter(this.filterText ? { text: [this.matchMethod, this.filterText] } : undefined)
+                .fetch(offset, limit).then((data) => {
+                    this.currentData = dataSource.slice(0, offset + limit);
                     this.loading = false;
                 }).catch(() => this.loading = false);
-            });
+            // });
         },
         onFocus() {
             // const inputEl = this.$refs.input;
@@ -191,7 +189,7 @@ const USelect = {
             if (cancel)
                 return;
 
-            this.dataSource && this.debouncedFetchData(true);
+            this.currentDataSource && this.debouncedFetchData(true);
             this.open();
             // this.$refs.popper.scheduleUpdate();
         },
@@ -227,12 +225,12 @@ const USelect = {
         },
         onInputEnter() {
             // @TODO: Use focusItemVM
-            const firstItemVM = this.matchedVMs[0];
-            if (!firstItemVM)
-                return;
-            this.select(firstItemVM);
-            if (firstItemVM.currentSelected)
-                this.filterText = '';
+            // const firstItemVM = this.matchedVMs[0];
+            // if (!firstItemVM)
+            //     return;
+            // this.select(firstItemVM);
+            // if (firstItemVM.currentSelected)
+            //     this.filterText = '';
         },
         onInputDelete() {
             if (this.filterable && this.filterText === '') {
@@ -263,7 +261,7 @@ const USelect = {
                 this.selectedVM = undefined;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
-            // this.focus();
+            this.focus();
 
             this.$emit('clear', {
                 oldValue,
@@ -284,5 +282,5 @@ const USelect = {
 export * from './item.vue';
 export * from './group.vue';
 export * from './divider.vue';
-export { USelect };
+
 export default USelect;

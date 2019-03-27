@@ -6,10 +6,7 @@ export const MMultiplex = {
     groupName: 'm-multiplex-group',
     childName: 'm-multiplex-item',
     mixins: [MEmitter, MParent],
-    model: {
-        prop: 'values',
-        event: 'input',
-    },
+    model: 'values',
     props: {
         values: Array,
         keepOrder: { type: Boolean, default: false },

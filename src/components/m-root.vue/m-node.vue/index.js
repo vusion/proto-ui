@@ -29,7 +29,7 @@ export const MNode = {
             this.rootVM = undefined;
         });
         this.$contact(this.$options.name, (parentVM) => {
-            parentVM.property.splice(parentVM.property.indexOf(this), 1);
+            parentVM.nodeVMs.splice(parentVM.nodeVMs.indexOf(this), 1);
             this.rootVM = undefined;
             this.parentVM = undefined;
         });

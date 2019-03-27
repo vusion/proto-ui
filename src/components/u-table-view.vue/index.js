@@ -88,7 +88,7 @@ export const UTableView = {
         },
     },
     created() {
-        if (this.currentDataSource)
+        if (this.currentDataSource && this.initialLoad)
             this.fetchData();
         else
             this.arrangeData();

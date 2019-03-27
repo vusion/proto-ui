@@ -67,6 +67,9 @@ export default class DataSource {
         // 传 data 为本地数据模式，此时已知所有数据
         if (options.data)
             this.originTotal = options.data.length;
+
+        // 串联 Promise，防止出错
+        this.promise = Promise.resolve();
     }
 
     page(number, size) {
@@ -77,6 +80,9 @@ export default class DataSource {
 
         if (size === undefined)
             size = this.paging ? this.paging.size : 20;
+
+        if (number === this.paging.number && size === this.paging.size)
+            return this;
 
         this.paging = Object.freeze({ number, size });
         return this;
@@ -89,9 +95,8 @@ export default class DataSource {
             compare = field.compare;
         }
 
-        // 相同时无需排序可能会有问题
-        // if (this.sorting && this.sorting.field === field && this.sorting.order === order)
-        //     return;
+        if (this.sorting && this.sorting.field === field && this.sorting.order === order)
+            return this;
 
         this.sorting = field === undefined ? undefined : Object.freeze({ field, order, compare });
         this._params.sorting = this.sorting;
@@ -100,7 +105,10 @@ export default class DataSource {
 
     filter(filtering) {
         if (this.filtering === filtering)
-            return;
+            return this;
+        // @TODO: Use deep compare
+        if (JSON.stringify(this.filtering) === JSON.stringify(filtering))
+            return this;
 
         this.filtering = filtering === undefined ? undefined : Object.freeze(filtering);
         this._params.filtering = this.filtering;
@@ -112,10 +120,8 @@ export default class DataSource {
         return this;
     }
 
-    _fetchParam(key) {
-        const param = this._params[key];
-        delete this._params[key];
-        return param;
+    getExtraParams() {
+        return undefined;
     }
 
     defaultCompare(a, b, sign) {
@@ -189,7 +195,7 @@ export default class DataSource {
                 paging,
                 sorting: this.sorting,
                 filtering: this.filtering,
-            });
+            }, this.getExtraParams());
 
             if (!this.load)
                 throw new Error('Cannot find load method on DataSource!');
@@ -205,7 +211,7 @@ export default class DataSource {
                     } // 否则什么都不做
 
                     this.arrange();
-                    return this.data.slice(offset, newOffset);
+                    return this.arrangedData.slice(offset, newOffset);
                 } else {
                     let partialData;
 
@@ -223,6 +229,8 @@ export default class DataSource {
                         this.data.push(...partialData);
 
                     this.arrange();
+
+                    console.log(partialData);
                     return partialData;
                 }
             });
@@ -241,6 +249,10 @@ export default class DataSource {
             return this.fetch();
     }
 
+    slice(offset, newOffset) {
+        return (this.arrangedData || this.data).slice(offset, newOffset);
+    }
+
     get total() {
         if (this.remotePaging)
             return this.originTotal !== Infinity ? this.originTotal : 0;
@@ -250,6 +262,16 @@ export default class DataSource {
 
     get totalPage() {
         return this.paging ? Math.ceil(this.total / this.paging.size) || 1 : 1;
+    }
+
+    /**
+     * 是否拥有更多数据
+     * @param {Number} offset - 位置
+     */
+    hasMore(offset) {
+        if (offset === undefined)
+            offset = this.data.length;
+        return offset < this.originTotal;
     }
 
     /**
