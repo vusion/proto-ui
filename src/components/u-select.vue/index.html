@@ -1,10 +1,10 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled"
     :clearable="clearable && !!currentText" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
     :tabindex="readonly || disabled ? '' : 0"
-    @keydown.prevent.up="$refs.popper.currentOpened ? shift(-1) : open()"
-    @keydown.prevent.down="$refs.popper.currentOpened ? shift(+1) : open()"
-    @keydown.stop.enter="close()"
-    @keydown.stop.esc="close(), filterText = ''">
+    @keydown.up.prevent="$refs.popper.currentOpened ? shift(-1) : open()"
+    @keydown.down.prevent="$refs.popper.currentOpened ? shift(+1) : open()"
+    @keydown.enter.stop="close()"
+    @keydown.esc.stop="close(), filterText = ''">
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
     <span v-if="multiple ? !selectedVMs.length : !selectedVM" :class="$style.placeholder">{{ placeholder }}</span>
     <div :class="$style.text" v-ellipsis-title :tags-overflow="tagsOverflow">
@@ -13,13 +13,13 @@
         <template v-else-if="this.multipleAppearance === 'tags'">
             <template v-if="tagsOverflow === 'hidden' || tagsOverflow === 'visible'">
                 <span :class="$style.tag" v-for="itemVM in selectedVMs" :key="itemVM.value">
-                    <span :class="$style['tag-text']">{{ itemVM.currentLabel }}</span>
+                    <span :class="$style['tag-text']">{{ itemVM.currentText }}</span>
                     <span :class="$style['tag-remove']" @click.stop="select(itemVM, false)"></span>
                 </span>
             </template>
             <template v-else-if="tagsOverflow === 'collapse'">
                 <span :class="$style.tag" v-if="selectedVMs[0]" :key="selectedVMs[0].value">
-                    <span :class="$style['tag-text']">{{ selectedVMs[0].currentLabel }}</span>
+                    <span :class="$style['tag-text']">{{ selectedVMs[0].currentText }}</span>
                     <span :class="$style['tag-remove']" @click.stop="select(selectedVMs[0], false)"></span>
                 </span>
                 <span :class="$style.tag" v-if="selectedVMs.length > 1">
@@ -30,10 +30,10 @@
         <u-input v-if="filterable" :class="$style.input" ref="input" :readonly="readonly" :disabled="disabled"
             :placeholder="multiple && selectedVMs.length ? '' : placeholder" :filterable="filterable" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
             :value="multiple ? filterText : currentText" @input="onInput" @foucs="onFocus" @blur="onBlur"
-            @keydown.stop.enter="onInputEnter" @keydown.stop.delete="onInputDelete">
+            @keydown.enter.stop="onInputEnter" @keydown.delete.stop="onInputDelete">
         </u-input>
     </div>
-    <span v-if="clearable && !!currentText" :class="$style.clearable" @click.stop="clear"></span>
+    <span v-if="clearable && !!currentText" :class="$style.clearable" @click="clear"></span>
     <m-popper :class="$style.popper" ref="popper" append-to="reference" :disabled="readonly || disabled"
         @update:opened="$emit('update:opened', $event, this)"
         @before-open="$emit('before-open', $event, this)"

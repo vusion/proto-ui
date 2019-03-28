@@ -25,6 +25,7 @@ export const UListView = {
         // @inherit: disabled: { type: Boolean, default: false },
         loadingText: { type: String, default: '加载中...' },
         initialLoad: { type: Boolean, default: true },
+        pageable: { type: Boolean, default: false },
         pageSize: { type: Number, default: 50 },
         remotePaging: { type: Boolean, default: false },
     },
@@ -36,23 +37,30 @@ export const UListView = {
             // @inherit: selectedVM: undefined,
             // @inherit: selectedVMs: undefined,
             // @inherit: currentMultiple: this.multiple,
-            currentData: this.data,
-            currentDataSource: this.normalizeDataSource(this.dataSource),
+            currentData: undefined,
+            currentDataSource: undefined,
             loading: false,
+            promiseSequence: Promise.resolve(),
         };
     },
     watch: {
         data(data) {
-            this.currentData = data;
+            this.handleData();
         },
         dataSource(dataSource) {
-            this.currentDataSource = this.normalizeDataSource(dataSource);
+            this.handleData();
+        },
+        itemVMs(itemVMs, oldVMs) {
+            if (this.data || this.dataSource)
+                return;
+
+            MComplex.watch.itemVMs.call(this, itemVMs, oldVMs);
         },
     },
     created() {
-        this.debouncedFetchData = debounce(this.fetchData, 100);
-        if (this.currentDataSource && this.initialLoad)
-            this.debouncedFetchData();
+        this.debouncedFetchData = debounce(this.fetchData, 300);
+        this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
+        this.initialLoad && this.fetchData();
     },
     methods: {
         getExtraParams() {
@@ -60,33 +68,41 @@ export const UListView = {
                 filterText: this.filterText,
             };
         },
+        handleData() {
+            // @TODO: undefined or null
+            this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
+            this.fetchData().then(() => {
+                // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+                MComplex.watch.itemVMs.call(this, this.itemVMs);
+            });
+        },
         normalizeDataSource(dataSource) {
+            const options = {
+                paging: this.pageable && { size: +this.pageSize, number: 1 },
+                remotePaging: this.remotePaging,
+                remoteFiltering: this.remoteFiltering,
+                getExtraParams: this.getExtraParams,
+            };
+
             if (dataSource instanceof DataSource)
                 return dataSource;
-            else if (dataSource instanceof Function) {
-                return new DataSource({
-                    paging: { size: +this.pageSize, number: 1 },
-                    remotePaging: this.remotePaging,
-                    remoteFiltering: this.remoteFiltering,
-                    getExtraParams: this.getExtraParams,
-                    load(params) {
-                        const result = dataSource(params);
+            else if (dataSource instanceof Array) {
+                options.data = dataSource;
+                return new DataSource(options);
+            } else if (dataSource instanceof Function) {
+                options.load = function load(params) {
+                    const result = dataSource(params);
 
-                        if (result instanceof Promise)
-                            return result.catch(() => this.loading = false);
-                        else if (result instanceof Array)
-                            return Promise.resolve(result);
-                        else
-                            throw new TypeError('Wrong type of `dataSource.fetch` result!');
-                    },
-                });
+                    if (result instanceof Promise)
+                        return result.catch(() => this.loading = false);
+                    else if (result instanceof Array)
+                        return Promise.resolve(result);
+                    else
+                        throw new TypeError('Wrong type of `dataSource.fetch` result!');
+                };
+                return new DataSource(options);
             } else if (dataSource instanceof Object) {
-                return new DataSource(Object.assign({
-                    paging: { size: +this.pageSize, number: 1 },
-                    remotePaging: this.remotePaging,
-                    remoteFiltering: this.remoteFiltering,
-                    getExtraParams: this.getExtraParams,
-                }, dataSource));
+                return new DataSource(Object.assign(options, dataSource));
             } else
                 return undefined;
         },
@@ -125,7 +141,7 @@ export const UListView = {
             }
         },
         ensureSelectedInView(natural) {
-            if (!this.selectedVM)
+            if (!this.selectedVM || this.selectedVM.$el)
                 return;
 
             const selectedIndex = this.itemVMs.indexOf(this.selectedVM);
@@ -137,36 +153,41 @@ export const UListView = {
                 else
                     parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
                 if (selectedIndex === this.itemVMs.length - 1) {
-                    this.currentDataSource && this.debouncedFetchData();
+                    this.pageable && this.currentDataSource && this.debouncedFetchData();
                     setTimeout(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight, 200);
                 }
             }
             if (parentEl.scrollTop > selectedEl.offsetTop)
                 parentEl.scrollTop = selectedEl.offsetTop;
         },
-        fetchData() {
+        fetchData(more) {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
 
+            if (!more)
+                this.currentData = [];
+
             this.loading = true;
             const offset = this.currentData ? this.currentData.length : 0;
-            const limit = +this.pageSize;
-            dataSource.fetch(offset, limit).then((data) => {
-                // @TODO: 防止加载顺序不对
-                this.currentData = dataSource.slice(0, offset + limit);
-                this.loading = false;
-            }).catch(() => this.loading = false);
+            const limit = this.pageable ? +this.pageSize : Infinity;
+            // dataSource 的多次 promise 必须串行
+            return this.promiseSequence = this.promiseSequence.then(() =>
+                dataSource.fetch(offset, limit).then((data) => {
+                    // @TODO: 防止加载顺序不对
+                    this.loading = false;
+                    return this.currentData = dataSource.slice(0, offset + limit);
+                }).catch(() => this.loading = false));
         },
         onScroll(e) {
-            if (!this.currentDataSource)
+            if (!this.pageable)
                 return;
 
             const el = e.target;
             const offset = this.currentData ? this.currentData.length : 0;
             if (el.scrollHeight === el.scrollTop + el.clientHeight
-                && this.currentDataSource.hasMore(offset))
-                this.debouncedFetchData();
+                && this.currentDataSource && this.currentDataSource.hasMore(offset))
+                this.debouncedFetchData(true);
         },
     },
 };

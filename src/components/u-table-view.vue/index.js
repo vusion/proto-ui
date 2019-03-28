@@ -3,7 +3,7 @@ import DataSource, { solveCondition } from '../../utils/DataSource';
 export const UTableView = {
     name: 'u-table-view',
     props: {
-        data: { type: Array },
+        data: Array,
         dataSource: [DataSource, Function, Object],
         title: String,
         titleAlignment: { type: String, default: 'center' },

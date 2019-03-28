@@ -43,8 +43,6 @@ export default class DataSource {
             data: [],
             cache: true,
             originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
-            limit: 20, // @deprecated
-            // offset: 0, // @deprecated
             paging: undefined, // @TODO
             sorting: undefined, // @readonly
             filtering: undefined, // @readonly
@@ -56,8 +54,6 @@ export default class DataSource {
         }, options);
 
         this._params = {};
-        if (!this.paging && this.limit)
-            this.paging = { size: this.limit, number: 1 };
 
         this.sorting && (this._params.sorting = this.sorting);
         this.filtering && (this._params.filtering = this.filtering);
@@ -78,6 +74,8 @@ export default class DataSource {
             number = number.number;
         }
 
+        if (number === undefined)
+            return this.paging = undefined;
         if (size === undefined)
             size = this.paging ? this.paging.size : 20;
 
@@ -172,7 +170,8 @@ export default class DataSource {
         const newOffset = offset + limit;
 
         const queryChanged = Object.keys(this._params).length;
-        const mustRemote = !this.hasAllRemoteData() || this.remoteFiltering || this.remoteSorting; // 过滤会影响数量的判断，因此必须要重新请求
+        const mustRemote = !this.hasAllRemoteData(newOffset) // 没有全部的远程数据
+            || (queryChanged && (this.remoteFiltering || this.remoteSorting));
 
         if (!mustRemote) {
             // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
@@ -183,9 +182,14 @@ export default class DataSource {
 
             return Promise.resolve(this.arrangedData.slice(offset, newOffset));
         } else {
+            if (!this.load)
+                return Promise.resolve(this.data);
+
             // 如果有新的 query 参数的变更，则清除缓存
-            if (queryChanged)
+            if (queryChanged) {
                 this.clear();
+                this._params = {};
+            }
 
             const paging = Object.assign({ offset }, this.paging);
             if (limit !== Infinity)
@@ -196,9 +200,6 @@ export default class DataSource {
                 sorting: this.sorting,
                 filtering: this.filtering,
             }, this.getExtraParams());
-
-            if (!this.load)
-                throw new Error('Cannot find load method on DataSource!');
 
             return this.load(params).then((result) => {
                 if (!this.remotePaging) { // 没有后端分页，认为是全部数据
@@ -229,8 +230,6 @@ export default class DataSource {
                         this.data.push(...partialData);
 
                     this.arrange();
-
-                    console.log(partialData);
                     return partialData;
                 }
             });

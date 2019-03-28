@@ -118,7 +118,7 @@ export default {
 
 ### 多选模式
 
-通过设置`multiple`属性开启多选模式。在多选模式下，`values`属性不支持`v-model`，只能用`:values.sync`进行双向绑定。
+通过`multiple`属性开启多选模式。在多选模式下，需要用`values`属性进行绑定，不支持`v-model`，只能用`:values.sync`进行双向绑定。
 
 ``` vue
 <template>
@@ -140,3 +140,46 @@ export default {
 };
 </script>
 ```
+
+### Tags 风格
+
+Tags 过多时如何显示。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select multiple v-model="value" placeholder="过多时省略">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+    <u-select multiple tags-overflow="collapse" v-model="value" placeholder="过多时收缩">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+    <u-select multiple tags-overflow="visible" v-model="value" placeholder="过多时显示">
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="sofa">沙发</u-select-item>
+    </u-select>
+</u-linear-layout>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            value: ['sofa', 'nut', 'towel'],
+        };
+    },
+};
+</script>
+```
+
