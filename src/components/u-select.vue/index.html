@@ -3,7 +3,7 @@
     :tabindex="readonly || disabled ? '' : 0"
     @keydown.up.prevent="$refs.popper.currentOpened ? shift(-1) : open()"
     @keydown.down.prevent="$refs.popper.currentOpened ? shift(+1) : open()"
-    @keydown.enter.stop="close()"
+    @keydown.enter.stop="onEnter"
     @keydown.esc.stop="close(), filterText = ''">
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
     <span v-if="multiple ? !selectedVMs.length : !selectedVM" :class="$style.placeholder">{{ placeholder }}</span>
@@ -39,7 +39,7 @@
         @before-open="$emit('before-open', $event, this)"
         @before-close="$emit('before-close', $event, this)"
         @open="onOpen"
-        @close="$emit('close', $event, this)"
+        @close="onClose"
         @before-toggle="$emit('before-toggle', $event, this)"
         @toggle="$emit('toggle', $event, this)"
         @click.stop @scroll.stop="onScroll">

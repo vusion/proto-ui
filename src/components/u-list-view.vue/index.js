@@ -118,7 +118,7 @@ export const UListView = {
                             selectedVM: itemVM,
                             value: itemVM.value,
                         }, this);
-                        this.ensureSelectedInView();
+                        this.ensureFocusedInView();
                         break;
                     }
                 }
@@ -134,31 +134,37 @@ export const UListView = {
                             selectedVM: itemVM,
                             value: itemVM.value,
                         }, this);
-                        this.ensureSelectedInView();
+                        this.ensureFocusedInView();
                         break;
                     }
                 }
             }
         },
-        ensureSelectedInView(natural) {
-            if (!this.selectedVM || this.selectedVM.$el)
+        ensureFocusedInView(natural) {
+            const focusedVM = this.focusedVM || this.selectedVM;
+            if (!focusedVM)
+                return;
+            const focusedEl = focusedVM.$el;
+            if (!focusedEl)
+                return;
+            const parentEl = focusedEl.parentElement;
+            if (!parentEl)
                 return;
 
-            const selectedIndex = this.itemVMs.indexOf(this.selectedVM);
-            const selectedEl = this.selectedVM.$el;
-            const parentEl = selectedEl.parentElement;
-            if (parentEl.scrollTop < selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight) {
+            const selectedIndex = this.itemVMs.indexOf(focusedVM);
+            if (parentEl.scrollTop < focusedEl.offsetTop + focusedEl.offsetHeight - parentEl.clientHeight) {
                 if (natural)
-                    parentEl.scrollTop = selectedEl.offsetTop - selectedEl.offsetHeight;
+                    parentEl.scrollTop = focusedEl.offsetTop - focusedEl.offsetHeight;
                 else
-                    parentEl.scrollTop = selectedEl.offsetTop + selectedEl.offsetHeight - parentEl.clientHeight;
+                    parentEl.scrollTop = focusedEl.offsetTop + focusedEl.offsetHeight - parentEl.clientHeight;
                 if (selectedIndex === this.itemVMs.length - 1) {
-                    this.pageable && this.currentDataSource && this.debouncedFetchData();
-                    setTimeout(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight, 200);
+                    this.pageable && this.currentDataSource && this.fetchData(true);
+                    // 保证显示加载中，但又不是全部数据
+                    this.$nextTick(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight);
                 }
             }
-            if (parentEl.scrollTop > selectedEl.offsetTop)
-                parentEl.scrollTop = selectedEl.offsetTop;
+            if (parentEl.scrollTop > focusedEl.offsetTop)
+                parentEl.scrollTop = focusedEl.offsetTop;
         },
         fetchData(more) {
             const dataSource = this.currentDataSource;

@@ -72,40 +72,41 @@ export const USelect = {
     },
     methods: {
         shift(count) {
-            // if (this.multiple)
-            //     return;
-            // let selectedIndex = this.itemVMs.indexOf(this.selectedVM);
-            // if (count > 0) {
-            //     for (let i = selectedIndex + count; i < this.itemVMs.length; i++) {
-            //         const itemVM = this.itemVMs[i];
-            //         if (!itemVM.disabled) {
-            //             this.selectedVM = itemVM;
-            //             this.$emit('shift', {
-            //                 selectedIndex,
-            //                 selectedVM: itemVM,
-            //                 value: itemVM.value,
-            //             }, this);
-            //             this.ensureSelectedInView();
-            //             break;
-            //         }
-            //     }
-            // } else if (count < 0) {
-            //     if (selectedIndex === -1)
-            //         selectedIndex = this.itemVMs.length;
-            //     for (let i = selectedIndex + count; i >= 0; i--) {
-            //         const itemVM = this.itemVMs[i];
-            //         if (!itemVM.disabled) {
-            //             this.selectedVM = itemVM;
-            //             this.$emit('shift', {
-            //                 selectedIndex,
-            //                 selectedVM: itemVM,
-            //                 value: itemVM.value,
-            //             }, this);
-            //             this.ensureSelectedInView();
-            //             break;
-            //         }
-            //     }
-            // }
+            if (this.multiple)
+                return;
+
+            let focusedIndex = this.itemVMs.indexOf(this.focusedVM || this.selectedVM);
+            if (count > 0) {
+                for (let i = focusedIndex + count; i < this.itemVMs.length; i++) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        this.focusedVM = itemVM;
+                        this.$emit('shift', {
+                            focusedIndex,
+                            focusedVM: itemVM,
+                            value: itemVM.value,
+                        }, this);
+                        this.ensureFocusedInView();
+                        break;
+                    }
+                }
+            } else if (count < 0) {
+                if (focusedIndex === -1)
+                    focusedIndex = this.itemVMs.length;
+                for (let i = focusedIndex + count; i >= 0; i--) {
+                    const itemVM = this.itemVMs[i];
+                    if (!itemVM.disabled) {
+                        this.focusedVM = itemVM;
+                        this.$emit('shift', {
+                            focusedIndex,
+                            focusedVM: itemVM,
+                            value: itemVM.value,
+                        }, this);
+                        this.ensureFocusedInView();
+                        break;
+                    }
+                }
+            }
         },
         open() {
             this.$refs.popper && this.$refs.popper.open();
@@ -121,12 +122,16 @@ export const USelect = {
             // if (this.$refs.popper)
             //     this.filterText = '';
             if (this.filterable) {
-                this.fetchData().then(() => this.ensureSelectedInView(true));
+                this.fetchData().then(() => this.ensureFocusedInView(true));
                 this.$refs.input.focus();
             } else
-                setTimeout(() => this.ensureSelectedInView(true));
+                setTimeout(() => this.ensureFocusedInView(true));
 
             this.$emit('open', $event, this);
+        },
+        onClose($event) {
+            this.focusedVM = undefined;
+            this.$emit('close', $event, this);
         },
         /**
          * 判断某一项是否匹配
@@ -161,15 +166,24 @@ export const USelect = {
             this.loading = true;
             const offset = this.currentData ? this.currentData.length : 0;
             const limit = this.pageable ? +this.pageSize : Infinity;
+
+            if (this.filterable) {
+                dataSource.filter(this.filterText ? {
+                    text: {
+                        operator: this.matchMethod,
+                        value: this.filterText,
+                        caseSensitive: this.caseSensitive,
+                    },
+                } : undefined);
+            }
             // dataSource 的多次 promise 必须串行
             return this.promiseSequence = this.promiseSequence.then(() =>
-                dataSource.filter(this.filterText ? { text: [this.matchMethod, this.filterText] } : undefined)
-                    .fetch(offset, limit).then((data) => {
-                        this.loading = false;
-                        return this.currentData = dataSource.slice(0, offset + limit);
-                    }).then(() => {
-                        this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
-                    }).catch(() => this.loading = false));
+                dataSource.fetch(offset, limit).then((data) => {
+                    this.loading = false;
+                    return this.currentData = dataSource.slice(0, offset + limit);
+                }).then(() => {
+                    this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
+                }).catch(() => this.loading = false));
         },
         onFocus() {
             // @disabled
@@ -187,7 +201,8 @@ export const USelect = {
             if (this.$emitPrevent('before-filter', { filterText: value }, this))
                 return;
 
-            this.dataSource ? this.debouncedFetchData() : this.fetchData();
+            this.currentDataSource.filter(this.filterText ? { text: [this.matchMethod, this.filterText] } : undefined);
+            this.currentDataSource.shouldRemote() ? this.debouncedFetchData() : this.fetchData();
             this.open();
         },
         onBlur() {
@@ -223,15 +238,15 @@ export const USelect = {
                 this.$emit('update:value', value, this);
             }, 200);
         },
-        onInputEnter() {
-            // @TODO: Use focusItemVM
-            const firstItemVM = this.itemVMs[0];
-            if (!firstItemVM)
-                return;
-            this.select(firstItemVM);
+        onEnter() {
+            if (this.focusedVM)
+                this.select(this.focusedVM);
             this.close();
-            // if (firstItemVM.currentSelected)
-            //     this.filterText = '';
+        },
+        onInputEnter() {
+            if (this.focusedVM)
+                this.select(this.focusedVM);
+            this.close();
         },
         onInputDelete() {
             if (this.filterable && this.filterText === '') {

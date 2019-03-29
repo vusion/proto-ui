@@ -16,6 +16,10 @@
     background: none;
 }
 
+.root[focused] {
+    background: $background-color-base;
+}
+
 .root[selected] {
     background: $brand-primary;
     color: white;

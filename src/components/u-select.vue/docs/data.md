@@ -147,6 +147,51 @@ export default {
 </script>
 ```
 
+### 匹配方式
+
+在`match-method`属性中可以配置字符串的匹配方式，常见的有`includes`、`startsWith`、`endsWith`，也可以传一个函数。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select :data="data" filterable match-method="includes" placeholder="包括即可（默认）"></u-select>
+    <u-select :data="data" filterable match-method="startsWith" placeholder="只匹配开头"></u-select>
+    <u-select :data="data" filterable match-method="endsWith" placeholder="只匹配结尾"></u-select>
+</u-linear-layout>
+</template>
+<script>
+export default {
+    data() {
+        const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
+
+        return { data };
+    },
+};
+</script>
+```
+
+### 区分大小写
+
+默认不区分大小写，可用`case-sensitive`属性开启。
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select :data="data" filterable placeholder="不区分大小写（默认）"></u-select>
+    <u-select :data="data" filterable case-sensitive placeholder="区分大小写"></u-select>
+</u-linear-layout>
+</template>
+<script>
+export default {
+    data() {
+        const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
+
+        return { data };
+    },
+};
+</script>
+```
+
 #### 一次性后端数据，前端过滤
 
 在`data-source`属性中传入`load`方法，用于接收完整的后端数据。

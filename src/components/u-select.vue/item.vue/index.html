@@ -1,7 +1,9 @@
 <div :class="$style.root"
     :selected="parentVM.multiple ? currentSelected : isSelected"
+    :focused="isFocused"
     :readonly="parentVM.readonly"
     :disabled="disabled || parentVM.disabled"
+    @mouseenter="hover"
     @click="select"
     v-ellipsis-title>
     <slot></slot>

@@ -5,7 +5,7 @@ export const UListViewItem = {
     name: 'u-list-view-item',
     parentName: 'u-list-view',
     groupName: 'u-list-view-group',
-    mixins: [MComplexItem],
+    extends: MComplexItem,
 };
 
 export default UListViewItem;

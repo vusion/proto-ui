@@ -4,27 +4,42 @@ export const solveCondition = (condition, obj) => {
     else if (typeof condition === 'object') {
         return Object.keys(condition).every((key) => {
             let expression = condition[key];
-            if (!Array.isArray(expression))
+            if (typeof expression !== 'object')
                 expression = ['=', expression];
+            if (Array.isArray(expression)) {
+                expression = {
+                    operator: expression[0],
+                    value: expression[1],
+                };
+            }
 
-            if (expression[0] === '=' || expression[0] === '==' || expression[0] === 'eq')
-                return obj[key] === expression[1];
-            else if (expression[0] === '!=' || expression[0] === 'neq')
-                return obj[key] !== expression[1];
-            else if (expression[0] === '<' || expression[0] === 'lt')
-                return obj[key] < expression[1];
-            else if (expression[0] === '<=' || expression[0] === 'lte')
-                return obj[key] <= expression[1];
-            else if (expression[0] === '>' || expression[0] === 'gt')
-                return obj[key] > expression[1];
-            else if (expression[0] === '>=' || expression[0] === 'gte')
-                return obj[key] >= expression[1];
-            else if (expression[0] === 'includes')
-                return obj[key].includes(expression[1]);
-            else if (expression[0] === 'startsWith')
-                return obj[key].startsWith(expression[1]);
-            else if (expression[0] === 'endsWith')
-                return obj[key].endsWith(expression[1]);
+            let sourceValue = obj[key];
+            let targetValue = expression.value;
+            if (expression.caseSensitive) {
+                sourceValue = typeof sourceValue === 'string' ? sourceValue.toLowerCase() : sourceValue;
+                targetValue = typeof targetValue === 'string' ? targetValue.toLowerCase() : targetValue;
+            }
+
+            if (typeof expression.operator === 'function')
+                return expression.operator(sourceValue, targetValue, expression);
+            else if (expression.operator === '=' || expression.operator === '==' || expression.operator === 'eq')
+                return sourceValue === targetValue;
+            else if (expression.operator === '!=' || expression.operator === 'neq')
+                return sourceValue !== targetValue;
+            else if (expression.operator === '<' || expression.operator === 'lt')
+                return sourceValue < targetValue;
+            else if (expression.operator === '<=' || expression.operator === 'lte')
+                return sourceValue <= targetValue;
+            else if (expression.operator === '>' || expression.operator === 'gt')
+                return sourceValue > targetValue;
+            else if (expression.operator === '>=' || expression.operator === 'gte')
+                return sourceValue >= targetValue;
+            else if (expression.operator === 'includes')
+                return sourceValue.includes(targetValue);
+            else if (expression.operator === 'startsWith')
+                return sourceValue.startsWith(targetValue);
+            else if (expression.operator === 'endsWith')
+                return sourceValue.endsWith(targetValue);
             else
                 throw new TypeError('Unknown operator in conditions!');
         });
@@ -154,6 +169,12 @@ export default class DataSource {
         }
     }
 
+    shouldRemote(offset) {
+        return this.hasMoreRemoteData(offset) // 没有全部的远程数据
+        || (this._params.filtering && this.remoteFiltering)
+        || (this._params.sorting && this.remoteSorting);
+    }
+
     /**
      * 获取数据
      * 排序、过滤、分组等延迟计算
@@ -170,10 +191,8 @@ export default class DataSource {
         const newOffset = offset + limit;
 
         const queryChanged = Object.keys(this._params).length;
-        const mustRemote = !this.hasAllRemoteData(newOffset) // 没有全部的远程数据
-            || (queryChanged && (this.remoteFiltering || this.remoteSorting));
 
-        if (!mustRemote) {
+        if (!this.shouldRemote(newOffset)) {
             // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
             if (!this.arrangedData || queryChanged) {
                 this._params = {};
@@ -268,7 +287,7 @@ export default class DataSource {
      * @param {Number} offset - 位置
      */
     hasMore(offset) {
-        if (offset === undefined)
+        if (offset === undefined || offset === Infinity)
             offset = this.data.length;
         return offset < this.originTotal;
     }
@@ -277,10 +296,10 @@ export default class DataSource {
      * 是否拥有所有的远程数据
      * @param {Number} offset - 位置
      */
-    hasAllRemoteData(offset) {
-        if (offset === undefined)
+    hasMoreRemoteData(offset) {
+        if (offset === undefined || offset === Infinity)
             offset = this.data.length;
-        return offset >= this.originTotal;
+        return offset < this.originTotal;
     }
 
     hasChanges() {
