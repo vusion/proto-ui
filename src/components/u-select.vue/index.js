@@ -1,3 +1,4 @@
+import { MComplex } from '../m-complex.vue';
 import { UListView } from '../u-list-view.vue';
 import { ellipsisTitle } from '../../directives';
 
@@ -17,7 +18,7 @@ export const USelect = {
         // @inherit: multiple: { type: Boolean, default: false },
         // @inherit: keepOrder: { type: Boolean, default: false },
         multipleAppearance: { type: String, default: 'tags' },
-        tagsOverflow: { type: String, default: 'hidden' },
+        tagsOverflow: { type: String, default: 'visible' },
         autoSelect: { type: Boolean, default: false },
         placeholder: { type: String, default: '请选择' },
         clearable: { type: Boolean, default: false },
@@ -57,10 +58,10 @@ export const USelect = {
     },
     created() {
         this.$watch('selectedVM', (selectedVM) => {
-            this.filterText = this.currentText = this.selectedVM ? this.selectedVM.currentText : '';
+            this.currentText = this.selectedVM ? this.selectedVM.currentText : '';
         });
         this.$watch('selectedVMs', (selectedVMs) => {
-            this.filterText = this.currentText = selectedVMs.map((itemVM) => itemVM.currentText).join(', ');
+            this.currentText = selectedVMs.map((itemVM) => itemVM.currentText).join(', ');
             this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
         });
         this.$on('select', () => {
@@ -182,6 +183,7 @@ export const USelect = {
                     this.loading = false;
                     return this.currentData = dataSource.slice(0, offset + limit);
                 }).then(() => {
+                    MComplex.watch.itemVMs.call(this, this.itemVMs);
                     this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
                 }).catch(() => this.loading = false));
         },

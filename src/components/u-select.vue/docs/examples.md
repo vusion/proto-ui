@@ -148,7 +148,7 @@ Tags 过多时如何显示。
 ``` vue
 <template>
 <u-linear-layout>
-    <u-select multiple v-model="value" placeholder="过多时省略">
+    <u-select multiple tags-overflow="hidden" v-model="value" placeholder="过多时省略">
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="nut">坚果</u-select-item>

@@ -29,7 +29,7 @@
         </template>
         <u-input v-if="filterable" :class="$style.input" ref="input" :readonly="readonly" :disabled="disabled"
             :placeholder="multiple && selectedVMs.length ? '' : placeholder" :filterable="filterable" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
-            :value="multiple ? filterText : currentText" @input="onInput" @foucs="onFocus" @blur="onBlur"
+            :value="filterText" @input="onInput" @foucs="onFocus" @blur="onBlur"
             @keydown.enter.stop="onInputEnter" @keydown.delete.stop="onInputDelete">
         </u-input>
     </div>

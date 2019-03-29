@@ -183,7 +183,8 @@ export const UListView = {
                     // @TODO: 防止加载顺序不对
                     this.loading = false;
                     return this.currentData = dataSource.slice(0, offset + limit);
-                }).catch(() => this.loading = false));
+                }).then(() => MComplex.watch.itemVMs.call(this, this.itemVMs))
+                    .catch(() => this.loading = false));
         },
         onScroll(e) {
             if (!this.pageable)

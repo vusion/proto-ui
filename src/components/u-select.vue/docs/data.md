@@ -100,7 +100,10 @@ params.paging = {
 
 ``` vue
 <template>
+<u-linear-layout>
 <u-select :data-source="load" pageable remote-paging placeholder="后端分页"></u-select>
+<u-select multiple :data-source="load" pageable remote-paging placeholder="后端分页（多选）" style="width: 240px"></u-select>
+</u-linear-layout>
 </template>
 <script>
 // 模拟构造数量较多的 500 条远程数据
@@ -131,9 +134,13 @@ export default {
 
 使用`filterable`属性可以开启过滤功能，用于快速查找选项。
 
+<!-- <u-select multiple :data="data" filterable clearable placeholder="前端过滤（多选）" style="width: 240px"></u-select> -->
+
 ``` vue
 <template>
-<u-select :data="data" filterable clearable placeholder="前端过滤"></u-select>
+<u-linear-layout>
+    <u-select :data="data" filterable clearable placeholder="前端过滤"></u-select>
+</u-linear-layout>
 </template>
 
 <script>
@@ -147,7 +154,7 @@ export default {
 </script>
 ```
 
-### 匹配方式
+#### 匹配方式
 
 在`match-method`属性中可以配置字符串的匹配方式，常见的有`includes`、`startsWith`、`endsWith`，也可以传一个函数。
 
@@ -170,7 +177,7 @@ export default {
 </script>
 ```
 
-### 区分大小写
+#### 区分大小写
 
 默认不区分大小写，可用`case-sensitive`属性开启。
 

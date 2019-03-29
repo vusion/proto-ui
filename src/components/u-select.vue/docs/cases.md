@@ -312,72 +312,9 @@ export default {
 
 ### 可过滤
 
-``` html
-<u-select filterable>
-    <u-select-item value="abandon">abandon</u-select-item>
-    <u-select-item value="absent">absent</u-select-item>
-    <u-select-item value="bread">bread</u-select-item>
-    <u-select-item value="brief">brief</u-select-item>
-    <u-select-item value="calendar">calendar</u-select-item>
-    <u-select-item value="cancel">cancel</u-select-item>
-</u-select>
-```
-
 ### 匹配方式
 
-``` html
-<u-linear-layout>
-    <u-select filterable match-method="includes" placeholder="包括即可（默认）">
-        <u-select-item value="abandon">abandon</u-select-item>
-        <u-select-item value="absent">absent</u-select-item>
-        <u-select-item value="bread">bread</u-select-item>
-        <u-select-item value="brief">brief</u-select-item>
-        <u-select-item value="calendar">calendar</u-select-item>
-        <u-select-item value="cancel">cancel</u-select-item>
-    </u-select>
-    <u-select filterable match-method="startsWith" placeholder="只匹配开头">
-        <u-select-item value="abandon">abandon</u-select-item>
-        <u-select-item value="absent">absent</u-select-item>
-        <u-select-item value="bread">bread</u-select-item>
-        <u-select-item value="brief">brief</u-select-item>
-        <u-select-item value="calendar">calendar</u-select-item>
-        <u-select-item value="cancel">cancel</u-select-item>
-    </u-select>
-    <u-select filterable match-method="endsWith" placeholder="只匹配结尾">
-        <u-select-item value="abandon">abandon</u-select-item>
-        <u-select-item value="absent">absent</u-select-item>
-        <u-select-item value="bread">bread</u-select-item>
-        <u-select-item value="brief">brief</u-select-item>
-        <u-select-item value="calendar">calendar</u-select-item>
-        <u-select-item value="cancel">cancel</u-select-item>
-    </u-select>
-</u-linear-layout>
-```
-
 ### 区分大小写
-
-默认不区分大小写，可用`case-sensitive`属性开启。
-
-``` html
-<u-linear-layout>
-    <u-select filterable placeholder="不区分大小写（默认）">
-        <u-select-item value="abandon">abandon</u-select-item>
-        <u-select-item value="Absent">Absent</u-select-item>
-        <u-select-item value="ABOUT">ABOUT</u-select-item>
-        <u-select-item value="bread">bread</u-select-item>
-        <u-select-item value="Break">Break</u-select-item>
-        <u-select-item value="BRIEF">BRIEF</u-select-item>
-    </u-select>
-    <u-select filterable case-sensitive placeholder="区分大小写">
-        <u-select-item value="abandon">abandon</u-select-item>
-        <u-select-item value="Absent">Absent</u-select-item>
-        <u-select-item value="ABOUT">ABOUT</u-select-item>
-        <u-select-item value="bread">bread</u-select-item>
-        <u-select-item value="Break">Break</u-select-item>
-        <u-select-item value="BRIEF">BRIEF</u-select-item>
-    </u-select>
-</u-linear-layout>
-```
 
 ### 数据源
 
