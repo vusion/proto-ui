@@ -85,9 +85,6 @@ export const USelect = {
             }
         });
     },
-    // mounted() {
-    //     this.$refs.popper.addTrigger(this.$refs.root, 'click');
-    // },
     methods: {
         shift(count) {
             if (this.multiple)
@@ -140,7 +137,7 @@ export const USelect = {
             // if (this.$refs.popper)
             //     this.filterText = '';
             if (this.filterable && !this.currentDataSource.initialLoaded) {
-                this.fetchData().then(() => {
+                this.load().then(() => {
                     this.ensureFocusedInView(true);
                     this.$refs.input.focus();
                 });

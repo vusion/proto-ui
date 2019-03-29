@@ -60,7 +60,7 @@ export const UListView = {
     created() {
         this.debouncedFetchData = debounce(this.fetchData, 300);
         this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
-        this.initialLoad && this.fetchData();
+        this.initialLoad && this.load();
     },
     methods: {
         getExtraParams() {
@@ -185,6 +185,13 @@ export const UListView = {
                     return this.currentData = dataSource.slice(0, offset + limit);
                 }).then(() => MComplex.watch.itemVMs.call(this, this.itemVMs))
                     .catch(() => this.loading = false));
+        },
+        load() {
+            return this.fetchData();
+        },
+        reload() {
+            this.currentDataSource.clear();
+            return this.fetchData();
         },
         onScroll(e) {
             if (!this.pageable)
