@@ -96,7 +96,7 @@ const MPopper = {
     mounted() {
         // 字符串类型的 reference 只有首次获取是有效的，因为之后节点会被插到别的地方
         this.referenceEl = this.getReferenceEl();
-        this.addTrigger(this.trigger, this.referenceEl);
+        this.addTrigger(this.referenceEl, this.trigger);
 
         this.currentOpened && this.createPopper();
     },
@@ -162,9 +162,9 @@ const MPopper = {
         /**
          * 添加触发器时，绑定事件
          */
-        addTrigger(event, el) {
+        addTrigger(el, event) {
             const popperEl = this.$el;
-            this.triggers.push({ event, el });
+            this.triggers.push({ el, event });
 
             // 绑定事件
             this.followCursor && this.offEvents.push(ev.on(document, 'mousemove', (e) => this.updatePositionByCursor(e, el)));

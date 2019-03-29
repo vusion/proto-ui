@@ -220,7 +220,7 @@ export default {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(remoteData);
-                }, 500);
+                }, 300);
             });
         },
     },
@@ -265,7 +265,7 @@ export default {
                     resolve(remoteData.filter((item) => item.value.includes(value))
                         .slice(paging.offset, paging.offset + paging.limit)
                     );
-                }, 500);
+                }, 300);
             });
         },
     },

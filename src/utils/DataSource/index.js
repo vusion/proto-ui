@@ -15,7 +15,7 @@ export const solveCondition = (condition, obj) => {
 
             let sourceValue = obj[key];
             let targetValue = expression.value;
-            if (expression.caseSensitive) {
+            if (expression.caseInsensitive) {
                 sourceValue = typeof sourceValue === 'string' ? sourceValue.toLowerCase() : sourceValue;
                 targetValue = typeof targetValue === 'string' ? targetValue.toLowerCase() : targetValue;
             }
@@ -74,10 +74,13 @@ export default class DataSource {
         this.filtering && (this._params.filtering = this.filtering);
 
         this.arrangedData = undefined;
+        this.initialLoaded = false;
 
         // 传 data 为本地数据模式，此时已知所有数据
-        if (options.data)
+        if (options.data) {
+            this.initialLoaded = true;
             this.originTotal = options.data.length;
+        }
 
         // 串联 Promise，防止出错
         this.promise = Promise.resolve();
@@ -221,6 +224,8 @@ export default class DataSource {
             }, this.getExtraParams());
 
             return this.load(params).then((result) => {
+                this.initialLoaded = true;
+
                 if (!this.remotePaging) { // 没有后端分页，认为是全部数据
                     if (result instanceof Array) { // 只返回数组，没有 total 字段
                         this.originTotal = result.length;
@@ -310,6 +315,7 @@ export default class DataSource {
         this.data = [];
         this.originTotal = Infinity;
         this.arrangedData = undefined;
+        this.initialLoaded = false;
     }
 
     setData() {

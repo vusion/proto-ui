@@ -56,6 +56,12 @@ export const USelect = {
         //     return this.itemVMs.filter((item) => item.matched);
         // },
     },
+    watch: {
+        value(value) {
+            // 无需剪枝
+            this.watchValue(value);
+        },
+    },
     created() {
         this.$watch('selectedVM', (selectedVM) => {
             this.currentText = this.selectedVM ? this.selectedVM.currentText : '';
@@ -64,13 +70,24 @@ export const USelect = {
             this.currentText = selectedVMs.map((itemVM) => itemVM.currentText).join(', ');
             this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
         });
-        this.$on('select', () => {
+        this.$on('select', ($event) => {
             if (!this.multiple)
                 this.close();
-            else if (this.filterable)
-                this.$refs.input.focus();
+            if (this.filterable) {
+                this.filterText = this.selectedVM ? this.selectedVM.currentText : '';
+                setTimeout(() => {
+                    this.$refs.input.focus();
+                    setTimeout(() => {
+                        const inputEl = this.$refs.input.$refs.input;
+                        inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+                    });
+                });
+            }
         });
     },
+    // mounted() {
+    //     this.$refs.popper.addTrigger(this.$refs.root, 'click');
+    // },
     methods: {
         shift(count) {
             if (this.multiple)
@@ -122,9 +139,11 @@ export const USelect = {
             // 刚打开时不 filterText
             // if (this.$refs.popper)
             //     this.filterText = '';
-            if (this.filterable) {
-                this.fetchData().then(() => this.ensureFocusedInView(true));
-                this.$refs.input.focus();
+            if (this.filterable && !this.currentDataSource.initialLoaded) {
+                this.fetchData().then(() => {
+                    this.ensureFocusedInView(true);
+                    this.$refs.input.focus();
+                });
             } else
                 setTimeout(() => this.ensureFocusedInView(true));
 
@@ -156,42 +175,50 @@ export const USelect = {
         //     }
         //     return !!matchMethod(item.currentText, this.filterText);
         // },
+        _fetchData(more) {
+            // this.currentDataSource.filter({
+            //     text: {
+            //         operator: this.matchMethod,
+            //         value: this.filterText,
+            //         caseInsensitive: !this.caseSensitive,
+            //     },
+            // });
+            return this.currentDataSource.shouldRemote() ? this.debouncedFetchData(more) : this.fetchData(more);
+        },
         fetchData(more) {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
 
-            if (!more)
-                this.currentData = [];
+            // if (!more)
+            // this.currentData = [];
 
             this.loading = true;
-            const offset = this.currentData ? this.currentData.length : 0;
+            const offset = more ? this.currentData.length : 0;
             const limit = this.pageable ? +this.pageSize : Infinity;
 
-            if (this.filterable) {
-                dataSource.filter(this.filterText ? {
-                    text: {
-                        operator: this.matchMethod,
-                        value: this.filterText,
-                        caseSensitive: this.caseSensitive,
-                    },
-                } : undefined);
-            }
             // dataSource 的多次 promise 必须串行
-            return this.promiseSequence = this.promiseSequence.then(() =>
-                dataSource.fetch(offset, limit).then((data) => {
+            return this.promiseSequence = this.promiseSequence.then(() => {
+                if (this.filterable) {
+                    dataSource.filter({
+                        text: {
+                            operator: this.matchMethod,
+                            value: this.filterText,
+                            caseInsensitive: !this.caseSensitive,
+                        },
+                    });
+                }
+                return dataSource.fetch(offset, limit).then((data) => {
                     this.loading = false;
                     return this.currentData = dataSource.slice(0, offset + limit);
                 }).then(() => {
                     MComplex.watch.itemVMs.call(this, this.itemVMs);
                     this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
-                }).catch(() => this.loading = false));
+                }).catch(() => this.loading = false);
+            });
         },
         onFocus() {
             // @disabled
-            // const inputEl = this.$refs.input;
-            // if (inputEl.selectionStart === inputEl.selectionEnd === 0)
-            //     inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
         },
         onInput(value) {
             if (!this.filterable)
@@ -203,8 +230,7 @@ export const USelect = {
             if (this.$emitPrevent('before-filter', { filterText: value }, this))
                 return;
 
-            this.currentDataSource.filter(this.filterText ? { text: [this.matchMethod, this.filterText] } : undefined);
-            this.currentDataSource.shouldRemote() ? this.debouncedFetchData() : this.fetchData();
+            this._fetchData();
             this.open();
         },
         onBlur() {
@@ -229,7 +255,8 @@ export const USelect = {
                 // 如果没有匹配项则恢复到上一个状态
                 if (!selectedVM && filterText) {
                     selectedVM = oldVM;
-                    this.currentText = selectedVM ? selectedVM.currentText : undefined;
+                    this.filterText = this.currentText = '';
+                    this._fetchData();
                     return;
                 }
 
@@ -271,6 +298,7 @@ export const USelect = {
                 this.selectedVMs.forEach((itemVM) => itemVM.currentSelected = false);
                 this.selectedVMs = [];
                 this.filterText = this.currentText = '';
+                this._fetchData();
                 this.$emit('update:values', values, this);
 
                 this.$emit('clear', {
@@ -286,6 +314,7 @@ export const USelect = {
 
                 this.selectedVM = undefined;
                 this.filterText = this.currentText = '';
+                this._fetchData();
                 this.$emit('input', value, this);
                 this.$emit('update:value', value, this);
 
