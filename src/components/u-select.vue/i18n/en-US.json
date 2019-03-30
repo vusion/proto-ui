@@ -1,4 +1,3 @@
 {
-    "placeholder": "Please select",
-    "noMatchingData": "No matching Data"
+    "emptyText": "No matching data"
 }

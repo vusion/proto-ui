@@ -272,3 +272,29 @@ export default {
 };
 </script>
 ```
+
+### 自动补充
+
+在过滤的基础上，
+
+使用`auto-complete`属性可以开启过滤功能，用于快速查找选项。
+
+<!-- <u-select multiple :data="data" filterable clearable placeholder="前端过滤（多选）" style="width: 240px"></u-select> -->
+
+``` vue
+<template>
+<u-linear-layout>
+    <u-select :data="data" filterable clearable auto-complete placeholder="前端过滤"></u-select>
+</u-linear-layout>
+</template>
+
+<script>
+export default {
+    data() {
+        const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
+
+        return { data };
+    },
+};
+</script>
+```

@@ -73,7 +73,7 @@ export default class DataSource {
         this.sorting && (this._params.sorting = this.sorting);
         this.filtering && (this._params.filtering = this.filtering);
 
-        this.arrangedData = undefined;
+        this.arrangedData = undefined; // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
         this.initialLoaded = false;
 
         // 传 data 为本地数据模式，此时已知所有数据
@@ -116,6 +116,7 @@ export default class DataSource {
 
         this.sorting = field === undefined ? undefined : Object.freeze({ field, order, compare });
         this._params.sorting = this.sorting;
+        this.clearArrangedData();
         return this;
     }
 
@@ -128,6 +129,7 @@ export default class DataSource {
 
         this.filtering = filtering === undefined ? undefined : Object.freeze(filtering);
         this._params.filtering = this.filtering;
+        this.clearArrangedData();
         return this;
     }
 
@@ -166,6 +168,7 @@ export default class DataSource {
 
         this.arrangedData = arrangedData;
 
+        // 回到第一页
         if (this.paging) {
             if (this.paging.number > this.totalPage)
                 this.page(1);
@@ -197,12 +200,8 @@ export default class DataSource {
 
         if (!this.shouldRemote(newOffset)) {
             // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
-            if (!this.arrangedData || queryChanged) {
-                this._params = {};
-                this.arrange();
-            }
-
-            return Promise.resolve(this.arrangedData.slice(offset, newOffset));
+            this._params = {};
+            return Promise.resolve(this.getArrangedData().slice(offset, newOffset));
         } else {
             if (!this.load)
                 return Promise.resolve(this.data);
@@ -235,8 +234,7 @@ export default class DataSource {
                         this.data = result.data;
                     } // 否则什么都不做
 
-                    this.arrange();
-                    return this.arrangedData.slice(offset, newOffset);
+                    return this.getArrangedData().slice(offset, newOffset);
                 } else {
                     let partialData;
 
@@ -273,14 +271,14 @@ export default class DataSource {
     }
 
     slice(offset, newOffset) {
-        return (this.arrangedData || this.data).slice(offset, newOffset);
+        return this.getArrangedData().slice(offset, newOffset);
     }
 
     get total() {
         if (this.remotePaging)
-            return this.originTotal !== Infinity ? this.originTotal : 0;
+            return this.originTotal;
         else
-            return this.arrangedData ? this.arrangedData.length : this.data.length;
+            return this.getArrangedData().length;
     }
 
     get totalPage() {
@@ -318,6 +316,16 @@ export default class DataSource {
         this.initialLoaded = false;
     }
 
+    clearArrangedData() {
+        this.arrangedData = undefined;
+    }
+
+    getArrangedData() {
+        if (!this.arrangedData)
+            this.arrange();
+        return this.arrangedData;
+    }
+
     setData() {
         //
     }
@@ -332,8 +340,8 @@ export default class DataSource {
         // 保存
     }
 
-    create() {
-        // 创建
+    add(item) {
+        this.data.push(item);
     }
 
     get() {

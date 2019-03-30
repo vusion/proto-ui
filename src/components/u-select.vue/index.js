@@ -32,6 +32,7 @@ export const USelect = {
         // @inherit: pageSize: { type: Number, default: 50 },
         // @inherit: remotePaging: { type: Boolean, default: false },
         remoteFiltering: { type: Boolean, default: false },
+        autoComplete: { type: Boolean, default: false },
         opened: { type: Boolean, default: false },
     },
     data() {
