@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 export const solveCondition = (condition, obj) => {
     if (Array.isArray(condition))
         return condition.some((cond) => solveCondition(cond, obj));
@@ -47,182 +49,199 @@ export const solveCondition = (condition, obj) => {
         throw new TypeError('Condition must be a Object or Array!');
 };
 
-/**
- * @param {Array} data - 初始数据
- * @param {Boolean} cache - 是否从后端缓存
- * @param {Number=Infinity} originTotal - 总数
- */
-export default class DataSource {
-    constructor(options) {
-        Object.assign(this, {
+const VueDataSource = Vue.extend({
+    data() {
+        return {
             data: [],
+            arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
+            arranged: false,
+            prependedData: [],
             cache: true,
+            dirty: false,
             originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
+            initialLoaded: false,
             paging: undefined, // @TODO
             sorting: undefined, // @readonly
             filtering: undefined, // @readonly
             // grouping: undefined,
+            remote: false,
             remotePaging: false,
             remoteSorting: false,
             remoteFiltering: false,
             // remoteGrouping: false,
-        }, options);
-
-        this._params = {};
-
-        this.sorting && (this._params.sorting = this.sorting);
-        this.filtering && (this._params.filtering = this.filtering);
-
-        this.arrangedData = undefined; // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
-        this.initialLoaded = false;
-
-        // 传 data 为本地数据模式，此时已知所有数据
-        if (options.data) {
-            this.initialLoaded = true;
-            this.originTotal = options.data.length;
-        }
-
-        // 串联 Promise，防止出错
-        this.promise = Promise.resolve();
-    }
-
-    page(number, size) {
-        if (typeof number === 'object') {
-            size = number.size;
-            number = number.number;
-        }
-
-        if (number === undefined)
-            return this.paging = undefined;
-        if (size === undefined)
-            size = this.paging ? this.paging.size : 20;
-
-        if (number === this.paging.number && size === this.paging.size)
-            return this;
-
-        this.paging = Object.freeze({ number, size });
-        return this;
-    }
-
-    sort(field, order = 'asc', compare) {
-        if (typeof field === 'object') {
-            order = field.order;
-            field = field.field;
-            compare = field.compare;
-        }
-
-        if (this.sorting && this.sorting.field === field && this.sorting.order === order)
-            return this;
-
-        this.sorting = field === undefined ? undefined : Object.freeze({ field, order, compare });
-        this._params.sorting = this.sorting;
-        this.clearArrangedData();
-        return this;
-    }
-
-    filter(filtering) {
-        if (this.filtering === filtering)
-            return this;
-        // @TODO: Use deep compare
-        if (JSON.stringify(this.filtering) === JSON.stringify(filtering))
-            return this;
-
-        this.filtering = filtering === undefined ? undefined : Object.freeze(filtering);
-        this._params.filtering = this.filtering;
-        this.clearArrangedData();
-        return this;
-    }
-
-    query(params) {
-        this._params = params;
-        return this;
-    }
-
-    getExtraParams() {
-        return undefined;
-    }
-
-    defaultCompare(a, b, sign) {
-        if (a === b)
-            return 0;
-        else
-            return a > b ? sign : -sign;
-    }
-
-    arrange() {
-        let arrangedData = Array.from(this.data);
-
-        const filtering = this.filtering;
-        if (!this.remoteFiltering && filtering && Object.keys(filtering).length)
-            arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
-
-        const sorting = this.sorting;
-        if (!this.remoteSorting && sorting && sorting.field) {
-            const field = sorting.field;
-            const orderSign = sorting.order === 'asc' ? 1 : -1;
-            if (sorting.compare)
-                arrangedData.sort((item1, item2) => sorting.compare(item1[field], item2[field], orderSign));
+            viewMode: 'page',
+            params: {},
+        };
+    },
+    computed: {
+        offset() {
+            return this.paging ? (this.paging.number - 1) * this.paging.size : 0;
+        },
+        limit() {
+            return this.paging ? this.paging.size : Infinity;
+        },
+        total() {
+            if (this.remotePaging)
+                return this.originTotal === Infinity ? this.data.length : this.originTotal;
             else
-                arrangedData.sort((item1, item2) => this.defaultCompare(item1[field], item2[field], orderSign));
+                return this.arrangedData.length;
+        },
+        totalPage() {
+            const totalPage = Math.ceil(this.total / this.paging.size);
+            if (!this.paging || totalPage === Infinity || totalPage === 0)
+                return 1;
+            else
+                return totalPage;
+        },
+        viewData() {
+            if (this.paging) {
+                if (this.viewMode === 'more')
+                    return this.arrangedData.slice(0, this.offset + this.limit);
+                else
+                    return this.arrangedData.slice(this.offset, this.offset + this.limit);
+            } else
+                return this.arrangedData;
+        },
+    },
+    watch: {
+        data() {
+            this.arrange();
+        },
+        sorting: {
+            handler(sorting) {
+                this.params.sorting = sorting;
+                this.arrange();
+            },
+            deep: true,
+            immediate: true,
+        },
+        filtering: {
+            handler(filtering) {
+                this.params.filtering = filtering;
+                this.arrange();
+            },
+            deep: true,
+            immediate: true,
+        },
+    },
+    created() {
+        this.remote = !!this._load;
+        // 传 data 为本地数据模式，此时已知所有数据
+        if (!this.remote) {
+            this.initialLoaded = true;
+            this.originTotal = this.data.length;
         }
 
-        this.arrangedData = arrangedData;
+        // this.$watch(() => [this.paging, this.sorting, this.filtering], () => {
+        //     this.arrange();
+        // }, { deep: true, immediate: true });
+    },
+    methods: {
+        arrange() {
+            let arrangedData = Array.from(this.data);
 
-        // 回到第一页
-        if (this.paging) {
-            if (this.paging.number > this.totalPage)
-                this.page(1);
-        }
-    }
+            const filtering = this.filtering;
+            if (!this.remoteFiltering && filtering && Object.keys(filtering).length)
+                arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
 
-    shouldRemote(offset) {
-        return this.hasMoreRemoteData(offset) // 没有全部的远程数据
-        || (this._params.filtering && this.remoteFiltering)
-        || (this._params.sorting && this.remoteSorting);
-    }
-
-    /**
-     * 获取数据
-     * 排序、过滤、分组等延迟计算
-     * @param {*} offset
-     * @param {*} limit
-     */
-    fetch(offset, limit) {
-        if (typeof offset === 'object') {
-            limit = offset.limit;
-            offset = offset.offset;
-        }
-        offset = offset || 0;
-        limit = limit || Infinity;
-        const newOffset = offset + limit;
-
-        const queryChanged = Object.keys(this._params).length;
-
-        if (!this.shouldRemote(newOffset)) {
-            // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
-            this._params = {};
-            return Promise.resolve(this.getArrangedData().slice(offset, newOffset));
-        } else {
-            if (!this.load)
-                return Promise.resolve(this.data);
-
-            // 如果有新的 query 参数的变更，则清除缓存
-            if (queryChanged) {
-                this.clear();
-                this._params = {};
+            const sorting = this.sorting;
+            if (!this.remoteSorting && sorting && sorting.field) {
+                const field = sorting.field;
+                const orderSign = sorting.order === 'asc' ? 1 : -1;
+                if (sorting.compare)
+                    arrangedData.sort((item1, item2) => sorting.compare(item1[field], item2[field], orderSign));
+                else
+                    arrangedData.sort((item1, item2) => this.defaultCompare(item1[field], item2[field], orderSign));
             }
 
-            const paging = Object.assign({ offset }, this.paging);
-            if (limit !== Infinity)
-                paging.limit = limit;
+            this.arrangedData = arrangedData;
+
+            // 回到第一页
+            if (this.paging) {
+                if (this.paging.number > this.totalPage)
+                    this.paging.number = 1;
+            }
+        },
+        clearLocalData() {
+            this.data = [];
+            this.originTotal = Infinity;
+            this.arranged = false;
+            this.initialLoaded = false;
+        },
+        mustRemote(offset, newOffset) {
+            return !this.hasAllRemoteData(offset, newOffset) // 没有全部的远程数据
+            || (this.params.filtering && this.remoteFiltering)
+            || (this.params.sorting && this.remoteSorting);
+        },
+        /**
+         * 根据 viewData，是否还有数据
+         * @param {Number} offset - 位置
+         */
+        hasMore(offset) {
+            if (offset === undefined || offset === Infinity)
+                offset = this.offset + this.limit;
+            return offset < this.prependedData.length + this.originTotal;
+        },
+        /**
+         * 是否还有远程数据
+         * @param {Number} offset - 位置
+         */
+        hasAllRemoteData(offset, newOffset) {
+            if (!this.remote)
+                return true;
+            if (newOffset === undefined || newOffset === Infinity)
+                newOffset = this.data.length;
+            return newOffset >= this.prependedData.length + this.originTotal;
+        },
+        hasChanges() {
+            return false;
+        },
+        // query(params) {
+        //     this.params = params;
+        //     return this;
+        // },
+        defaultCompare(a, b, sign) {
+            if (a === b)
+                return 0;
+            else
+                return a > b ? sign : -sign;
+        },
+        _getExtraParams() {
+            return undefined;
+        },
+        // _load(params)
+        slice(offset, newOffset) {
+            return this.arrangedData.slice(offset, newOffset);
+        },
+        load(offset, limit) {
+            if (offset === undefined)
+                offset = this.offset;
+            if (limit === undefined)
+                limit = this.limit;
+            const newOffset = offset + limit;
+
+            if (!this.remote || this.cache && !this.mustRemote(offset, newOffset)) {
+                // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
+                this.params = {};
+                return Promise.resolve(this.arrangedData.slice(offset, newOffset));
+            }
+
+            const queryChanged = Object.keys(this.params).length;
+            // 如果有新的 query 参数的变更，则清除缓存
+            if (queryChanged) {
+                this.clearLocalData();
+                this.params = {};
+            }
+
+            const paging = Object.assign({ offset: offset - this.prependedData.length, limit: this.limit }, this.paging);
 
             const params = Object.assign({
                 paging,
                 sorting: this.sorting,
                 filtering: this.filtering,
-            }, this.getExtraParams());
+            }, this._getExtraParams());
 
-            return this.load(params).then((result) => {
+            return this._load(params).then((result) => {
                 this.initialLoaded = true;
 
                 if (!this.remotePaging) { // 没有后端分页，认为是全部数据
@@ -234,7 +253,7 @@ export default class DataSource {
                         this.data = result.data;
                     } // 否则什么都不做
 
-                    return this.getArrangedData().slice(offset, newOffset);
+                    return Promise.resolve(this.arrangedData.slice(offset, newOffset));
                 } else {
                     let partialData;
 
@@ -255,104 +274,58 @@ export default class DataSource {
                     return partialData;
                 }
             });
-        }
-    }
+        },
+        loadMore() {
+            if (!this.hasMore())
+                return Promise.resolve([]);
+            else
+                return this.load(this.offset + this.limit).then(() => this.paging.number++);
+        },
+        reload() {
+            this.clearLocalData();
+            this.load();
+        },
+        prepend(item) {
+            this.data.unshift(item);
+            this.prependedData.unshift(item);
+        },
+        add(item) {
+            this.data.push(item);
+        },
+        get() {
+            // 获取某一项
+        },
+        update() {
+            // 更新某一项
+        },
+        remove() {
+            // 删除某一项
+        },
+        save() {
+            // 保存
+        },
+    },
+});
 
-    // fetchOrigin(offset, limit) {
-    //     // return Promise.resolve
-    // }
+function DataSource(options) {
+    const data = {};
+    const methods = {};
 
-    view() {
-        if (this.paging) {
-            const offset = (this.paging.number - 1) * this.paging.size;
-            return this.fetch(offset, this.paging.size);
-        } else
-            return this.fetch();
-    }
-
-    slice(offset, newOffset) {
-        return this.getArrangedData().slice(offset, newOffset);
-    }
-
-    get total() {
-        if (this.remotePaging)
-            return this.originTotal;
+    Object.keys(options).forEach((key) => {
+        const option = options[key];
+        if (typeof option === 'function')
+            methods['_' + key] = option;
         else
-            return this.getArrangedData().length;
-    }
+            data[key] = option;
+    });
 
-    get totalPage() {
-        return this.paging ? Math.ceil(this.total / this.paging.size) || 1 : 1;
-    }
-
-    /**
-     * 是否拥有更多数据
-     * @param {Number} offset - 位置
-     */
-    hasMore(offset) {
-        if (offset === undefined || offset === Infinity)
-            offset = this.data.length;
-        return offset < this.originTotal;
-    }
-
-    /**
-     * 是否拥有所有的远程数据
-     * @param {Number} offset - 位置
-     */
-    hasMoreRemoteData(offset) {
-        if (offset === undefined || offset === Infinity)
-            offset = this.data.length;
-        return offset < this.originTotal;
-    }
-
-    hasChanges() {
-        return false;
-    }
-
-    clear() {
-        this.data = [];
-        this.originTotal = Infinity;
-        this.arrangedData = undefined;
-        this.initialLoaded = false;
-    }
-
-    clearArrangedData() {
-        this.arrangedData = undefined;
-    }
-
-    getArrangedData() {
-        if (!this.arrangedData)
-            this.arrange();
-        return this.arrangedData;
-    }
-
-    setData() {
-        //
-    }
-
-    /**
-     * 加载全部（用于覆写）
-     * @override
-     */
-    // load(params) { return Promise.resolve([]); }
-
-    save() {
-        // 保存
-    }
-
-    add(item) {
-        this.data.push(item);
-    }
-
-    get() {
-        // 获取某一项
-    }
-
-    update() {
-        // 更新某一项
-    }
-
-    remove() {
-        // 删除某一项
-    }
+    VueDataSource.call(this, {
+        data() { return data; },
+        methods,
+    });
 }
+
+DataSource.prototype = Object.create(VueDataSource.prototype);
+// DataSource.prototype.constructor = DataSource;
+
+export default DataSource;

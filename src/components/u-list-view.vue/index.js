@@ -37,11 +37,25 @@ export const UListView = {
             // @inherit: selectedVM: undefined,
             // @inherit: selectedVMs: undefined,
             // @inherit: currentMultiple: this.multiple,
-            currentData: undefined,
+            // currentData: undefined,
             currentDataSource: undefined,
             loading: false,
             promiseSequence: Promise.resolve(),
         };
+    },
+    computed: {
+        currentData() {
+            return this.currentDataSource && this.currentDataSource.viewData;
+        },
+        paging() {
+            if (this.pageable) {
+                const paging = {};
+                paging.size = this.pageSize;
+                paging.number = paging.number || 1;
+                return paging;
+            } else
+                return undefined;
+        },
     },
     watch: {
         data(data) {
@@ -49,6 +63,9 @@ export const UListView = {
         },
         dataSource(dataSource) {
             this.handleData();
+        },
+        paging(paging) {
+            this.currentDataSource.paging = paging;
         },
         itemVMs(itemVMs, oldVMs) {
             if (this.data || this.dataSource)
@@ -58,31 +75,32 @@ export const UListView = {
         },
     },
     created() {
-        this.debouncedFetchData = debounce(this.fetchData, 300);
+        this.debouncedLoad = debounce(this.load, 300);
         this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
         this.initialLoad && this.load();
     },
     methods: {
-        getExtraParams() {
-            return { // For convenience
-                filterText: this.filterText,
-            };
-        },
         handleData() {
             // @TODO: undefined or null
             this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
-            this.fetchData().then(() => {
+            this.load().then(() => {
                 // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
                 MComplex.watch.itemVMs.call(this, this.itemVMs);
             });
         },
-        normalizeDataSource(dataSource) {
-            const options = {
-                paging: this.pageable && { size: +this.pageSize, number: 1 },
+        getExtraParams() {
+            return undefined;
+        },
+        getDataSourceOptions() {
+            return {
+                viewMode: 'more',
+                paging: this.paging,
                 remotePaging: this.remotePaging,
-                remoteFiltering: this.remoteFiltering,
                 getExtraParams: this.getExtraParams,
             };
+        },
+        normalizeDataSource(dataSource) {
+            const options = this.getDataSourceOptions();
 
             if (dataSource instanceof DataSource)
                 return dataSource;
@@ -158,7 +176,7 @@ export const UListView = {
                 else
                     parentEl.scrollTop = focusedEl.offsetTop + focusedEl.offsetHeight - parentEl.clientHeight;
                 if (selectedIndex === this.itemVMs.length - 1) {
-                    this.pageable && this.currentDataSource && this.fetchData(true);
+                    this.pageable && this.load(true);
                     // 保证显示加载中，但又不是全部数据
                     this.$nextTick(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight);
                 }
@@ -166,42 +184,35 @@ export const UListView = {
             if (parentEl.scrollTop > focusedEl.offsetTop)
                 parentEl.scrollTop = focusedEl.offsetTop;
         },
-        fetchData(more) {
+        ensureSelectedInItemVMs() {
+            MComplex.watch.itemVMs.call(this, this.itemVMs);
+        },
+        load(more) {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
 
-            if (!more)
-                this.currentData = [];
-
-            this.loading = true;
-            const offset = this.currentData ? this.currentData.length : 0;
-            const limit = this.pageable ? +this.pageSize : Infinity;
-            // dataSource 的多次 promise 必须串行
-            return this.promiseSequence = this.promiseSequence.then(() =>
-                dataSource.fetch(offset, limit).then((data) => {
-                    // @TODO: 防止加载顺序不对
+            // @TODO: dataSource 的多次 promise 必须串行
+            return this.promiseSequence = this.promiseSequence.then(() => {
+                this.loading = true;
+                return dataSource[more ? 'loadMore' : 'load']().then((data) => {
                     this.loading = false;
-                    return this.currentData = dataSource.slice(0, offset + limit);
-                }).then(() => MComplex.watch.itemVMs.call(this, this.itemVMs))
-                    .catch(() => this.loading = false));
-        },
-        load() {
-            return this.fetchData();
+                    this.ensureSelectedInItemVMs();
+                    return data;
+                }).catch(() => this.loading = false);
+            });
         },
         reload() {
-            this.currentDataSource.clear();
-            return this.fetchData();
+            return this.currentDataSource && this.currentDataSource.reload();
         },
         onScroll(e) {
             if (!this.pageable)
                 return;
 
             const el = e.target;
-            const offset = this.currentData ? this.currentData.length : 0;
             if (el.scrollHeight === el.scrollTop + el.clientHeight
-                && this.currentDataSource && this.currentDataSource.hasMore(offset))
-                this.debouncedFetchData(true);
+                && this.currentDataSource && this.currentDataSource.hasMore())
+                this.debouncedLoad(true);
         },
     },
 };

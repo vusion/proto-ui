@@ -1,12 +1,14 @@
 import { MComplex } from '../m-complex.vue';
 import { UListView } from '../u-list-view.vue';
 import { ellipsisTitle } from '../../directives';
+import i18n from './i18n';
 
 export const USelect = {
     name: 'u-select',
     childName: 'u-select-item',
     groupName: 'u-select-group',
     extends: UListView,
+    i18n,
     directives: { ellipsisTitle },
     props: {
         // @inherit: value: { type: String, default: '' },
@@ -26,7 +28,7 @@ export const USelect = {
         matchMethod: { type: [String, Function], default: 'includes' },
         caseSensitive: { type: Boolean, default: false },
         // @inherit: loadingText: { type: String, default: '加载中...' },
-        emptyText: { type: String, default: '无匹配数据' },
+        emptyText: { type: String, default() { return this.$t('emptyText'); } },
         // @inherit: initialLoad: { type: Boolean, default: true },
         // @inherit: pageable: { type: Boolean, default: false },
         // @inherit: pageSize: { type: Number, default: 50 },
@@ -48,19 +50,32 @@ export const USelect = {
             // @inherit: loading: false,
             currentText: '', // 显示文本
             filterText: '', // 过滤文本，只有 input 时会改变它
+            // filtering: {},
             preventBlur: false,
         };
     },
     computed: {
-        // @TODO: 只能再过滤一遍数组，暂时没有好的解决方案
-        // matchedVMs() {
-        //     return this.itemVMs.filter((item) => item.matched);
-        // },
+        filtering() {
+            return {
+                text: {
+                    operator: this.matchMethod,
+                    value: this.filterText,
+                    caseInsensitive: !this.caseSensitive,
+                },
+            };
+        },
     },
     watch: {
         value(value) {
             // 无需剪枝
             this.watchValue(value);
+        },
+        filtering: {
+            handler(filtering) {
+                // @TODO: 不知道为什么要监听一次，可能因为 dataSource 是重新创建的，不会自动绑定
+                this.currentDataSource.filtering = filtering;
+            },
+            deep: true,
         },
     },
     created() {
@@ -87,6 +102,21 @@ export const USelect = {
         });
     },
     methods: {
+        getExtraParams() {
+            return {
+                filterText: this.filterText,
+            };
+        },
+        getDataSourceOptions() {
+            return {
+                viewMode: 'more',
+                paging: this.paging,
+                remotePaging: this.remotePaging,
+                filtering: this.filtering,
+                remoteFiltering: this.remoteFiltering,
+                getExtraParams: this.getExtraParams,
+            };
+        },
         shift(count) {
             if (this.multiple)
                 return;
@@ -134,9 +164,7 @@ export const USelect = {
             this.$refs.popper && this.$refs.popper.toggle(opened);
         },
         onOpen($event) {
-            // 刚打开时不 filterText
-            // if (this.$refs.popper)
-            //     this.filterText = '';
+            // 刚打开时，除非是没有加载，否则保留上次的 filter 过的数据
             if (this.filterable && !this.currentDataSource.initialLoaded) {
                 this.load().then(() => {
                     this.ensureFocusedInView(true);
@@ -151,67 +179,22 @@ export const USelect = {
             this.focusedVM = undefined;
             this.$emit('close', $event, this);
         },
-        /**
-         * 判断某一项是否匹配
-         * @param {*} item
-         */
-        // match(item) {
-        //     if (!this.filterText || this.currentDataSource)
-        //         return true;
-
-        //     let matchMethod;
-        //     if (typeof this.matchMethod === 'function')
-        //         matchMethod = this.matchMethod;
-        //     else {
-        //         matchMethod = (itemValue, filterText) => {
-        //             if (!this.caseSensitive) {
-        //                 itemValue = itemValue.toLowerCase();
-        //                 filterText = filterText.toLowerCase();
-        //             }
-        //             return itemValue[this.matchMethod](filterText);
-        //         };
-        //     }
-        //     return !!matchMethod(item.currentText, this.filterText);
-        // },
-        _fetchData(more) {
-            // this.currentDataSource.filter({
-            //     text: {
-            //         operator: this.matchMethod,
-            //         value: this.filterText,
-            //         caseInsensitive: !this.caseSensitive,
-            //     },
-            // });
-            return this.currentDataSource.shouldRemote() ? this.debouncedFetchData(more) : this.fetchData(more);
+        fastLoad(more) {
+            return this.currentDataSource.mustRemote() ? this.debouncedLoad(more) : this.load(more);
         },
-        fetchData(more) {
+        load(more) {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
 
-            // if (!more)
-            // this.currentData = [];
-
-            this.loading = true;
-            const offset = more ? this.currentData.length : 0;
-            const limit = this.pageable ? +this.pageSize : Infinity;
-
-            // dataSource 的多次 promise 必须串行
+            // @TODO: dataSource 的多次 promise 必须串行
             return this.promiseSequence = this.promiseSequence.then(() => {
-                if (this.filterable) {
-                    dataSource.filter({
-                        text: {
-                            operator: this.matchMethod,
-                            value: this.filterText,
-                            caseInsensitive: !this.caseSensitive,
-                        },
-                    });
-                }
-                return dataSource.fetch(offset, limit).then((data) => {
+                this.loading = true;
+                return dataSource[more ? 'loadMore' : 'load']().then((data) => {
                     this.loading = false;
-                    return this.currentData = dataSource.slice(0, offset + limit);
-                }).then(() => {
-                    MComplex.watch.itemVMs.call(this, this.itemVMs);
+                    this.ensureSelectedInItemVMs();
                     this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
+                    return data;
                 }).catch(() => this.loading = false);
             });
         },
@@ -228,7 +211,7 @@ export const USelect = {
             if (this.$emitPrevent('before-filter', { filterText: value }, this))
                 return;
 
-            this._fetchData();
+            this.fastLoad();
             this.open();
         },
         onBlur() {
@@ -241,29 +224,38 @@ export const USelect = {
             setTimeout(() => {
                 if (this.preventBlur)
                     return this.preventBlur = false;
-
-                const oldVM = this.selectedVM;
-
-                const filterText = this.filterText || this.currentText;
-                if ((oldVM && filterText === oldVM.currentText) || (!oldVM && !filterText))
-                    return;
-
-                let selectedVM = this.itemVMs.find((itemVM) => itemVM.currentText === filterText);
-
-                // 如果没有匹配项则恢复到上一个状态
-                if (!selectedVM && filterText) {
-                    selectedVM = oldVM;
-                    this.filterText = this.currentText = '';
-                    this._fetchData();
-                    return;
-                }
-
-                this.selectedVM = selectedVM;
-                const value = selectedVM ? selectedVM.value : undefined;
-
-                this.$emit('input', value, this);
-                this.$emit('update:value', value, this);
+                this.trySelect();
             }, 200);
+        },
+        trySelect() {
+            const oldVM = this.selectedVM;
+
+            const filterText = this.filterText;
+            if ((oldVM && filterText === oldVM.currentText) || (!oldVM && !filterText))
+                return this.ensureSelectedInItemVMs();
+
+            const selectedVM = this.itemVMs.find((itemVM) => itemVM.currentText === filterText);
+
+            // 如果没有匹配项则恢复到上一个状态
+            if (!selectedVM && filterText) {
+                if (this.autoComplete) {
+                    this.prependItem(filterText);
+                    this.$nextTick(() => this.selectedVM = this.itemVMs[0]);
+                } else {
+                    this.filterText = oldVM.currentText;
+                    this.fastLoad(); // ensure
+                }
+                return;
+            }
+
+            this.selectedVM = selectedVM;
+            const value = selectedVM ? selectedVM.value : undefined;
+
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
+        },
+        prependItem(text) {
+            this.currentDataSource.prepend({ text, value: text });
         },
         onEnter() {
             if (this.focusedVM)
@@ -273,6 +265,8 @@ export const USelect = {
         onInputEnter() {
             if (this.focusedVM)
                 this.select(this.focusedVM);
+            else
+                this.trySelect();
             this.close();
         },
         onInputDelete() {
@@ -295,8 +289,8 @@ export const USelect = {
 
                 this.selectedVMs.forEach((itemVM) => itemVM.currentSelected = false);
                 this.selectedVMs = [];
-                this.filterText = this.currentText = '';
-                this._fetchData();
+                this.filterText = '';
+                this.fastLoad();
                 this.$emit('update:values', values, this);
 
                 this.$emit('clear', {
@@ -311,8 +305,8 @@ export const USelect = {
                     return;
 
                 this.selectedVM = undefined;
-                this.filterText = this.currentText = '';
-                this._fetchData();
+                this.filterText = '';
+                this.fastLoad();
                 this.$emit('input', value, this);
                 this.$emit('update:value', value, this);
 

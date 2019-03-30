@@ -207,7 +207,7 @@ export default {
 
 ``` vue
 <template>
-<u-select :data-source="load" filterable clearable :page-size="20" placeholder="前端过滤"></u-select>
+<u-select :data-source="load" filterable clearable placeholder="前端过滤"></u-select>
 </template>
 <script>
 // 模拟构造远程数据
