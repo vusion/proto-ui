@@ -73,7 +73,7 @@ export const USelect = {
         filtering: {
             handler(filtering) {
                 // @TODO: 不知道为什么要监听一次，可能因为 dataSource 是重新创建的，不会自动绑定
-                this.currentDataSource.filtering = filtering;
+                this.currentDataSource.filter(filtering);
             },
             deep: true,
         },
@@ -186,17 +186,18 @@ export const USelect = {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
-
+            if (this.loading)
+                return Promise.resolve();
             // @TODO: dataSource 的多次 promise 必须串行
-            return this.promiseSequence = this.promiseSequence.then(() => {
-                this.loading = true;
-                return dataSource[more ? 'loadMore' : 'load']().then((data) => {
-                    this.loading = false;
-                    this.ensureSelectedInItemVMs();
-                    this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
-                    return data;
-                }).catch(() => this.loading = false);
-            });
+            // return this.promiseSequence = this.promiseSequence.then(() => {
+            this.loading = true;
+            return dataSource[more ? 'loadMore' : 'load']().then((data) => {
+                this.loading = false;
+                this.ensureSelectedInItemVMs();
+                this.$refs.popper.currentOpened && this.$refs.popper.scheduleUpdate();
+                return data;
+            }).catch(() => this.loading = false);
+            // });
         },
         onFocus() {
             // @disabled

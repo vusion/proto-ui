@@ -64,9 +64,9 @@ export const UListView = {
         dataSource(dataSource) {
             this.handleData();
         },
-        paging(paging) {
-            this.currentDataSource.paging = paging;
-        },
+        // paging(paging) {
+        //     this.page()
+        // },
         itemVMs(itemVMs, oldVMs) {
             if (this.data || this.dataSource)
                 return;
@@ -176,7 +176,7 @@ export const UListView = {
                 else
                     parentEl.scrollTop = focusedEl.offsetTop + focusedEl.offsetHeight - parentEl.clientHeight;
                 if (selectedIndex === this.itemVMs.length - 1) {
-                    this.pageable && this.load(true);
+                    this.pageable && this.debouncedLoad(true);
                     // 保证显示加载中，但又不是全部数据
                     this.$nextTick(() => parentEl.scrollTop = parentEl.scrollHeight - parentEl.clientHeight);
                 }
@@ -191,16 +191,18 @@ export const UListView = {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
+            if (this.loading)
+                return Promise.resolve();
 
             // @TODO: dataSource 的多次 promise 必须串行
-            return this.promiseSequence = this.promiseSequence.then(() => {
-                this.loading = true;
-                return dataSource[more ? 'loadMore' : 'load']().then((data) => {
-                    this.loading = false;
-                    this.ensureSelectedInItemVMs();
-                    return data;
-                }).catch(() => this.loading = false);
-            });
+            // return this.promiseSequence = this.promiseSequence.then(() => {
+            this.loading = true;
+            return dataSource[more ? 'loadMore' : 'load']().then((data) => {
+                this.loading = false;
+                this.ensureSelectedInItemVMs();
+                return data;
+            }).catch(() => this.loading = false);
+            // });
         },
         reload() {
             return this.currentDataSource && this.currentDataSource.reload();

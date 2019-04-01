@@ -34,7 +34,7 @@
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <tbody>
-                    <tr v-if="currentData === undefined || loading">
+                    <tr v-if="currentData === undefined || currentLoading">
                         <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
                         </td>
@@ -62,6 +62,6 @@
             </u-table>
         </div>
     </div>
-    <u-pagination :class="$style.pagination" v-if="currentDataSource && paging" :total="totalPage" :page="currentDataSource.paging.number" @change="page($event.page)"></u-pagination>
+    <u-pagination :class="$style.pagination" v-if="pageable" :total="currentDataSource.totalPage" :page="currentDataSource.paging.number" @change="page($event.page)"></u-pagination>
     <div><slot></slot></div>
 </div>

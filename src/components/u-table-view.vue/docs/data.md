@@ -1,6 +1,6 @@
 ### 数据与数据源
 
-当数据量不大时，可以用`data`属性一次性传进来`data`属性的格式为`Array<{ [field], ... }>`，如基础示例中的例子。
+当数据量不大时，可以用`data`属性一次性传进来`data`属性的格式为`Array<{ [field]: string, ... }>`，如基础示例中的例子。
 
 当数据量较大，或需要执行后端分页、排序和过滤等操作时，推荐使用`data-source`。
 
@@ -10,7 +10,7 @@
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ data }" :paging="{ size: 10 }">
+<u-table-view striped :data="data" pageable :page-size="10">
     <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
@@ -47,7 +47,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }">
+<u-table-view striped :data-source="load" pageable :page-size="10">
     <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
@@ -91,7 +91,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }" remote-paging>
+<u-table-view striped :data-source="load" pageable :page-size="10" remote-paging>
     <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
@@ -142,7 +142,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ data }" :paging="{ size: 10 }"
+<u-table-view striped :data="data" pageable :page-size="10"
     :sorting="{ field: 'birthday', order: 'asc' }">
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column sortable title="姓名" field="name" width="20%"></u-table-view-column>
@@ -180,7 +180,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }"
+<u-table-view striped :data-source="load" pageable :page-size="10"
     :sorting="{ field: 'birthday', order: 'asc' }">
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
@@ -225,7 +225,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }"
+<u-table-view striped :data-source="load" pageable :page-size="10"
     :sorting="{ field: 'birthday', order: 'asc' }" remote-sorting>
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
@@ -276,7 +276,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }" remote-paging
+<u-table-view striped :data-source="load" pageable :page-size="10" remote-paging
     :sorting="{ field: 'birthday', order: 'asc' }" remote-sorting>
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
@@ -332,7 +332,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ data }" :paging="{ size: 10 }"
+<u-table-view striped :data="data" pageable :page-size="10"
     :filtering="{ birthday: '19920914' }">
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
     <u-table-view-column sortable title="姓名" field="name" width="20%"></u-table-view-column>
@@ -375,7 +375,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }"
+<u-table-view striped :data-source="load" pageable :page-size="10"
     :sorting="{ field: 'birthday', order: 'asc' }"
     :filtering="{ birthday: '19920914' }">
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
@@ -426,7 +426,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }"
+<u-table-view striped :data-source="load" pageable :page-size="10"
     :sorting="{ field: 'birthday', order: 'asc' }" remote-sorting
     :filtering="{ birthday: '19920914' }" remote-filtering>
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>
@@ -485,7 +485,7 @@ export default {
 
 ``` vue
 <template>
-<u-table-view striped :data-source="{ load }" :paging="{ size: 10 }" remote-paging
+<u-table-view striped :data-source="load" pageable :page-size="10" remote-paging
     :sorting="{ field: 'birthday', order: 'asc' }" remote-sorting
     :filtering="{ birthday: '19920914' }" remote-filtering>
     <u-table-view-column sortable title="序号" field="id" width="20%"></u-table-view-column>

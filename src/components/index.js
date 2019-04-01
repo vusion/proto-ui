@@ -54,7 +54,6 @@ export * from './u-sidebar.vue';
 export * from './u-slider.vue';
 export * from './u-spinner.vue';
 export * from './u-steps.vue';
-export * from './u-suggest.vue';
 export * from './u-switch.vue';
 export * from './u-table.vue';
 export * from './u-table-view.vue';

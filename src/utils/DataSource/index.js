@@ -49,17 +49,27 @@ export const solveCondition = (condition, obj) => {
         throw new TypeError('Condition must be a Object or Array!');
 };
 
+/**
+ * @example 作为简单的 query
+ * const dataSource = new DataSource();
+ * dataSource.query({
+ *     paging,
+ *     sorting,
+ *     filtering,
+ * }).then();
+ *
+ * @example 作为状态储存
+ * const dataSource = new DataSource();
+ * dataSource.filter();
+ *
+ */
+
 const VueDataSource = Vue.extend({
     data() {
         return {
             data: [],
-            arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
-            arranged: false,
-            prependedData: [],
             cache: true,
-            dirty: false,
-            originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
-            initialLoaded: false,
+            viewMode: 'page',
             paging: undefined, // @TODO
             sorting: undefined, // @readonly
             filtering: undefined, // @readonly
@@ -69,7 +79,13 @@ const VueDataSource = Vue.extend({
             remoteSorting: false,
             remoteFiltering: false,
             // remoteGrouping: false,
-            viewMode: 'page',
+            // ------
+            arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
+            arranged: false,
+            prependedData: [],
+            dirty: false,
+            originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
+            initialLoaded: false,
             params: {},
         };
     },
@@ -103,42 +119,22 @@ const VueDataSource = Vue.extend({
                 return this.arrangedData;
         },
     },
-    watch: {
-        data() {
-            this.arrange();
-        },
-        sorting: {
-            handler(sorting) {
-                this.params.sorting = sorting;
-                this.arrange();
-            },
-            deep: true,
-            immediate: true,
-        },
-        filtering: {
-            handler(filtering) {
-                this.params.filtering = filtering;
-                this.arrange();
-            },
-            deep: true,
-            immediate: true,
-        },
-    },
+    // paging, sorting, filtering 暂不用 watch
     created() {
         this.remote = !!this._load;
         // 传 data 为本地数据模式，此时已知所有数据
         if (!this.remote) {
             this.initialLoaded = true;
             this.originTotal = this.data.length;
+            this.arrange();
         }
-
-        // this.$watch(() => [this.paging, this.sorting, this.filtering], () => {
-        //     this.arrange();
-        // }, { deep: true, immediate: true });
     },
     methods: {
         arrange() {
             let arrangedData = Array.from(this.data);
+
+            if (this.remotePaging)
+                return this.arrangedData = arrangedData;
 
             const filtering = this.filtering;
             if (!this.remoteFiltering && filtering && Object.keys(filtering).length)
@@ -155,12 +151,6 @@ const VueDataSource = Vue.extend({
             }
 
             this.arrangedData = arrangedData;
-
-            // 回到第一页
-            if (this.paging) {
-                if (this.paging.number > this.totalPage)
-                    this.paging.number = 1;
-            }
         },
         clearLocalData() {
             this.data = [];
@@ -170,8 +160,8 @@ const VueDataSource = Vue.extend({
         },
         mustRemote(offset, newOffset) {
             return !this.hasAllRemoteData(offset, newOffset) // 没有全部的远程数据
-            || (this.params.filtering && this.remoteFiltering)
-            || (this.params.sorting && this.remoteSorting);
+            || (this.params.hasOwnProperty('filtering') && this.remoteFiltering)
+            || (this.params.hasOwnProperty('sorting') && this.remoteSorting);
         },
         /**
          * 根据 viewData，是否还有数据
@@ -189,17 +179,19 @@ const VueDataSource = Vue.extend({
         hasAllRemoteData(offset, newOffset) {
             if (!this.remote)
                 return true;
-            if (newOffset === undefined || newOffset === Infinity)
-                newOffset = this.data.length;
-            return newOffset >= this.prependedData.length + this.originTotal;
+            if (!this.remotePaging)
+                return this.data.length >= this.originTotal;
+
+            offset += this.prependedData.length;
+            newOffset += this.prependedData.length;
+            for (let i = offset; i < newOffset; i++)
+                if (!this.data[i])
+                    return false;
+            return true;
         },
         hasChanges() {
             return false;
         },
-        // query(params) {
-        //     this.params = params;
-        //     return this;
-        // },
         defaultCompare(a, b, sign) {
             if (a === b)
                 return 0;
@@ -209,10 +201,10 @@ const VueDataSource = Vue.extend({
         _getExtraParams() {
             return undefined;
         },
-        // _load(params)
         slice(offset, newOffset) {
             return this.arrangedData.slice(offset, newOffset);
         },
+        // _load(params)
         load(offset, limit) {
             if (offset === undefined)
                 offset = this.offset;
@@ -220,19 +212,23 @@ const VueDataSource = Vue.extend({
                 limit = this.limit;
             const newOffset = offset + limit;
 
+            const queryChanged = Object.keys(this.params).length;
+            // 调用前端缓存数据
             if (!this.remote || this.cache && !this.mustRemote(offset, newOffset)) {
                 // 没有缓存数据或者有新的请求参数时，再尝试重新过滤和排序
-                this.params = {};
+                if (queryChanged) {
+                    this.arrange();
+                    this.params = {};
+                }
                 return Promise.resolve(this.arrangedData.slice(offset, newOffset));
             }
 
-            const queryChanged = Object.keys(this.params).length;
+            // 调用后端数据
             // 如果有新的 query 参数的变更，则清除缓存
             if (queryChanged) {
                 this.clearLocalData();
                 this.params = {};
             }
-
             const paging = Object.assign({ offset: offset - this.prependedData.length, limit: this.limit }, this.paging);
 
             const params = Object.assign({
@@ -253,7 +249,8 @@ const VueDataSource = Vue.extend({
                         this.data = result.data;
                     } // 否则什么都不做
 
-                    return Promise.resolve(this.arrangedData.slice(offset, newOffset));
+                    this.arrange();
+                    return this.arrangedData.slice(offset, newOffset);
                 } else {
                     let partialData;
 
@@ -267,8 +264,11 @@ const VueDataSource = Vue.extend({
                         partialData = result.data;
                     } // 否则什么都不做
 
-                    if (offset === this.data.length)
-                        this.data.push(...partialData);
+                    for (let i = 0; i < limit; i++) {
+                        const item = partialData[i];
+                        if (item)
+                            this.data[offset + i] = item;
+                    }
 
                     this.arrange();
                     return partialData;
@@ -285,6 +285,21 @@ const VueDataSource = Vue.extend({
             this.clearLocalData();
             this.load();
         },
+        page(paging) {
+            this.paging = paging;
+        },
+        sort(sorting) {
+            this.sorting = sorting;
+            this.params.sorting = sorting;
+        },
+        filter(filtering) {
+            this.filtering = filtering;
+            this.params.filtering = filtering;
+        },
+        // query(params) {
+        //     this.params = params;
+        //     return this;
+        // },
         prepend(item) {
             this.data.unshift(item);
             this.prependedData.unshift(item);
