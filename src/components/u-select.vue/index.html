@@ -1,12 +1,13 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled"
     :clearable="clearable && !!currentText" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
     :tabindex="readonly || disabled ? '' : 0"
+    @click="focus"
     @keydown.up.prevent="$refs.popper.currentOpened ? shift(-1) : open()"
     @keydown.down.prevent="$refs.popper.currentOpened ? shift(+1) : open()"
     @keydown.enter.stop="onEnter"
     @keydown.esc.stop="close(), filterText = ''">
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
-    <span v-show="multiple ? !selectedVMs.length : !selectedVM" :class="$style.placeholder">{{ placeholder }}</span>
+    <span v-show="!filterText && (multiple ? !selectedVMs.length : !selectedVM)" :class="$style.placeholder">{{ placeholder }}</span>
     <div :class="$style.text" v-ellipsis-title :tags-overflow="tagsOverflow">
         <u-render v-if="!multiple && !filterable" :vnode="selectedVM && selectedVM.$slots.default"></u-render>
         <span v-else-if="this.multipleAppearance === 'text'">{{ currentText }}</span>
@@ -30,7 +31,8 @@
         <u-input v-if="filterable" :class="$style.input" ref="input" :readonly="readonly" :disabled="disabled"
             :placeholder="multiple && selectedVMs.length ? '' : placeholder" :filterable="filterable" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
             :value="filterable ? filterText : currentText" @input="onInput" @focus="onFocus" @blur="onBlur"
-            @keydown.enter.stop="onInputEnter" @keydown.delete.stop="onInputDelete">
+            @keydown.enter.stop="onInputEnter" @keydown.delete.stop="onInputDelete"
+            :style="{ width: multiple && (inputWidth + 'px') }">
         </u-input>
     </div>
     <span v-if="clearable && !!currentText" :class="$style.clearable" @click="clear"></span>

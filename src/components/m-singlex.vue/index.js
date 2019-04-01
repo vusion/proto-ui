@@ -73,7 +73,7 @@ export const MSinglex = {
                 this.selectedVM && this.selectedVM.groupVM && this.selectedVM.groupVM.toggle(true);
             }
         },
-        select(itemVM) {
+        select(itemVM, cancelable) {
             // Check if enabled
             if (this.readonly || this.disabled || (itemVM && itemVM.disabled))
                 return;
@@ -81,7 +81,9 @@ export const MSinglex = {
             // Prevent replication
             const oldValue = this.value;
             const oldVM = this.selectedVM;
-            if (!this.cancelable && itemVM === oldVM)
+            if (cancelable === undefined)
+                cancelable = this.cancelable;
+            if (!cancelable && itemVM === oldVM)
                 return;
 
             // Emit a `before-` event with preventDefault()
@@ -95,7 +97,7 @@ export const MSinglex = {
             }, this))
                 return;
 
-            if (this.cancelable && itemVM === oldVM)
+            if (cancelable && itemVM === oldVM)
                 this.selectedVM = undefined;
             else
                 this.selectedVM = itemVM;

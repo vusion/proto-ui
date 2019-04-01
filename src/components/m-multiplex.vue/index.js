@@ -53,7 +53,10 @@ export const MMultiplex = {
         // This method just run once after pushing many itemVMs
         itemVMs() {
             // 更新列表之后，原来的选择可能已不存在，这里需要重新查找一遍
-            this.values && this.watchValues(this.values);
+            let values = this.values;
+            if (!values)
+                values = this.selectedVMs.map((itemVM) => itemVM.value);
+            this.watchValues(values);
         },
     },
     // mounted() {
@@ -92,7 +95,7 @@ export const MMultiplex = {
         },
         select(itemVM, selected) {
             // Check if enabled
-            if (this.readonly || this.disabled)
+            if (this.readonly || this.disabled || !itemVM || itemVM.disabled)
                 return;
 
             // Method overloading
@@ -129,27 +132,6 @@ export const MMultiplex = {
             // const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('input', values, this);
             this.$emit('update:values', values, this);
-
-            // Emit `after-` events
-            if (itemVM.currentSelected) {
-                this.$emit('add', {
-                    itemVM,
-                    item: itemVM.item,
-                    values,
-                    oldValues,
-                    selectedVMs,
-                    // selectedItems,
-                }, this);
-            } else {
-                this.$emit('remove', {
-                    itemVM,
-                    item: itemVM.item,
-                    values,
-                    oldValues,
-                    selectedVMs,
-                    // selectedItems,
-                }, this);
-            }
 
             this.$emit('select', {
                 values,

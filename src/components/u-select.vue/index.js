@@ -1,4 +1,3 @@
-import { MComplex } from '../m-complex.vue';
 import { UListView } from '../u-list-view.vue';
 import { ellipsisTitle } from '../../directives';
 import i18n from './i18n';
@@ -52,6 +51,7 @@ export const USelect = {
             filterText: '', // 过滤文本，只有 input 时会改变它
             // filtering: {},
             preventBlur: false,
+            inputWidth: 20,
         };
     },
     computed: {
@@ -76,6 +76,9 @@ export const USelect = {
                 this.currentDataSource.filtering = filtering;
             },
             deep: true,
+        },
+        filterText(filterText) {
+            this.inputWidth = filterText.length * 12 + 20;
         },
     },
     created() {
@@ -118,9 +121,6 @@ export const USelect = {
             };
         },
         shift(count) {
-            if (this.multiple)
-                return;
-
             let focusedIndex = this.itemVMs.indexOf(this.focusedVM || this.selectedVM);
             if (count > 0) {
                 for (let i = focusedIndex + count; i < this.itemVMs.length; i++) {
@@ -207,7 +207,6 @@ export const USelect = {
             this.currentText = value;
             // value.split(',')
             this.filterText = value;
-
             if (this.$emitPrevent('before-filter', { filterText: value }, this))
                 return;
 
@@ -217,42 +216,57 @@ export const USelect = {
         onBlur() {
             if (!this.filterable)
                 return;
-            if (this.multiple) // @TODO: 需要理清一下需求
-                return;
 
             // 这边必须要用 setTimeout，$nextTick 也不行，需要保证在 @select 之后完成
             setTimeout(() => {
                 if (this.preventBlur)
                     return this.preventBlur = false;
-                this.trySelect();
+                this.selectByText(this.filterText);
             }, 200);
         },
-        trySelect() {
-            const oldVM = this.selectedVM;
+        selectByText(text) {
+            if (this.multiple) {
+                const oldVMs = this.selectedVMs;
+                const selectedVM = this.itemVMs.find((itemVM) => itemVM.currentText === text);
 
-            const filterText = this.filterText;
-            if ((oldVM && filterText === oldVM.currentText) || (!oldVM && !filterText))
-                return this.ensureSelectedInItemVMs();
-
-            const selectedVM = this.itemVMs.find((itemVM) => itemVM.currentText === filterText);
-
-            // 如果没有匹配项则恢复到上一个状态
-            if (!selectedVM && filterText) {
-                if (this.autoComplete) {
-                    this.prependItem(filterText);
-                    this.$nextTick(() => this.selectedVM = this.itemVMs[0]);
+                // 如果没有匹配项则恢复到上一个状态
+                if (!selectedVM && text) {
+                    if (this.autoComplete) {
+                        this.prependItem(text);
+                        this.$nextTick(() => this.select(this.itemVMs[0], true));
+                    } else {
+                        this.filterText = '';
+                        this.fastLoad(); // ensure
+                    }
                 } else {
-                    this.filterText = oldVM.currentText;
-                    this.fastLoad(); // ensure
+                    if (oldVMs.some((itemVM) => itemVM.currentText === text)) {
+                        this.filterText = '';
+                        this.fastLoad(); // ensure
+                        return;
+                    }
+                    this.select(selectedVM, true);
                 }
-                return;
+            } else {
+                const oldVM = this.selectedVM;
+                if (!oldVM && !text)
+                    return;
+                else if (oldVM && text === oldVM.currentText)
+                    return this.ensureSelectedInItemVMs();
+
+                const selectedVM = this.itemVMs.find((itemVM) => itemVM.currentText === text);
+
+                // 如果没有匹配项则恢复到上一个状态
+                if (!selectedVM && text) {
+                    if (this.autoComplete) {
+                        this.prependItem(text);
+                        this.$nextTick(() => this.select(this.itemVMs[0], false));
+                    } else {
+                        this.filterText = oldVM.currentText;
+                        this.fastLoad(); // ensure
+                    }
+                } else
+                    this.select(selectedVM, false);
             }
-
-            this.selectedVM = selectedVM;
-            const value = selectedVM ? selectedVM.value : undefined;
-
-            this.$emit('input', value, this);
-            this.$emit('update:value', value, this);
         },
         prependItem(text) {
             this.currentDataSource.prepend({ text, value: text });
@@ -266,7 +280,7 @@ export const USelect = {
             if (this.focusedVM)
                 this.select(this.focusedVM);
             else
-                this.trySelect();
+                this.selectByText(this.filterText);
             this.close();
         },
         onInputDelete() {

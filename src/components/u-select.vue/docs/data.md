@@ -134,8 +134,6 @@ export default {
 
 使用`filterable`属性可以开启过滤功能，用于快速查找选项。
 
-<!-- <u-select multiple :data="data" filterable clearable placeholder="前端过滤（多选）" style="width: 240px"></u-select> -->
-
 ``` vue
 <template>
 <u-linear-layout>
