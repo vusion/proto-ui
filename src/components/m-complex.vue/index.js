@@ -6,7 +6,10 @@ export const MComplex = {
     groupName: 'm-complex-group',
     childName: 'm-complex-item',
     mixins: [MSinglex, MMultiplex],
-    model: 'value',
+    model: {
+        prop: 'value',
+        event: 'input',
+    },
     props: {
         // @inherit: value: null,
         // @inherit: values: Array,

@@ -6,7 +6,10 @@ export const MSinglex = {
     groupName: 'm-singlex-group',
     childName: 'm-singlex-item',
     mixins: [MEmitter, MParent],
-    model: 'value',
+    model: {
+        prop: 'value',
+        event: 'input',
+    },
     props: {
         value: null,
         autoSelect: { type: Boolean, default: false },
@@ -20,17 +23,17 @@ export const MSinglex = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             selectedVM: undefined,
+            selectedValue: this.value,
         };
     },
     watch: {
-        // It is dynamic to find selected item by value
-        // so using watcher is better than computed property.
         value(value) {
+            this.selectedValue = value;
             // 无需剪枝
             this.watchValue(value);
         },
         selectedVM(selectedVM, oldVM) {
-            const value = selectedVM ? selectedVM.value : undefined;
+            const value = this.selectedValue;
             const oldValue = oldVM ? oldVM.value : undefined;
             if (value === oldValue)
                 return;
@@ -48,9 +51,8 @@ export const MSinglex = {
         itemVMs(itemVMs) {
             if (!itemVMs.includes(this.selectedVM)) {
                 // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-                const value = this.selectedVM ? this.selectedVM.value : this.value;
                 this.selectedVM = undefined;
-                this.watchValue(value);
+                this.watchValue(this.selectedValue);
             }
         },
     },
@@ -79,7 +81,7 @@ export const MSinglex = {
                 return;
 
             // Prevent replication
-            const oldValue = this.value;
+            const oldValue = this.selectedValue;
             const oldVM = this.selectedVM;
             if (cancelable === undefined)
                 cancelable = this.cancelable;
@@ -104,6 +106,7 @@ export const MSinglex = {
 
             // Assign and sync `value`
             const value = this.selectedVM && this.selectedVM.value;
+            this.selectedValue = value;
             const selectedItem = this.selectedVM && this.selectedVM.item;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);

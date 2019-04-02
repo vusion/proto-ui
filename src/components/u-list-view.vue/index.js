@@ -194,15 +194,12 @@ export const UListView = {
             if (this.loading)
                 return Promise.resolve();
 
-            // @TODO: dataSource 的多次 promise 必须串行
-            // return this.promiseSequence = this.promiseSequence.then(() => {
             this.loading = true;
             return dataSource[more ? 'loadMore' : 'load']().then((data) => {
                 this.loading = false;
                 this.ensureSelectedInItemVMs();
                 return data;
             }).catch(() => this.loading = false);
-            // });
         },
         reload() {
             return this.currentDataSource && this.currentDataSource.reload();

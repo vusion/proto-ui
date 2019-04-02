@@ -48,16 +48,13 @@ export default {
 
 ``` vue
 <template>
-<div>
-    <m-multiplex>
-        <m-multiplex-item value="cup">水杯</m-multiplex-item>
-        <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
-        <m-multiplex-item value="nut" selected>坚果</m-multiplex-item>
-        <m-multiplex-item value="towel" selected>毛巾</m-multiplex-item>
-        <m-multiplex-item value="sofa">沙发</m-multiplex-item>
-    </m-multiplex>
-    <span>values: {{ values }}</span>
-</div>
+<m-multiplex>
+    <m-multiplex-item value="cup">水杯</m-multiplex-item>
+    <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
+    <m-multiplex-item value="nut" selected>坚果</m-multiplex-item>
+    <m-multiplex-item value="towel" selected>毛巾</m-multiplex-item>
+    <m-multiplex-item value="sofa">沙发</m-multiplex-item>
+</m-multiplex>
 </template>
 <script>
 export default {
@@ -74,14 +71,11 @@ export default {
 
 ``` vue
 <template>
-<div>
-    <m-multiplex>
-        <m-multiplex-item v-for="item in list"
-            :key="item.value" :value="item.value" :selected.sync="item.selected">
-            {{ item.text }}</m-multiplex-item>
-    </m-multiplex>
-    <span>list: {{ list }}</span>
-</div>
+<m-multiplex>
+    <m-multiplex-item v-for="item in list"
+        :key="item.value" :value="item.value" :selected.sync="item.selected">
+        {{ item.text }}</m-multiplex-item>
+</m-multiplex>
 </template>
 <script>
 export default {
