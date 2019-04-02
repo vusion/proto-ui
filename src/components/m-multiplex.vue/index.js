@@ -29,10 +29,10 @@ export const MMultiplex = {
             if (!Array.isArray(values))
                 throw new Error('`values` should be an Array!');
 
-            // 剪枝
-            if (values !== oldValues && values.length === oldValues.length
-                && values.every((val, index) => val === oldValues[index]))
-                return;
+            // @TODO: 因为是同一个数组。。没有好的剪枝方法
+            // if (values !== oldValues && values.length === oldValues.length
+            //     && values.every((val, index) => val === oldValues[index]))
+            //     return;
 
             this.selectedValues = values;
             this.watchValues(values);
@@ -59,11 +59,12 @@ export const MMultiplex = {
             this.watchValues(this.selectedValues);
         },
     },
-    // mounted() {
-    // Don't need trigger `values` watcher at mounted hook.
-    // Because there's a watcher for itemVMs.
-    // this.watchValues(this.values);
-    // },
+    mounted() {
+        // Don't need trigger `values` watcher at mounted hook.
+        // Because there's a watcher for itemVMs.
+        // this.watchValues(this.values);
+        this.$nextTick(() => this.selectedValues = this.selectedVMs.map((itemVM) => itemVM.value));
+    },
     methods: {
         watchValues(values) {
             const selectedVMs = [];
@@ -85,7 +86,6 @@ export const MMultiplex = {
                 this.itemVMs.forEach((itemVM) => itemVM.currentSelected && selectedVMs.push(itemVM));
             }
             this.selectedVMs = selectedVMs;
-            this.selectedValues = selectedVMs.map((itemVM) => itemVM.value);
         },
         watchSelectedChange(selectedVM) {
             if (!this.keepOrder) {

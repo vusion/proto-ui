@@ -9,7 +9,6 @@ export const UListView = {
     groupName: 'u-list-view-group',
     childName: 'u-list-view-item',
     mixins: [MComplex, MGroupParent, MField],
-    model: 'value',
     props: {
         // @inherit: value: null,
         // @inherit: values: Array,

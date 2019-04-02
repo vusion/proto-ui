@@ -6,10 +6,6 @@ export const MSinglex = {
     groupName: 'm-singlex-group',
     childName: 'm-singlex-item',
     mixins: [MEmitter, MParent],
-    model: {
-        prop: 'value',
-        event: 'input',
-    },
     props: {
         value: null,
         autoSelect: { type: Boolean, default: false },

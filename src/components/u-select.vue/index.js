@@ -42,7 +42,9 @@ export const USelect = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             // @inherit: selectedVM: undefined,
+            // @inherit: selectedValue: undefined,
             // @inherit: selectedVMs: undefined,
+            // @inherit: selectedValues: undefined,
             focusedVM: undefined,
             // @inherit: currentMultiple: this.multiple,
             // @inherit: currentData: this.data,
@@ -69,13 +71,6 @@ export const USelect = {
         value(value) {
             // 无需剪枝
             this.watchValue(value);
-        },
-        filtering: {
-            handler(filtering) {
-                // @TODO: 不知道为什么要监听一次，可能因为 dataSource 是重新创建的，不会自动绑定
-                this.currentDataSource.filter(filtering);
-            },
-            deep: true,
         },
         filterText(filterText) {
             this.inputWidth = filterText.length * 12 + 20;
@@ -180,6 +175,7 @@ export const USelect = {
             this.$emit('close', $event, this);
         },
         fastLoad(more) {
+            this.currentDataSource.filter(this.filtering);
             return this.currentDataSource.mustRemote() ? this.debouncedLoad(more) : this.load(more);
         },
         load(more) {
@@ -207,10 +203,10 @@ export const USelect = {
                 return;
             this.currentText = value;
             // value.split(',')
-            this.filterText = value;
             if (this.$emitPrevent('before-filter', { filterText: value }, this))
                 return;
 
+            this.filterText = value;
             this.fastLoad();
             this.open();
         },
@@ -262,7 +258,7 @@ export const USelect = {
                         this.prependItem(text);
                         this.$nextTick(() => this.select(this.itemVMs[0], false));
                     } else {
-                        this.filterText = oldVM.currentText;
+                        this.filterText = oldVM ? oldVM.currentText : '';
                         this.fastLoad(); // ensure
                     }
                 } else
