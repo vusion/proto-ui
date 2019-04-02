@@ -174,11 +174,11 @@ export const USelect = {
             this.focusedVM = undefined;
             this.$emit('close', $event, this);
         },
-        fastLoad(more) {
+        fastLoad(more, keep) {
             this.currentDataSource.filter(this.filtering);
-            return this.currentDataSource.mustRemote() ? this.debouncedLoad(more) : this.load(more);
+            return this.currentDataSource.mustRemote() ? this.debouncedLoad(more, keep) : this.load(more, keep);
         },
-        load(more) {
+        load(more, keep) {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
@@ -207,7 +207,7 @@ export const USelect = {
                 return;
 
             this.filterText = value;
-            this.fastLoad();
+            this.fastLoad(false, true);
             this.open();
         },
         onBlur() {

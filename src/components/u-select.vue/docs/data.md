@@ -241,6 +241,11 @@ export default {
               filterable remote-filtering
               clearable placeholder="后端过滤，后端分页">
     </u-select>
+    <u-select multiple :data-source="load"
+              pageable remote-paging
+              filterable remote-filtering
+              clearable placeholder="后端过滤，后端分页（多选）"
+              style="width: 240px"></u-select>
 </u-linear-layout>
 </template>
 <script>
@@ -278,12 +283,11 @@ export default {
 
 使用`auto-complete`属性可以开启过滤功能，用于快速查找选项。
 
-<!-- <u-select multiple :data="data" filterable clearable placeholder="前端过滤（多选）" style="width: 240px"></u-select> -->
-
 ``` vue
 <template>
 <u-linear-layout>
-    <u-select :data="data" filterable clearable auto-complete placeholder="前端过滤"></u-select>
+    <u-select :data="data" filterable clearable auto-complete placeholder="自动补充"></u-select>
+    <u-select multiple :data="data" filterable clearable auto-complete placeholder="自动补充（多选）" style="width: 240px"></u-select>
 </u-linear-layout>
 </template>
 

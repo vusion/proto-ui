@@ -154,6 +154,7 @@ const VueDataSource = Vue.extend({
         },
         clearLocalData() {
             this.data = [];
+            this.arrangedData = [];
             this.originTotal = Infinity;
             this.arranged = false;
             this.initialLoaded = false;
@@ -303,9 +304,11 @@ const VueDataSource = Vue.extend({
         prepend(item) {
             this.data.unshift(item);
             this.prependedData.unshift(item);
+            this.arrange();
         },
         add(item) {
             this.data.push(item);
+            this.arrange();
         },
         get() {
             // 获取某一项

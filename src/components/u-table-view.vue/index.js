@@ -125,7 +125,7 @@ export const UTableView = {
             if (dataSource instanceof DataSource)
                 return dataSource;
             else if (dataSource instanceof Array) {
-                options.data = dataSource;
+                options.data = Array.from(dataSource);
                 return new DataSource(options);
             } else if (dataSource instanceof Function) {
                 options.load = function load(params) {

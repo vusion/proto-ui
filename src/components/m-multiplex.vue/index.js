@@ -21,7 +21,6 @@ export const MMultiplex = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             selectedVMs: [],
-            selectedValues: this.values,
         };
     },
     watch: {
@@ -34,7 +33,6 @@ export const MMultiplex = {
             //     && values.every((val, index) => val === oldValues[index]))
             //     return;
 
-            this.selectedValues = values;
             this.watchValues(values);
         },
         selectedVMs(selectedVMs, oldVMs) {
@@ -56,15 +54,14 @@ export const MMultiplex = {
         // This method just run once after pushing many itemVMs
         itemVMs() {
             // 更新列表之后，原来的选择可能已不存在，这里需要重新查找一遍
-            this.watchValues(this.selectedValues);
+            this.watchValues(this.values);
         },
     },
-    mounted() {
-        // Don't need trigger `values` watcher at mounted hook.
-        // Because there's a watcher for itemVMs.
-        // this.watchValues(this.values);
-        this.$nextTick(() => this.selectedValues = this.selectedVMs.map((itemVM) => itemVM.value));
-    },
+    // mounted() {
+    // Don't need trigger `values` watcher at mounted hook.
+    // Because there's a watcher for itemVMs.
+    // this.watchValues(this.values);
+    // },
     methods: {
         watchValues(values) {
             const selectedVMs = [];
@@ -90,13 +87,10 @@ export const MMultiplex = {
         watchSelectedChange(selectedVM) {
             if (!this.keepOrder) {
                 const index = this.selectedVMs.indexOf(selectedVM);
-                if (selectedVM.currentSelected && !~index) {
+                if (selectedVM.currentSelected && !~index)
                     this.selectedVMs.push(selectedVM);
-                    this.selectedValues.push(selectedVM.value);
-                } else if (!selectedVM.currentSelected && ~index) {
+                else if (!selectedVM.currentSelected && ~index)
                     this.selectedVMs.splice(index, 1);
-                    this.selectedValues.splice(index, 1);
-                }
             } else
                 this.selectedVMs = this.itemVMs.filter((itemVM) => itemVM.currentSelected);
         },
@@ -113,7 +107,7 @@ export const MMultiplex = {
             if (itemVM.currentSelected === selected)
                 return;
 
-            const oldValues = this.selectedValues;
+            const oldValues = this.values;
             const oldVMs = this.selectedVMs;
             // const oldItems = oldVMs.map((itemVM) => itemVM.item);
 
@@ -136,7 +130,6 @@ export const MMultiplex = {
             // Assign and sync `values`
             const selectedVMs = this.selectedVMs;
             const values = selectedVMs.map((itemVM) => itemVM.value);
-            this.selectedValues = values;
             const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('input', values, this);
             this.$emit('update:values', values, this);

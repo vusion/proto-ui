@@ -104,7 +104,7 @@ export const UListView = {
             if (dataSource instanceof DataSource)
                 return dataSource;
             else if (dataSource instanceof Array) {
-                options.data = dataSource;
+                options.data = Array.from(dataSource);
                 return new DataSource(options);
             } else if (dataSource instanceof Function) {
                 options.load = function load(params) {
@@ -184,7 +184,25 @@ export const UListView = {
                 parentEl.scrollTop = focusedEl.offsetTop;
         },
         ensureSelectedInItemVMs() {
-            MComplex.watch.itemVMs.call(this, this.itemVMs);
+            if (this.multiple) {
+                for (let i = 0; i < this.selectedVMs.length; i++) {
+                    const oldVM = this.selectedVMs[i];
+                    if (!this.itemVMs.includes(oldVM)) {
+                        const selectedVM = this.itemVMs.find((itemVM) => itemVM.value === oldVM.value);
+                        if (selectedVM) {
+                            this.selectedVMs[i] = selectedVM;
+                            selectedVM.currentSelected = true;
+                        }
+                    }
+                }
+            } else {
+                if (this.selectedVM && !this.itemVMs.includes(this.selectedVM)) {
+                    const selectedVM = this.itemVMs.find((itemVM) => itemVM.value === this.selectedVM.value);
+                    if (selectedVM)
+                        this.selectedVM = selectedVM;
+                }
+            }
+            // MComplex.watch.itemVMs.call(this, this.itemVMs);
         },
         load(more) {
             const dataSource = this.currentDataSource;

@@ -19,17 +19,15 @@ export const MSinglex = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             selectedVM: undefined,
-            selectedValue: this.value,
         };
     },
     watch: {
         value(value) {
-            this.selectedValue = value;
             // 无需剪枝
             this.watchValue(value);
         },
         selectedVM(selectedVM, oldVM) {
-            const value = this.selectedValue;
+            const value = selectedVM ? selectedVM.value : undefined;
             const oldValue = oldVM ? oldVM.value : undefined;
             if (value === oldValue)
                 return;
@@ -47,8 +45,9 @@ export const MSinglex = {
         itemVMs(itemVMs) {
             if (!itemVMs.includes(this.selectedVM)) {
                 // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+                const value = this.selectedVM ? this.selectedVM.value : this.value;
                 this.selectedVM = undefined;
-                this.watchValue(this.selectedValue);
+                this.watchValue(value);
             }
         },
     },
@@ -77,7 +76,7 @@ export const MSinglex = {
                 return;
 
             // Prevent replication
-            const oldValue = this.selectedValue;
+            const oldValue = this.value;
             const oldVM = this.selectedVM;
             if (cancelable === undefined)
                 cancelable = this.cancelable;
@@ -102,7 +101,6 @@ export const MSinglex = {
 
             // Assign and sync `value`
             const value = this.selectedVM && this.selectedVM.value;
-            this.selectedValue = value;
             const selectedItem = this.selectedVM && this.selectedVM.item;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
