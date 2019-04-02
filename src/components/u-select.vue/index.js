@@ -14,7 +14,7 @@ export const USelect = {
         // @inherit: values: Array,
         // @inherit: field: { type: String, default: 'text' },
         // @inherit: data: Array,
-        // @inherit: dataSource: [DataSource, Function],
+        // @inherit: dataSource: [DataSource, Function, Object],
         // @inherit: cancelable: { type: Boolean, default: false },
         // @inherit: multiple: { type: Boolean, default: false },
         // @inherit: keepOrder: { type: Boolean, default: false },
@@ -42,16 +42,13 @@ export const USelect = {
             // @inherit: groupVMs: [],
             // @inherit: itemVMs: [],
             // @inherit: selectedVM: undefined,
-            // @inherit: selectedValue: undefined,
             // @inherit: selectedVMs: undefined,
-            // @inherit: selectedValues: undefined,
             focusedVM: undefined,
             // @inherit: currentMultiple: this.multiple,
-            // @inherit: currentData: this.data,
+            // @inherit: currentDataSource: undefined,
             // @inherit: loading: false,
             currentText: '', // 显示文本
             filterText: '', // 过滤文本，只有 input 时会改变它
-            // filtering: {},
             preventBlur: false,
             inputWidth: 20,
         };

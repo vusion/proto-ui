@@ -36,10 +36,8 @@ export const UListView = {
             // @inherit: selectedVM: undefined,
             // @inherit: selectedVMs: undefined,
             // @inherit: currentMultiple: this.multiple,
-            // currentData: undefined,
             currentDataSource: undefined,
             loading: false,
-            promiseSequence: Promise.resolve(),
         };
     },
     computed: {
@@ -210,16 +208,21 @@ export const UListView = {
                 return;
             if (this.loading)
                 return Promise.resolve();
+            if (this.$emitPrevent('before-load', undefined, this))
+                return;
 
             this.loading = true;
             return dataSource[more ? 'loadMore' : 'load']().then((data) => {
                 this.loading = false;
                 this.ensureSelectedInItemVMs();
+
+                this.$emit('load', undefined, this);
                 return data;
             }).catch(() => this.loading = false);
         },
         reload() {
-            return this.currentDataSource && this.currentDataSource.reload();
+            this.currentDataSource.clearLocalData();
+            this.load();
         },
         onScroll(e) {
             if (!this.pageable)

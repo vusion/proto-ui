@@ -1,4 +1,4 @@
-## UListView API
+## UListView
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -6,16 +6,17 @@
 | value.sync, v-model | Any | | 当前选择的值 |
 | values.sync | Any | | 多项选择的值 |
 | field | String | `'text'` | 显示文本字段 |
-| data | Array\<{ text, value }\> | | Data 书写方式中的数据列表 |
-| data-source | DataSource, Function, Object | | 多功能数据源 |
+| data | Array\<{ text, value }\> | | 列表数据 |
+| data-source | Object, Function, DataSource | | 多功能数据源 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | multiple | Boolean | `false` | 是否可以多选 |
 | collapsible | Boolean | `false` | 分组是否可以折叠 |
 | accordion | Boolean | `false` | 是否每次只会展开一个分组 |
 | expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
-| loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
+| loading-text | String | `'加载中...'` | 加载时的文字。使用分页加载时才会出现 |
 | initial-load | Boolean | `true` | 是否在初始时立即加载 |
-| page-size | Number | `50` | 当使用`data-source`时的分页大小 |
+| pageable | Boolean | `false` | 是否需要分页 |
+| page-size | Number | `50` | 分页大小 |
 | remote-paging | Number | `false` | 是否使用后端分页 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
@@ -82,6 +83,24 @@
 | $event.itemVMs | Array\<UListViewItem\> | 多选模式中，所有选中项子组件的数组 |
 | senderVM | UListView | 发送事件实例 |
 
+#### @before-load
+
+加载前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止加载流程 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @load
+
+加载时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | UTableView | 发送事件实例 |
+
 #### @toggle
 
 展开/折叠某分组时触发
@@ -102,7 +121,21 @@
 | ----- | ---- | ----------- |
 | expanded | Boolean | 展开/折叠 |
 
-## UListViewItem API
+#### load()
+
+带缓存地加载
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### reload()
+
+清除缓存，重新加载
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+## UListViewItem
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |

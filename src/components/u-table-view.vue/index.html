@@ -11,9 +11,9 @@
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <thead><tr>
-                    <th :class="$style['head-title']" v-for="columnVM in visibleColumnVMs">
+                    <th :class="$style['head-title']" v-for="(columnVM, index) in visibleColumnVMs">
                         <!-- <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render> -->
-                        <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render>
+                        <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
                         <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
                         <span v-else>{{ columnVM.title }}</span>
                         <span v-if="columnVM.sortable" :class="$style.sort"

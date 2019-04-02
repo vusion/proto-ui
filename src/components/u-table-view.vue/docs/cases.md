@@ -105,8 +105,6 @@
     <u-table-view-column fixed title="姓名" field="name" width="10%"></u-table-view-column>
     <u-table-view-column title="省份" field="province" width="200"></u-table-view-column>
     <u-table-view-column title="城市" field="city" width="200"></u-table-view-column>
-    <u-table-view-column title="区县" field="district" width="200"></u-table-view-column>
-    <u-table-view-column title="地址" field="address" width="400"></u-table-view-column>
     <u-table-view-column fixed title="出生日期" field="birthday" width="20%"></u-table-view-column>
 </u-table-view>
 ```

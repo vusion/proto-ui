@@ -241,7 +241,7 @@ export const UTableView = {
                         width: this.visibleColumnVMs.slice(0, fixedLeftCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
                     });
                 }
-                if (fixedRightCount) {
+                if (fixedRightCount && tableWidth > rootWidth) { // 表格太短时，不固定右侧列
                     tableMetaList.push({
                         position: 'right',
                         width: this.visibleColumnVMs.slice(-fixedRightCount).reduce((prev, columnVM) => prev + columnVM.computedWidth, 0),
@@ -259,6 +259,8 @@ export const UTableView = {
                     const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
                     this.bodyHeight = rootHeight - titleHeight - headHeight;
                 }
+
+                this.$emit('resize', undefined, this);
             });
         },
         onTableScroll(e) {
@@ -296,25 +298,38 @@ export const UTableView = {
             const dataSource = this.currentDataSource;
             if (!dataSource)
                 return;
+            if (this.$emitPrevent('before-load', undefined, this))
+                return;
 
             this.currentLoading = true;
             dataSource.load().then((data) => {
                 // 防止同步数据使页面抖动
                 // setTimeout(() => this.currentData = data);
                 this.currentLoading = false;
-
                 if (this.currentDataSource.paging.number > this.currentDataSource.totalPage)
                     this.page(1);
 
+                this.$emit('load', undefined, this);
                 return data;
             }).catch(() => this.currentLoading = false);
         },
         reload() {
-            this.currentDataSource && this.currentDataSource.reload();
+            this.currentDataSource.clearLocalData();
+            this.load();
         },
         page(number) {
-            this.currentDataSource.page({ number, size: this.pageSize });
+            const paging = {
+                size: this.pageSize,
+                number,
+                oldNumber: this.currentDataSource.paging.number,
+            };
+            if (this.$emitPrevent('before-page', paging, this))
+                return;
+
+            this.currentDataSource.page(paging);
             this.load();
+            this.$emit('page', paging, this);
+            this.$emit('update:page-number', number, this);
         },
         onClickSort(columnVM) {
             let order;
@@ -329,10 +344,13 @@ export const UTableView = {
         },
         sort(field, order = 'asc', compare) {
             const sorting = { field, order, compare };
+            if (this.$emitPrevent('before-sort', sorting, this))
+                return;
+
             this.currentDataSource.sort(sorting);
             this.load();
-            this.$emit('sort', this.currentSorting, this);
-            this.$emit('update:sorting', this.currentSorting, this);
+            this.$emit('sort', sorting, this);
+            this.$emit('update:sorting', sorting, this);
         },
         onSelectFilters(field, $event) {
             const filtering = $event.value || $event.value === 0 ? { [field]: $event.value } : undefined;
@@ -350,6 +368,9 @@ export const UTableView = {
                 return filtering[field];
         },
         filter(filtering) {
+            if (this.$emitPrevent('before-filter', filtering, this))
+                return;
+
             this.currentDataSource.filter(filtering);
             this.load();
             this.$emit('filter', filtering, this);

@@ -70,15 +70,6 @@
 </u-table-view>
 ```
 
-``` html
-<u-table-view :data="null">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
-</u-table-view>
-```
-
 #### 空态
 
 ``` html
@@ -139,7 +130,7 @@ export default {
 
 ### 列插槽
 
-如果需要对数据进行更加自定义的展示，可以使用列的默认插槽，定制想要的格式。
+如果需要对数据进行更加自定义的展示，可以使用列的`cell`插槽，定制想要的格式。
 
 这个插槽为一个作用域插槽，会传入三个参数`item`、`columnVM`和`index`。
 

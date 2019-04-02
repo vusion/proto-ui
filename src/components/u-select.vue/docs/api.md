@@ -4,10 +4,25 @@
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
 | value.sync, v-model | Any | | 当前选择的值 |
+| values.sync | Any | | 多项选择的值 |
 | field | String | `'text'` | 显示文本字段 |
-| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
-| data-source | DataSource, Function, Object | | 多功能数据源 |
-| loading-text | String | `'加载中...'` | 加载中的文字。使用异步数据源时才会出现 |
+| data | Array\<{ text, value }\> | | 列表数据 |
+| data-source | Object, Function, DataSource | | 多功能数据源 |
+| cancelable | Boolean | `false` | 是否可以取消选择 |
+| multiple | Boolean | `false` | 是否可以多选 |
+| placeholder | Boolean | `'请选择'` | 选择框的占位符 |
+| loading-text | String | `'加载中...'` | 加载时的文字。使用分页加载时才会出现 |
+| empty-text | String | `'加载中...'` | 没有匹配时的文字 |
+| initial-load | Boolean | `true` | 是否在初始时立即加载 |
+| pageable | Boolean | `false` | 是否需要分页 |
+| page-size | Number | `50` | 分页大小 |
+| remote-paging | Boolean | `false` | 是否使用后端分页 |
+| clearable | Boolean | `false` | 是否有清除按钮 |
+| filterable | Boolean | `false` | 是否使用输入框进行过滤 |
+| match-method | String, Function | `includes` | 过滤时的匹配方法 |
+| case-sensitive | String, Function | `includes` | 过滤时大小写是否敏感 |
+| remote-filtering | Boolean | `false` | 是否使用后端过滤 |
+| auto-complete | Boolean | `false` | 是否开启自动补充模式，用于增加列表中没有的项 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 | opened.sync | Boolean | `false` | 弹出/关闭状态 |
@@ -98,6 +113,24 @@
 
 @deprecated
 
+#### @before-load
+
+加载前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.preventDefault | Function | 阻止加载流程 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @load
+
+加载时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | | 空 |
+| senderVM | UTableView | 发送事件实例 |
+
 ### Methods
 
 #### open()
@@ -121,6 +154,20 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | opened? | Boolean | 可选。弹出/关闭状态 |
+
+#### load()
+
+带缓存地加载
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+
+#### reload()
+
+清除缓存，重新加载
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 
 ## USelectItem
 ### Props/Attrs
