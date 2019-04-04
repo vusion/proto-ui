@@ -1,4 +1,4 @@
-# 折叠面板 Collapse
+# UCollapse 折叠面板
 
 ## 示例
 ### 基本形式
@@ -39,7 +39,7 @@
     <u-collapse-item title="面板3">Content3</u-collapse-item>
 </u-collapse>
 
-## Collapse API
+## UCollapse API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -63,7 +63,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.itemVM | CollapseItem | 面板组件 |
+| $event.itemVM | UCollapseItem | 面板组件 |
 
 ### Methods
 
@@ -75,7 +75,7 @@
 | ----- | ---- | ----------- |
 | expanded | Boolean | 展开/折叠 |
 
-## CollapseItem API
+## UCollapseItem API
 
 ### Props/Attrs
 
@@ -108,7 +108,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.itemVM | CollapseItem | 面板组件 |
+| $event.itemVM | UCollapseItem | 面板组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
 | senderVM | Vue | 发送事件实例 |
 
@@ -119,5 +119,5 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.expanded | Boolean | 展开/折叠状态 |
-| $event.itemVM | CollapseItem | 面板组件 |
+| $event.itemVM | UCollapseItem | 面板组件 |
 | senderVM | Vue | 发送事件实例 |

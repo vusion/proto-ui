@@ -1,4 +1,4 @@
-const UNavbarDropdown = {
+export const UNavbarDropdown = {
     name: 'u-navbar-dropdown',
     parentName: 'u-navbar',
     props: {
@@ -12,5 +12,4 @@ const UNavbarDropdown = {
     },
 };
 
-export { UNavbarDropdown };
 export default UNavbarDropdown;

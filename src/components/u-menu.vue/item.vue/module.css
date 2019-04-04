@@ -3,8 +3,10 @@
 .root {
     display: block;
     position: relative;
+    z-index: 1;
     overflow: visible;
     padding-right: 30px;
+    white-space: nowrap;
 }
 
 .root[has-sub]::after {

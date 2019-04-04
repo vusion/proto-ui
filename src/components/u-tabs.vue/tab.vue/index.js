@@ -1,6 +1,6 @@
 import { MSinglexItem } from '../../m-singlex.vue';
 
-const UTab = {
+export const UTab = {
     name: 'u-tab',
     parentName: 'u-tabs',
     extends: MSinglexItem,
@@ -17,5 +17,4 @@ const UTab = {
     },
 };
 
-export { UTab };
 export default UTab;

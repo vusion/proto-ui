@@ -1,6 +1,6 @@
-# 栅格布局 GridLayout
-## 示例
+# UGridLayout 栅格布局
 
+## 示例
 ### 基本形式
 
 定义栅格系统，用`repeat`属性来定义栅格列数，用`span`属性来设置列跨越的栅格数。
@@ -220,7 +220,7 @@
 </u-grid-layout>
 ```
 
-## GridLayout API
+## UGridLayout API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -233,7 +233,7 @@
 
 插入`<u-grid-layout-row>`或`<u-grid-layout-column>`子组件。
 
-## GridLayoutRow API
+## UGridLayoutRow API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -249,7 +249,7 @@
 
 插入`<u-grid-layout-column>`子组件。
 
-## GridLayoutColumn API
+## UGridLayoutColumn API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |

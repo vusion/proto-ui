@@ -1,4 +1,4 @@
-# 面包屑 Crumb
+# UCrumb 面包屑
 
 ## 示例
 ### 基本形式
@@ -11,7 +11,7 @@
 </u-crumb>
 ```
 
-## Crumb API
+## UCrumb API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -24,7 +24,7 @@
 
 插入`<u-crumb-item>`子组件。
 
-## CrumbItem API
+## UCrumbItem API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -55,7 +55,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCrumb | 发送事件实例 |
 
 #### @before-navigate
 
@@ -67,7 +67,7 @@
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
 | $event.preventDefault | Function | 阻止切换流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCrumb | 发送事件实例 |
 
 #### @navigate
 
@@ -78,4 +78,4 @@
 | $event.to | String, Location | `to`属性的值 |
 | $event.replace | Boolean | `replace`属性的值 |
 | $event.append | Boolean | `append`属性的值 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCrumb | 发送事件实例 |

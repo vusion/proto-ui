@@ -1,4 +1,4 @@
-# 快速开始
+# Quickstart 快速开始
 
 [![NPM Version](https://img.shields.io/badge/version-0.4.x-orange.svg?style=flat-square&longCache=true)](http://npmjs.org/package/proto-ui.vusion)
 

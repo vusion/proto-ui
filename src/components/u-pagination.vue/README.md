@@ -1,4 +1,4 @@
-# 分页 Pagination
+# UPagination 分页
 
 ## 示例
 ### 基本形式
@@ -50,7 +50,7 @@
 | $event.page | Number | 选择的页码 |
 | $event.oldPage | Number | 旧的页码 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UPagination | 发送事件实例 |
 
 #### @select
 
@@ -60,7 +60,7 @@
 | ----- | ---- | ----------- |
 | $event.page | Number | 选择的页码 |
 | $event.oldPage | Number | 旧的页码 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UPagination | 发送事件实例 |
 
 #### @change
 
@@ -70,4 +70,4 @@
 | ----- | ---- | ----------- |
 | $event.page | Number | 当前页码 |
 | $event.oldPage | Number | 旧的页码 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UPagination | 发送事件实例 |

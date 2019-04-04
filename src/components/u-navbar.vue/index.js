@@ -1,6 +1,6 @@
 import { MSinglex } from '../m-singlex.vue';
 
-const UNavbar = {
+export const UNavbar = {
     name: 'u-navbar',
     childName: 'u-navbar-item',
     extends: MSinglex,
@@ -17,5 +17,5 @@ export * from './divider.vue';
 export * from './dropdown.vue';
 export * from './menu.vue';
 export * from './select.vue';
-export { UNavbar };
+
 export default UNavbar;
