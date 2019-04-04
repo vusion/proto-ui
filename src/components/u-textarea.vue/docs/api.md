@@ -30,7 +30,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | String | 输入框的值 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @change
 
@@ -40,7 +40,7 @@
 | ----- | ---- | ----------- |
 | $event.value | String | 改变后的值 |
 | $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @focus
 
@@ -49,7 +49,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | FocusEvent | 原生事件对象 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @blur
 
@@ -58,7 +58,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | FocusEvent | 原生事件对象 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @before-clear
 
@@ -69,7 +69,7 @@
 | $event.value | String | 清空后的值 |
 | $event.oldValue | String | 待清空的值 |
 | $event.preventDefault | Function | 阻止清空流程 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @clear
 
@@ -79,7 +79,7 @@
 | ----- | ---- | ----------- |
 | $event.value | String | 清空后的值 |
 | $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @before-reset
 
@@ -90,7 +90,7 @@
 | $event.value | String | 重置后的值 |
 | $event.oldValue | String | 待重置的值 |
 | $event.preventDefault | Function | 阻止重置流程 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 #### @reset
 
@@ -100,7 +100,7 @@
 | ----- | ---- | ----------- |
 | $event.value | String | 重置后的值 |
 | $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
+| senderVM | UTextarea | 发送事件实例 |
 
 ### Methods
 

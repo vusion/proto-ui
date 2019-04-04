@@ -1,7 +1,7 @@
 import { MChild } from '../m-parent.vue';
 import MField from '../m-field.vue';
 
-const UCheckbox = {
+export const UCheckbox = {
     name: 'u-checkbox',
     parentName: 'u-checkboxes',
     mixins: [MChild, MField],
@@ -13,7 +13,7 @@ const UCheckbox = {
     },
     data() {
         return {
-            // @inherit: parentVM: undefined,
+            parentVM: undefined,
             currentValue: this.value,
         };
     },
@@ -31,31 +31,30 @@ const UCheckbox = {
             this.currentValue = value;
         },
         currentValue(value, oldValue) {
-            this.$emit('change', { value, oldValue }, this);
+            this.$emit('change', { value, oldValue });
         },
+    },
+    created() {
+        this.dispatch(this.$options.parentName, 'add-item-vm', this);
+    },
+    destroyed() {
+        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
     },
     methods: {
         onFocus(e) {
-            this.$emit('focus', e, this);
+            this.$emit('focus', e);
         },
         onBlur(e) {
-            this.$emit('blur', e, this);
+            this.$emit('blur', e);
         },
-        toggle(value) {
-            // Check if enabled
+        check() {
             if (this.readonly || this.disabled)
                 return;
 
-            // Method overloading
-            if (value === undefined)
-                value = !this.currentValue;
-
-            // Prevent replication
             const oldValue = this.currentValue;
-            if (value === oldValue)
-                return;
+            const value = !this.currentValue;
 
-            if (this.parentVM && !this.parentVM.canToggle({
+            if (this.parentVM && !this.parentVM.canCheck({
                 value,
                 oldValue,
                 label: this.label,
@@ -63,41 +62,30 @@ const UCheckbox = {
             }))
                 return;
 
-            // Emit a `before-` event with preventDefault()
-            if (this.$emitPrevent('before-toggle', {
+            let cancel = false;
+            this.$emit('before-check', {
                 value,
                 oldValue,
                 label: this.label,
-            }, this))
+                preventDefault: () => cancel = true,
+            });
+            if (cancel)
                 return;
 
-            // Assign and sync `value`
             this.currentValue = value;
-            this.$emit('input', value, this);
-            this.$emit('update:value', value, this);
 
-            // Emit `after-` events
-            if (value === true)
-                this.$emit('check', { value, oldValue }, this);
-            else if (value === false)
-                this.$emit('uncheck', { value, oldValue }, this);
-            // else indeterminate
+            this.$emit('input', value);
+            this.$emit('update:value', value);
+            this.$emit('check', { value, oldValue });
 
-            this.$emit('toggle', { value, oldValue }, this);
-
-            // Call parentVM
-            this.parentVM && this.parentVM.onItemToggle({
+            this.parentVM && this.parentVM.onCheck({
                 value,
                 oldValue,
                 label: this.label,
                 itemVM: this,
             });
         },
-        check(value) {
-            this.toggle(value);
-        },
     },
 };
 
-export { UCheckbox };
 export default UCheckbox;

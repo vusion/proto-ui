@@ -1,4 +1,4 @@
-# 幻灯片 Carousel
+# UCarousel 幻灯片
 
 ## 示例
 ### 基本形式
@@ -63,7 +63,7 @@
 </u-carousel>
 ```
 
-## Carousel API
+## UCarousel API
 ### Props/Attrs
 
 | Prop | Type | Default | Description |
@@ -93,9 +93,9 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 选中项的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.itemVM | Tab | 选中项实例 |
+| $event.itemVM | UCarouselItem | 选中项实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCarousel | 发送事件实例 |
 
 #### @select
 
@@ -105,10 +105,10 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 选中项的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.itemVM | Tab | 选中项实例 |
-| senderVM | Vue | 发送事件实例 |
+| $event.itemVM | UCarouselItem | 选中项实例 |
+| senderVM | UCarousel | 发送事件实例 |
 
-## CollapseItem API
+## UCarouselItem API
 
 ### Props/Attrs
 

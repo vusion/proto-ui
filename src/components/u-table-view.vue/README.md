@@ -1,4 +1,4 @@
-# 表格视图 TableView
+# UTableView 表格视图
 
 <u-h2-tabs router>
     <u-h2-tab title="基础示例" to="/components/u-table-view/examples"></u-h2-tab>

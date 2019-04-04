@@ -1,3 +1,5 @@
+const pkg = require('./package.json');
+
 module.exports = {
     version: '>=0.7.7',
     type: 'library',
@@ -18,10 +20,9 @@ module.exports = {
         mode: 'history',
         base: '/proto-ui/',
         github: 'https://github.com/vusion/proto-ui#next',
+        package: pkg,
         navbar: [
             { text: '组件', to: '/components' },
-            { text: '指令&工具', to: '/misc' },
-            { text: '设计思路', to: '/ui-design' },
         ],
         components: [
             { group: 'Guide', name: 'quickstart', alias: '快速开始', path: './docs/views/guide/quickstart.md' },

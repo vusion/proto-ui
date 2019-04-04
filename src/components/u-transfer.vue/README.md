@@ -1,4 +1,4 @@
-# 穿梭框 Transfer
+# UTransfer 穿梭框
 
 ## 示例
 ### 基本形式
@@ -53,7 +53,7 @@ export default {
 </script>
 ```
 
-## Transfer API
+## API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -92,4 +92,3 @@ export default {
 | $event.transfer | Array\<{ text, value }\> | 移动的项 |
 | $event.transferValues | Array | 移动项的值 |
 | senderVM | Vue | 发送事件实例 |
-

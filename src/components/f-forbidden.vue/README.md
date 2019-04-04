@@ -21,6 +21,7 @@
 | copy | Boolean | `false` | 是否禁止复制 |
 | save-key | Boolean | `false` | 是否禁止另存为键 |
 | devtools-key | Boolean | `false` | 是否禁止开发者工具键 |
+| senderVM | FForbidden | 发送事件实例 |
 
 ### Events
 
@@ -31,6 +32,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | MouseEvent | 鼠标事件对象 |
+| senderVM | FForbidden | 发送事件实例 |
 
 #### @select
 
@@ -39,6 +41,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | FocusEvent | 聚焦事件对象 |
+| senderVM | FForbidden | 发送事件实例 |
 
 #### @copy
 
@@ -47,6 +50,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | ClipboardEvent | 剪贴板事件对象 |
+| senderVM | FForbidden | 发送事件实例 |
 
 #### @save-key
 
@@ -55,6 +59,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | KeyboardEvent | 键盘事件对象 |
+| senderVM | FForbidden | 发送事件实例 |
 
 #### @devtools-key
 
@@ -63,3 +68,4 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | KeyboardEvent | 键盘事件对象 |
+| senderVM | FForbidden | 发送事件实例 |

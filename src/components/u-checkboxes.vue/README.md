@@ -1,4 +1,4 @@
-# 多选组 Checkboxes
+# UCheckboxes 多选组
 
 ## 示例
 ### 基本形式
@@ -7,11 +7,14 @@
 <u-checkbox>多选框</u-checkbox>
 ```
 
-### Value绑定
+### 双向绑定
 
 ``` vue
 <template>
-<u-checkbox v-model="value">{{ value }}</u-checkbox>
+<u-linear-layout>
+    <u-checkbox v-model="value">{{ value }}</u-checkbox>
+    <u-checkbox :value.sync="value">{{ value }}</u-checkbox>
+</u-linear-layout>
 </template>
 <script>
 export default {
@@ -136,7 +139,7 @@ export default {
 </script>
 ```
 
-## Checkboxes API
+## UCheckboxes
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -153,7 +156,7 @@ export default {
 
 插入`<checkbox>`子组件。
 
-## Checkbox API
+## UCheckbox
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -180,7 +183,7 @@ export default {
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCheckbox | 发送事件实例 |
 
 #### @input
 
@@ -189,7 +192,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Boolean, null | 切换后的选中状态 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCheckbox | 发送事件实例 |
 
 #### @check
 
@@ -200,7 +203,7 @@ export default {
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
 | $event.label | Any | 此选框的标签 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCheckbox | 发送事件实例 |
 
 #### @change
 
@@ -210,4 +213,4 @@ export default {
 | ----- | ---- | ----------- |
 | $event.value | Boolean, null | 选中状态 |
 | $event.oldValue | Boolean, null | 旧的选中状态 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UCheckbox | 发送事件实例 |

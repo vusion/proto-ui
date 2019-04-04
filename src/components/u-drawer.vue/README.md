@@ -1,4 +1,4 @@
-# 抽屉 Drawer
+# UDrawer 抽屉
 
 ## 示例
 ### 基本形式
@@ -98,7 +98,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UDrawer | 发送事件实例 |
 
 #### @ok
 
@@ -106,7 +106,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UDrawer | 发送事件实例 |
 
 #### @cancel
 
@@ -114,7 +114,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UDrawer | 发送事件实例 |
 
 #### @before-close
 
@@ -124,7 +124,7 @@ export default {
 | ----- | ---- | ----------- |
 | ok | Boolean | 是否确定 |
 | $event.preventDefault | Function | 阻止关闭流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UDrawer | 发送事件实例 |
 
 #### @close
 关闭抽屉时触发
@@ -132,7 +132,7 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | ok | Boolean | 是否确定 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UDrawer | 发送事件实例 |
 
 ### Static Methods
 

@@ -4,18 +4,18 @@
 ### 基本形式
 
 ``` html
-<i-icon name="arrow-up"></i-icon>
-<i-icon name="arrow-down"></i-icon>
-<i-icon name="arrow-left"></i-icon>
-<i-icon name="arrow-right"></i-icon>
-<i-icon name="angle-up"></i-icon>
-<i-icon name="angle-down"></i-icon>
-<i-icon name="angle-left"></i-icon>
-<i-icon name="angle-right"></i-icon>
-<i-icon name="close"></i-icon>
-<i-icon name="close-solid"></i-icon>
-<i-icon name="filter"></i-icon>
-<i-icon name="github"></i-icon>
+<u-icon-example name="arrow-up"></u-icon-example>
+<u-icon-example name="arrow-down"></u-icon-example>
+<u-icon-example name="arrow-left"></u-icon-example>
+<u-icon-example name="arrow-right"></u-icon-example>
+<u-icon-example name="angle-up"></u-icon-example>
+<u-icon-example name="angle-down"></u-icon-example>
+<u-icon-example name="angle-left"></u-icon-example>
+<u-icon-example name="angle-right"></u-icon-example>
+<u-icon-example name="close"></u-icon-example>
+<u-icon-example name="close-solid"></u-icon-example>
+<u-icon-example name="filter"></u-icon-example>
+<u-icon-example name="github"></u-icon-example>
 ```
 
 ## API

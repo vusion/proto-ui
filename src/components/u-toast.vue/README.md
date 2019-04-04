@@ -1,4 +1,4 @@
-# 吐司提示 Toast
+# UToast 吐司提示
 
 ## 示例
 ### 快捷方式
@@ -136,7 +136,7 @@ export default {
 | $event.text | String | 提示的内容 |
 | $event.color | String | 提示的颜色 |
 | $event.duration | Number | 提示停留的时间 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UToast | 发送事件实例 |
 
 #### @before-close
 
@@ -148,7 +148,7 @@ export default {
 | $event.color | String | 提示的颜色 |
 | $event.duration | Number | 提示停留的时间 |
 | $event.preventDefault | Function | 阻止关闭流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UToast | 发送事件实例 |
 
 #### @close
 
@@ -159,4 +159,4 @@ export default {
 | $event.text | String | 提示的内容 |
 | $event.color | String | 提示的颜色 |
 | $event.duration | Number | 提示停留的时间 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UToast | 发送事件实例 |

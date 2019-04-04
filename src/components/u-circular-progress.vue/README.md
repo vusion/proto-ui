@@ -1,4 +1,4 @@
-# 圆型进度条 CircularProgress
+# UCircularProgress 圆型进度条
 
 ## 示例
 ### 基本形式

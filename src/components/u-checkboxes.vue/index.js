@@ -14,9 +14,19 @@ export const UCheckboxes = {
     },
     data() {
         return {
-            // @inherit: itemVMs: [],
             currentValue: this.value,
+            itemVMs: [],
         };
+    },
+    created() {
+        this.$on('add-item-vm', (itemVM) => {
+            itemVM.parentVM = this;
+            this.itemVMs.push(itemVM);
+        });
+        this.$on('remove-item-vm', (itemVM) => {
+            itemVM.parentVM = undefined;
+            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
+        });
     },
     mounted() {
         this.watchValue(this.value);
@@ -29,7 +39,7 @@ export const UCheckboxes = {
             this.$emit('change', {
                 value,
                 oldValue,
-            }, this);
+            });
         },
         itemVMs() {
             this.watchValue(this.value);
@@ -40,7 +50,7 @@ export const UCheckboxes = {
             this.currentValue = value;
             this.itemVMs.forEach((itemVM) => itemVM.currentValue = value.includes(itemVM.label));
         },
-        canToggle($event) {
+        canCheck($event) {
             if (this.readonly || this.disabled)
                 return false;
 
@@ -54,7 +64,7 @@ export const UCheckboxes = {
                 return this.min <= length && length <= this.max;
             }
         },
-        onItemToggle($event) {
+        onCheck($event) {
             const value = $event.value;
             const label = $event.itemVM.label;
 
@@ -63,12 +73,12 @@ export const UCheckboxes = {
             else if (!value && this.currentValue.includes(label))
                 this.currentValue.splice(this.currentValue.indexOf(label), 1);
 
-            this.$emit('input', this.currentValue, this);
-            this.$emit('update:value', this.currentValue, this);
-            this.$emit('toggle', {
+            this.$emit('input', this.currentValue);
+            this.$emit('update:value', this.currentValue);
+            this.$emit('check', {
                 value: this.currentValue,
                 itemVM: $event.itemVM,
-            }, this);
+            });
         },
     },
 };

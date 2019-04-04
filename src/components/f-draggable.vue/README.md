@@ -1,4 +1,4 @@
-# 拖拽 Draggable
+# FDraggable 拖拽
 
 ## 示例
 ### 基本形式
@@ -81,7 +81,7 @@
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | FDraggable | 发送事件实例 |
 
 #### @drag
 
@@ -108,7 +108,7 @@
 | $event.left | Number | 拖拽时代理元素的left值 |
 | $event.top | Number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | FDraggable | 发送事件实例 |
 
 #### @dragend
 
@@ -120,7 +120,7 @@
 | $event.sourceEl | Element | 拖拽起始元素 |
 | $event.transferEl | Element | 拖拽移动元素 |
 | $event.value | Any | 需要传递的值 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | FDraggable | 发送事件实例 |
 
 ### Methods
 

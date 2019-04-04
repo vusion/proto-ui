@@ -1,4 +1,4 @@
-# 文件上传
+# UUploader 文件上传
 
 ## 示例
 ### 基本形式
@@ -66,7 +66,7 @@
 | $event.xhr | XMLHttpRequest | 发送前的 XMLHttpRequest 对象 |
 | $event.formData | FormData | 用于发送的数据对象 |
 | $event.preventDefault | Function | 阻止上传流程 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |
 
 #### @send
 
@@ -76,7 +76,7 @@
 | --------- | ---- | ----------- |
 | $event.data | Object | 进度相关信息 |
 | $event.preventDefault | Function | 阻止上传流程 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |
 
 #### @progress
 
@@ -85,7 +85,7 @@
 | Param | Type |  Description |
 | --------- | ---- | ----------- |
 | $event.data | Object | 进度相关信息 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |
 
 #### @complete
 
@@ -94,7 +94,7 @@
 | Param | Type |  Description |
 | --------- | ---- | ----------- |
 | $event.xml | String | 服务器回传信息 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |
 
 #### @success
 
@@ -104,7 +104,7 @@
 | --------- | ---- | ----------- |
 | $event.data | Object | 服务器回传信息对象 |
 | $event.file | Object | 上传文件信息，不包含文件主体内容 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |
 
 #### @error
 
@@ -117,4 +117,4 @@
 | $event.extensions | String | 限制类型 |
 | $event.$event.maxSize | Number | 限制大小 |
 | $event.size | Number | 当前大小 |
-| senderVM | Object | 发送事件对象 |
+| senderVM | UUploader | 发送事件对象 |

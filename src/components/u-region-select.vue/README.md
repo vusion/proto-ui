@@ -1,7 +1,8 @@
-# 地区选择 RegionSelect
+# URegionSelect 地区选择
 
-该组件从 CascadeSelect 继承，仅填充了中国的行政区数据，其他功能与 CascadeSelect 相同。
+该组件从 UCascadeSelect 继承，仅填充了中国的行政区数据，其他功能与 UCascadeSelect 相同。
 
+## 示例
 ### 基本形式
 
 ``` html
@@ -55,7 +56,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URegionSelect | 发送事件实例 |
 
 #### @select
 
@@ -68,7 +69,7 @@
 | $event.values | Array | 改变后每项值的数组 |
 | $event.item | Object | 选择项相关对象 |
 | $event.itemVM | ListViewItem | 选择项子组件 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URegionSelect | 发送事件实例 |
 
 #### @change
 
@@ -80,4 +81,4 @@
 | $event.oldValue | Any | 旧的值 |
 | $event.values | Array | 改变后每项值的数组 |
 | $event.oldValues | Array | 旧的每项值的数组 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URegionSelect | 发送事件实例 |

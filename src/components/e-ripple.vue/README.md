@@ -1,4 +1,7 @@
-##
+# ERipple 波纹
+
+## 示例
+### 基本形式
 
 ``` html
 <u-button>

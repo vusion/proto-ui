@@ -1,4 +1,4 @@
-# 多行输入 Textarea
+# UTextarea 多行输入
 
 <u-linear-layout gap="small">
     <u-label>UI 组件</u-label>

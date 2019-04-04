@@ -94,7 +94,7 @@
     line-height: 26px;
 }
 
-.text[tags-overflow="visible"] {
+.root[multiple-tags] .text[tags-overflow="visible"] {
     overflow: visible;
     white-space: normal;
 }

@@ -1,4 +1,4 @@
-# 单选组 Radios
+# URadios 单选组
 
 ## 示例
 ### 基本形式
@@ -37,7 +37,7 @@
 </u-linear-layout>
 ```
 
-## Radios API
+## URadios API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -62,9 +62,9 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.itemVM | ListViewItem | 选择项子组件 |
+| $event.itemVM | URadio | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URadios | 发送事件实例 |
 
 #### @input
 
@@ -73,7 +73,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event | Any | 选择项的值 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URadios | 发送事件实例 |
 
 #### @select
 
@@ -83,8 +83,8 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.itemVM | ListViewItem |  选择项子组件 |
-| senderVM | Vue | 发送事件实例 |
+| $event.itemVM | URadio |  选择项子组件 |
+| senderVM | URadios | 发送事件实例 |
 
 #### @change
 
@@ -95,10 +95,10 @@
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
-| $event.itemVM | ListViewItem | 选择项子组件 |
-| senderVM | Vue | 发送事件实例 |
+| $event.itemVM | URadio | 选择项子组件 |
+| senderVM | URadios | 发送事件实例 |
 
-## Radio API
+## URadio API
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
@@ -122,6 +122,6 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.label | Any | 此项的标签 |
-| $event.itemVM | ListViewItem | 此组件 |
+| $event.itemVM | URadio | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | URadio | 发送事件实例 |

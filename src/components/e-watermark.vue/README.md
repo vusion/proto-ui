@@ -1,7 +1,7 @@
-# 水印 Watermark
+# EWatermark 水印
 
 ``` html
-<u-watermark text="Watermark"></u-watermark>
+<e-watermark text="Watermark"></e-watermark>
 ```
 
 ## API

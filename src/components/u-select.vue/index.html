@@ -1,5 +1,5 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled"
-    :clearable="clearable && !!currentText" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
+    :clearable="clearable && !!currentText" :multiple="multiple" :multiple-tags="multiple && this.multipleAppearance === 'tags'"
     :tabindex="readonly || disabled ? '' : 0"
     @click="focus"
     @keydown.up.prevent="$refs.popper.currentOpened ? shift(-1) : open()"

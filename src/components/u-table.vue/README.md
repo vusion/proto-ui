@@ -1,4 +1,4 @@
-# 表格 UTable
+# UTable 表格
 
 对表格样式做了简单的修饰。如果需要横向滚动、固定列、分页、排序、过滤等更多功能，请使用 [UTableView](../u-table-view)。
 
