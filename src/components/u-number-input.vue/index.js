@@ -37,7 +37,7 @@ const UNumberInput = {
             data.currentFormatter = noopFormatter;
 
         // 初始值需要在最小值和最大值范围之内
-        data.formattedValue = data.currentFormatter.format(this.currentValue);
+        data.formattedValue = data.currentFormatter.format(data.currentValue);
 
         return data;
     },
@@ -53,7 +53,7 @@ const UNumberInput = {
     watch: {
         value(value, oldValue) {
             this.currentValue = this.fix(value);
-            this.formattedValue = this.currentFormatter.get(value);
+            this.formattedValue = this.currentFormatter.format(value);
         },
     },
     created() {
@@ -61,7 +61,7 @@ const UNumberInput = {
         this.$emit('change', {
             value: this.fix(this.value),
             oldValue: undefined,
-            formattedValue: this.fix(this.currentFormatter.get(this.value)),
+            formattedValue: this.fix(this.currentFormatter.format(this.value)),
         }, this);
     },
     methods: {
@@ -144,7 +144,7 @@ const UNumberInput = {
                 this.$emit('change', {
                     value,
                     oldValue: this.currentValue,
-                    formattedValue: this.currentFormatter.get(value),
+                    formattedValue: this.currentFormatter.format(value),
                 }, this);
             }
         },
@@ -170,7 +170,7 @@ const UNumberInput = {
                 return;
 
             this.currentValue = this.defaultValue;
-            this.formattedValue = this.currentFormatter.get(this.defaultValue);
+            this.formattedValue = this.currentFormatter.format(this.defaultValue);
             this.$emit('input', this.defaultValue, this);
             this.$emit('update:value', this.defaultValue, this);
 

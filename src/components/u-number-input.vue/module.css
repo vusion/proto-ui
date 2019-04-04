@@ -1,6 +1,7 @@
 .root {}
 
 .button {
+    user-select: none;
     position: absolute;
     right: 1px;
     height: 14px;
