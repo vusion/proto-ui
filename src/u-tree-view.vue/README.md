@@ -302,6 +302,26 @@
 </u-tree-view>
 ```
 
+### 指定节点显示/隐藏
+``` html
+<u-tree-view cancelable>
+    <u-tree-view-node text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2" hidden></u-tree-view-node>
+        </u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
+    </u-tree-view-node>
+    <u-tree-view-node text="节点2" hidden></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1"></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
+    </u-tree-view-node>
+</u-tree-view>
+```
+
 ### 多选
 
 ``` vue

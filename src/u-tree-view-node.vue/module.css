@@ -5,6 +5,10 @@ $height: 24px;
     margin-left: 20px;
 }
 
+.root[hidden] {
+    display: none;
+}
+
 .item {
     position: relative;
 }
