@@ -14,7 +14,9 @@ $gray-lighter: #ddd;
 $gray-lightest: #eee;
 
 /* Component Base Colors */
+$background-color-light: #f7f8fc;
 $background-color-base: #f2f3f8;
+$background-color-dark: #ebedf5;
 $color-base: #565b61;
 $border-color-base: #dfe4ec;
 
@@ -27,10 +29,18 @@ $margin-large: 30px;
 $border-width-base: 1px;
 $width-base: 160px;
 $height-base: 32px;
+$border-radius-base: 0;
+$line-height-base: 1.6;
+$font-size-base: 14px;
 
 /* Specific Dimensions */
 $navbar-height: 70px;
 $sidebar-width: 240px;
+
+/* Fonts */
+/* stylelint-disable value-keyword-case */
+$font-family-zh-CN: "Helvetica Neue", helvetica, tahoma, arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+$font-family-code: menlo, consolas, monaco, monospace;
 
 /* Z-Index */
 $z-index-loading: 9000;
@@ -46,3 +56,6 @@ $z-index-base: 1;
 $cursor-pointer: pointer;
 $cursor-not-allowed: not-allowed;
 $focus-outline: none;
+
+/* Transition Duration */
+$transition-duration-base: 0;
