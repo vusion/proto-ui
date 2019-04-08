@@ -1,4 +1,4 @@
-const UCircularProgress = {
+export const UCircularProgress = {
     name: 'u-circular-progress',
     props: {
         percent: { type: Number, default: 0 },

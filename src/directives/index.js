@@ -1,3 +1,4 @@
+export * from './v-click-outside';
 export * from './v-repeat-click';
 export * from './v-focus';
 

@@ -1,5 +1,3 @@
-import event from '../utils/event';
-
 export const clickOutside = {
     bind(el, binding) {
         const handler = function (e) {

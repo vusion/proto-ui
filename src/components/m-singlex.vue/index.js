@@ -113,6 +113,8 @@ export const MSinglex = {
                 selectedItem,
                 itemVM,
                 item: itemVM && itemVM.item,
+                oldVM,
+                oldItem: oldVM && oldVM.item,
             }, this);
         },
     },
