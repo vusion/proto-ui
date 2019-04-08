@@ -9,7 +9,7 @@
     <span :class="$style.baseline">b</span><!-- 用于基线对齐 -->
     <span v-show="!filterText && (multiple ? !selectedVMs.length : !selectedVM)" :class="$style.placeholder">{{ placeholder }}</span>
     <div :class="$style.text" v-ellipsis-title :tags-overflow="tagsOverflow">
-        <u-render v-if="!multiple && !filterable" :vnode="selectedVM && selectedVM.$slots.default"></u-render>
+        <f-render v-if="!multiple && !filterable" :vnode="selectedVM && selectedVM.$slots.default"></f-render>
         <span v-else-if="this.multipleAppearance === 'text'">{{ currentText }}</span>
         <template v-else-if="this.multipleAppearance === 'tags'">
             <template v-if="tagsOverflow === 'hidden' || tagsOverflow === 'visible'">
