@@ -6,7 +6,7 @@ export const UCheckboxes = {
     childName: 'u-checkbox',
     mixins: [MParent, MField],
     props: {
-        value: { type: Array, default() { return []; } },
+        value: Array,
         min: { type: Number, default: 0 },
         max: { type: Number, default: Infinity },
         readonly: { type: Boolean, default: false },
@@ -47,8 +47,14 @@ export const UCheckboxes = {
     },
     methods: {
         watchValue(value) {
-            this.currentValue = value;
-            this.itemVMs.forEach((itemVM) => itemVM.currentValue = value.includes(itemVM.label));
+            if (value) {
+                this.currentValue = value;
+                this.itemVMs.forEach((itemVM) => itemVM.currentValue = value.includes(itemVM.label));
+            } else {
+                const value = [];
+                this.itemVMs.forEach((itemVM) => itemVM.currentValue && value.push(itemVM.label));
+                this.currentValue = value;
+            }
         },
         canCheck($event) {
             if (this.readonly || this.disabled)

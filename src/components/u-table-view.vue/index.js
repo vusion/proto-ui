@@ -1,7 +1,10 @@
 import DataSource from '../../utils/DataSource';
+import MEmitter from '../m-emitter.vue';
+import debounce from 'lodash/debounce';
 
 export const UTableView = {
     name: 'u-table-view',
+    mixins: [MEmitter],
     props: {
         data: Array,
         dataSource: [DataSource, Function, Object],
@@ -93,6 +96,11 @@ export const UTableView = {
 
         this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
         this.initialLoad && this.load();
+
+        this.debouncedSyncBodyScroll = debounce(this.syncBodyScroll, 40, {
+            leading: true,
+            trailing: true,
+        });
     },
     mounted() {
         this.resize();
@@ -267,14 +275,13 @@ export const UTableView = {
             this.scrollXStart = e.target.scrollLeft === 0;
             this.scrollXEnd = e.target.scrollLeft >= e.target.scrollWidth - e.target.clientWidth;
         },
-        syncBodyScroll(scrollTop) {
-            this.$refs.body[0] && (this.$refs.body[0].scrollTop = scrollTop);
-            this.$refs.body[1] && (this.$refs.body[1].scrollTop = scrollTop);
-            this.$refs.body[2] && (this.$refs.body[2].scrollTop = scrollTop);
+        syncBodyScroll(scrollTop, target) {
+            this.$refs.body[0] && this.$refs.body[0] !== target && (this.$refs.body[0].scrollTop = scrollTop);
+            this.$refs.body[1] && this.$refs.body[1] !== target && (this.$refs.body[1].scrollTop = scrollTop);
+            this.$refs.body[2] && this.$refs.body[2] !== target && (this.$refs.body[2].scrollTop = scrollTop);
         },
         onBodyScroll(e) {
-            this.syncBodyScroll(e.target.scrollTop);
-            setTimeout(() => this.syncBodyScroll(e.target.scrollTop));
+            this.debouncedSyncBodyScroll(e.target.scrollTop, e.target);
         },
         onMouseWheel(e) {
             // const direction = e.wheelDelta > 0 ? -1 : 1;

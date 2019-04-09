@@ -5,7 +5,7 @@
 
 ``` html
 <f-dragger>
-    <u-block size="normal">拖我</u-block>
+    <u-block size="normal" style="position: relative;">拖我</u-block>
 </f-dragger>
 ```
 
@@ -13,10 +13,10 @@
 
 ``` html
 <f-dragger axis="horizontal">
-    <u-block size="normal" inline>水平</u-block>
+    <u-block size="normal" inline style="position: relative;">水平</u-block>
 </f-dragger>
 <f-dragger axis="vertical">
-    <u-block size="normal" inline>垂直</u-block>
+    <u-block size="normal" inline style="position: relative;">垂直</u-block>
 </f-dragger>
 ```
 
@@ -24,7 +24,7 @@
 
 ``` html
 <f-dragger :grid="{ x: 40, y: 30 }">
-    <u-block size="normal" color="primary" inline>网格</u-block>
+    <u-block size="normal" color="primary" inline style="position: relative;">网格</u-block>
 </f-dragger>
 ```
 

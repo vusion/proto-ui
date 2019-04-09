@@ -15,7 +15,7 @@
 
 ``` html
 <f-draggable transfer="self">
-    <u-block size="normal" color="primary">static</u-block>
+    <u-block size="normal" color="primary" style="position: relative;">static</u-block>
 </f-draggable>
 <div style="width: 200px; height: 200px; border: 1px solid #ccc; position: relative; overflow: auto; margin: 10px 0;">
 <f-draggable transfer="self">

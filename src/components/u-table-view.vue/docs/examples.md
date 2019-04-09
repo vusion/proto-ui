@@ -276,7 +276,7 @@ export default {
 ``` vue
 <template>
 <u-linear-layout direction="vertical">
-    <u-checkboxes display="block">
+    <u-linear-layout display="block">
         <u-checkbox v-model="columnsVisible[0]">序号</u-checkbox>
         <u-checkbox v-model="columnsVisible[1]">姓名</u-checkbox>
         <u-checkbox v-model="columnsVisible[2]">省份</u-checkbox>
@@ -284,7 +284,7 @@ export default {
         <u-checkbox v-model="columnsVisible[4]">区县</u-checkbox>
         <u-checkbox v-model="columnsVisible[5]">地址</u-checkbox>
         <u-checkbox v-model="columnsVisible[6]">出生日期</u-checkbox>
-    </u-checkboxes>
+    </u-linear-layout>
     <u-table-view striped :data="[
         { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
         { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
@@ -299,9 +299,9 @@ export default {
     ]" style="max-height: 300px;">
         <u-table-view-column :hidden="!columnsVisible[0]" title="序号" field="id" width="5%"></u-table-view-column>
         <u-table-view-column :hidden="!columnsVisible[1]" title="姓名" field="name" width="10%"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[2]" title="省份" field="province" width="200"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[3]" title="城市" field="city" width="200"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[4]" title="区县" field="district" width="200"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[2]" title="省份" field="province"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[3]" title="城市" field="city"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[4]" title="区县" field="district"></u-table-view-column>
         <u-table-view-column :hidden="!columnsVisible[5]" title="地址" field="address"></u-table-view-column>
         <u-table-view-column :hidden="!columnsVisible[6]" title="出生日期" field="birthday" width="20%"></u-table-view-column>
     </u-table-view>
