@@ -28,8 +28,8 @@ const directive = {
     bind(el, binding) {
         const data = el['v-tooltip'] = Object.assign(el['v-tooltip'] || {}, directive.handle(binding));
 
-        const Tooltip = Vue.component('u-tooltip');
-        el.tooltipVM = new Tooltip({
+        const UTooltip = Vue.component('UTooltip') || Vue.component('u-tooltip');
+        el.tooltipVM = new UTooltip({
             propsData: Object.assign({
                 reference: el,
             }, data),

@@ -66,7 +66,7 @@ const UModal = {
 };
 
 UModal.alert = (content, title) => {
-    const Ctor = Vue.component('u-modal');
+    const Ctor = Vue.component('UModal') || Vue.component('u-modal');
     if (!Ctor)
         return;
 
@@ -76,7 +76,7 @@ UModal.alert = (content, title) => {
 };
 
 UModal.confirm = (content, title) => new Promise((resolve, reject) => {
-    const Ctor = Vue.component('u-modal');
+    const Ctor = Vue.component('UModal') || Vue.component('u-modal');
     if (!Ctor)
         return;
 

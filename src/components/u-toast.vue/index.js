@@ -88,7 +88,7 @@ const UToast = {
 };
 
 Vue.nextTick(() => {
-    const Ctor = Vue.component('u-toast');
+    const Ctor = Vue.component('UToast') || Vue.component('u-toast');
     if (!Ctor)
         return;
 
