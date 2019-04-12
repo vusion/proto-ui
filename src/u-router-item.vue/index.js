@@ -28,6 +28,11 @@ export default {
                     return window.open(this.href, this.target);
                 else
                     return location.href = this.href;
+            } else {
+                if (this.target === '_blank') {
+                    const href = this.$router && this.$router.resolve(this.to, this.$route, this.append).href;
+                    return window.open(href, this.target);
+                }
             }
 
             if (this.to === undefined)

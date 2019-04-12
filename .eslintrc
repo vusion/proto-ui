@@ -5,6 +5,8 @@
         "node": true
     },
     "rules": {
-        "no-alert": [0]
+        "no-alert": [0],
+        "vue/html-indent": [0],
+        "function-paren-newline": [0]
     }
 }
