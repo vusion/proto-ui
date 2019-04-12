@@ -6,9 +6,9 @@
                 <u-logo slot="left">{{ logo }}</u-logo>
                 <u-navbar-item v-for="item in navbar" :key="item.text" :to="item.to" :href="item.href" :target="item.target">{{ item.text }}</u-navbar-item>
                 <div slot="right" style="margin-right: 10px;">
-                    <u-navbar-select style="vertical-align: top;"
+                    <u-navbar-select style="vertical-align: top;" value="0.4.x"
                         @select="onSelectVersion">
-                        <u-navbar-select-item>0.4.x</u-navbar-select-item>
+                        <u-navbar-select-item value="0.4.x">0.4.x</u-navbar-select-item>
                         <u-navbar-select-item value="0.3.x">0.3.x</u-navbar-select-item>
                     </u-navbar-select>
                     <u-navbar-item :href="github" target="_blank"><i-icon name="github" style="font-size: 24px;"></i-icon></u-navbar-item>
