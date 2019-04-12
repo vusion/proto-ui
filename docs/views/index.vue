@@ -25,7 +25,7 @@
 </template>
 
 <script>
-const base = 'http://59.111.90.154';
+const base = 'https://vusion.dev';
 
 export default {
     data() {
