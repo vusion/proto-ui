@@ -11,6 +11,7 @@ export default {
         expanded: { type: Boolean, default: false },
         checked: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        hidden: { type: Boolean, default: false },
         node: Object,
     },
     data() {
