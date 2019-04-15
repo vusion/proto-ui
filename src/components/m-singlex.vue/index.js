@@ -44,10 +44,14 @@ export const MSinglex = {
         // This method just run once after pushing many itemVMs
         itemVMs(itemVMs) {
             if (!itemVMs.includes(this.selectedVM)) {
-                // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-                const value = this.selectedVM ? this.selectedVM.value : this.value;
-                this.selectedVM = undefined;
-                this.watchValue(value);
+                if (!this.router) {
+                    // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+                    const value = this.selectedVM ? this.selectedVM.value : this.value;
+                    this.selectedVM = undefined;
+                    this.watchValue(value);
+                } else {
+                    this.selectedVM = this.itemVMs.find((itemVM) => itemVM.active);
+                }
             }
         },
     },
