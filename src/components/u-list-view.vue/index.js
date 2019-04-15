@@ -74,7 +74,12 @@ export const UListView = {
     created() {
         this.debouncedLoad = debounce(this.load, 300);
         this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
-        this.initialLoad && this.load();
+        if (this.currentDataSource && this.initialLoad) {
+            this.load().then(() => {
+                // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
+                MComplex.watch.itemVMs.call(this, this.itemVMs);
+            });
+        }
     },
     methods: {
         handleData() {
