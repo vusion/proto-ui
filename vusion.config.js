@@ -87,6 +87,7 @@ module.exports = {
             { group: 'Progress & Charts', name: 'u-linear-progress', alias: '线型进度条' },
             { group: 'Progress & Charts', name: 'u-circular-progress', alias: '圆型进度条' },
             { group: 'Mixins & Functional', name: 'm-emitter', alias: '发送器' },
+            { group: 'Mixins & Functional', name: 'm-pub-sub', alias: '发布订阅者模式' },
             { group: 'Mixins & Functional', name: 'm-parent', alias: '父子模式' },
             { group: 'Mixins & Functional', name: 'm-group', alias: '分组模式' },
             { group: 'Mixins & Functional', name: 'm-root', alias: '根节点模式' },

@@ -12,6 +12,7 @@ export * from './m-complex.vue';
 export * from './m-field.vue';
 export * from './m-multiplex.vue';
 export * from './m-parent.vue';
+export * from './m-pub-sub.vue';
 export * from './m-group.vue';
 export * from './m-popper.vue';
 export * from './m-root.vue';
