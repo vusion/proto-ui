@@ -29,7 +29,7 @@ export const UTableView = {
         remoteSorting: { type: Boolean, default: false },
         remoteFiltering: { type: Boolean, default: false },
         mouseWheel: { type: String, default: 'vertical' },
-        // Selection
+        /* Selection Props */
         valueField: String,
         value: null,
         values: Array,
@@ -45,15 +45,15 @@ export const UTableView = {
             bodyHeight: undefined,
             // currentData: this.data && Array.from(this.data),
             currentDataSource: undefined,
-            selectedItem: undefined,
-            currentValue: this.value,
-            currentValues: this.values || [],
             currentLoading: this.loading,
             tableMetaList: [{
                 position: 'static',
             }],
             scrollXStart: true,
             scrollXEnd: true,
+            /* Selection Data */
+            selectedItem: undefined,
+            currentValues: this.values || [],
         };
     },
     computed: {
@@ -100,6 +100,22 @@ export const UTableView = {
         dataSource(dataSource) {
             this.handleData();
         },
+        loading(loading) {
+            this.currentLoading = loading;
+        },
+        sorting: {
+            deep: true,
+            handler(sorting, oldSorting) {
+                this.sort(sorting);
+            },
+        },
+        filtering: {
+            deep: true,
+            handler(filtering, oldFiltering) {
+                this.filter(filtering);
+            },
+        },
+        /* Selection Watchers */
         value(value) {
             this.watchValue(value);
         },
@@ -124,21 +140,6 @@ export const UTableView = {
                 values,
                 oldValues,
             });
-        },
-        loading(loading) {
-            this.currentLoading = loading;
-        },
-        sorting: {
-            deep: true,
-            handler(sorting, oldSorting) {
-                this.sort(sorting);
-            },
-        },
-        filtering: {
-            deep: true,
-            handler(filtering, oldFiltering) {
-                this.filter(filtering);
-            },
         },
     },
     created() {
@@ -232,28 +233,6 @@ export const UTableView = {
                 return new DataSource(Object.assign(options, dataSource));
             } else
                 return undefined;
-        },
-        watchValue(value) {
-            if (this.selectedItem && this.selectedItem[this.valueField] === value)
-                return;
-            if (value === undefined)
-                this.selectedItem = undefined;
-            else {
-                this.selectedItem = this.currentData.find((item) => item[this.valueField] === value);
-                // @TODO: Group
-            }
-        },
-        watchValues(values) {
-            if (!this.valueField)
-                return;
-            if (values) {
-                this.currentValues = values;
-                this.currentData.forEach((item) => item.checked = values.includes(item[this.valueField]));
-            } else {
-                const values = [];
-                this.currentData.forEach((item) => item.checked && values.push(item[this.valueField]));
-                this.currentValues = values;
-            }
         },
         resize() {
             // 判断是否会出现水平滚动条
@@ -485,6 +464,29 @@ export const UTableView = {
             this.load();
             this.$emit('filter', filtering, this);
             this.$emit('update:filtering', filtering, this);
+        },
+        /* Selection Methods */
+        watchValue(value) {
+            if (this.selectedItem && this.selectedItem[this.valueField] === value)
+                return;
+            if (value === undefined)
+                this.selectedItem = undefined;
+            else {
+                this.selectedItem = this.currentData.find((item) => item[this.valueField] === value);
+                // @TODO: Group
+            }
+        },
+        watchValues(values) {
+            if (!this.valueField)
+                return;
+            if (values) {
+                this.currentValues = values;
+                this.currentData.forEach((item) => item.checked = values.includes(item[this.valueField]));
+            } else {
+                const values = [];
+                this.currentData.forEach((item) => item.checked && values.push(item[this.valueField]));
+                this.currentValues = values;
+            }
         },
         select(item, cancelable) {
             // Check if enabled

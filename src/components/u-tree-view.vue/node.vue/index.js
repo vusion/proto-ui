@@ -97,15 +97,19 @@ const UTreeViewNode = {
 
             this.rootVM.onToggle(this, expanded);
         },
-        check(checked, direction = 'up+down') {
-            const oldChecked = this.currentChecked;
+        checkRecursively(checked, direction = 'up+down') {
             this.currentChecked = checked;
             this.$emit('update:checked', checked, this);
+
+            if (checked && !this.rootVM.currentValues.includes(this.value) && !this.nodeVMs.length)
+                this.rootVM.currentValues.push(this.value);
+            else if (!checked && this.rootVM.currentValues.includes(this.value))
+                this.rootVM.currentValues.splice(this.rootVM.currentValues.indexOf(this.value), 1);
 
             // down
             if (direction.includes('down')) {
                 this.nodeVMs.forEach((nodeVM) => {
-                    !nodeVM.currentDisabled && nodeVM.check(checked, 'down');
+                    !nodeVM.currentDisabled && nodeVM.checkRecursively(checked, 'down');
                 });
             }
 
@@ -121,23 +125,26 @@ const UTreeViewNode = {
                 });
 
                 if (count === 0)
-                    parentVM.check(false, 'up');
+                    parentVM.checkRecursively(false, 'up');
                 else if (count === parentVM.nodeVMs.length)
-                    parentVM.check(true, 'up');
+                    parentVM.checkRecursively(true, 'up');
                 else
-                    parentVM.check(null, 'up');
+                    parentVM.checkRecursively(null, 'up');
             }
+        },
+        check(checked) {
+            const oldChecked = this.currentChecked;
 
-            if (direction === 'up+down') {
-                this.$emit('check', {
-                    checked,
-                    oldChecked,
-                    node: this.node,
-                    nodeVM: this,
-                }, this);
+            this.checkRecursively(checked);
 
-                this.rootVM.onCheck(this, checked, oldChecked);
-            }
+            this.$emit('check', {
+                checked,
+                oldChecked,
+                node: this.node,
+                nodeVM: this,
+            }, this);
+
+            this.rootVM.onCheck(this, checked, oldChecked);
         },
     },
 };

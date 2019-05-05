@@ -399,7 +399,7 @@ export default {
 
 添加一个`type="checkbox"`的`<u-table-view-column>`，这个列中会显示多项选择框，用于多选操作。
 
-控制多选有两种方式，一种是设置数据对应行的`checked`属性，该属性会与多项选择框进行双向绑定。设置`disabled`属性用于禁用多项选择框。
+控制多选有两种方式，一种是设置数据对应行的`checked`属性，该属性会与多项选择框进行双向绑定。`disabled`属性可以禁用多项选择框。
 
 ``` vue
 <template>

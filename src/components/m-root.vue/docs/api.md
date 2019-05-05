@@ -18,6 +18,24 @@
 
 插入`<m-node>`子组件。
 
+### Methods
+
+#### walk(func)
+
+广度优先遍历树。当`func`函数有返回值时，停止遍历。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| func | Function | 遍历的处理函数 |
+
+### find(func)
+
+查找节点实例。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| func | Function | 查找函数。找到第一个返回值为`true`的实例。 |
+
 ## MNode
 
 继承 [MEmitter](../m-emitter)。

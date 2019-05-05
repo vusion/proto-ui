@@ -30,7 +30,9 @@
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
+| $event.oldNode | Object | 旧的选择项相关对象 |
 | $event.nodeVM | UTreeViewNode | 选择项子组件 |
+| $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UTreeView | 发送事件实例 |
 
@@ -52,7 +54,9 @@
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
-| $event.nodeVM | UTreeViewNode |  选择项子组件 |
+| $event.oldNode | Object | 旧的选择项相关对象 |
+| $event.nodeVM | UTreeViewNode | 选择项子组件 |
+| $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | senderVM | UTreeView | 发送事件实例 |
 
 #### @change
@@ -64,7 +68,9 @@
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.node | Object | 选择项相关对象 |
+| $event.oldNode | Object | 旧的选择项相关对象 |
 | $event.nodeVM | UTreeViewNode | 选择项子组件 |
+| $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | senderVM | UTreeView | 发送事件实例 |
 
 #### @toggle
@@ -86,11 +92,28 @@
 | ----- | ---- | ----------- |
 | $event.checked | Boolean | 选中/取消状态 |
 | $event.oldChecked | Boolean | 旧的选中/取消状态 |
+| $event.values | Array | 所有选中节点的值 |
 | $event.node | Object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | senderVM | UTreeView | 发送事件实例 |
 
 ### Methods
+
+#### walk(func)
+
+广度优先遍历树。当`func`函数有返回值时，停止遍历。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| func | Function | 遍历的处理函数 |
+
+### find(func)
+
+查找节点实例。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| func | Function | 查找函数。找到第一个返回值为`true`的实例。 |
 
 #### toggleAll(expanded)
 

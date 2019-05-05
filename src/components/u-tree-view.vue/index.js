@@ -1,23 +1,6 @@
 import { MRoot } from '../m-root.vue';
 import MField from '../m-field.vue';
 
-const walk = (rootVM, func) => {
-    let queue = [];
-    queue = queue.concat(rootVM.nodeVMs);
-    let nodeVM;
-    while ((nodeVM = queue.shift())) {
-        queue = queue.concat(nodeVM.nodeVMs);
-        const result = func(nodeVM);
-        if (result !== undefined)
-            return result;
-    }
-};
-
-const find = (rootVM, func) => walk(rootVM, (nodeVM) => {
-    if (func(nodeVM))
-        return nodeVM;
-});
-
 const UTreeView = {
     name: 'u-tree-view',
     nodeName: 'u-tree-view-node',
@@ -25,6 +8,7 @@ const UTreeView = {
     props: {
         data: Array,
         value: null,
+        values: Array,
         field: { type: String, default: 'text' },
         cancelable: { type: Boolean, default: false },
         checkable: { type: Boolean, default: false },
@@ -38,6 +22,7 @@ const UTreeView = {
             ChildComponent: this.$options.nodeName, // easy for SubComponent inheriting
             // @inherit: nodeVMs: [],
             selectedVM: undefined,
+            currentValues: this.values || [],
         };
     },
     watch: {
@@ -50,10 +35,21 @@ const UTreeView = {
             this.$emit('change', {
                 value: selectedVM ? selectedVM.value : undefined,
                 oldValue: oldVM ? oldVM.value : undefined,
-                item: selectedVM ? selectedVM.item : undefined,
-                itemVM: selectedVM,
+                node: selectedVM ? selectedVM.node : undefined,
+                oldNode: oldVM ? oldVM.node : undefined,
+                nodeVM: selectedVM,
+                oldVM,
             }, this);
         },
+        values(values) {
+            this.watchValues(values);
+        },
+        // currentValues(values, oldValues) {
+        //     this.$emit('change', {
+        //         values,
+        //         oldValues,
+        //     });
+        // },
         // This method just run once after pushing many nodeVMs
         nodeVMs() {
             this.selectedVM = undefined;
@@ -64,6 +60,7 @@ const UTreeView = {
         // Must trigger `value` watcher at mounted hook.
         // If not, nodeVMs have not been pushed.
         this.watchValue(this.value);
+        this.watchValues(this.values);
     },
     methods: {
         watchValue(value) {
@@ -72,7 +69,7 @@ const UTreeView = {
             if (value === undefined)
                 this.selectedVM = undefined;
             else {
-                this.selectedVM = find(this, (nodeVM) => nodeVM.value === value);
+                this.selectedVM = this.find((nodeVM) => nodeVM.value === value);
                 if (this.selectedVM) {
                     let nodeVM = this.selectedVM.parentVM;
                     while (nodeVM !== this.rootVM) {
@@ -82,18 +79,37 @@ const UTreeView = {
                 }
             }
         },
+        watchValues(values) {
+            if (values) {
+                this.currentValues = values;
+                this.walk((nodeVM) => {
+                    if (values.includes(nodeVM.value))
+                        nodeVM.check(true);
+                });
+            } else {
+                const values = [];
+                this.walk((nodeVM) => {
+                    if (nodeVM.currentChecked && !nodeVM.nodeVMs.length)
+                        values.push(nodeVM.value);
+                });
+                this.currentValues = values;
+            }
+        },
         select(nodeVM) {
             if (this.readonly || this.disabled)
                 return;
 
             const oldValue = this.value;
+            const oldVM = this.selectedVM;
 
             let cancel = false;
             this.$emit('before-select', {
                 value: nodeVM && nodeVM.value,
                 oldValue,
                 node: nodeVM && nodeVM.node,
+                oldNode: oldVM && oldVM.node,
                 nodeVM,
+                oldVM,
                 preventDefault: () => cancel = true,
             }, this);
             if (cancel)
@@ -113,7 +129,9 @@ const UTreeView = {
                 value,
                 oldValue,
                 node,
-                nodeVM: this.selectedVM,
+                oldNode: oldVM && oldVM.node,
+                nodeVM,
+                oldVM,
             }, this);
         },
         onToggle(nodeVM, expanded) {
@@ -124,7 +142,8 @@ const UTreeView = {
             }, this);
         },
         toggleAll(expanded) {
-            walk(this, (nodeVM) => nodeVM.toggle(expanded));
+            this.walk((nodeVM) => nodeVM.toggle(expanded));
+            // @TODO: Only one event
         },
         onCheck(nodeVM, checked, oldChecked) {
             this.$emit('check', {
@@ -132,10 +151,16 @@ const UTreeView = {
                 oldChecked,
                 node: nodeVM.node,
                 nodeVM,
+                values: this.currentValues,
+                // @TODO: oldValues
             }, this);
         },
         checkAll(checked) {
-            this.nodeVMs.forEach((nodeVM) => !nodeVM.currentDisabled && nodeVM.check(checked));
+            this.nodeVMs.forEach((nodeVM) => !nodeVM.currentDisabled && nodeVM.checkRecursively(checked));
+
+            this.$emit('check', {
+                checked,
+            }, this);
         },
     },
 };
