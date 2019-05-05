@@ -152,6 +152,9 @@ const VueDataSource = Vue.extend({
 
             this.arrangedData = arrangedData;
         },
+        _process(data) {
+            return data;
+        },
         clearLocalData() {
             this.data = [];
             this.arrangedData = [];
@@ -244,10 +247,10 @@ const VueDataSource = Vue.extend({
                 if (!this.remotePaging) { // 没有后端分页，认为是全部数据
                     if (result instanceof Array) { // 只返回数组，没有 total 字段
                         this.originTotal = result.length;
-                        this.data = result;
+                        this.data = this._process(result);
                     } else if (result instanceof Object) { // 返回 { total, data }
                         this.originTotal = result.total;
-                        this.data = result.data;
+                        this.data = this._process(result.data);
                     } // 否则什么都不做
 
                     this.arrange();
@@ -259,10 +262,10 @@ const VueDataSource = Vue.extend({
                         if (!result.length) // 没有数据了，则记录下总数
                             this.originTotal = this.data.length;
                         else
-                            partialData = result;
+                            partialData = this._process(result);
                     } else if (result instanceof Object) { // 返回 { total, data }
                         this.originTotal = result.total;
-                        partialData = result.data;
+                        partialData = this._process(result.data);
                     } // 否则什么都不做
 
                     for (let i = 0; i < limit; i++) {
@@ -336,6 +339,9 @@ function DataSource(options) {
         else
             data[key] = option;
     });
+
+    // if (options.data)
+    //     data.data = methods._process ? methods._process(options.data) : Array.from(options.data);
 
     VueDataSource.call(this, {
         data() { return data; },

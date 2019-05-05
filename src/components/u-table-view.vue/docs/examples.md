@@ -317,3 +317,110 @@ export default {
 };
 </script>
 ```
+
+### 特殊列
+
+UTableView 中内置了一些特殊的列，通过设置`type`来开启。
+
+#### 序号列
+
+将`<u-table-view-column>`的`type`设置为`index`，这个列中会显示每行的序号。设置`start-index`可以改变初始值，默认为`1`。
+
+> 注意：这种方式只能显示当前页的序号，如果复杂的序号请使用列插槽自定义。
+
+``` html
+<u-table-view striped :data="[
+    { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+]">
+    <u-table-view-column type="index" title="#" width="10%"></u-table-view-column>
+    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
+#### 单选列
+
+``` html
+<u-table-view striped :data="[
+    { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+]">
+    <u-table-view-column type="radio" title="选择" width="10%"></u-table-view-column>
+    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
+#### 多选列
+
+将`<u-table-view-column>`的`type`设置为`index`，这个列中会显示多项选择框，用于多选操作。
+
+控制多选有两种方式，一种是设置数据对应行的`checked`属性，该属性会与多项选择框进行双向绑定。设置`disabled`属性用于禁用多项选择框。
+
+``` vue
+<template>
+<u-table-view striped :data="data">
+    <u-table-view-column type="checkbox" title="选择" width="10%"></u-table-view-column>
+    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            data: [
+                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+                { id: '975386422', name: '小明', checked: true, address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+                { id: '975386423', name: '李四', checked: true, address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+                { id: '975386424', name: '李华', disabled: true, address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+            ],
+        };
+    },
+};
+</script>
+```
+
+另一种是通过`field`属性指定数据中的关键字段，再通过`:values.sync`对选择的值进行双向绑定。
+
+``` vue
+<template>
+<u-table-view striped field="id" :values="values" :data="data">
+    <u-table-view-column type="checkbox" title="选择" width="10%"></u-table-view-column>
+    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            values: ['975386422', '975386424'],
+            data: [
+                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+                { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+                { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+                { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+            ],
+        };
+    },
+};
+</script>
+```

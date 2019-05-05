@@ -8,6 +8,9 @@ export const UTableView = {
     props: {
         data: Array,
         dataSource: [DataSource, Function, Object],
+        value: null,
+        values: Array,
+        field: String,
         title: String,
         titleAlignment: { type: String, default: 'center' },
         border: { type: Boolean, default: false },
@@ -37,6 +40,8 @@ export const UTableView = {
             bodyHeight: undefined,
             // currentData: this.data && Array.from(this.data),
             currentDataSource: undefined,
+            currentValue: this.value,
+            currentValues: this.values || [],
             currentLoading: this.loading,
             tableMetaList: [{
                 position: 'static',
@@ -64,6 +69,23 @@ export const UTableView = {
         currentSorting() {
             return this.currentDataSource.sorting;
         },
+        allChecked() {
+            if (!this.currentData)
+                return;
+
+            let checkedLength = 0;
+            this.currentData.forEach((item) => {
+                if (item.checked)
+                    checkedLength++;
+            });
+
+            if (checkedLength === 0)
+                return false;
+            else if (checkedLength === this.currentData.length)
+                return true;
+            else
+                return null;
+        },
     },
     watch: {
         data(data) {
@@ -71,6 +93,15 @@ export const UTableView = {
         },
         dataSource(dataSource) {
             this.handleData();
+        },
+        values(values) {
+            this.watchValues(values);
+        },
+        currentValues(values, oldValues) {
+            this.$emit('change', {
+                values,
+                oldValues,
+            });
         },
         loading(loading) {
             this.currentLoading = loading;
@@ -103,11 +134,37 @@ export const UTableView = {
         });
     },
     mounted() {
+        if (this.data)
+            this.processData(this.data);
+        this.watchValues(this.values);
         this.resize();
         window.addEventListener('resize', this.resize);
         // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
     methods: {
+        processData(data) {
+            const selectable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'radio');
+            const checkable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'checkbox');
+            const expandable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'expander');
+
+            if (selectable) {
+                data.forEach((item) => {
+                    if (!item.hasOwnProperty('disabled'))
+                        this.$set(item, 'disabled', false);
+                });
+            }
+
+            if (checkable) {
+                data.forEach((item) => {
+                    if (!item.hasOwnProperty('checked'))
+                        this.$set(item, 'checked', false);
+                    if (!item.hasOwnProperty('disabled'))
+                        this.$set(item, 'disabled', false);
+                });
+            }
+
+            return data;
+        },
         handleData() {
             this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
             this.resize();
@@ -125,6 +182,7 @@ export const UTableView = {
                 remoteSorting: this.remoteSorting,
                 remoteFiltering: this.remoteFiltering,
                 getExtraParams: this.getExtraParams,
+                process: this.processData,
             };
         },
         normalizeDataSource(dataSource) {
@@ -151,6 +209,18 @@ export const UTableView = {
                 return new DataSource(Object.assign(options, dataSource));
             } else
                 return undefined;
+        },
+        watchValues(values) {
+            if (!this.field)
+                return;
+            if (values) {
+                this.currentValues = values;
+                this.currentData.forEach((item) => item.checked = values.includes(item[this.field]));
+            } else {
+                const values = [];
+                this.currentData.forEach((item) => item.checked && values.push(item[this.field]));
+                this.currentValues = values;
+            }
         },
         resize() {
             // 判断是否会出现水平滚动条
@@ -382,6 +452,44 @@ export const UTableView = {
             this.load();
             this.$emit('filter', filtering, this);
             this.$emit('update:filtering', filtering, this);
+        },
+        check(item, checked) {
+            item.checked = checked;
+
+            if (this.field) {
+                const label = item[this.field];
+                if (checked && !this.currentValues.includes(label))
+                    this.currentValues.push(label);
+                else if (!checked && this.currentValues.includes(label))
+                    this.currentValues.splice(this.currentValues.indexOf(label), 1);
+            }
+
+            this.$emit('update:values', this.currentValues, this);
+            this.$emit('check', {
+                values: this.currentValues,
+                item,
+                checked,
+            }, this);
+        },
+        checkAll(checked) {
+            this.currentData.forEach((item) => {
+                item.checked = checked;
+
+                if (this.field) {
+                    const label = item[this.field];
+                    if (checked && !this.currentValues.includes(label))
+                        this.currentValues.push(label);
+                    else if (!checked && this.currentValues.includes(label))
+                        this.currentValues.splice(this.currentValues.indexOf(label), 1);
+                }
+            });
+
+            this.$emit('update:values', this.currentValues, this);
+            this.$emit('check', {
+                values: this.currentValues,
+                // item,
+                checked,
+            }, this);
         },
     },
 };

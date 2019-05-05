@@ -18,16 +18,6 @@ export const UCheckboxes = {
             itemVMs: [],
         };
     },
-    created() {
-        this.$on('add-item-vm', (itemVM) => {
-            itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
-        });
-        this.$on('remove-item-vm', (itemVM) => {
-            itemVM.parentVM = undefined;
-            this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
-        });
-    },
     mounted() {
         this.watchValue(this.value);
     },

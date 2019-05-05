@@ -34,12 +34,6 @@ export const UCheckbox = {
             this.$emit('change', { value, oldValue });
         },
     },
-    created() {
-        this.dispatch(this.$options.parentName, 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-item-vm', this);
-    },
     methods: {
         onFocus(e) {
             this.$emit('focus', e);

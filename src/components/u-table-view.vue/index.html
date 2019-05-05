@@ -12,7 +12,9 @@
                 </colgroup>
                 <thead><tr>
                     <th :class="$style['head-title']" v-for="(columnVM, index) in visibleColumnVMs">
-                        <!-- <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM })"></f-render> -->
+                        <span v-if="columnVM.type === 'checkbox'">
+                            <u-checkbox :value="allChecked" @check="checkAll($event.value)"></u-checkbox>
+                        </span>
                         <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
                         <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
                         <span v-else>{{ columnVM.title }}</span>
@@ -52,7 +54,14 @@
                     <template v-else>
                         <tr v-for="(item, index) in currentData">
                             <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
-                                <f-render v-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
+                                <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
+                                <span v-else-if="columnVM.type === 'radio'">
+                                    <u-radio :disabled="item.disabled"></u-radio>
+                                </span>
+                                <span v-else-if="columnVM.type === 'checkbox'">
+                                    <u-checkbox :value="item.checked" :label="item[field]" :disabled="item.disabled" @check="check(item, $event.value)"></u-checkbox>
+                                </span>
+                                <f-render v-else-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
                                 <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
                                 <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </td>

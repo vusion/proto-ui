@@ -6,6 +6,8 @@ export const UTableViewColumn = {
     parentName: 'u-table-view',
     mixins: [MEmitter],
     props: {
+        type: String,
+        startIndex: { type: Number, default: 1 },
         title: String,
         field: String,
         width: [String, Number],
