@@ -168,7 +168,7 @@ export const UTableView = {
         processData(data) {
             const selectable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'radio');
             const checkable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'checkbox');
-            const expandable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'expander');
+            // const expandable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'expander');
 
             if (selectable) {
                 data.forEach((item) => {

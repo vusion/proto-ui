@@ -303,10 +303,7 @@
 
 ``` vue
 <template>
-<div>
-    <u-tree-view ref="treeView" checkable :data="data"></u-tree-view>
-    <p>{{ data }}</p>
-</div>
+<u-tree-view ref="treeView" checkable :data="data"></u-tree-view>
 </template>
 
 <script>
@@ -344,7 +341,6 @@ export default {
     <u-button @click="checkAll(false)">全部取消</u-button>
     <u-button @click="toggleAll(true)">全部展开</u-button>
     <u-button @click="toggleAll(false)">全部收起</u-button>
-    <p>{{ data }}</p>
 </div>
 </template>
 

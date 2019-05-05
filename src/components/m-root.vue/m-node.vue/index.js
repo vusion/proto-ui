@@ -4,6 +4,9 @@ export const MNode = {
     name: 'm-node',
     rootName: 'm-root',
     mixins: [MEmitter],
+    props: {
+        text: String,
+    },
     data() {
         return {
             nodeVMs: [],

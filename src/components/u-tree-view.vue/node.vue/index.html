@@ -25,7 +25,7 @@
         </div>
     </div>
     <f-collapse-transition>
-        <div :class="$style.list" v-show="currentExpanded">
+        <div :class="$style.sub" v-show="currentExpanded">
             <u-tree-view-node v-if="data"
             v-for="node in data"
             :text="node[rootVM.field]"

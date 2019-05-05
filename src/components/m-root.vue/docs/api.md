@@ -1,24 +1,24 @@
-## MParent
+## MRoot
 
 ### Options
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| childName | String | `m-child` | 子组件的名称 |
+| nodeName | String | `m-node` | 节点组件的名称 |
 
 ### Data
 
 | Data | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| itemVMs | Array\<MChild\> | `[]` | 子组件集合 |
+| nodeVMs | Array\<MNode\> | `[]` | 首层节点组件集合 |
 
 ### Slots
 
 #### (default)
 
-插入`<m-child>`子组件。
+插入`<m-node>`子组件。
 
-## MChild
+## MNode
 
 继承 [MEmitter](../m-emitter)。
 
@@ -26,16 +26,18 @@
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| parentName | String | `m-parent` | 父组件的名称 |
+| rootName | String | `m-root` | 根组件的名称 |
 
 ### Data
 
 | Data | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| parentVM | MParent |  | 父组件实例 |
+| rootVM | MRoot |  | 根组件实例 |
+| parentVM | MNode |  | 父节点实例 |
+| nodeVMs | Array\<MNode\> | `[]` | 子节点组件集合 |
 
 ### Slots
 
 #### (default)
 
-插入文本或 HTML。
+插入`<m-node>`子组件。
