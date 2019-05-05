@@ -26,19 +26,22 @@ $box-size: 18px;
 }
 
 .box[status="false"]::before {
-    font-family: 'Devanagari MT', 'Gujarati MT', monospace;
-    content: '✓';
+    icon-font: url('../i-icon.vue/assets/check.svg');
     color: transparent;
+    vertical-align: -2px;
+    font-size: 13px;
 }
 
 .box[status="true"]::before {
-    font-family: 'Devanagari MT', 'Gujarati MT', monospace;
-    content: '✓';
+    icon-font: url('../i-icon.vue/assets/check.svg');
     color: $brand-primary;
+    vertical-align: -2px;
+    font-size: 13px;
 }
 
 .box[status="null"]::before {
-    content: '■';
+    icon-font: url('../i-icon.vue/assets/square.svg');
+    vertical-align: -2px;
     color: $brand-primary;
 }
 
