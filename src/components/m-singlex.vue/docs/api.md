@@ -52,7 +52,9 @@
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
 | $event.itemVM | MSinglexItem | 选择项子组件 |
+| $event.oldVM | MSinglexItem | 旧的选择项子组件 |
 | senderVM | MSinglex | 发送事件实例 |
 
 #### @change
@@ -64,7 +66,9 @@
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
 | $event.itemVM | MSinglexItem | 选择项子组件 |
+| $event.oldVM | MSinglexItem | 旧的选择项子组件 |
 | senderVM | MSinglex | 发送事件实例 |
 
 ## MSinglexItem

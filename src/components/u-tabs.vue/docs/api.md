@@ -30,6 +30,7 @@
 | $event.value | Any | 选中标签页的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.itemVM | UTab | 选中标签页实例 |
+| $event.oldVM | UTab | 旧的选中标签页实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UTabs | 发送事件实例 |
 
@@ -42,6 +43,7 @@
 | $event.value | Any | 选中标签页的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.itemVM | UTab | 选中标签页实例 |
+| $event.oldVM | UTab | 旧的选中标签页实例 |
 | senderVM | UTabs | 发送事件实例 |
 
 #### @before-close

@@ -55,32 +55,56 @@
 
 选择某一项时触发
 
+单选模式中：
+
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | UListViewItem |  单选模式中，选择项子组件 |
-| $event.values | Any | 多选模式中，改变后的值 |
-| $event.oldValues | Any | 多选模式中，旧的值 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<UListViewItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | UListViewItem | 选择项子组件 |
+| $event.oldVM | UListViewItem | 旧的选择项子组件 |
+| senderVM | UListView | 发送事件实例 |
+
+多选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.selected | Boolean | 选中还是取消 |
+| $event.item | Boolean | 该选中项相关对象 |
+| $event.itemVM | Boolean | 该选中项子组件 |
+| $event.values | Array | 改变后的值 |
+| $event.oldValues | Array | 旧的值 |
+| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
+| $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
+| $event.itemVMs | Array\<UListViewItem\> | 所有选中项子组件的数组 |
+| $event.oldVMs | Array\<UListViewItem\> | 旧的所有选中项子组件的数组 |
 | senderVM | UListView | 发送事件实例 |
 
 #### @change
 
 选择值改变时触发
 
+单选模式中：
+
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.value | Any | 选择项的值 |
 | $event.oldValue | Any | 旧的值 |
 | $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
 | $event.itemVM | UListViewItem | 选择项子组件 |
-| $event.values | Any | 多选模式中，改变后的值 |
-| $event.oldValues | Any | 多选模式中，旧的值 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<UListViewItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.oldVM | UListViewItem | 旧的选择项子组件 |
+| senderVM | UListView | 发送事件实例 |
+
+多选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.values | Array | 所有选中项的值 |
+| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
+| $event.itemVMs | Array\<UListViewItem\> | 所有选中项子组件的数组 |
 | senderVM | UListView | 发送事件实例 |
 
 #### @before-load

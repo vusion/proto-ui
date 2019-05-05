@@ -15,7 +15,7 @@
 | error | Boolean | | 手动设置是否加载失败 |
 | errorText | String | `'加载失败，请重试'` | 加载失败时的文字 |
 | emptyText | String | `'暂无数据'` | 暂无数据时的文字 |
-| - |
+| **Data Props/Attrs** |
 | data | Array\<{ \[field\]: string, ... }\> | | 表格数据 |
 | data-source | Object, Function, DataSource | | 多功能数据源 |
 | initial-load | Boolean | `true` | 是否在初始时立即加载 |
@@ -27,6 +27,14 @@
 | remote-paging | Boolean | `false` | 是否使用后端分页 |
 | remote-sorting | Boolean | `false` | 是否使用后端排序 |
 | remote-filtering | Boolean | `false` | 是否使用后端过滤 |
+| **Selection Props/Attrs** |
+| value-field | String | | 在单选和多选操作中，指定数据唯一值的字段 |
+| value.sync, v-model | Any | | 当前选择的值 |
+| values.sync | Array | | 多项选择的值 |
+| selectable | Boolean | `false` | 是否可以选择行 |
+| cancelable | Boolean | `false` | 是否可以取消选择 |
+| readonly | Boolean | `false` | 是否只读 |
+| disabled | Boolean | `false` | 是否禁用 |
 
 ### Slots
 
@@ -34,7 +42,7 @@
 
 在表格中插入`<u-table-view-column>`子组件。
 
-### Events
+### Data Events
 
 #### @before-load
 
@@ -119,6 +127,77 @@
 | $event | Object | 过滤筛选对象 |
 | senderVM | UTableView | 发送事件实例 |
 
+### Selection Events
+
+#### @before-select
+
+选择某一项前触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 选择行的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择行相关对象 |
+| $event.oldItem | Object | 旧的选择行相关对象 |
+| $event.preventDefault | Function | 阻止选择流程 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @input
+
+选择某一项时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event | Any | 选择行的值 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @select
+
+选择某一项时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 改变后的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择行相关对象 |
+| $event.oldItem | Object | 旧的选择行相关对象 |
+| $event.selectedItem | Object | 最终选择行的对象。在`cancelable`的情况下，与`$event.item`不同 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @check
+
+多选模式中，选中节点时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.checked | Boolean | 选中状态 |
+| $event.values | Array | 选择后的值 |
+| $event.oldValues | Array | 旧的值 |
+| $event.item | Object | 选择行相关对象 |
+| senderVM | UTableView | 发送事件实例 |
+
+#### @change
+
+选择值改变时触发
+
+单选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 选择行的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择行相关对象 |
+| $event.oldItem | Object | 旧的选择行相关对象 |
+| senderVM | UTableView | 发送事件实例 |
+
+多选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.values | Array | 改变后的值 |
+| $event.oldValues | Array | 旧的值 |
+| senderVM | UTableView | 发送事件实例 |
+
 ### Methods
 
 #### load()
@@ -151,6 +230,8 @@
 | default-order | String | `'asc'` | 该列首次点击时的排序顺序 |
 | filters | Array\<{ text: string, value: any }\> | `'asc'` | 该列首次点击时的排序顺序 |
 | hidden | Boolean | `false` | 是否隐藏 |
+| type | String | | 列类型。可选值：`index`表示序号列，`radio`表示单选列，`checkbox`表示多选列。 |
+| start-index | Number | `1` | 当`type="index"`时的起始序号 |
 
 ### Slots
 

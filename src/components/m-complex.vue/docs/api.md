@@ -6,7 +6,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Array | | 当前选择的值 |
+| value.sync, v-model | Any | | 当前选择的值 |
 | values.sync | Array | | 多项选择的值 |
 | auto-select | Boolean | `false` | 是否自动选择第一个非禁用的项 |
 | cancelable | Boolean | `false` | 是否可以取消选择 |
@@ -37,43 +37,67 @@
 
 #### @input
 
-选择某一项时触发
+选择某一项时触发，仅在单选模式中生效
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择项的值。多选模式中，为数组 |
+| $event | Any | 选择项的值 |
 | senderVM | MComplex | 发送事件实例 |
 
 #### @select
 
 选择某一项时触发
 
+单选模式中：
+
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 单选模式中，改变后的值 |
-| $event.oldValue | Any | 单选模式中，旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | MComplexItem | 单选模式中，选择项子组件 |
-| $event.values | Array | 多选模式中，改变后的值 |
-| $event.oldValues | Array | 多选模式中，旧的值 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<MComplexItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.value | Any | 改变后的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | MComplexItem | 选择项子组件 |
+| $event.oldVM | MComplexItem | 旧的选择项子组件 |
+| senderVM | MComplex | 发送事件实例 |
+
+多选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.selected | Boolean | 选中还是取消 |
+| $event.item | Boolean | 该选中项相关对象 |
+| $event.itemVM | Boolean | 该选中项子组件 |
+| $event.values | Array | 改变后的值 |
+| $event.oldValues | Array | 旧的值 |
+| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
+| $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
+| $event.itemVMs | Array\<MComplexItem\> | 所有选中项子组件的数组 |
+| $event.oldVMs | Array\<MComplexItem\> | 旧的所有选中项子组件的数组 |
 | senderVM | MComplex | 发送事件实例 |
 
 #### @change
 
 选择值改变时触发
 
+单选模式中：
+
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 单选模式中，选择项的值 |
-| $event.oldValue | Any | 单选模式中，旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | MComplexItem |  单选模式中，选择项子组件 |
-| $event.values | Array | 多选模式中，改变后的值 |
-| $event.oldValues | Array | 多选模式中，旧的值 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<MComplexItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | MComplexItem | 选择项子组件 |
+| $event.oldVM | MComplexItem | 旧的选择项子组件 |
+| senderVM | MComplex | 发送事件实例 |
+
+多选模式中：
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.values | Array | 所有选中项的值 |
+| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
+| $event.itemVMs | Array\<MComplexItem\> | 所有选中项子组件的数组 |
 | senderVM | MComplex | 发送事件实例 |
 
 ## MComplexItem

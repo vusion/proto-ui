@@ -47,8 +47,8 @@ export const MMultiplex = {
             this.$emit('change', {
                 values,
                 // @TODO: oldValues,
-                selectedVMs,
-                selectedItems,
+                items: selectedItems,
+                itemVMs: selectedVMs,
             });
         },
         // This method just run once after pushing many itemVMs
@@ -109,16 +109,16 @@ export const MMultiplex = {
 
             const oldValues = this.values;
             const oldVMs = this.selectedVMs;
-            // const oldItems = oldVMs.map((itemVM) => itemVM.item);
+            const oldItems = oldVMs.map((itemVM) => itemVM.item);
 
             // Emit a `before-` event with preventDefault()
             if (this.$emitPrevent('before-select', {
-                oldValues,
                 selected,
-                itemVM,
                 item: itemVM && itemVM.item,
+                itemVM,
+                oldValues,
+                oldItems,
                 oldVMs,
-                // oldItems,
             }, this))
                 return;
 
@@ -135,15 +135,15 @@ export const MMultiplex = {
             this.$emit('update:values', values, this);
 
             this.$emit('select', {
-                values,
-                // oldValues,
                 selected: itemVM.currentSelected,
-                itemVM,
                 item: itemVM.item,
-                selectedVMs,
-                selectedItems,
-                itemVMs: selectedVMs, // @deprecated
-                items: selectedItems, // @deprecated
+                itemVM,
+                values,
+                oldValues,
+                items: selectedItems,
+                oldItems,
+                itemVMs: selectedVMs,
+                oldVMs,
             }, this);
         },
     },

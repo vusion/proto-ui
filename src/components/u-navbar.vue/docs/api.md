@@ -64,9 +64,25 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | NavbarItem |  单选模式中，选择项子组件 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | UNavbarItem | 选择项子组件 |
+| $event.oldVM | UNavbarItem | 旧的选择项子组件 |
 | senderVM | Vue | 发送事件实例 |
+
+#### @change
+
+选择值改变时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.value | Any | 选择项的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | UNavbarItem | 选择项子组件 |
+| $event.oldVM | UNavbarItem | 旧的选择项子组件 |
+| senderVM | UNavbar | 发送事件实例 |
 
 ## UNavbarItem API
 ### Props/Attrs

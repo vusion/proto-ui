@@ -324,7 +324,7 @@ UTableView 中内置了一些特殊的列，通过设置`type`来开启。
 
 #### 序号列
 
-将`<u-table-view-column>`的`type`设置为`index`，这个列中会显示每行的序号。设置`start-index`可以改变初始值，默认为`1`。
+添加一个`type="index"`的`<u-table-view-column>`，这个列中会显示每行的序号。设置`start-index`可以改变初始值，默认为`1`。
 
 > 注意：这种方式只能显示当前页的序号，如果复杂的序号请使用列插槽自定义。
 
@@ -363,13 +363,13 @@ UTableView 中内置了一些特殊的列，通过设置`type`来开启。
 </u-table-view>
 ```
 
-也可以将`<u-table-view-column>`的`type`设置为`radio`，这个列中会显示单项选择框，专门用于单选操作。
+也可以添加一个`type="radio"`的`<u-table-view-column>`，这个列中会显示单项选择框，专门用于单选操作。
 
-通过`field`属性指定数据中的关键字段，然后`v-model`或`:value.sync`对选择的值进行双向绑定。
+通过`value-field`属性指定数据中唯一值的字段，然后`v-model`或`:value.sync`对选择值进行双向绑定。
 
 ``` vue
 <template>
-<u-table-view striped field="id" v-model="selectedValue" :data="data">
+<u-table-view striped value-field="id" v-model="selectedValue" :data="data">
     <u-table-view-column type="radio" title="选择" width="10%"></u-table-view-column>
     <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
@@ -397,7 +397,7 @@ export default {
 
 #### 多选列
 
-将`<u-table-view-column>`的`type`设置为`checkbox`，这个列中会显示多项选择框，用于多选操作。
+添加一个`type="checkbox"`的`<u-table-view-column>`，这个列中会显示多项选择框，用于多选操作。
 
 控制多选有两种方式，一种是设置数据对应行的`checked`属性，该属性会与多项选择框进行双向绑定。设置`disabled`属性用于禁用多项选择框。
 
@@ -428,11 +428,11 @@ export default {
 </script>
 ```
 
-另一种是通过`field`属性指定数据中的关键字段，再通过`:values.sync`对选择的值进行双向绑定。
+另一种是通过`value-field`属性指定数据中唯一值的字段，再通过`:values.sync`对选择值进行双向绑定。
 
 ``` vue
 <template>
-<u-table-view striped field="id" :values="values" :data="data">
+<u-table-view striped value-field="id" :values="values" :data="data">
     <u-table-view-column type="checkbox" title="选择" width="10%"></u-table-view-column>
     <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
     <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>

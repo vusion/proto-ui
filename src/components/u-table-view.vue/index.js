@@ -8,9 +8,6 @@ export const UTableView = {
     props: {
         data: Array,
         dataSource: [DataSource, Function, Object],
-        value: null,
-        values: Array,
-        field: String,
         title: String,
         titleAlignment: { type: String, default: 'center' },
         border: { type: Boolean, default: false },
@@ -32,7 +29,10 @@ export const UTableView = {
         remoteSorting: { type: Boolean, default: false },
         remoteFiltering: { type: Boolean, default: false },
         mouseWheel: { type: String, default: 'vertical' },
-        // Select
+        // Selection
+        valueField: String,
+        value: null,
+        values: Array,
         selectable: { type: Boolean, default: false },
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
@@ -103,16 +103,16 @@ export const UTableView = {
         value(value) {
             this.watchValue(value);
         },
-        selectedItem(selectedItem, oldItem) {
-            const value = selectedItem ? selectedItem[this.field] : undefined;
-            const oldValue = oldItem ? oldItem[this.field] : undefined;
+        selectedItem(item, oldItem) {
+            const value = item ? item[this.valueField] : undefined;
+            const oldValue = oldItem ? oldItem[this.valueField] : undefined;
             if (value === oldValue)
                 return;
 
             this.$emit('change', {
                 value,
                 oldValue,
-                selectedItem,
+                item,
                 oldItem,
             }, this);
         },
@@ -234,24 +234,24 @@ export const UTableView = {
                 return undefined;
         },
         watchValue(value) {
-            if (this.selectedItem && this.selectedItem[this.field] === value)
+            if (this.selectedItem && this.selectedItem[this.valueField] === value)
                 return;
             if (value === undefined)
                 this.selectedItem = undefined;
             else {
-                this.selectedItem = this.currentData.find((item) => item[this.field] === value);
+                this.selectedItem = this.currentData.find((item) => item[this.valueField] === value);
                 // @TODO: Group
             }
         },
         watchValues(values) {
-            if (!this.field)
+            if (!this.valueField)
                 return;
             if (values) {
                 this.currentValues = values;
-                this.currentData.forEach((item) => item.checked = values.includes(item[this.field]));
+                this.currentData.forEach((item) => item.checked = values.includes(item[this.valueField]));
             } else {
                 const values = [];
-                this.currentData.forEach((item) => item.checked && values.push(item[this.field]));
+                this.currentData.forEach((item) => item.checked && values.push(item[this.valueField]));
                 this.currentValues = values;
             }
         },
@@ -514,7 +514,7 @@ export const UTableView = {
                 this.selectedItem = item;
 
             // Assign and sync `value`
-            const value = this.selectedItem && this.selectedItem[this.field];
+            const value = this.selectedItem && this.selectedItem[this.valueField];
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
 
@@ -528,10 +528,32 @@ export const UTableView = {
             }, this);
         },
         check(item, checked) {
+            // Check if enabled
+            if (this.readonly || this.disabled || item.disabled)
+                return;
+
+            // Method overloading
+            if (checked === undefined)
+                checked = !item.checked;
+
+            // Prevent replication
+            if (item.checked === checked)
+                return;
+
+            const oldValues = this.values ? Array.from(this.values) : this.values;
+            // Emit a `before-` event with preventDefault()
+            // if (this.$emitPrevent('before-check', {
+            //     oldValues,
+            //     checked,
+            //     item,
+            // }, this))
+            //     return;
+
+            // Assign and sync `checked`
             item.checked = checked;
 
-            if (this.field) {
-                const label = item[this.field];
+            if (this.valueField) {
+                const label = item[this.valueField];
                 if (checked && !this.currentValues.includes(label))
                     this.currentValues.push(label);
                 else if (!checked && this.currentValues.includes(label))
@@ -541,16 +563,25 @@ export const UTableView = {
             this.$emit('update:values', this.currentValues, this);
             this.$emit('check', {
                 values: this.currentValues,
+                oldValues,
                 item,
                 checked,
             }, this);
         },
         checkAll(checked) {
+            // Check if enabled
+            if (this.readonly || this.disabled)
+                return;
+
+            const oldValues = Array.from(this.values);
             this.currentData.forEach((item) => {
+                if (item.disabled)
+                    return;
+
                 item.checked = checked;
 
-                if (this.field) {
-                    const label = item[this.field];
+                if (this.valueField) {
+                    const label = item[this.valueField];
                     if (checked && !this.currentValues.includes(label))
                         this.currentValues.push(label);
                     else if (!checked && this.currentValues.includes(label))
@@ -561,7 +592,7 @@ export const UTableView = {
             this.$emit('update:values', this.currentValues, this);
             this.$emit('check', {
                 values: this.currentValues,
-                // item,
+                oldValues,
                 checked,
             }, this);
         },

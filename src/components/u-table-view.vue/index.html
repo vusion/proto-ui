@@ -52,7 +52,7 @@
                         </td>
                     </tr>
                     <template v-else>
-                        <tr :class="$style.row" v-for="(item, index) in currentData" :key="item[field]"
+                        <tr :class="$style.row" v-for="(item, index) in currentData" :key="item[valueField]"
                             :selected="selectable && selectedItem === item" @click="selectable && select(item)">
                             <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
@@ -60,7 +60,7 @@
                                     <u-radio :value="selectedItem === item" :disabled="item.disabled" @click.native="select(item)"></u-radio>
                                 </span>
                                 <span v-else-if="columnVM.type === 'checkbox'">
-                                    <u-checkbox :value="item.checked" :label="item[field]" :disabled="item.disabled" @check="check(item, $event.value)"></u-checkbox>
+                                    <u-checkbox :value="item.checked" :label="item[valueField]" :disabled="item.disabled" @check="check(item, $event.value)"></u-checkbox>
                                 </span>
                                 <f-render v-else-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
                                 <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>

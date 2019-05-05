@@ -20,9 +20,10 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| value | Any | 选中步骤的值 |
-| oldValue | Any | 旧的值 |
-| itemVM | UStep | 选中步骤实例 |
+| $event.value | Any | 选中步骤的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.itemVM | UStep | 选中步骤实例 |
+| $event.oldVM | UStep | 旧的选中步骤实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | USteps | 发送事件实例 |
 
@@ -32,21 +33,11 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| value | Any | 选中步骤的值 |
-| oldValue | Any | 旧的值 |
-| itemVM | UStep | 选中步骤实例 |
+| $event.value | Any | 选中步骤的值 |
+| $event.oldValue | Any | 旧的值 |
+| $event.itemVM | UStep | 选中步骤实例 |
+| $event.oldVM | UStep | 旧的选中步骤实例 |
 | senderVM | USteps | 发送事件实例 |
-
-#### @change
-
-步骤数改变后触发
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| value | Number | 当前步骤数 |
-| oldValue | Number | 旧的步骤数 |
-| senderVM | USteps | 发送事件实例 |
-
 
 ## UStep
 ### Props/Attrs

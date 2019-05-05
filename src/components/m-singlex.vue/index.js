@@ -35,10 +35,10 @@ export const MSinglex = {
             this.$emit('change', {
                 value,
                 oldValue,
-                selectedVM,
-                selectedItem: selectedVM ? selectedVM.item : undefined,
-                oldVM,
+                item: selectedVM ? selectedVM.item : undefined,
                 oldItem: oldVM && oldVM.item,
+                itemVM: selectedVM,
+                oldVM,
             }, this);
         },
         // This method just run once after pushing many itemVMs

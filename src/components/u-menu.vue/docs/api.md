@@ -47,10 +47,11 @@
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
 | $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 单选模式中，选择项相关对象 |
-| $event.itemVM | UMenuItem |  单选模式中，选择项子组件 |
-| $event.items | Array\<Object\> | 多选模式中，所有选中项相关对象的数组 |
-| $event.itemVMs | Array\<UMenuItem\> | 多选模式中，所有选中项子组件的数组 |
+| $event.item | Object | 选择项相关对象 |
+| $event.oldItem | Object | 旧的选择项相关对象 |
+| $event.itemVM | UMenuItem | 选择项子组件 |
+| $event.oldVM | UMenuItem | 旧的选择项子组件 |
+| senderVM | UMenu | 发送事件实例 |
 
 #### @toggle
 
