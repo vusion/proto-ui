@@ -52,11 +52,12 @@
                         </td>
                     </tr>
                     <template v-else>
-                        <tr v-for="(item, index) in currentData">
+                        <tr :class="$style.row" v-for="(item, index) in currentData" :key="item[field]"
+                            :selected="selectable && selectedItem === item" @click="selectable && select(item)">
                             <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
                                 <span v-else-if="columnVM.type === 'radio'">
-                                    <u-radio :disabled="item.disabled"></u-radio>
+                                    <u-radio :value="selectedItem === item" :disabled="item.disabled" @click.native="select(item)"></u-radio>
                                 </span>
                                 <span v-else-if="columnVM.type === 'checkbox'">
                                     <u-checkbox :value="item.checked" :label="item[field]" :disabled="item.disabled" @check="check(item, $event.value)"></u-checkbox>

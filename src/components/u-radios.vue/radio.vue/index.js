@@ -6,6 +6,7 @@ const URadio = {
     parentName: 'u-radios',
     mixins: [MChild, MField],
     props: {
+        value: { type: Boolean, default: false },
         label: null,
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -23,7 +24,7 @@ const URadio = {
             return listeners;
         },
         selected() {
-            return this.parentVM.selectedVM === this;
+            return this.parentVM ? this.parentVM.selectedVM === this : this.value;
         },
         currentDisabled() {
             return this.disabled || this.parentVM && this.parentVM.disabled;

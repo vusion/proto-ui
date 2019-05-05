@@ -126,3 +126,7 @@
     text-align: right;
     margin-top: $margin-base;
 }
+
+.row[selected] {
+    background: #d7e5fb !important;
+}

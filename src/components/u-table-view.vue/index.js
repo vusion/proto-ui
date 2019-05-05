@@ -32,6 +32,11 @@ export const UTableView = {
         remoteSorting: { type: Boolean, default: false },
         remoteFiltering: { type: Boolean, default: false },
         mouseWheel: { type: String, default: 'vertical' },
+        // Select
+        selectable: { type: Boolean, default: false },
+        cancelable: { type: Boolean, default: false },
+        readonly: { type: Boolean, default: false },
+        disabled: { type: Boolean, default: false },
     },
     data() {
         return {
@@ -40,6 +45,7 @@ export const UTableView = {
             bodyHeight: undefined,
             // currentData: this.data && Array.from(this.data),
             currentDataSource: undefined,
+            selectedItem: undefined,
             currentValue: this.value,
             currentValues: this.values || [],
             currentLoading: this.loading,
@@ -94,6 +100,22 @@ export const UTableView = {
         dataSource(dataSource) {
             this.handleData();
         },
+        value(value) {
+            this.watchValue(value);
+        },
+        selectedItem(selectedItem, oldItem) {
+            const value = selectedItem ? selectedItem[this.field] : undefined;
+            const oldValue = oldItem ? oldItem[this.field] : undefined;
+            if (value === oldValue)
+                return;
+
+            this.$emit('change', {
+                value,
+                oldValue,
+                selectedItem,
+                oldItem,
+            }, this);
+        },
         values(values) {
             this.watchValues(values);
         },
@@ -136,6 +158,7 @@ export const UTableView = {
     mounted() {
         if (this.data)
             this.processData(this.data);
+        this.watchValue(this.value);
         this.watchValues(this.values);
         this.resize();
         window.addEventListener('resize', this.resize);
@@ -209,6 +232,16 @@ export const UTableView = {
                 return new DataSource(Object.assign(options, dataSource));
             } else
                 return undefined;
+        },
+        watchValue(value) {
+            if (this.selectedItem && this.selectedItem[this.field] === value)
+                return;
+            if (value === undefined)
+                this.selectedItem = undefined;
+            else {
+                this.selectedItem = this.currentData.find((item) => item[this.field] === value);
+                // @TODO: Group
+            }
         },
         watchValues(values) {
             if (!this.field)
@@ -452,6 +485,47 @@ export const UTableView = {
             this.load();
             this.$emit('filter', filtering, this);
             this.$emit('update:filtering', filtering, this);
+        },
+        select(item, cancelable) {
+            // Check if enabled
+            if (this.readonly || this.disabled || (item.disabled))
+                return;
+
+            // Prevent replication
+            const oldValue = this.value;
+            const oldItem = this.selectedItem;
+            if (cancelable === undefined)
+                cancelable = this.cancelable;
+            if (!cancelable && item === oldItem)
+                return;
+
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-select', {
+                value: item && item.value,
+                oldValue,
+                item,
+                oldItem,
+            }, this))
+                return;
+
+            if (cancelable && item === oldItem)
+                this.selectedItem = undefined;
+            else
+                this.selectedItem = item;
+
+            // Assign and sync `value`
+            const value = this.selectedItem && this.selectedItem[this.field];
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
+
+            // Emit `after-` events
+            this.$emit('select', {
+                value,
+                oldValue,
+                selectedItem: this.selectedItem,
+                item,
+                oldItem,
+            }, this);
         },
         check(item, checked) {
             item.checked = checked;
