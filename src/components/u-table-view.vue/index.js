@@ -164,7 +164,7 @@ export const UTableView = {
             this.processData(this.data);
         this.watchValue(this.value);
         this.watchValues(this.values);
-        this.resize();
+        this.handleResize();
         window.addEventListener('resize', this.resize);
         // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
@@ -194,7 +194,7 @@ export const UTableView = {
         },
         handleData() {
             this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
-            this.resize();
+            this.handleResize();
         },
         getExtraParams() {
             return undefined;
@@ -237,7 +237,7 @@ export const UTableView = {
             } else
                 return undefined;
         },
-        resize() {
+        handleResize() {
             // 判断是否会出现水平滚动条
             // let parentWidth = this.$el.offsetWidth;
             // let tableWidth = this.$refs.body.offsetWidth;
@@ -359,7 +359,7 @@ export const UTableView = {
         onResizerDragStart($event, columnVM) {
             this.visibleColumnVMs.forEach((columnVM) => {
                 columnVM.currentWidth = columnVM.computedWidth;
-                columnVM.startWidth = columnVM.computedWidth;
+                columnVM.oldWidth = columnVM.computedWidth;
             });
         },
         onResizerDrag($event, columnVM, index) {
@@ -371,7 +371,7 @@ export const UTableView = {
                 beforeWidth += this.visibleColumnVMs[i].computedWidth;
             const maxWidth = rootWidth - beforeWidth - (this.visibleColumnVMs.length - 1 - index) * minWidth;
 
-            const width = Math.max(minWidth, Math.min(columnVM.startWidth + $event.dragX, maxWidth));
+            const width = Math.max(minWidth, Math.min(columnVM.oldWidth + $event.dragX, maxWidth));
             let remainingWidth = width - columnVM.computedWidth;
 
             columnVM.currentWidth = columnVM.computedWidth = width;
@@ -417,8 +417,14 @@ export const UTableView = {
 
             $event.transferEl.style.left = '';
         },
-        onResizerDragEnd($event, columnVM) {
-            this.resize();
+        onResizerDragEnd($event, columnVM, index) {
+            this.handleResize();
+            this.$emit('resize', {
+                columnVM,
+                index,
+                width: columnVM.computedWidth,
+                oldWidth: columnVM.oldWidth,
+            });
         },
         onTableScroll(e) {
             this.scrollXStart = e.target.scrollLeft === 0;

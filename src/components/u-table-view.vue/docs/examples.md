@@ -322,7 +322,7 @@ export default {
 
 开启`resizable`属性，可以调整列宽。
 
-根据`resize-remaining`属性调整大小有三种效果。`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。
+根据`resize-remaining`属性，调整列宽有三种效果。`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。
 
 #### sequence
 

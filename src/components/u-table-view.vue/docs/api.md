@@ -35,6 +35,10 @@
 | cancelable | Boolean | `false` | 是否可以取消选择 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
+| **Other Props/Attrs** |
+| resizable | Boolean | `false` | 是否可以调整列宽 |
+| resize-remaining | Boolean | `'sequence'` | 调整列宽效果。可选值：`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。 |
+
 
 ### Slots
 
@@ -197,6 +201,17 @@
 | $event.values | Array | 改变后的值 |
 | $event.oldValues | Array | 旧的值 |
 | senderVM | UTableView | 发送事件实例 |
+
+#### @resize
+
+调整列宽时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.columnVM | UTableColumnVM | 调整的列实例 |
+| $event.index | Number | 列索引 |
+| width | Number | 调整后的宽度 |
+| oldWidth | Number | 调整前的宽度 |
 
 ### Methods
 

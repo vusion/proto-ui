@@ -29,7 +29,7 @@
                         <f-dragger v-if="resizable && index !== visibleColumnVMs.length - 1" axis="horizontal"
                             @dragstart="onResizerDragStart($event, columnVM)"
                             @drag="onResizerDrag($event, columnVM, index)"
-                            @dragend="onResizerDragEnd($event, columnVM)">
+                            @dragend="onResizerDragEnd($event, columnVM, index)">
                             <div :class="$style.resizer"></div>
                         </f-dragger>
                     </th>
