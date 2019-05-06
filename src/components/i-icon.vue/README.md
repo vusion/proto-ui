@@ -1,9 +1,14 @@
 # IIcon 图标
 
 ## 示例
-### 基本形式
+### 使用方法
 
 ``` html
+<i-icon name="arrow-up"></i-icon>
+```
+
+## 所有图标
+
 <u-icon-example name="arrow-up"></u-icon-example>
 <u-icon-example name="arrow-down"></u-icon-example>
 <u-icon-example name="arrow-left"></u-icon-example>
@@ -16,7 +21,6 @@
 <u-icon-example name="close-solid"></u-icon-example>
 <u-icon-example name="filter"></u-icon-example>
 <u-icon-example name="github"></u-icon-example>
-```
 
 ## API
 ### Props/Attrs
