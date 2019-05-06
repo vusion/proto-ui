@@ -37,6 +37,9 @@ export const UTableView = {
         cancelable: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        /* Others */
+        resizable: { type: Boolean, default: false },
+        resizeRemaining: { type: String, default: 'sequence' },
     },
     data() {
         return {
@@ -267,7 +270,7 @@ export const UTableView = {
                 this.visibleColumnVMs.forEach((columnVM, index) => {
                     if (!columnVM.currentWidth)
                         noWidthColumnVMs.push(columnVM);
-                    else if (columnVM.currentWidth.endsWith('%'))
+                    else if (String(columnVM.currentWidth).endsWith('%'))
                         percentColumnVMs.push(columnVM);
                     else
                         valueColumnVMs.push(columnVM);
@@ -304,10 +307,10 @@ export const UTableView = {
                     columnVM.computedWidth = parseFloat(columnVM.currentWidth);
                     return prev + columnVM.computedWidth;
                 }, 0);
-                const remainedWidth = rootWidth - percentWidthSum - valueWidthSum;
+                const remainingWidth = rootWidth - percentWidthSum - valueWidthSum;
 
-                if (remainedWidth > 0 && noWidthColumnVMs.length) {
-                    const averageWidth = remainedWidth / noWidthColumnVMs.length;
+                if (remainingWidth > 0 && noWidthColumnVMs.length) {
+                    const averageWidth = remainingWidth / noWidthColumnVMs.length;
                     noWidthColumnVMs.forEach((columnVM) => columnVM.computedWidth = averageWidth);
                 }
 
@@ -315,7 +318,7 @@ export const UTableView = {
                 let tableWidth = '';
                 if (this.visibleColumnVMs.every((columnVM) => columnVM.currentWidth)) {
                     tableWidth = this.visibleColumnVMs.reduce((prev, columnVM) => {
-                        if (columnVM.currentWidth.endsWith('%'))
+                        if (String(columnVM.currentWidth).endsWith('%'))
                             return prev + parseFloat(columnVM.currentWidth) * rootWidth / 100;
                         else
                             return prev + columnVM.computedWidth;
@@ -352,6 +355,70 @@ export const UTableView = {
 
                 this.$emit('resize', undefined, this);
             });
+        },
+        onResizerDragStart($event, columnVM) {
+            this.visibleColumnVMs.forEach((columnVM) => {
+                columnVM.currentWidth = columnVM.computedWidth;
+                columnVM.startWidth = columnVM.computedWidth;
+            });
+        },
+        onResizerDrag($event, columnVM, index) {
+            const minWidth = 44;
+
+            const rootWidth = this.$el.offsetWidth;
+            let beforeWidth = 0;
+            for (let i = 0; i < index; i++)
+                beforeWidth += this.visibleColumnVMs[i].computedWidth;
+            const maxWidth = rootWidth - beforeWidth - (this.visibleColumnVMs.length - 1 - index) * minWidth;
+
+            const width = Math.max(minWidth, Math.min(columnVM.startWidth + $event.dragX, maxWidth));
+            let remainingWidth = width - columnVM.computedWidth;
+
+            columnVM.currentWidth = columnVM.computedWidth = width;
+
+            if (this.resizeRemaining === 'sequence') {
+                for (let i = index + 1; i < this.visibleColumnVMs.length; i++) {
+                    if (remainingWidth === 0)
+                        break;
+
+                    const columnVM = this.visibleColumnVMs[i];
+                    if (columnVM.computedWidth - remainingWidth >= minWidth) {
+                        columnVM.currentWidth = columnVM.computedWidth -= remainingWidth;
+                        remainingWidth = 0;
+                    } else {
+                        remainingWidth -= columnVM.computedWidth - minWidth;
+                        columnVM.currentWidth = columnVM.computedWidth = minWidth;
+                    }
+                }
+            } else if (this.resizeRemaining === 'average') {
+                /* eslint-disable no-inner-declarations */
+                function distributeInAverage(columnVMs) {
+                    const averageWidth = remainingWidth / columnVMs.length;
+                    const wideColumnVMs = [];
+
+                    columnVMs.forEach((columnVM) => {
+                        if (columnVM.computedWidth - averageWidth >= minWidth) {
+                            columnVM.currentWidth = columnVM.computedWidth -= averageWidth;
+                            remainingWidth -= averageWidth;
+                            wideColumnVMs.push(columnVM);
+                        } else {
+                            remainingWidth -= columnVM.computedWidth - minWidth;
+                            columnVM.currentWidth = columnVM.computedWidth = minWidth;
+                        }
+                    });
+
+                    if (Math.abs(remainingWidth) >= 1 && wideColumnVMs.length)
+                        distributeInAverage(wideColumnVMs);
+                }
+
+                distributeInAverage(this.visibleColumnVMs.slice(index + 1));
+                columnVM.currentWidth = columnVM.computedWidth -= remainingWidth;
+            }
+
+            $event.transferEl.style.left = '';
+        },
+        onResizerDragEnd($event, columnVM) {
+            this.resize();
         },
         onTableScroll(e) {
             this.scrollXStart = e.target.scrollLeft === 0;
@@ -575,7 +642,7 @@ export const UTableView = {
             if (this.readonly || this.disabled)
                 return;
 
-            const oldValues = Array.from(this.values);
+            const oldValues = this.values ? Array.from(this.values) : this.values;
             this.currentData.forEach((item) => {
                 if (item.disabled)
                     return;

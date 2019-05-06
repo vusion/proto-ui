@@ -26,6 +26,12 @@
                                 <u-table-view-filter v-for="filter in columnVM.filters" :key="filter.value" :value="filter.value">{{ filter.text }}</u-table-view-filter>
                             </u-table-view-filters>
                         </span>
+                        <f-dragger v-if="resizable && index !== visibleColumnVMs.length - 1" axis="horizontal"
+                            @dragstart="onResizerDragStart($event, columnVM)"
+                            @drag="onResizerDrag($event, columnVM, index)"
+                            @dragend="onResizerDragEnd($event, columnVM)">
+                            <div :class="$style.resizer"></div>
+                        </f-dragger>
                     </th>
                 </tr></thead>
             </u-table>

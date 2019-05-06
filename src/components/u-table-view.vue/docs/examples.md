@@ -318,6 +318,63 @@ export default {
 </script>
 ```
 
+### 调整列宽
+
+开启`resizable`属性，可以调整列宽。
+
+根据`resize-remaining`属性调整大小有三种效果。`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。
+
+#### sequence
+
+``` html
+<u-table-view resizable line="horizontal" striped :data="[
+    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+]">
+    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
+    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
+#### average
+
+``` html
+<u-table-view resizable resize-remaining="average" line="horizontal" striped :data="[
+    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+]">
+    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
+    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
+#### none
+
+``` html
+<u-table-view resizable resize-remaining="none" line="horizontal" striped :data="[
+    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+]">
+    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
+    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+```
+
 ### 特殊列
 
 UTableView 中内置了一些特殊的列，通过设置`type`来开启。
