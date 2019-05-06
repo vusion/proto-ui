@@ -3,7 +3,11 @@ const pkg = require('./package.json');
 module.exports = {
     version: '>=0.7.7',
     type: 'library',
+    name: 'proto-ui',
+    CamelName: 'ProtoUI',
     lint: true,
+    extractCSS: true,
+    sourceMap: true,
     webpack: {
         output: {
             publicPath: '/proto-ui/',
