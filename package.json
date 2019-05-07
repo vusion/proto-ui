@@ -7,7 +7,6 @@
     "lint": "eslint --fix ./src/**/*.{js,vue} && stylelint --fix ./src/**/*.css",
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
-  "main": "./dist/proto-ui.min.js",
   "repository": "vusion/proto-ui",
   "homepage": "https://vusion.github.io/proto-ui",
   "bugs": "https://github.com/vusion/proto-ui/issues",
@@ -44,7 +43,7 @@
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
     "vusion-hooks": "^0.2.2",
-    "vusion-utils": "^0.3.0"
+    "vusion-utils": "^0.3.2"
   },
   "peerDependencies": {
     "vue": "^2.6.10",

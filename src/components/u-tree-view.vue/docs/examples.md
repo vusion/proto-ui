@@ -451,7 +451,7 @@ export default {
     methods: {
         walk() {
             // 注意：如果有返回值，遍历会终止。
-            this.$refs.treeView.walk((nodeVM) => console.log(nodeVM.text));
+            this.$refs.treeView.walk((nodeVM) => console.info(nodeVM.text));
         },
         find() {
             const nodeVM = this.$refs.treeView.find((nodeVM) => nodeVM.text.endsWith('4'));

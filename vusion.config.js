@@ -8,11 +8,6 @@ module.exports = {
     lint: true,
     extractCSS: true,
     sourceMap: true,
-    webpack: {
-        output: {
-            publicPath: '/proto-ui/',
-        },
-    },
     webpackDevServer: {
         historyApiFallback: {
             index: '/proto-ui/',

@@ -25,13 +25,13 @@
     background: $brand-primary;
 }
 
-.root[color="success"] {
+/* .root[color="success"] {
     background: $brand-success;
 }
 
 .root[color="warning"] {
     background: $brand-warning;
-}
+} */
 
 .root[color="error"] {
     background: $brand-error;
