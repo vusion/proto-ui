@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 const UToast = {
     name: 'u-toast',
     props: {
@@ -85,18 +83,17 @@ const UToast = {
             this.show(message, duration, 'error');
         },
     },
+    install(Vue, id) {
+        const Ctor = Vue.component(id);
+        if (!Ctor)
+            return;
+
+        Vue.prototype.$toast = UToast.toast = new Ctor();
+
+        const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
+        METHODS.forEach((method) => UToast[method] = UToast.toast[method].bind(UToast.toast));
+    },
 };
-
-Vue.nextTick(() => {
-    const Ctor = Vue.component('UToast') || Vue.component('u-toast');
-    if (!Ctor)
-        return;
-
-    Vue.prototype.$toast = UToast.toast = new Ctor();
-
-    const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
-    METHODS.forEach((method) => UToast[method] = UToast.toast[method].bind(UToast.toast));
-});
 
 export { UToast };
 export default UToast;

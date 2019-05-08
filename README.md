@@ -13,8 +13,39 @@
 
 ## Development
 
-``` shell
-npm install
-npm install -g vusion-cli
-vusion dev
+### Install
+
 ```
+npm install -g vusion-cli
+npm install
+```
+
+### Build dist
+
+```
+vusion build
+```
+
+### Develop docs
+
+``` shell
+vusion doc
+```
+
+### Build docs
+
+```
+vusion doc-build
+```
+
+## Changelog
+
+See [Releases](https://github.com/vusion/proto-ui/releases)
+
+## Contributing
+
+See [Contributing Guide](https://github.com/vusion/DOCUMENTATION/issues/8)
+
+## License
+
+[MIT](LICENSE)
