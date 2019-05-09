@@ -5,7 +5,7 @@
 | opened.sync | Boolean | `false` | 弹出/关闭状态 |
 | trigger | String | `'click'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
-| hideDelay | Number | `0` | 提示内容消失延迟时间，单位是`'ms'` |
+| hide-delay | Number | `0` | 提示内容消失延迟时间，单位是 ms |
 | offset | String | `'0'` | 弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px` |
 | follow-cursor | Boolean, Number, Object | `false` | 是否跟随鼠标 |
 | disabled | Boolean | `false` | 是否禁用 |

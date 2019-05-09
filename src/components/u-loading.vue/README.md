@@ -37,7 +37,7 @@
 <u-loading>正在加载中...</u-loading>
 ```
 
-##### 填充父元素
+#### 填充父元素
 
 将`display`属性设置为`full`，可以填充定位父元素（offsetParent）。
 
@@ -51,7 +51,7 @@
 </u-list-view>
 ```
 
-##### 填充全窗口
+#### 填充全窗口
 
 将`display`属性设置为`fullWindow`，则会填满整个浏览器。
 

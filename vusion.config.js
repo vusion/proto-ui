@@ -1,7 +1,7 @@
 const pkg = require('./package.json');
 
 module.exports = {
-    version: '>=0.7.7',
+    version: '>=0.8.5',
     type: 'library',
     name: 'proto-ui',
     CamelName: 'ProtoUI',

@@ -8,7 +8,7 @@
 | --------- | ---- | ------- | ----------- |
 | value | String | | 输入框的值 |
 | value.sync, v-model | String | | 输入框的值 |
-| defaultValue.sync, v-model | String | | 默认值。即 reset 方法恢复的值。 |
+| default-value.sync, v-model | String | | 默认值。即 reset 方法恢复的值。 |
 | clearable | Boolean | | 是否可清空。开启并在输入框有内容时会显示清空按钮。 |
 | placeholder | String | | 原生属性。对 IE9 做了兼容。 |
 | minlength | Number | | 原生属性 |

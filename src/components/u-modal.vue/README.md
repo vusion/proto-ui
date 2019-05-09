@@ -57,7 +57,13 @@ export default {
 ### Static
 
 ``` html
-<u-modal visible static>静态显示，用于文档或局部展示。</u-modal>
+<u-modal visible static>静态显示，该属性用于文档中局部展示，实际开发时请去除。</u-modal>
+```
+
+### 标题与内容
+
+``` html
+<u-modal title="标题" visible static>内容</u-modal>
 ```
 
 ### 自定义
@@ -95,11 +101,11 @@ export default {
 | --------- | ---- | ------- | ----------- |
 | visible.sync | Boolean | `false` | 是否显示 |
 | title | String | `'提示'` | 弹窗的标题 |
-| okButton | String | `'确定'` | 确定按钮文本，如果为空则不显示 |
-| cancelButton | String | `'取消'` | 取消按钮文本，如果为空则不显示 |
+| ok-button | String | `'确定'` | 确定按钮文本，如果为空则不显示 |
+| cancel-button | String | `'取消'` | 取消按钮文本，如果为空则不显示 |
 | size | String | `'normal'` | 弹窗的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
 | static | Boolean | `false` | 是否嵌入页面显示 |
-| maskClosable | Boolean | `false` | 是否点击遮罩时关闭弹窗 |
+| mask-closable | Boolean | `false` | 是否点击遮罩时关闭弹窗 |
 
 ### Slots
 

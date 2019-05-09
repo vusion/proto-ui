@@ -23,7 +23,7 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.valid | Boolean | 验证是否通过 |
-| senderVM | Vue | 发送事件实例 |
+| senderVM | UForm | 发送事件实例 |
 
 ### Methods
 
@@ -55,7 +55,7 @@
 | label-size | String | `normal` | 单独设置表单项的标签大小 |
 | field-size | String | `normal` | 单独设置表单项的内容大小。可选值：`full` |
 | rules | Array | | 表单项的验证规则。如果没有则会根据`name`属性从表单的`rules`中获取。 |
-| ignoreRules | Boolean | `false` | 忽略验证规则。 |
+| ignore-rules | Boolean | `false` | 忽略验证规则。 |
 | message | String | | 默认提示信息 |
 | required | Boolean | `false` | 是否必填。仅显示样式，如果要验证必填项，需要在`rules`中添加必填规则。 |
 
@@ -63,7 +63,7 @@
 
 #### (default)
 
-插入`<u-form-item>`子组件。
+插入文本或 HTML。
 
 ### Methods
 
