@@ -7,7 +7,7 @@ const MPopper = {
     mixins: [MEmitter],
     props: {
         opened: { type: Boolean, default: false },
-        trigger: { type: String, default: 'click', validator: (value) => ['click', 'hover', 'right-click', 'double-click', 'manual'].includes(value) },
+        trigger: { type: String, default: 'click' },
         reference: { type: [String, HTMLElement, Function], default: 'context-parent', validator: (value) => {
             if (typeof value !== 'string')
                 return true;
@@ -164,6 +164,10 @@ const MPopper = {
          */
         addTrigger(el, event) {
             const popperEl = this.$el;
+            // @TODO: support directives
+            const arr = event.split('.');
+            event = arr[0];
+
             this.triggers.push({ el, event });
 
             // 绑定事件
@@ -171,6 +175,10 @@ const MPopper = {
 
             if (event === 'click')
                 this.offEvents.push(ev.on(el, 'click', (e) => {
+                    if (arr[1] === 'stop')
+                        e.stopPropagation();
+                    else if (arr[1] === 'prevent')
+                        e.preventDefault();
                     this.toggle();
                     this.followCursor && this.$nextTick(() => this.updatePositionByCursor(e, el));
                 }));

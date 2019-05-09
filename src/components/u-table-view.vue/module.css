@@ -53,7 +53,7 @@
 
 .body {
     width: 100%;
-    overflow-x: visible;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 

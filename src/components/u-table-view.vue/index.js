@@ -24,6 +24,7 @@ export const UTableView = {
         pageNumber: { type: Number, default: 1 },
         sorting: Object,
         defaultOrder: { type: String, default: 'desc' },
+        sortTrigger: { type: String, default: 'icon' },
         filtering: Object,
         remotePaging: { type: Boolean, default: false },
         remoteSorting: { type: Boolean, default: false },
@@ -325,7 +326,8 @@ export const UTableView = {
                     }, 0);
 
                     this.tableWidth = tableWidth;
-                }
+                } else
+                    this.tableWidth = tableWidth = rootWidth; // @important: Work with overflow-x: hidden to prevent two horizontal scrollbar
 
                 const tableMetaList = [this.tableMetaList[0]];
                 if (fixedLeftCount) {

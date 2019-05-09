@@ -1,6 +1,5 @@
 .root[class] {
     position: absolute;
-    box-sizing: content-box;
     line-height: 1.6;
     max-height: 180px;
     overflow: auto;
