@@ -1,6 +1,6 @@
 import { MSinglexItem } from '../../m-singlex.vue';
 
-const UMenuItem = {
+export const UMenuItem = {
     name: 'u-menu-item',
     parentName: 'u-menu',
     groupName: 'u-menu-group',
@@ -27,5 +27,4 @@ const UMenuItem = {
     },
 };
 
-export { UMenuItem };
 export default UMenuItem;

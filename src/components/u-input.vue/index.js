@@ -1,7 +1,7 @@
 import MField from '../m-field.vue';
 import { focus } from '../../directives';
 
-const UInput = {
+export const UInput = {
     name: 'u-input',
     mixins: [MField],
     directives: { focus },
@@ -123,5 +123,4 @@ const UInput = {
     },
 };
 
-export { UInput };
 export default UInput;

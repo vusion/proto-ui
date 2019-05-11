@@ -2,7 +2,7 @@ import Popper from '@vusion/popper.js';
 import MEmitter from '../m-emitter.vue';
 import ev from '../../utils/event';
 
-const MPopper = {
+export const MPopper = {
     name: 'm-popper',
     mixins: [MEmitter],
     props: {
@@ -327,5 +327,4 @@ const MPopper = {
     },
 };
 
-export { MPopper };
 export default MPopper;

@@ -7,8 +7,8 @@ export const UNavbarSelect = {
     extends: USelect,
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
+export { UNavbarSelectItem } from './item.vue';
+export { UNavbarSelectGroup } from './group.vue';
+export { UNavbarSelectDivider } from './divider.vue';
 
 export default UNavbarSelect;

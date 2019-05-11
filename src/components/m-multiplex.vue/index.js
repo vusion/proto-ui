@@ -149,6 +149,6 @@ export const MMultiplex = {
     },
 };
 
-export * from './item.vue';
+export { MMultiplexItem } from './item.vue';
 
 export default MMultiplex;

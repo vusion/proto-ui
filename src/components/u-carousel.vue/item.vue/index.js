@@ -1,6 +1,6 @@
 import { MSinglexItem } from '../../m-singlex.vue';
 
-const UCarouselItem = {
+export const UCarouselItem = {
     name: 'u-carousel-item',
     parentName: 'u-carousel',
     extends: MSinglexItem,
@@ -26,5 +26,4 @@ const UCarouselItem = {
     },
 };
 
-export { UCarouselItem };
 export default UCarouselItem;

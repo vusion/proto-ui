@@ -1,6 +1,6 @@
 import { MNode } from '../../m-root.vue';
 
-const UTreeViewNode = {
+export const UTreeViewNode = {
     name: 'u-tree-view-node',
     rootName: 'u-tree-view',
     mixins: [MNode],
@@ -149,5 +149,4 @@ const UTreeViewNode = {
     },
 };
 
-export { UTreeViewNode };
 export default UTreeViewNode;

@@ -10,6 +10,6 @@ export const MParent = {
     },
 };
 
-export * from './m-child.vue';
+export { MChild } from './m-child.vue';
 
 export default MParent;

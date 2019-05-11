@@ -1,6 +1,6 @@
 import { MParent } from '../m-parent.vue';
 
-const UCollapse = {
+export const UCollapse = {
     name: 'u-collapse',
     childName: 'u-collapse-item',
     mixins: [MParent],
@@ -40,6 +40,6 @@ const UCollapse = {
     },
 };
 
-export * from './item.vue';
-export { UCollapse };
+export { UCollapseItem } from './item.vue';
+
 export default UCollapse;

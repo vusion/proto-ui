@@ -1,6 +1,6 @@
 import i18n from './i18n';
 
-const UModal = {
+export const UModal = {
     name: 'u-modal',
     i18n,
     props: {
@@ -87,5 +87,4 @@ const UModal = {
     },
 };
 
-export { UModal };
 export default UModal;

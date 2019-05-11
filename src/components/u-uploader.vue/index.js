@@ -7,7 +7,7 @@ const SIZE_UNITS = {
     TB: Math.pow(1024, 4),
 };
 
-const UUploader = {
+export const UUploader = {
     name: 'u-uploader',
     i18n,
     props: {
@@ -300,5 +300,4 @@ const UUploader = {
     },
 };
 
-export { UUploader };
 export default UUploader;

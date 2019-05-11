@@ -27,6 +27,6 @@ export const MRoot = {
     },
 };
 
-export * from './m-node.vue';
+export { MNode } from './m-node.vue';
 
 export default MRoot;

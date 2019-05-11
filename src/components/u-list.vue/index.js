@@ -9,6 +9,6 @@ export const UList = {
     },
 };
 
-export * from './item.vue';
+export { UListItem } from './item.vue';
 
 export default UList;

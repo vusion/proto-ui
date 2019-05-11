@@ -1,6 +1,6 @@
 import { UListViewItem } from '../../u-list-view.vue';
 
-const USelectItem = {
+export const USelectItem = {
     name: 'u-select-item',
     parentName: 'u-select',
     groupName: 'u-select-group',
@@ -20,5 +20,4 @@ const USelectItem = {
     },
 };
 
-export { USelectItem };
 export default USelectItem;

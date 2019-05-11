@@ -241,8 +241,8 @@ export const UListView = {
     },
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
+export { UListViewItem } from './item.vue';
+export { UListViewGroup } from './group.vue';
+export { UListViewDivider } from './divider.vue';
 
 export default UListView;

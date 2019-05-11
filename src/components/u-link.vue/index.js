@@ -1,4 +1,4 @@
-const ULink = {
+export const ULink = {
     name: 'u-link',
     props: {
         href: String,
@@ -77,5 +77,4 @@ const ULink = {
     },
 };
 
-export { ULink };
 export default ULink;

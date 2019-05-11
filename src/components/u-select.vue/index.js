@@ -337,8 +337,8 @@ export const USelect = {
     },
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
+export { USelectItem } from './item.vue';
+export { USelectGroup } from './group.vue';
+export { USelectDivider } from './divider.vue';
 
 export default USelect;

@@ -1,6 +1,6 @@
 import MField from '../m-field.vue';
 
-const USlider = {
+export const USlider = {
     name: 'u-slider',
     mixins: [MField],
     props: {
@@ -115,5 +115,4 @@ const USlider = {
     },
 };
 
-export { USlider };
 export default USlider;

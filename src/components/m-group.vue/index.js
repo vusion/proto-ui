@@ -87,6 +87,6 @@ export const MGroup = {
     },
 };
 
-export * from './parent.vue';
+export { MGroupParent } from './parent.vue';
 
 export default MGroup;

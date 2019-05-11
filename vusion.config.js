@@ -6,6 +6,7 @@ module.exports = {
     name: 'proto-ui',
     CamelName: 'ProtoUI',
     lint: true,
+    uglifyJS: false,
     extractCSS: true,
     sourceMap: true,
     webpackDevServer: {

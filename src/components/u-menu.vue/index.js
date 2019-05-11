@@ -1,6 +1,6 @@
 import MSinglex from '../m-singlex.vue';
 
-const UMenu = {
+export const UMenu = {
     name: 'u-menu',
     groupName: 'u-menu-group',
     childName: 'u-menu-item',
@@ -27,8 +27,8 @@ const UMenu = {
     },
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
-export { UMenu };
+export { UMenuItem } from './item.vue';
+export { UMenuGroup } from './group.vue';
+export { UMenuDivider } from './divider.vue';
+
 export default UMenu;

@@ -1,6 +1,6 @@
 import { MSinglexItem } from '../../m-singlex.vue';
 
-const USidebarItem = {
+export const USidebarItem = {
     name: 'u-sidebar-item',
     parentName: 'u-sidebar',
     groupName: 'u-sidebar-group',
@@ -20,5 +20,4 @@ const USidebarItem = {
     },
 };
 
-export { USidebarItem };
 export default USidebarItem;

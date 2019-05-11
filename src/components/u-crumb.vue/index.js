@@ -1,6 +1,6 @@
 import { MParent } from '../m-parent.vue';
 
-const UCrumb = {
+export const UCrumb = {
     name: 'u-crumb',
     childName: 'u-crumb-item',
     mixins: [MParent],
@@ -11,6 +11,6 @@ const UCrumb = {
     },
 };
 
-export * from './item.vue';
-export { UCrumb };
+export { UCrumbItem } from './item.vue';
+
 export default UCrumb;

@@ -3,7 +3,7 @@ import debounce from 'lodash/debounce';
 import { repeatClick } from '../../directives';
 import { noopFormatter, NumberFormatter } from '../../utils/Formatters';
 
-const UNumberInput = {
+export const UNumberInput = {
     name: 'u-number-input',
     mixins: [MField],
     directives: { repeatClick },
@@ -188,5 +188,4 @@ const UNumberInput = {
     },
 };
 
-export { UNumberInput };
 export default UNumberInput;

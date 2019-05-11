@@ -1,7 +1,7 @@
 import UInput from '../u-input.vue';
 import { getSize } from '../../utils/style';
 
-const UTextarea = {
+export const UTextarea = {
     name: 'u-textarea',
     extends: UInput,
     props: {
@@ -32,5 +32,4 @@ const UTextarea = {
     },
 };
 
-export { UTextarea };
 export default UTextarea;

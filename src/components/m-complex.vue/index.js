@@ -46,6 +46,6 @@ export const MComplex = {
     },
 };
 
-export * from './item.vue';
+export { MComplexItem } from './item.vue';
 
 export default MComplex;

@@ -1,4 +1,4 @@
-const FRender = {
+export const FRender = {
     name: 'f-render',
     functional: true,
     props: {
@@ -9,5 +9,4 @@ const FRender = {
     },
 };
 
-export { FRender };
 export default FRender;

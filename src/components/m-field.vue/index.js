@@ -1,6 +1,6 @@
 import MEmitter from '../m-emitter.vue';
 
-const MField = {
+export const MField = {
     name: 'm-field',
     isField: true,
     mixins: [MEmitter],
@@ -21,5 +21,4 @@ const MField = {
     },
 };
 
-export { MField };
 export default MField;

@@ -676,7 +676,7 @@ export const UTableView = {
     },
 };
 
-export * from './column.vue';
-export * from './filters.vue';
+export { UTableViewColumn } from './column.vue';
+export { UTableViewFilters } from './filters.vue';
 
 export default UTableView;

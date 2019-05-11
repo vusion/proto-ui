@@ -124,6 +124,6 @@ export const MSinglex = {
     },
 };
 
-export * from './item.vue';
+export { MSinglexItem } from './item.vue';
 
 export default MSinglex;

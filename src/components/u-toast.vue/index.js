@@ -1,4 +1,4 @@
-const UToast = {
+export const UToast = {
     name: 'u-toast',
     props: {
         position: { type: String, default: 'top-center' },
@@ -95,5 +95,4 @@ const UToast = {
     },
 };
 
-export { UToast };
 export default UToast;

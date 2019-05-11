@@ -55,6 +55,6 @@ export const UTabs = {
     },
 };
 
-export * from './tab.vue';
+export { UTab } from './tab.vue';
 
 export default UTabs;

@@ -72,6 +72,6 @@ export const USteps = {
     },
 };
 
-export * from './step.vue';
+export { UStep } from './step.vue';
 
 export default USteps;

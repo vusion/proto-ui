@@ -1,6 +1,6 @@
 import manager from '../f-draggable.vue/manager';
 
-const FDroppable = {
+export const FDroppable = {
     name: 'f-droppable',
     props: {
         target: { type: [String, HTMLElement, Function], default: 'self', validator: (value) => {
@@ -142,5 +142,4 @@ const FDroppable = {
     },
 };
 
-export { FDroppable };
 export default FDroppable;

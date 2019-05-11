@@ -1,6 +1,6 @@
 import UModal from '../u-modal.vue';
 
-const UDrawer = {
+export const UDrawer = {
     name: 'u-drawer',
     extends: UModal,
     props: {
@@ -20,5 +20,4 @@ const UDrawer = {
     },
 };
 
-export { UDrawer };
 export default UDrawer;

@@ -49,6 +49,6 @@ export const UTableViewFilters = {
     // },
 };
 
-export * from './filter.vue';
+export { UTableViewFilter } from './filter.vue';
 
 export default UTableViewFilters;

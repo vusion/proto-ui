@@ -1,6 +1,6 @@
 import MField from '../m-field.vue';
 
-const USwitch = {
+export const USwitch = {
     name: 'u-switch',
     mixins: [MField],
     props: {
@@ -70,5 +70,4 @@ const USwitch = {
     },
 };
 
-export { USwitch };
 export default USwitch;

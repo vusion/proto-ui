@@ -1,7 +1,7 @@
 import MEmitter from '../../m-emitter.vue';
 import Validator from 'vusion-async-validator';
 
-const UFormItem = {
+export const UFormItem = {
     name: 'u-form-item',
     mixins: [MEmitter],
     props: {
@@ -117,5 +117,4 @@ const UFormItem = {
     },
 };
 
-export { UFormItem };
 export default UFormItem;

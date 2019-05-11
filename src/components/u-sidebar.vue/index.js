@@ -1,7 +1,7 @@
 import MSinglex from '../m-singlex.vue';
 import { MGroupParent } from '../m-group.vue';
 
-const USidebar = {
+export const USidebar = {
     name: 'u-sidebar',
     groupName: 'u-sidebar-group',
     childName: 'u-sidebar-item',
@@ -14,8 +14,8 @@ const USidebar = {
     },
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
-export { USidebar };
+export { USidebarItem } from './item.vue';
+export { USidebarGroup } from './group.vue';
+export { USidebarDivider } from './divider.vue';
+
 export default USidebar;

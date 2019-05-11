@@ -1,4 +1,4 @@
-const UPagination = {
+export const UPagination = {
     name: 'u-pagination',
     props: {
         total: { type: Number, default: 11, validator: (value) => Number.isInteger(value) && value >= 0 },
@@ -88,5 +88,4 @@ const UPagination = {
     },
 };
 
-export { UPagination };
 export default UPagination;

@@ -1,7 +1,7 @@
 import { MChild } from '../../m-parent.vue';
 import ULink from '../../u-link.vue';
 
-const UCrumbItem = {
+export const UCrumbItem = {
     name: 'u-crumb-item',
     parentName: 'u-crumb',
     mixins: [MChild, ULink],
@@ -15,5 +15,4 @@ const UCrumbItem = {
     },
 };
 
-export { UCrumbItem };
 export default UCrumbItem;

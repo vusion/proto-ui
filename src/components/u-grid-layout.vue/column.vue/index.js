@@ -6,7 +6,7 @@ const breakpoints = [
     { name: 'Mini', width: 480 },
 ];
 
-const UGridLayoutColumn = {
+export const UGridLayoutColumn = {
     name: 'u-grid-layout-column',
     props: {
         span: { type: Number, default: 1 },
@@ -77,5 +77,4 @@ const UGridLayoutColumn = {
     },
 };
 
-export { UGridLayoutColumn };
 export default UGridLayoutColumn;

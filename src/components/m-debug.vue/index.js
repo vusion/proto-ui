@@ -1,6 +1,6 @@
 let debugInstance;
 
-const MDebug = {
+export const MDebug = {
     name: 'm-debug',
     computed: {
         isDebugInstance() {
@@ -16,5 +16,4 @@ const MDebug = {
     },
 };
 
-export { MDebug };
 export default MDebug;

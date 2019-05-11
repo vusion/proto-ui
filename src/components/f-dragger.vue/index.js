@@ -2,7 +2,7 @@ import { getSize } from '../../utils';
 import FDraggable from '../f-draggable.vue';
 import manager from '../f-draggable.vue/manager';
 
-const FDragger = {
+export const FDragger = {
     name: 'f-dragger',
     extends: FDraggable,
     props: {
@@ -132,5 +132,4 @@ const FDragger = {
     },
 };
 
-export { FDragger };
 export default FDragger;

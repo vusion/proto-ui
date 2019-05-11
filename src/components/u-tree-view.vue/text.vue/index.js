@@ -1,4 +1,4 @@
-const UTreeViewText = {
+export const UTreeViewText = {
     name: 'u-tree-view-text',
     props: {
         data: Array,
@@ -28,5 +28,4 @@ const UTreeViewText = {
     },
 };
 
-export { UTreeViewText };
 export default UTreeViewText;

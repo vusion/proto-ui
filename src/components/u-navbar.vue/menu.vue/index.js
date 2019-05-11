@@ -7,8 +7,8 @@ export const UNavbarMenu = {
     extends: UMenu,
 };
 
-export * from './item.vue';
-export * from './group.vue';
-export * from './divider.vue';
+export { UNavbarMenuItem } from './item.vue';
+export { UNavbarMenuGroup } from './group.vue';
+export { UNavbarMenuDivider } from './divider.vue';
 
 export default UNavbarMenu;

@@ -1,6 +1,6 @@
 import ULink from '../u-link.vue';
 
-const ULogo = {
+export const ULogo = {
     name: 'u-logo',
     extends: ULink,
     props: {
@@ -8,5 +8,4 @@ const ULogo = {
     },
 };
 
-export { ULogo };
 export default ULogo;

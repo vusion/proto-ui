@@ -1,6 +1,6 @@
 import MPopper from '../m-popper.vue';
 
-const UPopup = {
+export const UPopup = {
     name: 'u-popup',
     extends: MPopper,
     props: {
@@ -18,5 +18,4 @@ const UPopup = {
     },
 };
 
-export { UPopup };
 export default UPopup;

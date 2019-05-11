@@ -1,4 +1,4 @@
-const ERipple = {
+export const ERipple = {
     name: 'e-ripple',
     props: {
         reference: { type: [String], default: 'parent' },
@@ -33,5 +33,4 @@ const ERipple = {
     },
 };
 
-export { ERipple };
 export default ERipple;

@@ -1,7 +1,7 @@
 import { MRoot } from '../m-root.vue';
 import MField from '../m-field.vue';
 
-const UTreeView = {
+export const UTreeView = {
     name: 'u-tree-view',
     nodeName: 'u-tree-view-node',
     mixins: [MRoot, MField],
@@ -165,7 +165,7 @@ const UTreeView = {
     },
 };
 
-export * from './node.vue';
-export * from './text.vue';
-export { UTreeView };
+export { UTreeViewNode } from './node.vue';
+export { UTreeViewText } from './text.vue';
+
 export default UTreeView;
