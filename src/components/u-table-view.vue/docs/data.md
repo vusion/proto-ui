@@ -134,6 +134,55 @@ export default {
 </script>
 ```
 
+#### 翻页器功能
+
+使用`show-total`、`show-sizer`、`show-jumper`这几个属性，可以对应开启翻译器的显示总页数、切换每页大小、页面跳转功能。
+
+``` vue
+<template>
+<u-table-view striped :data-source="load" pageable :page-size="10" remote-paging show-total show-sizer>
+    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
+    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address"></u-table-view-column>
+    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+</u-table-view>
+</template>
+<script>
+const baseData = [
+    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
+    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
+    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
+    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
+    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+];
+
+// 构造数量较多的 500 条数据
+const remoteData = [];
+for (let i = 0; i < 75; i++) {
+    const item = Object.assign({}, baseData[i % 5]);
+    item.id = i + 1;
+    item.name += '-' + (Math.random() * 20 >> 0);
+    remoteData.push(item);
+}
+
+export default {
+    methods: {
+        load({ paging }) {
+            // 这里使用 Promise 和 setTimeout 模拟一个后端请求
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({
+                        total: remoteData.length,
+                        data: remoteData.slice(paging.offset, paging.offset + paging.limit),
+                    });
+                }, 400);
+            });
+        },
+    },
+};
+</script>
+```
+
 ### 排序
 
 在`<u-table-view-column>`上给可以排序的列添加`sortable`属性，在`<u-table-view>`用`sorting`属性指定默认的排序字段和顺序。

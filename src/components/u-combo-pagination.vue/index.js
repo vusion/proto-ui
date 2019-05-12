@@ -1,5 +1,8 @@
+import i18n from './i18n';
+
 export const UComboPagination = {
     name: 'u-combo-pagination',
+    i18n,
     props: {
         total: { type: Number, default: 11, validator: (value) => Number.isInteger(value) && value >= 0 },
         page: { type: Number, default: 1, validator: (value) => Number.isInteger(value) && value > 0 },

@@ -1,6 +1,7 @@
 .root {}
 
 .sizer[class] {
+    text-align: left;
     width: 100px;
 }
 

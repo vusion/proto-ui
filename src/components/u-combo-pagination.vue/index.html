@@ -2,7 +2,7 @@
     <span v-if="showTotal" :class="$style.total">共 {{ total }} 条</span>
     <u-select v-if="showSizer" :class="$style.sizer" :value="pageSize" @select="onSelectPageSize">
         <u-select-item v-for="pageSize in pageSizeOptions" :key="pageSize" :value="pageSize">
-            {{ pageSize }} 条/页
+            {{ pageSize }} {{ $t('pageSizeUnit') }}
         </u-select-item>
     </u-select>
     <u-pagination display="inline"

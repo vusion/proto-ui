@@ -22,6 +22,10 @@ export const UTableView = {
         pageable: { type: Boolean, default: false },
         pageSize: { type: Number, default: 20 },
         pageNumber: { type: Number, default: 1 },
+        pageSizeOptions: { type: Array, default() { return [10, 20, 50]; } },
+        showTotal: { type: Boolean, default: false },
+        showSizer: { type: Boolean, default: false },
+        showJumper: { type: Boolean, default: false },
         sorting: Object,
         defaultOrder: { type: String, default: 'desc' },
         sortTrigger: { type: String, default: 'icon' },
@@ -481,9 +485,13 @@ export const UTableView = {
             this.currentDataSource.clearLocalData();
             this.load();
         },
-        page(number) {
+        page(number, size) {
+            if (size === undefined)
+                size = this.currentDataSource.paging.size;
+
             const paging = {
-                size: this.pageSize,
+                size,
+                oldSize: this.currentDataSource.paging.size,
                 number,
                 oldNumber: this.currentDataSource.paging.number,
             };

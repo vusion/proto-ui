@@ -20,7 +20,11 @@
 | data-source | Object, Function, DataSource | | 多功能数据源 |
 | initial-load | Boolean | `true` | 是否在初始时立即加载 |
 | pageable | Boolean | `false` | 是否需要分页 |
-| page-size | Number | `20` | 分页大小 |
+| page-size.sync | Number | `20` | 分页大小 |
+| page-size-options | Array | `[10, 20, 50]` | 每页大小选项列表 |
+| show-total | Boolean | `false` | 是否显示总页数 |
+| show-sizer | Boolean | `false` | 是否显示切换每页大小选项 |
+| show-jumper | Boolean | `false` | 是否显示页面跳转输入框 |
 | sorting.sync | Object<{ field: string, order: string, compare: Function }> | `{ field: undefined, order: 'desc' }` | 当前排序字段和顺序 |
 | default-order | String | `'asc'` | 所有列首次点击时的排序顺序 |
 | filtering.sync | Object | | 过滤项 |
@@ -73,20 +77,22 @@
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.size | Number | 分页大小 |
-| $event.oldNumber | Number | 旧的页数 |
+| $event.oldSize | Number | 分页大小 |
 | $event.number | Number | 当前页数 |
+| $event.oldNumber | Number | 旧的页数 |
 | $event.preventDefault | Function | 阻止切换分页流程 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @page
 
-切换分页时触发
+切换分页或改变分页大小时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.size | Number | 分页大小 |
-| $event.oldNumber | Number | 旧的页数 |
+| $event.oldSize | Number | 分页大小 |
 | $event.number | Number | 当前页数 |
+| $event.oldNumber | Number | 旧的页数 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @before-sort
