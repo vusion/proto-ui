@@ -4,6 +4,7 @@ $item_size: 32px;
     user-select: none;
     cursor: default;
     padding: 0;
+    vertical-align: 1px;
 }
 
 .item {
@@ -77,4 +78,8 @@ $item_size: 32px;
 
 .root[disabled] .item[selected] {
     background: $brand-disabled-light;
+}
+
+.root[display="inline"] {
+    display: inline-block;
 }

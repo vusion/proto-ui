@@ -6,7 +6,7 @@ module.exports = {
     name: 'proto-ui',
     CamelName: 'ProtoUI',
     lint: true,
-    uglifyJS: false,
+    uglifyJS: true,
     extractCSS: true,
     sourceMap: true,
     webpackDevServer: {
@@ -52,6 +52,7 @@ module.exports = {
             { group: 'Navigation', name: 'u-steps', alias: '步骤条' },
             { group: 'Navigation', name: 'u-crumb', alias: '面包屑' },
             { group: 'Navigation', name: 'u-pagination', alias: '翻页器' },
+            { group: 'Navigation', name: 'u-combo-pagination', alias: '复合翻页器' },
             { group: 'Form', name: 'u-form', alias: '表单' },
             { group: 'Form', name: 'u-input', alias: '单行输入' },
             { group: 'Form', name: 'u-number-input', alias: '数字输入' },

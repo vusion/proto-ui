@@ -1,0 +1,9 @@
+.root {}
+
+.sizer[class] {
+    width: 100px;
+}
+
+.jumper[class] {
+    width: 50px;
+}

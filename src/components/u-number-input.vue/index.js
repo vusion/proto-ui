@@ -58,10 +58,13 @@ export const UNumberInput = {
     },
     created() {
         this.debouncedInput = debounce(this.input, 400);
+
+        const value = this.fix(this.value);
         this.$emit('change', {
-            value: this.fix(this.value),
+            value,
             oldValue: undefined,
             formattedValue: this.fix(this.currentFormatter.format(this.value)),
+            valid: this.isValid(value),
         }, this);
     },
     methods: {
@@ -79,6 +82,13 @@ export const UNumberInput = {
             // 保留小数位数
             value = +value.toFixed(this.precision < 1 ? -Math.floor(Math.log10(this.precision)) : 0);
             return value;
+        },
+        isValid(value) {
+            if (isNaN(value))
+                return false;
+            if (value < this.min || value > this.max)
+                return false;
+            return this.fix(value) === value;
         },
         /**
          * 单纯输入
@@ -100,6 +110,7 @@ export const UNumberInput = {
                 value,
                 oldValue,
                 formattedValue: this.formattedValue,
+                valid: this.isValid(value),
             }, this);
         },
         /**
@@ -145,6 +156,7 @@ export const UNumberInput = {
                     value,
                     oldValue: this.currentValue,
                     formattedValue: this.currentFormatter.format(value),
+                    valid: this.isValid(value),
                 }, this);
             }
         },
@@ -183,6 +195,7 @@ export const UNumberInput = {
                 value: this.defaultValue,
                 oldValue,
                 formattedValue: this.formattedValue,
+                valid: this.isValid(this.defaultValue),
             });
         },
     },

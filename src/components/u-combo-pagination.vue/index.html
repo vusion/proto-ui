@@ -1,13 +1,18 @@
-<u-linear-layout gap="small">
-    <span>共 {{ total }} 条</span>
-    <u-select :value="limit" @select="selectLimit" :class="$style.select">
-        <u-select-item v-for="item in limitList" :key="item" :value="item">
-            {{ item }}
+<u-linear-layout :class="$style.root" gap="small">
+    <span v-if="showTotal" :class="$style.total">共 {{ total }} 条</span>
+    <u-select v-if="showSizer" :class="$style.sizer" :value="pageSize" @select="onSelectPageSize">
+        <u-select-item v-for="pageSize in pageSizeOptions" :key="pageSize" :value="pageSize">
+            {{ pageSize }} 条/页
         </u-select-item>
     </u-select>
-    <span :class="$style.unit">条/页</span>
     <u-pagination display="inline"
-        :total="total" :page="page" :side="side" :around="around" :readonly="readonly" :disabled="disabled"
-        @select="changePage">
+        :total="total" :page="currentPage" :side="side" :around="around" :readonly="readonly" :disabled="disabled"
+        @change="onChange($event.page, $event.oldPage)">
     </u-pagination>
+    <span v-if="showJumper">前往
+        <u-number-input :class="$style.jumper" :value="currentPage"
+            :min="1" :max="total" hide-buttons
+            @change="$event.valid && onChange($event.value, $event.oldValue)">
+        </u-number-input>
+    页</span>
 </u-linear-layout>

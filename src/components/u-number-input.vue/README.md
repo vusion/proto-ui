@@ -11,6 +11,7 @@
 ```
 
 ### 双向绑定
+
 ``` vue
 <template>
 <u-number-input v-model="value"></u-number-input>
@@ -88,59 +89,6 @@ export default {
 </u-linear-layout>
 ```
 
-<!--
-### 事件
-``` vue
-<template>
-<u-number-input :value.sync="value" formatter="00" @change="onChange" @select="onSelect"  @before-select="onBeforeSelect" @input="onInput"></u-number-input>
-</template>
-
-<script>
-export default {
-	data() {
-		return {
-			value: 2,
-		};
-    },
-    watch: {
-        value(value, oldValue) { // fix-on: blur的情况下，直接在输入框输入，value值blur才变化
-            console.info('value watch: ', value, oldValue);
-        },
-    },
-    methods: {
-        onChange($event) {
-            console.info('change', $event); // 时间改变触发
-        },
-        onSelect($event) {
-        	console.info('select', $event); // 调整时间触发
-        },
-        onBeforeSelect($event) {
-        	console.info('before-select', $event);
-        },
-        onInput($event) { // fix-on: blur的情况下，直接在输入框输入input值随着输入值变化
-        	console.info('input', $event);
-        },
-    },
-};
-</script>
---```-->
-
-
-<!-- `-`-` vue
-<template>
-<u-number-input v-model="value" :default-value="3" :min="1"></u-number-input>
-</template>
-<script>
-export default {
-    data() {
-        return {
-            value: '',
-        };
-    },
-};
-</script>
-`-`-` -->
-
 ## API
 ### Props/Attrs
 
@@ -180,6 +128,7 @@ export default {
 | $event.value | Number | 改变后的值 |
 | $event.oldValue | Number | 旧的值 |
 | $event.formattedValue | String | 格式化后的值 |
+| $event.valid | Boolean | 改变后的值是否合法 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 #### @focus

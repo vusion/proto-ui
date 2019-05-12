@@ -32,7 +32,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| page | Number | `1` | 当前页码 |
+| page.sync | Number | `1` | 当前页码 |
 | total | Number | `11` | 总页数 |
 | side | Number | `2` | 当页数多时，两边恒定显示的数量 |
 | around | Number | `5` | 当页数多时，中间恒定显示的数量  |
