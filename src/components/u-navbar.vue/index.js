@@ -12,10 +12,10 @@ export const UNavbar = {
     },
 };
 
-export * from './item.vue';
-export * from './divider.vue';
-export * from './dropdown.vue';
-export * from './menu.vue';
-export * from './select.vue';
+export { UNavbarItem } from './item.vue';
+export { UNavbarDivider } from './divider.vue';
+export { UNavbarDropdown } from './dropdown.vue';
+export { UNavbarMenu, UNavbarMenuItem, UNavbarMenuGroup, UNavbarMenuDivider } from './menu.vue';
+export { UNavbarSelect, UNavbarSelectItem, UNavbarSelectGroup, UNavbarSelectDivider } from './select.vue';
 
 export default UNavbar;

@@ -106,6 +106,7 @@ Vue.use(ProtoUI);
     <u-button @click="show">Click me!</u-button>
 </div>
 <script>
+    Vue.use(ProtoUI);
     new Vue({
         el: '#app',
         methods: {
