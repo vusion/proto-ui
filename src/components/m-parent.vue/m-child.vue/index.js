@@ -14,7 +14,11 @@ export const MChild = {
     created() {
         !this.parentVM && this.$contact(this.$options.parentName, (parentVM) => {
             this.parentVM = parentVM;
-            parentVM.itemVMs.push(this);
+            const index = parentVM.$slots.default.indexOf(this.$vnode);
+            if (~index)
+                parentVM.itemVMs.splice(index, 0, this);
+            else
+                parentVM.itemVMs.push(this);
         });
         !this.groupVM && this.$contact(this.$options.groupName, (groupVM) => {
             this.groupVM = groupVM;
