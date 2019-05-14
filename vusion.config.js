@@ -1,7 +1,14 @@
+const pkg = require('./package.json');
+
 module.exports = {
     version: '>=0.7.7',
     type: 'library',
+    name: 'proto-ui',
+    CamelName: 'ProtoUI',
     lint: true,
+    uglifyJS: true,
+    extractCSS: true,
+    sourceMap: true,
     webpackDevServer: {
         historyApiFallback: {
             index: '/proto-ui@0.3.x/',
@@ -12,6 +19,8 @@ module.exports = {
         logo: '原型组件',
         mode: 'history',
         base: '/proto-ui@0.3.x/',
+        github: 'https://github.com/vusion/proto-ui',
+        package: pkg,
         navbar: [
             { text: '组件', to: '/components' },
             { text: '设计思路', to: '/ui-design' },
