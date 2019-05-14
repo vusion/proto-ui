@@ -2,11 +2,6 @@ module.exports = {
     version: '>=0.7.7',
     type: 'library',
     lint: true,
-    webpack: {
-        output: {
-            publicPath: '/proto-ui@0.3.x/',
-        },
-    },
     webpackDevServer: {
         historyApiFallback: {
             index: '/proto-ui@0.3.x/',

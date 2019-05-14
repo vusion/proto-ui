@@ -64,7 +64,7 @@ export default {
         this.$emit('change', {
             value: this.fix(this.value),
             oldValue: undefined,
-            formattedValue: this.fix(this.currentFormatter.get(this.value)),
+            formattedValue: this.currentFormatter.get(this.fix(this.value)),
         });
     },
     methods: {

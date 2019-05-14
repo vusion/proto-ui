@@ -55,7 +55,11 @@ export default {
         });
         this.$on('add-item-vm', (itemVM) => {
             itemVM.parentVM = this;
-            this.itemVMs.push(itemVM);
+            const index = this.$slots.default.indexOf(itemVM.$vnode);
+            if (~index)
+                this.itemVMs.splice(index, 0, itemVM);
+            else
+                this.itemVMs.push(itemVM);
         });
         this.$on('remove-item-vm', (itemVM) => {
             itemVM.parentVM = undefined;
