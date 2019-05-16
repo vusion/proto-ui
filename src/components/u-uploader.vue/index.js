@@ -18,6 +18,11 @@ export const UUploader = {
         extensions: { type: [String, Array], default: '' },
         maxSize: { type: [String, Number], default: Infinity },
         disabled: { type: Boolean, default: false },
+        multiple: { type: Boolean, default: false },
+        isPreviewFile: { type: Boolean, default: false },
+        drag: { type: Boolean, default: false },
+        dragDefaulted: { type: Boolean, default: false },
+        loadingStyle: { type: String, default: 'defaluted' },
     },
     data() {
         return {
@@ -25,7 +30,13 @@ export const UUploader = {
             sending: false,
             file: {},
             tempId: new Date().getTime(),
+            isFileReaderSupported: false,
+            previewFileContent: [],
+            previewLoding: true,
         };
+    },
+    created() {
+        this.isFileReaderSupported = window.FileReader !== 'undefined';
     },
     methods: {
         /**
@@ -115,15 +126,79 @@ export const UUploader = {
             return false;
         },
         /**
+         * @method addFiles() 导入批量文件，并查看是否支持FileReader
+         * @private
+         * @return {void}
+         */
+        addFiles() {
+            const selectFiles = this.$refs.file.files;
+            // 允许多次加载同一文件数次
+            this.$refs.file.type = 'text';
+            for (let i = 0; i < selectFiles.length; i++) {
+                this.isFileReaderSupported ? this.addFile(selectFiles[i]) : this.submit(selectFiles[i]);
+            }
+            this.$refs.file.type = 'file';
+        },
+        /**
+         * @method addFile() 支持FileReader情况下，单一文件处理
+         * @private
+         * @param  {File} file 文件对象
+         * @return {void}
+         */
+        addFile(file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            const that = this;
+            const obj = {};
+            reader.onload = function(evt) {
+                obj.src = evt.target.result;
+                that.previewFileContent.push(obj);
+            }
+            this.submit(file, obj);
+        },
+        /**
+         * @method dragenter() 拖拽dragenter事件
+         * @private
+         * @return {void}
+         */
+        dragenter(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+        },
+        /**
+         * @method dragover() 拖拽dragover事件
+         * @private
+         * @return {void}
+         */
+        dragover(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+        },
+        /**
+         * @method drop() 拖拽drop事件
+         * @private
+         * @return {void}
+         */
+        drop(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            const dt = evt.dataTransfer;
+            const files = dt.files;
+            for(let i = 0; i < files.length; i++) {
+                this.isFileReaderSupported ? this.addFile(files[i]) : this.submit(files[i]);
+            }
+        },
+        /**
          * @method submit() 提交表单
          * @private
          * @return {void}
          */
-        submit() {
-            const file = this.$refs.file.files ? this.$refs.file.files[0] : {
-                name: this.$refs.file.value,
-                size: 0,
-            };
+        submit(f, o) {
+            // const file = this.$refs.file.files ? this.$refs.file.files[0] : {
+            //     name: this.$refs.file.value,
+            //     size: 0,
+            // };
+            const file = f;
 
             if (!file || !file.name || !this.checkExtensions(file) || !this.checkSize(file))
                 return;
@@ -144,7 +219,7 @@ export const UUploader = {
                 this.$emit('before-send', {
                     data: this.data,
                     file,
-                    files: this.$refs.file.files,
+                    // files: this.$refs.file.files,
                     preventDefault: () => cancel = true,
                 }, this);
                 if (cancel)
@@ -167,13 +242,19 @@ export const UUploader = {
                             loaded: e.loaded,
                             total: e.total,
                         }, this);
+                        /**
+                        *  实时更新loadingProgress的数值
+                        */
+                       o.loading = e.loaded / e.total *100;
                     }
                 }.bind(this);
 
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === 4) {
-                        if (xhr.status === 200)
+                        if (xhr.status === 200){
                             this.onLoad(xhr.responseText, xhr.responseXML);
+                            setTimeout(() => this.previewLoding = false, 1000);
+                        }
                         else {
                             if (!this.sending)
                                 return;
