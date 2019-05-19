@@ -7,7 +7,8 @@
 <u-crumb>
     <u-crumb-item to="/">首页</u-crumb-item>
     <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
-    <u-crumb-item to="/proto-ui/u-crumb" disabled>面包屑</u-crumb-item>
+    <u-crumb-item disabled>Navigation</u-crumb-item>
+    <u-crumb-item to="/proto-ui/u-crumb" current>面包屑</u-crumb-item>
 </u-crumb>
 ```
 
@@ -35,6 +36,7 @@
 | replace | Boolean | `false` | 需要 vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。 |
 | append | Boolean | `false` | 需要 vue-router，与`<router-link>`的`append`属性相同。如果为`true`，则在当前路径后追加`to`的路径。 |
 | disabled | Boolean | `false` | 是否不可点击。如果为`true`，则不会响应`click`事件。 |
+| current | Boolean | `false` | 是否为当前页。与`disabled`类似，只是显示为默认文字颜色，如果为`true`，则不会响应`click`事件。 |
 
 ### Slots
 

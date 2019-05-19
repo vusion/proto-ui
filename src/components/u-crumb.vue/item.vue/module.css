@@ -16,6 +16,11 @@
     text-decoration: underline;
 }
 
+.current {
+    color: inherit;
+    cursor: default;
+}
+
 .disabled {
     color: $brand-disabled;
     cursor: default;
