@@ -110,6 +110,11 @@ export const UTableView = {
         },
         loading(loading) {
             this.currentLoading = loading;
+            this.handleResize();
+        },
+        error(error) {
+            // @compat:
+            this.handleResize();
         },
         sorting: {
             deep: true,
@@ -170,8 +175,11 @@ export const UTableView = {
         this.watchValue(this.value);
         this.watchValues(this.values);
         this.handleResize();
-        window.addEventListener('resize', this.resize);
+        window.addEventListener('resize', this.handleResize);
         // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
     },
     methods: {
         processData(data) {
@@ -243,23 +251,6 @@ export const UTableView = {
                 return undefined;
         },
         handleResize() {
-            // 判断是否会出现水平滚动条
-            // let parentWidth = this.$el.offsetWidth;
-            // let tableWidth = this.$refs.body.offsetWidth;
-            // // 初始表格是隐藏的需要特殊处理，因为此时上面两个值为0
-            // if (parentWidth === 0)
-            //     parentWidth = tableWidth = this.$refs.root.parentNode.offsetWidth;
-
-            // let percentWidthSum = 0;
-            // percentColumnVMs.forEach((columnVM) => {
-            //     const width = parseFloat(columnVM.currentWidth) / 100 * parentWidth;
-            //     columnVM.computedWidth = width;
-            //     percentWidthSum += width;
-            // });
-
-            // let valueWidthSum = 0;
-            // valueColumns.forEach((item) => valueWidthSum += parseFloat(item.copyWidth));
-
             setTimeout(() => {
                 const rootWidth = this.$el.offsetWidth;
 
@@ -477,6 +468,7 @@ export const UTableView = {
                 if (this.currentDataSource.paging.number > this.currentDataSource.totalPage)
                     this.page(1);
 
+                this.handleResize();
                 this.$emit('load', undefined, this);
                 return data;
             }).catch(() => this.currentLoading = false);

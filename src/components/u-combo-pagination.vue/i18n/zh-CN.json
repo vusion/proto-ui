@@ -1,4 +1,5 @@
 {
     "pageSizeUnit": "条/页",
-    "total": "共 {total} 条"
+    "total": "共 {total} 条",
+    "goto": "前往"
 }

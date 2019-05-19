@@ -1,4 +1,5 @@
 {
     "pageSizeUnit": "items/page",
-    "total": "total {total} items"
+    "total": "total {total} items",
+    "goto": "goto"
 }

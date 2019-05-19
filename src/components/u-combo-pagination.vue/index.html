@@ -1,5 +1,5 @@
 <u-linear-layout :class="$style.root" gap="small">
-    <span v-if="showTotal" :class="$style.total">共 {{ total }} 条</span>
+    <span v-if="showTotal" :class="$style.total">{{ $t('total', { total }) }}</span>
     <u-select v-if="showSizer" :class="$style.sizer" :value="pageSize" @select="onSelectPageSize">
         <u-select-item v-for="pageSize in pageSizeOptions" :key="pageSize" :value="pageSize">
             {{ pageSize }} {{ $t('pageSizeUnit') }}
@@ -9,7 +9,7 @@
         :total="total" :page="currentPage" :side="side" :around="around" :readonly="readonly" :disabled="disabled"
         @change="onChange($event.page, $event.oldPage)">
     </u-pagination>
-    <span v-if="showJumper">前往
+    <span v-if="showJumper">{{ $t('goto') }}
         <u-number-input :class="$style.jumper" :value="currentPage"
             :min="1" :max="total" hide-buttons
             @change="$event.valid && onChange($event.value, $event.oldValue)">
