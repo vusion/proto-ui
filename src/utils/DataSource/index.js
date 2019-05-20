@@ -103,8 +103,10 @@ const VueDataSource = Vue.extend({
                 return this.arrangedData.length;
         },
         totalPage() {
+            if (!this.paging)
+                return 1;
             const totalPage = Math.ceil(this.total / this.paging.size);
-            if (!this.paging || totalPage === Infinity || totalPage === 0)
+            if (totalPage === Infinity || totalPage === 0)
                 return 1;
             else
                 return totalPage;

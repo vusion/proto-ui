@@ -465,7 +465,7 @@ export const UTableView = {
                 // 防止同步数据使页面抖动
                 // setTimeout(() => this.currentData = data);
                 this.currentLoading = false;
-                if (this.currentDataSource.paging.number > this.currentDataSource.totalPage)
+                if (this.currentDataSource.paging && this.currentDataSource.paging.number > this.currentDataSource.totalPage)
                     this.page(1);
 
                 this.handleResize();

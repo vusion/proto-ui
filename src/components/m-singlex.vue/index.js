@@ -65,7 +65,7 @@ export const MSinglex = {
             if (this.selectedVM && this.selectedVM.value === value) // 下面需要走 value === undefined
                 return;
             if (value === undefined) {
-                if (this.autoSelect && !this.placeholder) // this.placeholder for select...
+                if (this.autoSelect)
                     this.selectedVM = this.itemVMs.find((itemVM) => !itemVM.disabled) || undefined;
                 else
                     this.selectedVM = undefined;
