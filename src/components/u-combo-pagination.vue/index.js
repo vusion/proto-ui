@@ -39,7 +39,7 @@ export const UComboPagination = {
             this.$emit('change-page-size', {
                 pageSize: $event.value,
                 oldPageSize: $event.oldValue,
-                pageSizes: this.pageSizes,
+                pageSizeOptions: this.pageSizeOptions,
             }, this);
         },
     },

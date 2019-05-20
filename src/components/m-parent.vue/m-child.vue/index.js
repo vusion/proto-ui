@@ -14,7 +14,7 @@ export const MChild = {
     created() {
         !this.parentVM && this.$contact(this.$options.parentName, (parentVM) => {
             this.parentVM = parentVM;
-            const index = parentVM.$slots.default.indexOf(this.$vnode);
+            const index = parentVM.$slots.default ? parentVM.$slots.default.indexOf(this.$vnode) : -1;
             if (~index)
                 parentVM.itemVMs.splice(index, 0, this);
             else
