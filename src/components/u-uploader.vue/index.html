@@ -1,17 +1,17 @@
 <div :class="$style.root">
     <template v-if="drag">
-        <div @dragenter="dragenter($event)" @dragover="dragover" @drop="drop">
+        <div @dragenter="dragenter($event)" @dragover="dragover" @drop="drop">           
             <template v-if="dragDefaulted">
                 <div :class="$style.dragDefault" ></div>
             </template>
             <template v-else>
-                <slot></slot>
+                <slot name="dragStyle"></slot>
             </template>
         </div>
     </template>
     <template v-else>
         <div @click="upload()">
-            <slot></slot>
+            <slot name="uploadStyle"></slot>
         </div>
         <form :class="$style.form" ref="form" method="POST" :action="url" :target="'iframe'+ tempId" :enctype="contentType">
             <!-- IE需要重置input[type=file] -->
@@ -25,16 +25,14 @@
     <template v-if="isPreviewFile">
         <ul :class="$style.previewFile">
             <li :class="$style.previewItem" v-for="pfc in previewFileContent">
-                <img :class="$style.previewImage" :src="pfc.src">
+                <template v-if='pfc.src'>
+                    <img :class="$style.previewImage" :src="pfc.src" :alt="pfc.alt">
+                </template>
+                <template v-else>
+                    <div :class="$style.previewImage">{{pfc.name}}</div>
+                </template>
                 <div :class="$style.previewContent" v-if="previewLoding">
-                    <template v-if="loadingStyle === 'defaulted'">
-                        <u-loading display="full">上传中</u-loading>
-                    </template>
-                    <template v-else-if="loadingStyle === 'circular-progress'">
-                        <div style="background: #000;opacity: 0.8;border:1px solid #000;border-radius:3px;">
-                            <u-circular-progress :percent="pfc.loading"></u-circular-progress>
-                        </div>
-                    </template>
+                    <slot name="loadingStyle"></slot>
                 </div>
             </li>
         </ul>

@@ -22,7 +22,6 @@ export const UUploader = {
         isPreviewFile: { type: Boolean, default: false },
         drag: { type: Boolean, default: false },
         dragDefaulted: { type: Boolean, default: false },
-        loadingStyle: { type: String, default: 'defaluted' },
     },
     data() {
         return {
@@ -146,10 +145,16 @@ export const UUploader = {
          * @return {void}
          */
         addFile(file) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
+            const fileName = file.name;
+            const reader = new FileReader(); 
+            if(/\.(jpg|bmp|gif|ico|pcx|jpeg|tif|png|raw|tga)$/gi.test(fileName)) {
+                reader.readAsDataURL(file);
+            } else {
+                reader.readAsBinaryString(file);
+            }     
             const that = this;
             const obj = {};
+            obj.name = fileName;
             reader.onload = function(evt) {
                 obj.src = evt.target.result;
                 that.previewFileContent.push(obj);
@@ -193,7 +198,7 @@ export const UUploader = {
          * @private
          * @return {void}
          */
-        submit(f, o) {
+        submit(f) {
             // const file = this.$refs.file.files ? this.$refs.file.files[0] : {
             //     name: this.$refs.file.value,
             //     size: 0,
@@ -202,13 +207,19 @@ export const UUploader = {
 
             if (!file || !file.name || !this.checkExtensions(file) || !this.checkSize(file))
                 return;
-
+ 
             const fileName = file.name;
             this.file = {
                 name: fileName,
                 extName: fileName.includes('.') ? fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase() : undefined,
                 size: file.size,
             };
+            if(!this.isFileReaderSupported) {
+                let obj = {};
+                obj.alt = fileName;
+                obj.name = fileName;
+                this.previewFileContent.push(obj);
+            }
 
             if (typeof FormData === 'undefined') { // IE9 不支持 XHR2 相关功能
                 /**
@@ -225,8 +236,9 @@ export const UUploader = {
                 if (cancel)
                     return;
 
-                this.sending = true;
-                this.$refs.form.submit();
+                this.sending = true;               
+                if(o) o.loading = 100;
+                // this.$refs.form.submit();
             } else {
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData(this.$refs.form);
@@ -242,10 +254,6 @@ export const UUploader = {
                             loaded: e.loaded,
                             total: e.total,
                         }, this);
-                        /**
-                        *  实时更新loadingProgress的数值
-                        */
-                       o.loading = e.loaded / e.total *100;
                     }
                 }.bind(this);
 

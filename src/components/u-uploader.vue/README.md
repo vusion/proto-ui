@@ -1,37 +1,69 @@
 # UUploader 文件上传
 
 ## 示例
-### 基本形式
+### 基本形式-单文件上传
 
 ``` html
-<u-uploader url="/api/upload">
-    <u-button>upload</u-button>
+<u-uploader url="/upload" isPreviewFile>
+    <u-button slot="uploadStyle">upload</u-button>
 </u-uploader>
 ```
 
 > 注意：在IE中实现上传功能时，需要将响应头的`Content-Type`设置为`text/plain`或`text/html`，而不能是`application/json`，否则IE会提示用户下载返回的数据。
 
+### 基本形式-单文件上传-自定义上传样式
+
+``` html
+<u-uploader url="/upload" isPreviewFile>
+    <i-icon name="github"  slot="uploadStyle"></i-icon>点击图标上传
+    <u-loading display="full" slot="loadingStyle">上传中</u-loading>
+</u-uploader>
+```
+
+### 基本形式-多文件上传
+
+``` html
+<u-uploader url="/upload" multiple isPreviewFile>
+    <u-button slot="uploadStyle">upload</u-button>
+</u-uploader>
+```
+
 ### 文件类型限制
 
 ``` html
-<u-uploader url="/api/upload" extensions="jpg,gif,png">
-    <u-button>upload</u-button>
+<u-uploader url="/upload" extensions="jpg,gif,png">
+    <u-button slot="uploadStyle">upload</u-button>
 </u-uploader>
 ```
 
 ### 文件大小限制
 
 ``` html
-<u-uploader url="/api/upload" max-size="10kB">
-    <u-button>upload</u-button>
+<u-uploader url="/upload" max-size="10kB">
+    <u-button slot="uploadStyle">upload</u-button>
 </u-uploader>
 ```
 
 ### 禁用
 
 ``` html
-<u-uploader url="/api/upload" disabled>
-    <u-button disabled>upload</u-button>
+<u-uploader url="/upload" disabled>
+    <u-button slot="uploadStyle" disabled>upload</u-button>
+</u-uploader>
+```
+
+### 拖拽上传-默认样式
+
+``` html
+<u-uploader url="/upload" drag dragDefaulted isPreviewFile></u-uploader>
+```
+
+
+### 拖拽上传-自定义样式
+
+``` html
+<u-uploader url="/upload" drag isPreviewFile>
+    <u-logo color="inverse" slot="dragStyle">文件拖拽</u-logo>
 </u-uploader>
 ```
 
@@ -47,12 +79,28 @@
 | extensions | String, Array | `''` | 可上传的扩展名。默认为空，表示可上传任意文件类型的文件。可以为字符串，多个扩展名用`,`隔开，如：`'png,jpg,gif'`；也可以为数组，如：`['png', 'jpg', 'gif']` |
 | max-size | String, Number | `Infinity` | 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB` |
 | disabled | Boolean | `false` | 是否禁用 |
+| multiple | Boolean | `false` | 是否多文件上传 |
+| isPreviewFile | Boolean | `false` | 是否展示上传缩略图 |
+| drag | Boolean | `false` | 是否支持拖拽上传 |
+| dragDefaulted | Boolean | `false` | 拖拽上传默认样式 |
 
 ### Slots
 
 #### (default)
 
 插入文本或HTML。
+
+#### uploadStyle
+
+上传样式可以附加组件。
+
+#### loadingStyle
+
+上传的加载样式可以附加组件。
+
+#### dragStyle
+
+拖拽空白区域里可以附加组件。
 
 ### Events
 
