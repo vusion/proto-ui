@@ -9,7 +9,7 @@ export const MValidator = {
     props: {
         name: String,
         label: String,
-        rules: Array,
+        rules: [Array, Object],
         target: { type: String, default: 'auto' },
         ignoreRules: { type: Boolean, default: false },
         message: String,
@@ -95,7 +95,7 @@ export const MValidator = {
         });
 
         this.dispatch(($parent) => $parent.$options.isValidator, 'add-validator-vm', this);
-        if (!this.parentVM)
+        if (!this.parentVM || this.$options.name === 'u-form')
             this.rootVM = this;
 
         this.triggerValid = this.realValid = !(this.currentRules && this.currentRules.length);

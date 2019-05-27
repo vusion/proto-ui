@@ -12,6 +12,7 @@ export const UFormItem = {
         // message: String,
         required: { type: Boolean, default: false },
         labelSize: String,
+        bubble: { type: Boolean, default: false },
     },
     data() {
         return {

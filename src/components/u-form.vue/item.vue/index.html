@@ -2,6 +2,8 @@
     <label :class="$style.label" :required="currentRequired" v-show="label || title || currentLabelSize !== 'auto'">{{ label || title }}</label>
     <div :class="$style.field">
         <slot></slot>
-        <span v-if="currentMessage" :class="$style.message" :color="color">{{ currentMessage }}</span>
+        <span v-if="color === 'focus' && currentMessage" :class="$style.message" color="focus">{{ currentMessage }}</span>
+        <span v-else-if="currentMessage" :class="$style.message" :color="color">{{ currentMessage }}</span>
+        <span v-else-if="bubble && !mutedMessage && touched && !valid && firstError" :class="$style.message" color="error">{{ firstError }}</span>
     </div>
 </div>
