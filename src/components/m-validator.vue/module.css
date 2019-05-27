@@ -1,0 +1,22 @@
+.root {
+    display: inline-block;
+    position: relative;
+}
+
+.message {
+    margin-left: 5px;
+    padding: 0 5px;
+    background: $background-color-base;
+}
+
+.message[color="error"] {
+    background: $brand-error;
+    color: white;
+}
+
+.root[placement="bottom"] .message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-left: 0;
+}

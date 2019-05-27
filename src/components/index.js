@@ -17,6 +17,7 @@ export * from './m-group.vue';
 export * from './m-popper.vue';
 export * from './m-root.vue';
 export * from './m-singlex.vue';
+export * from './m-validator.vue';
 export * from './u-article.vue';
 export * from './u-badge.vue';
 export * from './u-block.vue';

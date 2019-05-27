@@ -6,18 +6,21 @@ export const MField = {
     mixins: [MEmitter],
     data() {
         return {
-            formItemVM: undefined,
+            validatorVM: undefined,
+            formItemVM: undefined, // @compat
         };
     },
     created() {
-        this.dispatch(($parent) => $parent.$options.name && $parent.$options.name.startsWith('u-form-item') || $parent.$options.isField, 'add-field-vm', this);
-        this.$on('input', (value) => this.formItemVM && this.formItemVM.$emit('input', value));
-        this.$on('change', ($event) => this.formItemVM && this.formItemVM.$emit('change', $event));
-        this.$on('focus', () => this.formItemVM && this.formItemVM.$emit('focus'));
-        this.$on('blur', () => this.formItemVM && this.formItemVM.$emit('blur'));
+        this.dispatch(($parent) => $parent.$options.name && $parent.$options.name.startsWith('u-form-item')
+                || $parent.$options.isField || $parent.$options.isValidator, 'add-field-vm', this);
+
+        this.$on('input', (value) => this.validatorVM && this.validatorVM.$emit('input', value));
+        this.$on('change', ($event) => this.validatorVM && this.validatorVM.$emit('change', $event));
+        this.$on('focus', () => this.validatorVM && this.validatorVM.$emit('focus'));
+        this.$on('blur', () => this.validatorVM && this.validatorVM.$emit('blur'));
     },
     destroyed() {
-        this.formItemVM && this.formItemVM.$emit('remove-field-vm', this);
+        this.validatorVM && this.validatorVM.$emit('remove-field-vm', this);
     },
 };
 

@@ -1,0 +1,5 @@
+<div :class="$style.root">
+    <slot></slot>
+    <span v-if="color === 'focus' && currentMessage" :class="$style.message" color="focus">{{ currentMessage }}</span>
+    <span v-else-if="!mutedMessage && touched && !valid && firstError" :class="$style.message" color="error">{{ firstError }}</span>
+</div>
