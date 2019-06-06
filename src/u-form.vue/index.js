@@ -1,6 +1,9 @@
+import Validator from '../u-validator.vue';
 import cloneDeep from 'lodash/cloneDeep';
+
 export default {
     name: 'u-form',
+    mixins: [Validator],
     props: {
         model: Object,
         rules: Object,
@@ -27,7 +30,7 @@ export default {
         this.$on('validate-item-vm', () => {
             this.state = this.getState();
             this.$emit('validate', {
-                valid: this.state === 'success',
+                valid: this.state === 'success' && this.valid,
             });
         });
     },
@@ -45,13 +48,21 @@ export default {
         },
     },
     methods: {
-        validate(silent = false) {
-            return Promise.all(this.itemVMs.map((itemVM) => itemVM.validate('submit', silent)
+        validate(trigger = 'submit', untouched = false) {
+            if (typeof trigger === 'boolean') {
+                untouched = trigger;
+                trigger = 'submit';
+            }
+
+            // @compat
+            return Promise.all([].concat(this.validatorVMs, this.itemVMs).map((validatorVM) => validatorVM.validate('submit', untouched)
                 .catch((errors) => errors)
             )).then((results) => {
                 if (results.some((result) => !!result))
                     throw results;
             });
+
+            // return Validator.methods.validate.call(this, trigger, untouched);
         },
         validateItem(name, trigger = 'submit', silent = false) {
             const itemVM = this.itemVMs.find((itemVM) => itemVM.name === name);

@@ -43,3 +43,13 @@
 .root[layout="block"] > .field {
     vertical-align: top;
 }
+
+.root[layout="none"] {
+    display: inline-block;
+}
+.root[layout="none"] > .label {
+    display: none;
+}
+.root[layout="none"] > .field {
+    max-width: none;
+}

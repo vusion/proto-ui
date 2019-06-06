@@ -94,6 +94,8 @@ import TreeView from './u-tree-view.vue';
 import TreeViewNode from './u-tree-view-node.vue';
 import TreeViewText from './u-tree-view-text.vue';
 import Uploader from './u-uploader.vue';
+import Validator from './u-validator.vue';
+import ValidatorTr from './u-validator-tr.vue';
 import Watermark from './u-watermark.vue';
 
 export {
@@ -192,5 +194,7 @@ export {
     TreeViewNode,
     TreeViewText,
     Uploader,
+    Validator,
+    ValidatorTr,
     Watermark,
 };
