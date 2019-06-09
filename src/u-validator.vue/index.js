@@ -80,6 +80,11 @@ export const UValidator = {
             return this.muted === 'all' || this.muted === 'message';
         },
     },
+    watch: {
+        currentRules() {
+            this.validate('submit', true).catch((errors) => errors);
+        },
+    },
     created() {
         // this.debouncedValidate = debounce(this.validate, 50, { leading: false, trailing: true });
         this.debouncedOnValidate = debounce(this.onValidate, 50, { leading: true, trailing: true });
@@ -133,6 +138,7 @@ export const UValidator = {
             if (this.currentTarget === 'validatorVMs')
                 return;
 
+            this.hasUpdateEvent = true;
             this.value = value;
             // 在没有触碰前，走 @update 事件；在触碰后，走 @input 事件
             if (!this.fieldTouched)
@@ -159,7 +165,9 @@ export const UValidator = {
             if (!this.fieldTouched)
                 this.oldValue = $event.value;
             this.value = $event.value;
-            // this.$nextTick(() => this.debouncedValidate('submit', true));
+            // @compat: 以后推荐使用 @update & @input 事件
+            if (!this.hasUpdateEvent && !this.inputing)
+                this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
             if (this.currentTarget === 'validatorVMs')

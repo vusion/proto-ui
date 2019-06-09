@@ -13,7 +13,6 @@ export default {
         required: { type: Boolean, default: false },
         labelSize: String,
         bubble: { type: Boolean, default: false },
-        hideSlots: { type: Boolean, default: false },
     },
     data() {
         return {

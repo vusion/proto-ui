@@ -70,6 +70,7 @@ export default {
                 return itemVM.validate(trigger, silent);
         },
         getState() {
+            console.warn('[proto-ui]', '<u-form-item>升级为<u-validator>的子类，此函数已废弃。可能是由于你使用了<u-form-items>等其他表单衍生组件，请尽快更新。');
             const STATE_LEVEL = {
                 '': 4,
                 focus: 3,
