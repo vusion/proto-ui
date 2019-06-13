@@ -182,6 +182,7 @@ export default {
                             this.$emit('error', {
                                 name: 'ResponseError',
                                 message: 'No responseText!',
+                                response: xhr.responseText,
                             }, this);
                         }
                     }
@@ -252,6 +253,7 @@ export default {
                 return this.$emit('error', {
                     name: 'ResponseError',
                     message: 'No responseText!',
+                    response: {},
                 }, this);
             }
 
