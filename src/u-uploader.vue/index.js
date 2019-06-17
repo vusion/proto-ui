@@ -166,6 +166,7 @@ export default {
                         this.$emit('progress', {
                             loaded: e.loaded,
                             total: e.total,
+                            xhr,
                         }, this);
                     }
                 }.bind(this);
@@ -182,7 +183,7 @@ export default {
                             this.$emit('error', {
                                 name: 'ResponseError',
                                 message: 'No responseText!',
-                                response: xhr.responseText,
+                                xhr,
                             }, this);
                         }
                     }
@@ -253,7 +254,7 @@ export default {
                 return this.$emit('error', {
                     name: 'ResponseError',
                     message: 'No responseText!',
-                    response: {},
+                    xml,
                 }, this);
             }
 
