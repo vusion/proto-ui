@@ -18,7 +18,8 @@ export default {
             const current = this.$route;
             const target = this.$router.resolve(this.to).route;
             const currentPath = current.path;
-            const targetPath = target.redirectedFrom ? target.redirectedFrom : target.path;
+            const targetPath = target.redirectedFrom ? this.$router.resolve(target.redirectedFrom).location.path : target.path;
+            // @TODO: 是否要检查 query 的包含关系
 
             return this.exact ? currentPath === targetPath : currentPath.startsWith(targetPath);
         },
