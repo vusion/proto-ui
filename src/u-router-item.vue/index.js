@@ -16,9 +16,11 @@ export default {
                 return console.warn('[proto-ui] Use `<u-router-item>` but cannot find vue router.');
 
             const current = this.$route;
-            const resolved = this.$router.resolve(this.to).resolved;
+            const target = this.$router.resolve(this.to).route;
+            const currentPath = current.path;
+            const targetPath = target.redirectedFrom ? target.redirectedFrom : target.path;
 
-            return this.exact ? resolved.path === current.path : current.path.startsWith(resolved.path);
+            return this.exact ? currentPath === targetPath : currentPath.startsWith(targetPath);
         },
     },
     methods: {
