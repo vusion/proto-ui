@@ -50,6 +50,18 @@
 
 在表格中插入`<u-table-view-column>`子组件。
 
+#### loading
+
+自定义加载中。
+
+#### error
+
+自定义错误。
+
+#### empty
+
+自定义空态。
+
 ### Data Events
 
 #### @before-load
