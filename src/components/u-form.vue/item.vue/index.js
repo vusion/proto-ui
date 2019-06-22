@@ -1,8 +1,8 @@
-import MValidator from '../../m-validator.vue';
+import UValidator from '../../u-validator.vue';
 
 export const UFormItem = {
     name: 'u-form-item',
-    mixins: [MValidator],
+    mixins: [UValidator],
     props: {
         // name: String,
         // label: String,
@@ -32,12 +32,6 @@ export const UFormItem = {
         currentLabelSize() {
             return this.labelSize || (this.rootVM && this.rootVM.labelSize) || 'auto';
         },
-    },
-    created() {
-        this.dispatch('u-form', 'add-item-vm', this);
-    },
-    destroyed() {
-        this.dispatch('u-form', 'remove-item-vm', this);
     },
     methods: {
         // onFocus() {

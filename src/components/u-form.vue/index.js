@@ -1,9 +1,9 @@
-import MValidator from '../m-validator.vue';
+import UValidator from '../u-validator.vue';
 import cloneDeep from 'lodash/cloneDeep';
 
 export const UForm = {
     name: 'u-form',
-    mixins: [MValidator],
+    mixins: [UValidator],
     props: {
         model: Object,
         rules: Object,
@@ -30,7 +30,7 @@ export const UForm = {
         this.$on('validate-item-vm', () => {
             this.state = this.getState();
             this.$emit('validate', {
-                valid: this.state === 'success',
+                valid: this.state === 'success' && this.valid,
             }, this);
         });
     },
@@ -54,14 +54,23 @@ export const UForm = {
                 trigger = 'submit';
             }
 
-            return MValidator.methods.validate.call(this, trigger, untouched);
+            // @compat
+            return Promise.all([].concat(this.validatorVMs, this.itemVMs).map((validatorVM) => validatorVM.validate('submit', untouched)
+                .catch((errors) => errors)
+            )).then((results) => {
+                if (results.some((result) => !!result))
+                    throw results;
+            });
+
+            // return Validator.methods.validate.call(this, trigger, untouched);
         },
-        validateItem(name, trigger = 'submit', untouched = false) {
+        validateItem(name, trigger = 'submit', silent = false) {
             const itemVM = this.itemVMs.find((itemVM) => itemVM.name === name);
             if (itemVM)
-                return itemVM.validate(trigger, untouched);
+                return itemVM.validate(trigger, silent);
         },
         getState() {
+            console.warn('[proto-ui]', '<u-form-item>升级为<u-validator>的子类，此函数已废弃。可能是由于你使用了<u-form-items>等其他表单衍生组件，请尽快更新。');
             const STATE_LEVEL = {
                 '': 4,
                 focus: 3,

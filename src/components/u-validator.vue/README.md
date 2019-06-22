@@ -2,14 +2,14 @@
 
 ``` vue
 <template>
-<m-validator>
-    <m-validator :rules="rules.username" muted="message">
+<u-validator>
+    <u-validator :rules="rules.username" muted="message">
         <u-input></u-input>
-    </m-validator>
-    <m-validator :rules="rules.email" muted="message">
+    </u-validator>
+    <u-validator :rules="rules.email" muted="message">
         <u-input></u-input>
-    </m-validator>
-</m-validator>
+    </u-validator>
+</u-validator>
 </template>
 
 <script>

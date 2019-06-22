@@ -2,8 +2,8 @@ import MEmitter from '../m-emitter.vue';
 import Validator from 'vusion-async-validator';
 import debounce from 'lodash/debounce';
 
-export const MValidator = {
-    name: 'm-validator',
+export const UValidator = {
+    name: 'u-validator',
     isValidator: true,
     mixins: [MEmitter],
     props: {
@@ -11,9 +11,11 @@ export const MValidator = {
         label: String,
         rules: [Array, Object],
         target: { type: String, default: 'auto' },
-        ignoreRules: { type: Boolean, default: false },
+        ignoreRules: { type: Boolean, default: false }, // @deprecated
+        ignoreValidate: { type: Boolean, default: false },
         message: String,
         muted: String,
+        validateOptions: Object,
     },
     data() {
         return {
@@ -31,6 +33,7 @@ export const MValidator = {
             fieldVM: undefined,
             parentVM: undefined,
             rootVM: undefined,
+            hasUpdateEvent: false, // @compat
 
             state: '',
             color: '',
@@ -68,20 +71,23 @@ export const MValidator = {
         },
         firstError() {
             if (this.currentTarget === 'validatorVMs') {
-                const validatorVM = this.validatorVMs.find((validatorVM) => validatorVM.firstError);
+                const validatorVM = this.validatorVMs.find((validatorVM) => validatorVM.touched && validatorVM.firstError);
                 return validatorVM ? validatorVM.firstError : undefined;
             } else
-                return this.firstErrorMessage;
+                return this.fieldTouched && this.firstErrorMessage;
         },
         mutedMessage() {
             return this.muted === 'all' || this.muted === 'message';
         },
     },
+    watch: {
+        currentRules() {
+            this.validate('submit', true).catch((errors) => errors);
+        },
+    },
     created() {
-        this.debouncedOnValidate = debounce(this.onValidate, 50, {
-            leading: true,
-            trailing: true,
-        });
+        // this.debouncedValidate = debounce(this.validate, 50, { leading: false, trailing: true });
+        this.debouncedOnValidate = debounce(this.onValidate, 50, { leading: true, trailing: true });
 
         this.$on('add-validator-vm', (validatorVM) => {
             validatorVM.rootVM = this.rootVM;
@@ -94,7 +100,8 @@ export const MValidator = {
             this.validatorVMs.splice(this.validatorVMs.indexOf(validatorVM), 1);
         });
 
-        this.dispatch(($parent) => $parent.$options.isValidator, 'add-validator-vm', this);
+        if (this.$options.name !== 'u-form')
+            this.dispatch(($parent) => $parent.$options.isValidator || $parent.$options.isField, 'add-validator-vm', this);
         if (!this.parentVM || this.$options.name === 'u-form')
             this.rootVM = this;
 
@@ -117,6 +124,7 @@ export const MValidator = {
             fieldVM.formItemVM = undefined; // @compat
         });
 
+        this.$on('update', this.onUpdate);
         this.$on('input', this.onInput);
         this.$on('change', this.onChange);
         this.$on('focus', this.onFocus);
@@ -126,6 +134,16 @@ export const MValidator = {
         this.dispatch(($parent) => $parent.$options.isValidator, 'remove-validator-vm', this);
     },
     methods: {
+        onUpdate(value) {
+            if (this.currentTarget === 'validatorVMs')
+                return;
+
+            this.hasUpdateEvent = true;
+            this.value = value;
+            // 在没有触碰前，走 @update 事件；在触碰后，走 @input 事件
+            if (!this.fieldTouched)
+                this.$nextTick(() => this.validate('submit', true).catch((errors) => errors));
+        },
         onInput(value) {
             if (this.currentTarget === 'validatorVMs')
                 return;
@@ -147,6 +165,9 @@ export const MValidator = {
             if (!this.fieldTouched)
                 this.oldValue = $event.value;
             this.value = $event.value;
+            // @compat: 以后推荐使用 @update & @input 事件
+            if (!this.hasUpdateEvent && !this.inputing)
+                this.validate('submit', true).catch((errors) => errors);
         },
         onFocus() {
             if (this.currentTarget === 'validatorVMs')
@@ -167,15 +188,14 @@ export const MValidator = {
         validate(trigger = 'submit', untouched = false) {
             if (this.currentTarget === 'validatorVMs') {
                 return Promise.all(this.validatorVMs.map((validatorVM) => validatorVM.validate('submit', untouched)
-                    .catch((errors) => errors)
-                )).then((results) => {
+                    .catch((errors) => errors))).then((results) => {
                     if (results.some((result) => !!result))
                         throw results;
                 });
             } else {
                 let rules = this.currentRules;
                 rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
-                if (this.ignoreRules || !rules || !rules.length) {
+                if (this.ignoreRules || this.ignoreValidate || !rules || !rules.length) {
                     this.triggerValid = true;
                     this.realValid = true;
                     this.firstErrorMessage = this.currentMessage = '';
@@ -202,7 +222,7 @@ export const MValidator = {
                 });
 
                 return new Promise((resolve, reject) => {
-                    validator.validate({ [name]: this.value }, { firstFields: true }, (errors, fields) => {
+                    validator.validate({ [name]: this.value }, Object.assign({ firstFields: true }, this.validateOptions), (errors, fields) => {
                         this.pending = false;
                         this.triggerValid = !errors;
                         this.realValid = this.triggerValid; // @TODO
@@ -241,4 +261,4 @@ export const MValidator = {
     },
 };
 
-export default MValidator;
+export default UValidator;
