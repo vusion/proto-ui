@@ -56,7 +56,7 @@ export const UCollapseItem = {
             this.$emit('update:expanded', false, this);
 
             this.$emit('collapse', {}, this);
-            this.parentVM.collapse(this);
+            this.parentVM.onItemCollapse(this);
         },
         toggle(expanded) {
             if (expanded === undefined)

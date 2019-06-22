@@ -12,7 +12,6 @@ export const UInput = {
         clearable: { type: Boolean, default: false },
         autofocus: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
-        posternReadonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
     data() {
