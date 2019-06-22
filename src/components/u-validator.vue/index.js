@@ -16,6 +16,7 @@ export const UValidator = {
         message: String,
         muted: String,
         validateOptions: Object,
+        validateValue: null,
     },
     data() {
         return {
@@ -222,7 +223,8 @@ export const UValidator = {
                 });
 
                 return new Promise((resolve, reject) => {
-                    validator.validate({ [name]: this.value }, Object.assign({ firstFields: true }, this.validateOptions), (errors, fields) => {
+                    const fields = { [name]: this.validateValue === undefined ? this.value : this.validateValue };
+                    validator.validate(fields, Object.assign({ firstFields: true }, this.validateOptions), (errors, fields) => {
                         this.pending = false;
                         this.triggerValid = !errors;
                         this.realValid = this.triggerValid; // @TODO
