@@ -1,4 +1,4 @@
-<div :class="$style.root">
+<div :class="$style.root" v-show="!hidden">
     <div :class="$style.item" :selected="selected"
         :readonly="rootVM.readonly"
         :disabled="currentDisabled"
@@ -26,17 +26,20 @@
     </div>
     <f-collapse-transition>
         <div :class="$style.sub" v-show="currentExpanded">
-            <u-tree-view-node v-if="data"
-            v-for="node in data"
-            :text="node[rootVM.field]"
-            :key="node.key"
-            :value="node.value"
-            :expanded.sync="node.expanded"
-            :checked.sync="node.checked"
-            :disabled="node.disabled"
-            :data="node.children"
-            :node="node"
-            ></u-tree-view-node>
+            <template v-if="data">
+                <u-tree-view-node
+                    v-for="node in data"
+                    :text="node[rootVM.field]"
+                    :key="node.key"
+                    :value="node.value"
+                    :expanded.sync="node.expanded"
+                    :checked.sync="node.checked"
+                    :disabled="node.disabled"
+                    :hidden="node.hidden"
+                    :data="node.children"
+                    :node="node"
+                ></u-tree-view-node>
+            </template>
             <slot></slot>
         </div>
     </f-collapse-transition>

@@ -1,14 +1,17 @@
 <div :class="$style.root" :readonly="readonly" :disabled="disabled">
-    <component :is="ChildComponent" v-if="data"
-        v-for="node in data"
-        :text="node[field]"
-        :key="node.key"
-        :value="node.value"
-        :expanded.sync="node.expanded"
-        :checked.sync="node.checked"
-        :disabled="node.disabled"
-        :data="node.children"
-        :node="node"
-    ></component>
+    <template v-if="data">
+        <component :is="ChildComponent"
+            v-for="node in data"
+            :text="node[field]"
+            :key="node.key"
+            :value="node.value"
+            :expanded.sync="node.expanded"
+            :checked.sync="node.checked"
+            :disabled="node.disabled"
+            :hidden="node.hidden"
+            :data="node.children"
+            :node="node"
+        ></component>
+    </template>
     <slot></slot>
 </div>

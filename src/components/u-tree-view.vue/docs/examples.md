@@ -299,6 +299,29 @@ Tag 方式很容易自定义模板，而 Data 方式却不好扩展。我们提�
 </u-tree-view>
 ```
 
+### 节点显示/隐藏
+
+Tag 方式中可以使用`v-show`，Data 方式中可以使用`hidden`属性
+
+``` html
+<u-tree-view cancelable>
+    <u-tree-view-node v-show="false" text="节点1">
+        <u-tree-view-node text="节点1.1"></u-tree-view-node>
+        <u-tree-view-node text="节点1.2">
+            <u-tree-view-node text="节点1.2.1"></u-tree-view-node>
+            <u-tree-view-node text="节点1.2.2"></u-tree-view-node>
+        </u-tree-view-node>
+        <u-tree-view-node text="节点1.3"></u-tree-view-node>
+        <u-tree-view-node text="节点1.4"></u-tree-view-node>
+    </u-tree-view-node>
+    <u-tree-view-node text="节点2"></u-tree-view-node>
+    <u-tree-view-node text="节点3">
+        <u-tree-view-node text="节点3.1" hidden></u-tree-view-node>
+        <u-tree-view-node text="节点3.2"></u-tree-view-node>
+    </u-tree-view-node>
+</u-tree-view>
+```
+
 ### 多选
 
 通过`checkable`属性开启多选模式。
