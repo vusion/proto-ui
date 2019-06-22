@@ -7,7 +7,6 @@ export const UInput = {
     directives: { focus },
     props: {
         value: [String, Number],
-        defaultValue: [String, Number],
         color: String,
         placeholder: String,
         clearable: { type: Boolean, default: false },
@@ -97,27 +96,6 @@ export const UInput = {
             this.$emit('clear', {
                 oldValue,
                 value: undefined,
-            }, this);
-        },
-        reset() {
-            const oldValue = this.currentValue;
-
-            let cancel = false;
-            this.$emit('before-reset', {
-                oldValue,
-                value: this.defaultValue,
-                preventDefault: () => cancel = true,
-            });
-            if (cancel)
-                return;
-
-            this.currentValue = this.defaultValue;
-            this.$emit('input', this.defaultValue, this);
-            this.$emit('update:value', this.defaultValue, this);
-
-            this.$emit('reset', {
-                oldValue,
-                value: this.defaultValue,
             }, this);
         },
     },

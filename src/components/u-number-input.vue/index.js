@@ -8,9 +8,9 @@ export const UNumberInput = {
     mixins: [MField],
     directives: { repeatClick },
     props: {
-        // 只能传入数字
+        // String 类型是为了验证抛出
         value: { type: [Number, String], default: 0 },
-        defaultValue: Number,
+        defaultValue: [String, Number],
         min: { type: Number, default: -Infinity },
         max: { type: Number, default: Infinity },
         step: { type: Number, default: 1, validator: (step) => step >= 0 },
@@ -168,35 +168,6 @@ export const UNumberInput = {
                 this.input(this.currentFormatter.parse(this.formattedValue));
 
             this.$emit('blur', e, this);
-        },
-        reset() {
-            const oldValue = this.currentValue;
-
-            let cancel = false;
-            this.$emit('before-reset', {
-                oldValue,
-                value: this.defaultValue,
-                preventDefault: () => cancel = true,
-            });
-            if (cancel)
-                return;
-
-            this.currentValue = this.defaultValue;
-            this.formattedValue = this.currentFormatter.format(this.defaultValue);
-            this.$emit('input', this.defaultValue, this);
-            this.$emit('update:value', this.defaultValue, this);
-
-            this.$emit('reset', {
-                oldValue,
-                value: this.defaultValue,
-            }, this);
-
-            this.$emit('change', {
-                value: this.defaultValue,
-                oldValue,
-                formattedValue: this.formattedValue,
-                valid: this.isValid(this.defaultValue),
-            });
         },
     },
 };
