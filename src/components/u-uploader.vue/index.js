@@ -166,6 +166,7 @@ export const UUploader = {
                         this.$emit('progress', {
                             loaded: e.loaded,
                             total: e.total,
+                            xhr,
                         }, this);
                     }
                 }.bind(this);
@@ -182,6 +183,7 @@ export const UUploader = {
                             this.$emit('error', {
                                 name: 'ResponseError',
                                 message: 'No responseText!',
+                                xhr,
                             }, this);
                         }
                     }
@@ -252,6 +254,7 @@ export const UUploader = {
                 return this.$emit('error', {
                     name: 'ResponseError',
                     message: 'No responseText!',
+                    xml,
                 }, this);
             }
 
@@ -270,6 +273,7 @@ export const UUploader = {
             this.$emit('success', {
                 data: this.parseData(xml, this.dataType),
                 file,
+                xml,
             }, this);
         },
         /**

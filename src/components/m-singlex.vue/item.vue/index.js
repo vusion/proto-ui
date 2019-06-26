@@ -31,9 +31,12 @@ export const MSinglexItem = {
                 return console.warn('[proto-ui] Use `<m-router-item>` but cannot find vue router.');
 
             const current = this.$route;
-            const location = this.$router.resolve(this.to).location;
+            const target = this.$router.resolve(this.to).route;
+            const currentPath = current.path;
+            const targetPath = target.redirectedFrom ? this.$router.resolve(target.redirectedFrom).location.path : target.path;
+            // @TODO: 是否要检查 query 的包含关系
 
-            return this.exact ? location.path === current.path : (current.path + '/').startsWith(location.path + '/');
+            return this.exact ? currentPath === targetPath : currentPath.startsWith(targetPath);
         },
     },
     methods: {
