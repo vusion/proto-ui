@@ -56,7 +56,7 @@ export const USelect = {
     computed: {
         filtering() {
             return {
-                text: {
+                [this.field]: {
                     operator: this.matchMethod,
                     value: this.filterText,
                     caseInsensitive: !this.caseSensitive,

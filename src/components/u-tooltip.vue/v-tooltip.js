@@ -8,9 +8,9 @@ const directive = {
     handle(binding) {
         const data = {
             content: binding.value,
-            trigger: undefined,
-            placement: undefined,
-            size: undefined,
+            trigger: 'hover',
+            placement: 'bottom',
+            size: 'normal',
             followCursor: binding.modifiers.cursor,
         };
 

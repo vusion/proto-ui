@@ -88,10 +88,10 @@ export const UToast = {
         if (!Ctor)
             return;
 
-        Vue.prototype.$toast = UToast.toast = new Ctor();
+        Vue.prototype.$toast = this.toast = new Ctor();
 
         const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
-        METHODS.forEach((method) => UToast[method] = UToast.toast[method].bind(UToast.toast));
+        METHODS.forEach((method) => this[method] = this.toast[method].bind(this.toast));
     },
 };
 
