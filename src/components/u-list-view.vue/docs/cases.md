@@ -46,7 +46,6 @@ export default {
             test: [],
             rules: [
                 { required: true, trigger: 'input', validator(rule, value, cb) {
-                    console.log(value);
                     cb();
                 } },
             ],
