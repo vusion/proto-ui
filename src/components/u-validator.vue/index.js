@@ -209,7 +209,7 @@ export const UValidator = {
                 let rules = this.currentRules;
 
                 // 新版
-                if (typeof rules === 'string' || rules.some((rule) => rule.validate)) {
+                if (typeof rules === 'string' || Array.isArray(rules) && rules.some((rule) => rule.validate)) {
                     this.triggerValid = true;
                     this.realValid = true;
                     if (this.ignoreRules || this.ignoreValidating) {
