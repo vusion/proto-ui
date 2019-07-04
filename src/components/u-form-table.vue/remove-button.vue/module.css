@@ -1,0 +1,8 @@
+.root {}
+
+.root::before {
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    icon-font: url('../../i-icon.vue/assets/remove.svg');
+}

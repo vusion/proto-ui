@@ -1,0 +1,8 @@
+.root {}
+
+.root::before {
+    font-size: 22px;
+    display: inline-block;
+    vertical-align: -6px;
+    icon-font: url('../../i-icon.vue/assets/add.svg');
+}

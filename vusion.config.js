@@ -43,6 +43,7 @@ module.exports = {
             // { group: 'Layout', name: 'u-desc-list', alias: '描述列表' },
             // { group: 'Layout', name: 'u-info-list', alias: '信息列表' },
             { group: 'Layout', name: 'u-table', alias: '表格' },
+            { group: 'Layout', name: 'u-form-table', alias: '表单表格' },
             { group: 'Layout', name: 'u-article', alias: '文章' },
             { group: 'Layout', name: 'u-collapse', alias: '折叠面板' },
             { group: 'Navigation', name: 'u-navbar', alias: '导航栏' },
