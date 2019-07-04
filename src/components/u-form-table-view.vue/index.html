@@ -1,0 +1,34 @@
+<div :class="$style.root" direction="vertical" gap="small">
+    <u-form-table :class="$style.table" v-bind="$attrs">
+        <thead><tr>
+            <th v-for="(columnVM, index) in columnVMs"
+                :width="columnVM.width">
+                <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
+                <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
+                <span v-else>{{ columnVM.title }}</span>
+            </th>
+            <th v-if="dynamic" :class="$style['last-column']"></th>
+        </tr></thead>
+        <tbody>
+            <u-form-table-view-row :class="$style.row" v-for="(item, index) in currentData" :key="index">
+                <td :class="$style.cell" v-for="columnVM in columnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                    <u-validator display="block" :label="columnVM.title" :action="columnVM.action"
+                        :rules="columnVM.rules" :muted="columnVM.muted"
+                        :ignore-validating="columnVM.ignoreValidating"
+                        :validating-options="columnVM.validatingOptions"
+                        :validating-value="columnVM.validatingValue">
+                        <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
+                        <f-render v-else-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
+                        <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
+                        <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
+                    </u-validator>
+                </td>
+                <template #last-column v-if="dynamic">
+                    <u-form-table-remove-button @click="remove(index)" :disabled="currentData.length <= minCount"></u-form-table-remove-button>
+                </template>
+            </u-form-table-view-row>
+        </tbody>
+    </u-form-table>
+    <u-form-table-add-button :class="$style['add-button']" v-if="dynamic" @click="add()" :disabled="currentData.length >= maxCount">{{ $t('add') }}</u-form-table-add-button>
+    <slot></slot>
+</div>

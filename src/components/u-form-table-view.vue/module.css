@@ -1,0 +1,9 @@
+.root {}
+
+.last-column {
+    width: 40px;
+}
+
+.add-button {
+    margin-top: $margin-small;
+}

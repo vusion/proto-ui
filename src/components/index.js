@@ -33,6 +33,7 @@ export * from './u-crumb.vue';
 export * from './u-drawer.vue';
 export * from './u-form.vue';
 export * from './u-form-table.vue';
+export * from './u-form-table-view.vue';
 export * from './u-grid-layout.vue';
 export * from './u-input.vue';
 export * from './u-label.vue';

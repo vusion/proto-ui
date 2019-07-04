@@ -1,5 +1,10 @@
 .root {}
 
+.root[disabled] {
+    cursor: not-allowed;
+    color: $brand-disabled;
+}
+
 .root::before {
     font-size: 24px;
     display: inline-block;
