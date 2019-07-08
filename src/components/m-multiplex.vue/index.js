@@ -6,12 +6,8 @@ export const MMultiplex = {
     groupName: 'm-multiplex-group',
     childName: 'm-multiplex-item',
     mixins: [MEmitter, MParent],
-    model: {
-        prop: 'values',
-        event: 'input',
-    },
     props: {
-        values: Array,
+        value: Array,
         keepOrder: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -24,29 +20,29 @@ export const MMultiplex = {
         };
     },
     watch: {
-        values(values, oldValues) {
-            if (!Array.isArray(values))
-                throw new Error('`values` should be an Array!');
+        value(value, oldValue) {
+            if (!Array.isArray(value))
+                throw new Error('`value` should be an Array!');
 
             // @TODO: 因为是同一个数组。。没有好的剪枝方法
-            // if (values !== oldValues && values.length === oldValues.length
-            //     && values.every((val, index) => val === oldValues[index]))
+            // if (value !== oldValue && value.length === oldValue.length
+            //     && value.every((val, index) => val === oldValue[index]))
             //     return;
 
-            this.watchValues(values);
+            this.watchValue(value);
         },
         selectedVMs(selectedVMs, oldVMs) {
-            // const oldValues = oldVMs.map((itemVM) => itemVM.value);
-            const values = selectedVMs.map((itemVM) => itemVM.value);
+            // const oldValue = oldVMs.map((itemVM) => itemVM.value);
+            const value = selectedVMs.map((itemVM) => itemVM.value);
 
             // @TODO: 因为是同一个数组。。没有好的剪枝方法
-            // if (values.length === oldValues.length && values.every((val, index) => val === oldValues[index]))
+            // if (value.length === oldValue.length && value.every((val, index) => val === oldValue[index]))
             //     return;
 
             const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
             this.$emit('change', {
-                values,
-                // @TODO: oldValues,
+                value,
+                // @TODO: oldValue,
                 items: selectedItems,
                 itemVMs: selectedVMs,
             });
@@ -54,31 +50,31 @@ export const MMultiplex = {
         // This method just run once after pushing many itemVMs
         itemVMs() {
             // 更新列表之后，原来的选择可能已不存在，这里需要重新查找一遍
-            this.watchValues(this.values);
+            this.watchValue(this.value);
         },
     },
     // mounted() {
-    // Don't need trigger `values` watcher at mounted hook.
+    // Don't need trigger `value` watcher at mounted hook.
     // Because there's a watcher for itemVMs.
-    // this.watchValues(this.values);
+    // this.watchValue(this.value);
     // },
     methods: {
-        watchValues(values) {
+        watchValue(value) {
             const selectedVMs = [];
-            if (values) {
+            if (value) {
                 if (!this.keepOrder) {
-                    values.forEach((val) => {
+                    value.forEach((val) => {
                         const itemVM = this.itemVMs.find((itemVM) => itemVM.value === val);
                         itemVM && selectedVMs.push(itemVM);
                     });
                 } else {
                     this.itemVMs.forEach((itemVM) => {
-                        if (values.includes(itemVM.value))
+                        if (value.includes(itemVM.value))
                             selectedVMs.push(itemVM);
                     });
                 }
                 // 必须单独指定一遍，因为有取消掉的
-                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = values.includes(itemVM.value));
+                this.itemVMs.forEach((itemVM) => itemVM.currentSelected = value.includes(itemVM.value));
             } else {
                 this.itemVMs.forEach((itemVM) => itemVM.currentSelected && selectedVMs.push(itemVM));
             }
@@ -107,7 +103,7 @@ export const MMultiplex = {
             if (itemVM.currentSelected === selected)
                 return;
 
-            const oldValues = this.values;
+            const oldValue = this.value;
             const oldVMs = this.selectedVMs;
             const oldItems = oldVMs.map((itemVM) => itemVM.item);
 
@@ -116,7 +112,7 @@ export const MMultiplex = {
                 selected,
                 item: itemVM && itemVM.item,
                 itemVM,
-                oldValues,
+                oldValue,
                 oldItems,
                 oldVMs,
             }, this))
@@ -127,19 +123,19 @@ export const MMultiplex = {
             itemVM.$emit('update:selected', selected);
             this.watchSelectedChange(itemVM);
 
-            // Assign and sync `values`
+            // Assign and sync `value`
             const selectedVMs = this.selectedVMs;
-            const values = selectedVMs.map((itemVM) => itemVM.value);
+            const value = selectedVMs.map((itemVM) => itemVM.value);
             const selectedItems = selectedVMs.map((itemVM) => itemVM.item);
-            this.$emit('input', values, this);
-            this.$emit('update:values', values, this);
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
 
             this.$emit('select', {
                 selected: itemVM.currentSelected,
                 item: itemVM.item,
                 itemVM,
-                values,
-                oldValues,
+                value,
+                oldValue,
                 items: selectedItems,
                 oldItems,
                 itemVMs: selectedVMs,

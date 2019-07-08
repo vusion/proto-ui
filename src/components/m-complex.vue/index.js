@@ -6,13 +6,8 @@ export const MComplex = {
     groupName: 'm-complex-group',
     childName: 'm-complex-item',
     mixins: [MSinglex, MMultiplex],
-    model: {
-        prop: 'value',
-        event: 'input',
-    },
     props: {
-        // @inherit: value: null,
-        // @inherit: values: Array,
+        value: null,
         // @inherit: autoSelect: { type: Boolean, default: false },
         // @inherit: cancelable: { type: Boolean, default: false },
         // @inherit: router: { type: Boolean, default: false },
@@ -31,6 +26,9 @@ export const MComplex = {
         };
     },
     watch: {
+        value(value, oldValue) {
+            (this.currentMultiple ? MMultiplex : MSinglex).watch.value.call(this, value, oldValue);
+        },
         multiple(multiple) {
             this.currentMultiple = multiple;
         },
@@ -40,6 +38,9 @@ export const MComplex = {
         },
     },
     methods: {
+        watchValue(value) {
+            (this.currentMultiple ? MMultiplex : MSinglex).methods.watchValue.call(this, value);
+        },
         select(itemVM, selected) {
             (this.currentMultiple ? MMultiplex : MSinglex).methods.select.call(this, itemVM, selected);
         },

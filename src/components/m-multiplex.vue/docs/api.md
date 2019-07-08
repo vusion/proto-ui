@@ -6,7 +6,7 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| values.sync, v-model | Array | | 所有选中项的值 |
+| value.sync, v-model | Array | | 所有选中项的值 |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 
@@ -27,7 +27,7 @@
 | $event.selected | Boolean | 选中还是取消 |
 | $event.item | Boolean | 该选中项相关对象 |
 | $event.itemVM | Boolean | 该选中项子组件 |
-| $event.oldValues | Array | 旧的所有选中项的值 |
+| $event.oldValue | Array | 旧的所有选中项的值 |
 | $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
 | $event.oldVMs | Array\<MMultiplexItem\> | 旧的所有选中项子组件的数组 |
 | $event.preventDefault | Function | 阻止选择流程 |
@@ -51,8 +51,8 @@
 | $event.selected | Boolean | 选中还是取消 |
 | $event.item | Boolean | 该选中项相关对象 |
 | $event.itemVM | Boolean | 该选中项子组件 |
-| $event.values | Array | 改变后的值 |
-| $event.oldValues | Array | 旧的值 |
+| $event.value | Array | 改变后的值 |
+| $event.oldValue | Array | 旧的值 |
 | $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
 | $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
@@ -65,7 +65,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.values | Array | 所有选中项的值 |
+| $event.value | Array | 所有选中项的值 |
 | $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
 | senderVM | MMultiplex | 发送事件实例 |

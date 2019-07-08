@@ -11,7 +11,7 @@ export const USelect = {
     directives: { ellipsisTitle },
     props: {
         // @inherit: value: { type: String, default: '' },
-        // @inherit: values: Array,
+        // @inherit: value: Array,
         // @inherit: field: { type: String, default: 'text' },
         // @inherit: data: Array,
         // @inherit: dataSource: [DataSource, Function, Object],
@@ -289,21 +289,21 @@ export const USelect = {
             this.preventBlur = true;
 
             if (this.multiple) {
-                const oldValues = this.values;
-                const values = [];
+                const oldValue = this.value;
+                const value = [];
 
-                if (this.$emitPrevent('before-clear', { oldValues, values }, this))
+                if (this.$emitPrevent('before-clear', { oldValue, value }, this))
                     return;
 
                 this.selectedVMs.forEach((itemVM) => itemVM.currentSelected = false);
                 this.selectedVMs = [];
                 this.filterText = '';
                 this.fastLoad();
-                this.$emit('update:values', values, this);
+                this.$emit('update:value', value, this);
 
                 this.$emit('clear', {
-                    oldValues,
-                    values,
+                    oldValue,
+                    value,
                 }, this);
             } else {
                 const oldValue = this.value;

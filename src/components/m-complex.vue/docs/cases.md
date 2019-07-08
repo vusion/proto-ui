@@ -39,7 +39,7 @@ export default {
 
 ``` vue
 <template>
-<m-complex multiple :values.sync="values">
+<m-complex multiple v-model="values">
     <m-complex-item value="cup">水杯</m-complex-item>
     <m-complex-item value="coffee">咖啡</m-complex-item>
     <m-complex-item value="nut">坚果</m-complex-item>

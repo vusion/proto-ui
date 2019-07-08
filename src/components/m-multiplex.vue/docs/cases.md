@@ -12,7 +12,7 @@
 
 ### 双向绑定
 
-可以使用`v-model`或`:values.sync`两种方式进行双向绑定。
+可以使用`v-model`或`:value.sync`两种方式进行双向绑定。
 
 ``` vue
 <template>
@@ -24,7 +24,7 @@
         <m-multiplex-item value="towel">毛巾</m-multiplex-item>
         <m-multiplex-item value="sofa">沙发</m-multiplex-item>
     </m-multiplex>
-    <m-multiplex :values.sync="values">
+    <m-multiplex :value.sync="values">
         <m-multiplex-item value="cup">水杯</m-multiplex-item>
         <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
         <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -132,7 +132,7 @@ export default {
 ``` html
 <u-grid-layout>
     <u-grid-layout-column :span="4">
-        <m-multiplex :values="['nut', 'towel']" readonly>
+        <m-multiplex :value="['nut', 'towel']" readonly>
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -141,7 +141,7 @@ export default {
         </m-multiplex>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <m-multiplex :values="['nut', 'towel']" disabled>
+        <m-multiplex :value="['nut', 'towel']" disabled>
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut">坚果</m-multiplex-item>
@@ -150,7 +150,7 @@ export default {
         </m-multiplex>
     </u-grid-layout-column>
     <u-grid-layout-column :span="4">
-        <m-multiplex :values="['nut', 'towel']">
+        <m-multiplex :value="['nut', 'towel']">
             <m-multiplex-item value="cup">水杯</m-multiplex-item>
             <m-multiplex-item value="coffee">咖啡</m-multiplex-item>
             <m-multiplex-item value="nut" disabled>坚果</m-multiplex-item>

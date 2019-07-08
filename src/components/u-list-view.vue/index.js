@@ -11,7 +11,7 @@ export const UListView = {
     mixins: [MComplex, MGroupParent, MField],
     props: {
         // @inherit: value: null,
-        // @inherit: values: Array,
+        // @inherit: value: Array,
         field: { type: String, default: 'text' },
         data: Array,
         dataSource: [DataSource, Function, Object],

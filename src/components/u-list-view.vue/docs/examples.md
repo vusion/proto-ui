@@ -168,11 +168,11 @@
 
 ### 多项选择
 
-多选绑定`values`属性时，不能用`v-model`，只能用`:values.sync`。
+可以使用`v-model`或`:value.sync`两种方式进行双向绑定。
 
 ``` vue
 <template>
-<u-list-view multiple :values.sync="values">
+<u-list-view multiple v-model="values">
     <u-list-view-item value="cup">水杯</u-list-view-item>
     <u-list-view-item value="nut">坚果</u-list-view-item>
     <u-list-view-item value="towel">毛巾</u-list-view-item>

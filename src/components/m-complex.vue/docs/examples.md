@@ -14,8 +14,7 @@
 
 ### 选项值
 
-- 单选绑定`value`属性，可以用`v-model`或`:value.sync`
-- 多选绑定`values`属性，不能用`v-model`，只能用`:values.sync`
+绑定`value`属性，可以用`v-model`或`:value.sync`。
 
 #### 单选模式
 
@@ -44,7 +43,7 @@ export default {
 
 ``` vue
 <template>
-<m-complex multiple :values.sync="values">
+<m-complex multiple v-model="values">
     <m-complex-item value="cup">水杯</m-complex-item>
     <m-complex-item value="coffee">咖啡</m-complex-item>
     <m-complex-item value="nut">坚果</m-complex-item>
