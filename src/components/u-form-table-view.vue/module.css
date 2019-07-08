@@ -4,6 +4,6 @@
     width: 40px;
 }
 
-.add-button {
+.add-button[class] {
     margin-top: $margin-small;
 }

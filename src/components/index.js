@@ -8,6 +8,7 @@ export * from './f-forbidden.vue';
 export * from './f-render.vue';
 export * from './i-icon.vue';
 export * from './m-complex.vue';
+export * from './m-dynamic.vue';
 export * from './m-emitter.vue';
 export * from './m-field.vue';
 export * from './m-group.vue';

@@ -7,6 +7,7 @@ export const MDynamic = {
         data: Array,
         dynamic: { type: Boolean, default: true },
         getDefaultItem: Function,
+        initialAdd: { type: Boolean, default: true },
         minCount: { type: Number, default: 1 },
         maxCount: { type: Number, default: Infinity },
     },
@@ -20,6 +21,13 @@ export const MDynamic = {
             this.currentData = data;
         },
     },
+    created() {
+        const needCount = this.minCount - this.currentData.length;
+        if (this.initialAdd && needCount > 0) {
+            for (let i = 0; i < needCount; i++)
+                this.add();
+        }
+    },
     methods: {
         add() {
             const item = this.getDefaultItem ? this.getDefaultItem() : {};
@@ -27,6 +35,7 @@ export const MDynamic = {
             if (this.$emitPrevent('before-add', {
                 item,
                 index,
+                data: this.currentData,
             }, this))
                 return;
 
@@ -34,6 +43,12 @@ export const MDynamic = {
             this.$emit('add', {
                 item,
                 index,
+                data: this.currentData,
+            }, this);
+            this.$emit('splice', {
+                item,
+                index,
+                data: this.currentData,
             }, this);
         },
         remove(index) {
@@ -41,6 +56,7 @@ export const MDynamic = {
             if (this.$emitPrevent('before-remove', {
                 item,
                 index,
+                data: this.currentData,
             }, this))
                 return;
 
@@ -48,6 +64,12 @@ export const MDynamic = {
             this.$emit('remove', {
                 item,
                 index,
+                data: this.currentData,
+            }, this);
+            this.$emit('splice', {
+                item,
+                index,
+                data: this.currentData,
             }, this);
         },
     },
