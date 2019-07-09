@@ -20,8 +20,8 @@ export const UValidator = {
         message: String,
         muted: String,
         ignoreRules: { type: Boolean, default: false }, // @deprecated
-        ignoreValidating: { type: Boolean, default: false },
-        validationOptions: Object,
+        ignoreValidation: { type: Boolean, default: false },
+        validatingOptions: Object,
         validatingValue: null,
     },
     data() {
@@ -212,7 +212,7 @@ export const UValidator = {
                 if (typeof rules === 'string' || Array.isArray(rules) && rules.some((rule) => rule.validate)) {
                     this.triggerValid = true;
                     this.realValid = true;
-                    if (this.ignoreRules || this.ignoreValidating) {
+                    if (this.ignoreRules || this.ignoreValidation) {
                         this.firstErrorMessage = this.currentMessage = '';
                         this.color = '';
 
@@ -296,7 +296,7 @@ export const UValidator = {
 
                     return new Promise((resolve, reject) => {
                         const fields = { [name]: this.validatingValue === undefined ? this.value : this.validatingValue };
-                        validator.validate(fields, Object.assign({ firstFields: true }, this.validationOptions), (errors, fields) => {
+                        validator.validate(fields, Object.assign({ firstFields: true }, this.validatingOptions), (errors, fields) => {
                             this.pending = false;
                             this.triggerValid = !errors;
                             this.realValid = this.triggerValid; // @TODO
