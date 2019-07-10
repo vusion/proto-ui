@@ -79,6 +79,15 @@ export default {
             // 不直接用样式的显隐，而用popper的create和destroy，popper有可能是从不同的地方触发的，reference对象会变
             value ? this.createPopper() : this.destroyPopper();
         },
+        /**
+         * 问题： 现在popper不支持动态改变reference 导致popper的位置显示有问题
+         * 解决方法： 暂时在popper.js文档中未找到理想的解决方案，采取先删除popper 新创建popper的方案修复位置问题，后面需要研究下popper.js的源码
+         *
+         */
+        reference() {
+            this.destroyPopper();
+            this.createPopper();
+        },
     },
     render(h) {
         if (this.reference === 'parent')
@@ -207,6 +216,9 @@ export default {
         },
         update() {
             this.popper && this.popper.update();
+        },
+        scheduleUpdate() {
+            this.popper && this.popper.scheduleUpdate();
         },
         destroyPopper() {
             const referenceEl = this.getReferenceEl();
