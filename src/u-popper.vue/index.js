@@ -80,9 +80,9 @@ export default {
             value ? this.createPopper() : this.destroyPopper();
         },
         /**
-         * 问题： 现在popper不支持动态改变reference 导致popper的位置显示有问题
-         * 解决方法： 暂时在popper.js文档中未找到理想的解决方案，采取先删除popper 新创建popper的方案修复位置问题，后面需要研究下popper.js的源码
-         *
+         * 问题：现在的 popper 不支持动态改变 reference，导致 popper 的位置显示有问题
+         * 解决方法：暂时在 popper.js 文档中未找到理想的解决方案，采取先删除 popper，再新创建 popper 的方法修复位置问题，
+         * 后面需要研究下 popper.js 的源码
          */
         reference() {
             this.destroyPopper();
