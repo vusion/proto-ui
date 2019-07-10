@@ -238,7 +238,7 @@ export const UValidator = {
                         Object.assign({
                             label: this.label || '字段',
                             action: this.action || '输入',
-                        }, this.validationOptions),
+                        }, this.validatingOptions),
                     ).then(() => {
                         this.pending = false;
                         this.triggerValid = true;
@@ -270,7 +270,7 @@ export const UValidator = {
                     this.triggerValid = true;
                     this.realValid = true;
                     rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
-                    if (this.ignoreRules || this.ignoreValidating || !rules || !rules.length) {
+                    if (this.ignoreRules || this.ignoreValidation || !rules || !rules.length) {
                         this.firstErrorMessage = this.currentMessage = '';
                         this.color = '';
 
