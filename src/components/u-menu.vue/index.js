@@ -14,15 +14,9 @@ export const UMenu = {
         };
     },
     created() {
-        let popperChildVM = this.$parent;
-        while (popperChildVM && popperChildVM.$options.name !== 'm-popper-child')
-            popperChildVM = popperChildVM.$parent;
-        if (popperChildVM && popperChildVM.parentVM)
-            this.parentVM = popperChildVM.parentVM;
-
         this.$on('select', ({ itemVM }) => {
             this.router && itemVM.navigate();
-            // this.parentVM && this.parentVM.toggle(false);
+            this.$parent && this.$parent.close && this.$parent.close();
         });
     },
 };
