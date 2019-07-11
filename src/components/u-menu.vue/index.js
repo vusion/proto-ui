@@ -13,11 +13,13 @@ export const UMenu = {
             parentVM: undefined,
         };
     },
-    created() {
-        this.$on('select', ({ itemVM }) => {
-            this.router && itemVM.navigate();
-            this.$parent && this.$parent.close && this.$parent.close();
-        });
+    methods: {
+        onClick(e) {
+            if (this.$parent && this.$parent.$options.isPopper)
+                this.$parent.close();
+
+            this.$emit('click', e, this);
+        },
     },
 };
 

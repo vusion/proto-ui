@@ -5,6 +5,7 @@ import ev from '../../utils/event';
 export const MPopper = {
     name: 'm-popper',
     mixins: [MEmitter],
+    isPopper: true,
     props: {
         opened: { type: Boolean, default: false },
         trigger: { type: String, default: 'click' },
