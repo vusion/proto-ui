@@ -37,11 +37,11 @@ export const solveCondition = (condition, obj) => {
             else if (expression.operator === '>=' || expression.operator === 'gte')
                 return sourceValue >= targetValue;
             else if (expression.operator === 'includes')
-                return sourceValue.includes(targetValue);
+                return String(sourceValue).includes(targetValue);
             else if (expression.operator === 'startsWith')
-                return sourceValue.startsWith(targetValue);
+                return String(sourceValue).startsWith(targetValue);
             else if (expression.operator === 'endsWith')
-                return sourceValue.endsWith(targetValue);
+                return String(sourceValue).endsWith(targetValue);
             else
                 throw new TypeError('Unknown operator in conditions!');
         });
