@@ -122,6 +122,7 @@
 }
 
 .cell {
+    position: relative;
     white-space: normal;
     word-break: break-all;
     /* 解决在火狐浏览器下英文换行显示问题 */
@@ -141,4 +142,21 @@
 
 .row[selected] {
     background: #d7e5fb !important;
+}
+
+.expander {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    transform: rotate(-180deg);
+}
+
+.expander::before {
+    content: '▾';
+}
+
+.expander[expanded] {
+    transform: rotate(0);
 }

@@ -22,8 +22,8 @@ export const UFormTableViewColumn = {
         // message: String,
         muted: { type: String, default: 'message' },
         ignoreRules: { type: Boolean, default: false }, // @deprecated
-        ignoreValidating: { type: Boolean, default: false },
-        validationOptions: Object,
+        ignoreValidation: { type: Boolean, default: false },
+        validatingOptions: Object,
         validatingValue: null,
     },
     data() {

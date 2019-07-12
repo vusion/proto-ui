@@ -13,20 +13,27 @@
                 <thead><tr>
                     <th :class="$style['head-title']" v-for="(columnVM, index) in visibleColumnVMs"
                         :sortable="columnVM.sortable" :filterable="!!columnVM.filters" @click="columnVM.sortable && sortTrigger === 'head' && onClickSort(columnVM)">
+                        <!-- type === 'checkbox' -->
                         <span v-if="columnVM.type === 'checkbox'">
                             <u-checkbox :value="allChecked" @check="checkAll($event.value)"></u-checkbox>
                         </span>
-                        <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
-                        <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
-                        <span v-else>{{ columnVM.title }}</span>
+                        <!-- Normal title -->
+                        <template>
+                            <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
+                            <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
+                            <span v-else>{{ columnVM.title }}</span>
+                        </template>
+                        <!-- Sortable -->
                         <span v-if="columnVM.sortable" :class="$style.sort"
                             :sorting="currentSorting && currentSorting.field === columnVM.field" :order="currentSorting && currentSorting.order"
                             @click="sortTrigger === 'icon' && ($event.stopPropagation(), onClickSort(columnVM))"></span>
+                        <!-- Filterable -->
                         <span v-if="columnVM.filters" :class="$style.filter">
                             <u-table-view-filters :value="getFiltersValue(columnVM.field)" @select="onSelectFilters(columnVM.field, $event)">
                                 <u-table-view-filter v-for="filter in columnVM.filters" :key="filter.value" :value="filter.value">{{ filter.text }}</u-table-view-filter>
                             </u-table-view-filters>
                         </span>
+                        <!-- Resizable -->
                         <f-dragger v-if="resizable && index !== visibleColumnVMs.length - 1" axis="horizontal"
                             @dragstart="onResizerDragStart($event, columnVM)"
                             @drag="onResizerDrag($event, columnVM, index)"
@@ -58,22 +65,35 @@
                             <slot name="empty">{{ emptyText }}</slot>
                         </td>
                     </tr>
-                    <template v-else>
-                        <tr :class="$style.row" v-for="(item, index) in currentData" :key="valueField !== 'undefined' ? item[valueField] : index"
-                            :selected="selectable && selectedItem === item" @click="selectable && select(item)">
+                    <template v-else v-for="(item, index) in currentData">
+                        <tr :key="valueField !== 'undefined' ? item[valueField] : index" :class="$style.row" :selected="selectable && selectedItem === item" @click="selectable && select(item)">
                             <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                                <!-- type === 'index' -->
                                 <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
-                                <span v-else-if="columnVM.type === 'radio'">
+                                <!-- type === 'radio' -->
+                                <span v-if="columnVM.type === 'radio'">
                                     <u-radio :value="selectedItem === item" :disabled="item.disabled" @click.native="select(item)"></u-radio>
                                 </span>
-                                <span v-else-if="columnVM.type === 'checkbox'">
+                                <!-- type === 'checkbox' -->
+                                <span v-if="columnVM.type === 'checkbox'">
                                     <u-checkbox :value="item.checked" :label="item[valueField]" :disabled="item.disabled" @check="check(item, $event.value)"></u-checkbox>
                                 </span>
-                                <f-render v-else-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
+                                <!-- type === 'expander' -->
+                                <span :class="$style.expander" v-if="columnVM.type === 'expander'" :expanded="item.expanded" @click="toggleExpanded(item)"></span>
+                                <!-- Normal text -->
+                                <f-render v-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
                                 <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
-                                <span v-else>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
+                                <span v-else-if="columnVM.field">{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </td>
                         </tr>
+                        <f-collapse-transition>
+                            <tr :class="$style['expand-content']" expanded v-if="expanderColumnVM && item.expanded">
+                                <td :colspan="visibleColumnVMs.length" :class="$style['expanded-td']">
+                                    <f-render v-if="expanderColumnVM.$scopedSlots['expand-content']" :vnode="expanderColumnVM.$scopedSlots['expand-content']({ item, columnVM: expanderColumnVM, index })"></f-render>
+                                    <f-render v-else-if="expanderColumnVM.$slots['expand-content']" :vnode="expanderColumnVM.$slots['expand-content']"></f-render>
+                                </td>
+                            </tr>
+                        </f-collapse-transition>
                     </template>
                 </tbody>
             </u-table>

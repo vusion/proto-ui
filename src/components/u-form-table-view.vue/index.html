@@ -14,7 +14,7 @@
                 <td :class="$style.cell" v-for="columnVM in columnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                     <u-validator display="block" :label="columnVM.title" :action="columnVM.action"
                         :rules="columnVM.rules" :muted="columnVM.muted"
-                        :ignore-validating="columnVM.ignoreValidating"
+                        :ignore-validation="columnVM.ignoreValidation"
                         :validating-options="columnVM.validatingOptions"
                         :validating-value="columnVM.validatingValue">
                         <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>

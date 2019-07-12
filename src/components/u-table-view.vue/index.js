@@ -71,6 +71,9 @@ export const UTableView = {
         visibleColumnVMs() {
             return this.columnVMs.filter((columnVM) => !columnVM.hidden);
         },
+        expanderColumnVM() {
+            return this.columnVMs.find((columnVM) => columnVM.type === 'expander');
+        },
         paging() {
             if (this.pageable) {
                 const paging = {};
@@ -185,7 +188,7 @@ export const UTableView = {
         processData(data) {
             const selectable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'radio');
             const checkable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'checkbox');
-            // const expandable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'expander');
+            const expandable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'expander');
 
             if (selectable) {
                 data.forEach((item) => {
@@ -203,9 +206,18 @@ export const UTableView = {
                 });
             }
 
+            if (expandable) {
+                data.forEach((item) => {
+                    if (!item.hasOwnProperty('expanded'))
+                        this.$set(item, 'expanded', false);
+                });
+            }
+
             return data;
         },
         handleData() {
+            if (typeof this.data === 'function' || (this.data instanceof Object && !Array.isArray(this.data)))
+                throw new Error(`[proto-ui] Don't assign a function or object to 'data' prop. Try to use 'data-source' prop.`);
             this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
             this.handleResize();
         },
@@ -671,6 +683,25 @@ export const UTableView = {
                 values: this.currentValues,
                 oldValues,
                 checked,
+            }, this);
+        },
+        toggleExpanded(item, expanded) {
+            // Method overloading
+            if (expanded === undefined)
+                expanded = !item.expanded;
+
+            // Emit a `before-` event with preventDefault()
+            if (this.$emitPrevent('before-toggle-expanded', {
+                item,
+                oldExpanded: !expanded,
+                expanded,
+            }, this))
+                return;
+
+            item.expanded = expanded;
+            this.$emit('toggle-expanded', {
+                item,
+                expanded,
             }, this);
         },
     },

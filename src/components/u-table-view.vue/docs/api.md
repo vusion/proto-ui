@@ -263,7 +263,7 @@
 | default-order | String | `'asc'` | 该列首次点击时的排序顺序 |
 | filters | Array\<{ text: string, value: any }\> | `'asc'` | 该列首次点击时的排序顺序 |
 | hidden | Boolean | `false` | 是否隐藏 |
-| type | String | | 列类型。可选值：`index`表示序号列，`radio`表示单选列，`checkbox`表示多选列。 |
+| type | String | | 列类型。可选值：`index`表示序号列，`radio`表示单选列，`checkbox`表示多选列，`expander`表示展开列。 |
 | start-index | Number | `1` | 当`type="index"`时的起始序号 |
 
 ### Slots
