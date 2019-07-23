@@ -11,7 +11,7 @@
 
 ### Events
 
-#### @before-action
+<!-- #### @before-action
 
 操作前触发
 
@@ -40,7 +40,7 @@
 | ----- | ---- | ----------- |
 | $event.value | Number | 当前值 |
 | $event.oldValue | Number | 旧的值 |
-| senderVM | UComboPagination | 发送事件实例 |
+| senderVM | UComboPagination | 发送事件实例 | -->
 
 ### Methods
 

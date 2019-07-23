@@ -10,16 +10,16 @@
 
 ``` html
 <u-table-view :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -27,16 +27,16 @@
 
 ``` html
 <u-table-view line="both" :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -44,29 +44,31 @@
 
 ``` html
 <u-table-view striped :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
 ### 状态
 
+表格会根据数据类型自动判断状态。
+
 #### 加载中
 
 ``` html
 <u-table-view>
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -74,10 +76,10 @@
 
 ``` html
 <u-table-view :data="[]">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -87,16 +89,16 @@
 
 ``` html
 <u-table-view :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: 675388800000 },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: 675388800000 },
-    { id: 3, name: '', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: 675388800000 },
-    { id: 4, name: '李华', address: '', birthday: undefined },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: 675388800000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column formatter="placeholder | date('yyyy-MM-dd')" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -105,23 +107,23 @@
 ``` vue
 <template>
 <u-table-view :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: 675388800000 },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: 675388800000 },
-    { id: 3, name: '', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: 675388800000 },
-    { id: 4, name: '李华', address: '', birthday: undefined },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: 675388800000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column :formatter="idFormatter" title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column formatter="placeholder | date('yyyy-MM-dd')" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" field="address" :formatter="addressFormatter"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 </template>
 <script>
 export default {
     methods: {
-        idFormatter(value) {
-            return +value + 1;
+        addressFormatter(value) {
+            return value.replace('浙江省杭州市', '');
         },
     },
 };
@@ -132,22 +134,24 @@ export default {
 
 如果需要对数据进行更加自定义的展示，可以使用列的`cell`插槽，定制想要的格式。
 
-这个插槽为一个作用域插槽，会传入三个参数`item`、`columnVM`和`index`。
+这个插槽为一个作用域插槽，会传入4个参数`item`、`value`、`columnVM`和`index`。
 
 ``` html
 <u-table-view :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="20%">
-        <div slot="cell" slot-scope="{ item }">test {{ item.id * 10 }}</div>
+    <u-table-view-column title="用户名" field="name" width="20%">
+        <template slot="cell" slot-scope="{ value }">
+            <u-link>{{ value }}</u-link>
+        </template>
     </u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -159,21 +163,21 @@ export default {
 
 ``` html
 <u-table-view striped :data="[
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
-    { id: 1, name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]" style="max-height: 300px;">
-    <u-table-view-column title="序号" field="id" width="20%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -185,16 +189,16 @@ export default {
 
 ``` html
 <u-table-view line="horizontal" striped :data="[
-    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '这是一个很长很长很长很长很长很长很长很长的名字', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '名字就是起得这么这么这么这么这么这么长', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="30%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -204,16 +208,16 @@ export default {
 
 ``` html
 <u-table-view line="horizontal" striped :data="[
-    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '这是一个很长很长很长很长很长很长很长很长的名字', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '名字就是起得这么这么这么这么这么这么长', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" ellipsis field="name" width="30%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" ellipsis field="address"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -223,24 +227,30 @@ export default {
 
 ``` html
 <u-table-view striped :data="[
-    { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
-    { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]" style="max-height: 300px;">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="30%"></u-table-view-column>
-    <u-table-view-column title="省份" field="province" width="200"></u-table-view-column>
-    <u-table-view-column title="城市" field="city" width="200"></u-table-view-column>
-    <u-table-view-column title="区县" field="district" width="200"></u-table-view-column>
+    <u-table-view-column title="序号" type="index" width="50"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="70"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="160"></u-table-view-column>
+    <u-table-view-column title="电子邮箱" field="email" width="200"></u-table-view-column>
     <u-table-view-column title="地址" field="address" width="400"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="创建时间" field="createdTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column title="操作" width="120">
+        <template slot="cell">
+            <u-link>详情</u-link>&nbsp;
+            <u-link>设置</u-link>
+        </template>
+    </u-table-view-column>
 </u-table-view>
 ```
 
@@ -250,24 +260,30 @@ export default {
 
 ``` html
 <u-table-view striped :data="[
-    { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
-    { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]" style="max-height: 300px;">
-    <u-table-view-column fixed title="序号" field="id" width="5%"></u-table-view-column>
-    <u-table-view-column fixed title="姓名" field="name" width="10%"></u-table-view-column>
-    <u-table-view-column title="省份" field="province" width="200"></u-table-view-column>
-    <u-table-view-column title="城市" field="city" width="200"></u-table-view-column>
-    <u-table-view-column title="区县" field="district" width="200"></u-table-view-column>
+    <u-table-view-column fixed title="序号" type="index" width="50"></u-table-view-column>
+    <u-table-view-column fixed title="用户名" field="name" width="70"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="160"></u-table-view-column>
+    <u-table-view-column title="电子邮箱" field="email" width="200"></u-table-view-column>
     <u-table-view-column title="地址" field="address" width="400"></u-table-view-column>
-    <u-table-view-column fixed title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="创建时间" field="createdTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column fixed title="操作" width="120">
+        <template slot="cell">
+            <u-link>详情</u-link>&nbsp;
+            <u-link>设置</u-link>
+        </template>
+    </u-table-view-column>
 </u-table-view>
 ```
 
@@ -278,32 +294,39 @@ export default {
 <u-linear-layout direction="vertical">
     <u-linear-layout display="block">
         <u-checkbox v-model="columnsVisible[0]">序号</u-checkbox>
-        <u-checkbox v-model="columnsVisible[1]">姓名</u-checkbox>
-        <u-checkbox v-model="columnsVisible[2]">省份</u-checkbox>
-        <u-checkbox v-model="columnsVisible[3]">城市</u-checkbox>
-        <u-checkbox v-model="columnsVisible[4]">区县</u-checkbox>
-        <u-checkbox v-model="columnsVisible[5]">地址</u-checkbox>
-        <u-checkbox v-model="columnsVisible[6]">出生日期</u-checkbox>
+        <u-checkbox v-model="columnsVisible[1]">用户名</u-checkbox>
+        <u-checkbox v-model="columnsVisible[2]">手机号码</u-checkbox>
+        <u-checkbox v-model="columnsVisible[3]">电子邮箱</u-checkbox>
+        <u-checkbox v-model="columnsVisible[4]">地址</u-checkbox>
+        <u-checkbox v-model="columnsVisible[5]">创建时间</u-checkbox>
+        <u-checkbox v-model="columnsVisible[6]">最近登录时间</u-checkbox>
+        <u-checkbox v-model="columnsVisible[7]">操作</u-checkbox>
     </u-linear-layout>
     <u-table-view striped :data="[
-        { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-        { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-        { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-        { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-        { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
-        { id: 1, name: '张三', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦', birthday: '19910528' },
-        { id: 2, name: '小明', province: '浙江省', city: '杭州市', district: '滨江区', address: '江虹路459号英飞特科技园', birthday: '19920914' },
-        { id: 3, name: '李四', province: '浙江省', city: '杭州市', district: '滨江区', address: '秋溢路606号西可科技园', birthday: '19900228' },
-        { id: 4, name: '李华', province: '浙江省', city: '杭州市', district: '滨江区', address: '长河路590号东忠科技园', birthday: '19891210' },
-        { id: 5, name: '王五', province: '浙江省', city: '杭州市', district: '滨江区', address: '网商路599号网易大厦二期', birthday: '19930716' },
-    ]" style="max-height: 300px;">
-        <u-table-view-column :hidden="!columnsVisible[0]" title="序号" field="id" width="5%"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[1]" title="姓名" field="name" width="10%"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[2]" title="省份" field="province"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[3]" title="城市" field="city"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[4]" title="区县" field="district"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[5]" title="地址" field="address"></u-table-view-column>
-        <u-table-view-column :hidden="!columnsVisible[6]" title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
+    { name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
+]" style="max-height: 300px;">
+        <u-table-view-column :hidden="!columnsVisible[0]" title="序号" type="index" width="50"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[1]" title="用户名" field="name" width="70"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[2]" title="手机号码" field="phone" width="160"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[3]" title="电子邮箱" field="email" width="200"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[4]" title="地址" field="address" width="400"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[5]" title="创建时间" field="createdTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[6]" title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+        <u-table-view-column :hidden="!columnsVisible[7]" title="操作" width="120">
+            <template slot="cell">
+                <u-link>详情</u-link>&nbsp;
+                <u-link>设置</u-link>
+            </template>
+        </u-table-view-column>
     </u-table-view>
 </u-linear-layout>
 </template>
@@ -311,7 +334,7 @@ export default {
 export default {
     data() {
         return {
-            columnsVisible: [true, true, false, false, true, true, true],
+            columnsVisible: [true, true, true, false, true, false, true, true],
         };
     },
 };
@@ -328,16 +351,16 @@ export default {
 
 ``` html
 <u-table-view resizable line="horizontal" striped :data="[
-    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '这是一个很长很长很长很长很长很长很长很长的名字', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '名字就是起得这么这么这么这么这么这么长', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" ellipsis field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" ellipsis field="address"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -345,16 +368,16 @@ export default {
 
 ``` html
 <u-table-view resizable resize-remaining="average" line="horizontal" striped :data="[
-    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '这是一个很长很长很长很长很长很长很长很长的名字', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '名字就是起得这么这么这么这么这么这么长', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" ellipsis field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" ellipsis field="address"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -362,16 +385,16 @@ export default {
 
 ``` html
 <u-table-view resizable resize-remaining="none" line="horizontal" striped :data="[
-    { id: 1, name: '这是一个很长很长很长很长很长很长很长很长的名字', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: 2, name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: 3, name: '名字就是起得这么这么这么这么这么这么长', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: 4, name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: 5, name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { name: '这是一个很长很长很长很长很长很长很长很长的名字', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { name: '名字就是起得这么这么这么这么这么这么长', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="序号" field="id" width="10%"></u-table-view-column>
-    <u-table-view-column ellipsis title="姓名" field="name" width="20%"></u-table-view-column>
-    <u-table-view-column ellipsis title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="用户名" ellipsis field="name" width="20%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
+    <u-table-view-column title="地址" ellipsis field="address"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -387,17 +410,17 @@ UTableView 中内置了一些特殊的列，通过设置`type`来开启。
 
 ``` html
 <u-table-view striped :data="[
-    { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column type="index" title="#" width="10%"></u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="20%"></u-table-view-column>
+    <u-table-view-column type="index" title="#" width="8%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -407,16 +430,17 @@ UTableView 中内置了一些特殊的列，通过设置`type`来开启。
 
 ``` html
 <u-table-view striped hover selectable :data="[
-    { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-    { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-    { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-    { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-    { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+    { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+    { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+    { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+    { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+    { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
 ]">
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column type="index" title="#" width="8%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 ```
 
@@ -427,24 +451,24 @@ UTableView 中内置了一些特殊的列，通过设置`type`来开启。
 ``` vue
 <template>
 <u-table-view striped value-field="id" v-model="selectedValue" :data="data">
-    <u-table-view-column type="radio" title="选择" width="10%"></u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column type="radio" title="选择" width="8%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 </template>
 <script>
 export default {
     data() {
         return {
-            selectedValue: '975386422',
+            selectedValue: '5cd49be8f65c4738',
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
@@ -461,11 +485,11 @@ export default {
 ``` vue
 <template>
 <u-table-view striped :data="data">
-    <u-table-view-column type="checkbox" title="选择" width="10%"></u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column type="checkbox" title="选择" width="8%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 </template>
 <script>
@@ -473,11 +497,11 @@ export default {
     data() {
         return {
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', checked: true, address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', checked: true, address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', disabled: true, address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', checked: true, name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', checked: true, name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', disabled: true, name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
@@ -490,24 +514,24 @@ export default {
 ``` vue
 <template>
 <u-table-view striped value-field="id" :values="values" :data="data">
-    <u-table-view-column type="checkbox" title="选择" width="10%"></u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column type="checkbox" title="选择" width="8%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 </template>
 <script>
 export default {
     data() {
         return {
-            values: ['975386422', '975386424'],
+            values: ['5cd49be8f65c4738', 'f799a0467c494601'],
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
@@ -520,7 +544,7 @@ export default {
 ``` vue
 <template>
 <u-table-view :data="data">
-    <u-table-view-column type="expander" title="展开" width="10%">
+    <u-table-view-column type="expander" title="展开" width="8%">
         <div slot="expand-content" slot-scope="{ item }">
             <u-list type="disc">
                 <u-list-item>{{ item.name }} 1</u-list-item>
@@ -531,10 +555,10 @@ export default {
             </u-list>
         </div>
     </u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
 </u-table-view>
 </template>
 <script>
@@ -542,11 +566,11 @@ export default {
     data() {
         return {
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', checked: true, address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', checked: true, address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', disabled: true, address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
@@ -559,18 +583,18 @@ export default {
 ``` vue
 <template>
 <u-table-view :data="data">
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
-    <u-table-view-column title="姓名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="用户名" field="name" width="12%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
-    <u-table-view-column type="expander" title="展开" width="10%">
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column type="expander" title="展开" width="8%">
         <div slot="expand-content" slot-scope="{ item }">
             <u-list type="disc">
-                <u-list-item>{{ item.birthday }} 1</u-list-item>
-                <u-list-item>{{ item.birthday }} 2</u-list-item>
-                <u-list-item>{{ item.birthday }} 3</u-list-item>
-                <u-list-item>{{ item.birthday }} 4</u-list-item>
-                <u-list-item>{{ item.birthday }} 5</u-list-item>
+                <u-list-item>{{ item.address }} 1</u-list-item>
+                <u-list-item>{{ item.address }} 2</u-list-item>
+                <u-list-item>{{ item.address }} 3</u-list-item>
+                <u-list-item>{{ item.address }} 4</u-list-item>
+                <u-list-item>{{ item.address }} 5</u-list-item>
             </u-list>
         </div>
     </u-table-view-column>
@@ -581,11 +605,11 @@ export default {
     data() {
         return {
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', checked: true, address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', checked: true, address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', disabled: true, address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
@@ -600,19 +624,19 @@ export default {
 ``` vue
 <template>
 <u-table-view striped :data="data">
-    <u-table-view-column type="checkbox" title="姓名" field="name" width="15%"></u-table-view-column>
-    <u-table-view-column title="ID" field="id" width="15%"></u-table-view-column>
+    <u-table-view-column type="checkbox" title="用户名" field="name" width="15%"></u-table-view-column>
+    <u-table-view-column title="手机号码" field="phone" width="20%"></u-table-view-column>
     <u-table-view-column title="地址" field="address"></u-table-view-column>
-    <u-table-view-column title="出生日期" field="birthday" width="20%"></u-table-view-column>
-    <u-table-view-column type="expander" title="展开" width="10%">
+    <u-table-view-column title="最近登录时间" field="loginTime" formatter="placeholder | date" width="20%"></u-table-view-column>
+    <u-table-view-column type="expander" title="展开" width="8%">
         <span slot="cell" slot-scope="{ item }">{{ item.name }}</span>
         <div slot="expand-content" slot-scope="{ item }">
             <u-list type="disc">
-                <u-list-item>{{ item.birthday }} 1</u-list-item>
-                <u-list-item>{{ item.birthday }} 2</u-list-item>
-                <u-list-item>{{ item.birthday }} 3</u-list-item>
-                <u-list-item>{{ item.birthday }} 4</u-list-item>
-                <u-list-item>{{ item.birthday }} 5</u-list-item>
+                <u-list-item>{{ item.address }} 1</u-list-item>
+                <u-list-item>{{ item.address }} 2</u-list-item>
+                <u-list-item>{{ item.address }} 3</u-list-item>
+                <u-list-item>{{ item.address }} 4</u-list-item>
+                <u-list-item>{{ item.address }} 5</u-list-item>
             </u-list>
         </div>
     </u-table-view-column>
@@ -623,11 +647,11 @@ export default {
     data() {
         return {
             data: [
-                { id: '975386421', name: '张三', address: '浙江省杭州市滨江区网商路599号网易大厦', birthday: '19910528' },
-                { id: '975386422', name: '小明', checked: true, address: '浙江省杭州市滨江区江虹路459号英飞特科技园', birthday: '19920914' },
-                { id: '975386423', name: '李四', checked: true, address: '浙江省杭州市滨江区秋溢路606号西可科技园', birthday: '19900228' },
-                { id: '975386424', name: '李华', disabled: true, address: '浙江省杭州市滨江区长河路590号东忠科技园', birthday: '19891210' },
-                { id: '975386425', name: '王五', address: '浙江省杭州市滨江区网商路599号网易大厦二期', birthday: '19930716' },
+                { id: '07cdcb8ed5e94cec', name: '张三', phone: '18612917895', email: 'zhangsan@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦', createdTime: 1464421931000, loginTime: 1527515531000 },
+                { id: '5cd49be8f65c4738', name: '小明', phone: '13727160283', email: 'xiaoming@163.com', address: '浙江省杭州市滨江区江虹路459号英飞特科技园', createdTime: 1520864676000, loginTime: 1552400676000 },
+                { id: 'f799a0467c494601', name: '李四', phone: '18897127809', email: 'lisi@163.com', address: '浙江省杭州市滨江区秋溢路606号西可科技园', createdTime: 1494488730000, loginTime: 1558165530000 },
+                { id: '40e8ca488a1c4bce', name: '李华', phone: '18749261214', email: 'lihua@163.com', address: '浙江省杭州市滨江区长河路590号东忠科技园', createdTime: 1476073921000, loginTime: 1544428081000 },
+                { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
     },
