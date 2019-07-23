@@ -9,6 +9,7 @@ export const MPopper = {
     props: {
         opened: { type: Boolean, default: false },
         trigger: { type: String, default: 'click' },
+        triggerElement: { type: [String, HTMLElement, Function], default: 'reference' },
         reference: { type: [String, HTMLElement, Function], default: 'context-parent', validator: (value) => {
             if (typeof value !== 'string')
                 return true;
@@ -97,7 +98,8 @@ export const MPopper = {
     mounted() {
         // 字符串类型的 reference 只有首次获取是有效的，因为之后节点会被插到别的地方
         this.referenceEl = this.getReferenceEl();
-        this.addTrigger(this.referenceEl, this.trigger);
+        const triggerEl = this.getTriggerEl(this.referenceEl);
+        this.addTrigger(triggerEl, this.trigger);
 
         this.currentOpened && this.createPopper();
     },
@@ -159,6 +161,14 @@ export const MPopper = {
                 else if (this.reference === 'next')
                     return this.$el.nextElementSibling;
             }
+        },
+        getTriggerEl(referenceEl) {
+            if (this.triggerElement === 'reference')
+                return referenceEl;
+            else if (this.triggerElement instanceof HTMLElement)
+                return this.triggerElement;
+            else if (this.triggerElement instanceof Function)
+                return this.triggerElement(referenceEl);
         },
         /**
          * 添加触发器时，绑定事件
