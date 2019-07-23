@@ -86,14 +86,14 @@
                                 <span v-else-if="columnVM.field">{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </td>
                         </tr>
-                        <f-collapse-transition>
-                            <tr :class="$style['expand-content']" expanded v-if="expanderColumnVM && item.expanded">
-                                <td :colspan="visibleColumnVMs.length" :class="$style['expanded-td']">
+                        <tr :class="$style['expand-content']" v-if="expanderColumnVM">
+                            <f-collapse-transition>
+                                <td :colspan="visibleColumnVMs.length" :class="$style['expand-td']" v-show="item.expanded">
                                     <f-render v-if="expanderColumnVM.$scopedSlots['expand-content']" :vnode="expanderColumnVM.$scopedSlots['expand-content']({ item, columnVM: expanderColumnVM, index })"></f-render>
                                     <f-render v-else-if="expanderColumnVM.$slots['expand-content']" :vnode="expanderColumnVM.$slots['expand-content']"></f-render>
                                 </td>
-                            </tr>
-                        </f-collapse-transition>
+                            </f-collapse-transition>
+                        </tr>
                     </template>
                 </tbody>
             </u-table>

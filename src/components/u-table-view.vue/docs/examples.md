@@ -547,11 +547,11 @@ export default {
     <u-table-view-column type="expander" title="展开" width="8%">
         <div slot="expand-content" slot-scope="{ item }">
             <u-list type="disc">
-                <u-list-item>{{ item.name }} 1</u-list-item>
-                <u-list-item>{{ item.name }} 2</u-list-item>
-                <u-list-item>{{ item.name }} 3</u-list-item>
-                <u-list-item>{{ item.name }} 4</u-list-item>
-                <u-list-item>{{ item.name }} 5</u-list-item>
+                <u-list-item>{{ item.address }} 1</u-list-item>
+                <u-list-item>{{ item.address }} 2</u-list-item>
+                <u-list-item>{{ item.address }} 3</u-list-item>
+                <u-list-item>{{ item.address }} 4</u-list-item>
+                <u-list-item>{{ item.address }} 5</u-list-item>
             </u-list>
         </div>
     </u-table-view-column>
