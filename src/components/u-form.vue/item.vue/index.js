@@ -27,7 +27,7 @@ export const UFormItem = {
     },
     computed: {
         currentRequired() {
-            return this.required || this.currentRules && this.currentRules.some((rule) => rule.required);
+            return this.required || Array.isArray(this.currentRules) && this.currentRules.some((rule) => rule.required);
         },
         currentLabelSize() {
             return this.labelSize || (this.rootVM && this.rootVM.labelSize) || 'auto';
