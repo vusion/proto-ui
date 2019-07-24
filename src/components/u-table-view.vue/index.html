@@ -5,7 +5,7 @@
     <div :class="$style.table" v-for="tableMeta in tableMetaList" :key="tableMeta.position" :position="tableMeta.position"
         :style="{ width: tableMeta.position !== 'static' && (tableMeta.width + 'px') }"
         @scroll="onTableScroll" :shadow="(tableMeta.position === 'left' && !scrollXStart) || (tableMeta.position === 'right' && !scrollXEnd)">
-        <div :class="$style.head" ref="head" :style="{ width: tableWidth + 'px' }">
+        <div v-if="showHead" :class="$style.head" ref="head" :style="{ width: tableWidth + 'px' }">
             <u-table :class="$style['head-table']" v-bind="$attrs">
                 <colgroup>
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
@@ -86,10 +86,10 @@
                                 <span v-else-if="columnVM.field">{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
                             </td>
                         </tr>
-                        <tr :class="$style['expand-content']" v-if="expanderColumnVM">
+                        <tr :class="$style['expand-content']" v-if="expanderColumnVM && item.expanded">
                             <f-collapse-transition>
                                 <td :colspan="visibleColumnVMs.length" :class="$style['expand-td']" v-show="item.expanded">
-                                    <f-render v-if="expanderColumnVM.$scopedSlots['expand-content']" :vnode="expanderColumnVM.$scopedSlots['expand-content']({ item, columnVM: expanderColumnVM, index })"></f-render>
+                                    <f-render v-if="expanderColumnVM.$scopedSlots['expand-content']" :vnode="expanderColumnVM.$scopedSlots['expand-content']({ item, value: item[expanderColumnVM.field], columnVM: expanderColumnVM, index })"></f-render>
                                     <f-render v-else-if="expanderColumnVM.$slots['expand-content']" :vnode="expanderColumnVM.$slots['expand-content']"></f-render>
                                 </td>
                             </f-collapse-transition>

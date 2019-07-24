@@ -10,11 +10,12 @@
 | line | Boolean | `false` | 单元格之间是否显示分隔线条 |
 | striped | Boolean | `false` | 表格行是否按斑马线条纹显示 |
 | hover | Boolean | `false` | 表格行在悬浮时是否高亮显示 |
+| show-head | Boolean | `true` | 是否显示表格头部 |
 | loading | Boolean | | 手动设置是否正在加载中 |
 | loading-text | String | `'正在加载中'` | 正在加载中的文字 |
 | error | Boolean | | 手动设置是否加载失败 |
-| errorText | String | `'加载失败，请重试'` | 加载失败时的文字 |
-| emptyText | String | `'暂无数据'` | 暂无数据时的文字 |
+| error-text | String | `'加载失败，请重试'` | 加载失败时的文字 |
+| empty-text | String | `'暂无数据'` | 暂无数据时的文字 |
 | **Data Props/Attrs** |
 | data | Array\<{ \[field\]: string, ... }\> | | 表格数据 |
 | data-source | Object, Function, DataSource | | 多功能数据源 |
@@ -290,4 +291,15 @@
 | Prop/Attr | Type | Description |
 | --------- | ---- | ----------- |
 | columnVM | String | 该列组件实例 |
+| index | Number | 列的索引 |
+
+#### expand-content
+
+展开列的内容
+
+| Prop/Attr | Type | Description |
+| --------- | ---- | ----------- |
+| item | Object | 循环中的当前项 |
+| columnVM | String | 该列组件实例 |
+| value | Any | item 中 field 字段对应的值 |
 | index | Number | 列的索引 |

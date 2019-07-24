@@ -45,6 +45,7 @@ export const UTableView = {
         /* Others */
         resizable: { type: Boolean, default: false },
         resizeRemaining: { type: String, default: 'sequence' },
+        showHead: { type: Boolean, default: true },
     },
     data() {
         return {
