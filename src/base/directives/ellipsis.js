@@ -5,12 +5,17 @@ import { getComputedStyle } from '../utils/style';
  */
 export const ellipsisTitle = {
     bind(el, binding) {
-        el.addEventListener('mouseenter', (e) => {
+        el.__handler__ = (e) => {
             // 如果判断已存在`title`属性而不添加`title`的话，会导致`<u-select>`在某些场景下`value`不变`text`变，而`title`不会更新
             const style = getComputedStyle(el);
             const title = binding.value || el.innerText;
             if (style.overflow === 'hidden' && style.textOverflow === 'ellipsis' && style.whiteSpace === 'nowrap' && el.scrollWidth > el.offsetWidth)
                 el.setAttribute('title', title);
-        });
+        };
+        el.addEventListener('mouseenter', el.__handler__);
+    },
+    unbind(el) {
+        el.removeEventListener('mouseenter', el.__handler__);
+        delete el.__handler__;
     },
 };
