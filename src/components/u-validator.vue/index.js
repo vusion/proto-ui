@@ -93,7 +93,7 @@ export const UValidator = {
         currentRules() {
             const context = this.$vnode.context;
             this.validator = new AtomValidator(context.$options.validators, context.$options.rules, this.currentRules, context);
-            this.validate('submit', true).catch((errors) => errors);
+            this.validate('submit', !this.touched).catch((errors) => errors);
         },
     },
     created() {
