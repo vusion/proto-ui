@@ -260,7 +260,7 @@ export const FDraggable = {
         onMouseUp(e) {
             window.removeEventListener('mousemove', this.onMouseMove);
             window.removeEventListener('mouseup', this.onMouseUp);
-
+            this.sourceEl.removeEventListener('mousedown', this.onMouseDown);
             if (manager.dragging) {
                 manager.droppable && manager.droppable.drop(this);
                 this.cancel();
