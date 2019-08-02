@@ -4,12 +4,14 @@ import { AtomValidator } from 'atom-validator';
 import VueAtomValidator from 'atom-validator/VuePlugin';
 import debounce from 'lodash/debounce';
 
-import Vue from 'vue';
-Vue.use(VueAtomValidator);
-
 export const UValidator = {
     name: 'u-validator',
     isValidator: true,
+    install(Vue) {
+        Vue.use(VueAtomValidator, {
+            locale: Vue.i18n && Vue.i18n.locale,
+        });
+    },
     mixins: [MEmitter],
     props: {
         name: String,
