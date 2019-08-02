@@ -7,20 +7,20 @@ export const href = {
     bind(el, binding) {
         el.dataset = el.dataset || {};
         el.dataset.href = binding.value;
-        el.__handler__ = (e) => {
+        el.__hrefHandler = (e) => {
             if (binding.modifiers.blank)
                 window.open(el.dataset.href);
             else
                 location.href = el.dataset.href;
         };
-        el.addEventListener('click', el.__handler__);
+        el.addEventListener('click', el.__hrefHandler);
     },
     update(el, binding) {
         el.dataset.href = binding.value;
     },
     unbind(el) {
-        el.removeEventListener('mouseenter', el.__handler__);
-        delete el.__handler__;
+        el.removeEventListener('mouseenter', el.__hrefHandler);
+        delete el.__hrefHandler;
     },
 };
 
@@ -38,18 +38,18 @@ export const to = {
         if (!$router)
             return console.warn('[proto-ui] Use `v-to` but cannot find vue router.');
 
-        el.__handler__ = (e) => {
+        el.__toHandler = (e) => {
             binding.modifiers.replace ? $router.replace(el.dataset.to) : $router.push(el.dataset.to);
         };
-        el.addEventListener('click', el.__handler__);
+        el.addEventListener('click', el.__toHandler);
     },
     update(el, binding) {
         el.dataset.to = binding.value;
     },
     unbind(el) {
-        if (el.__handler__) {
-            el.removeEventListener('mouseenter', el.__handler__);
-            el.__handler__ = undefined;
+        if (el.__toHandler) {
+            el.removeEventListener('mouseenter', el.__toHandler);
+            delete el.__toHandler;
         }
     },
 };
