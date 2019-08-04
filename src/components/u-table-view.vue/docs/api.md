@@ -280,9 +280,10 @@
 | Prop/Attr | Type | Description |
 | --------- | ---- | ----------- |
 | item | Object | 循环中的当前项 |
-| columnVM | String | 该列组件实例 |
 | value | Any | item 中 field 字段对应的值 |
-| index | Number | 列的索引 |
+| columnVM | String | 该列组件实例 |
+| rowIndex | Number | 行的索引 |
+| columnIndex | Number | 列的索引 |
 
 #### title
 
@@ -291,7 +292,7 @@
 | Prop/Attr | Type | Description |
 | --------- | ---- | ----------- |
 | columnVM | String | 该列组件实例 |
-| index | Number | 列的索引 |
+| columnIndex | Number | 列的索引 |
 
 #### expand-content
 
@@ -300,6 +301,7 @@
 | Prop/Attr | Type | Description |
 | --------- | ---- | ----------- |
 | item | Object | 循环中的当前项 |
-| columnVM | String | 该列组件实例 |
 | value | Any | item 中 field 字段对应的值 |
-| index | Number | 列的索引 |
+| columnVM | String | 该列组件实例 |
+| rowIndex | Number | 行的索引 |
+| columnIndex | Number | 列的索引 |

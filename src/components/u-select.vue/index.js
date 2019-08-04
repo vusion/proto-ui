@@ -28,6 +28,7 @@ export const USelect = {
         caseSensitive: { type: Boolean, default: false },
         // @inherit: loadingText: { type: String, default: '加载中...' },
         emptyText: { type: String, default() { return this.$t('emptyText'); } },
+        emptyDisabled: { type: Boolean, default: false },
         // @inherit: initialLoad: { type: Boolean, default: true },
         // @inherit: pageable: { type: Boolean, default: false },
         // @inherit: pageSize: { type: Number, default: 50 },
@@ -54,6 +55,14 @@ export const USelect = {
         };
     },
     computed: {
+        currentDisabled() {
+            if (this.disabled)
+                return true;
+            else if (this.emptyDisabled)
+                return this.currentData ? !this.currentData.length : !this.itemVMs.length;
+            else
+                return false;
+        },
         filtering() {
             return {
                 [this.field]: {

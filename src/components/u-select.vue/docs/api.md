@@ -12,6 +12,7 @@
 | placeholder | Boolean | `'请选择'` | 选择框的占位符 |
 | loading-text | String | `'加载中...'` | 加载时的文字。使用分页加载时才会出现 |
 | empty-text | String | `'加载中...'` | 没有匹配时的文字 |
+| empty-disabled | Boolean | `false` | 没有数据时，自动禁用 |
 | initial-load | Boolean | `true` | 是否在初始时立即加载 |
 | pageable | Boolean | `false` | 是否需要分页 |
 | page-size | Number | `50` | 分页大小 |

@@ -11,7 +11,7 @@
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <thead><tr>
-                    <th :class="$style['head-title']" v-for="(columnVM, index) in visibleColumnVMs"
+                    <th :class="$style['head-title']" v-for="(columnVM, columnIndex) in visibleColumnVMs"
                         :sortable="columnVM.sortable" :filterable="!!columnVM.filters" @click="columnVM.sortable && sortTrigger === 'head' && onClickSort(columnVM)">
                         <!-- type === 'checkbox' -->
                         <span v-if="columnVM.type === 'checkbox'">
@@ -19,9 +19,9 @@
                         </span>
                         <!-- Normal title -->
                         <template>
-                            <f-render v-if="columnVM.$scopedSlots.title" :vnode="columnVM.$scopedSlots.title({ columnVM, index })"></f-render>
-                            <f-render v-else-if="columnVM.$slots.title" :vnode="columnVM.$slots.title"></f-render>
-                            <span v-else>{{ columnVM.title }}</span>
+                            <f-slot name="title" :vm="columnVM" :props="{ columnVM, columnIndex }">
+                                <span>{{ columnVM.title }}</span>
+                            </f-slot>
                         </template>
                         <!-- Sortable -->
                         <span v-if="columnVM.sortable" :class="$style.sort"
@@ -34,10 +34,10 @@
                             </u-table-view-filters>
                         </span>
                         <!-- Resizable -->
-                        <f-dragger v-if="resizable && index !== visibleColumnVMs.length - 1" axis="horizontal"
+                        <f-dragger v-if="resizable && columnIndex !== visibleColumnVMs.length - 1" axis="horizontal"
                             @dragstart="onResizerDragStart($event, columnVM)"
-                            @drag="onResizerDrag($event, columnVM, index)"
-                            @dragend="onResizerDragEnd($event, columnVM, index)">
+                            @drag="onResizerDrag($event, columnVM, columnIndex)"
+                            @dragend="onResizerDragEnd($event, columnVM, columnIndex)">
                             <div :class="$style.resizer"></div>
                         </f-dragger>
                     </th>
@@ -65,11 +65,11 @@
                             <slot name="empty">{{ emptyText }}</slot>
                         </td>
                     </tr>
-                    <template v-else v-for="(item, index) in currentData">
-                        <tr :key="valueField !== 'undefined' ? item[valueField] : index" :class="$style.row" :selected="selectable && selectedItem === item" @click="selectable && select(item)">
-                            <td :class="$style.cell" v-for="columnVM in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
+                    <template v-else v-for="(item, rowIndex) in currentData">
+                        <tr :key="rowIndex" :class="$style.row" :selected="selectable && selectedItem === item" @click="selectable && select(item)">
+                            <td :class="$style.cell" v-for="(columnVM, columnIndex) in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <!-- type === 'index' -->
-                                <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + index }}</span>
+                                <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + rowIndex }}</span>
                                 <!-- type === 'radio' -->
                                 <span v-if="columnVM.type === 'radio'">
                                     <u-radio :value="selectedItem === item" :disabled="item.disabled" @click.native="select(item)"></u-radio>
@@ -81,16 +81,15 @@
                                 <!-- type === 'expander' -->
                                 <span :class="$style.expander" v-if="columnVM.type === 'expander'" :expanded="item.expanded" @click="toggleExpanded(item)"></span>
                                 <!-- Normal text -->
-                                <f-render v-if="columnVM.$scopedSlots.cell" :vnode="columnVM.$scopedSlots.cell({ item, value: item[columnVM.field], columnVM, index })"></f-render>
-                                <f-render v-else-if="columnVM.$slots.cell" :vnode="columnVM.$slots.cell"></f-render>
-                                <span v-else-if="columnVM.field">{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
+                                <f-slot name="cell" :vm="columnVM" :props="{ item, value: item[columnVM.field], columnVM, rowIndex, columnIndex, index: rowIndex }">
+                                    <span v-if="columnVM.field">{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>
+                                </f-slot>
                             </td>
                         </tr>
                         <tr :class="$style['expand-content']" v-if="expanderColumnVM && item.expanded">
                             <f-collapse-transition>
                                 <td :colspan="visibleColumnVMs.length" :class="$style['expand-td']" v-show="item.expanded">
-                                    <f-render v-if="expanderColumnVM.$scopedSlots['expand-content']" :vnode="expanderColumnVM.$scopedSlots['expand-content']({ item, value: item[expanderColumnVM.field], columnVM: expanderColumnVM, index })"></f-render>
-                                    <f-render v-else-if="expanderColumnVM.$slots['expand-content']" :vnode="expanderColumnVM.$slots['expand-content']"></f-render>
+                                    <f-slot name="expand-content" :vm="expanderColumnVM" :props="{ item, value: item[expanderColumnVM.field], columnVM: expanderColumnVM, rowIndex, columnIndex, index: rowIndex }"></f-slot>
                                 </td>
                             </f-collapse-transition>
                         </tr>
