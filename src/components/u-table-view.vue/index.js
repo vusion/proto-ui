@@ -265,7 +265,14 @@ export const UTableView = {
         },
         handleResize() {
             setTimeout(() => {
-                const rootWidth = this.$el.offsetWidth;
+                let rootWidth = this.$el.offsetWidth;
+                if (!rootWidth) {
+                    // 初始表格隐藏时，上面的值为0，需要特殊处理
+                    let parentEl = this.$el && this.$el.parentElement;
+                    while (parentEl && !parentEl.offsetWidth)
+                        parentEl = parentEl.parentEl;
+                    rootWidth = parentEl ? parentEl.offsetWidth : 0;
+                }
 
                 // 分别获取有百分比、具体数值和无 width 的列
                 const percentColumnVMs = [];
@@ -358,9 +365,12 @@ export const UTableView = {
                 if (this.$el.style.height !== '' && this.$el.style.height !== 'auto'
                     || this.$el.style.maxHeight !== '' && this.$el.style.maxHeight !== 'auto') {
                     const rootHeight = this.$el.offsetHeight;
-                    const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
-                    const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
-                    this.bodyHeight = rootHeight - titleHeight - headHeight;
+                    if (rootHeight) { // 如果使用 v-show 隐藏了，无法计算
+                        const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
+                        const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
+                        this.bodyHeight = rootHeight - titleHeight - headHeight;
+                    } else
+                        debugger;
                 }
 
                 this.$emit('resize', undefined, this);
