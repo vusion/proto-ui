@@ -16,7 +16,8 @@
                         :rules="columnVM.rules" :muted="columnVM.muted"
                         :ignore-validation="columnVM.ignoreValidation"
                         :validating-options="Object.assign({ data: currentData, item, rowIndex }, columnVM.validatingOptions)"
-                        :validating-value="columnVM.validatingValue">
+                        :validating-value="columnVM.validatingValue"
+                        :validating-process="columnVM.validatingProcess">
                         <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + rowIndex }}</span>
                         <f-slot name="cell" :vm="columnVM" :props="{ item, value: item[columnVM.field], columnVM, rowIndex, columnIndex }">
                             <span>{{ columnVM.currentFormatter.format(item[columnVM.field]) }}</span>

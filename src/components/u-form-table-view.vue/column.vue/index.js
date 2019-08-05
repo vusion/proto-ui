@@ -25,6 +25,7 @@ export const UFormTableViewColumn = {
         ignoreValidation: { type: Boolean, default: false },
         validatingOptions: Object,
         validatingValue: null,
+        validatingProcess: Function,
     },
     data() {
         const data = {

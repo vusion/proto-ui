@@ -1,125 +1,59 @@
-## UInput
+## UValidator
 ### Props/Attrs
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| type | String | `'text'` | 输入框的类型，目前支持两种：`'text'`和`'password'` |
-| value.sync, v-model | String | | 输入框的值 |
-| default-value.sync, v-model | String | | 默认值。即 reset 方法恢复的值。 |
-| clearable | Boolean | | 是否可清空。开启并在输入框有内容时会显示清空按钮。 |
-| placeholder | String | | 原生属性。对 IE9 做了兼容。 |
-| minlength | Number | | 原生属性 |
-| maxlength | Number | | 原生属性 |
-| spellcheck | Boolean | | 原生属性 |
-| autofocus | Boolean | | 是否自动获取焦点 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| name | String | | 表单项名称。已废弃 |
+| label | String | | 标签。在 UValidator 用于提示消息的合成，在 UFormItem 等其他组件用于显示标签 |
+| rules | String, Array | | 验证规则。简写格式为字符串类型，完整格式或混合格式为数组类型 |
+| message | String | | 默认提示消息 |
+| muted | String | | 验证时是否静默。可选值：`'message'`表示只静默消息提示，`'all'`同时静默消息提示和红框提示 |
+| ignore-validation | Boolean | `false` | 忽略验证 |
+| ignore-rules | Boolean | `false` | 忽略验证规则。已废弃，同`ignore-validation` |
+| validating-options | Object | | 验证辅助对象。在 Rule 的 `validate` 方法中使用 |
+| validating-value | Any | | 临时修改验证值 |
+| validating-process | Function | | 验证前对值进行预处理 |
 
-#### @input
+### Computed
 
-输入时触发。
+对于第一个 Field 或者所有子 UValidator：
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event | String | 输入框的值 |
-| senderVM | UInput | 发送事件实例 |
+| Computed | Type | Default | Description |
+| -------- | ---- | ------- | ----------- |
+| touched | Boolean | | 用户是否触碰 |
+| dirty | Boolean | | 用户是否修改值 |
+| valid | Boolean | | 验证是否通过 |
+| firstError | String | | 第一个错误提示消息 |
 
-#### @change
+### Slots
 
-值变化时触发。（注意：与原生事件不同）
+#### (default)
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 改变后的值 |
-| $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
+插入继承了 MField 的组件，或子 UValidator，或其他 HTML 和文本。
 
-#### @focus
+### Events
 
-获得焦点时触发。
+#### @validate
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event | FocusEvent | 原生事件对象 |
-| senderVM | UInput | 发送事件实例 |
+验证时触发，或内部验证时冒泡触发
 
-#### @blur
-
-失去焦点时触发。
+对于第一个 Field 或者所有子 UValidator：
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | FocusEvent | 原生事件对象 |
-| senderVM | UInput | 发送事件实例 |
-
-#### @before-clear
-
-清空前触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 清空后的值 |
-| $event.oldValue | String | 待清空的值 |
-| $event.preventDefault | Function | 阻止清空流程 |
-| senderVM | UInput | 发送事件实例 |
-
-#### @clear
-
-清空时触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 清空后的值 |
-| $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
-
-#### @before-reset
-
-重置前触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 重置后的值 |
-| $event.oldValue | String | 待重置的值 |
-| $event.preventDefault | Function | 阻止重置流程 |
-| senderVM | UInput | 发送事件实例 |
-
-#### @reset
-
-重置时触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 重置后的值 |
-| $event.oldValue | String | 旧的值 |
-| senderVM | UInput | 发送事件实例 |
+| $event.valid | Boolean | 验证是否通过 |
+| $event.touched | Boolean | 用户是否触碰 |
+| $event.dirty | Boolean | 用户是否修改值 |
+| $event.firstError | String | 第一个错误提示消息 |
+| senderVM | UValidator | 发送事件实例 |
 
 ### Methods
 
-#### focus()
+#### validate(trigger, muted)
 
-让输入框获取焦点。
+手动验证。
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-
-#### blur()
-
-让输入框失去焦点。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-
-#### clear()
-
-清空输入框。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-
-#### reset()
-
-重置输入框。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| trigger | String | `'submit'` | 触发方式，可选值：`submit`、`blur`和`input`之一，或者它们的任意组合。 |
+| muted | Boolean | `false` | 是否验证后无提示 |

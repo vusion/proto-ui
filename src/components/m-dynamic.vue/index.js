@@ -30,6 +30,9 @@ export const MDynamic = {
     },
     methods: {
         add() {
+            if (this.currentData.length >= this.maxCount)
+                return;
+
             const item = this.getDefaultItem ? this.getDefaultItem() : {};
             const index = this.currentData.length;
             if (this.$emitPrevent('before-add', {
@@ -52,6 +55,9 @@ export const MDynamic = {
             }, this);
         },
         remove(index) {
+            if (this.currentData.length <= this.minCount)
+                return;
+
             const item = this.currentData[index];
             if (this.$emitPrevent('before-remove', {
                 item,

@@ -264,6 +264,8 @@ export const UTableView = {
                 return undefined;
         },
         handleResize() {
+            // this.tableWidth = undefined;
+            // this.bodyHeight = undefined;
             setTimeout(() => {
                 let rootWidth = this.$el.offsetWidth;
                 if (!rootWidth) {
@@ -570,7 +572,7 @@ export const UTableView = {
             if (value === undefined)
                 this.selectedItem = undefined;
             else {
-                this.selectedItem = this.currentData.find((item) => item[this.valueField] === value);
+                this.selectedItem = this.currentData && this.currentData.find((item) => item[this.valueField] === value);
                 // @TODO: Group
             }
         },
@@ -579,10 +581,10 @@ export const UTableView = {
                 return;
             if (values) {
                 this.currentValues = values;
-                this.currentData.forEach((item) => item.checked = values.includes(item[this.valueField]));
+                this.currentData && this.currentData.forEach((item) => item.checked = values.includes(item[this.valueField]));
             } else {
                 const values = [];
-                this.currentData.forEach((item) => item.checked && values.push(item[this.valueField]));
+                this.currentData && this.currentData.forEach((item) => item.checked && values.push(item[this.valueField]));
                 this.currentValues = values;
             }
         },

@@ -18,13 +18,14 @@ export const UValidator = {
         label: String,
         action: String,
         rules: [String, Array, Object],
-        target: { type: String, default: 'auto' },
+        // target: { type: String, default: 'auto' }, // 暂不开放此属性
         message: String,
         muted: String,
         ignoreRules: { type: Boolean, default: false }, // @deprecated
         ignoreValidation: { type: Boolean, default: false },
         validatingOptions: Object,
         validatingValue: null,
+        validatingProcess: { type: Function, default: (value) => value },
     },
     data() {
         return {
@@ -57,10 +58,10 @@ export const UValidator = {
             return this.rules || (this.rootVM && this.rootVM.rules && this.rootVM.rules[this.name]);
         },
         currentTarget() {
-            if (this.target === 'auto')
-                return this.validatorVMs.length ? 'validatorVMs' : 'fieldVM';
-            else
-                return this.target;
+            // if (this.target === 'auto')
+            return this.validatorVMs.length ? 'validatorVMs' : 'fieldVM';
+            // else
+            //     return this.target;
         },
         touched() {
             if (this.currentTarget === 'validatorVMs')
@@ -234,8 +235,10 @@ export const UValidator = {
 
                     if (trigger === 'submit')
                         trigger = '';
+
+                    const value = this.validatingProcess(this.validatingValue === undefined ? this.value : this.validatingValue);
                     return this.validator.validate(
-                        this.validatingValue === undefined ? this.value : this.validatingValue,
+                        value,
                         trigger,
                         Object.assign({
                             label: this.label || '字段',
@@ -297,7 +300,8 @@ export const UValidator = {
                     });
 
                     return new Promise((resolve, reject) => {
-                        const fields = { [name]: this.validatingValue === undefined ? this.value : this.validatingValue };
+                        const value = this.validatingProcess(this.validatingValue === undefined ? this.value : this.validatingValue);
+                        const fields = { [name]: value };
                         validator.validate(fields, Object.assign({ firstFields: true }, this.validatingOptions), (errors, fields) => {
                             this.pending = false;
                             this.triggerValid = !errors;
