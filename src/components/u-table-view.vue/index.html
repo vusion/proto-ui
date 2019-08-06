@@ -3,9 +3,9 @@
         <slot name="title">{{ title }}</slot>
     </div>
     <div :class="$style.table" v-for="tableMeta in tableMetaList" :key="tableMeta.position" :position="tableMeta.position"
-        :style="{ width: tableMeta.position !== 'static' && (tableMeta.width + 'px') }"
+        :style="{ width: tableMeta.position !== 'static' && number2Pixel(tableMeta.width) }"
         @scroll="onTableScroll" :shadow="(tableMeta.position === 'left' && !scrollXStart) || (tableMeta.position === 'right' && !scrollXEnd)">
-        <div v-if="showHead" :class="$style.head" ref="head" :style="{ width: tableWidth + 'px' }">
+        <div v-if="showHead" :class="$style.head" ref="head" :style="{ width: number2Pixel(tableWidth) }">
             <u-table :class="$style['head-table']" v-bind="$attrs">
                 <colgroup>
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
@@ -43,8 +43,8 @@
                     </th>
                 </tr></thead>
             </u-table>
+            <div :class="$style.body" ref="body" :style="{ width: number2Pixel(tableWidth), height: number2Pixel(bodyHeight) }" @scroll="onBodyScroll">
         </div>
-        <div :class="$style.body" ref="body" :style="{ width: tableWidth + 'px', height: bodyHeight + 'px' }" @scroll="onBodyScroll">
             <u-table ref="bodyTable" :class="$style['body-table']" v-bind="$attrs">
                 <colgroup>
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
@@ -89,7 +89,7 @@
                         <tr :class="$style['expand-content']" v-if="expanderColumnVM && item.expanded">
                             <f-collapse-transition>
                                 <td :colspan="visibleColumnVMs.length" :class="$style['expand-td']" v-show="item.expanded">
-                                    <f-slot name="expand-content" :vm="expanderColumnVM" :props="{ item, value: item[expanderColumnVM.field], columnVM: expanderColumnVM, rowIndex, columnIndex, index: rowIndex }"></f-slot>
+                                    <f-slot name="expand-content" :vm="expanderColumnVM" :props="{ item, value: item[expanderColumnVM.field], columnVM: expanderColumnVM, rowIndex, index: rowIndex }"></f-slot>
                                 </td>
                             </f-collapse-transition>
                         </tr>

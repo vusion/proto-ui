@@ -41,6 +41,7 @@
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
 | **Other Props/Attrs** |
+| accordion | Boolean | `false` | 在有`expander`列的情况下，展开一行的同时，是否收起其它行 |
 | resizable | Boolean | `false` | 是否可以调整列宽 |
 | resize-remaining | Boolean | `'sequence'` | 调整列宽效果。可选值：`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。 |
 
@@ -304,4 +305,3 @@
 | value | Any | item 中 field 字段对应的值 |
 | columnVM | String | 该列组件实例 |
 | rowIndex | Number | 行的索引 |
-| columnIndex | Number | 列的索引 |

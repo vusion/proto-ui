@@ -1,6 +1,7 @@
 import DataSource from '../../utils/DataSource';
 import MEmitter from '../m-emitter.vue';
 import debounce from 'lodash/debounce';
+import isNumber from 'lodash/isNumber';
 
 export const UTableView = {
     name: 'u-table-view',
@@ -33,7 +34,6 @@ export const UTableView = {
         remotePaging: { type: Boolean, default: false },
         remoteSorting: { type: Boolean, default: false },
         remoteFiltering: { type: Boolean, default: false },
-        mouseWheel: { type: String, default: 'vertical' },
         /* Selection Props */
         valueField: String,
         value: null,
@@ -43,6 +43,7 @@ export const UTableView = {
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
         /* Others */
+        accordion: { type: Boolean, default: false },
         resizable: { type: Boolean, default: false },
         resizeRemaining: { type: String, default: 'sequence' },
         showHead: { type: Boolean, default: true },
@@ -180,7 +181,6 @@ export const UTableView = {
         this.watchValues(this.values);
         this.handleResize();
         window.addEventListener('resize', this.handleResize);
-        // this.mouseWheel === 'horizontal' && window.addEventListener('mousewheel', this.onMouseWheel);
     },
     destroyed() {
         window.removeEventListener('resize', this.handleResize);
@@ -263,9 +263,12 @@ export const UTableView = {
             } else
                 return undefined;
         },
+        number2Pixel(value) {
+            return isNumber(value) ? value + 'px' : '';
+        },
         handleResize() {
-            // this.tableWidth = undefined;
-            // this.bodyHeight = undefined;
+            this.tableWidth = undefined;
+            this.bodyHeight = undefined;
             setTimeout(() => {
                 let rootWidth = this.$el.offsetWidth;
                 if (!rootWidth) {
@@ -371,8 +374,7 @@ export const UTableView = {
                         const titleHeight = this.$refs.title ? this.$refs.title.offsetHeight : 0;
                         const headHeight = this.$refs.head[0] ? this.$refs.head[0].offsetHeight : 0;
                         this.bodyHeight = rootHeight - titleHeight - headHeight;
-                    } else
-                        debugger;
+                    }
                 }
 
                 this.$emit('resize', undefined, this);
@@ -459,24 +461,6 @@ export const UTableView = {
         },
         onBodyScroll(e) {
             this.debouncedSyncBodyScroll(e.target.scrollTop, e.target);
-        },
-        onMouseWheel(e) {
-            // const direction = e.wheelDelta > 0 ? -1 : 1;
-            // const rootWidth = this.$refs.root.offsetWidth;
-            // const scrollWidth = this.$refs.table[0].scrollWidth;
-            // const diffWidth = scrollWidth - rootWidth;
-            // console.log(e);
-            // if (tableWidth > parentWidth && this.over) {
-            //     e.preventDefault();
-            //     if (this.$refs.body.parentNode.scrollLeft >= diffWidth && direction === 1)
-            //         this.$refs.body.parentNode.scrollLeft = diffWidth;
-            //     else if (this.$refs.body.parentNode.scrollLeft < 0 && direction === -1)
-            //         this.$refs.body.parentNode.scrollLeft = 0;
-            //     else if (direction === -1)
-            //         this.$refs.body.parentNode.scrollLeft += -50;
-            //     else
-            //         this.$refs.body.parentNode.scrollLeft += 50;
-            // }
         },
         load() {
             const dataSource = this.currentDataSource;
@@ -716,6 +700,13 @@ export const UTableView = {
                 item,
                 expanded,
             }, this);
+
+            if (expanded && this.accordion) {
+                this.currentData.forEach((otherItem) => {
+                    if (otherItem !== item && otherItem.expanded)
+                        otherItem.expanded = false;
+                });
+            }
         },
     },
 };

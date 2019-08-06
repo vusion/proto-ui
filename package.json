@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "@vusion/popper.js": "^1.14.1",
-    "atom-validator": "^0.1.2",
+    "atom-validator": "^0.2.0",
     "lodash": "^4.17.5",
     "normalize.css": "^7.0.0",
     "vusion-async-validator": "^1.8.8"
