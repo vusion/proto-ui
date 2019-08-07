@@ -43,8 +43,8 @@
                     </th>
                 </tr></thead>
             </u-table>
-            <div :class="$style.body" ref="body" :style="{ width: number2Pixel(tableWidth), height: number2Pixel(bodyHeight) }" @scroll="onBodyScroll">
         </div>
+        <div :class="$style.body" ref="body" :style="{ width: number2Pixel(tableWidth), height: number2Pixel(bodyHeight) }" @scroll="onBodyScroll">
             <u-table ref="bodyTable" :class="$style['body-table']" v-bind="$attrs">
                 <colgroup>
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
