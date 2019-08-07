@@ -8,14 +8,16 @@ export class NumberFormatter extends Formatter {
 
     format(value, pattern) {
         pattern = pattern || this.pattern;
-
+        if (isNaN(value)) {
+            value = '0';
+        }
         const number = (pattern.match(/[0#.,]+/) || ['0'])[0];
         const parts = number.split('.');
         const fill = (parts[0].match(/0+$/) || ['0'])[0].length;
         const fixed = parts[1] ? parts[1].length : 0;
         const comma = pattern.includes(',');
 
-        value = value.toFixed(fixed).padStart(fixed ? fill + 1 + fixed : fill, '0');
+        value = (+value).toFixed(fixed).padStart(fixed ? fill + 1 + fixed : fill, '0');
         if (comma)
             value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return pattern.replace(/[0#.,]+/, value);
