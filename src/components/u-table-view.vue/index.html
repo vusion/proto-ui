@@ -50,14 +50,14 @@
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <tbody>
-                    <tr v-if="currentData === undefined || currentLoading">
-                        <td :class="$style.center" :colspan="visibleColumnVMs.length">
-                            <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
-                        </td>
-                    </tr>
-                    <tr v-else-if="currentData === null || error">
+                    <tr v-if="currentData === null || error">
                         <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="error">{{ errorText }}</slot>
+                        </td>
+                    </tr>
+                    <tr v-else-if="currentData === undefined || currentLoading">
+                        <td :class="$style.center" :colspan="visibleColumnVMs.length">
+                            <slot name="loading"><u-spinner></u-spinner> {{ loadingText }}</slot>
                         </td>
                     </tr>
                     <tr v-else-if="!currentData.length">
