@@ -56,6 +56,7 @@ export const UTableView = {
             // currentData: this.data && Array.from(this.data),
             currentDataSource: undefined,
             currentLoading: this.loading,
+            currentError: this.error,
             tableMetaList: [{
                 position: 'static',
             }],
@@ -118,7 +119,7 @@ export const UTableView = {
             this.handleResize();
         },
         error(error) {
-            // @compat:
+            this.currentError = error;
             this.handleResize();
         },
         sorting: {
@@ -251,7 +252,7 @@ export const UTableView = {
                     const result = dataSource(params);
 
                     if (result instanceof Promise)
-                        return result.catch(() => this.currentLoading = false);
+                        return result;
                     else if (result instanceof Array)
                         return Promise.resolve(result);
                     else
@@ -470,6 +471,7 @@ export const UTableView = {
                 return;
 
             this.currentLoading = true;
+            this.currentError = false;
             dataSource.load().then((data) => {
                 // 防止同步数据使页面抖动
                 // setTimeout(() => this.currentData = data);
@@ -480,7 +482,10 @@ export const UTableView = {
                 this.handleResize();
                 this.$emit('load', undefined, this);
                 return data;
-            }).catch(() => this.currentLoading = false);
+            }).catch(() => {
+                this.currentLoading = false;
+                this.currentError = true;
+            });
         },
         reload() {
             this.currentDataSource.clearLocalData();

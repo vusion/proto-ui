@@ -50,7 +50,7 @@
                     <col v-for="columnVM in visibleColumnVMs" :width="columnVM.computedWidth"></col>
                 </colgroup>
                 <tbody>
-                    <tr v-if="currentData === null || error">
+                    <tr v-if="currentData === null || currentError">
                         <td :class="$style.center" :colspan="visibleColumnVMs.length">
                             <slot name="error">{{ errorText }}</slot>
                         </td>
