@@ -2,10 +2,12 @@ import DataSource from '../../utils/DataSource';
 import MEmitter from '../m-emitter.vue';
 import debounce from 'lodash/debounce';
 import isNumber from 'lodash/isNumber';
+import i18n from './i18n';
 
 export const UTableView = {
     name: 'u-table-view',
     mixins: [MEmitter],
+    i18n,
     props: {
         data: Array,
         dataSource: [DataSource, Function, Object],
@@ -13,10 +15,10 @@ export const UTableView = {
         titleAlignment: { type: String, default: 'center' },
         border: { type: Boolean, default: false },
         loading: { type: Boolean, default: false },
-        loadingText: { type: String, default: '正在加载中...' },
+        loadingText: { type: String, default() { return this.$t('loading'); } },
         error: { type: Boolean, default: false },
-        errorText: { type: String, default: '加载失败，请重试' },
-        emptyText: { type: String, default: '暂无数据' },
+        errorText: { type: String, default() { return this.$t('error'); } },
+        emptyText: { type: String, default() { return this.$t('empty'); } },
 
         // formatter: { type: [String, Function], default: 'text' },
         initialLoad: { type: Boolean, default: true },
