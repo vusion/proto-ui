@@ -74,10 +74,6 @@ export const USelect = {
         },
     },
     watch: {
-        value(value) {
-            // 无需剪枝
-            this.watchValue(value);
-        },
         filterText(filterText) {
             this.inputWidth = filterText.length * 12 + 20;
         },

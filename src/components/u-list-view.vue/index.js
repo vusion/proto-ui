@@ -64,11 +64,14 @@ export const UListView = {
         // paging(paging) {
         //     this.page()
         // },
-        itemVMs(itemVMs, oldVMs) {
-            if (this.data || this.dataSource)
-                return;
+        itemVMs: {
+            override: true,
+            handler(itemVMs, oldVMs) {
+                if (this.data || this.dataSource)
+                    return;
 
-            MComplex.watch.itemVMs.call(this, itemVMs, oldVMs);
+                MComplex.watch.itemVMs.handler.call(this, itemVMs, oldVMs);
+            },
         },
     },
     created() {
@@ -77,7 +80,7 @@ export const UListView = {
         if (this.currentDataSource && this.initialLoad) {
             this.load().then(() => {
                 // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-                MComplex.watch.itemVMs.call(this, this.itemVMs);
+                MComplex.watch.itemVMs.handler.call(this, this.itemVMs);
             });
         }
     },

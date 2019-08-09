@@ -26,15 +26,21 @@ export const MComplex = {
         };
     },
     watch: {
-        value(value, oldValue) {
-            (this.currentMultiple ? MMultiplex : MSinglex).watch.value.call(this, value, oldValue);
-        },
         multiple(multiple) {
             this.currentMultiple = multiple;
         },
+        value: {
+            override: true,
+            handler(value, oldValue) {
+                (this.currentMultiple ? MMultiplex : MSinglex).watch.value.call(this, value, oldValue);
+            },
+        },
         // This method just run once after pushing many itemVMs
-        itemVMs(itemVMs, oldVMs) {
-            (this.currentMultiple ? MMultiplex : MSinglex).watch.itemVMs.call(this, itemVMs, oldVMs);
+        itemVMs: {
+            override: true,
+            handler(itemVMs, oldVMs) {
+                (this.currentMultiple ? MMultiplex : MSinglex).watch.itemVMs.call(this, itemVMs, oldVMs);
+            },
         },
     },
     methods: {

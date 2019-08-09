@@ -1,8 +1,8 @@
-import Validator from '../u-validator.vue';
+import UValidator from '../u-validator.vue';
 
 export const UValidatorTr = {
     name: 'u-validator-tr',
-    extends: Validator,
+    extends: UValidator,
 };
 
 export default UValidatorTr;
