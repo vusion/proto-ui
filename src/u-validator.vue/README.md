@@ -1,36 +1,10 @@
-# 验证器
+# UValidator 验证器
 
-``` vue
-<template>
-<u-validator>
-    <u-validator :rules="rules.username" muted="message">
-        <u-input></u-input>
-    </u-validator>
-    <u-validator :rules="rules.email" muted="message">
-        <u-input></u-input>
-    </u-validator>
-</u-validator>
-</template>
+<u-h2-tabs router>
+    <u-h2-tab title="基础示例" to="/components/u-validator/examples"></u-h2-tab>
+    <u-h2-tab title="内置规则" to="/components/u-validator/rules"></u-h2-tab>
+    <u-h2-tab title="测试用例" to="/components/u-validator/cases"></u-h2-tab>
+    <u-h2-tab title="API" to="/components/u-validator/api"></u-h2-tab>
+</u-h2-tabs>
 
-<script>
-export default {
-    data() {
-        return {
-            rules: {
-                username: [
-                    { type: 'string', required: true, trigger: 'blur', message: '请输入用户名' },
-                    { type: 'string', pattern: /^[a-zA-Z]/, trigger: 'input+blur', message: '以字母开头' },
-                    { type: 'string', pattern: /^[a-zA-Z0-9-]+$/, trigger: 'input+blur', message: '字母、数字或中划线组成' },
-                    { type: 'string', pattern: /[a-zA-Z0-9]$/, trigger: 'blur', message: '以字母或数字结尾' },
-                    { type: 'string', min: 4, trigger: 'blur', message: '不得少于4个字符' },
-                ],
-                email: [
-                    { type: 'string', required: true, trigger: 'blur', message: '请输入邮箱' },
-                    { type: 'email', trigger: 'blur', message: '邮箱格式不正确' },
-                ],
-            },
-        };
-    },
-};
-</script>
-```
+<router-view></router-view>
