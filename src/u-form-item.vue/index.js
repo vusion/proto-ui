@@ -1,7 +1,7 @@
 import Validator from '../u-validator.vue';
 
 export default {
-    name: 'u-form-item1',
+    name: 'u-form-item',
     mixins: [Validator],
     props: {
         // name: String,

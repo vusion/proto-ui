@@ -25,7 +25,7 @@ import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
-import FormItem from './u-form-item.vue';
+import FormItem from './u-form.vue/item.vue';
 import GridLayout from './u-grid-layout.vue';
 import GridLayoutColumn from './u-grid-layout-column.vue';
 import GridLayoutRow from './u-grid-layout-row.vue';
