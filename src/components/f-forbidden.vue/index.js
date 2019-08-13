@@ -1,6 +1,5 @@
 export const FForbidden = {
     name: 'f-forbidden',
-    template: '<div></div>',
     props: {
         contextmenu: { type: Boolean, default: false },
         select: { type: Boolean, default: false },
