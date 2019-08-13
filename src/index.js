@@ -21,12 +21,17 @@ import Draggable from './u-draggable.vue';
 import Dragger from './u-dragger.vue';
 import Drawer from './u-drawer.vue';
 import Droppable from './u-droppable.vue';
+import Dynamic from './m-dynamic.vue';
 import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form.vue/item.vue';
 import FormTable from './u-form-table.vue';
+import FormTable from './u-form-table.vue';
+import FormTableAddButton from './u-form-table.vue/add-button.vue';
+import FormTableEditButton from './u-form-table.vue/edit-button.vue';
+import FormTableRemoveButton from './u-form-table.vue/remove-button.vue';
 import GridLayout from './u-grid-layout.vue';
 import GridLayoutColumn from './u-grid-layout-column.vue';
 import GridLayoutRow from './u-grid-layout-row.vue';
@@ -122,12 +127,16 @@ export {
     Dragger,
     Drawer,
     Droppable,
+    Dynamic,
     Emitter,
     Field,
     Forbidden,
     Form,
     FormItem,
     FormTable,
+    FormTableAddButton,
+    FormTableEditButton,
+    FormTableRemoveButton,
     GridLayout,
     GridLayoutColumn,
     GridLayoutRow,
