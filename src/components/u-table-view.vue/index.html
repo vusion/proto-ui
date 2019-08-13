@@ -66,7 +66,7 @@
                         </td>
                     </tr>
                     <template v-else v-for="(item, rowIndex) in currentData">
-                        <tr :key="rowIndex" :class="$style.row" :selected="selectable && selectedItem === item" @click="selectable && select(item)">
+                        <tr :key="rowIndex" :class="$style.row" :color="item.rowColor" :selected="selectable && selectedItem === item" @click="selectable && select(item)">
                             <td :class="$style.cell" v-for="(columnVM, columnIndex) in visibleColumnVMs" :ellipsis="columnVM.ellipsis" v-ellipsis-title>
                                 <!-- type === 'index' -->
                                 <span v-if="columnVM.type === 'index'">{{ columnVM.startIndex + rowIndex }}</span>

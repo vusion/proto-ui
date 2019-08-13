@@ -31,10 +31,30 @@
     border-right: 1px solid $border-color-base;
 }
 
-.root[striped] tbody tr:nth-of-type(odd) {
+.root[striped] > tbody > tr:nth-of-type(odd) {
     background: $background-color-light;
 }
 
-.root[hover] tbody tr:hover {
+.root[hover] > tbody > tr:hover {
     background: $background-color-base;
+}
+
+.root > tbody > tr[color="light"] {
+    background: $background-color-light;
+}
+
+.root > tbody > tr[color="normal"] {
+    background: $background-color-base;
+}
+
+.root > tbody > tr[color="dark"] {
+    background: $background-color-dark;
+}
+
+.root > tbody > tr[color="primary"] {
+    background: color-mod($brand-primary alpha(0.2));
+}
+
+.root > tbody > tr[color="error"] {
+    background: color-mod($brand-error alpha(0.2));
 }
