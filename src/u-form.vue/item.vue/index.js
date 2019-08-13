@@ -1,8 +1,8 @@
-import Validator from '../u-validator.vue';
+import UValidator from '../../u-validator.vue';
 
-export default {
-    name: 'u-form-item1',
-    mixins: [Validator],
+export const UFormItem = {
+    name: 'u-form-item',
+    mixins: [UValidator],
     props: {
         // name: String,
         // label: String,
@@ -27,7 +27,7 @@ export default {
     },
     computed: {
         currentRequired() {
-            return this.required || this.currentRules && this.currentRules.some((rule) => rule.required);
+            return this.required || Array.isArray(this.currentRules) && this.currentRules.some((rule) => rule.required);
         },
         currentLabelSize() {
             return this.labelSize || (this.rootVM && this.rootVM.labelSize) || 'auto';
@@ -44,3 +44,5 @@ export default {
         // },
     },
 };
+
+export default UFormItem;

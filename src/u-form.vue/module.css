@@ -1,13 +1,13 @@
 .root {}
 
-.root[layout="block"] > *:not(:last-child) {
-    margin-bottom: 20px;
+.root[layout="block"] [class^=u-form_item]:not(:last-child) {
+    margin-bottom: 10px;
 }
 
-.root[layout="inline"] > * {
+.root[layout="inline"] [class^=u-form_item] {
     display: inline-block;
 }
 
-.root[layout="inline"] > *:not(:last-child) {
+.root[layout="inline"] [class^=u-form_item]:not(:last-child) {
     margin-right: 20px;
 }
