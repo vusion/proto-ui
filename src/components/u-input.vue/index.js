@@ -81,20 +81,20 @@ export const UInput = {
             let cancel = false;
             this.$emit('before-clear', {
                 oldValue,
-                value: undefined,
+                value: '',
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.currentValue = undefined;
-            this.$emit('input', undefined, this);
-            this.$emit('update:value', undefined, this);
+            this.currentValue = '';
+            this.$emit('input', '', this);
+            this.$emit('update:value', '', this);
             this.focus();
 
             this.$emit('clear', {
                 oldValue,
-                value: undefined,
+                value: '',
             }, this);
         },
     },
