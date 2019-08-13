@@ -26,6 +26,7 @@ import Field from './u-field.vue';
 import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form.vue/item.vue';
+import FormTable from './u-form-table.vue';
 import GridLayout from './u-grid-layout.vue';
 import GridLayoutColumn from './u-grid-layout-column.vue';
 import GridLayoutRow from './u-grid-layout-row.vue';
@@ -126,6 +127,7 @@ export {
     Forbidden,
     Form,
     FormItem,
+    FormTable,
     GridLayout,
     GridLayoutColumn,
     GridLayoutRow,
