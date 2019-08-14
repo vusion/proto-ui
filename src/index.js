@@ -28,10 +28,13 @@ import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
 import FormItem from './u-form.vue/item.vue';
 import FormTable from './u-form-table.vue';
-import FormTable from './u-form-table.vue';
+import FormTableView from './u-form-table-view.vue';
+import FormTableViewColumn from './u-form-table-view.vue/column.vue';
+import FormTableViewRow from './u-form-table-view.vue/row.vue';
 import FormTableAddButton from './u-form-table.vue/add-button.vue';
 import FormTableEditButton from './u-form-table.vue/edit-button.vue';
 import FormTableRemoveButton from './u-form-table.vue/remove-button.vue';
+import FSlot from './f-slot.vue';
 import GridLayout from './u-grid-layout.vue';
 import GridLayoutColumn from './u-grid-layout-column.vue';
 import GridLayoutRow from './u-grid-layout-row.vue';
@@ -134,9 +137,13 @@ export {
     Form,
     FormItem,
     FormTable,
+    FormTableView,
+    FormTableViewColumn,
+    FormTableViewRow,
     FormTableAddButton,
     FormTableEditButton,
     FormTableRemoveButton,
+    FSlot,
     GridLayout,
     GridLayoutColumn,
     GridLayoutRow,

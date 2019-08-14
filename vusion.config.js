@@ -64,6 +64,7 @@ module.exports = {
             { group: 'Form', name: 'u-uploader', alias: '文件上传' },
             { group: 'Data', name: 'u-list-view', alias: '列表选择' },
             { group: 'Data', name: 'u-tree-view', alias: '树型选择' },
+            { group: 'Data', name: 'u-form-table-view', alias: '表格视图' },
             { group: 'Data', name: 'u-transfer', alias: '穿梭框' },
             // { group: 'DateTime', name: 'u-calendar', alias: '日历' },
             // { group: 'DateTime', name: 'u-date-picker', alias: '日期选择' },
