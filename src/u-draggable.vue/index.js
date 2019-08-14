@@ -39,6 +39,7 @@ export default {
         this.childVM.$forceUpdate();
     },
     beforeDestroy() {
+        this.$el && this.$el.removeEventListener('mousedown', this.onMouseDown);
         this.childVM = this.childVM && this.childVM.$destroy();
     },
     methods: {
@@ -203,7 +204,7 @@ export default {
         onMouseUp(e) {
             window.removeEventListener('mousemove', this.onMouseMove);
             window.removeEventListener('mouseup', this.onMouseUp);
-            this.$el.removeEventListener('mousedown', this.onMouseDown);
+
             if (manager.dragging) {
                 manager.droppable && manager.droppable.drop(this);
                 this.cancel();
