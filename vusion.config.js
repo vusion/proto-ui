@@ -5,10 +5,10 @@ module.exports = {
     type: 'library',
     name: 'proto-ui',
     CamelName: 'ProtoUI',
-    lint: true,
-    uglifyJS: true,
-    extractCSS: true,
-    sourceMap: true,
+    // lint: true,
+    // uglifyJS: true,
+    // extractCSS: true,
+    // sourceMap: true,
     webpackDevServer: {
         historyApiFallback: {
             index: '/proto-ui/',

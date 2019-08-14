@@ -638,7 +638,7 @@ export default {
 </template>
 
 <script>
-import { MField } from 'library';
+import { MField } from '@@';
 
 export default {
     components: {
@@ -709,7 +709,7 @@ export default {
 </template>
 
 <script>
-import { MField } from 'library';
+import { MField } from '@@';
 
 export default {
     name: 'e-checkbox',
@@ -897,7 +897,7 @@ export default {
 </template>
 
 <script>
-import { MField } from 'library';
+import { MField } from '@@';
 
 export default {
     components: {

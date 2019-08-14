@@ -4,7 +4,9 @@
   "version": "0.4.10",
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
-    "lint": "eslint --fix ./src/**/*.{js,vue} && stylelint --fix ./src/**/*.css",
+    "build": "vue-cli-service build",
+    "doc": "vue-cli-service doc",
+    "lint": "vue-cli-service lint",
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
   "repository": "vusion/proto-ui",
@@ -31,11 +33,11 @@
     "vusion-async-validator": "^1.8.8"
   },
   "devDependencies": {
-    "babel-plugin-istanbul": "^4.1.4",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015-mod": "^6.6.0",
-    "babel-preset-es3": "^1.0.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
     "eslint": "^5.15.3",
     "eslint-config-vusion": "^3.0.1",
     "husky": "^0.14.3",
@@ -43,6 +45,8 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
+    "vue-cli-plugin-vusion": "^0.5.0",
+    "vue-template-compiler": "^2.6.10",
     "vusion-hooks": "^0.2.2",
     "vusion-utils": "^0.4.0"
   },
