@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "doc": "vue-cli-service doc",
+    "doc-build": "vue-cli-service doc-build",
     "lint": "vue-cli-service lint",
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
@@ -33,8 +34,7 @@
     "vusion-async-validator": "^1.8.8"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
+    "@vue/babel-preset-app": "^3.10.0",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
@@ -45,7 +45,7 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vusion": "^0.5.0",
+    "vue-cli-plugin-vusion": "^0.5.1",
     "vue-template-compiler": "^2.6.10",
     "vusion-hooks": "^0.2.2",
     "vusion-utils": "^0.4.0"
