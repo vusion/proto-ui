@@ -12,7 +12,7 @@
     padding: 6px 20px;
     margin: 40px -20px;
     color: #6a6f75;
-    border-bottom: 3px solid #f2f3f8;
+    background: #f2f3f8;
 }
 
 .root > h3 {
