@@ -1,8 +1,8 @@
-import MEmitter from '../m-emitter.vue';
+import UEmitter from '../u-emitter.vue';
 
 export const MDynamic = {
     name: 'm-dynamic',
-    mixins: [MEmitter],
+    mixins: [UEmitter],
     props: {
         data: Array,
         dynamic: { type: Boolean, default: true },

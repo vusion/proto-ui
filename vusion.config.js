@@ -84,6 +84,7 @@ module.exports = {
             { group: 'Effects', name: 'u-forbidden', alias: '禁用' },
             { group: 'Progress & Charts', name: 'u-linear-progress', alias: '线型进度条' },
             { group: 'Progress & Charts', name: 'u-circular-progress', alias: '圆型进度条' },
+            { group: 'Mixins & Utils', name: 'm-dynamic', alias: '动态列表' },
             { group: 'Mixins & Utils', name: 'u-emitter', alias: '触发器' },
             { group: 'Mixins & Utils', name: 'u-router-item', alias: '路由项' },
             { group: 'Mixins & Utils', name: 'u-collapse-transition', alias: '折叠过渡' },

@@ -9,5 +9,5 @@
     font-size: 24px;
     display: inline-block;
     vertical-align: middle;
-    icon-font: url('../../i-icon.vue/assets/edit.svg');
+    icon-font: url('../assets/edit.svg');
 }

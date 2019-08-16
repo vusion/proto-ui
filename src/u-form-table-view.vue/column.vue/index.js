@@ -1,11 +1,11 @@
-import { MEmitter } from '../../m-emitter.vue';
+import UEmitter from '../../u-emitter.vue';
 // import UValidator from '../../u-validator.vue'; 这里不直接继承了，只是把属性抄一下
 import { Formatter, parseFormatters, placeholderFormatter } from '../../base/utils/Formatters';
 
 export const UFormTableViewColumn = {
     name: 'u-form-table-view-column',
     parentName: 'u-form-table-view',
-    mixins: [MEmitter],
+    mixins: [UEmitter],
     props: {
         type: String,
         startIndex: { type: Number, default: 1 },

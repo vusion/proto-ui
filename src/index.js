@@ -26,7 +26,7 @@ import Emitter from './u-emitter.vue';
 import Field from './u-field.vue';
 import Forbidden from './u-forbidden.vue';
 import Form from './u-form.vue';
-import FormItem from './u-form.vue/item.vue';
+import FormItem from './u-form-item.vue';
 import FormTable from './u-form-table.vue';
 import FormTableView from './u-form-table-view.vue';
 import FormTableViewColumn from './u-form-table-view.vue/column.vue';
