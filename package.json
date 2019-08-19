@@ -37,7 +37,6 @@
   "devDependencies": {
     "@vue/babel-preset-app": "^3.10.0",
     "@vue/cli-plugin-babel": "^3.10.0",
-    "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
     "eslint": "^5.15.3",
     "eslint-config-vusion": "^3.0.1",
