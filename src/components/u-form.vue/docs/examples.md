@@ -203,7 +203,7 @@ export default {
     },
     methods: {
         submit() {
-            console.log(this.model);
+            console.info(this.model);
             this.$toast.show('提交成功！');
         },
     },
@@ -244,7 +244,7 @@ export default {
     },
     methods: {
         submit() {
-            console.log(this.model);
+            console.info(this.model);
             this.$toast.show('提交成功！');
         },
     },

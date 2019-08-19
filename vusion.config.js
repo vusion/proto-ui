@@ -6,16 +6,17 @@ module.exports = {
     name: 'proto-ui',
     CamelName: 'ProtoUI',
 
-    lint: true, // @deprecated
-    uglifyJS: true, // @deprecated
-    extractCSS: true, // @deprecated
-    sourceMap: true, // @deprecated
-
+    // @deprecated
+    lint: true,
+    uglifyJS: true,
+    extractCSS: true,
+    sourceMap: true,
     webpackDevServer: {
         historyApiFallback: {
             index: '/proto-ui/',
         },
     },
+
     docs: {
         title: 'Proto UI 组件库',
         logo: '原型组件',

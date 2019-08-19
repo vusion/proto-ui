@@ -197,6 +197,11 @@ export default {
 </template>
 <script>
 export default {
+    filters: {
+        someFilter(value) {
+            throw Error('[ERROR] some errors');
+        },
+    },
     data() {
         return {
             values: ['5cd49be8f65c4738', 'f799a0467c494601'],
@@ -208,11 +213,6 @@ export default {
                 { id: '150823cc351642b6', name: '王五', phone: '13579340020', email: 'wangwu@163.com', address: '浙江省杭州市滨江区网商路599号网易大厦二期', createdTime: 1468614726000, loginTime: 1531675926000 },
             ],
         };
-    },
-    filters: {
-        someFilter(value) {
-            throw Error('[ERROR] some errors');
-        },
     },
 };
 </script>

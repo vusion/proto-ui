@@ -4,7 +4,8 @@
   "version": "0.4.10",
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service library-build",
+    "build-raw": "vue-cli-service library-build --mode raw",
     "doc": "vue-cli-service doc",
     "doc-build": "vue-cli-service doc-build",
     "lint": "vue-cli-service lint",
@@ -45,7 +46,7 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vusion": "^0.5.1",
+    "vue-cli-plugin-vusion": "^0.5.4",
     "vue-template-compiler": "^2.6.10",
     "vusion-hooks": "^0.2.2",
     "vusion-utils": "^0.4.0"

@@ -112,7 +112,7 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem">
     <u-form-table-view-column title="URL" width="20%">
         <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
@@ -177,7 +177,7 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem" :max-count="5">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem" :max-count="5">
     <u-form-table-view-column title="URL" width="20%">
         <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
@@ -240,7 +240,7 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem">
     <u-form-table-view-column title="URL" width="20%"
         rules="required | pattern(/^[a-zA-Z0-9/\s]+$/)">
         <template slot="cell" slot-scope="{ item }">
