@@ -4,22 +4,22 @@
 <template>
 <u-form-table-view :data="list">
     <u-form-table-view-column title="URL" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="服务" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-select size="huge full" v-model="item.service" :data="services"></u-select>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="端口" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.port"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="描述">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.description"></u-input>
         </template>
     </u-form-table-view-column>
@@ -59,22 +59,22 @@ export default {
     <u-form-item label="规则" layout="block">
         <u-form-table-view :data="list">
             <u-form-table-view-column title="URL" width="20%">
-                <template #cell="{ item }">
+                <template slot="cell" slot-scope="{ item }">
                     <u-input size="huge full" v-model="item.url"></u-input>
                 </template>
             </u-form-table-view-column>
             <u-form-table-view-column title="服务" width="20%">
-                <template #cell="{ item }">
+                <template slot="cell" slot-scope="{ item }">
                     <u-select size="huge full" v-model="item.service" :data="services"></u-select>
                 </template>
             </u-form-table-view-column>
             <u-form-table-view-column title="端口" width="20%">
-                <template #cell="{ item }">
+                <template slot="cell" slot-scope="{ item }">
                     <u-input size="huge full" v-model="item.port"></u-input>
                 </template>
             </u-form-table-view-column>
             <u-form-table-view-column title="描述">
-                <template #cell="{ item }">
+                <template slot="cell" slot-scope="{ item }">
                     <u-input size="huge full" v-model="item.description"></u-input>
                 </template>
             </u-form-table-view-column>
@@ -112,24 +112,24 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem">
     <u-form-table-view-column title="URL" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="服务" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-select size="huge full" v-model="item.service" :data="services"></u-select>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="端口" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.port"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="描述">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.description"></u-input>
         </template>
     </u-form-table-view-column>
@@ -177,24 +177,24 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem" :max-count="5">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem" :max-count="5">
     <u-form-table-view-column title="URL" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="服务" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-select size="huge full" v-model="item.service" :data="services"></u-select>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="端口" width="20%">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.port"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="描述">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.description"></u-input>
         </template>
     </u-form-table-view-column>
@@ -240,27 +240,27 @@ export default {
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem">
+<u-form-table-view :data="list" dynamic :get-default-item="getDefaultItem">
     <u-form-table-view-column title="URL" width="20%"
         rules="required | pattern(/^[a-zA-Z0-9/\s]+$/)">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.url"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="服务" width="20%"
         rules="required">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-select size="huge full" v-model="item.service" :data="services"></u-select>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="端口" width="20%"
         rules="required | integer | range(1,65535)">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.port"></u-input>
         </template>
     </u-form-table-view-column>
     <u-form-table-view-column title="描述">
-        <template #cell="{ item }">
+        <template slot="cell" slot-scope="{ item }">
             <u-input size="huge full" v-model="item.description"></u-input>
         </template>
     </u-form-table-view-column>
