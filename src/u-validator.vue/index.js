@@ -1,21 +1,31 @@
-import Emitter from '../u-emitter.vue';
+import MEmitter from '../u-emitter.vue';
 import Validator from 'vusion-async-validator';
+import { AtomValidator } from 'atom-validator';
+import VueAtomValidator from 'atom-validator/VuePlugin';
 import debounce from 'lodash/debounce';
 
 export const UValidator = {
     name: 'u-validator',
     isValidator: true,
-    mixins: [Emitter],
+    install(Vue) {
+        Vue.use(VueAtomValidator, {
+            locale: Vue.i18n && Vue.i18n.locale,
+        });
+    },
+    mixins: [MEmitter],
     props: {
         name: String,
         label: String,
-        rules: [Array, Object],
-        target: { type: String, default: 'auto' },
-        ignoreRules: { type: Boolean, default: false }, // @deprecated
-        ignoreValidate: { type: Boolean, default: false },
+        action: String,
+        rules: [String, Array, Object],
+        // target: { type: String, default: 'auto' }, // 暂不开放此属性
         message: String,
         muted: String,
-        validateOptions: Object,
+        ignoreRules: { type: Boolean, default: false }, // @deprecated
+        ignoreValidation: { type: Boolean, default: false },
+        validatingOptions: Object,
+        validatingValue: null,
+        validatingProcess: { type: Function, default: (value) => value },
     },
     data() {
         return {
@@ -39,6 +49,8 @@ export const UValidator = {
             color: '',
             currentMessage: this.message,
             firstErrorMessage: '',
+
+            validator: undefined,
         };
     },
     computed: {
@@ -46,10 +58,10 @@ export const UValidator = {
             return this.rules || (this.rootVM && this.rootVM.rules && this.rootVM.rules[this.name]);
         },
         currentTarget() {
-            if (this.target === 'auto')
-                return this.validatorVMs.length ? 'validatorVMs' : 'fieldVM';
-            else
-                return this.target;
+            // if (this.target === 'auto')
+            return this.validatorVMs.length ? 'validatorVMs' : 'fieldVM';
+            // else
+            //     return this.target;
         },
         touched() {
             if (this.currentTarget === 'validatorVMs')
@@ -82,10 +94,14 @@ export const UValidator = {
     },
     watch: {
         currentRules() {
-            this.validate('submit', true).catch((errors) => errors);
+            const context = this.$vnode.context;
+            this.validator = new AtomValidator(context.$options.validators, context.$options.rules, this.currentRules, context);
+            this.validate('submit', !this.touched).catch((errors) => errors);
         },
     },
     created() {
+        const context = this.$vnode.context;
+        this.validator = new AtomValidator(context.$options.validators, context.$options.rules, this.currentRules, context);
         // this.debouncedValidate = debounce(this.validate, 50, { leading: false, trailing: true });
         this.debouncedOnValidate = debounce(this.onValidate, 50, { leading: true, trailing: true });
 
@@ -194,51 +210,116 @@ export const UValidator = {
                 });
             } else {
                 let rules = this.currentRules;
-                rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
-                if (this.ignoreRules || this.ignoreValidate || !rules || !rules.length) {
+
+                // 新版
+                if (typeof rules === 'string' || Array.isArray(rules) && rules.some((rule) => rule.validate)) {
                     this.triggerValid = true;
                     this.realValid = true;
-                    this.firstErrorMessage = this.currentMessage = '';
-                    this.color = '';
+                    if (this.ignoreRules || this.ignoreValidation) {
+                        this.firstErrorMessage = this.currentMessage = '';
+                        this.color = '';
 
-                    this.onValidate();
-                    // this.dispatch('u-form', 'validate-item-vm', true);
-                    return Promise.resolve();
-                }
+                        this.onValidate();
+                        return Promise.resolve();
+                    }
 
-                this.pending = true;
-                this.state = 'validating';
-                if (!untouched)
-                    this.fieldTouched = true;
+                    this.pending = true;
+                    this.state = 'validating';
+                    if (!untouched)
+                        this.fieldTouched = true;
 
-                if (untouched || this.muted === 'all' || this.muted === 'color')
-                    this.color = this.currentMessage = '';
-                else
-                    this.color = this.state;
+                    if (untouched || this.muted === 'all' || this.muted === 'color')
+                        this.color = this.currentMessage = '';
+                    else
+                        this.color = this.state;
 
-                const name = this.name || 'field';
-                const validator = new Validator({
-                    [name]: rules,
-                });
+                    if (trigger === 'submit')
+                        trigger = '';
 
-                return new Promise((resolve, reject) => {
-                    validator.validate({ [name]: this.value }, Object.assign({ firstFields: true }, this.validateOptions), (errors, fields) => {
+                    const value = this.validatingProcess(this.validatingValue === undefined ? this.value : this.validatingValue);
+                    return this.validator.validate(
+                        value,
+                        trigger,
+                        Object.assign({
+                            label: this.label || '字段',
+                            action: this.action || '输入',
+                        }, this.validatingOptions),
+                    ).then(() => {
                         this.pending = false;
-                        this.triggerValid = !errors;
-                        this.realValid = this.triggerValid; // @TODO
+                        this.triggerValid = true;
+                        this.realValid = this.triggerValid;
+                        this.state = 'success';
+                        this.firstErrorMessage = '';
 
-                        this.state = this.triggerValid ? 'success' : 'error';
-                        this.firstErrorMessage = errors ? errors[0].message : '';
                         if (!untouched && this.muted !== 'all' && this.muted !== 'color')
                             this.color = this.state;
                         if (!untouched && this.muted !== 'all' && this.muted !== 'message')
-                            this.currentMessage = errors ? errors[0].message : this.message;
+                            this.currentMessage = this.message;
+                        this.onValidate();
+                    }).catch((error) => {
+                        this.pending = false;
+                        this.triggerValid = false;
+                        this.realValid = this.triggerValid;
+                        this.state = 'error';
+                        this.firstErrorMessage = error;
+
+                        if (!untouched && this.muted !== 'all' && this.muted !== 'color')
+                            this.color = this.state;
+                        if (!untouched && this.muted !== 'all' && this.muted !== 'message')
+                            this.currentMessage = error;
 
                         this.onValidate();
-                        // this.dispatch('u-form', 'validate-item-vm', !errors);
-                        errors ? reject(errors) : resolve(); // @TODO
+                        throw error;
                     });
-                });
+                } else {
+                    this.triggerValid = true;
+                    this.realValid = true;
+                    rules = rules && rules.filter((item) => !item.ignore).filter((rule) => (rule.trigger + '+submit').includes(trigger));
+                    if (this.ignoreRules || this.ignoreValidation || !rules || !rules.length) {
+                        this.firstErrorMessage = this.currentMessage = '';
+                        this.color = '';
+
+                        this.onValidate();
+                        // this.dispatch('u-form', 'validate-item-vm', true);
+                        return Promise.resolve();
+                    }
+
+                    this.pending = true;
+                    this.state = 'validating';
+                    if (!untouched)
+                        this.fieldTouched = true;
+
+                    if (untouched || this.muted === 'all' || this.muted === 'color')
+                        this.color = this.currentMessage = '';
+                    else
+                        this.color = this.state;
+
+                    const name = this.name || 'field';
+                    const validator = new Validator({
+                        [name]: rules,
+                    });
+
+                    return new Promise((resolve, reject) => {
+                        const value = this.validatingProcess(this.validatingValue === undefined ? this.value : this.validatingValue);
+                        const fields = { [name]: value };
+                        validator.validate(fields, Object.assign({ firstFields: true }, this.validatingOptions), (errors, fields) => {
+                            this.pending = false;
+                            this.triggerValid = !errors;
+                            this.realValid = this.triggerValid; // @TODO
+
+                            this.state = this.triggerValid ? 'success' : 'error';
+                            this.firstErrorMessage = errors ? errors[0].message : '';
+                            if (!untouched && this.muted !== 'all' && this.muted !== 'color')
+                                this.color = this.state;
+                            if (!untouched && this.muted !== 'all' && this.muted !== 'message')
+                                this.currentMessage = errors ? errors[0].message : this.message;
+
+                            this.onValidate();
+                            // this.dispatch('u-form', 'validate-item-vm', !errors);
+                            errors ? reject(errors) : resolve(); // @TODO
+                        });
+                    });
+                }
             }
         },
         onValidate() {

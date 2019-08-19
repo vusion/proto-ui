@@ -1,9 +1,9 @@
-import Validator from '../u-validator.vue';
+import UValidator from '../u-validator.vue';
 import cloneDeep from 'lodash/cloneDeep';
 
-export default {
+export const UForm = {
     name: 'u-form',
-    mixins: [Validator],
+    mixins: [UValidator],
     props: {
         model: Object,
         rules: Object,
@@ -31,7 +31,7 @@ export default {
             this.state = this.getState();
             this.$emit('validate', {
                 valid: this.state === 'success' && this.valid,
-            });
+            }, this);
         });
     },
     watch: {
@@ -41,7 +41,7 @@ export default {
                     // @TODO: 考虑到 @change 事件是基于子组件的 @change 事件的，所以 @modify 命名分开
                     this.$emit('modify', {
                         modified: this.deepCompare(val, this.comparedModel),
-                    });
+                    }, this);
                 }
             },
             deep: true,
@@ -103,3 +103,5 @@ export default {
         },
     },
 };
+
+export default UForm;
