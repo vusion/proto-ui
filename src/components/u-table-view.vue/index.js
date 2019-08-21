@@ -278,7 +278,7 @@ export const UTableView = {
                     // 初始表格隐藏时，上面的值为0，需要特殊处理
                     let parentEl = this.$el && this.$el.parentElement;
                     while (parentEl && !parentEl.offsetWidth)
-                        parentEl = parentEl.parentEl;
+                        parentEl = parentEl.parentElement;
                     rootWidth = parentEl ? parentEl.offsetWidth : 0;
                 }
 
