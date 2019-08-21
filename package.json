@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.4.10",
+  "version": "0.4.12",
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
     "build": "vue-cli-service library-build",
@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@vusion/popper.js": "^1.14.1",
-    "atom-validator": "^0.2.1",
+    "atom-validator": "^0.2.2",
     "lodash": "^4.17.5",
     "normalize.css": "^7.0.0",
     "vusion-async-validator": "^1.8.8"
@@ -45,7 +45,7 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vusion": "^0.5.4",
+    "vue-cli-plugin-vusion": "^0.5.5",
     "vue-template-compiler": "^2.6.10",
     "vusion-hooks": "^0.2.2",
     "vusion-utils": "^0.4.3"
