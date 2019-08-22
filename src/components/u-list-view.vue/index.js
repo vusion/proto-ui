@@ -90,7 +90,7 @@ export const UListView = {
             this.currentDataSource = this.normalizeDataSource(this.dataSource || this.data);
             this.load().then(() => {
                 // 更新列表之后，原来的选择可能已不存在，这里暂存然后重新查找一遍
-                MComplex.watch.itemVMs.call(this, this.itemVMs);
+                MComplex.watch.itemVMs.handler.call(this, this.itemVMs);
             });
         },
         getExtraParams() {
@@ -208,7 +208,7 @@ export const UListView = {
                         this.selectedVM = selectedVM;
                 }
             }
-            // MComplex.watch.itemVMs.call(this, this.itemVMs);
+            // MComplex.watch.itemVMs.handler.call(this, this.itemVMs);
         },
         load(more) {
             const dataSource = this.currentDataSource;
