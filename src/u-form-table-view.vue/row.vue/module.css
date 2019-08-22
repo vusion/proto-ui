@@ -1,4 +1,4 @@
-@extend;
+@import '../module.css';
 
 .root {
     display: table-row;
