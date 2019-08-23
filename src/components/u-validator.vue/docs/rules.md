@@ -718,3 +718,294 @@ export default {
     <u-input placeholder="不能连续出现下划线"></u-input>
 </u-validator>
 ```
+
+#### alphaDash <u-label>input+blur</u-label>
+
+必须由字母或下划线组成。
+
+``` html
+<u-validator label="名称" rules="alphaDash">
+    <u-input placeholder="以字母、下划线组成"></u-input>
+</u-validator>
+```
+
+#### alphaNumDash <u-label>input+blur</u-label>
+
+必须由字母、数字或下划线组成。
+
+``` html
+<u-validator label="名称" rules="alphaNumDash">
+    <u-input placeholder="以字母、数字或下划线组成"></u-input>
+</u-validator>
+```
+
+#### alphaSpaces <u-label>input+blur</u-label>
+
+必须由字母或空格组成。
+
+``` html
+<u-validator label="名称" rules="alphaSpaces">
+    <u-input placeholder="以字母或空格组成"></u-input>
+</u-validator>
+```
+
+#### lowerCase <u-label>input+blur</u-label>
+
+不能出现大写字母。
+
+``` html
+<u-validator label="名称" rules="lowerCase">
+    <u-input placeholder="不能出现大写字母"></u-input>
+</u-validator>
+```
+
+#### upperCase <u-label>input+blur</u-label>
+
+不能出现小写字母。
+
+``` html
+<u-validator label="名称" rules="upperCase">
+    <u-input placeholder="不能出现小写字母"></u-input>
+</u-validator>
+```
+
+#### halfWidth <u-label>input+blur</u-label>
+
+需要输入半角字符。
+
+``` html
+<u-validator label="名称" rules="halfWidth">
+    <u-input placeholder="需要输入半角字符"></u-input>
+</u-validator>
+```
+
+#### fullWidth <u-label>input+blur</u-label>
+
+必须输入全角字符。
+
+``` html
+<u-validator label="名称" rules="fullWidth">
+    <u-input placeholder="请输入全角字符"></u-input>
+</u-validator>
+```
+
+#### ascii <u-label>input+blur</u-label>
+
+必须输入ascii字符。
+
+``` html
+<u-validator label="名称" rules="ascii">
+    <u-input placeholder="请输入ascii字符"></u-input>
+</u-validator>
+```
+
+#### base64 <u-label>blur</u-label>
+
+必须输入base64编码。
+
+``` html
+<u-validator label="名称" rules="base64">
+    <u-input placeholder="请输入base64编码"></u-input>
+</u-validator>
+```
+
+#### byteLength(min: number, max: number) <u-label>input+blur</u-label>
+
+输入字符串的字节长度范围限制。
+
+- `min`：最小字节长度
+- `max`：最大字节长度
+
+``` html
+<u-validator label="名称" rules="byteLength(0, 21)">
+    <u-input placeholder="请输入八个汉字"></u-input>
+</u-validator>
+```
+
+#### dataURI <u-label>blur</u-label>
+
+必须输入dataURI编码。
+
+``` html
+<u-validator label="编码" rules="dataURI">
+    <u-input placeholder="请输入dataURI编码"></u-input>
+</u-validator>
+```
+
+#### divisibleBy(divisor: number) <u-label>blur</u-label>
+
+输入数字能否被相应除数整除。
+
+- `divisor`：除数
+
+``` html
+<u-validator label="名称" rules="divisibleBy(3)">
+    <u-input placeholder="请输入3的倍数"></u-input>
+</u-validator>
+```
+
+#### hash(algorithm: string) <u-label>blur</u-label>
+
+输入编码是否符合指定哈希算法。
+
+- `algorithm`：算法名称，支持`md4`、`md5`、`sha1`、`sha256`、`sha384`、`sha512`、`ripemd128`、`ripemd160`、`tiger128`、`tiger160`、`tiger192`、`crc32`以及`crc32b`
+
+``` html
+<u-validator label="编码" rules="hash('md4')">
+    <u-input placeholder="请输入哈希编码"></u-input>
+</u-validator>
+```
+
+#### md5 <u-label>blur</u-label>
+
+输入编码是否符合md5算法。
+
+``` html
+<u-validator label="编码" rules="md5">
+    <u-input placeholder="请输入md5编码"></u-input>
+</u-validator>
+```
+
+#### hex <u-label>blur</u-label>
+
+输入数字是否是十六进制。
+
+``` html
+<u-validator label="十六进制数" rules="hex">
+    <u-input placeholder="请输入十六进制数"></u-input>
+</u-validator>
+```
+
+#### hexColor <u-label>blur</u-label>
+
+输入字符串是否是十六进制颜色码。
+
+``` html
+<u-validator label="颜色" rules="hexColor">
+    <u-input placeholder="请输入颜色"></u-input>
+</u-validator>
+```
+
+#### creditCard <u-label>blur</u-label>
+
+输入信用卡号码是否合法。
+
+``` html
+<u-validator label="信用卡号" rules="creditCard">
+    <u-input placeholder="请输入信用卡号"></u-input>
+</u-validator>
+```
+
+#### fqdn <u-label>blur</u-label>
+
+输入全限定域名是否合法。
+
+``` html
+<u-validator label="FQDN" rules="fqdn">
+    <u-input placeholder="请输入全限定域名"></u-input>
+</u-validator>
+```
+
+#### ipOrFQDN <u-label>blur</u-label>
+
+输入内容是否为一个合法IP或全限定域名。
+
+``` html
+<u-validator label="IP或FQDN" rules="ipOrFQDN">
+    <u-input placeholder="请输入IP或全限定域名"></u-input>
+</u-validator>
+```
+
+#### isbn(version: number) <u-label>blur</u-label>
+
+输入内容是否为一个合法的国际标准书号(ISBN)。
+
+- `version`：ISBN版本，接受`10`或`13`
+
+``` html
+<u-validator label="ISBN" rules="isbn(10)">
+    <u-input placeholder="请输入ISBN编号"></u-input>
+</u-validator>
+```
+
+#### issn <u-label>blur</u-label>
+
+输入内容是否为一个合法的国际标准连续出版物号(ISSN)。
+
+``` html
+<u-validator label="ISSN" rules="issn">
+    <u-input placeholder="请输入ISSN编号"></u-input>
+</u-validator>
+```
+
+#### isin <u-label>blur</u-label>
+
+输入内容是否为一个合法的国际证券识别码(ISIN)。
+
+``` html
+<u-validator label="ISIN" rules="isin">
+    <u-input placeholder="请输入ISIN编号"></u-input>
+</u-validator>
+```
+
+#### iso8601(strict: boolean) <u-label>blur</u-label>
+
+输入内容是否为合法的ISO8601日期。
+
+- `strict`: 是否检测闰年日期。如果`strict`的值为`true`，则`2019-02-29`这样的日期属于非法日期
+
+``` html
+<u-validator label="日期" rules="iso8601(true)">
+    <u-input placeholder="请输入日期"></u-input>
+</u-validator>
+```
+
+#### iso31661Alpha2 <u-label>blur</u-label>
+
+输入内容是否为合法的ISO 3166-1 Alpha-2国家代码。
+
+``` html
+<u-validator label="代码" rules="iso31661Alpha2">
+    <u-input placeholder="请输入国家代码"></u-input>
+</u-validator>
+```
+
+#### iso31661Alpha3 <u-label>blur</u-label>
+
+输入内容是否为合法的ISO 3166-1 Alpha-3国家代码。
+
+``` html
+<u-validator label="代码" rules="iso31661Alpha3">
+    <u-input placeholder="请输入国家代码"></u-input>
+</u-validator>
+```
+
+#### json <u-label>input+blur</u-label>
+
+输入字符串是否可以被解析为JSON格式。
+
+``` html
+<u-validator label="JSON" rules="json">
+    <u-input placeholder="请输入JSON字符串"></u-input>
+</u-validator>
+```
+
+#### jwt <u-label>blur</u-label>
+
+输入字符串是否为合法的JSON Web Token。
+
+``` html
+<u-validator label="JWT" rules="jwt">
+    <u-input placeholder="请输入JWT"></u-input>
+</u-validator>
+```
+
+#### latLong <u-label>blur</u-label>
+
+输入字符串是否为合法的经纬度坐标。
+
+``` html
+<u-validator label="经纬度" rules="latLong">
+    <u-input placeholder="请输入坐标"></u-input>
+</u-validator>
+```
