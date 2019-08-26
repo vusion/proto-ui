@@ -341,6 +341,22 @@ export default {
 </script>
 ```
 
+#### noDuplicates(arg: any[]) <u-label>input</u-label>
+
+接受一个数组作为参数，验证数组中是否存在重复项。
+
+``` html
+<u-validator label="选项" rules="noDuplicates">
+    <u-select multiple>
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
+        <u-select-item value="nut">坚果</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="towel">毛巾</u-select-item>
+    </u-select>
+</u-validator>
+```
+
 ### 类型判断
 
 #### string <u-label>input+blur</u-label>
@@ -1007,5 +1023,63 @@ export default {
 ``` html
 <u-validator label="经纬度" rules="latLong">
     <u-input placeholder="请输入坐标"></u-input>
+</u-validator>
+```
+
+#### mobile (locale?: any[], strict?: boolean) <u-label>blur</u-label>
+
+输入内容是否为合法的手机号。
+
+- `locale`：所在地区，例如`zh-CN`、`ja-JP`等。可以是一个字符串或数组。如果不填，则尝试自动匹配所有地区。
+
+- `strict`：是否检验国家代号。如果为`true`，则必须以`+`和国家代码开头。
+
+``` html
+<u-validator label="手机" rules="mobile('zh-CN')">
+    <u-input placeholder="请输入手机号码"></u-input>
+</u-validator>
+```
+
+#### mongoId <u-label>blur</u-label>
+
+输入字符串是否为合法的MongoDB对象ID。
+
+``` html
+<u-validator label="ID" rules="mongoId">
+    <u-input placeholder="请输入mongoDB的对象ID"></u-input>
+</u-validator>
+```
+
+#### postalCode(locale: string) <u-label>blur</u-label>
+
+输入字符串是否为合法的邮政编码。
+
+- `locale`：所在地区。例如`CH`、`JP`等。
+
+``` html
+<u-validator label="postalID" rules="postalCode('JP')">
+    <u-input placeholder="请输入邮政编码"></u-input>
+</u-validator>
+```
+
+#### uuid(version?: number) <u-label>blur</u-label>
+
+输入字符串是否为合法的UUID。
+
+- `version`：采用的UUID版本。接受`3`、`4`和`5`。如果不填，则尝试自动匹配所有版本。
+
+``` html
+<u-validator label="UUID" rules="uuid(3)">
+    <u-input placeholder="请输入UUID"></u-input>
+</u-validator>
+```
+
+#### chinese <u-label>input+blur</u-label>
+
+输入字符串是否为合法的中文内容。
+
+``` html
+<u-validator label="姓名" rules="chinese">
+    <u-input placeholder="请输入姓名"></u-input>
 </u-validator>
 ```
