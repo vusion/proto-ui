@@ -5,7 +5,7 @@
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
     "build": "vue-cli-service library-build",
-    "build-raw": "vue-cli-service library-build --mode raw",
+    "build-raw": "vue-cli-service library-build --vusion-mode raw",
     "doc": "vue-cli-service doc",
     "doc-build": "vue-cli-service doc-build",
     "lint": "vue-cli-service lint",
