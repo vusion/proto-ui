@@ -26,6 +26,7 @@ export const UValidator = {
         validatingOptions: Object,
         validatingValue: null,
         validatingProcess: { type: Function, default: (value) => value },
+        manual: { type: Boolean, default: false },
     },
     data() {
         return {
@@ -161,7 +162,7 @@ export const UValidator = {
                 this.$nextTick(() => this.validate('submit', true).catch((errors) => errors));
         },
         onInput(value) {
-            if (this.currentTarget === 'validatorVMs')
+            if (this.currentTarget === 'validatorVMs' || this.manual)
                 return;
 
             if (!this.fieldTouched)
@@ -175,7 +176,7 @@ export const UValidator = {
             });
         },
         onChange($event) {
-            if (this.currentTarget === 'validatorVMs')
+            if (this.currentTarget === 'validatorVMs' || this.manual)
                 return;
 
             if (!this.fieldTouched)
@@ -193,7 +194,7 @@ export const UValidator = {
             this.currentMessage = this.message;
         },
         onBlur() {
-            if (this.currentTarget === 'validatorVMs')
+            if (this.currentTarget === 'validatorVMs' || this.manual)
                 return;
 
             if (!this.fieldTouched)
