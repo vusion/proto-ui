@@ -350,8 +350,8 @@ export default {
     <u-select multiple>
         <u-select-item value="cup">水杯</u-select-item>
         <u-select-item value="coffee">咖啡</u-select-item>
-        <u-select-item value="nut">坚果</u-select-item>
-        <u-select-item value="towel">毛巾</u-select-item>
+        <u-select-item value="cup">水杯</u-select-item>
+        <u-select-item value="coffee">咖啡</u-select-item>
         <u-select-item value="towel">毛巾</u-select-item>
     </u-select>
 </u-validator>
@@ -503,7 +503,7 @@ export default {
 </u-validator>
 ```
 
-### 各种字符串判断
+### 字母、数字、中划线、下划线判断
 
 #### alpha
 
@@ -525,33 +525,54 @@ export default {
 </u-validator>
 ```
 
-#### email <u-label>blur</u-label>
 
-必须为正确的邮箱。
+#### alphaDash <u-label>input+blur</u-label>
+
+必须由字母或下划线组成。
 
 ``` html
-<u-validator label="邮箱" rules="email">
-    <u-input placeholder="请输入正确的邮箱"></u-input>
+<u-validator label="名称" rules="alphaDash">
+    <u-input placeholder="以字母、下划线组成"></u-input>
 </u-validator>
 ```
 
-#### ip <u-label>blur</u-label>
+#### alphaNumDash <u-label>input+blur</u-label>
 
-必须为正确的 IP。
+必须由字母、数字或下划线组成。
 
 ``` html
-<u-validator label="IP" rules="ip">
-    <u-input placeholder="请输入正确的 IP"></u-input>
+<u-validator label="名称" rules="alphaNumDash">
+    <u-input placeholder="以字母、数字或下划线组成"></u-input>
 </u-validator>
 ```
 
-#### port <u-label>blur</u-label>
+#### alphaSpaces <u-label>input+blur</u-label>
 
-必须为正确的端口。
+必须由字母或空格组成。
 
 ``` html
-<u-validator label="端口" rules="port">
-    <u-input placeholder="请输入正确的端口"></u-input>
+<u-validator label="名称" rules="alphaSpaces">
+    <u-input placeholder="以字母或空格组成"></u-input>
+</u-validator>
+```
+
+#### lowerCase <u-label>input+blur</u-label>
+
+不能出现大写字母。
+
+``` html
+<u-validator label="名称" rules="lowerCase">
+    <u-input placeholder="不能出现大写字母"></u-input>
+</u-validator>
+```
+
+#### upperCase <u-label>input+blur</u-label>
+
+不能出现小写字母。
+
+``` html
+<u-validator label="名称" rules="upperCase">
+    <u-input placeholder="不能出现小写字母"></u-input>
 </u-validator>
 ```
 
@@ -735,53 +756,35 @@ export default {
 </u-validator>
 ```
 
-#### alphaDash <u-label>input+blur</u-label>
+### 特定场景判断
 
-必须由字母或下划线组成。
+#### email <u-label>blur</u-label>
+
+必须为正确的邮箱。
 
 ``` html
-<u-validator label="名称" rules="alphaDash">
-    <u-input placeholder="以字母、下划线组成"></u-input>
+<u-validator label="邮箱" rules="email">
+    <u-input placeholder="请输入正确的邮箱"></u-input>
 </u-validator>
 ```
 
-#### alphaNumDash <u-label>input+blur</u-label>
+#### ip <u-label>blur</u-label>
 
-必须由字母、数字或下划线组成。
+必须为正确的 IP。
 
 ``` html
-<u-validator label="名称" rules="alphaNumDash">
-    <u-input placeholder="以字母、数字或下划线组成"></u-input>
+<u-validator label="IP" rules="ip">
+    <u-input placeholder="请输入正确的 IP"></u-input>
 </u-validator>
 ```
 
-#### alphaSpaces <u-label>input+blur</u-label>
+#### port <u-label>blur</u-label>
 
-必须由字母或空格组成。
-
-``` html
-<u-validator label="名称" rules="alphaSpaces">
-    <u-input placeholder="以字母或空格组成"></u-input>
-</u-validator>
-```
-
-#### lowerCase <u-label>input+blur</u-label>
-
-不能出现大写字母。
+必须为正确的端口。
 
 ``` html
-<u-validator label="名称" rules="lowerCase">
-    <u-input placeholder="不能出现大写字母"></u-input>
-</u-validator>
-```
-
-#### upperCase <u-label>input+blur</u-label>
-
-不能出现小写字母。
-
-``` html
-<u-validator label="名称" rules="upperCase">
-    <u-input placeholder="不能出现小写字母"></u-input>
+<u-validator label="端口" rules="port">
+    <u-input placeholder="请输入正确的端口"></u-input>
 </u-validator>
 ```
 
