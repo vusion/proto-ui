@@ -50,17 +50,6 @@ export default {
 </u-linear-layout>
 ```
 
-### 错误修复时机
-
-用`fixOn`属性可以设置错误在失焦时修复（默认）还是在输入时修复。
-
-``` html
-<u-linear-layout>
-    <u-number-input :value="20" :precision="10" :step="10"></u-number-input>
-    <u-number-input :value="20" :precision="10" :step="10" fix-on="input"></u-number-input>
-</u-linear-layout>
-```
-
 ### 格式化
 
 通常可以用以下字符组成一个格式化字符串：
@@ -100,7 +89,6 @@ export default {
 | step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量 |
 | precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
 | formatter | String, Object |  | 格式化字符串，具体参见示例。也可以传入一个包含`get`和`set`方法的格式化对象。 |
-| fix-on | String | `'blur'` | 错误修复时机。可选值：`'input'`表示在输入时修复，`'blur'`表示在失焦时修复 |
 | placeholder | String | | 原生属性 |
 | autofocus | Boolean | | 原生属性 |
 | hide-buttons | Boolean | `false` | 是否隐藏按钮 |

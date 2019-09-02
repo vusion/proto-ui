@@ -1,5 +1,4 @@
 import MField from '../m-field.vue';
-import debounce from 'lodash/debounce';
 import { repeatClick } from '../../directives';
 import { noopFormatter, NumberFormatter } from '../../utils/Formatters';
 
@@ -16,7 +15,6 @@ export const UNumberInput = {
         step: { type: Number, default: 1, validator: (step) => step >= 0 },
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
         formatter: { type: [String, Object] },
-        fixOn: { type: String, default: 'blur' },
         hideButtons: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -52,18 +50,16 @@ export const UNumberInput = {
     },
     watch: {
         value(value, oldValue) {
-            this.currentValue = this.fix(value);
-            this.formattedValue = this.currentFormatter.format(value);
+            const currentValue = this.currentValue = this.fix(value);
+            this.formattedValue = this.currentFormatter.format(currentValue);
         },
     },
     created() {
-        this.debouncedInput = debounce(this.input, 400);
-
         const value = this.fix(this.value);
         this.$emit('change', {
             value,
             oldValue: undefined,
-            formattedValue: this.fix(this.currentFormatter.format(this.value)),
+            formattedValue: this.currentFormatter.format(value),
             valid: this.isValid(value),
         }, this);
     },
@@ -101,15 +97,15 @@ export const UNumberInput = {
 
             const oldValue = this.currentValue;
             this.currentValue = value;
-            this.formattedValue = this.currentFormatter.format(value);
-            this.$refs.input.currentValue = this.formattedValue;
+            const formattedValue = this.formattedValue = this.currentFormatter.format(value);
+            this.$refs.input.currentValue = formattedValue;
 
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
             this.$emit('change', {
                 value,
                 oldValue,
-                formattedValue: this.formattedValue,
+                formattedValue,
                 valid: this.isValid(value),
             }, this);
         },
@@ -143,30 +139,11 @@ export const UNumberInput = {
         decrease() {
             this.adjust(+this.currentValue - this.step);
         },
-        onInput(value) {
-            if (this.fixOn === 'input')
-                this.debouncedInput(this.currentFormatter.parse(value));
-            else if (this.fixOn === 'blur') {
-                // 这种情况下直接透传
-                this.formattedValue = value;
-                this.$emit('input', value, this);
-                this.$emit('update:value', value, this);
-                // @change 与 @input 保持一致
-                this.$emit('change', {
-                    value,
-                    oldValue: this.currentValue,
-                    formattedValue: this.currentFormatter.format(value),
-                    valid: this.isValid(value),
-                }, this);
-            }
-        },
         onFocus(e) {
             this.$emit('focus', e, this);
         },
         onBlur(e) {
-            if (this.fixOn === 'blur')
-                this.input(this.currentFormatter.parse(this.formattedValue));
-
+            this.input(this.currentFormatter.parse(this.$refs.input.currentValue));
             this.$emit('blur', e, this);
         },
     },
