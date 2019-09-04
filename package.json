@@ -44,9 +44,9 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vusion": "^0.5.10",
+    "vue-cli-plugin-vusion": "^0.5.11",
     "vue-template-compiler": "^2.6.10",
-    "vusion-hooks": "^0.2.2",
+    "vusion-hooks": "^0.3.0",
     "vusion-utils": "^0.4.4"
   },
   "peerDependencies": {
@@ -55,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "node node_modules/vusion-hooks/precommit"
+      "pre-commit": "node node_modules/vusion-hooks/pre-commit"
     }
   }
 }
