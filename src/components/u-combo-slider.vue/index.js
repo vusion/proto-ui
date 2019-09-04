@@ -41,8 +41,20 @@ export const UComboSlider = {
         },
     },
     methods: {
+        /**
+         * 防止 Slider 过度超出
+         * @param {*} value
+         */
+        fix(value) {
+            if (typeof value === 'string' && value.trim() === '' || value === null)
+                return value;
+            else if (isNaN(value))
+                return value;
+
+            return Math.min(Math.max(this.min, value), this.max);
+        },
         onInput(value) {
-            this.currentValue = value;
+            this.currentValue = this.fix(value);
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
         },
