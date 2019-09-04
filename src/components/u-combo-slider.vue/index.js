@@ -11,7 +11,7 @@ export const UComboSlider = {
         precision: { type: Number, default: 1, validator: (precision) => precision > 0 },
         range: { type: Array, default() { return []; } },
         formatter: { type: [String, Object] },
-        fixOn: { type: String, default: 'blur' },
+        syncOn: { type: String, default: 'input' },
         hideButtons: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -41,20 +41,20 @@ export const UComboSlider = {
         },
     },
     methods: {
-        /**
-         * 防止 Slider 过度超出
-         * @param {*} value
-         */
-        fix(value) {
-            if (typeof value === 'string' && value.trim() === '' || value === null)
-                return value;
-            else if (isNaN(value))
-                return value;
+        onValidate($event) {
+            if (this.syncOn === 'blur')
+                return;
+            const value = $event.value;
 
-            return Math.min(Math.max(this.min, value), this.max);
+            // 最小值的情况不同步，不然会显得很怪异
+            if (!$event.valid && value === this.min)
+                return;
+            this.currentValue = value;
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         onInput(value) {
-            this.currentValue = this.fix(value);
+            this.currentValue = value;
             this.$emit('input', value, this);
             this.$emit('update:value', value, this);
         },

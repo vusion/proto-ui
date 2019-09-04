@@ -62,3 +62,11 @@ pre code {
     color: inherit;
     /* white-space: pre-wrap; */
 }
+
+kbd {
+    padding: 1px 3px;
+    font-size: 12px;
+    background: $background-color-base;
+    border-radius: $border-radius-base;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}

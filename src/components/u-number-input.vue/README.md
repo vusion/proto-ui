@@ -107,6 +107,17 @@ export default {
 | $event | String | 输入框的值 |
 | senderVM | UNumberInput | 发送事件实例 |
 
+#### @validate
+
+输入验证时触发
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| $event.rawValue | String | 用户输入的原始值 |
+| $event.value | Number | 验证修复的值 |
+| $event.valid | Boolean | 原始值是否合法 |
+| senderVM | UNumberInput | 发送事件实例 |
+
 #### @change
 
 值变化时触发（与原生事件不同）
@@ -136,3 +147,11 @@ export default {
 | ----- | ---- | ----------- |
 | $event | String | 原生事件对象 |
 | senderVM | UNumberInput | 发送事件实例 |
+
+### ARIA and Keyboard
+
+| Key | Description |
+| ----- | ----------- |
+| <kbd>↑</kbd> | 按`step`量增加值 |
+| <kbd>↓</kbd> | 按`step`量减小值 |
+| <kbd>Enter</kbd> | 自动修复为合法的值，并且应用更改 |

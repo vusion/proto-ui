@@ -32,7 +32,7 @@
 ### 特殊文字
 
 ``` html
-<u-linear-layout>
+<u-linear-layout gap="small">
     <em>强调文本</em>
     <strong>加粗文本</strong>
     <ins>插入文本</ins>
@@ -108,4 +108,14 @@ factorial = (num) -&gt;
 
     return _factorial(num)
 </pre>
+```
+
+### 按键
+
+``` html
+<u-linear-layout gap="small">
+    <kbd>↑</kbd>
+    <kbd>↓</kbd>
+    <kbd>Enter</kbd>
+</u-linear-layout>
 ```

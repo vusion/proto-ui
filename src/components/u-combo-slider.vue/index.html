@@ -2,9 +2,9 @@
     <u-slider :class="$style.slider" :value="currentValue" @input="onInput" @slide="onSlide"
         :min="min" :max="max" :step="step" :range="range" :precision="precision" :readonly="readonly" :disabled="disabled"
     ></u-slider>
-    <u-number-input :class="$style.input" :value="currentValue" @change="onInput($event.value)"
+    <u-number-input :class="$style.input" :value="currentValue" @input="onInput" @validate="onValidate"
         :min="numberMin" :max="numberMax" :step="step || 1" :precision="precision"
-        :formatter="formatter" :fix-on="fixOn" :hide-buttons="hideButtons"
+        :formatter="formatter" :hide-buttons="hideButtons"
         :readonly="readonly" :disabled="disabled"
     ></u-number-input>
     <slot></slot>

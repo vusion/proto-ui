@@ -84,7 +84,7 @@ export const UNumberInput = {
                 return false;
             if (value < this.min || value > this.max)
                 return false;
-            return this.fix(value) === value;
+            return String(this.fix(value)) === String(value);
         },
         /**
          * 单纯输入
@@ -139,8 +139,24 @@ export const UNumberInput = {
         decrease() {
             this.adjust(+this.currentValue - this.step);
         },
+        onInput(rawValue) {
+            if (this.readonly || this.disabled)
+                return;
+
+            const parsedValue = this.currentFormatter.parse(rawValue);
+            const value = this.fix(parsedValue);
+            const valid = String(value) === String(parsedValue);
+            this.$emit('validate', {
+                valid,
+                value,
+                rawValue,
+            });
+        },
         onFocus(e) {
             this.$emit('focus', e, this);
+        },
+        onEnter(e) {
+            this.input(this.currentFormatter.parse(this.$refs.input.currentValue));
         },
         onBlur(e) {
             this.input(this.currentFormatter.parse(this.$refs.input.currentValue));
