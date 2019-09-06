@@ -1,7 +1,13 @@
 # LDashboard 仪表盘布局
 
+常见中后台系统中的顶部栏和左侧栏固定的仪表盘布局。
+
+滚动区域设置在了主内容区，有最小宽度，可以进行横向滚动。
+
+## 示例
+
 ``` html
-<div style="position: relative; height: 500px; z-index: 1;">
+<div style="position: relative; z-index: 1; height: 500px; overflow: auto;">
     <l-dashboard demo>
         <u-navbar slot="head">
             <u-logo slot="left">演示</u-logo>
@@ -33,7 +39,7 @@
                 <u-sidebar-item>个人信息</u-sidebar-item>
             </u-sidebar-group>
         </u-sidebar>
-        <u-linear-layout slot="content" direction="vertical">
+        <u-linear-layout direction="vertical">
             <u-crumb>
                 <u-crumb-item to="/">首页</u-crumb-item>
                 <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
@@ -104,3 +110,23 @@
     </l-dashboard>
 </div>
 ```
+
+## API
+
+### Slots
+
+#### (default)
+
+主内容区。
+
+#### head
+
+设置顶部内容。
+
+#### side
+
+设置左侧栏内容。
+
+#### main
+
+重置中间区域内容。包裹在主内容区外。

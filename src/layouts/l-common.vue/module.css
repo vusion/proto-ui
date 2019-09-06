@@ -11,28 +11,23 @@
     z-index: $z-index-layout;
 }
 
-.side {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    top: $navbar-height;
-    width: $sidebar-width;
-}
-
 .main {
     position: fixed;
     bottom: 0;
     right: 0;
     top: $navbar-height;
     left: $sidebar-width;
-    overflow: auto;
 }
 
-.content {
-    min-width: 1110px;
-    padding: 40px;
+.body {
+    margin-top: $navbar-height;
 }
 
-.root[demo] .head, .root[demo] .side, .root[demo] .main {
+.foot {
+    height: 70px;
+    background: #34383b;
+}
+
+.root[demo] .head {
     position: absolute;
 }

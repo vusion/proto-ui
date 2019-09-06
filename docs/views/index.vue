@@ -17,9 +17,7 @@
         </div>
     </header>
     <main :class="$style.body">
-        <div :class="$style.wrap">
-            <router-view></router-view>
-        </div>
+        <router-view></router-view>
     </main>
 </div>
 </template>
@@ -60,25 +58,18 @@ export default {
     right: 0;
     left: 0;
     height: $navbar-height;
-    /* background: #1c2b41; */
     background: white;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
     z-index: $z-index-layout;
 }
 
 .body {
-    /* min-height: calc(100vh - 134px); */
     margin-top: $navbar-height;
 }
 
 .foot {
     height: 70px;
     background: #34383b;
-}
-
-.wrap {
-    /* width: 1180px;
-    margin: 0 auto; */
 }
 
 .color {

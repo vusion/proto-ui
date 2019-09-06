@@ -116,8 +116,10 @@ module.exports = {
             { group: 'Utils', name: 'edit', alias: '编辑相关' },
         ],
         layouts: [
-            { group: 'Main', name: 'l-dashboard', alias: '仪表盘布局' },
-            { group: 'Router', name: 'l-wrapper', alias: '包裹' },
+            { group: 'Scene', name: 'l-dashboard', alias: '仪表盘布局' },
+            { group: 'Scene', name: 'l-document', alias: '文档布局' },
+            { group: 'Scene', name: 'l-common', alias: '通用布局' },
+            { group: 'Router', name: 'l-wrapper', alias: '透传页' },
         ],
     },
 };

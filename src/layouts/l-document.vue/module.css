@@ -25,11 +25,9 @@
     right: 0;
     top: $navbar-height;
     left: $sidebar-width;
-    overflow: auto;
 }
 
 .content {
-    min-width: 1110px;
     padding: 40px;
 }
 
