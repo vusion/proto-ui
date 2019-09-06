@@ -1,4 +1,5 @@
 export * from './components';
+export * from './layouts';
 
 import * as directives from './directives';
 import * as filters from './filters';

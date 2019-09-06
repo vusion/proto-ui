@@ -11,3 +11,11 @@
 .root[layout="inline"] .item:not(:last-child) {
     margin-right: 20px;
 }
+
+.root[layout="inline"]::after {
+    display: block;
+    content: '.';
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
