@@ -20,15 +20,13 @@
 }
 
 .main {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    top: $navbar-height;
-    left: $sidebar-width;
+    margin-top: $navbar-height;
+    margin-left: $sidebar-width;
+    max-width: 1010px;
 }
 
 .content {
-    padding: 40px;
+    padding: 30px 50px 50px;
 }
 
 .root[demo] .head, .root[demo] .side, .root[demo] .main {

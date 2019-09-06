@@ -28,6 +28,10 @@
     background: #34383b;
 }
 
+.foot:empty {
+    display: none;
+}
+
 .root[demo] .head {
     position: absolute;
 }

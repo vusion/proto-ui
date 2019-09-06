@@ -118,7 +118,8 @@ module.exports = {
         layouts: [
             { group: 'Scene', name: 'l-dashboard', alias: '仪表盘布局' },
             { group: 'Scene', name: 'l-document', alias: '文档布局' },
-            { group: 'Scene', name: 'l-common', alias: '通用布局' },
+            { group: 'Scene', name: 'l-page', alias: '通用页面布局' },
+            { group: 'Scene', name: 'l-side-main', alias: '左侧栏固定布局' },
             { group: 'Router', name: 'l-wrapper', alias: '透传页' },
         ],
     },
