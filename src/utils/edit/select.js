@@ -2,37 +2,37 @@
  * https://github.com/zenorocha/select/blob/master/src/select.js
  */
 
-export function select(element) {
+export function select(el) {
     let selectedText;
 
-    if (element.nodeName === 'SELECT') {
-        element.focus();
+    if (el.nodeName === 'SELECT') {
+        el.focus();
 
-        selectedText = element.value;
-    } else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
-        const readonly = element.hasAttribute('readonly');
-
-        if (!readonly) {
-            element.setAttribute('readonly', '');
-        }
-
-        element.select();
-        element.setSelectionRange(0, element.value.length);
+        selectedText = el.value;
+    } else if (el.nodeName === 'INPUT' || el.nodeName === 'TEXTAREA') {
+        const readonly = el.hasAttribute('readonly');
 
         if (!readonly) {
-            element.removeAttribute('readonly');
+            el.setAttribute('readonly', '');
         }
 
-        selectedText = element.value;
+        el.select();
+        el.setSelectionRange(0, el.value.length);
+
+        if (!readonly) {
+            el.removeAttribute('readonly');
+        }
+
+        selectedText = el.value;
     } else {
-        if (element.hasAttribute('contenteditable')) {
-            element.focus();
+        if (el.hasAttribute('contenteditable')) {
+            el.focus();
         }
 
         const selection = window.getSelection();
         const range = document.createRange();
 
-        range.selectNodeContents(element);
+        range.selectNodeContents(el);
         selection.removeAllRanges();
         selection.addRange(range);
 

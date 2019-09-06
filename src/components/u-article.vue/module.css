@@ -1,47 +1,96 @@
-
 .root {}
 
 .root > h1 {
+    position: relative;
     font-size: 24px;
     line-height: 30px;
     margin-bottom: 60px;
 }
 
 .root > h2 {
+    position: relative;
     font-size: 20px;
-    padding: 6px 20px;
-    margin: 40px -20px;
-    color: #6a6f75;
-    background: #f2f3f8;
+    margin: 40px 0;
+    line-height: 44px;
+    color: #767a80;
+    border-bottom: 3px solid #f2f3f8;
 }
 
 .root > h3 {
-    font-size: 16px;
+    position: relative;
+    font-size: 17px;
     margin: 40px 0 20px;
     padding-left: 0;
     color: $brand-primary;
 }
 
 .root > h4 {
-    font-size: 14px;
+    position: relative;
+    font-size: 16px;
     margin: 25px 0 10px;
-    margin-left: -9px;
 }
 
-.root > h4::before {
+.root > h4::after {
     content: '';
-    margin-right: 6px;
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    margin-top: -2px;
     display: inline-block;
-    height: 5px;
-    width: 5px;
-    vertical-align: 1px;
+    height: 6px;
+    width: 6px;
     background: $brand-primary;
     border-radius: 100%;
 }
 
 .root > h5 {
+    position: relative;
     font-size: 12px;
     margin: 0.3em 0;
+}
+
+.root > h6 {
+    position: relative;
+}
+
+.root > h1 > :global(.heading-anchor),
+.root > h2 > :global(.heading-anchor),
+.root > h3 > :global(.heading-anchor),
+.root > h4 > :global(.heading-anchor),
+.root > h5 > :global(.heading-anchor),
+.root > h6 > :global(.heading-anchor) {
+    display: none;
+    position: absolute;
+    left: -1.4em;
+    width: 1.4em;
+    bottom: 0;
+    text-align: center;
+}
+
+.root > h1:hover > :global(.heading-anchor),
+.root > h2:hover > :global(.heading-anchor),
+.root > h3:hover > :global(.heading-anchor),
+.root > h4:hover > :global(.heading-anchor),
+.root > h5:hover > :global(.heading-anchor),
+.root > h6:hover > :global(.heading-anchor) {
+    display: block;
+}
+
+.root > h4:hover::after {
+    display: none;
+}
+
+.root > h1:target::before,
+.root > h2:target::before,
+.root > h3:target::before,
+.root > h4:target::before,
+.root > h5:target::before,
+.root > h6:target::before {
+    content: '';
+    display: block;
+    margin-top: calc(-$navbar-height - 30px);
+    height: calc($navbar-height + 30px);
+    visibility: hidden;
 }
 
 .root img {

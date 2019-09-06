@@ -1,6 +1,14 @@
-# edit
+# edit 编辑相关
 
-### select(element)
+### select: (el: HTMLElement) => string
+
+全选元素中的文本，返回文本内容。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| el | HTMLElement | | 待选择的元素 |
+
+#### 选择输入框中的文本
 
 ``` vue
 <template>
@@ -27,6 +35,8 @@ export default {
 </script>
 ```
 
+#### 也可以选择普通元素的文本
+
 ``` vue
 <template>
 <div>
@@ -52,7 +62,13 @@ export default {
 </script>
 ```
 
-### copy(text)
+### copy: (text: string) => boolean
+
+拷贝文本，返回是否成功。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| text | String | | 待拷贝的文本 |
 
 ``` vue
 <template>

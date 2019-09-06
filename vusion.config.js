@@ -5,18 +5,6 @@ module.exports = {
     type: 'library',
     name: 'proto-ui',
     CamelName: 'ProtoUI',
-
-    // @deprecated
-    lint: true,
-    uglifyJS: true,
-    extractCSS: true,
-    sourceMap: true,
-    webpackDevServer: {
-        historyApiFallback: {
-            index: '/proto-ui/',
-        },
-    },
-
     docs: {
         title: 'Proto UI 组件库',
         logo: '原型组件',
@@ -26,6 +14,8 @@ module.exports = {
         package: pkg,
         navbar: [
             { text: '组件', to: '/components' },
+            { text: '指令和工具', to: '/misc' },
+            { text: '布局', to: '/layouts' },
         ],
         components: [
             { group: 'Guide', name: 'quickstart', alias: '快速开始', path: './docs/views/guide/quickstart.md' },
@@ -113,17 +103,21 @@ module.exports = {
         ],
         blocks: [],
         directives: [
-            { group: 'Directive', name: 'v-repeat-click' },
-            { group: 'Directive', name: 'v-click-outside' },
-            { group: 'Directive', name: 'v-ellipsis-title' },
-            { group: 'Directive', name: 'v-focus' },
+            { group: 'Directives', name: 'v-repeat-click', alias: '重复点击' },
+            // { group: 'Directives', name: 'v-click-outside' },
+            { group: 'Directives', name: 'v-ellipsis-title', alias: '文字省略提示' },
+            { group: 'Directives', name: 'v-focus', alias: '自动获取焦点' },
         ],
         filters: [],
         utils: [
-            { group: 'Utils', name: 'DataSource', alias: '数据源' },
-            { group: 'Utils', name: 'Formatters', alias: '格式器' },
+            // { group: 'Utils', name: 'DataSource', alias: '数据源' },
+            // { group: 'Utils', name: 'Formatters', alias: '格式器' },
             { group: 'Utils', name: 'dom', alias: 'DOM 相关' },
             { group: 'Utils', name: 'edit', alias: '编辑相关' },
+        ],
+        layouts: [
+            { group: 'Main', name: 'l-dashboard', alias: '仪表盘布局' },
+            { group: 'Router', name: 'l-wrapper', alias: '包裹' },
         ],
     },
 };
