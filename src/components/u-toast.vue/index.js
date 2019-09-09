@@ -18,6 +18,9 @@ export const UToast = {
         if (this.position !== 'static')
             document.body.appendChild(this.$el);
     },
+    destroyed() {
+        this.clearItemsQueue();
+    },
     methods: {
         show(text, duration, color) {
             if (!this.$el)
@@ -31,10 +34,11 @@ export const UToast = {
         },
         open(options) {
             let item = this.items[0];
+            const itemsQueue = this.itemsQueue;
             if (this.single && item) {
-                if (this.itemsQueue.has(item)) {
-                    clearTimeout(this.itemsQueue.get(item));
-                    this.itemsQueue.delete(item);
+                if (itemsQueue.has(item)) {
+                    clearTimeout(itemsQueue.get(item));
+                    itemsQueue.delete(item);
                 }
                 Object.assign(item, options);
             } else {
@@ -43,8 +47,8 @@ export const UToast = {
             }
 
             if (item.duration) {
-                this.itemsQueue.set(item, setTimeout(() => {
-                    this.itemsQueue.delete(item);
+                itemsQueue.set(item, setTimeout(() => {
+                    itemsQueue.delete(item);
                     this.close(item);
                 }, item.duration));
             }
@@ -63,17 +67,19 @@ export const UToast = {
             ~index && this.items.splice(index, 1);
 
             this.$emit('close', item, this);
-            this.closeAll();
+        },
+        clearItemsQueue() {
+            this.itemsQueue.forEach((timer) => {
+                clearTimeout(timer);
+            });
+            this.itemsQueue.clear();
         },
         /**
          * @method closeAll() 关闭所有消息
          * @return {void}
          */
         closeAll() {
-            this.itemsQueue.forEach((timer) => {
-                clearTimeout(timer);
-            });
-            this.itemsQueue.clear();
+            this.clearItemsQueue();
             this.items = [];
         },
         success(message, duration) {
