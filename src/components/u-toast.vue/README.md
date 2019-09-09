@@ -50,15 +50,15 @@ export default {
 上面的 Toast 都是以`fixed`的形式固定在浏览器中，也可以将Toast嵌入文档流。只需使用`u-toast`标签，并设置`position="static"`即可。
 
 ``` html
-<p><u-button @click="$refs.toast.show()">Static</u-button></p>
-<u-toast ref="toast" position="static" text="Static Toast"></u-toast>
+<p><u-button @click="$refs.toastStatic.show()">Static</u-button></p>
+<u-toast ref="toastStatic" position="static" text="Static Toast"></u-toast>
 ```
 
 ### 可关闭
 
 ``` html
-<p><u-button @click="$refs.toast.show()">Static</u-button></p>
-<u-toast ref="toast" position="static" text="Closable" :duration="0" closable></u-toast>
+<p><u-button @click="$refs.toastStaticClosable.show()">Static</u-button></p>
+<u-toast ref="toastStaticClosable" position="static" text="Closable" :duration="0" closable></u-toast>
 ```
 
 ### 提示停留时间
