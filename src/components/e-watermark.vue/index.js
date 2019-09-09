@@ -1,3 +1,4 @@
+import throttle from 'lodash/throttle';
 export const EWatermark = {
     name: 'e-watermark',
     props: {
@@ -20,6 +21,17 @@ export const EWatermark = {
                 this.redraw();
             }, 100);
         },
+    },
+    computed: {
+        markWidth() {
+            return this.markSize * Math.sqrt(3) * 2;
+        },
+        markHeight() {
+            return this.markSize * 2;
+        },
+    },
+    created() {
+        this.redraw = throttle(this.redraw, 250);
     },
     mounted() {
         this.drawMark();
@@ -56,12 +68,30 @@ export const EWatermark = {
         },
         draw(image) {
             const canvasEl = this.$refs.canvas;
-            const width = canvasEl.width = canvasEl.clientWidth * 2;
-            const height = canvasEl.height = canvasEl.clientHeight * 2;
+            const wh = window.innerHeight;
+            const ww = window.innerWidth;
+            const isFirstPaint = !this.lastRectangle;
+            this.lastRectangle = isFirstPaint ? {
+                ww: 0,
+                wh: 0,
+            } : this.lastRectangle;
+            if (wh > this.lastRectangle.wh || ww > this.lastRectangle.ww) {
+                this.lastRectangle = {
+                    ww: Math.max(ww, this.lastRectangle.ww),
+                    wh: Math.max(wh, this.lastRectangle.wh),
+                };
+            } else if (!isFirstPaint) {
+                return;
+            }
+            canvasEl.style.width = ww + 'px';
+            canvasEl.style.height = wh + 'px';
+            const width = canvasEl.width = ww * 2;
+            const height = canvasEl.height = wh * 2;
+
             const ctx = canvasEl.getContext('2d');
 
-            const markHeight = this.markSize * 2;
-            const markWidth = this.markSize * Math.sqrt(3) * 2;
+            const markHeight = this.markHeight;
+            const markWidth = this.markWidth;
             for (let i = 0; i < width; i += markWidth) {
                 for (let j = 0; j < height; j += markHeight)
                     ctx.drawImage(image, i, j, markWidth, markHeight);
