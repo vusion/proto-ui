@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+
 export const EWatermark = {
     name: 'e-watermark',
     props: {
@@ -68,25 +69,27 @@ export const EWatermark = {
         },
         draw(image) {
             const canvasEl = this.$refs.canvas;
-            const wh = window.innerHeight;
-            const ww = window.innerWidth;
+
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
             const isFirstPaint = !this.lastRectangle;
             this.lastRectangle = isFirstPaint ? {
-                ww: 0,
-                wh: 0,
+                windowWidth: 0,
+                windowHeight: 0,
             } : this.lastRectangle;
-            if (wh > this.lastRectangle.wh || ww > this.lastRectangle.ww) {
+            if (windowHeight > this.lastRectangle.windowHeight || windowWidth > this.lastRectangle.windowWidth) {
                 this.lastRectangle = {
-                    ww: Math.max(ww, this.lastRectangle.ww),
-                    wh: Math.max(wh, this.lastRectangle.wh),
+                    windowWidth: Math.max(windowWidth, this.lastRectangle.windowWidth),
+                    windowHeight: Math.max(windowHeight, this.lastRectangle.windowHeight),
                 };
             } else if (!isFirstPaint) {
                 return;
             }
-            canvasEl.style.width = ww + 'px';
-            canvasEl.style.height = wh + 'px';
-            const width = canvasEl.width = ww * 2;
-            const height = canvasEl.height = wh * 2;
+
+            canvasEl.style.width = windowWidth + 'px';
+            canvasEl.style.height = windowHeight + 'px';
+            const width = canvasEl.width = windowWidth * 2;
+            const height = canvasEl.height = windowHeight * 2;
 
             const ctx = canvasEl.getContext('2d');
 
