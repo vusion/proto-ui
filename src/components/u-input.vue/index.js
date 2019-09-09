@@ -45,10 +45,13 @@ export const UInput = {
     methods: {
         onInput(e) {
             if (!this.compositionInputing) {
-                this.currentValue = e.target.value;
-                this.$emit('input', this.currentValue, this);
-                this.$emit('update:value', this.currentValue, this);
+                this.emitCurrentValue(e.target.value);
             }
+        },
+        emitCurrentValue(value) {
+            this.currentValue = value;
+            this.$emit('input', value, this);
+            this.$emit('update:value', value, this);
         },
         onFocus(e) {
             this.focused = true;
@@ -62,9 +65,7 @@ export const UInput = {
             // 中文输入的时候，会先触发onInput事件，再触发此事件，导致不能捕捉到中文输入
             // 因此需要特殊处理，此时compositionInputing值为true
             this.compositionInputing = false;
-            this.currentValue = e.target.value;
-            this.$emit('input', this.currentValue, this);
-            this.$emit('update:value', this.currentValue, this);
+            this.emitCurrentValue(e.target.value);
         },
         focus() {
             this.$refs.input.focus();
@@ -79,22 +80,21 @@ export const UInput = {
             const oldValue = this.currentValue;
 
             let cancel = false;
+            const value = '';
             this.$emit('before-clear', {
                 oldValue,
-                value: '',
+                value,
                 preventDefault: () => cancel = true,
             });
             if (cancel)
                 return;
 
-            this.currentValue = '';
-            this.$emit('input', '', this);
-            this.$emit('update:value', '', this);
+            this.emitCurrentValue(value);
             this.focus();
 
             this.$emit('clear', {
                 oldValue,
-                value: '',
+                value,
             }, this);
         },
     },
