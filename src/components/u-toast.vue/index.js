@@ -11,6 +11,7 @@ export const UToast = {
     data() {
         return {
             items: [],
+            itemsQueue: new Map(),
         };
     },
     mounted() {
@@ -29,23 +30,23 @@ export const UToast = {
             });
         },
         open(options) {
-            if (this.single && this.items[0]) {
-                Object.assign(this.items[0], options);
-                this.items[0].counter++;
+            let item = this.items[0];
+            if (this.single && item) {
+                if (this.itemsQueue.has(item)) {
+                    clearTimeout(this.itemsQueue.get(item));
+                    this.itemsQueue.delete(item);
+                }
+                Object.assign(item, options);
             } else {
-                this.items.unshift(options);
-                this.items[0].counter = 0;
+                item = options;
+                this.items.unshift(item);
             }
 
-            const item = this.items[0];
-
             if (item.duration) {
-                setTimeout(() => {
-                    if (!item.counter)
-                        this.close(item);
-                    else
-                        item.counter--;
-                }, item.duration);
+                this.itemsQueue.set(item, setTimeout(() => {
+                    this.itemsQueue.delete(item);
+                    this.close(item);
+                }, item.duration));
             }
 
             this.$emit('open', item, this);
@@ -62,12 +63,17 @@ export const UToast = {
             ~index && this.items.splice(index, 1);
 
             this.$emit('close', item, this);
+            this.closeAll();
         },
         /**
          * @method closeAll() 关闭所有消息
          * @return {void}
          */
         closeAll() {
+            this.itemsQueue.forEach((timer) => {
+                clearTimeout(timer);
+            });
+            this.itemsQueue.clear();
             this.items = [];
         },
         success(message, duration) {
@@ -88,10 +94,10 @@ export const UToast = {
         if (!Ctor)
             return;
 
-        Vue.prototype.$toast = this.toast = new Ctor();
+        const toast = Vue.prototype.$toast = this.toast = new Ctor();
 
         const METHODS = ['show', 'closeAll', 'success', 'warning', 'info', 'error'];
-        METHODS.forEach((method) => this[method] = this.toast[method].bind(this.toast));
+        METHODS.forEach((method) => this[method] = toast[method].bind(toast));
     },
 };
 
