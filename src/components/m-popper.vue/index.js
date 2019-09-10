@@ -8,6 +8,7 @@ export const MPopper = {
     isPopper: true,
     props: {
         opened: { type: Boolean, default: false },
+        content: String,
         trigger: { type: String, default: 'click' },
         triggerElement: { type: [String, HTMLElement, Function], default: 'reference' },
         reference: { type: [String, HTMLElement, Function], default: 'context-parent', validator: (value) => {
@@ -100,6 +101,12 @@ export const MPopper = {
             this.destroyPopper();
             this.referenceEl = this.getReferenceEl();
             this.createPopper();
+        },
+        content(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                this.$emit('close', undefined, this);
+                this.createPopper();
+            }
         },
     },
     mounted() {
