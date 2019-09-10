@@ -23,38 +23,33 @@ export const UPagination = {
     },
     computed: {
         pages() {
+            const { around, total, side, currentPage } = this;
             const pages = [];
-
-            const part = this.around >> 1;
-            let start = this.currentPage - part;
-            let end = start + this.around - 1;
-            if (start < 1) {
-                end += 1 - start;
-                start = 1;
-            } else if (end > this.total) {
-                start -= end - this.total;
-                end = this.total;
-            }
-
-            start = Math.max(1, Math.min(start, this.total - this.side + 1));
-            end = Math.min(this.total, Math.max(end, this.side));
-
-            let page = 1;
-            while (page <= this.total) {
-                if (page <= this.side || (page >= start && page <= end) || page > this.total - this.side)
-                    pages.push(page);
-                else {
-                    pages.push(undefined);
-
-                    if (page < start)
-                        page = start - 1;
-                    if (page > end)
-                        page = this.total - this.side;
+            const getAroundRange = function (currentPage, around, total) {
+                let start = currentPage - (around >> 1);
+                let end = start + around - 1;
+                if (start <= 0) {
+                    start = 1;
+                    end = Math.min(total, start + around - 1);
+                } else if (end > total) {
+                    start = Math.max(total - around + 1, 1);
+                    end = total;
                 }
-
-                page++;
-            }
-
+                return [start, end];
+            };
+            const getPages = function (start, end) {
+                const prev = pages[pages.length - 1] || 0;
+                if (start - 1 > prev) {
+                    pages.push(undefined);
+                }
+                for (let i = start; i <= end; i++) {
+                    pages.push(i);
+                }
+            };
+            getPages(1, side);
+            const [start, end] = getAroundRange(currentPage, around, total);
+            getPages(Math.max(start, side + 1), Math.min(end, total - side));
+            getPages(total - side + 1, total);
             return pages;
         },
     },
