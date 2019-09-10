@@ -18,7 +18,7 @@
 }
 
 .baseline {
-    color: transparent;
+    visibility: hidden;
     display: inline-block;
     width: 1em;
     margin-left: -1em;

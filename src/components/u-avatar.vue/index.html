@@ -1,5 +1,3 @@
-<span :class="$style.root" :style="style" v-on="$listeners">
-    <img :src="src" :alt="alt" v-if="type === 'img'">
-    <i-icon :name="icon" v-if="type === 'icon'" :class="$style.icon"></i-icon>
-    <slot v-else></slot>
-</span>
+<div :class="$style.root">
+    <span :class="$style.text"><slot></slot></span>
+</div>
