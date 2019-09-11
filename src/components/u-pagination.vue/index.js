@@ -17,9 +17,6 @@ export const UPagination = {
         page(page) {
             this.currentPage = page;
         },
-        currentPage(page, oldPage) {
-            this.$emit('change', { page, oldPage }, this);
-        },
     },
     computed: {
         pages() {
@@ -78,7 +75,7 @@ export const UPagination = {
                 return;
 
             this.currentPage = page;
-
+            this.$emit('change', { page, oldPage }, this);
             this.$emit('update:page', page, this);
             this.$emit('select', {
                 page,
