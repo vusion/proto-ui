@@ -16,7 +16,7 @@ export const URegionSelect = {
         } },
     },
     created() {
-        !this.data && import('./region.json').then((region) => this.currentData = region);
+        !this.data && import('./region.json').then((region) => this.currentData = region.default);
     },
 };
 
