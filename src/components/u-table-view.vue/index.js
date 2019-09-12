@@ -187,8 +187,14 @@ export const UTableView = {
     },
     destroyed() {
         window.removeEventListener('resize', this.handleResize);
+        this.clearTimeout();
     },
     methods: {
+        clearTimeout() {
+            if (this.timer) {
+                clearTimeout(this.timer);
+            }
+        },
         processData(data) {
             const selectable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'radio');
             const checkable = this.visibleColumnVMs.some((columnVM) => columnVM.type === 'checkbox');
@@ -272,7 +278,9 @@ export const UTableView = {
         handleResize() {
             this.tableWidth = undefined;
             this.bodyHeight = undefined;
-            setTimeout(() => {
+            this.clearTimeout();
+            this.timer = setTimeout(() => {
+                this.timer = undefined;
                 let rootWidth = this.$el.offsetWidth;
                 if (!rootWidth) {
                     // 初始表格隐藏时，上面的值为0，需要特殊处理

@@ -41,6 +41,9 @@ export const UCarousel = {
     mounted() {
         this.play();
     },
+    destroyed() {
+        clearTimeout(this.timer);
+    },
     methods: {
         prev() {
             clearTimeout(this.timer);

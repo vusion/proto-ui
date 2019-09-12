@@ -17,7 +17,9 @@ export const EWatermark = {
     },
     watch: {
         text() {
-            setTimeout(() => {
+            this.clearTimeout();
+            this.timer = setTimeout(() => {
+                this.timer = undefined;
                 this.redrawMark();
                 this.redraw();
             }, 100);
@@ -40,9 +42,15 @@ export const EWatermark = {
         window.addEventListener('resize', this.redraw);
     },
     destroyed() {
+        this.clearTimeout();
         window.removeEventListener('resize', this.redraw);
     },
     methods: {
+        clearTimeout() {
+            if (this.timer) {
+                clearTimeout(this.timer);
+            }
+        },
         drawMark() {
             const markEl = this.$refs.mark;
             const width = markEl.width;
