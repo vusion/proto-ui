@@ -17,6 +17,10 @@ export const UToast = {
         if (this.position !== 'static')
             document.body.appendChild(this.$el);
     },
+    destroyed() {
+        if (this.position !== 'static')
+            document.body.removeChild(this.$el);
+    },
     methods: {
         show(text, duration, color) {
             if (!this.$el)
