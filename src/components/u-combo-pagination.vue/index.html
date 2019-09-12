@@ -12,7 +12,7 @@
     <span v-if="showJumper">{{ $t('goto') }}
         <u-number-input :class="$style.jumper" :value="currentPage"
             :min="1" :max="total" hide-buttons
-            @change="$event.valid && onChange($event.value, $event.oldValue)">
+            @change="onChange($event.value, $event.oldValue)">
         </u-number-input>
         {{ $t('pageUnit') }}</span>
 </u-linear-layout>

@@ -20,6 +20,9 @@ export const UComboPagination = {
         page(page) {
             this.currentPage = page;
         },
+        currentPage(page, oldPage) {
+            this.$emit('change', { page, oldPage }, this);
+        },
     },
     methods: {
         onChange(page, oldPage) {
@@ -27,7 +30,6 @@ export const UComboPagination = {
                 return;
 
             this.currentPage = page;
-            this.$emit('change', { page, oldPage }, this);
         },
         onSelectPageSize($event) {
             this.$emit('update:page-size', $event.value, this);
