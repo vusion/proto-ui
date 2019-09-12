@@ -29,6 +29,10 @@ export const UModal = {
         if (!this.static)
             document.body.appendChild(this.$el);
     },
+    destroyed() {
+        if (!this.static)
+            document.body.removeChild(this.$el);
+    },
     methods: {
         open() {
             if (!this.$el)

@@ -79,7 +79,7 @@ export default {
 | cancelButton | String | `'取消'` | 取消按钮文本，如果为空则不显示 |
 | size | String | `'normal'` | 抽屉的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
 | static | Boolean | `false` | 是否嵌入页面显示 |
-| maskClosable | Boolean | `false` | 是否点击遮罩时关闭抽屉 |
+| maskClosable | Boolean | `true` | 是否点击遮罩时关闭抽屉 |
 
 ### Slots
 
