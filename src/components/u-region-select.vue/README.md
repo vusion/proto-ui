@@ -12,6 +12,10 @@
 </u-linear-layout>
 ```
 
+### 双向绑定
+
+使用`v-model`进行双向绑定。
+
 ```vue
 <template>
     <u-region-select v-model="address"></u-region-select>

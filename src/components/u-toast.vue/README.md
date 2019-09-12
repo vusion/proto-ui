@@ -5,8 +5,8 @@
 ### 基本形式
 
 ```html
-<u-button @click="$refs.toast2.show()">组件</u-button>
-<u-toast ref="toast2">2s</u-toast>
+<u-button @click="$refs.toast.show()">组件</u-button>
+<u-toast ref="toast">2s</u-toast>
 ```
 
 ### 快捷方式
@@ -58,15 +58,15 @@ export default {
 上面的 Toast 都是以`fixed`的形式固定在浏览器中，也可以将Toast嵌入文档流。只需使用`u-toast`标签，并设置`position="static"`即可。
 
 ``` html
-<p><u-button @click="$refs.toastStatic.show()">Static</u-button></p>
-<u-toast ref="toastStatic" position="static" text="Static Toast"></u-toast>
+<p><u-button @click="$refs.staticToast.show()">Static</u-button></p>
+<u-toast ref="staticToast" position="static" text="Static Toast"></u-toast>
 ```
 
 ### 可关闭
 
 ``` html
-<p><u-button @click="$refs.toastStaticClosable.show()">Static</u-button></p>
-<u-toast ref="toastStaticClosable" position="static" text="Closable" :duration="0" closable></u-toast>
+<p><u-button @click="$refs.closableToast.show()">Static</u-button></p>
+<u-toast ref="closableToast" position="static" text="Closable" :duration="0" closable></u-toast>
 ```
 
 ### 提示停留时间
