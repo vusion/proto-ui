@@ -17,6 +17,7 @@ export const UTooltip = {
     },
     watch: {
         content() {
+            // 内容变化时，需要更新一下 tooltip 长度
             this.update();
         },
     },

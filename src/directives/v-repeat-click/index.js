@@ -16,7 +16,7 @@ export const repeatClick = {
             timer = setTimeout(fn, interval);
         };
 
-        el.__off = event.on(el, 'mousedown', (e) => {
+        el.__repeatClickOff = event.on(el, 'mousedown', (e) => {
             // self 和 prevent 有个顺序问题，所以用 for 循环
             const modifiers = Object.keys(binding.modifiers);
             for (let i = 0; i < modifiers.length; i++) {
@@ -45,6 +45,6 @@ export const repeatClick = {
         });
     },
     unbind(el) {
-        el.__off();
+        el.__repeatClickOff();
     },
 };
