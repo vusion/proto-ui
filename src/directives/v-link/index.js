@@ -19,7 +19,7 @@ export const href = {
         el.dataset.href = binding.value;
     },
     unbind(el) {
-        el.removeEventListener('mouseenter', el.__hrefHandler);
+        el.removeEventListener('click', el.__hrefHandler);
         delete el.__hrefHandler;
     },
 };
@@ -47,9 +47,7 @@ export const to = {
         el.dataset.to = binding.value;
     },
     unbind(el) {
-        if (el.__toHandler) {
-            el.removeEventListener('mouseenter', el.__toHandler);
-            delete el.__toHandler;
-        }
+        el.removeEventListener('click', el.__toHandler);
+        delete el.__toHandler;
     },
 };
