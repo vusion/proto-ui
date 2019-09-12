@@ -4,14 +4,13 @@
     background-size: 100%;
     width: 48px;
     height: 48px;
-    line-height: 48px;
     border-radius: 50%;
-    margin-right: 2px;
+    vertical-align: middle;
+    overflow: hidden;
 }
 
-.root::before {
-    content: 'b';
-    visibility: hidden;
+.root > img {
+    max-width: 100%;
 }
 
 .root[shape="square"] {
@@ -21,23 +20,20 @@
 .root[size="mini"] {
     width: 16px;
     height: 16px;
-    line-height: 16px;
+    margin-bottom: 2px;
 }
 
 .root[size="small"] {
     width: 32px;
     height: 32px;
-    line-height: 32px;
 }
 
 .root[size="large"] {
     width: 64px;
     height: 64px;
-    line-height: 64px;
 }
 
 .root[size="huge"] {
     width: 108px;
     height: 108px;
-    line-height: 108px;
 }

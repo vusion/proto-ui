@@ -1,11 +1,8 @@
 # UInput 单行输入
 
-<u-linear-layout gap="small">
-    <u-label>UI 组件</u-label>
-    <!-- <u-label>输入型</u-label> -->
-    <u-label>表单类</u-label>
-    <u-label>行内展示</u-label>
-</u-linear-layout>
+<s-component-labels :labels="[
+    'UI 组件', '表单控件', '行内展示',
+]"></s-component-labels>
 
 基本的表单输入组件，在原生`<input>`控件基础上进行了一些功能扩展。
 
