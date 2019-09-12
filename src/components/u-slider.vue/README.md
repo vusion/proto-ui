@@ -1,7 +1,7 @@
 # USlider 滑块
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-slider :value="36"></u-slider>

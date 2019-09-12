@@ -1,7 +1,7 @@
 # UBadge 徽章
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <p>消息 <u-badge :value="3"></u-badge></p>

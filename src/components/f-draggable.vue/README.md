@@ -1,7 +1,7 @@
 # FDraggable 拖拽
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <f-draggable>

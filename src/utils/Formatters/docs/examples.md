@@ -2,7 +2,7 @@
 
 用于排除传入空数据或异常数据时，出现`NaN`或`[Object object]`等不友好的体验。
 
-### 基本形式
+### 基本用法
 
 ``` vue
 <template>
@@ -75,7 +75,7 @@ export default {
 
 用于将`Date`对象或日期字符串转换为指定的格式。
 
-### 基本形式
+### 基本用法
 
 ``` vue
 <template>
@@ -109,7 +109,7 @@ export default {
 
 可将数字转换为指定格式。
 
-### 基本形式
+### 基本用法
 
 ``` vue
 <template>

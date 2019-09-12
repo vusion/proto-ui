@@ -1,7 +1,7 @@
 # UCheckboxes 多选组
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-checkbox>多选框</u-checkbox>

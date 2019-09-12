@@ -1,7 +1,7 @@
 # UPagination 分页
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-linear-layout direction="vertical">

@@ -3,7 +3,7 @@
 该组件从 UCascadeSelect 继承，仅填充了中国的行政区数据，其他功能与 UCascadeSelect 相同。
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-linear-layout direction="vertical">

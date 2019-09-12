@@ -1,7 +1,7 @@
 # UUploader 文件上传
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-uploader url="/api/upload">

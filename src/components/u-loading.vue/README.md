@@ -1,7 +1,7 @@
 # ULoading 加载中
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-loading></u-loading>

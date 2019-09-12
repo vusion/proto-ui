@@ -1,7 +1,7 @@
 # UTransfer 穿梭框
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` vue
 <template>

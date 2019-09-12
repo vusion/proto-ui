@@ -1,7 +1,7 @@
 # URadios 单选组
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-radios value="毛巾">

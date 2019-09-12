@@ -1,7 +1,7 @@
 # UCollapse 折叠面板
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-collapse>

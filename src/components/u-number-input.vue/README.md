@@ -1,7 +1,7 @@
 # UNumberInput 数字输入
 
 ## 示例
-### 基本形式
+### 基本用法
 
 ``` html
 <u-linear-layout>
