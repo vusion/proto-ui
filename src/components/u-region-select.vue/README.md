@@ -1,5 +1,9 @@
 # URegionSelect 地区选择
 
+<s-component-labels :labels="[
+    'UI 组件', '表单控件', '块级展示',
+]"></s-component-labels>
+
 该组件从 UCascadeSelect 继承，仅填充了中国的行政区数据，其他功能与 UCascadeSelect 相同。
 
 ## 示例

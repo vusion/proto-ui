@@ -1,10 +1,8 @@
 # USelect 选择框
 
-<u-linear-layout gap="small">
-    <u-label>UI 组件</u-label>
-    <u-label>表单类</u-label>
-    <u-label>行内展示</u-label>
-</u-linear-layout>
+<s-component-labels :labels="[
+    'UI 组件', '表单控件', '行内展示',
+]"></s-component-labels>
 
 下拉选择框，支持支持单选、多选、搜索等功能，用于代替原生的选择框。
 

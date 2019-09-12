@@ -1,5 +1,9 @@
 # UButton 按钮
 
+<s-component-labels :labels="[
+    'UI 组件', '路由链接', '行内展示',
+]"></s-component-labels>
+
 ## 示例
 ### 基本用法
 

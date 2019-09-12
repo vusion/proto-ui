@@ -1,5 +1,11 @@
 # ULogo 标识
 
+<s-component-labels :labels="[
+    'UI 组件', '行内展示',
+]"></s-component-labels>
+
+常见的网站标识。该组件作为一个示例，业务中请自行拓展。
+
 ## 示例
 ### 基本用法
 

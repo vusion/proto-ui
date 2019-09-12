@@ -1,5 +1,9 @@
 # UFormTable 表单表格
 
+<s-component-labels :labels="[
+    'UI 组件', '块级展示',
+]"></s-component-labels>
+
 在表单中使用的表格，本组件主要实现基本样式，方便在特殊场景下扩展。如果需要快速使用动态数据、表单验证等功能，请使用 [UFormTableView](../u-form-table-view)。
 
 <u-h2-tabs router>

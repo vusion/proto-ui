@@ -1,5 +1,9 @@
 # UPagination 分页
 
+<s-component-labels :labels="[
+    'UI 组件', '块级展示',
+]"></s-component-labels>
+
 ## 示例
 ### 基本用法
 

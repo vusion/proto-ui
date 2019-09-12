@@ -1,5 +1,9 @@
 # UComboPagination 复合翻页器
 
+<s-component-labels :labels="[
+    'UI 组件', '块级展示',
+]"></s-component-labels>
+
 在 UPagination 的基础上，添加了显示总页数、切换每页大小、页面跳转等功能。
 
 ## 示例

@@ -1,5 +1,9 @@
 # UText 文本
 
+<s-component-labels :labels="[
+    'UI 组件', '行内展示',
+]"></s-component-labels>
+
 用于在业务中临时快速地调整文本大小、颜色等特性。不建议在封装基础组件时使用。
 
 ## 示例

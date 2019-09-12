@@ -1,5 +1,9 @@
 # USwitch 开关
 
+<s-component-labels :labels="[
+    'UI 组件', '表单控件', '行内展示',
+]"></s-component-labels>
+
 ## 示例
 ### 基本用法
 

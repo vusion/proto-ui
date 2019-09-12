@@ -1,5 +1,9 @@
 # UForm 表单
 
+<s-component-labels :labels="[
+    'UI 组件', '表单验证器', '块级展示',
+]"></s-component-labels>
+
 具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。
 
 ### 相关组件

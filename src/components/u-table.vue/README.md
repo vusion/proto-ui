@@ -1,5 +1,9 @@
 # UTable 表格
 
+<s-component-labels :labels="[
+    'UI 组件', '块级展示',
+]"></s-component-labels>
+
 对表格样式做了简单的修饰。如果需要横向滚动、固定列、分页、排序、过滤等更多功能，请使用 [UTableView](../u-table-view)。
 
 <u-h2-tabs router>

@@ -1,5 +1,9 @@
 # UList 列表
 
+<s-component-labels :labels="[
+    'UI 组件', '块级展示',
+]"></s-component-labels>
+
 对列表样式做了简单的修饰。如果需要选择、分页等更多的功能，请使用 [UListView](../u-list-view)。
 
 <u-h2-tabs router>

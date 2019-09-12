@@ -1,5 +1,9 @@
 # IIcon 图标
 
+<s-component-labels :labels="[
+    '图标组件', '行内展示',
+]"></s-component-labels>
+
 ## 示例
 ### 使用方法
 

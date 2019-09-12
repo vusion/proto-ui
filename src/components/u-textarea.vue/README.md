@@ -1,5 +1,9 @@
 # UTextarea 多行输入
 
+<s-component-labels :labels="[
+    'UI 组件', '表单控件', '行内展示',
+]"></s-component-labels>
+
 <u-linear-layout gap="small">
     <u-label>UI 组件</u-label>
     <!-- <u-label>输入型</u-label> -->

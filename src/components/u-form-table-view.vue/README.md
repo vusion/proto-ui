@@ -1,5 +1,9 @@
 # UFormTableView 表格表单视图
 
+<s-component-labels :labels="[
+    'UI 组件', '表单验证器', '块级展示',
+]"></s-component-labels>
+
 本组件用于在表单中使用表单验证、动态数据等复杂功能。
 
 <u-h2-tabs router>
