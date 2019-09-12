@@ -114,6 +114,9 @@ export const MPopper = {
         this.destroyPopper();
         // 取消绑定事件
         this.offEvents.forEach((off) => off());
+        this.timers.forEach((timer) => {
+            clearTimeout(timer);
+        });
     },
     methods: {
         getOptions() {
@@ -188,6 +191,9 @@ export const MPopper = {
 
             this.triggers.push({ el, event });
 
+            // 收集 setTimeout
+            this.timers = this.timers || [];
+
             // 绑定事件
             this.followCursor && this.offEvents.push(ev.on(document, 'mousemove', (e) => this.updatePositionByCursor(e, el)));
 
@@ -204,14 +210,16 @@ export const MPopper = {
                 let timer;
                 this.offEvents.push(ev.on(el, 'mouseenter', (e) => {
                     timer = clearTimeout(timer);
-                    setTimeout(() => {
+                    this.timers[0] = setTimeout(() => {
                         this.open();
                         this.followCursor && this.$nextTick(() => this.updatePositionByCursor(e, el));
                     }, this.hoverDelay);
                 }));
                 this.offEvents.push(ev.on(document, 'mouseover', (e) => {
-                    if (this.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target))
+                    if (this.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target)) {
                         timer = setTimeout(() => this.close(), this.hideDelay);
+                        this.timers[1] = timer;
+                    }
                 }));
             } else if (event === 'double-click')
                 this.offEvents.push(ev.on(el, 'dblclick', (e) => {

@@ -31,7 +31,7 @@
 }
 
 .baseline {
-    color: transparent;
+    visibility: hidden;
 }
 
 .placeholder, .input::placeholder {

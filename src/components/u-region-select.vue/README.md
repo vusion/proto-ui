@@ -12,6 +12,21 @@
 </u-linear-layout>
 ```
 
+```vue
+<template>
+    <u-region-select v-model="address"></u-region-select>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            address: '',
+        };
+    },
+};
+</script>
+```
+
 ### Placeholder
 
 ``` html

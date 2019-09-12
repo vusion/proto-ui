@@ -1,3 +1,5 @@
+import throttle from 'lodash/throttle';
+
 export const EWatermark = {
     name: 'e-watermark',
     props: {
@@ -15,11 +17,24 @@ export const EWatermark = {
     },
     watch: {
         text() {
-            setTimeout(() => {
+            this.clearTimeout();
+            this.timer = setTimeout(() => {
+                this.timer = undefined;
                 this.redrawMark();
                 this.redraw();
             }, 100);
         },
+    },
+    computed: {
+        markWidth() {
+            return this.markSize * Math.sqrt(3) * 2;
+        },
+        markHeight() {
+            return this.markSize * 2;
+        },
+    },
+    created() {
+        this.redraw = throttle(this.redraw, 250);
     },
     mounted() {
         this.drawMark();
@@ -27,9 +42,15 @@ export const EWatermark = {
         window.addEventListener('resize', this.redraw);
     },
     destroyed() {
+        this.clearTimeout();
         window.removeEventListener('resize', this.redraw);
     },
     methods: {
+        clearTimeout() {
+            if (this.timer) {
+                clearTimeout(this.timer);
+            }
+        },
         drawMark() {
             const markEl = this.$refs.mark;
             const width = markEl.width;
@@ -56,12 +77,32 @@ export const EWatermark = {
         },
         draw(image) {
             const canvasEl = this.$refs.canvas;
-            const width = canvasEl.width = canvasEl.clientWidth * 2;
-            const height = canvasEl.height = canvasEl.clientHeight * 2;
+
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            const isFirstPaint = !this.lastRectangle;
+            this.lastRectangle = isFirstPaint ? {
+                windowWidth: 0,
+                windowHeight: 0,
+            } : this.lastRectangle;
+            if (windowHeight > this.lastRectangle.windowHeight || windowWidth > this.lastRectangle.windowWidth) {
+                this.lastRectangle = {
+                    windowWidth: Math.max(windowWidth, this.lastRectangle.windowWidth),
+                    windowHeight: Math.max(windowHeight, this.lastRectangle.windowHeight),
+                };
+            } else if (!isFirstPaint) {
+                return;
+            }
+
+            canvasEl.style.width = windowWidth + 'px';
+            canvasEl.style.height = windowHeight + 'px';
+            const width = canvasEl.width = windowWidth * 2;
+            const height = canvasEl.height = windowHeight * 2;
+
             const ctx = canvasEl.getContext('2d');
 
-            const markHeight = this.markSize * 2;
-            const markWidth = this.markSize * Math.sqrt(3) * 2;
+            const markHeight = this.markHeight;
+            const markWidth = this.markWidth;
             for (let i = 0; i < width; i += markWidth) {
                 for (let j = 0; j < height; j += markHeight)
                     ctx.drawImage(image, i, j, markWidth, markHeight);

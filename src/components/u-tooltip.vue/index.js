@@ -15,6 +15,11 @@ export const UTooltip = {
         // @inherit: offset
         // @inherit: disabled
     },
+    watch: {
+        content() {
+            this.update();
+        },
+    },
 };
 
 export default UTooltip;

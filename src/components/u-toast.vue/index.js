@@ -20,6 +20,8 @@ export const UToast = {
     },
     destroyed() {
         this.clearItemsQueue();
+        if (this.position !== 'static')
+            document.body.removeChild(this.$el);
     },
     methods: {
         show(text, duration, color) {

@@ -1,6 +1,14 @@
 # UToast 吐司提示
 
 ## 示例
+
+### 基本形式
+
+```html
+<u-button @click="$refs.toast2.show()">组件</u-button>
+<u-toast ref="toast2">2s</u-toast>
+```
+
 ### 快捷方式
 
 ``` vue

@@ -1,14 +1,12 @@
 .root {}
 
 .root > h1 {
-    position: relative;
     font-size: 24px;
     line-height: 30px;
     margin-bottom: 60px;
 }
 
 .root > h2 {
-    position: relative;
     font-size: 20px;
     margin: 40px 0;
     line-height: 44px;
@@ -17,7 +15,6 @@
 }
 
 .root > h3 {
-    position: relative;
     font-size: 17px;
     margin: 40px 0 20px;
     padding-left: 0;
@@ -25,18 +22,17 @@
 }
 
 .root > h4 {
-    position: relative;
     font-size: 16px;
     margin: 25px 0 10px;
 }
 
 .root > h4::after {
     content: '';
-    position: absolute;
-    left: -14px;
+    float: left;
+    margin: 10px 0;
+    margin-left: -14px;
     top: 50%;
-    margin-top: -2px;
-    display: inline-block;
+    display: block;
     height: 6px;
     width: 6px;
     background: $brand-primary;
@@ -44,14 +40,11 @@
 }
 
 .root > h5 {
-    position: relative;
     font-size: 12px;
     margin: 0.3em 0;
 }
 
-.root > h6 {
-    position: relative;
-}
+.root > h6 {}
 
 .root > h1 > :global(.heading-anchor),
 .root > h2 > :global(.heading-anchor),
@@ -60,8 +53,8 @@
 .root > h5 > :global(.heading-anchor),
 .root > h6 > :global(.heading-anchor) {
     display: none;
-    position: absolute;
-    left: -1.4em;
+    float: left;
+    margin-left: -1.4em;
     width: 1.4em;
     bottom: 0;
     text-align: center;
