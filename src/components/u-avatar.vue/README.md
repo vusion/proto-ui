@@ -25,7 +25,7 @@
 </u-linear-layout>
 ```
 
-### 自定义内容
+### 自定义图片
 
 ``` html
 <u-avatar><img src="./assets/music.png"></u-avatar> 多多
@@ -110,11 +110,11 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
-| size | String | `'normal'` | 头像大小。可选值：`'mini'`、`'small'`、`'normal'`、`'large'`、`'huge'`。如需自定义大小，可以直接设置`style="width: 40px; height: 40px;"` |
 | shape | String | `'circle'` | 形状。可选值：`circle`, `square` 两种类型 |
+| size | String | `'normal'` | 头像大小。可选值：`'mini'`、`'small'`、`'normal'`、`'large'`、`'huge'`。如需自定义大小，可以直接设置`style="width: 40px; height: 40px;"` |
 
 ### Slots
 
 #### (default)
 
-无
+添加自定义图片或内容。
