@@ -9,7 +9,7 @@ export const UTooltip = {
         trigger: { type: String, default: 'hover' },
         placement: { type: String, default: 'bottom' },
         // @inherit: reference
-        // @inhreit: hideDelay
+        // @inherit: hideDelay
         // @inherit: boundariesElement
         // @inherit: followCursor
         // @inherit: offset

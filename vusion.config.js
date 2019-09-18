@@ -74,6 +74,7 @@ module.exports = {
             { group: 'Popper', name: 'm-popper', alias: '弹出层' },
             { group: 'Popper', name: 'u-popup', alias: '弹出框' },
             { group: 'Popper', name: 'u-tooltip', alias: '工具提示' },
+            { group: 'Popper', name: 'u-icon-tooltip', alias: '图标提示' },
             { group: 'Feedback', name: 'u-spinner', alias: '加载图标' },
             { group: 'Feedback', name: 'u-loading', alias: '加载中' },
             { group: 'Feedback', name: 'u-toast', alias: '吐司提示' },

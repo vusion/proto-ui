@@ -1,7 +1,55 @@
+# UIconTooltip 图标提示
+
+<s-component-labels :labels="[
+    'UI 组件', '弹出层', '行内展示',
+]"></s-component-labels>
+
+图标与`<u-tooltip>`的组合。
+
+## 示例
+### 基本用法
+
+``` html
+文字旁的提示 <u-icon-tooltip>这是提示内容</u-icon-tooltip>
+```
+
+### 切换类型
+
+``` html
+信息 <u-icon-tooltip>这是提示内容</u-icon-tooltip><br>
+帮助 <u-icon-tooltip type="help">这是提示内容</u-icon-tooltip><br>
+详情 <u-icon-tooltip type="detail">这是提示内容</u-icon-tooltip>
+```
+
+### 弹出位置
+
+``` html
+<u-linear-layout>
+    <span>
+        top
+        <u-icon-tooltip placement="top">Tooltip</u-icon-tooltip>
+    </span>
+    <span>
+        left
+        <u-icon-tooltip placement="left">Tooltip</u-icon-tooltip>
+    </span>
+    <span>
+        right
+        <u-icon-tooltip placement="right">Tooltip</u-icon-tooltip>
+    </span>
+    <span>
+        bottom
+        <u-icon-tooltip placement="bottom">Tooltip</u-icon-tooltip>
+    </span>
+</u-linear-layout>
+```
+
 ### Props/Attrs
 
 | Attr/Prop | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
+| type | String | `'info'` | 图标类型。可选值：`'info'`, `'help'`, `'detail'` |
+| size | String | `'normal'` | 提示大小。可选值：`'mini'`, `'normal'`, `'large'` |
 | opened.sync | Boolean | `false` | 弹出/关闭状态 |
 | trigger | String | `'hover'` | 工具提示的触发方式。可选值：`'click'`, `'hover'`, `'right-click'`, `'double-click'`, `'manual'` |
 | placement | String | `'bottom'` | 工具提示的弹出方向。可选值：`'top'`, `'bottom'`, `'left'`, `'right'`, `'top-start'`, `'top-end'`, `'bottom-start'`, `'bottom-end'`, `'left-start`',` 'left-end'`, `'right-start'`, `'right-end'` |
@@ -15,14 +63,6 @@
 #### (default)
 
 插入需要弹出的内容。
-
-#### popper
-
-自定义整个弹出层。
-
-#### body
-
-自定义滚动区域。
 
 ### Events
 
@@ -82,28 +122,6 @@
 #### close()
 
 关闭实例。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-
-#### toggle(opened?)
-
-切换弹出/关闭状态。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| opened? | Boolean | 可选。弹出/关闭状态 |
-
-#### update()
-
-更新 popper 实例。参考 [Popper.update()](https://popper.js.org/popper-documentation.html#Popper.update)。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-
-#### scheduleUpdate()
-
-在下次 UI 渲染时一块更新 popper 实例，比`update()`性能要好。参考 [Popper.scheduleUpdate()](https://popper.js.org/popper-documentation.html#Popper.scheduleUpdate)。
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
