@@ -14,13 +14,20 @@ export default {
     data() {
         return {
             parentVM: undefined,
+            groupVMs: [],
             itemVMs: [],
             currentExpanded: this.expanded,
         };
     },
     computed: {
         currentCollapsible() {
-            return this.collapsible === undefined && this.parentVM ? this.parentVM.collapsible : this.collapsible;
+            if (this.collapsible !== undefined)
+                return this.collapsible;
+            else if (this.parentVM)
+                return this.parentVM.currentCollapsible !== undefined ? this.parentVM.currentCollapsible : this.parentVM.collapsible;
+        },
+        expandTrigger() {
+            return this.parentVM ? this.parentVM.expandTrigger : 'click';
         },
     },
     watch: {
@@ -29,6 +36,14 @@ export default {
         },
     },
     created() {
+        this.$on('add-group-vm', (groupVM) => {
+            groupVM.parentVM = this;
+            this.groupVMs.push(groupVM);
+        });
+        this.$on('remove-group-vm', (groupVM) => {
+            groupVM.parentVM = undefined;
+            this.groupVMs.splice(this.groupVMs.indexOf(groupVM), 1);
+        });
         this.$on('add-item-vm', (itemVM) => {
             itemVM.groupVM = this;
             this.itemVMs.push(itemVM);
@@ -37,10 +52,10 @@ export default {
             itemVM.groupVM = undefined;
             this.itemVMs.splice(this.itemVMs.indexOf(itemVM), 1);
         });
-        this.dispatch(this.$options.parentName, 'add-group-vm', this);
+        this.dispatch(() => this.$options.parentName || this.$options.name, 'add-group-vm', this);
     },
     destroyed() {
-        this.dispatch(this.$options.parentName, 'remove-group-vm', this);
+        this.dispatch(() => this.$options.parentName || this.$options.name, 'remove-group-vm', this);
     },
     methods: {
         toggle(expanded) {
@@ -85,6 +100,9 @@ export default {
                 expanded,
                 groupVM: this,
             });
+        },
+        onToggle($event) {
+            this.parentVM.onToggle($event);
         },
     },
 };
