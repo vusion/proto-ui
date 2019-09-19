@@ -14,6 +14,8 @@ export const UCascadeSelect = {
         field: { type: String, default: 'text' },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        size: String,
+        layout: { type: String, default: 'inline' },
     },
     data() {
         const data = {

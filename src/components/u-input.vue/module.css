@@ -73,6 +73,8 @@
     border-color: $brand-primary;
 }
 
+.root[color="default"] { /* As default */ }
+
 .root[color="error"] {
     border-color: $brand-error;
 }
@@ -81,6 +83,10 @@
     cursor: $cursor-not-allowed;
     background: $brand-disabled-light;
 }
+
+.root[size="normal"] { /* As default */ }
+
+.root[display="inline"] { /* As default */ }
 
 .root[display="block"] {
     display: block;

@@ -160,6 +160,8 @@
     text-align: center;
 }
 
+.root[size="normal"] { /* As default */ }
+
 .root[size="small"] {
     width: 120px;
     height: 30px;
@@ -176,4 +178,10 @@
 
 .root[size="small"] .popper {
     line-height: 1.6;
+}
+
+.root[size="large"] {
+    width: 260px;
+    height: 36px;
+    line-height: 34px;
 }

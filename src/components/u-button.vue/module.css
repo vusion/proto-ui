@@ -48,14 +48,17 @@
 }
 
 .root[disabled] {
-    /* @Private */
     cursor: $cursor-not-allowed;
-
-    /* @Public */
     background: white;
     border-color: $border-color-base;
     color: $brand-disabled;
 }
+
+.root[size="normal"] { /* As default */ }
+
+.root[color="default"] { /* As default */ }
+
+.root[display="inline"] { /* As default */ }
 
 .root[display="block"] {
     display: block;

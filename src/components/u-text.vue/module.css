@@ -1,5 +1,7 @@
 .root {}
 
+.root[display="inline"] { /* As default */ }
+
 .root[display="block"] {
     display: block;
 }
@@ -8,9 +10,13 @@
     font-size: 12px;
 }
 
+.root[size="normal"] { /* As default */ }
+
 .root[size="large"] {
     font-size: 18px;
 }
+
+.root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
     color: $brand-primary;
