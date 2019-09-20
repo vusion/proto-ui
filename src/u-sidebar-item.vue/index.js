@@ -17,7 +17,14 @@ export default {
     },
     methods: {
         watchActive(active) {
-            active && this.groupVM && this.groupVM.toggle(true);
+            if (!active)
+                return;
+
+            let groupVM = this.groupVM;
+            while (groupVM) {
+                groupVM.toggle && groupVM.toggle(true);
+                groupVM = groupVM.parentVM;
+            }
         },
     },
 };
