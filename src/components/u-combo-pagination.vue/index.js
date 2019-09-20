@@ -5,6 +5,7 @@ export const UComboPagination = {
     i18n,
     props: {
         ...UPagination.props,
+        totalItems: Number,
         pageSize: { type: Number, default: 20 },
         pageSizeOptions: { type: Array, default() { return [10, 20, 50]; } },
         showTotal: { type: Boolean, default: false },

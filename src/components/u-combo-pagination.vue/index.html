@@ -1,5 +1,5 @@
 <u-linear-layout :class="$style.root" gap="small">
-    <span v-if="showTotal" :class="$style.total">{{ $t('total', { total }) }}</span>
+    <span v-if="showTotal" :class="$style.total">{{ $t('total', { totalItems }) }}</span>
     <u-select v-if="showSizer" :class="$style.sizer" :value="pageSize" @select="onSelectPageSize">
         <u-select-item v-for="pageSize in pageSizeOptions" :key="pageSize" :value="pageSize">
             {{ pageSize }} {{ $t('pageSizeUnit') }}
