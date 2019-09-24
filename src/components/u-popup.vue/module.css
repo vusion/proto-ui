@@ -8,11 +8,13 @@ $popup-arrow-offset: 16px;
 .root {
     position: relative;
     min-width: 200px;
-    background: $popup-background-color;
-    border: 1px solid $popup-border-color;
     z-index: $z-index-popper;
 }
-
+.inner {
+    position: relative;
+    background: $popup-background-color;
+    border: 1px solid $popup-border-color;
+}
 .head {
     padding: 6px 10px;
     background: $popup-background-head-color;
@@ -45,7 +47,7 @@ $popup-arrow-offset: 16px;
     border: $popup-outer-arrow-size solid transparent;
 }
 
-.root[x-placement^="top"] { margin-bottom: $popup-arrow-size; }
+.root[x-placement^="top"] .inner { margin-bottom: $popup-arrow-size; }
 .root[x-placement^="top"] .arrow {
     bottom: -$popup-arrow-size;
     margin-left: -$popup-arrow-size;
@@ -63,7 +65,7 @@ $popup-arrow-offset: 16px;
 .root[x-placement="top"] .arrow { left: 50%; }
 .root[x-placement="top-end"] .arrow { right: $popup-arrow-offset; }
 
-.root[x-placement^="bottom"] { margin-top: $popup-arrow-size; }
+.root[x-placement^="bottom"] .inner { margin-top: $popup-arrow-size; }
 .root[x-placement^="bottom"] .arrow {
     top: -$popup-arrow-size;
     margin-left: -$popup-arrow-size;
@@ -81,7 +83,7 @@ $popup-arrow-offset: 16px;
 .root[x-placement="bottom"] .arrow { left: 50%; }
 .root[x-placement="bottom-end"] .arrow { right: $popup-arrow-offset; }
 
-.root[x-placement^="left"] { margin-right: $popup-arrow-size; }
+.root[x-placement^="left"] .inner { margin-right: $popup-arrow-size; }
 .root[x-placement^="left"] .arrow {
     right: -$popup-arrow-size;
     margin-top: -$popup-arrow-size;
@@ -99,7 +101,7 @@ $popup-arrow-offset: 16px;
 .root[x-placement="left"] .arrow { top: 50%; }
 .root[x-placement="left-end"] .arrow { bottom: $popup-arrow-offset; }
 
-.root[x-placement^="right"] { margin-left: $popup-arrow-size; }
+.root[x-placement^="right"] .inner { margin-left: $popup-arrow-size; }
 .root[x-placement^="right"] .arrow {
     left: -$popup-arrow-size;
     margin-top: -$popup-arrow-size;
