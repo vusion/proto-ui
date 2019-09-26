@@ -7,6 +7,7 @@ export const UCrumbItem = {
     mixins: [MChild, ULink],
     props: {
         current: { type: Boolean, default: false },
+        readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
     },
     data() {

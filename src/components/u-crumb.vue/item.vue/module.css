@@ -15,7 +15,7 @@
 .link:hover {
     text-decoration: underline;
 }
-
+.readonly,
 .current {
     color: inherit;
     cursor: default;

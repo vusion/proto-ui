@@ -11,6 +11,12 @@
 <u-crumb>
     <u-crumb-item to="/">首页</u-crumb-item>
     <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
+    <u-crumb-item readonly>Navigation</u-crumb-item>
+    <u-crumb-item to="/proto-ui/u-crumb" current>面包屑</u-crumb-item>
+</u-crumb>
+<u-crumb>
+    <u-crumb-item to="/">首页</u-crumb-item>
+    <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
     <u-crumb-item disabled>Navigation</u-crumb-item>
     <u-crumb-item to="/proto-ui/u-crumb" current>面包屑</u-crumb-item>
 </u-crumb>
@@ -41,6 +47,7 @@
 | append | Boolean | `false` | 需要 vue-router，与`<router-link>`的`append`属性相同。如果为`true`，则在当前路径后追加`to`的路径。 |
 | disabled | Boolean | `false` | 是否不可点击。如果为`true`，则不会响应`click`事件。 |
 | current | Boolean | `false` | 是否为当前页。与`disabled`类似，只是显示为默认文字颜色，如果为`true`，则不会响应`click`事件。 |
+| readonly | Boolean | `false` | 是否为只读。与`current`类似，标识为只读，不对应任何链接。 |
 
 ### Slots
 
