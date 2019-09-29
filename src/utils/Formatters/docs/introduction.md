@@ -32,7 +32,7 @@ class SomeFormatter {
 ``` vue
 <template>
 <div>
-    <div>当前日期为：{{ now | date('yyyy-MM-dd') }}</div>
+    <div>当前日期为：{{ now | date('YYYY-MM-DD') }}</div>
 </div>
 </template>
 <script>

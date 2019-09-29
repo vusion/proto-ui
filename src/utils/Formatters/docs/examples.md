@@ -103,7 +103,7 @@ export default {
 | Param | Type | Default | Description |
 | ----- | ---- | ------- | ----------- |
 | value | Date, String | | 待格式化的值。可以为日期对象或有效的字符串 |
-| pattern | String | `'yyyy-MM-dd HH:mm:ss'` | 格式化模板 |
+| pattern | String | `'YYYY-MM-DD HH:mm:ss'` | 格式化模板 |
 
 ## 数字格式器 NumberFormatter
 
