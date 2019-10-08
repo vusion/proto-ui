@@ -30,3 +30,12 @@ export function getComputedStyle(el, property) {
     const computedStyle = window.getComputedStyle(el, null);
     return property ? computedStyle[property] : computedStyle;
 }
+
+export function checkIntoView(elm, parentScrollElm) {
+    const rect = getRect(elm);
+    const viewHeight = getSize(parentScrollElm).height;
+    const parentTop = getRect(parentScrollElm).top;
+    const top = rect.top - parentTop;
+    const bottom = rect.bottom - parentTop;
+    return bottom >= 0 && top - viewHeight < 0;
+}
