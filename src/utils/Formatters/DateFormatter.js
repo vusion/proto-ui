@@ -9,7 +9,7 @@ const fix = (num, length = 2) => String(num).padStart(length, '0');
 const replacers = {
     yyyy(date) {
         if (process.env.NODE_ENV === 'development') {
-            console.warn('use YYYY instead of yyyy in YYYY-MM-DD');
+            console.warn('[proto-ui] Please use YYYY instead of yyyy');
         }
         return date.getFullYear();
     },
@@ -17,7 +17,7 @@ const replacers = {
     MM(date) { return fix(date.getMonth() + 1); },
     dd(date) {
         if (process.env.NODE_ENV === 'development') {
-            console.warn('use DD instead of dd in YYYY-MM-DD');
+            console.warn('[proto-ui] Please use DD instead of dd');
         }
         return fix(date.getDate());
     },
