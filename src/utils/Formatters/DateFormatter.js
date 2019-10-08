@@ -7,9 +7,21 @@ import Formatter from './Formatter';
 const fix = (num, length = 2) => String(num).padStart(length, '0');
 
 const replacers = {
-    yyyy(date) { return date.getFullYear(); },
+    yyyy(date) {
+        if (process.env.NODE_ENV === 'development') {
+            console.warn('use YYYY instead of yyyy in YYYY-MM-DD');
+        }
+        return date.getFullYear();
+    },
+    YYYY(date) { return date.getFullYear(); },
     MM(date) { return fix(date.getMonth() + 1); },
-    dd(date) { return fix(date.getDate()); },
+    dd(date) {
+        if (process.env.NODE_ENV === 'development') {
+            console.warn('use DD instead of dd in YYYY-MM-DD');
+        }
+        return fix(date.getDate());
+    },
+    DD(date) { return fix(date.getDate()); },
     HH(date) { return fix(date.getHours()); },
     mm(date) { return fix(date.getMinutes()); },
     ss(date) { return fix(date.getSeconds()); },
@@ -18,7 +30,7 @@ const replacers = {
 const trunk = new RegExp(Object.keys(replacers).join('|'), 'g');
 
 export class DateFormatter extends Formatter {
-    constructor(pattern = 'yyyy-MM-dd HH:mm:ss') {
+    constructor(pattern = 'YYYY-MM-DD HH:mm:ss') {
         super();
         this.pattern = pattern;
     }
