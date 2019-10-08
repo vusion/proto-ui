@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vue-cli-service library-build",
     "build-raw": "vue-cli-service library-build --vusion-mode raw",
-    "doc": "vue-cli-service doc",
+    "doc": "vue-cli-service doc --port 9000",
     "doc-build": "vue-cli-service doc-build",
     "lint": "vue-cli-service lint"
   },
@@ -44,7 +44,7 @@
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vusion": "^0.5.13",
+    "vue-cli-plugin-vusion": "^0.6.0",
     "vue-router": "^3.1.3",
     "vue-template-compiler": "^2.6.10",
     "vusion-hooks": "^0.3.0",

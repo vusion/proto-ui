@@ -14,13 +14,20 @@ export const MGroup = {
     data() {
         return {
             parentVM: undefined,
+            groupVMs: [],
             itemVMs: [],
             currentExpanded: this.expanded,
         };
     },
     computed: {
         currentCollapsible() {
-            return this.collapsible === undefined && this.parentVM ? this.parentVM.collapsible : this.collapsible;
+            if (this.collapsible !== undefined)
+                return this.collapsible;
+            else if (this.parentVM)
+                return this.parentVM.currentCollapsible !== undefined ? this.parentVM.currentCollapsible : this.parentVM.collapsible;
+        },
+        expandTrigger() {
+            return this.parentVM ? this.parentVM.expandTrigger : 'click';
         },
     },
     watch: {
@@ -29,13 +36,13 @@ export const MGroup = {
         },
     },
     created() {
-        this.$contact(this.$options.parentName, (parentVM) => {
+        this.$contact(() => this.$options.parentName || this.$options.name, (parentVM) => {
             this.parentVM = parentVM;
             parentVM.groupVMs.push(this);
         });
     },
     destroyed() {
-        this.$contact(this.$options.parentName, (parentVM) => {
+        this.$contact(() => this.$options.parentName || this.$options.name, (parentVM) => {
             parentVM.groupVMs.splice(parentVM.groupVMs.indexOf(this), 1);
             this.parentVM = undefined;
         });
@@ -83,6 +90,9 @@ export const MGroup = {
                 expanded,
                 groupVM: this,
             });
+        },
+        onToggle($event) {
+            this.parentVM.onToggle($event);
         },
     },
 };

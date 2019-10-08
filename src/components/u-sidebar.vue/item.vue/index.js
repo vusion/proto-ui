@@ -1,5 +1,5 @@
 import { MSinglexItem } from '../../m-singlex.vue';
-import { checkIntoView } from '../../../utils/style';
+import { isElementInView } from '../../../utils/style';
 
 export const USidebarItem = {
     name: 'u-sidebar-item',
@@ -16,14 +16,17 @@ export const USidebarItem = {
     },
     methods: {
         watchActive(active) {
-            if (active) {
-                this.groupVM && this.groupVM.toggle(true);
-                if (!checkIntoView(this.$el, this.parentVM.$el)) {
-                    this.$nextTick(() => {
-                        this.$el.scrollIntoView(false);
-                    });
-                }
+            if (!active)
+                return;
+
+            let groupVM = this.groupVM;
+            while (groupVM) {
+                groupVM.toggle && groupVM.toggle(true);
+                groupVM = groupVM.parentVM;
             }
+
+            if (!isElementInView(this.$el, this.parentVM.$el, 'vertical'))
+                this.$nextTick(() => this.$el.scrollIntoView(false));
         },
     },
 };

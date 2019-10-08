@@ -31,11 +31,25 @@ export function getComputedStyle(el, property) {
     return property ? computedStyle[property] : computedStyle;
 }
 
-export function checkIntoView(elm, parentScrollElm) {
-    const rect = getRect(elm);
-    const viewHeight = getSize(parentScrollElm).height;
-    const parentTop = getRect(parentScrollElm).top;
-    const top = rect.top - parentTop;
-    const bottom = rect.bottom - parentTop;
-    return bottom >= 0 && top - viewHeight < 0;
+export function isElementInView(el, viewEl, direction = 'both', complete = false) {
+    if (direction === 'both')
+        return isElementInView(el, viewEl, 'vertical', complete) && isElementInView(el, viewEl, 'horizontal', complete);
+    else if (direction === 'vertical') {
+        const elRect = getRect(el);
+        const viewRect = getRect(viewEl);
+
+        if (complete)
+            return elRect.top >= viewRect.top && elRect.bottom <= viewRect.bottom;
+        else // @TODO: border?
+            return elRect.bottom > viewRect.top && elRect.top < viewRect.bottom;
+    } else if (direction === 'horizontal') {
+        const elRect = getRect(el);
+        const viewRect = getRect(viewEl);
+
+        if (complete)
+            return elRect.left >= viewRect.left && elRect.right <= viewRect.right;
+        else // @TODO: border?
+            return elRect.right > viewRect.left && elRect.left < viewRect.right;
+    } else
+        throw new TypeError(`Unknown direction ${direction} of isElementInView param!`);
 }
