@@ -54,15 +54,16 @@ const iterator = function (dir, file, stat) {
         const content = fs.readFileSync(`${dir}/${file}`, { encoding: 'utf8' });
         try{
             const tokens = markdown.parse(content);
-            const metas = parseToken(tokens);
+            const metas = parseToken(tokens, dir, file);
             // meta.name = path.basename(dir, '.vue')
-            fs.writeFile(
-                path.resolve(dir, 'readme.yaml'),
-                YAML.stringify(metas.map(m => m.toYaml())),
-                (err) => {
-                    if(err)
-                        throw err;
-                });
+            if(metas.length > 0)
+                fs.writeFile(
+                    path.resolve(dir, 'readme.yaml'),
+                    YAML.stringify(metas.map(m => m.toYaml())),
+                    (err) => {
+                        if(err)
+                            throw err;
+                    });
         }catch(err){
             console.log(err);
         }
@@ -70,8 +71,20 @@ const iterator = function (dir, file, stat) {
     }
 };
 
-
-const parseToken = function (tokens) {
+const camelToDash = s =>
+    s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "");
+const resolveName = function(name, dir, file){
+    if(name === 'API'){
+        let p = dir
+        while (!/\.vue/.test(path.basename(p))) {
+            p = path.dirname(p);
+        }
+        return path.basename(p, '.vue');
+    }else{
+        return `u-${camelToDash(name.split(' ')[0])}`
+    }
+}
+const parseToken = function (tokens, dir) {
     let idx = 0;
     const l = tokens.length;
 
@@ -83,7 +96,8 @@ const parseToken = function (tokens) {
             const slotsParser = new SlotsBlockParser();
             const methodsParser = new MethodsBlockParser();
             idx++;
-            const name = tokens[idx].content;
+            let name = tokens[idx].content;
+            let flag = true;
             do{
                 if(tokens[idx] && tokens[idx].type === 'heading_open'){
                     if(compareHeader(tokens[idx].tag, 'h2') <= 0)
@@ -96,6 +110,7 @@ const parseToken = function (tokens) {
                         idx = slotsParser.parse(tokens, idx);
                         idx = methodsParser.parse(tokens, idx);
                         if(f === idx){
+                            flag = false;
                             break;
                         }
                     }
@@ -104,9 +119,12 @@ const parseToken = function (tokens) {
                     idx++;
                 }
             } while (idx < l);
-            components.push(new ComponentMeta({
-                name, attrParser, evtParser, slotsParser, methodsParser
-            }));
+            if(flag){
+                name = resolveName(name, dir);
+                components.push(new ComponentMeta({
+                    name, attrParser, evtParser, slotsParser, methodsParser
+                }));
+            }
         } else {
             idx++;
         }
