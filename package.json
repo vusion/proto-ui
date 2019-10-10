@@ -42,12 +42,14 @@
     "eslint": "^5.14.1",
     "eslint-config-vusion": "^3.0.1",
     "husky": "^0.13.3",
+    "markdown-it": "^10.0.0",
     "sinon": "^4.2.2",
     "stylelint": "^9.3.0",
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.5.0",
     "vusion-hooks": "^0.2.0",
-    "vusion-utils": "^0.2.4"
+    "vusion-utils": "^0.2.4",
+    "yaml": "^1.7.1"
   },
   "peerDependencies": {
     "vue": "^2.5.0",
