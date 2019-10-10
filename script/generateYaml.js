@@ -47,7 +47,7 @@ const walkSync = function (dir, iterator) {
     }
 };
 const iterator = function (dir, file, stat) {
-    if (/\.md/.test(file) && /\.vue$/.test(dir)) {
+    if (/\.md/.test(file) && (/\.vue$/.test(dir) || /api.md$/.test(file))) {
 
         const markdown = new MarkdownIt();
 
