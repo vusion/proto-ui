@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
 const YAML = require('yaml');
+const { walkSync } = require('./utils');
 function compareHeader(a, b) {
     return parseInt(a[a.length - 1]) - parseInt(b[b.length - 1]);
 }
@@ -28,26 +29,8 @@ class ComponentMeta {
     }
 }
 
-const walkSync = function (dirinput, iterator) {
-    const dirs = [dirinput];
-
-    while (dirs.length) {
-        const dir = dirs.shift();
-        const files = fs.readdirSync(dir);
-        files.forEach((file) => {
-            const f = path.join(dir, file);
-            const stat = fs.statSync(f);
-            if (stat && stat.isDirectory()) {
-                dirs.push(f);
-            }
-            if (stat) {
-                iterator(dir, file, stat);
-            }
-        });
-    }
-};
 const iterator = function (dir, file, stat) {
-    if (/\.md/.test(file) && (/\.vue$/.test(dir) || /api.md$/.test(file))) {
+    if (/README\.md/.test(file) && /\.vue$/.test(dir) || /api.md$/.test(file)) {
         const markdown = new MarkdownIt({
             html: true,
             langPrefix: 'lang-',
@@ -81,6 +64,11 @@ const resolveName = function (name, dir, file) {
         return `${camelToDash(name.split(' ')[0])}`;
     }
 };
+
+const resolveType = function (type) {
+    // console.log(type)
+    return `${`${type}`.replace(/([Bb]oolean)|([Ss]tring)|([Nn]umber)|([Oo]bject)/g, (replace) => replace.toLowerCase())}`.replace(/\\/g, '');
+};
 const parseToken = function (tokens, dir) {
     let idx = 0;
     const l = tokens.length;
@@ -94,6 +82,8 @@ const parseToken = function (tokens, dir) {
             const methodsParser = new MethodsBlockParser();
             idx++;
             let name = tokens[idx].content;
+            if (/[\u4e00-\u9fa5]/.test(name))
+                continue;
             let flag = true;
             do {
                 if (tokens[idx] && tokens[idx].type === 'heading_open') {
@@ -247,7 +237,7 @@ class AttrBlockParser {
 
     toYamlObject() {
         if (!this.table)
-            return {};
+            return { attrs: [] };
         return {
             attrs: this.table.toYamlObject(),
         };
@@ -405,10 +395,34 @@ class TableParser {
 
     toYamlObject() {
         const rslt = [];
+        const mapping = {
+            'Prop/Attr': 'name',
+            Type: 'type',
+            Default: 'default',
+            Description: 'description',
+            'Attr/Prop': 'name',
+        };
         for (let i = 0; i < this.values.length; i += this.keys.length) {
             const obj = {};
             this.keys.forEach((k, j) => {
-                obj[k] = this.values[i + j];
+                const v = this.values[i + j];
+                if (k.toLowerCase() === 'type') {
+                    obj[mapping[k] || k] = resolveType(v);
+                } else if (k.toLowerCase() === 'default') {
+                    try {
+                        // eslint-disable-next-line
+                        obj[mapping[k] || k] = eval(eval(v));
+                    } catch (e) {
+                        try {
+                            // eslint-disable-next-line
+                            obj[mapping[k] || k] = eval(v);
+                        } catch (err) {
+                            obj[mapping[k] || k] = v;
+                        }
+                    }
+                } else {
+                    obj[mapping[k] || k] = v;
+                }
             });
             rslt.push(obj);
         }
