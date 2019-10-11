@@ -24,6 +24,13 @@ class ComponentMeta {
             ...this.evtParser.toYamlObject(),
             ...this.methodsParser.toYamlObject(),
         };
+
+        Object.keys(obj).forEach((key) => {
+            const item = obj[key];
+            if (Array.isArray(item) && !item.length)
+                delete obj[key];
+        });
+
         return obj;
     }
 }
@@ -47,20 +54,24 @@ const walkSync = function (dirinput, iterator) {
     }
 };
 const iterator = function (dir, file, stat) {
-    if (/\.md/.test(file) && (/\.vue$/.test(dir) || /api.md$/.test(file))) {
+    const fullPath = `${dir}/${file}`;
+    if (/\.vue\/.+?\.vue\//.test(dir))
+        return;
+
+    if (/\.vue\/README\.md$/.test(fullPath) || /\.vue\/docs\/api\.md$/.test(fullPath)) {
         const markdown = new MarkdownIt({
             html: true,
             langPrefix: 'lang-',
         });
 
-        const content = fs.readFileSync(`${dir}/${file}`, { encoding: 'utf8' });
+        const content = fs.readFileSync(fullPath, { encoding: 'utf8' });
         try {
             const tokens = markdown.parse(content);
             const metas = parseToken(tokens, dir, file);
 
             if (metas.length > 0)
                 fs.writeFileSync(
-                    path.resolve(dir, 'readme.yaml'),
+                    path.resolve(dir.replace(/\/docs$/, ''), 'api.yaml'),
                     YAML.stringify(metas.map((m) => m.toYaml())));
         } catch (err) {
             console.log(err);
@@ -200,7 +211,10 @@ class SlotsBlockParser {
                         break;
                     else {
                         idx++;
-                        const name = tokens[idx].content;
+                        let name = tokens[idx].content;
+                        if (name === '(default)')
+                            name = 'default';
+
                         this.slots.push({
                             name,
                         });
