@@ -73,7 +73,7 @@ export default {
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| publish | { [prop: String]: String \| Function \| Object } | | 键为需要发布的主题，值为需要监听的表达式或函数。值也可以为一个对象`{ expOrFn: String \| Function, deep: Boolean, immediate: Boolean }`，`deep`和`immediate`与官方`watch`中的意义相同。 |
+| publish | { \[prop: String\]: String \| Function \| Object } | | 键为需要发布的主题，值为需要监听的表达式或函数。值也可以为一个对象`{ expOrFn: String \| Function, deep: Boolean, immediate: Boolean }`，`deep`和`immediate`与官方`watch`中的意义相同。 |
 
 ## MSubscriber API
 
@@ -81,4 +81,4 @@ export default {
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| subscribe | { [prop: String]: String \| Function \| Object } | | 键为需要订阅的主题，值为订阅时执行的方法。值也可以为一个对象`{ handler: String \| Function, once: Boolean }`，`once`开启，则只订阅一次。 |
+| subscribe | { \[prop: String\]: String \| Function \| Object } | | 键为需要订阅的主题，值为订阅时执行的方法。值也可以为一个对象`{ handler: String \| Function, once: Boolean }`，`once`开启，则只订阅一次。 |
