@@ -1,0 +1,35 @@
+- name: u-linear-layout
+  attrs:
+    - name: direction
+      type: string
+      default: horizontal
+      description: 排列方向。可选值：`'horizontal'`或`'vertical'`
+    - name: gap
+      type: string
+      default: normal
+      description: 间隙大小，需自行扩展。可选值：`'shrink'`, `'none'`, `'small'`, `'normal'`或`'large'`
+    - name: display
+      type: string
+      default: block
+      description: 展示方式。可选值：`'inline'`, `'block'`
+    - name: layout
+      type: string
+      default: none
+      description: 布局方式，用于迅速调整子元素或组件的展示方式。可选值：`'none'`, `'inline'`, `'block'`
+    - name: type
+      type: string
+      default: null
+      description: 布局模式。可选值：`'flex'`或不填
+    - name: justify
+      type: string
+      default: start
+      description: 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`,
+        `'space-between'`。flex布局模式下还支持：`'space-around'`。普通模式下的`'space-between'`功能很弱，只支持左右分布。
+    - name: alignment
+      type: string
+      default: stretch
+      description: flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`,
+        `'stretch'`
+  slots:
+    - name: default
+      description: 插入需要布局的元素。

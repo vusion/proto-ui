@@ -1,0 +1,4 @@
+- name: u-label
+  slots:
+    - name: default
+      description: 插入文本或 HTML。

@@ -1,0 +1,6 @@
+- name: i-icon
+  attrs:
+    - name: name
+      type: string
+      default: null
+      description: 图标名称

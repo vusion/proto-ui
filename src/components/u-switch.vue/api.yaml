@@ -1,0 +1,81 @@
+- name: u-switch
+  attrs:
+    - name: value
+      type: boolean
+      default: false
+      description: 开关状态
+    - name: readonly
+      type: boolean
+      default: false
+      description: 是否只读
+    - name: disabled
+      type: boolean
+      default: false
+      description: 是否禁用
+  events:
+    - name: "@before-toggle"
+      description: 切换开关状态前触发
+      params:
+        - name: $event.value
+          type: boolean
+          description: 开关状态
+        - name: $event.oldValue
+          type: boolean
+          description: 旧的开关状态
+        - name: $event.preventDefault
+          type: Function
+          description: 阻止切换流程
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例
+    - name: "@input"
+      description: 切换开关状态时触发
+      params:
+        - name: $event
+          type: boolean
+          description: 切换后的开关状态
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例
+    - name: "@on"
+      description: 开关打开时触发
+      params:
+        - name: $event
+          type: ""
+          description: 无
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例
+    - name: "@off"
+      description: 开关关闭时触发
+      params:
+        - name: $event
+          type: ""
+          description: 无
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例
+    - name: "@toggle"
+      description: 切换开关状态时触发
+      params:
+        - name: $event.value
+          type: boolean
+          description: 开关状态
+        - name: $event.oldValue
+          type: boolean
+          description: 旧的开关状态
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例
+    - name: "@change"
+      description: 开关状态改变时触发
+      params:
+        - name: $event.value
+          type: boolean
+          description: 开关状态
+        - name: $event.oldValue
+          type: boolean
+          description: 旧的开关状态
+        - name: senderVM
+          type: USwitch
+          description: 发送事件实例

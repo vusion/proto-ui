@@ -1,0 +1,9 @@
+- name: u-linear-progress
+  attrs:
+    - name: percent
+      type: number
+      default: 0
+      description: 百分比
+  slots:
+    - name: default
+      description: 插入文本或 HTML。

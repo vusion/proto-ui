@@ -1,0 +1,23 @@
+- name: f-droppable
+  attrs:
+    - name: disabled
+      type: boolean
+      default: false
+      description: 是否禁用
+  slots:
+    - name: default
+      description: 插入可以放置的元素，仅一个。
+    - name: transfer
+      description: 自定义的移动元素。
+    - name: "@dragenter"
+      description: 拖拽进入该元素时触发
+    - name: "@dragleave"
+      description: 拖拽离开该元素时触发
+    - name: "@dragover"
+      description: 拖拽在该元素上方时触发
+    - name: "@drop"
+      description: 拖拽放置时触发
+  methods:
+    - name: cancel()
+      description: 取消拖拽。
+      params: []

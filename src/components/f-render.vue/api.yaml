@@ -1,0 +1,6 @@
+- name: f-render
+  attrs:
+    - name: vnode
+      type: VNode
+      default: null
+      description: 需要渲染的 VNode 节点

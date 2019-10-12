@@ -18,7 +18,7 @@ const parseType = function (type, value) {
 };
 const toAttrs = function (attrs) {
     let content = '';
-    if (attrs.length) {
+    if (attrs && attrs.length) {
         content = '### Props/Attrs\n\n';
         const keys = Object.keys(attrs[0]);
         content += '| ';
@@ -36,7 +36,7 @@ const toAttrs = function (attrs) {
 
 const toSlots = function (slots) {
     let content = '';
-    if (slots.length) {
+    if (slots && slots.length) {
         content += '### Slots\n\n';
         slots.forEach(({ name, description }) => {
             content += `#### ${name}\n\n`;
@@ -48,7 +48,7 @@ const toSlots = function (slots) {
 };
 const toEvents = function (events) {
     let content = '';
-    if (events.length) {
+    if (events && events.length) {
         content += '### Events\n\n';
         events.forEach(({ name, description, params }) => {
             content += `#### ${name}\n\n`;
@@ -74,7 +74,7 @@ const toEvents = function (events) {
 
 const toMethods = function (methods) {
     let content = '';
-    if (methods.length) {
+    if (methods && methods.length) {
         content += '### Methods\n\n';
         methods.forEach(({ name, description, params }) => {
             content += `#### ${name}\n\n`;
@@ -115,8 +115,8 @@ const iterator = function (dir, file, stats) {
                 path.resolve(dir, 'readme-auto.md'),
                 md);
         } catch (err) {
-            console.log(err);
-            console.log(`${dir}/${file}`);
+            console.info(err);
+            console.info(`${dir}/${file}`);
         }
     }
 };

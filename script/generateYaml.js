@@ -78,7 +78,7 @@ const resolveName = function (name, dir, file) {
 
 const resolveType = function (type) {
     // console.log(type)
-    return `${`${type}`.replace(/([Bb]oolean)|([Ss]tring)|([Nn]umber)|([Oo]bject)/g, (replace) => replace.toLowerCase())}`.replace(/\\/g, '');
+    return `${`${type}`.replace(/([Bb]oolean)|([Ss]tring)|([Nn]umber)|([Oo]bject)|([Aa]ny)/g, (replace) => replace.toLowerCase())}`.replace(/\\/g, '');
 };
 const parseToken = function (tokens, dir) {
     let idx = 0;
@@ -415,6 +415,7 @@ class TableParser {
             Default: 'default',
             Description: 'description',
             'Attr/Prop': 'name',
+            Param: 'name',
         };
         for (let i = 0; i < this.values.length; i += this.keys.length) {
             const obj = {};

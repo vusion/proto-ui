@@ -1,0 +1,6 @@
+- name: u-sample
+  attrs:
+    - name: color
+      type: string
+      default: null
+      description: Try 'primary'

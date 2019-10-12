@@ -1,0 +1,4 @@
+- name: u-spinner
+  slots:
+    - name: default
+      description: 插入文本或 HTML。
