@@ -1,6 +1,10 @@
 .root {}
 
 .last-column {
+    width: 0;
+}
+
+.last-column[dynamic] {
     width: 40px;
 }
 
