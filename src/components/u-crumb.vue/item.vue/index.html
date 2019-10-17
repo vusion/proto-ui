@@ -1,11 +1,8 @@
 <div :class="$style.root">
-    <span v-if="current" :class="$style.current">
+    <span v-if="type === 'text'" :class="$style.text">
         <slot></slot>
     </span>
     <span v-else-if="disabled" :class="$style.disabled">
-        <slot></slot>
-    </span>
-    <span v-else-if="readonly" :class="$style.readonly">
         <slot></slot>
     </span>
     <a v-else :class="$style.link" :href="currentHref" :target="target" :disabled="disabled" @click="onClick" v-on="listeners">

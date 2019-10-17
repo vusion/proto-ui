@@ -11,14 +11,14 @@
 <u-crumb>
     <u-crumb-item to="/">首页</u-crumb-item>
     <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
-    <u-crumb-item readonly>Navigation</u-crumb-item>
-    <u-crumb-item to="/proto-ui/u-crumb" current>面包屑</u-crumb-item>
+    <u-crumb-item type="text">Navigation</u-crumb-item>
+    <u-crumb-item type="text" to="/proto-ui/u-crumb">面包屑</u-crumb-item>
 </u-crumb>
 <u-crumb>
     <u-crumb-item to="/">首页</u-crumb-item>
     <u-crumb-item to="/proto-ui">原型组件</u-crumb-item>
     <u-crumb-item disabled>Navigation</u-crumb-item>
-    <u-crumb-item to="/proto-ui/u-crumb" current>面包屑</u-crumb-item>
+    <u-crumb-item type="text" to="/proto-ui/u-crumb">面包屑</u-crumb-item>
 </u-crumb>
 ```
 
@@ -40,14 +40,13 @@
 
 | Prop/Attr | Type | Default | Description |
 | --------- | ---- | ------- | ----------- |
+| type | String | `'link'` | 类型。可选值：`'link'`表示链接，可点击，`'text'`只显示为默认颜色文本，不可点。 |
 | href | String |  | 链接地址 |
 | target | String |  | （原生属性） |
 | to | String, Location |  | 需要 vue-router，与`<router-link>`的`to`属性相同。可以是一个字符串或者是描述目标位置的对象。 |
 | replace | Boolean | `false` | 需要 vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。 |
 | append | Boolean | `false` | 需要 vue-router，与`<router-link>`的`append`属性相同。如果为`true`，则在当前路径后追加`to`的路径。 |
 | disabled | Boolean | `false` | 是否不可点击。如果为`true`，则不会响应`click`事件。 |
-| current | Boolean | `false` | 是否为当前页。与`disabled`类似，只是显示为默认文字颜色，如果为`true`，则不会响应`click`事件。 |
-| readonly | Boolean | `false` | 是否为只读。与`current`类似，标识为只读，不对应任何链接。 |
 
 ### Slots
 

@@ -6,8 +6,7 @@ export const UCrumbItem = {
     parentName: 'u-crumb',
     mixins: [MChild, ULink],
     props: {
-        current: { type: Boolean, default: false },
-        readonly: { type: Boolean, default: false },
+        type: { type: String, default: 'link' },
         disabled: { type: Boolean, default: false },
     },
     data() {
