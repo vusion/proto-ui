@@ -9,11 +9,16 @@ export const UFormTableView = {
     props: {
         border: { type: Boolean, default: false },
         dynamic: { type: Boolean, default: false },
+        validateOnAdd: { type: Boolean, default: true },
     },
     data() {
         return {
             columnVMs: [],
         };
+    },
+    created() {
+        if (this.validateOnAdd)
+            this.$on('add', () => this.validate().catch(() => ''));
     },
 };
 
