@@ -33,7 +33,9 @@
 .expander[expanded]::before {
     content: '▾';
 }
-
+.root[disabled] {
+    cursor: $cursor-not-allowed;
+}
 .root[disabled] .expander {
     color: $brand-disabled;
 }

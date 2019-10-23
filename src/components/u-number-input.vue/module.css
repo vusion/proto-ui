@@ -42,7 +42,7 @@
 .button[disabled] {
     background: $background-color-base;
     color: $brand-disabled;
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
 }
 
 .root[readonly] .button {
