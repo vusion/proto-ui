@@ -22,7 +22,7 @@
 }
 
 .root:focus {
-    outline: none;
+    outline: $focus-outline;
 }
 
 .dialog {
