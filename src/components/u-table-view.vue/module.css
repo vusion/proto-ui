@@ -98,7 +98,7 @@
 
 .filter {
     float: right;
-    cursor: pointer;
+    cursor: $cursor-pointer;
     padding-bottom: 6px;
     margin-bottom: -6px;
 }

@@ -2,7 +2,7 @@
     display: inline-block;
     position: relative;
     z-index: 1;
-    cursor: pointer;
+    cursor: $cursor-pointer;
     height: $navbar-height;
     line-height: $navbar-height;
     border: none;

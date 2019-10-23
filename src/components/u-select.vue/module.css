@@ -46,7 +46,7 @@
     height: 1em;
     margin: auto;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
-    cursor: pointer;
+    cursor: $cursor-pointer;
     color: #a7afbb;
 }
 
