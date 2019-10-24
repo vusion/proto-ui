@@ -20,7 +20,7 @@
 }
 
 .root:focus {
-    outline: none;
+    outline: $focus-outline;
 }
 
 .drawer {

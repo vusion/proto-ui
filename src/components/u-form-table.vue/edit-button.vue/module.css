@@ -1,7 +1,7 @@
 .root {}
 
 .root[disabled] {
-    cursor: not-allowed;
+    cursor: $cursor-not-allowed;
     color: $brand-disabled;
 }
 
