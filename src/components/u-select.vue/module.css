@@ -66,7 +66,7 @@
     color: #a7afbb;
 }
 
-.root[class][clearable]::after {
+.root[clearable]::after {
     display: none;
 }
 
@@ -126,7 +126,7 @@
     color: $color-base;
 }
 
-.input[class] {
+.input {
     position: absolute;
     border: none;
     top: 0;

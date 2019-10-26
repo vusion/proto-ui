@@ -1,6 +1,6 @@
 @extend;
 
-.root[class] {
+.root {
     border: none;
     height: $navbar-height;
     line-height: $navbar-height;

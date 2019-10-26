@@ -9,7 +9,7 @@
     "doc": "vue-cli-service doc --port 9000",
     "doc-build": "vue-cli-service doc-build",
     "lint": "vue-cli-service lint",
-    "publish": "npm run build && git add . && vusion publish",
+    "prepublishOnly": "npm run build && git add .",
     "ghpages": "npm run doc-build && vusion ghpages"
   },
   "repository": "vusion/proto-ui",
