@@ -1,8 +1,3 @@
-$axis-y-width: 40px;
-$axis-x-height: 30px;
-$line-offset: 6px;
-$line-border-color: $border-color-base;
-
 .root {
     width: 100%;
     height: 300px;
@@ -10,23 +5,27 @@ $line-border-color: $border-color-base;
 }
 
 .grid {
+    --axis-y-width: 40px;
+    --axis-y-width: 40px;
+    --axis-x-height: 30px;
+    --axis-x-height: 30px;
     position: absolute;
-    bottom: $axis-x-height;
-    top: $axis-x-height;
-    left: $axis-y-width;
-    right: $axis-y-width;
+    bottom:  var(--axis-x-height);
+    top:  var(--axis-x-height);
+    left:  var(--axis-y-width);
+    right:  var(--axis-y-width);
 }
 
 .line-x {
     position: absolute;
-    left: -$line-offset;
+    left: - var(--line-offset);
     right: -1px;
-    border-top: 1px solid $line-border-color;
+    border-top: 1px solid  var(--line-border-color);
 }
 
 .line-y {
     position: absolute;
     top: -1px;
-    bottom: -$line-offset;
-    border-left: 1px solid $line-border-color;
+    bottom: - var(--line-offset);
+    border-left: 1px solid  var(--line-border-color);
 }

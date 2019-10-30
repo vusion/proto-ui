@@ -9,5 +9,5 @@
 }
 
 .add-button[class] {
-    margin-top: $margin-small;
+    margin-top:  var(--margin-small);
 }

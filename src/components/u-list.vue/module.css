@@ -4,13 +4,13 @@
 }
 
 .root[line] .item:not(:last-child) {
-    border-bottom: 1px solid $border-color-base;
+    border-bottom: 1px solid  var(--border-color-base);
 }
 
 .root[striped] .item:nth-of-type(odd) {
-    background: $background-color-light;
+    background:  var(--background-color-light);
 }
 
 .root[hover] .item:hover {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }

@@ -10,7 +10,7 @@
 
 .root th {
     text-align: left;
-    border-bottom: 1px solid $border-color-base;
+    border-bottom: 1px solid  var(--border-color-base);
 }
 
 .root th, .root td {
@@ -18,43 +18,43 @@
 }
 
 .root[line="both"] th, .root[line="both"] td {
-    border: 1px solid $border-color-base;
+    border: 1px solid  var(--border-color-base);
 }
 
 .root[line="horizontal"] th, .root[line="horizontal"] td {
-    border-top: 1px solid $border-color-base;
-    border-bottom: 1px solid $border-color-base;
+    border-top: 1px solid  var(--border-color-base);
+    border-bottom: 1px solid  var(--border-color-base);
 }
 
 .root[line="vertical"] th, .root[line="vertical"] td {
-    border-left: 1px solid $border-color-base;
-    border-right: 1px solid $border-color-base;
+    border-left: 1px solid  var(--border-color-base);
+    border-right: 1px solid  var(--border-color-base);
 }
 
 .root[striped] > tbody > tr:nth-of-type(odd) {
-    background: $background-color-light;
+    background:  var(--background-color-light);
 }
 
 .root[hover] > tbody > tr:hover {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }
 
 .root > tbody > tr[color="light"] {
-    background: $background-color-light;
+    background:  var(--background-color-light);
 }
 
 .root > tbody > tr[color="normal"] {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }
 
 .root > tbody > tr[color="dark"] {
-    background: $background-color-dark;
+    background:  var(--background-color-dark);
 }
 
 .root > tbody > tr[color="primary"] {
-    background: color-mod($brand-primary alpha(0.2));
+    background: color-mod(var(--brand-primary) alpha(0.2));
 }
 
 .root > tbody > tr[color="error"] {
-    background: color-mod($brand-error alpha(0.2));
+    background: color-mod(var(--brand-error) alpha(0.2));
 }

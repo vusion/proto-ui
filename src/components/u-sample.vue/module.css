@@ -1,5 +1,5 @@
 .root {}
 
 .root[color="primary"] {
-    color: $brand-primary;
+    color:  var(--brand-primary);
 }

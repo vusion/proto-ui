@@ -1,5 +1,5 @@
 .root {
-    color: $brand-primary;
+    color:  var(--brand-primary);
 }
 
 .root:hover {
@@ -7,8 +7,8 @@
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    color: $brand-disabled;
+    cursor:  var(--cursor-not-allowed);
+    color:  var(--brand-disabled);
     text-decoration: none;
 }
 

@@ -2,9 +2,9 @@
     display: inline-block;
     position: relative;
     z-index: 1;
-    cursor: $cursor-pointer;
-    height: $navbar-height;
-    line-height: $navbar-height;
+    cursor:  var(--cursor-pointer);
+    height:  var(--navbar-height);
+    line-height:  var(--navbar-height);
     border: none;
     padding-left: 10px;
     padding-right: 30px;
@@ -21,17 +21,17 @@
     font-size: 14px;
     right: 10px;
     top: 0;
-    line-height: $navbar-height;
+    line-height:  var(--navbar-height);
 }
 
 .popper {
     background: white;
     font-size: 14px;
     width: 100%;
-    line-height: $line-height-base;
+    line-height:  var(--line-height-base);
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    color: $brand-disabled;
+    cursor:  var(--cursor-not-allowed);
+    color:  var(--brand-disabled);
 }

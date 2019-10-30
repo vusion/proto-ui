@@ -4,12 +4,12 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    top: $navbar-height;
-    width: $sidebar-width;
+    top:  var(--navbar-height);
+    width: var(--sidebar-width);
 }
 
 .main {
-    margin-left: $sidebar-width;
+    margin-left: var(--sidebar-width);
     max-width: 1010px;
 }
 

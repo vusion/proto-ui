@@ -4,7 +4,7 @@
 
 .head {
     padding: 2px 4px;
-    background: $background-color-dark;
+    background:  var(--background-color-dark);
 }
 
 .text {
@@ -37,7 +37,7 @@
 }
 
 .root[disabled] .expander {
-    color: $brand-disabled;
+    color:  var(--brand-disabled);
 }
 
 .extra {

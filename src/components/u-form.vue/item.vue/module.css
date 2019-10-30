@@ -7,7 +7,7 @@
 
 .label[required]::after {
     content: '*';
-    color: $brand-error;
+    color:  var(--brand-error);
 }
 
 .field {
@@ -18,11 +18,11 @@
 .message {
     margin-left: 5px;
     padding: 0 5px;
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }
 
 .message[color="error"] {
-    background: $brand-error;
+    background:  var(--brand-error);
     color: white;
 }
 

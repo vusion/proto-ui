@@ -1,14 +1,14 @@
 .root {
     /* @Private */
     display: inline-block;
-    cursor: $cursor-pointer;
+    cursor:  var(--cursor-pointer);
 
     /* @Public */
     padding: 4px 12px;
 }
 
 .root:hover {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }
 
 .root[readonly] {
@@ -17,21 +17,21 @@
 }
 
 .root[focused] {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }
 
 .root[selected] {
-    background: $brand-primary;
+    background:  var(--brand-primary);
     color: white;
 }
 
 .root[disabled] {
     /* @Private */
-    cursor: $cursor-not-allowed;
+    cursor:  var(--cursor-not-allowed);
     background: none;
-    color: $brand-disabled;
+    color:  var(--brand-disabled);
 }
 
 .root[selected][disabled] {
-    background: $brand-disabled-light;
+    background:  var(--brand-disabled-light);
 }

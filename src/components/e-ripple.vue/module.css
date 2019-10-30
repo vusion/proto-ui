@@ -9,7 +9,7 @@
     margin-left: -50px;
     margin-top: -50px;
     transform: scale(0);
-    cursor: $cursor-pointer;
+    cursor:  var(--cursor-pointer);
     pointer-events: none;
 }
 

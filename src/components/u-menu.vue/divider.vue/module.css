@@ -1,5 +1,5 @@
 .root {
     margin: 9px 0;
     height: 1px;
-    background: $border-color-base;
+    background:  var(--border-color-base);
 }

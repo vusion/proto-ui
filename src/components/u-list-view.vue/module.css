@@ -6,15 +6,15 @@
 
     /* @Public */
     background: white;
-    border: 1px solid $border-color-base;
+    border: 1px solid  var(--border-color-base);
 }
 
 .root:focus {
-    border-color: $brand-primary;
-    outline: $focus-outline;
+    border-color:  var(--brand-primary);
+    outline:  var(--focus-outline);
 }
 
 .status {
-    color: $gray-dark;
+    color:  var(--gray-dark);
     text-align: center;
 }

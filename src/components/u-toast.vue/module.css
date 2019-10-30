@@ -1,10 +1,9 @@
-$margin: 30px;
-
 .root {
+    --margin: 30px;
     position: fixed;
-    z-index: $z-index-toast;
+    z-index:  var(--z-index-toast);
     top: 90px;
-    left: $margin;
+    left:  var(--margin);
     width: 300px;
 }
 
@@ -14,17 +13,20 @@ $margin: 30px;
 }
 
 .root[position='bottom-center'], .root[position='bottom-left'], .root[position='bottom-right'] {
+    --margin: 30px;
     top: auto;
-    bottom: $margin;
+    bottom:  var(--margin);
 }
 
 .root[position='top-right'], .root[position='bottom-right'] {
+    --margin: 30px;
     left: auto;
-    right: $margin;
+    right:  var(--margin);
 }
 
 .root[position='top-left'], .root[position='bottom-left'] {
-    left: $margin;
+    --margin: 30px;
+    left:  var(--margin);
     right: auto;
 }
 

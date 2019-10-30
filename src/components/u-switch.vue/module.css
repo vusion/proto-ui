@@ -1,31 +1,32 @@
-$height: 22px;
-$button-size: 18px;
-
 .root {
+    --height: 22px;
+    --height: 22px;
     display: inline-block;
     position: relative;
-    line-height: $height;
-    height: $height;
+    line-height:  var(--height);
+    height:  var(--height);
     vertical-align: middle;
     user-select: none;
-    cursor: $cursor-pointer;
+    cursor:  var(--cursor-pointer);
     width: 44px;
     border-radius: 100px;
-    background: $border-color-base;
+    background:  var(--border-color-base);
     color: white;
 }
 
 .root:focus {
-    outline: $focus-outline;
+    outline:  var(--focus-outline);
 }
 
 .button {
+    --button-size: 18px;
+    --button-size: 18px;
     position: absolute;
     left: 2px;
     top: 2px;
     border-radius: 100px;
-    width: $button-size;
-    height: $button-size;
+    width:  var(--button-size);
+    height:  var(--button-size);
     background: white;
 }
 
@@ -36,11 +37,11 @@ $button-size: 18px;
 }
 
 .root[checked] {
-    background: $brand-primary;
+    background:  var(--brand-primary);
 }
 
 .root[checked] .button {
-    left: calc(44px - $button-size - 2px);
+    left: calc(44px -  var(--button-size) - 2px);
 }
 
 .root[checked] .text {
@@ -52,10 +53,10 @@ $button-size: 18px;
 }
 
 .root[width="wide"][checked] .button {
-    left: calc(54px - $button-size - 2px);
+    left: calc(54px -  var(--button-size) - 2px);
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    background: $background-color-base;
+    cursor:  var(--cursor-not-allowed);
+    background:  var(--background-color-base);
 }

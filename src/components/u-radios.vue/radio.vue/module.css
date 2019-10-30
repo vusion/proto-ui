@@ -1,27 +1,27 @@
-$radio-size: 18px;
-
 .root {
     user-select: none;
-    cursor: $cursor-pointer;
+    cursor:  var(--cursor-pointer);
 }
 
 .root:focus {
-    outline: $focus-outline;
+    outline:  var(--focus-outline);
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    color: $brand-disabled;
+    cursor:  var(--cursor-not-allowed);
+    color:  var(--brand-disabled);
 }
 
 .radio {
+    --radio-size: 18px;
+    --radio-size: 18px;
     display: inline-block;
-    width: $radio-size;
-    height: $radio-size;
+    width:  var(--radio-size);
+    height:  var(--radio-size);
     border-radius: 100px;
-    line-height: calc($radio-size - 2px);
+    line-height: calc( var(--radio-size) - 2px);
     background: white;
-    border: 1px solid $border-color-base;
+    border: 1px solid  var(--border-color-base);
     margin-right: 5px;
     text-align: center;
 }
@@ -37,9 +37,9 @@ $radio-size: 18px;
 }
 
 .radio[selected]::before {
-    background: $brand-primary;
+    background:  var(--brand-primary);
 }
 
 .radio[disabled] {
-    background: $background-color-base;
+    background:  var(--background-color-base);
 }

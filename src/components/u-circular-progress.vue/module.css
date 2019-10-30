@@ -1,11 +1,10 @@
-$size-base: 100px;
-$font-size-base: 18px;
-
 .root {
+    --size-base: 100px;
+    --size-base: 100px;
     display: inline-block;
     position: relative;
-    width: $size-base;
-    height: $size-base;
+    width:  var(--size-base);
+    height:  var(--size-base);
 }
 
 .svg {
@@ -16,23 +15,25 @@ $font-size-base: 18px;
 .track {
     fill: none;
     stroke-width: 6px;
-    stroke: $background-color-base;
+    stroke:  var(--background-color-base);
 }
 
 .trail {
     fill: none;
     stroke-width: 6px;
-    stroke: $brand-primary;
+    stroke:  var(--brand-primary);
     transition: stroke 0.6s ease, stroke-dasharray 0.6s ease;
 }
 
 .text {
+    --font-size-base: 18px;
+    --size-base: 100px;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     text-align: center;
-    line-height: $size-base;
-    font-size: $font-size-base;
+    line-height:  var(--size-base);
+    font-size:  var(--font-size-base);
     color: #666;
 }

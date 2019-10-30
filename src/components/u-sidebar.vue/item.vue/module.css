@@ -1,6 +1,6 @@
 .root {
     display: block;
-    cursor: $cursor-pointer;
+    cursor:  var(--cursor-pointer);
     height: 34px;
     line-height: 34px;
     padding-left: 20px;
@@ -10,7 +10,7 @@
 }
 
 .root:hover {
-    color: $brand-primary;
+    color:  var(--brand-primary);
 }
 
 .root[readonly] {
@@ -18,16 +18,16 @@
 }
 
 .root[selected] {
-    background-color: $brand-primary;
+    background-color:  var(--brand-primary);
     color: white;
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
+    cursor:  var(--cursor-not-allowed);
     background: none;
-    color: $brand-disabled;
+    color:  var(--brand-disabled);
 }
 
 .root[selected][disabled] {
-    background: $brand-disabled-light;
+    background:  var(--brand-disabled-light);
 }

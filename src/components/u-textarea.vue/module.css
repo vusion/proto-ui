@@ -3,8 +3,8 @@
 .root {
     width: 320px;
     height: 120px;
-    min-width: $width-base;
-    min-height: $height-base;
+    min-width:  var(--width-base);
+    min-height:  var(--height-base);
     padding: 4px 8px;
     line-height: inherit;
 }
