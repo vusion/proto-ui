@@ -1,6 +1,6 @@
 .root {
     position: relative;
-    overflow: hidden;
+    /* 不能加这句，会使分页器的 Select 无法显示！ overflow: hidden; */
 }
 
 .title {
