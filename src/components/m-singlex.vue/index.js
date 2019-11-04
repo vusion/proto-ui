@@ -84,7 +84,7 @@ export const MSinglex = {
             const oldVM = this.selectedVM;
             if (cancelable === undefined)
                 cancelable = this.cancelable;
-            if (!cancelable && itemVM === oldVM)
+            if (!cancelable && !this.router && itemVM === oldVM)
                 return;
 
             // Emit a `before-` event with preventDefault()
