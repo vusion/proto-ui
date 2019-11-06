@@ -79,8 +79,13 @@ export const USelect = {
         },
     },
     created() {
-        this.$watch('selectedVM', (selectedVM) => {
-            this.currentText = this.selectedVM ? this.selectedVM.currentText : '';
+        this.$watch('selectedVM', (selectedVM, oldVM) => {
+            if (selectedVM && oldVM && selectedVM.currentText === oldVM.currentText)
+                return;
+            if (this.filterable)
+                this.filterText = this.selectedVM ? this.selectedVM.currentText : '';
+            else
+                this.currentText = this.selectedVM ? this.selectedVM.currentText : '';
         });
         this.$watch('selectedVMs', (selectedVMs) => {
             this.currentText = selectedVMs.map((itemVM) => itemVM.currentText).join(', ');
