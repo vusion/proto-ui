@@ -36,13 +36,13 @@ export const MGroup = {
         },
     },
     created() {
-        this.$contact(() => this.$options.parentName || this.$options.name, (parentVM) => {
+        this.$contact(($parent) => $parent.$options.name === this.$options.parentName || $parent.$options.name === this.$options.name, (parentVM) => {
             this.parentVM = parentVM;
             parentVM.groupVMs.push(this);
         });
     },
     destroyed() {
-        this.$contact(() => this.$options.parentName || this.$options.name, (parentVM) => {
+        this.$contact(($parent) => $parent.$options.name === this.$options.parentName || $parent.$options.name === this.$options.name, (parentVM) => {
             parentVM.groupVMs.splice(parentVM.groupVMs.indexOf(this), 1);
             this.parentVM = undefined;
         });
