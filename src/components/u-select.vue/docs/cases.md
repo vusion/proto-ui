@@ -311,47 +311,7 @@ export default {
 
 ## 过滤模式
 
-### 可过滤
-
-``` vue
-<template>
-<u-linear-layout>
-    <u-select v-model="value" :data="list" filterable clearable placeholder="前端过滤"></u-select>
-</u-linear-layout>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            value: undefined,
-            list: [],
-        };
-    },
-    created() {
-        this.getList();
-    },
-    methods: {
-        getList() {
-            return new Promise((res, rej) => {
-                setTimeout(() => {
-                    const data = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New hampshire', 'New jersey', 'New mexico', 'New york', 'North carolina', 'North dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode island', 'South carolina', 'South dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West virginia', 'Wisconsin', 'Wyoming'].map((text) => ({ text, value: text }));
-
-                    res(data);
-                }, 100);
-            }).then((result) => {
-                this.list = result;
-                setTimeout(() => {
-                    this.value = 'Washington';
-                }, 100);
-            });
-        },
-    },
-};
-</script>
-```
-
-### 可过滤
+### 选项初始值
 
 ``` vue
 <template>
