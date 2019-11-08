@@ -1,6 +1,6 @@
 .root {
     padding: 5px;
-    background: $border-color-base;
+    background: var(--border-color-base);
     color: white;
     text-align: center;
     overflow: hidden;
@@ -22,19 +22,19 @@
 .root[size^="large"] { height: 128px; }
 
 .root[color="primary"] {
-    background: $brand-primary;
+    background: var(--brand-primary);
 }
 
 /* .root[color="success"] {
-    background: $brand-success;
+    background: var(--brand-success);
 }
 
 .root[color="warning"] {
-    background: $brand-warning;
+    background: var(--brand-warning);
 } */
 
 .root[color="error"] {
-    background: $brand-error;
+    background: var(--brand-error);
 }
 
 .root[inline] {

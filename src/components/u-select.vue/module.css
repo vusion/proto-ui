@@ -3,18 +3,18 @@
     position: relative;
     user-select: none;
     max-width: 100%;
-    cursor: $cursor-pointer;
-    width: $width-base;
-    height: $height-base;
-    line-height: calc($height-base - $border-width-base * 2);
+    cursor: var(--cursor-pointer);
+    width: var(--width-base);
+    height: var(--height-base);
+    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
     padding: 0 8px;
     padding-right: 26px;
     background: white;
-    border: 1px solid $border-color-base;
+    border: 1px solid var(--border-color-base);
 }
 
 .root:focus {
-    outline: $focus-outline;
+    outline: var(--focus-outline);
 }
 
 .baseline {
@@ -46,7 +46,7 @@
     height: 1em;
     margin: auto;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
     color: #a7afbb;
 }
 
@@ -75,8 +75,8 @@
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    background: $brand-disabled-light;
+    cursor: var(--cursor-not-allowed);
+    background: var(--brand-disabled-light);
 }
 
 .text {
@@ -105,7 +105,7 @@
     font-size: 12px;
     line-height: 22px;
     vertical-align: 1px;
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .tag:not(:last-child) {
@@ -123,7 +123,7 @@
 }
 
 .tag-remove:hover {
-    color: $color-base;
+    color: var(--color-base);
 }
 
 .input {
@@ -151,12 +151,12 @@
     max-height: 180px;
     overflow: auto;
     background: white;
-    border: 1px solid $border-color-base;
-    z-index: $z-index-popper;
+    border: 1px solid var(--border-color-base);
+    z-index: var(--z-index-popper);
 }
 
 .status {
-    color: $gray-dark;
+    color: var(--gray-dark);
     text-align: center;
 }
 

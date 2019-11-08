@@ -438,7 +438,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```
@@ -482,7 +482,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```
@@ -553,7 +553,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```
@@ -614,7 +614,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```
@@ -688,7 +688,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```
@@ -752,7 +752,7 @@ export default {
     line-height: 16px;
     border: 1px solid #ccc;
     text-align: center;
-    color: $brand-primary;
+    color: --var(brand-primary);
 }
 </style>
 ```

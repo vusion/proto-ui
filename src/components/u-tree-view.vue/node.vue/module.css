@@ -1,7 +1,5 @@
-$height: 24px;
-
 .root {
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
     margin-left: 20px;
 }
 
@@ -45,15 +43,15 @@ $height: 24px;
 }
 
 .item:hover .back {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .item:focus {
-    outline: $focus-outline;
+    outline: var(--focus-outline);
 }
 
 .item:focus .back {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .item[readonly] {
@@ -65,7 +63,7 @@ $height: 24px;
 }
 
 .item[selected] .back {
-    background: $brand-primary;
+    background: var(--brand-primary);
 }
 
 .item[selected] .text {
@@ -78,8 +76,8 @@ $height: 24px;
 
 .item[disabled] {
     /* @Private */
-    cursor: $cursor-not-allowed;
-    color: $brand-disabled;
+    cursor: var(--cursor-not-allowed);
+    color: var(--brand-disabled);
 }
 
 .item[disabled] .back {
@@ -87,5 +85,5 @@ $height: 24px;
 }
 
 .item[selected][disabled] .back {
-    background: $brand-disabled-light;
+    background: var(--brand-disabled-light);
 }

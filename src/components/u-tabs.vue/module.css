@@ -3,11 +3,11 @@
 .head {
     user-select: none;
     height: 32px;
-    border-bottom: 1px solid $border-color-base;
+    border-bottom: 1px solid var(--border-color-base);
 }
 
 .item {
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
     display: inline-block;
     box-sizing: content-box;
 
@@ -21,21 +21,21 @@
 }
 
 .item:hover {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .item[selected] {
     background: white;
-    border-color: $border-color-base;
-    color: $brand-primary;
+    border-color: var(--border-color-base);
+    color: var(--brand-primary);
     border-bottom-color: transparent;
     padding-bottom: 1px;
 }
 
 .item[disabled] {
     background: none;
-    color: $brand-disabled;
-    cursor: $cursor-not-allowed;
+    color: var(--brand-disabled);
+    cursor: var(--cursor-not-allowed);
 }
 
 .item[selected][disabled] {

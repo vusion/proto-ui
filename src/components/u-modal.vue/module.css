@@ -4,7 +4,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: $z-index-modal;
+    z-index: var(--z-index-modal);
     -webkit-overflow-scrolling: touch;
     touch-action: cross-slide-y pinch-zoom double-tap-zoom;
     text-align: center;
@@ -22,7 +22,7 @@
 }
 
 .root:focus {
-    outline: $focus-outline;
+    outline: var(--focus-outline);
 }
 
 .dialog {
@@ -48,7 +48,7 @@
 .head {
     position: relative;
     padding: 15px;
-    border-bottom: 1px solid $gray-lightest;
+    border-bottom: 1px solid var(--gray-lightest);
 }
 
 .title {
@@ -60,7 +60,7 @@
     position: absolute;
     right: 15px;
     top: 15px;
-    color: $gray-light;
+    color: var(--gray-light);
 }
 
 .close::before {
@@ -70,7 +70,7 @@
 }
 
 .close:hover {
-    color: $gray-dark;
+    color: var(--gray-dark);
 }
 
 .body {
@@ -84,5 +84,5 @@
 
 .root[static] {
     position: static;
-    padding: $margin-base;
+    padding: var(--margin-base);
 }

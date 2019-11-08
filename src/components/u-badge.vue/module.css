@@ -10,7 +10,7 @@
     font-size: 12px;
     padding: 0 6px;
     border-radius: 100px;
-    background: $brand-error;
+    background: var(--brand-error);
     color: white;
 }
 

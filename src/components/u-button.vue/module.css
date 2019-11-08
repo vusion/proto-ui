@@ -14,44 +14,44 @@
     /* Required for `a`. */
     text-decoration: none;
     /* Use pointer cursor at any time. */
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
     /* Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214 */
     background: none;
     /* Others */
     display: inline-block;
     text-align: center;
     padding: 0 12px;
-    height: $height-base;
-    line-height: calc($height-base - $border-width-base * 2);
+    height: var(--height-base);
+    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
     /* stylelint-disable declaration-block-no-duplicate-properties */
     background: white;
-    color: $color-base;
-    border: $border-width-base solid $border-color-base;
+    color: var(--color-base);
+    border: var(--border-width-base) solid var(--border-color-base);
 }
 
 .root:hover {
     /* Required for `a` elements */
     text-decoration: none;
-    color: $brand-primary;
-    border-color: $brand-primary;
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .root:focus {
     /* Remove default focus style */
-    outline: $focus-outline;
+    outline: var(--focus-outline);
     /* Required for `a` elements */
     text-decoration: none;
 }
 
 .root:active {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
+    cursor: var(--cursor-not-allowed);
     background: white;
-    border-color: $border-color-base;
-    color: $brand-disabled;
+    border-color: var(--border-color-base);
+    color: var(--brand-disabled);
 }
 
 .root[size="normal"] { /* As default */ }

@@ -49,8 +49,8 @@ export default {
 <style module>
 .side {
     position: fixed;
-    width: $sidebar-width;
-    top: $navbar-height;
+    width: var(--sidebar-width);
+    top: var(--navbar-height);
     bottom: 0;
     overflow: hidden;
 }
@@ -59,15 +59,15 @@ export default {
     padding: 36px 0;
     height: 100%;
     overflow: auto;
-    /* width: calc($sidebar-width + 8px); */
+    /* width: calc(--var(sidebar-width) + 8px); */
 }
 
 /* .sidebar > * {
-    width: $sidebar-width;
+    width: var(--sidebar-width);
 } */
 
 .main {
-    margin-left: $sidebar-width;
+    margin-left: var(--sidebar-width);
     max-width: 1000px;
     padding: 50px;
     padding-top: 30px;

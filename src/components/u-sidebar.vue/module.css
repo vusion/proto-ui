@@ -1,6 +1,6 @@
 .root {
     user-select: none;
-    background: $background-color-base;
+    background: var(--background-color-base);
     height: 100%;
     overflow: auto;
 }

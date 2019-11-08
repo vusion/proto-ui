@@ -9,7 +9,7 @@
 }
 
 .link {
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .link:hover {
@@ -22,6 +22,6 @@
 }
 
 .disabled {
-    color: $brand-disabled;
+    color: var(--brand-disabled);
     cursor: default;
 }

@@ -18,7 +18,7 @@
     font-size: 17px;
     margin: 40px 0 20px;
     padding-left: 0;
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .root > h4 {
@@ -35,7 +35,7 @@
     display: block;
     height: 6px;
     width: 6px;
-    background: $brand-primary;
+    background: var(--brand-primary);
     border-radius: 100%;
 }
 
@@ -81,8 +81,8 @@
 .root > h6:target::before {
     content: '';
     display: block;
-    margin-top: calc(-$navbar-height - 30px);
-    height: calc($navbar-height + 30px);
+    margin-top: calc(-1 * var(--navbar-height) - 30px);
+    height: calc(var(--navbar-height) + 30px);
     visibility: hidden;
 }
 
@@ -107,7 +107,7 @@
 .root > table th, .root > table td {
     padding: 4px 8px;
     font-size: 13px;
-    border: 1px solid $border-color-base;
+    border: 1px solid var(--border-color-base);
 }
 
 .root > table img {

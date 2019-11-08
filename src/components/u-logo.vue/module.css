@@ -1,7 +1,7 @@
 .root {
     display: inline-block;
-    width: $sidebar-width;
-    height: $navbar-height;
+    width: var(--sidebar-width);
+    height: var(--navbar-height);
     background: url('./assets/logo.svg') 20px center no-repeat;
     vertical-align: top;
 }
@@ -9,7 +9,7 @@
 .sub {
     display: inline-block;
     white-space: nowrap;
-    color: $color-base;
+    color: var(--color-base);
     line-height: 73px;
     margin-left: 145px;
     font-size: 20px;
@@ -20,7 +20,7 @@
 }
 
 .root[color="inverse"] {
-    background: $brand-primary url('./assets/logo-inverse.svg') 20px center no-repeat;
+    background: var(--brand-primary) url('./assets/logo-inverse.svg') 20px center no-repeat;
 }
 
 .root[color="inverse"] .sub {
