@@ -52,9 +52,9 @@
 }
 
 .root > tbody > tr[color="primary"] {
-    background: color-mod(var(--brand-primary) alpha(0.2));
+    background: var(--table-row-primary-background);
 }
 
 .root > tbody > tr[color="error"] {
-    background: color-mod(var(--brand-error) alpha(0.2));
+    background: var(--table-row-error-background);
 }

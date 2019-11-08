@@ -86,4 +86,8 @@
     --switch-button-size: 18px;
 
     --toast-margin: 30px;
+
+    /* Table */
+    --table-row-primary-background: #67aaf533;
+    --table-row-error-background: #ff8a7a33;
 }
