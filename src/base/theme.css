@@ -88,6 +88,6 @@
     --toast-margin: 30px;
 
     /* Table */
-    --table-row-primary-background: #67aaf533;
-    --table-row-error-background: #ff8a7a33;
+    --table-row-primary-background: rgba(69, 124, 208, 0.2);
+    --table-row-error-background: rgba(242, 45, 78, 0.2);
 }
