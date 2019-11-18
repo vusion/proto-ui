@@ -23,7 +23,7 @@
 
 .nav-item {
     display: inline-block;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     box-sizing: content-box;
     width: 30px;
     height: 3px;

@@ -1,8 +1,8 @@
 @import './normalize.css';
 
 body {
-    color: $color-base;
-    font: 14px/1.6 $font-family-zh-CN;
+    color: var(--color-base);
+    font: 14px/1.6 var(--font-family-zh-CN);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -12,14 +12,14 @@ h6 {
 
 hr {
     border: none;
-    border-top: 1px solid $border-color-base;
+    border-top: 1px solid var(--border-color-base);
 }
 
 blockquote {
     margin-left: 0;
     margin-right: 0;
     padding: 8px 16px;
-    border-left: 4px solid $border-color-base;
+    border-left: 4px solid var(--border-color-base);
 }
 
 ul, ol {
@@ -38,18 +38,18 @@ pre {
     tab-size: 4;
     /* Contain overflow in all browsers. */
     overflow: auto;
-    background: $background-color-light;
-    border-radius: $border-radius-base;
+    background: var(--background-color-light);
+    border-radius: var(--border-radius-base);
     padding: 5px 10px;
     font-size: 12px;
-    font-family: $font-family-code;
+    font-family: var(--font-family-code);
 }
 
 code {
     padding: 0 3px;
     font-size: 12px;
-    font-family: $font-family-code;
-    background: $background-color-light;
+    font-family: var(--font-family-code);
+    background: var(--background-color-light);
     color: #e0276e;
 }
 
@@ -66,7 +66,7 @@ pre code {
 kbd {
     padding: 1px 3px;
     font-size: 12px;
-    background: $background-color-base;
-    border-radius: $border-radius-base;
+    background: var(--background-color-base);
+    border-radius: var(--border-radius-base);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }

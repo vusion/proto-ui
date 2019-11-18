@@ -1,26 +1,24 @@
-$box-size: 18px;
-
 .root {
     user-select: none;
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
 }
 
 .root:focus {
-    outline: $focus-outline;
+    outline: var(--focus-outline);
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
-    color: $brand-disabled;
+    cursor: var(--cursor-not-allowed);
+    color: var(--brand-disabled);
 }
 
 .box {
     display: inline-block;
-    width: $box-size;
-    height: $box-size;
-    line-height: calc($box-size - 2px);
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    line-height: calc(var(--checkbox-size) - 2px);
     background: white;
-    border: 1px solid $border-color-base;
+    border: 1px solid var(--border-color-base);
     margin-right: 5px;
     text-align: center;
 }
@@ -34,7 +32,7 @@ $box-size: 18px;
 
 .box[status="true"]::before {
     icon-font: url('../i-icon.vue/assets/check.svg');
-    color: $brand-primary;
+    color: var(--brand-primary);
     vertical-align: -2px;
     font-size: 13px;
 }
@@ -42,9 +40,9 @@ $box-size: 18px;
 .box[status="null"]::before {
     icon-font: url('../i-icon.vue/assets/square.svg');
     vertical-align: -2px;
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .box[disabled] {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }

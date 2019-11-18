@@ -9,19 +9,19 @@
 }
 
 .link {
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .link:hover {
     text-decoration: underline;
 }
-.readonly,
-.current {
+
+.text {
     color: inherit;
     cursor: default;
 }
 
 .disabled {
-    color: $brand-disabled;
+    color: var(--brand-disabled);
     cursor: default;
 }

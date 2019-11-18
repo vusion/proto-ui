@@ -1,9 +1,9 @@
-.root[class] {
+.root {
     position: absolute;
     line-height: 1.6;
     max-height: 180px;
     overflow: auto;
     background: white;
-    border: 1px solid $border-color-base;
-    z-index: $z-index-popper;
+    border: 1px solid var(--border-color-base);
+    z-index: var(--z-index-popper);
 }

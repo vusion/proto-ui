@@ -1,6 +1,6 @@
-.listView[class] {
+.listView {
     display: inline-block;
-    width: $width-base;
+    width: var(--width-base);
     height: 182px;
 }
 
@@ -14,12 +14,12 @@
 .button {
     display: block;
     text-align: center;
-    width: $height-base;
-    height: $height-base;
-    line-height: calc($height-base - $border-width-base * 2);
+    width: var(--height-base);
+    height: var(--height-base);
+    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
     background: white;
-    color: $color-base;
-    border: $border-width-base solid $border-color-base;
+    color: var(--color-base);
+    border: var(--border-width-base) solid var(--border-color-base);
 }
 
 .button:not(:last-child) {
@@ -29,29 +29,29 @@
 .button:hover {
     /* Required for `a` elements */
     text-decoration: none;
-    color: $brand-primary;
-    border-color: $brand-primary;
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .button:focus {
     /* Remove default focus style */
-    outline: $focus-outline;
+    outline: var(--focus-outline);
     /* Required for `a` elements */
     text-decoration: none;
 }
 
 .button:active {
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .button[disabled] {
     /* @Private */
-    cursor: $cursor-not-allowed;
+    cursor: var(--cursor-not-allowed);
 
     /* @Public */
     background: white;
-    border-color: $brand-disabled;
-    color: $brand-disabled;
+    border-color: var(--brand-disabled);
+    color: var(--brand-disabled);
 }
 
 .button[role="reverse"]::before {

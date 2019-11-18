@@ -1,18 +1,24 @@
 import i18n from './i18n';
 import MDynamic from '../m-dynamic.vue';
+import UValidator from '../u-validator.vue';
 
 export const UFormTableView = {
     name: 'u-form-table-view',
     i18n,
-    mixins: [MDynamic],
+    mixins: [MDynamic, UValidator],
     props: {
         border: { type: Boolean, default: false },
         dynamic: { type: Boolean, default: false },
+        validateOnAdd: { type: Boolean, default: true },
     },
     data() {
         return {
             columnVMs: [],
         };
+    },
+    created() {
+        if (this.validateOnAdd)
+            this.$on('add', () => this.validate().catch(() => ''));
     },
 };
 

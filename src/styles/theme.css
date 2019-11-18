@@ -1,0 +1,93 @@
+:root {
+    /* Brand Colors */
+    --brand-primary: #457cd0;
+    --brand-error: #f22d4e;
+    --brand-disabled: #c4ccd8;
+    --brand-disabled-light: #e7eaef;
+
+    /* Gray Colors */
+    --gray-darkest: #333;
+    --gray-darker: #666;
+    --gray-dark: #999;
+    --gray-base: #aaa;
+    --gray-light: #ccc;
+    --gray-lighter: #ddd;
+    --gray-lightest: #eee;
+
+    /* Component Base Colors */
+    --background-color-light: #f7f8fc;
+    --background-color-base: #f2f3f8;
+    --background-color-dark: #ebedf5;
+    --color-base: #565b61;
+    --border-color-base: #dfe4ec;
+
+    /* Spacing Dimensions */
+    --margin-small: 10px;
+    --margin-base: 20px;
+    --margin-large: 30px;
+
+    /* Component Base Dimensions */
+    --border-width-base: 1px;
+    --width-base: 160px;
+    --height-base: 32px;
+    --border-radius-base: 0;
+    --line-height-base: 1.6;
+    --font-size-base: 14px;
+
+    /* Specific Dimensions */
+    --navbar-height: 70px;
+    --sidebar-width: 240px;
+
+    /* Fonts */
+    /* stylelint-disable value-keyword-case */
+    --font-family-zh-CN: "Helvetica Neue", helvetica, tahoma, arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    --font-family-code: menlo, consolas, monaco, monospace;
+
+    /* Z-Index */
+    --z-index-loading: 9000;
+    --z-index-toast: 8000;
+    --z-index-tooltip: 7010;
+    --z-index-popper: 7000;
+    --z-index-modal: 5000;
+    --z-index-plugin: 2000;
+    --z-index-layout: 100;
+    --z-index-base: 1;
+
+    /* Component Action Hints */
+    --cursor-pointer: pointer;
+    --cursor-not-allowed: not-allowed;
+    --focus-outline: none;
+
+    /* Transition Duration */
+    --transition-duration-base: 0;
+
+    --checkbox-size: 18px;
+    --radio-size: 18px;
+
+    --circular-progress-size-base: 100px;
+    --circular-progress-font-size-base: 18px;
+
+    --linear-progress-height-base: 12px;
+
+    --pagination-item-size: 32px;
+
+    --tooltip-background-color: #333;
+    --tooltip-arrow-size: 5px;
+    --tooltip-arrow-offset: 10px;
+
+    --popup-background-color: white;
+    --popup-background-head-color: white;
+    --popup-border-color: var(--border-color-base);
+    --popup-arrow-size: 8px;
+    --popup-outer-arrow-size: calc(var(--popup-arrow-size) + 1px);
+    --popup-arrow-offset: 16px;
+
+    --switch-height: 22px;
+    --switch-button-size: 18px;
+
+    --toast-margin: 30px;
+
+    /* Table */
+    --table-row-primary-background: rgba(69, 124, 208, 0.2);
+    --table-row-error-background: rgba(242, 45, 78, 0.2);
+}

@@ -19,15 +19,15 @@
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .root[color="error"] {
-    color: $brand-error;
+    color: var(--brand-error);
 }
 
 .root[color="disabled"] {
-    color: $brand-disabled;
+    color: var(--brand-disabled);
 }
 
 .root[wrap="ellipsis"] {

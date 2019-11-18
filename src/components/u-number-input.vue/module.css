@@ -7,20 +7,20 @@
     height: 14px;
     line-height: 14px;
     padding: 0 4px;
-    cursor: pointer;
-    background: $background-color-base;
+    cursor: var(--cursor-pointer);
+    background: var(--background-color-base);
 }
 
 .button:hover {
-    background: $background-color-dark;
+    background: var(--background-color-dark);
 }
 
 .button:focus {
-    outline: $focus-outline;
+    outline: var(--focus-outline);
 }
 
 .button:active {
-    background: $background-color-dark;
+    background: var(--background-color-dark);
 }
 
 .button[role="up"] {
@@ -40,18 +40,18 @@
 }
 
 .button[disabled] {
-    background: $background-color-base;
-    color: $brand-disabled;
-    cursor: not-allowed;
+    background: var(--background-color-base);
+    color: var(--brand-disabled);
+    cursor: var(--cursor-not-allowed);
 }
 
 .root[readonly] .button {
-    background: $background-color-base;
+    background: var(--background-color-base);
     cursor: default;
 }
 
 .root[disabled] .button {
-    background: $background-color-base;
-    color: $brand-disabled;
-    cursor: $cursor-not-allowed;
+    background: var(--background-color-base);
+    color: var(--brand-disabled);
+    cursor: var(--cursor-not-allowed);
 }

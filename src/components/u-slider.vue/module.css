@@ -12,13 +12,13 @@
     position: relative;
     overflow: hidden;
     height: 8px;
-    background: $background-color-base;
+    background: var(--background-color-base);
 }
 
 .trail {
     position: absolute;
     height: 100%;
-    background: $brand-primary;
+    background: var(--brand-primary);
 }
 
 .bound {
@@ -48,9 +48,9 @@
 }
 
 .root[disabled] {
-    cursor: $cursor-not-allowed;
+    cursor: var(--cursor-not-allowed);
 }
 
 .root[disabled] .trail {
-    background: $brand-disabled;
+    background: var(--brand-disabled);
 }

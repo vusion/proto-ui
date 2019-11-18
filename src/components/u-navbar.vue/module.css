@@ -1,6 +1,6 @@
 .root {
     user-select: none;
-    height: $navbar-height;
+    height: var(--navbar-height);
     /* display: flex;
     justify-content: space-between; */
 }
@@ -28,7 +28,7 @@
 }
 
 .root[color="inverse"] {
-    background-color: $brand-primary;
+    background-color: var(--brand-primary);
 }
 
 .root[color="inverse"] .item {

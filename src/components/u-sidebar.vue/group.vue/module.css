@@ -34,6 +34,10 @@
     content: '▾';
 }
 
+.root[disabled] {
+    cursor: var(--cursor-not-allowed);
+}
+
 .root[disabled] .expander {
-    color: $brand-disabled;
+    color: var(--brand-disabled);
 }

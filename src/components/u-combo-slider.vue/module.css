@@ -1,11 +1,11 @@
 .root {}
 
-.slider[class] {
+.slider {
     display: inline-block;
     width: 160px;
 }
 
-.input[class] {
+.input {
     margin-left: 10px;
     width: 60px;
 }

@@ -302,12 +302,11 @@ export default {
 </script>
 ```
 
-### 表单验证
-
+注意在添加列插槽的时候，必须使用`slot-scope`或者 Vue 2.6.x 新的 `#` 方式，否则模板渲染可能会有问题。
 
 ``` vue
 <template>
-<u-form-table-view :data="list" dynamic :getDefaultItem="getDefaultItem">
+<u-form-table-view :data="[{}]" :getDefaultItem="getDefaultItem">
     <u-form-table-view-column title="URL" width="20%"
         rules="required | pattern(/^[a-zA-Z0-9/\s]+$/)">
         <template #cell>
@@ -343,7 +342,6 @@ export default {
                 port: 8000,
                 description: '',
             },
-            list: [{}],
             services: [
                 { text: 'abc', value: 'abc' },
                 { text: 'def', value: 'def' },

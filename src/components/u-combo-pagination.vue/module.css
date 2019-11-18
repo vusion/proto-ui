@@ -1,10 +1,10 @@
 .root {}
 
-.sizer[class] {
+.sizer {
     text-align: left;
     width: 100px;
 }
 
-.jumper[class] {
+.jumper {
     width: 50px;
 }

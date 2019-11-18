@@ -4,9 +4,9 @@
 
 .head {
     user-select: none;
-    cursor: $cursor-pointer;
+    cursor: var(--cursor-pointer);
     padding: 2px 4px;
-    background: $background-color-dark;
+    background: var(--background-color-dark);
     overflow: hidden;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .root[disabled] .expander {
-    color: $brand-disabled;
+    color: var(--brand-disabled);
 }
 
 .extra {

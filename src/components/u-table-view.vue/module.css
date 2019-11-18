@@ -1,6 +1,6 @@
 .root {
     position: relative;
-    overflow: hidden;
+    /* 不能加这句，会使分页器的 Select 无法显示！ overflow: hidden; */
 }
 
 .title {
@@ -68,8 +68,8 @@
     width: 1em;
     height: 1em;
     vertical-align: -1px;
-    color: $brand-disabled;
-    cursor: $cursor-pointer;
+    color: var(--brand-disabled);
+    cursor: var(--cursor-pointer);
 }
 
 .sort::before {
@@ -89,23 +89,23 @@
 }
 
 .sort[sorting][order="asc"]::before {
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .sort[sorting][order="desc"]::after {
-    color: $brand-primary;
+    color: var(--brand-primary);
 }
 
 .filter {
     float: right;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     padding-bottom: 6px;
     margin-bottom: -6px;
 }
 
 .filter::before {
     icon-font: url('../i-icon.vue/assets/filter.svg');
-    color: $brand-disabled;
+    color: var(--brand-disabled);
     font-size: 12px;
     vertical-align: -2px;
 }
@@ -118,7 +118,7 @@
     z-index: 1;
     cursor: col-resize;
     padding: 2px;
-    background: $border-color-base content-box;
+    background: var(--border-color-base) content-box;
     width: 5px;
 }
 
@@ -138,7 +138,7 @@
 
 .pagination {
     text-align: right;
-    margin-top: $margin-base;
+    margin-top: var(--margin-base);
 }
 
 .row[selected] {

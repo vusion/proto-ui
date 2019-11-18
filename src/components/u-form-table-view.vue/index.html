@@ -7,7 +7,7 @@
                     <span>{{ columnVM.title }}</span>
                 </f-slot>
             </th>
-            <th v-if="dynamic" :class="$style['last-column']"></th>
+            <th :class="$style['last-column']" :dynamic="dynamic"></th>
         </tr></thead>
         <tbody>
             <u-form-table-view-row :class="$style.row" v-for="(item, rowIndex) in currentData" :key="rowIndex">
