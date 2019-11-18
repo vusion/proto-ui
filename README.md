@@ -16,26 +16,25 @@
 ### Install
 
 ```
-npm install -g vusion-cli
 npm install
+```
+
+### Develop
+
+``` shell
+npm run dev
 ```
 
 ### Build dist
 
 ```
-vusion build
-```
-
-### Develop docs
-
-``` shell
-vusion doc
+npm run build
 ```
 
 ### Build docs
 
 ```
-vusion doc-build
+npm run build:docs
 ```
 
 ## Changelog
