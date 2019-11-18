@@ -11,7 +11,7 @@
 | around | Number | `5` | 当页数多时，中间恒定显示的数量  |
 | readonly | Boolean | `false` | 是否只读 |
 | disabled | Boolean | `false` | 是否禁用 |
-| show-total | Boolean | `false` | 是否显示总页数 |
+| show-total | Boolean | `false` | 是否显示总条目数 |
 | show-sizer | Boolean | `false` | 是否显示切换每页大小选项 |
 | show-jumper | Boolean | `false` | 是否显示页面跳转输入框 |
 

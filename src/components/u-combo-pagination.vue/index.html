@@ -6,12 +6,12 @@
         </u-select-item>
     </u-select>
     <u-pagination display="inline"
-        :total="total" :page="currentPage" :side="side" :around="around" :readonly="readonly" :disabled="disabled"
+        :total="currentTotalPage" :page="currentPage" :side="side" :around="around" :readonly="readonly" :disabled="disabled"
         @change="onChange($event.page, $event.oldPage)">
     </u-pagination>
     <span v-if="showJumper">{{ $t('goto') }}
         <u-number-input :class="$style.jumper" :value="currentPage"
-            :min="1" :max="total" hide-buttons
+            :min="1" :max="currentTotalPage" hide-buttons
             @change="onChange($event.value, $event.oldValue)">
         </u-number-input>
         {{ $t('pageUnit') }}</span>
