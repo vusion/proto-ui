@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.4.27",
+  "version": "0.4.28",
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
     "build": "vue-cli-service library-build",
