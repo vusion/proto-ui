@@ -1,4 +1,5 @@
 - name: u-drawer
+  title: 抽屉
   attrs:
     - name: visible.sync
       type: boolean

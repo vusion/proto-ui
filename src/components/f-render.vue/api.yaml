@@ -1,4 +1,5 @@
 - name: f-render
+  title: 渲染器
   attrs:
     - name: vnode
       type: VNode

@@ -1,4 +1,5 @@
 - name: u-tooltip
+  title: 工具提示
   attrs:
     - name: opened.sync
       type: boolean

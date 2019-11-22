@@ -1,4 +1,5 @@
 - name: u-transfer
+  title: 穿梭框
   attrs:
     - name: source
       type: Array<{ text, value }>

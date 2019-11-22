@@ -1,4 +1,5 @@
 - name: m-parent
+  title: 父子模式
   options:
     - name: childName
       type: string

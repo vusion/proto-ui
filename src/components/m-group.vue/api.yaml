@@ -1,4 +1,6 @@
 - name: m-group-parent
+  title: 分组模式
+  description: 在父子组件的模式中，有时会遇到对子组件进行分组和折叠场景。MGroup 对这种模式进行了抽象，用于快速开发和代码借鉴。
   options:
     - name: groupName
       type: string

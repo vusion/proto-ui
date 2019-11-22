@@ -1,4 +1,5 @@
 - name: u-table-view
+  title: 表格视图
   attrs:
     - name: title
       type: string

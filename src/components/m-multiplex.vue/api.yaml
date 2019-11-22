@@ -1,4 +1,6 @@
 - name: m-multiplex
+  title: 多选模式
+  description: 常见的多选模式。
   extends: m-parent
   attrs:
     - name: value.sync, v-model

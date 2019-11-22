@@ -1,3 +1,4 @@
 - name: u-logo
-  labels: 'UI 组件', '行内展示'
+  title: 标识
+  labels: [UI 组件, 行内展示]
   description: 常见的网站标识。该组件作为一个示例，业务中请自行拓展。

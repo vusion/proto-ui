@@ -1,4 +1,5 @@
 - name: u-popup
+  title: 弹出框
   attrs:
     - name: title
       type: string

@@ -1,4 +1,5 @@
 - name: f-slot
+  title: 便捷插槽
   attrs:
     - name: vm
       type: Vue

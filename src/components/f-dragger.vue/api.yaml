@@ -1,4 +1,5 @@
 - name: f-dragger
+  title: 拖拽器
   attrs:
     - name: axis
       type: string

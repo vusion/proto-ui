@@ -1,4 +1,5 @@
 - name: f-droppable
+  title: 放置
   attrs:
     - name: disabled
       type: boolean

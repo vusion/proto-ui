@@ -1,4 +1,5 @@
 - name: u-tree-view
+  title: 树型视图
   attrs:
     - name: data
       type: Array<{ text, value }>

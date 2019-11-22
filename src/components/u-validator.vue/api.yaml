@@ -1,4 +1,6 @@
 - name: u-validator
+  title: 验证器
+  labels: [UI 组件, 表单验证器, 块级展示]
   attrs:
     - name: name
       type: string

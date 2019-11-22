@@ -1,5 +1,6 @@
 - name: u-badge
-  labels: 'UI 组件', '行内展示'
+  title: 徽章
+  labels: [UI 组件, 行内展示]
   attrs:
     - name: value
       type: number, string

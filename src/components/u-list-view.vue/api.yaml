@@ -1,4 +1,5 @@
 - name: u-list-view
+  title: 列表视图
   attrs:
     - name: value.sync, v-model
       type: any

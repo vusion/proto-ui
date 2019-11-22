@@ -1,4 +1,5 @@
 - name: u-carousel
+  title: 幻灯片
   attrs:
     - name: value.sync
       type: any

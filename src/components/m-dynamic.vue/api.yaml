@@ -1,4 +1,5 @@
 - name: m-dynamic
+  title: 动态列表
   mixins: m-emitter
   attrs:
     - name: data

@@ -1,4 +1,5 @@
 - name: m-publisher
+  title: 发布订阅模式
   options:
     - name: publish
       type: "{ [prop: string]: string | Function | object }"

@@ -1,5 +1,5 @@
 - name: e-watermark
-  alias: 水印
+  title: 水印
   attrs:
     - name: text
       type: string

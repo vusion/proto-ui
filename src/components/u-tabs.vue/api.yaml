@@ -1,5 +1,6 @@
 - name: u-tabs
-  labels: 'UI 组件', '路由链接', '块级展示'
+  title: 标签页
+  labels: [UI 组件, 路由链接, 块级展示]
   attrs:
     - name: value.sync, v-model
       type: any

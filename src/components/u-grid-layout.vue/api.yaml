@@ -1,5 +1,6 @@
 - name: u-grid-layout
-  labels: '布局组件', '块级展示'
+  title: 栅格布局
+  labels: [布局组件, 块级展示]
   attrs:
     - name: gap
       type: string

@@ -1,4 +1,5 @@
 - name: u-toast
+  title: 吐司提示
   attrs:
     - name: position
       type: string
