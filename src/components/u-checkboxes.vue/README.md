@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UCheckboxes 多选组
 
-<s-component-labels :labels="[
-    'UI 组件', '表单控件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **表单控件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -143,16 +143,16 @@ export default {
 </script>
 ```
 
-## UCheckboxes
+## UCheckboxes API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value | Array | `[]` | 多选组的选中项  |
-| min | Number | 0 | 可以勾选多选框的最小数量  |
-| max | Number | Infinity | 可以勾选多选框的最大数量  |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value | Array |  | `[]` | 多选组的选中项 |
+| min | number |  | `0` | 可以勾选多选框的最小数量 |
+| max | number |  | `Infinity` | 可以勾选多选框的最大数量 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -160,15 +160,15 @@ export default {
 
 插入`<checkbox>`子组件。
 
-## UCheckbox
+## UCheckbox API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Boolean, null | `false` | 选中状态，`null`表示不确定状态  |
-| label | Any | | 多选框标签。用于关联多选组的值 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | boolean, null |  | `false` | 选中状态，`null`表示不确定状态 |
+| label | any |  |  | 多选框标签。用于关联多选组的值 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -184,8 +184,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean, null | 选中状态 |
-| $event.oldValue | Boolean, null | 旧的选中状态 |
+| $event.value | boolean, null | 选中状态 |
+| $event.oldValue | boolean, null | 旧的选中状态 |
 | $event.preventDefault | Function | 阻止切换流程 |
 | senderVM | UCheckbox | 发送事件实例 |
 
@@ -195,7 +195,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Boolean, null | 切换后的选中状态 |
+| $event | boolean, null | 切换后的选中状态 |
 | senderVM | UCheckbox | 发送事件实例 |
 
 #### @check
@@ -204,9 +204,9 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean, null | 选中状态 |
-| $event.oldValue | Boolean, null | 旧的选中状态 |
-| $event.label | Any | 此选框的标签 |
+| $event.value | boolean, null | 选中状态 |
+| $event.oldValue | boolean, null | 旧的选中状态 |
+| $event.label | any | 此选框的标签 |
 | senderVM | UCheckbox | 发送事件实例 |
 
 #### @change
@@ -215,6 +215,6 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Boolean, null | 选中状态 |
-| $event.oldValue | Boolean, null | 旧的选中状态 |
+| $event.value | boolean, null | 选中状态 |
+| $event.oldValue | boolean, null | 旧的选中状态 |
 | senderVM | UCheckbox | 发送事件实例 |

@@ -1,7 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UTreeView 树型视图
 
-## 基础示例
-
+## 示例
 ### 基本用法
 
 有两种书写方式，这里推荐使用Data方式，因为树型结构的数据有时非常多。
@@ -489,20 +490,20 @@ export default {
 </script>
 ```
 
-## UTreeView
+## UTreeView API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| data | Array\<{ text, value }\> | | Data书写方式中的数据列表 |
-| value.sync, v-model | Any | | 当前选择的值 |
-| field | String | `'text'` | 显示文本字段 |
-| cancelable | Boolean | `false` | 是否可以取消选择 |
-| checkable | Boolean | `false` | 是否可以选中/取消 |
-| accordion | Boolean | `false` | 是否每次只会展开一个分组 |
-| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| data | Array\<{ text, value }\> |  |  | Data书写方式中的数据列表 |
+| value.sync, v-model | any |  |  | 当前选择的值 |
+| field | string |  | `'text'` | 显示文本字段 |
+| cancelable | boolean |  | `false` | 是否可以取消选择 |
+| checkable | boolean |  | `false` | 是否可以选中/取消 |
+| accordion | boolean |  | `false` | 是否每次只会展开一个分组 |
+| expand-trigger | string |  | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -518,10 +519,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择项的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.node | Object | 选择项相关对象 |
-| $event.oldNode | Object | 旧的选择项相关对象 |
+| $event.value | any | 选择项的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.node | object | 选择项相关对象 |
+| $event.oldNode | object | 旧的选择项相关对象 |
 | $event.nodeVM | UTreeViewNode | 选择项子组件 |
 | $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
@@ -533,7 +534,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择项的值 |
+| $event | any | 选择项的值 |
 | senderVM | UTreeView | 发送事件实例 |
 
 #### @select
@@ -542,10 +543,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 改变后的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.node | Object | 选择项相关对象 |
-| $event.oldNode | Object | 旧的选择项相关对象 |
+| $event.value | any | 改变后的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.node | object | 选择项相关对象 |
+| $event.oldNode | object | 旧的选择项相关对象 |
 | $event.nodeVM | UTreeViewNode | 选择项子组件 |
 | $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | senderVM | UTreeView | 发送事件实例 |
@@ -556,10 +557,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择项的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.node | Object | 选择项相关对象 |
-| $event.oldNode | Object | 旧的选择项相关对象 |
+| $event.value | any | 选择项的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.node | object | 选择项相关对象 |
+| $event.oldNode | object | 旧的选择项相关对象 |
 | $event.nodeVM | UTreeViewNode | 选择项子组件 |
 | $event.oldVM | UTreeViewNode | 旧的选择项子组件 |
 | senderVM | UTreeView | 发送事件实例 |
@@ -570,8 +571,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.node | Object | 节点相关对象 |
+| $event.expanded | boolean | 展开/折叠状态 |
+| $event.node | object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | senderVM | UTreeView | 发送事件实例 |
 
@@ -581,10 +582,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.checked | Boolean | 选中/取消状态 |
-| $event.oldChecked | Boolean | 旧的选中/取消状态 |
+| $event.checked | boolean | 选中/取消状态 |
+| $event.oldChecked | boolean | 旧的选中/取消状态 |
 | $event.values | Array | 所有选中节点的值 |
-| $event.node | Object | 节点相关对象 |
+| $event.node | object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | senderVM | UTreeView | 发送事件实例 |
 
@@ -594,44 +595,44 @@ export default {
 
 广度优先遍历树。当`func`函数有返回值时，停止遍历。
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| func | Function | 遍历的处理函数 |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| func | Function |  | 遍历的处理函数 |
 
 #### find(func)
 
 查找节点实例。
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| func | Function | 查找函数。找到第一个返回值为`true`的实例。 |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| func | Function |  | 查找函数。找到第一个返回值为`true`的实例。 |
 
 #### toggleAll(expanded)
 
 展开/折叠所有节点
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| expanded | Boolean | 展开/折叠 |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| expanded | boolean |  | 展开/折叠 |
 
 #### checkAll(checked)
 
 选中/取消所有节点
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| expanded | Boolean | 选中/取消 |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| expanded | boolean |  | 选中/取消 |
 
-## UTreeViewNode
+## UTreeViewNode API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value | Any | | 此项的值 |
-| expanded.sync | Any | | 展开/折叠状态 |
-| checked.sync | Any | | 选中/取消状态 |
-| disabled | Boolean | `false` | 禁用此项 |
-| node | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value | any |  |  | 此项的值 |
+| expanded.sync | any |  |  | 展开/折叠状态 |
+| checked.sync | any |  |  | 选中/取消状态 |
+| disabled | boolean |  | `false` | 禁用此项 |
+| node | object |  |  | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
 
 ### Slots
 
@@ -647,8 +648,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 此项的值 |
-| $event.node | Object | 此项的相关对象 |
+| $event.value | any | 此项的值 |
+| $event.node | object | 此项的相关对象 |
 | $event.nodeVM | UTreeViewNode | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UTreeViewNode | 发送事件实例 |
@@ -659,8 +660,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.node | Object | 节点相关对象 |
+| $event.expanded | boolean | 展开/折叠状态 |
+| $event.node | object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
 | senderVM | UTreeViewNode | 发送事件实例 |
@@ -671,8 +672,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
-| $event.node | Object | 节点相关对象 |
+| $event.expanded | boolean | 展开/折叠状态 |
+| $event.node | object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | senderVM | UTreeViewNode | 发送事件实例 |
 
@@ -682,8 +683,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.checked | Boolean | 选中状态 |
-| $event.oldChecked | Boolean | 旧的选中状态 |
-| $event.node | Object | 节点相关对象 |
+| $event.checked | boolean | 选中状态 |
+| $event.oldChecked | boolean | 旧的选中状态 |
+| $event.node | object | 节点相关对象 |
 | $event.nodeVM | UTreeViewNode | 节点组件 |
 | senderVM | UTreeViewNode | 发送事件实例 |

@@ -1,7 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UToast 吐司提示
 
 ## 示例
-
 ### 基本用法
 
 ```html
@@ -124,14 +125,14 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| position | String | `'top-center'` | 显示的位置，可选值：`'top-center'`, `'top-left'`, `'top-right'`, `'bottom-center'`, `'bottom-left'`, `'bottom-right'`, `static` |
-| duration | Number | `2000` | 提示停留的时间。`0`表示常驻。 |
-| single | Boolean | `false` | 多个提示会合并为一个 |
-| text | String | `''` | 默认提示内容 |
-| color | String | `'default'` | 提示的颜色 |
-| closable | Boolean | `false` | 是否可以关闭提示 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| position | string |  | `'top-center'` | 显示的位置，可选值：`'top-center'`, `'top-left'`, `'top-right'`, `'bottom-center'`, `'bottom-left'`, `'bottom-right'`, `static` |
+| duration | number |  | `2000` | 提示停留的时间。`0`表示常驻。 |
+| single | boolean |  | `false` | 多个提示会合并为一个 |
+| text | string |  | `''` | 默认提示内容 |
+| color | string |  | `'default'` | 提示的颜色 |
+| closable | boolean |  | `false` | 是否可以关闭提示 |
 
 ### Events
 
@@ -141,9 +142,9 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.text | String | 提示的内容 |
-| $event.color | String | 提示的颜色 |
-| $event.duration | Number | 提示停留的时间 |
+| $event.text | string | 提示的内容 |
+| $event.color | string | 提示的颜色 |
+| $event.duration | number | 提示停留的时间 |
 | senderVM | UToast | 发送事件实例 |
 
 #### @before-close
@@ -152,9 +153,9 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.text | String | 提示的内容 |
-| $event.color | String | 提示的颜色 |
-| $event.duration | Number | 提示停留的时间 |
+| $event.text | string | 提示的内容 |
+| $event.color | string | 提示的颜色 |
+| $event.duration | number | 提示停留的时间 |
 | $event.preventDefault | Function | 阻止关闭流程 |
 | senderVM | UToast | 发送事件实例 |
 
@@ -164,7 +165,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.text | String | 提示的内容 |
-| $event.color | String | 提示的颜色 |
-| $event.duration | Number | 提示停留的时间 |
+| $event.text | string | 提示的内容 |
+| $event.color | string | 提示的颜色 |
+| $event.duration | number | 提示停留的时间 |
 | senderVM | UToast | 发送事件实例 |

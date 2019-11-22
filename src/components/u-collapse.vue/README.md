@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UCollapse 折叠面板
 
-<s-component-labels :labels="[
-    'UI 组件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -46,11 +46,11 @@
 ## UCollapse API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| accordion | Boolean | `false` | 是否每次只会展开一个面板 |
-| expand-trigger | String | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| accordion | boolean |  | `false` | 是否每次只会展开一个面板 |
+| expand-trigger | string |  | `'click'` | 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -66,7 +66,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.expanded | boolean | 展开/折叠状态 |
 | $event.itemVM | UCollapseItem | 面板组件 |
 
 ### Methods
@@ -75,19 +75,18 @@
 
 展开/折叠所有面板
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| expanded | Boolean | 展开/折叠 |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| expanded | boolean |  | 展开/折叠 |
 
 ## UCollapseItem API
-
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String |  | 显示的标题 |
-| expanded.sync | Boolean | `false` | 展开/折叠状态 |
-| disabled | Boolean | `false` | 是否禁用。禁用时无法展开/折叠 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| title | string |  |  | 显示的标题 |
+| expanded.sync | boolean |  | `false` | 展开/折叠状态 |
+| disabled | boolean |  | `false` | 是否禁用。禁用时无法展开/折叠 |
 
 ### Slots
 
@@ -111,7 +110,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.expanded | boolean | 展开/折叠状态 |
 | $event.itemVM | UCollapseItem | 面板组件 |
 | $event.preventDefault | Function | 阻止展开/折叠流程 |
 | senderVM | Vue | 发送事件实例 |
@@ -122,6 +121,6 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.expanded | Boolean | 展开/折叠状态 |
+| $event.expanded | boolean | 展开/折叠状态 |
 | $event.itemVM | UCollapseItem | 面板组件 |
 | senderVM | Vue | 发送事件实例 |

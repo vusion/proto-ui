@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UModal 弹窗
 
 ## 示例
@@ -97,15 +99,15 @@ export default {
 ## API
 ### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| visible.sync | Boolean | `false` | 是否显示 |
-| title | String | `'提示'` | 弹窗的标题 |
-| ok-button | String | `'确定'` | 确定按钮文本，如果为空则不显示 |
-| cancel-button | String | `'取消'` | 取消按钮文本，如果为空则不显示 |
-| size | String | `'normal'` | 弹窗的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
-| static | Boolean | `false` | 是否嵌入页面显示 |
-| mask-closable | Boolean | `false` | 是否点击遮罩时关闭弹窗 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| visible.sync | boolean |  | `false` | 是否显示 |
+| title | string |  | `'提示'` | 弹窗的标题 |
+| ok-button | string |  | `'确定'` | 确定按钮文本，如果为空则不显示 |
+| cancel-button | string |  | `'取消'` | 取消按钮文本，如果为空则不显示 |
+| size | string |  | `'normal'` | 弹窗的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
+| static | boolean |  | `false` | 是否嵌入页面显示 |
+| mask-closable | boolean |  | `false` | 是否点击遮罩时关闭弹窗 |
 
 ### Slots
 
@@ -157,34 +159,15 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.ok | Boolean | 是否确定 |
+| $event.ok | boolean | 是否确定 |
 | $event.preventDefault | Function | 阻止关闭流程 |
 | senderVM | UModal | 发送事件实例 |
 
 #### @close
+
 关闭弹窗时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.ok | Boolean | 是否确定 |
+| $event.ok | boolean | 是否确定 |
 | senderVM | UModal | 发送事件实例 |
-
-### Static Methods
-
-#### alert(content, title)
-
-打开只有确定按钮的弹窗
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| content | String | 弹窗内容 |
-| title | String | 弹窗标题 |
-
-#### confirm(content, title)
-
-打开有确定和取消按钮的弹窗
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| content | String | 弹窗内容 |
-| title | String | 弹窗标题 |

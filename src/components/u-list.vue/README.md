@@ -1,12 +1,12 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UList 列表
 
-<s-component-labels :labels="[
-    'UI 组件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **块级展示**
 
 对列表样式做了简单的修饰。如果需要选择、分页等更多的功能，请使用 [UListView](../u-list-view)。
 
-## 基础示例
+## 示例
 ### 基本用法
 
 ``` html
@@ -113,16 +113,15 @@
 </u-list>
 ```
 
-## UList
-
+## UList API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| type | String |  | 列表前缀，如：`'disc'`, `'circle'`, `'decimal'`，与原生样式属性`list-style-type`的值对应。 |
-| line | String |  | 列表行之间显示分隔线条。可选值：`'both'`, `'horizontal'`, `'vertical'` |
-| striped | Boolean | `false` | 列表行是否按斑马线条纹显示 |
-| hover | Boolean | `false` | 列表行在悬浮时是否高亮显示 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| type | string |  |  | 列表前缀，如：`'disc'`, `'circle'`, `'decimal'`，与原生样式属性`list-style-type`的值对应。 |
+| line | string |  |  | 列表行之间显示分隔线条。可选值：`'both'`, `'horizontal'`, `'vertical'` |
+| striped | boolean |  | `false` | 列表行是否按斑马线条纹显示 |
+| hover | boolean |  | `false` | 列表行在悬浮时是否高亮显示 |
 
 ### Slots
 
@@ -130,6 +129,4 @@
 
 在表格中插入`<u-list-item>`标签。
 
-## UListItem
-
-无
+## UListItem API

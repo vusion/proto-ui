@@ -1,4 +1,6 @@
-# MPubSub 发布订阅模式
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
+# MPublisher 发布订阅模式
 
 在 Vue 原生的功能中，不管是`$emit`和`$on`，还是`provide`和`inject`，在组件间传递变量都有些局限，特别是在两个不相关的组件之间。
 
@@ -68,17 +70,15 @@ export default {
 ```
 
 ## MPublisher API
-
 ### Options
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| publish | { \[prop: String\]: String \| Function \| Object } | | 键为需要发布的主题，值为需要监听的表达式或函数。值也可以为一个对象`{ expOrFn: String \| Function, deep: Boolean, immediate: Boolean }`，`deep`和`immediate`与官方`watch`中的意义相同。 |
+| publish | { \[prop: string\]: string \| Function \| object } |  | 键为需要发布的主题，值为需要监听的表达式或函数。值也可以为一个对象`{ expOrFn: String \| Function, deep: Boolean, immediate: Boolean }`，`deep`和`immediate`与官方`watch`中的意义相同。 |
 
 ## MSubscriber API
-
 ### Options
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| subscribe | { \[prop: String\]: String \| Function \| Object } | | 键为需要订阅的主题，值为订阅时执行的方法。值也可以为一个对象`{ handler: String \| Function, once: Boolean }`，`once`开启，则只订阅一次。 |
+| subscribe | { \[prop: string\]: string \| Function \| object } |  | 键为需要订阅的主题，值为订阅时执行的方法。值也可以为一个对象`{ handler: String \| Function, once: Boolean }`，`once`开启，则只订阅一次。 |

@@ -1,10 +1,10 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # USteps 步骤条
 
-<s-component-labels :labels="[
-    'UI 组件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **块级展示**
 
-## 基础示例
+## 示例
 ### 基本用法
 
 步骤从`0`开始。
@@ -68,13 +68,14 @@
 </u-steps>
 ```
 
-## USteps
+## USteps API
 ### Props/Attrs
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Number | `0` | 当前步骤数 |
-| readonly | Boolean | `false` | 是否只读。非只读的情况下可以选择 |
-| disabled | Boolean | `false` | 是否禁用 |
+
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | number |  | `0` | 当前步骤数 |
+| readonly | boolean |  | `false` | 是否只读。非只读的情况下可以选择 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -90,8 +91,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选中步骤的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | any | 选中步骤的值 |
+| $event.oldValue | any | 旧的值 |
 | $event.itemVM | UStep | 选中步骤实例 |
 | $event.oldVM | UStep | 旧的选中步骤实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
@@ -103,18 +104,19 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选中步骤的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | any | 选中步骤的值 |
+| $event.oldValue | any | 旧的值 |
 | $event.itemVM | UStep | 选中步骤实例 |
 | $event.oldVM | UStep | 旧的选中步骤实例 |
 | senderVM | USteps | 发送事件实例 |
 
-## UStep
+## UStep API
 ### Props/Attrs
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String |  | 步骤名 |
-| disabled | Boolean | `false` | 是否禁用此标签页 |
+
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| title | string |  |  | 步骤名 |
+| disabled | boolean |  | `false` | 是否禁用此标签页 |
 
 ### Slots
 
@@ -125,4 +127,3 @@
 #### title
 
 自定义标题文本。
-

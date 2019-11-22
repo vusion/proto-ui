@@ -1,13 +1,12 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UFormTable 表单表格
 
-<s-component-labels :labels="[
-    'UI 组件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **块级展示**
 
 在表单中使用的表格，本组件主要实现基本样式，方便在特殊场景下扩展。如果需要快速使用动态数据、表单验证等功能，请使用 [UFormTableView](../u-form-table-view)。
 
-## 基础示例
-
+## 示例
 ### 基本用法
 
 ``` html
@@ -129,15 +128,14 @@ export default {
 </script>
 ```
 
-## UFormTable
-
+## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| line | Boolean | `false` | 单元格之间是否显示分隔线条 |
-| striped | Boolean | `false` | 表格行是否按斑马线条纹显示 |
-| hover | Boolean | `false` | 表格行在悬浮时是否高亮显示 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| line | boolean |  | `false` | 单元格之间是否显示分隔线条 |
+| striped | boolean |  | `false` | 表格行是否按斑马线条纹显示 |
+| hover | boolean |  | `false` | 表格行在悬浮时是否高亮显示 |
 
 ### Slots
 

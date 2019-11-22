@@ -1,5 +1,7 @@
 - name: u-table-view
   title: 表格视图
+  docs:
+    data: 数据相关
   attrs:
     - name: title
       type: string
@@ -355,17 +357,32 @@
           type: UTableView
           description: 发送事件实例
     - name: change
-      description: 多选模式中：
+      description: 选择值改变时触发。单选模式中：
       params:
+        - name: $event.value
+          type: any
+          description: 选择行的值
         - name: $event.oldValue
           type: any
           description: 旧的值
+        - name: $event.item
+          type: object
+          description: 选择行相关对象
         - name: $event.oldItem
           type: object
           description: 旧的选择行相关对象
+        - name: senderVM
+          type: UTableView
+          description: 发送事件实例
+    - name: change
+      description: 选择值改变时触发。多选模式中：
+      params:
         - name: $event.values
           type: Array
           description: 改变后的值
+        - name: $event.oldValues
+          type: any
+          description: 旧的值
         - name: senderVM
           type: UTableView
           description: 发送事件实例
@@ -446,7 +463,43 @@
       description: 在表格列中插入`<u-table-view-filters>`子组件。
     - name: cell
       description: 对单元格数据展示进行自定义。
+      props:
+        - name: item
+          type: object
+          description: 循环中的当前项
+        - name: value
+          type: any
+          description: item 中 field 字段对应的值
+        - name: columnVM
+          type: string
+          description: 该列组件实例
+        - name: rowIndex
+          type: number
+          description: 行的索引
+        - name: columnIndex
+          type: number
+          description: 列的索引
     - name: title
       description: 对标题进行自定义。
+      props:
+        - name: columnVM
+          type: string
+          description: 该列组件实例
+        - name: columnIndex
+          type: number
+          description: 列的索引
     - name: expand-content
       description: 展开列的内容
+      props:
+        - name: item
+          type: object
+          description: 循环中的当前项
+        - name: value
+          type: any
+          description: item 中 field 字段对应的值
+        - name: columnVM
+          type: string
+          description: 该列组件实例
+        - name: rowIndex
+          type: number
+          description: 行的索引

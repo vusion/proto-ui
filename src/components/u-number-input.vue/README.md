@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UNumberInput 数字输入
 
-<s-component-labels :labels="[
-    'UI 组件', '表单控件', '行内展示',
-]"></s-component-labels>
+**UI 组件**, **表单控件**, **行内展示**
 
 ## 示例
 ### 基本用法
@@ -85,20 +85,20 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Number | `0` | 输入框的值 |
-| min | Number | `-Infinity` | 最小值 |
-| max | Number | `+Infinity` | 最大值 |
-| step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量 |
-| precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
-| formatter | String, Object |  | 格式化字符串，具体参见示例。也可以传入一个包含`get`和`set`方法的格式化对象。 |
-| placeholder | String | | 原生属性 |
-| autofocus | Boolean | | 原生属性 |
-| hide-buttons | Boolean | `false` | 是否隐藏按钮 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
-| size | String | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`, `'full'`，或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding书写格式 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | number |  | `0` | 输入框的值 |
+| min | number |  | `-Infinity` | 最小值 |
+| max | number |  | `Infinity` | 最大值 |
+| step | number |  | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量 |
+| precision | number |  | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
+| formatter | string, object |  |  | 格式化字符串，具体参见示例。也可以传入一个包含`get`和`set`方法的格式化对象。 |
+| placeholder | string |  |  | 原生属性 |
+| autofocus | boolean |  |  | 原生属性 |
+| hide-buttons | boolean |  | `false` | 是否隐藏按钮 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
+| size | string |  | `'normal'` | 大小扩展，支持一个值：`'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'`, `'full'`，或两个值的组合，前者表示高度，后者表示宽度，类似CSS的padding书写格式 |
 
 ### Events
 
@@ -108,7 +108,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | String | 输入框的值 |
+| $event | string | 输入框的值 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 #### @validate
@@ -117,9 +117,9 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.rawValue | String | 用户输入的原始值 |
-| $event.value | Number | 验证修复的值 |
-| $event.valid | Boolean | 原始值是否合法 |
+| $event.rawValue | string | 用户输入的原始值 |
+| $event.value | number | 验证修复的值 |
+| $event.valid | boolean | 原始值是否合法 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 #### @change
@@ -128,10 +128,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Number | 改变后的值 |
-| $event.oldValue | Number | 旧的值 |
-| $event.formattedValue | String | 格式化后的值 |
-| $event.valid | Boolean | 改变后的值是否合法 |
+| $event.value | number | 改变后的值 |
+| $event.oldValue | number | 旧的值 |
+| $event.formattedValue | string | 格式化后的值 |
+| $event.valid | boolean | 改变后的值是否合法 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 #### @focus
@@ -140,7 +140,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | String | 原生事件对象 |
+| $event | string | 原生事件对象 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 #### @blur
@@ -149,13 +149,13 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | String | 原生事件对象 |
+| $event | string | 原生事件对象 |
 | senderVM | UNumberInput | 发送事件实例 |
 
 ### ARIA and Keyboard
 
 | Key | Description |
-| ----- | ----------- |
-| <kbd>↑</kbd> | 按`step`量增加值 |
-| <kbd>↓</kbd> | 按`step`量减小值 |
-| <kbd>Enter</kbd> | 自动修复为合法的值，并且应用更改 |
+| --- | ----------- |
+| ↑ | 按`step`量增加值 |
+| ↓ | 按`step`量减小值 |
+| Enter | 自动修复为合法的值，并且应用更改 |

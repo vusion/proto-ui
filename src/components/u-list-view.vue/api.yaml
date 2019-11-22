@@ -1,5 +1,7 @@
 - name: u-list-view
   title: 列表视图
+  docs:
+    data: 数据相关
   attrs:
     - name: value.sync, v-model
       type: any
@@ -100,7 +102,7 @@
           type: UListView
           description: 发送事件实例
     - name: select
-      description: 选择某一项时触发
+      description: 选择某一项时触发。单选模式中：
       params:
         - name: $event.value
           type: any
@@ -124,7 +126,7 @@
           type: UListView
           description: 发送事件实例
     - name: select
-      description: 多选模式中：
+      description: 选择某一项时触发。多选模式中：
       params:
         - name: $event.selected
           type: boolean
@@ -157,7 +159,7 @@
           type: UListView
           description: 发送事件实例
     - name: change
-      description: 选择值改变时触发
+      description: 选择值改变时触发。单选模式中：
       params:
         - name: $event.value
           type: any
@@ -181,7 +183,7 @@
           type: UListView
           description: 发送事件实例
     - name: change
-      description: 多选模式中：
+      description: 选择值改变时触发。多选模式中：
       params:
         - name: $event.value
           type: Array

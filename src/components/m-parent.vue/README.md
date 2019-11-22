@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # MParent 父子模式
 
 本对 Mixin：MParent 和 MChild，对常见的类似`<u-tabs>`和`<u-tab>`一对嵌套父子组件的场景进行了抽象，用于快速开发和代码借鉴。
@@ -9,8 +11,7 @@
 
 父组件会将多个子组件收集在`itemVMs`数组中，子组件将父组件标记为`parentVM`变量。这段过程发生在组件的`created`阶段。在`destroyed`阶段回收这些数据。
 
-## 基础示例
-
+## 示例
 ### 基本用法
 
 ``` html
@@ -21,13 +22,12 @@
 </m-parent>
 ```
 
-## MParent
-
+## MParent API
 ### Options
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| childName | String | `m-child` | 子组件的名称 |
+| childName | string | `'m-child'` | 子组件的名称 |
 
 ### Data
 
@@ -41,15 +41,12 @@
 
 插入`<m-child>`子组件。
 
-## MChild
-
-继承 [MEmitter](../m-emitter)。
-
+## MChild API
 ### Options
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| parentName | String | `m-parent` | 父组件的名称 |
+| parentName | string | `'m-parent'` | 父组件的名称 |
 
 ### Data
 

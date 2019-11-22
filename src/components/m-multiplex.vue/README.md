@@ -1,8 +1,10 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # MMultiplex 多选模式
 
 常见的多选模式。
 
-## 基础示例
+## 示例
 ### 基本用法
 
 下面展示了多选模式的一些基本特性，选择和禁用等功能。
@@ -114,17 +116,14 @@ export default {
 </u-grid-layout>
 ```
 
-## MMultiplex
-
-继承 [MParent](../m-parent)。
-
+## MMultiplex API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Array | | 所有选中项的值 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | Array |  |  | 所有选中项的值 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -140,11 +139,11 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.selected | Boolean | 选中还是取消 |
-| $event.item | Boolean | 该选中项相关对象 |
-| $event.itemVM | Boolean | 该选中项子组件 |
+| $event.selected | boolean | 选中还是取消 |
+| $event.item | boolean | 该选中项相关对象 |
+| $event.itemVM | boolean | 该选中项子组件 |
 | $event.oldValue | Array | 旧的所有选中项的值 |
-| $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
+| $event.oldItems | Array\<object\> | 旧的所有选中项相关对象的数组 |
 | $event.oldVMs | Array\<MMultiplexItem\> | 旧的所有选中项子组件的数组 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | MMultiplex | 发送事件实例 |
@@ -164,13 +163,13 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.selected | Boolean | 选中还是取消 |
-| $event.item | Boolean | 该选中项相关对象 |
-| $event.itemVM | Boolean | 该选中项子组件 |
+| $event.selected | boolean | 选中还是取消 |
+| $event.item | boolean | 该选中项相关对象 |
+| $event.itemVM | boolean | 该选中项子组件 |
 | $event.value | Array | 改变后的值 |
 | $event.oldValue | Array | 旧的值 |
-| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
-| $event.oldItems | Array\<Object\> | 旧的所有选中项相关对象的数组 |
+| $event.items | Array\<object\> | 所有选中项相关对象的数组 |
+| $event.oldItems | Array\<object\> | 旧的所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
 | $event.oldVMs | Array\<MMultiplexItem\> | 旧的所有选中项子组件的数组 |
 | senderVM | MMultiplex | 发送事件实例 |
@@ -182,22 +181,19 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.value | Array | 所有选中项的值 |
-| $event.items | Array\<Object\> | 所有选中项相关对象的数组 |
+| $event.items | Array\<object\> | 所有选中项相关对象的数组 |
 | $event.itemVMs | Array\<MMultiplexItem\> | 所有选中项子组件的数组 |
 | senderVM | MMultiplex | 发送事件实例 |
 
-## MMultiplexItem
-
-继承 [MChild](../m-parent/api#MChild)。
-
+## MMultiplexItem API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value | Any | | 此项的值 |
-| selected | Boolean | `false` | 是否选择此项 |
-| disabled | Boolean | `false` | 禁用此项 |
-| item | Object | | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value | any |  |  | 此项的值 |
+| selected | boolean |  | `false` | 是否选择此项 |
+| disabled | boolean |  | `false` | 禁用此项 |
+| item | object |  |  | 相关对象。当选择此项时，抛出的事件会传递该对象，便于开发 |
 
 ### Slots
 
@@ -222,8 +218,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 此项的值 |
-| $event.item | Object | 此项的相关对象 |
+| $event.value | any | 此项的值 |
+| $event.item | object | 此项的相关对象 |
 | $event.itemVM | MMultiplexItem | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | MMultiplexItem | 发送事件实例 |

@@ -1,6 +1,8 @@
-# Checkbox
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
 
-## Examples
+# UCheckbox 多选框
+
+## 示例
 ### Basic
 
 ``` html
@@ -42,17 +44,11 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value | Boolean, null | `false` | Checked status. `null` means indeterminate status.  |
-| readonly | Boolean | `false` | Readonly |
-| disabled | Boolean | `false` | Disabled |
-
-### Slots
-
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value | boolean, null |  | `false` | Checked status. `null` means indeterminate status. |
+| readonly | boolean |  | `false` | Readonly |
+| disabled | boolean |  | `false` | Disabled |
 
 ### Events
 
@@ -60,15 +56,15 @@ export default {
 
 Emit when checking.
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| value | Boolean, null | Checked value |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| undefined | boolean, null | Checked value |
 
 #### @change
 
 Emit when change value.
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| newValue | Boolean, null | New value |
-| oldValue | Boolean, null | Old value |
+| Param | Type | Description |
+| ----- | ---- | ----------- |
+| undefined | boolean, null | New value |
+| undefined | boolean, null | Old value |

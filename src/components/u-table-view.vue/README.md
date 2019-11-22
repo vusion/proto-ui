@@ -1,7 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UTableView 表格视图
 
 ## 基础示例
-
 基础示例中展示了如何初步地在表格视图组件中配置数据、修饰样式，以及如何处理数据过多的情况。
 
 ### 基本用法
@@ -738,8 +739,8 @@ export default {
 </script>
 ```
 
-## 数据相关
 
+## 数据相关
 ### 数据与数据源
 
 当数据量不大时，可以用`data`属性一次性传进来`data`属性的格式为`Array<{ [field]: string, ... }>`，如基础示例中的例子。
@@ -1364,7 +1365,6 @@ export default {
 ```
 
 ## 常见问题
-
 ### 控制显隐
 
 如果要对表格组件控制显隐，请尽量使用`v-if`而不要使用`v-show`。
@@ -1451,53 +1451,51 @@ export default {
 </script>
 ```
 
-## UTableView
-
+## UTableView API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String | | 表格标题 |
-| title-alignment | String | `'center'` | 表格标题对齐方式 |
-| border | Boolean | | 是否显示边框 |
-| line | Boolean | `false` | 单元格之间是否显示分隔线条 |
-| striped | Boolean | `false` | 表格行是否按斑马线条纹显示 |
-| hover | Boolean | `false` | 表格行在悬浮时是否高亮显示 |
-| show-head | Boolean | `true` | 是否显示表格头部 |
-| loading | Boolean | | 手动设置是否正在加载中 |
-| loading-text | String | `'正在加载中'` | 正在加载中的文字 |
-| error | Boolean | | 手动设置是否加载失败 |
-| error-text | String | `'加载失败，请重试'` | 加载失败时的文字 |
-| empty-text | String | `'暂无数据'` | 暂无数据时的文字 |
-| **Data Props/Attrs** |
-| data | Array\<{ \[field\]: string, ... }\> | | 表格数据 |
-| data-source | Object, Function, DataSource | | 多功能数据源 |
-| initial-load | Boolean | `true` | 是否在初始时立即加载 |
-| pageable | Boolean | `false` | 是否需要分页 |
-| page-size.sync | Number | `20` | 分页大小 |
-| page-size-options | Array | `[10, 20, 50]` | 每页大小选项列表 |
-| show-total | Boolean | `false` | 是否显示总页数 |
-| show-sizer | Boolean | `false` | 是否显示切换每页大小选项 |
-| show-jumper | Boolean | `false` | 是否显示页面跳转输入框 |
-| sorting.sync | Object<{ field: string, order: string, compare: Function }> | `{ field: undefined, order: 'desc' }` | 当前排序字段和顺序 |
-| default-order | String | `'asc'` | 所有列首次点击时的排序顺序 |
-| filtering.sync | Object | | 过滤项 |
-| remote-paging | Boolean | `false` | 是否使用后端分页 |
-| remote-sorting | Boolean | `false` | 是否使用后端排序 |
-| remote-filtering | Boolean | `false` | 是否使用后端过滤 |
-| **Selection Props/Attrs** |
-| value-field | String | | 在单选和多选操作中，指定数据唯一值的字段 |
-| value.sync, v-model | Any | | 当前选择的值 |
-| values.sync | Array | | 多项选择的值 |
-| selectable | Boolean | `false` | 是否可以选择行 |
-| cancelable | Boolean | `false` | 是否可以取消选择 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
-| **Other Props/Attrs** |
-| accordion | Boolean | `false` | 在有`expander`列的情况下，展开一行的同时，是否收起其它行 |
-| resizable | Boolean | `false` | 是否可以调整列宽 |
-| resize-remaining | Boolean | `'sequence'` | 调整列宽效果。可选值：`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。 |
-
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| title | string |  |  | 表格标题 |
+| title-alignment | string |  | `'center'` | 表格标题对齐方式 |
+| border | boolean |  |  | 是否显示边框 |
+| line | boolean |  | `false` | 单元格之间是否显示分隔线条 |
+| striped | boolean |  | `false` | 表格行是否按斑马线条纹显示 |
+| hover | boolean |  | `false` | 表格行在悬浮时是否高亮显示 |
+| show-head | boolean |  | `true` | 是否显示表格头部 |
+| loading | boolean |  |  | 手动设置是否正在加载中 |
+| loading-text | string |  | `'正在加载中'` | 正在加载中的文字 |
+| error | boolean |  |  | 手动设置是否加载失败 |
+| error-text | string |  | `'加载失败，请重试'` | 加载失败时的文字 |
+| empty-text | string |  | `'暂无数据'` | 暂无数据时的文字 |
+| **Data Props/Attrs** |  |  |  |  |
+| data | Array\<{ \[field\]: string, ... }\> |  |  | 表格数据 |
+| data-source | object, Function, DataSource |  |  | 多功能数据源 |
+| initial-load | boolean |  | `true` | 是否在初始时立即加载 |
+| pageable | boolean |  | `false` | 是否需要分页 |
+| page-size.sync | number |  | `20` | 分页大小 |
+| page-size-options | Array |  | `[10, 20, 50]` | 每页大小选项列表 |
+| show-total | boolean |  | `false` | 是否显示总页数 |
+| show-sizer | boolean |  | `false` | 是否显示切换每页大小选项 |
+| show-jumper | boolean |  | `false` | 是否显示页面跳转输入框 |
+| sorting.sync | object\<{ field: string, order: string, compare: Function }\> |  | `'{ field: undefined, order: 'desc' }'` | 当前排序字段和顺序 |
+| default-order | string |  | `'asc'` | 所有列首次点击时的排序顺序 |
+| filtering.sync | object |  |  | 过滤项 |
+| remote-paging | boolean |  | `false` | 是否使用后端分页 |
+| remote-sorting | boolean |  | `false` | 是否使用后端排序 |
+| remote-filtering | boolean |  | `false` | 是否使用后端过滤 |
+| **Selection Props/Attrs** |  |  |  |  |
+| value-field | string |  |  | 在单选和多选操作中，指定数据唯一值的字段 |
+| value.sync, v-model | any |  |  | 当前选择的值 |
+| values.sync | Array |  |  | 多项选择的值 |
+| selectable | boolean |  | `false` | 是否可以选择行 |
+| cancelable | boolean |  | `false` | 是否可以取消选择 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
+| **Other Props/Attrs** |  |  |  |  |
+| accordion | boolean |  | `false` | 在有`expander`列的情况下，展开一行的同时，是否收起其它行 |
+| resizable | boolean |  | `false` | 是否可以调整列宽 |
+| resize-remaining | boolean |  | `'sequence'` | 调整列宽效果。可选值：`sequence`表示保持总宽不变，优先后一列弥补宽度；`average`表示保持总宽不变，后面所有列平均弥补宽度；`none`表示不做任何处理，表格宽度变化。 |
 
 ### Slots
 
@@ -1517,7 +1515,7 @@ export default {
 
 自定义空态。
 
-### Data Events
+### Events
 
 #### @before-load
 
@@ -1534,7 +1532,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | | 空 |
+| $event |  | 空 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @before-page
@@ -1543,10 +1541,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.size | Number | 分页大小 |
-| $event.oldSize | Number | 分页大小 |
-| $event.number | Number | 当前页数 |
-| $event.oldNumber | Number | 旧的页数 |
+| $event.size | number | 分页大小 |
+| $event.oldSize | number | 分页大小 |
+| $event.number | number | 当前页数 |
+| $event.oldNumber | number | 旧的页数 |
 | $event.preventDefault | Function | 阻止切换分页流程 |
 | senderVM | UTableView | 发送事件实例 |
 
@@ -1556,10 +1554,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.size | Number | 分页大小 |
-| $event.oldSize | Number | 分页大小 |
-| $event.number | Number | 当前页数 |
-| $event.oldNumber | Number | 旧的页数 |
+| $event.size | number | 分页大小 |
+| $event.oldSize | number | 分页大小 |
+| $event.number | number | 当前页数 |
+| $event.oldNumber | number | 旧的页数 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @before-sort
@@ -1568,8 +1566,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.field | String | 排序顺序 |
-| $event.order | String | 排序字段 |
+| $event.field | string | 排序顺序 |
+| $event.order | string | 排序字段 |
 | $event.compare | Function | 排序比较函数 |
 | $event.preventDefault | Function | 阻止排序流程 |
 | senderVM | UTableView | 发送事件实例 |
@@ -1580,8 +1578,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.field | String | 排序顺序 |
-| $event.order | String | 排序字段 |
+| $event.field | string | 排序顺序 |
+| $event.order | string | 排序字段 |
 | $event.compare | Function | 排序比较函数 |
 | senderVM | UTableView | 发送事件实例 |
 
@@ -1591,7 +1589,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.field | Object | 过滤筛选对象 |
+| $event.field | object | 过滤筛选对象 |
 | $event.preventDefault | Function | 阻止过滤流程 |
 | senderVM | UTableView | 发送事件实例 |
 
@@ -1601,10 +1599,8 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Object | 过滤筛选对象 |
+| $event | object | 过滤筛选对象 |
 | senderVM | UTableView | 发送事件实例 |
-
-### Selection Events
 
 #### @before-select
 
@@ -1612,10 +1608,10 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择行的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 选择行相关对象 |
-| $event.oldItem | Object | 旧的选择行相关对象 |
+| $event.value | any | 选择行的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.item | object | 选择行相关对象 |
+| $event.oldItem | object | 旧的选择行相关对象 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UTableView | 发送事件实例 |
 
@@ -1625,7 +1621,7 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择行的值 |
+| $event | any | 选择行的值 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @select
@@ -1634,11 +1630,11 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 改变后的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 选择行相关对象 |
-| $event.oldItem | Object | 旧的选择行相关对象 |
-| $event.selectedItem | Object | 最终选择行的对象。在`cancelable`的情况下，与`$event.item`不同 |
+| $event.value | any | 改变后的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.item | object | 选择行相关对象 |
+| $event.oldItem | object | 旧的选择行相关对象 |
+| $event.selectedItem | object | 最终选择行的对象。在`cancelable`的情况下，与`$event.item`不同 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @check
@@ -1647,32 +1643,32 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.checked | Boolean | 选中状态 |
+| $event.checked | boolean | 选中状态 |
 | $event.values | Array | 选择后的值 |
 | $event.oldValues | Array | 旧的值 |
-| $event.item | Object | 选择行相关对象 |
+| $event.item | object | 选择行相关对象 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @change
 
-选择值改变时触发
-
-单选模式中：
+选择值改变时触发。单选模式中：
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择行的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 选择行相关对象 |
-| $event.oldItem | Object | 旧的选择行相关对象 |
+| $event.value | any | 选择行的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.item | object | 选择行相关对象 |
+| $event.oldItem | object | 旧的选择行相关对象 |
 | senderVM | UTableView | 发送事件实例 |
 
-多选模式中：
+#### @change
+
+选择值改变时触发。多选模式中：
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.values | Array | 改变后的值 |
-| $event.oldValues | Array | 旧的值 |
+| $event.oldValues | any | 旧的值 |
 | senderVM | UTableView | 发送事件实例 |
 
 #### @resize
@@ -1682,9 +1678,9 @@ export default {
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.columnVM | UTableColumnVM | 调整的列实例 |
-| $event.index | Number | 列索引 |
-| width | Number | 调整后的宽度 |
-| oldWidth | Number | 调整前的宽度 |
+| $event.index | number | 列索引 |
+| width | number | 调整后的宽度 |
+| oldWidth | number | 调整前的宽度 |
 
 ### Methods
 
@@ -1692,34 +1688,33 @@ export default {
 
 带缓存地加载
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
 
 #### reload()
 
 清除缓存，重新加载
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
 
-## UTableViewColumn
-
+## UTableViewColumn API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String | | 列标题 |
-| field | String | | data 中的字段名 |
-| width | String, Number | | 给列指定宽度，可以为数字或百分比 |
-| ellipsis | Boolean | `false` | 是否省略显示。默认文字超出时会换行 |
-| formatter | String, Object, Function, Formatter | `'placeholder'` | 格式器 |
-| - |
-| sortable | Boolean | `false` | 该列是否可以排序 |
-| default-order | String | `'asc'` | 该列首次点击时的排序顺序 |
-| filters | Array\<{ text: string, value: any }\> | `'asc'` | 该列首次点击时的排序顺序 |
-| hidden | Boolean | `false` | 是否隐藏 |
-| type | String | | 列类型。可选值：`index`表示序号列，`radio`表示单选列，`checkbox`表示多选列，`expander`表示展开列。 |
-| start-index | Number | `1` | 当`type="index"`时的起始序号 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| title | string |  |  | 列标题 |
+| field | string |  |  | data 中的字段名 |
+| width | string, number |  |  | 给列指定宽度，可以为数字或百分比 |
+| ellipsis | boolean |  | `false` | 是否省略显示。默认文字超出时会换行 |
+| formatter | string, object, Function, Formatter |  | `'placeholder'` | 格式器 |
+| - |  |  |  |  |
+| sortable | boolean |  | `false` | 该列是否可以排序 |
+| default-order | string |  | `'asc'` | 该列首次点击时的排序顺序 |
+| filters | Array\<{ text: string, value: any }\> |  | `'asc'` | 该列首次点击时的排序顺序 |
+| hidden | boolean |  | `false` | 是否隐藏 |
+| type | string |  |  | 列类型。可选值：`index`表示序号列，`radio`表示单选列，`checkbox`表示多选列，`expander`表示展开列。 |
+| start-index | number |  | `1` | 当`type="index"`时的起始序号 |
 
 ### Slots
 
@@ -1731,32 +1726,30 @@ export default {
 
 对单元格数据展示进行自定义。
 
-| Prop/Attr | Type | Description |
-| --------- | ---- | ----------- |
-| item | Object | 循环中的当前项 |
-| value | Any | item 中 field 字段对应的值 |
-| columnVM | String | 该列组件实例 |
-| rowIndex | Number | 行的索引 |
-| columnIndex | Number | 列的索引 |
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| item | object | 循环中的当前项 |
+| value | any | item 中 field 字段对应的值 |
+| columnVM | string | 该列组件实例 |
+| rowIndex | number | 行的索引 |
+| columnIndex | number | 列的索引 |
 
 #### title
 
 对标题进行自定义。
 
-| Prop/Attr | Type | Description |
-| --------- | ---- | ----------- |
-| columnVM | String | 该列组件实例 |
-| columnIndex | Number | 列的索引 |
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| columnVM | string | 该列组件实例 |
+| columnIndex | number | 列的索引 |
 
 #### expand-content
 
 展开列的内容
 
-| Prop/Attr | Type | Description |
-| --------- | ---- | ----------- |
-| item | Object | 循环中的当前项 |
-| value | Any | item 中 field 字段对应的值 |
-| columnVM | String | 该列组件实例 |
-| rowIndex | Number | 行的索引 |
-
-
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| item | object | 循环中的当前项 |
+| value | any | item 中 field 字段对应的值 |
+| columnVM | string | 该列组件实例 |
+| rowIndex | number | 行的索引 |

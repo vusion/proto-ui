@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # ULoading 加载中
 
 ## 示例
@@ -82,10 +84,10 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| size | String | `'normal'` | 图标的大小。可选值：`'small'`, `'normal'`, `'large'` |
-| display | String | `'inline'` | 展示方式。可选值：`'inline'`表示按行内展示，`'block'`表示按块级展示，`'full'`表示填充定位父元素（offsetParent），`'fullWindow'`表示填充整个浏览器 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| size | string |  | `'normal'` | 图标的大小。可选值：`'small'`, `'normal'`, `'large'` |
+| display | string |  | `'inline'` | 展示方式。可选值：`'inline'`表示按行内展示，`'block'`表示按块级展示，`'full'`表示填充定位父元素（offsetParent），`'fullWindow'`表示填充整个浏览器 |
 
 ### Slots
 

@@ -59,7 +59,7 @@
           type: string
           description: 输入框的值
         - name: senderVM
-          type: UnumberInput
+          type: UNumberInput
           description: 发送事件实例
     - name: validate
       description: 输入验证时触发
@@ -74,7 +74,7 @@
           type: boolean
           description: 原始值是否合法
         - name: senderVM
-          type: UnumberInput
+          type: UNumberInput
           description: 发送事件实例
     - name: change
       description: 值变化时触发（与原生事件不同）
@@ -92,7 +92,7 @@
           type: boolean
           description: 改变后的值是否合法
         - name: senderVM
-          type: UnumberInput
+          type: UNumberInput
           description: 发送事件实例
     - name: focus
       description: 获得焦点时触发
@@ -101,7 +101,7 @@
           type: string
           description: 原生事件对象
         - name: senderVM
-          type: UnumberInput
+          type: UNumberInput
           description: 发送事件实例
     - name: blur
       description: 失去焦点时触发
@@ -110,7 +110,7 @@
           type: string
           description: 原生事件对象
         - name: senderVM
-          type: UnumberInput
+          type: UNumberInput
           description: 发送事件实例
   aria:
     - key: ↑

@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UPagination 分页
 
-<s-component-labels :labels="[
-    'UI 组件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -34,14 +34,14 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| page.sync | Number | `1` | 当前页码 |
-| total | Number | `11` | 总页数 |
-| side | Number | `2` | 当页数多时，两边恒定显示的数量 |
-| around | Number | `5` | 当页数多时，中间恒定显示的数量  |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| page.sync | number |  | `1` | 当前页码 |
+| total | number |  | `11` | 总页数 |
+| side | number |  | `2` | 当页数多时，两边恒定显示的数量 |
+| around | number |  | `5` | 当页数多时，中间恒定显示的数量 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Events
 
@@ -51,8 +51,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.page | Number | 选择的页码 |
-| $event.oldPage | Number | 旧的页码 |
+| $event.page | number | 选择的页码 |
+| $event.oldPage | number | 旧的页码 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UPagination | 发送事件实例 |
 
@@ -62,8 +62,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.page | Number | 选择的页码 |
-| $event.oldPage | Number | 旧的页码 |
+| $event.page | number | 选择的页码 |
+| $event.oldPage | number | 旧的页码 |
 | senderVM | UPagination | 发送事件实例 |
 
 #### @change
@@ -72,6 +72,6 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.page | Number | 当前页码 |
-| $event.oldPage | Number | 旧的页码 |
+| $event.page | number | 当前页码 |
+| $event.oldPage | number | 旧的页码 |
 | senderVM | UPagination | 发送事件实例 |

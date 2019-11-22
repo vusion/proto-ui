@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UTransfer 穿梭框
 
 ## 示例
@@ -56,16 +58,18 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| source | Array\<{ text, value }\> | | 原数据列表 |
-| target | Array\<{ text, value }\> | | 目标数据列表 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| source | Array\<{ text, value }\> |  |  | 原数据列表 |
+| target | Array\<{ text, value }\> |  |  | 目标数据列表 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
 #### (default)
+
+
 
 ### Events
 

@@ -1,4 +1,6 @@
-# FDraggable 放置
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
+# FDroppable 放置
 
 ## 示例
 ### 基本用法
@@ -36,9 +38,9 @@ export default {
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -48,9 +50,12 @@ export default {
 
 ### Events
 
-#### transfer
+#### @transfer
 
 自定义的移动元素。
+
+| Param | Type | Description |
+| ----- | ---- | ----------- |
 
 #### @dragenter
 
@@ -62,21 +67,21 @@ export default {
 | $event.sourceEl | Element | 拖拽起始元素 |
 | $event.transferEl | Element | 拖拽移动元素 |
 | $event.targetEl | Element | 放置目标元素 |
-| $event.value | Any | 需要传递的值 |
-| $event.screenX | Number | 鼠标指针相对于屏幕的水平坐标 |
-| $event.screenY | Number | 鼠标指针相对于屏幕的垂直坐标 |
-| $event.clientX | Number | 鼠标指针相对于浏览器的水平坐标 |
-| $event.clientY | Number | 鼠标指针相对于浏览器的垂直坐标 |
-| $event.pageX | Number | 鼠标指针相对于页面的水平坐标 |
-| $event.pageY | Number | 鼠标指针相对于页面的垂直坐标 |
-| $event.startX | Number | 拖拽开始时鼠标指针的水平坐标 |
-| $event.startY | Number | 拖拽开始时鼠标指针的垂直坐标 |
-| $event.dragX | Number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
-| $event.dragY | Number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
-| $event.startLeft | Number | 拖拽开始时代理元素的left值 |
-| $event.startTop | Number | 拖拽开始时代理元素的top值 |
-| $event.left | Number | 拖拽时代理元素的left值 |
-| $event.top | Number | 拖拽时代理元素的top值 |
+| $event.value | any | 需要传递的值 |
+| $event.screenX | number | 鼠标指针相对于屏幕的水平坐标 |
+| $event.screenY | number | 鼠标指针相对于屏幕的垂直坐标 |
+| $event.clientX | number | 鼠标指针相对于浏览器的水平坐标 |
+| $event.clientY | number | 鼠标指针相对于浏览器的垂直坐标 |
+| $event.pageX | number | 鼠标指针相对于页面的水平坐标 |
+| $event.pageY | number | 鼠标指针相对于页面的垂直坐标 |
+| $event.startX | number | 拖拽开始时鼠标指针的水平坐标 |
+| $event.startY | number | 拖拽开始时鼠标指针的垂直坐标 |
+| $event.dragX | number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
+| $event.dragY | number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
+| $event.startLeft | number | 拖拽开始时代理元素的left值 |
+| $event.startTop | number | 拖拽开始时代理元素的top值 |
+| $event.left | number | 拖拽时代理元素的left值 |
+| $event.top | number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
 | senderVM | FDroppable | 发送事件实例 |
 
@@ -90,21 +95,21 @@ export default {
 | $event.sourceEl | Element | 拖拽起始元素 |
 | $event.transferEl | Element | 拖拽移动元素 |
 | $event.targetEl | Element | 放置目标元素 |
-| $event.value | Any | 需要传递的值 |
-| $event.screenX | Number | 鼠标指针相对于屏幕的水平坐标 |
-| $event.screenY | Number | 鼠标指针相对于屏幕的垂直坐标 |
-| $event.clientX | Number | 鼠标指针相对于浏览器的水平坐标 |
-| $event.clientY | Number | 鼠标指针相对于浏览器的垂直坐标 |
-| $event.pageX | Number | 鼠标指针相对于页面的水平坐标 |
-| $event.pageY | Number | 鼠标指针相对于页面的垂直坐标 |
-| $event.startX | Number | 拖拽开始时鼠标指针的水平坐标 |
-| $event.startY | Number | 拖拽开始时鼠标指针的垂直坐标 |
-| $event.dragX | Number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
-| $event.dragY | Number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
-| $event.startLeft | Number | 拖拽开始时代理元素的left值 |
-| $event.startTop | Number | 拖拽开始时代理元素的top值 |
-| $event.left | Number | 拖拽时代理元素的left值 |
-| $event.top | Number | 拖拽时代理元素的top值 |
+| $event.value | any | 需要传递的值 |
+| $event.screenX | number | 鼠标指针相对于屏幕的水平坐标 |
+| $event.screenY | number | 鼠标指针相对于屏幕的垂直坐标 |
+| $event.clientX | number | 鼠标指针相对于浏览器的水平坐标 |
+| $event.clientY | number | 鼠标指针相对于浏览器的垂直坐标 |
+| $event.pageX | number | 鼠标指针相对于页面的水平坐标 |
+| $event.pageY | number | 鼠标指针相对于页面的垂直坐标 |
+| $event.startX | number | 拖拽开始时鼠标指针的水平坐标 |
+| $event.startY | number | 拖拽开始时鼠标指针的垂直坐标 |
+| $event.dragX | number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
+| $event.dragY | number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
+| $event.startLeft | number | 拖拽开始时代理元素的left值 |
+| $event.startTop | number | 拖拽开始时代理元素的top值 |
+| $event.left | number | 拖拽时代理元素的left值 |
+| $event.top | number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
 | senderVM | FDroppable | 发送事件实例 |
 
@@ -118,23 +123,23 @@ export default {
 | $event.sourceEl | Element | 拖拽起始元素 |
 | $event.transferEl | Element | 拖拽移动元素 |
 | $event.targetEl | Element | 放置目标元素 |
-| $event.value | Any | 需要传递的值 |
-| $event.ratioX | Number | 鼠标指针相对于接收元素所占的长度比 |
-| $event.ratioY | Number | 鼠标指针相对于接收元素所占的高度比 |
-| $event.screenX | Number | 鼠标指针相对于屏幕的水平坐标 |
-| $event.screenY | Number | 鼠标指针相对于屏幕的垂直坐标 |
-| $event.clientX | Number | 鼠标指针相对于浏览器的水平坐标 |
-| $event.clientY | Number | 鼠标指针相对于浏览器的垂直坐标 |
-| $event.pageX | Number | 鼠标指针相对于页面的水平坐标 |
-| $event.pageY | Number | 鼠标指针相对于页面的垂直坐标 |
-| $event.startX | Number | 拖拽开始时鼠标指针的水平坐标 |
-| $event.startY | Number | 拖拽开始时鼠标指针的垂直坐标 |
-| $event.dragX | Number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
-| $event.dragY | Number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
-| $event.startLeft | Number | 拖拽开始时代理元素的left值 |
-| $event.startTop | Number | 拖拽开始时代理元素的top值 |
-| $event.left | Number | 拖拽时代理元素的left值 |
-| $event.top | Number | 拖拽时代理元素的top值 |
+| $event.value | any | 需要传递的值 |
+| $event.ratioX | number | 鼠标指针相对于接收元素所占的长度比 |
+| $event.ratioY | number | 鼠标指针相对于接收元素所占的高度比 |
+| $event.screenX | number | 鼠标指针相对于屏幕的水平坐标 |
+| $event.screenY | number | 鼠标指针相对于屏幕的垂直坐标 |
+| $event.clientX | number | 鼠标指针相对于浏览器的水平坐标 |
+| $event.clientY | number | 鼠标指针相对于浏览器的垂直坐标 |
+| $event.pageX | number | 鼠标指针相对于页面的水平坐标 |
+| $event.pageY | number | 鼠标指针相对于页面的垂直坐标 |
+| $event.startX | number | 拖拽开始时鼠标指针的水平坐标 |
+| $event.startY | number | 拖拽开始时鼠标指针的垂直坐标 |
+| $event.dragX | number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
+| $event.dragY | number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
+| $event.startLeft | number | 拖拽开始时代理元素的left值 |
+| $event.startTop | number | 拖拽开始时代理元素的top值 |
+| $event.left | number | 拖拽时代理元素的left值 |
+| $event.top | number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
 | senderVM | FDroppable | 发送事件实例 |
 
@@ -148,23 +153,23 @@ export default {
 | $event.sourceEl | Element | 拖拽起始元素 |
 | $event.transferEl | Element | 拖拽移动元素 |
 | $event.targetEl | Element | 放置目标元素 |
-| $event.value | Any | 需要传递的值 |
-| $event.ratioX | Number | 鼠标指针相对于接收元素所占的长度比 |
-| $event.ratioY | Number | 鼠标指针相对于接收元素所占的高度比 |
-| $event.screenX | Number | 鼠标指针相对于屏幕的水平坐标 |
-| $event.screenY | Number | 鼠标指针相对于屏幕的垂直坐标 |
-| $event.clientX | Number | 鼠标指针相对于浏览器的水平坐标 |
-| $event.clientY | Number | 鼠标指针相对于浏览器的垂直坐标 |
-| $event.pageX | Number | 鼠标指针相对于页面的水平坐标 |
-| $event.pageY | Number | 鼠标指针相对于页面的垂直坐标 |
-| $event.startX | Number | 拖拽开始时鼠标指针的水平坐标 |
-| $event.startY | Number | 拖拽开始时鼠标指针的垂直坐标 |
-| $event.dragX | Number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
-| $event.dragY | Number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
-| $event.startLeft | Number | 拖拽开始时代理元素的left值 |
-| $event.startTop | Number | 拖拽开始时代理元素的top值 |
-| $event.left | Number | 拖拽时代理元素的left值 |
-| $event.top | Number | 拖拽时代理元素的top值 |
+| $event.value | any | 需要传递的值 |
+| $event.ratioX | number | 鼠标指针相对于接收元素所占的长度比 |
+| $event.ratioY | number | 鼠标指针相对于接收元素所占的高度比 |
+| $event.screenX | number | 鼠标指针相对于屏幕的水平坐标 |
+| $event.screenY | number | 鼠标指针相对于屏幕的垂直坐标 |
+| $event.clientX | number | 鼠标指针相对于浏览器的水平坐标 |
+| $event.clientY | number | 鼠标指针相对于浏览器的垂直坐标 |
+| $event.pageX | number | 鼠标指针相对于页面的水平坐标 |
+| $event.pageY | number | 鼠标指针相对于页面的垂直坐标 |
+| $event.startX | number | 拖拽开始时鼠标指针的水平坐标 |
+| $event.startY | number | 拖拽开始时鼠标指针的垂直坐标 |
+| $event.dragX | number | 拖拽时鼠标指针相对于起始坐标的水平位移 |
+| $event.dragY | number | 拖拽时鼠标指针相对于起始坐标的垂直位移 |
+| $event.startLeft | number | 拖拽开始时代理元素的left值 |
+| $event.startTop | number | 拖拽开始时代理元素的top值 |
+| $event.left | number | 拖拽时代理元素的left值 |
+| $event.top | number | 拖拽时代理元素的top值 |
 | $event.preventDefault | Function | 阻止拖拽流程 |
 | senderVM | FDroppable | 发送事件实例 |
 
@@ -173,3 +178,6 @@ export default {
 #### cancel()
 
 取消拖拽。
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |

@@ -162,7 +162,9 @@
       description: 自定义标签右侧额外内容。
   events:
     - name: validate
-      description: 对于第一个 Field 或者所有子 UValidator：
+      description: |
+        验证时触发，或内部验证时冒泡触发。
+        对于第一个 Field 或者所有子 UValidator：
       params:
         - name: $event.valid
           type: boolean

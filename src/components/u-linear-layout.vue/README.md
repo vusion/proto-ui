@@ -1,16 +1,16 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # ULinearLayout 线性布局
 
-<s-component-labels :labels="[
-    '布局组件', '块级展示',
-]"></s-component-labels>
+**布局组件**, **块级展示**
 
+## 示例
 处理页面中各组件之间的间距，方法有很多，但经常会出现捉襟见肘的情况。
 
 比如一种常见的方法是，给一些默认组件如按钮之间添加`margin`样式。这种方法的问题在于，有时会出现间距多余的情况，使得之后样式处理常常要作一些减法，而且按钮周围的组件不一定继续是按钮，组件之间间距有n^2种情况，到最后开发者自己也摸不清处理了多少。另一种方法是，使用一些类似`margin-sm`简单的 class 来控制间距。它的典型问题是，class 经常会被滥用，而且污染了 html 结构，因为处理间距本来是一个样式问题，现在却要经常声明在 html 中，另一个问题是经常第一项或最后一项不加，缺乏一种对称性的美感。
 
 考虑到以上各种问题，我们参考一些 native 开发如 Android 的布局方式，总结出这个简单易用的布局组件——线性布局。
 
-## 示例
 ### 基本用法
 
 一般具有`inline`特性的组件，可以直接在外面套一个`<u-linear-layout>`，就会拉开间隔。
@@ -222,15 +222,15 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| direction | String | `'horizontal'` | 排列方向。可选值：`'horizontal'`或`'vertical'` |
-| gap | String | `'normal'` | 间隙大小，需自行扩展。可选值：`'shrink'`, `'none'`, `'small'`, `'normal'`或`'large'` |
-| display | String | `'block'` | 展示方式。可选值：`'inline'`, `'block'` |
-| layout | String | `'none'` | 布局方式，用于迅速调整子元素或组件的展示方式。可选值：`'none'`, `'inline'`, `'block'` |
-| type | String | | 布局模式。可选值：`'flex'`或不填 |
-| justify | String | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`, `'space-between'`。flex布局模式下还支持：`'space-around'`。普通模式下的`'space-between'`功能很弱，只支持左右分布。 |
-| alignment | String | `'stretch'` | flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| direction | enum | `'horizontal'`, `'vertical'` | `'horizontal'` | 排列方向。 |
+| gap | enum | `'shrink'`, `'none'`, `'small'`, `'normal'`, `'large'` | `'normal'` | 间隙大小，需自行扩展。 |
+| display | string | `'inline'`, `'block'` | `'block'` | 展示方式。可选值： |
+| layout | string | `'none'`, `'inline'`, `'block'` | `'none'` | 布局方式，用于迅速调整子元素或组件的展示方式。 |
+| type | string | `'flex'` |  | 布局模式。 |
+| justify | string |  | `'start'` | 主轴分布方式。普通模式下可选值：`'start'`, `'center'`, `'end'`, `'space-between'`。flex布局模式下还支持：`'space-around'`。普通模式下的`'space-between'`功能很弱，只支持左右分布。 |
+| alignment | string |  | `'stretch'` | flex布局模式下的交叉轴对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
 
 ### Slots
 

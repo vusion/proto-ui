@@ -20,7 +20,7 @@
       description: 是否禁用
     - name: constraint
       type: function
-      default:
+      default: ...
       description: 拖拽时移动路径的约束函数。需要传入一个对象，至少要包含：`startLeft`、`startTop`、`dragX`、`dragY`几个字段
   slots:
     - name: default

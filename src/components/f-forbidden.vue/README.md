@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # FForbidden 禁用
 
 禁用浏览器的一些默认功能和快捷键。
@@ -14,14 +16,14 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| contextmenu | Boolean | `false` | 是否禁止弹出右键菜单 |
-| select | Boolean | `false` | 是否禁止选择文本 |
-| copy | Boolean | `false` | 是否禁止复制 |
-| save-key | Boolean | `false` | 是否禁止另存为键 |
-| devtools-key | Boolean | `false` | 是否禁止开发者工具键 |
-| senderVM | FForbidden | 发送事件实例 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| contextmenu | boolean |  | `false` | 是否禁止弹出右键菜单 |
+| select | boolean |  | `false` | 是否禁止选择文本 |
+| copy | boolean |  | `false` | 是否禁止复制 |
+| save-key | boolean |  | `false` | 是否禁止另存为键 |
+| devtools-key | boolean |  | `false` | 是否禁止开发者工具键 |
+| senderVM | FForbidden |  | `'发送事件实例'` |  |
 
 ### Events
 

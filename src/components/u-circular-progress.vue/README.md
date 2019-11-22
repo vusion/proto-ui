@@ -1,4 +1,6 @@
-# UCircularProgress 圆型进度条
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
+# UCircularProgress 圆形进度条
 
 ## 示例
 ### 基本用法
@@ -10,9 +12,9 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| percent | Number | `0` | 百分比 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| percent | number |  | `0` | 百分比 |
 
 ### Slots
 

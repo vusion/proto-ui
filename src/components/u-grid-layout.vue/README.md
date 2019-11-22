@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UGridLayout 栅格布局
 
-<s-component-labels :labels="[
-    '布局组件', '块级展示',
-]"></s-component-labels>
+**布局组件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -227,9 +227,9 @@
 ## UGridLayout API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| gap | String | `'normal'` | 栅格之间的间隔，一个值（行列间隔）或两个值（行间隔 列间隔）。可选值: `'none'`, `'small'`, `'normal'`, `'large'` |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| gap | string |  | `'normal'` | 栅格之间的间隔，一个值（行列间隔）或两个值（行间隔 列间隔）。可选值: `'none'`, `'small'`, `'normal'`, `'large'` |
 
 ### Slots
 
@@ -240,12 +240,12 @@
 ## UGridLayoutRow API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| repeat | Number | `12` | 划分的栅格数 |
-| type | String | | 布局模式。可选值：`'flex'`或不填 |
-| justify | String | `'start'` | flex布局模式的水平分布方式，可选值：`'start'`, `'center'`, `'end'`, `'space-between'`, `'space-around'` |
-| alignment | String | `'stretch'` | flex布局模式的垂直对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| repeat | number |  | `12` | 划分的栅格数 |
+| type | string |  |  | 布局模式。可选值：`'flex'`或不填 |
+| justify | string |  | `'start'` | flex布局模式的水平分布方式，可选值：`'start'`, `'center'`, `'end'`, `'space-between'`, `'space-around'` |
+| alignment | string |  | `'stretch'` | flex布局模式的垂直对齐方式，可选值：`'start'`, `'center'`, `'end'`, `'baseline'`, `'stretch'` |
 
 ### Slots
 
@@ -256,17 +256,17 @@
 ## UGridLayoutColumn API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| span | Number | `1` | 列跨越的栅格数 |
-| offset | Number | | 列左边偏移的栅格数 |
-| pull | Number | | 列向左移动栅格数 |
-| push | Number | | 列向右移动栅格数 |
-| media-huge | Number | | 响应式布局`<=1440px`的列跨越栅格数 |
-| media-large | Number | | 响应式布局`<=1200px`的列跨越栅格数 |
-| media-medium | Number | | 响应式布局`<=960px`的列跨越栅格数 |
-| media-small | Number | | 响应式布局`<=768px`的列跨越栅格数 |
-| media-mini | Number | | 响应式布局`<=480px`的列跨越栅格数 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| span | number |  | `1` | 列跨越的栅格数 |
+| offset | number |  |  | 列左边偏移的栅格数 |
+| pull | number |  |  | 列向左移动栅格数 |
+| push | number |  |  | 列向右移动栅格数 |
+| media-huge | number |  |  | 响应式布局`<=1440px`的列跨越栅格数 |
+| media-large | number |  |  | 响应式布局`<=1200px`的列跨越栅格数 |
+| media-medium | number |  |  | 响应式布局`<=960px`的列跨越栅格数 |
+| media-small | number |  |  | 响应式布局`<=768px`的列跨越栅格数 |
+| media-mini | number |  |  | 响应式布局`<=480px`的列跨越栅格数 |
 
 ### Slots
 
@@ -282,6 +282,6 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.span | Number | 列跨越的栅格数 |
-| $event.oldSpan | Number | 旧的列跨越的栅格数 |
+| $event.span | number | 列跨越的栅格数 |
+| $event.oldSpan | number | 旧的列跨越的栅格数 |
 | senderVM | Vue | 发送事件实例 |

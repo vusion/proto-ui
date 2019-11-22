@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UDrawer 抽屉
 
 ## 示例
@@ -71,24 +73,15 @@ export default {
 ## API
 ### Props/Attrs
 
-| Attr/Prop | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| visible.sync | Boolean | `false` | 是否显示 |
-| title | String | `'提示'` | 抽屉的标题 |
-| okButton | String | `'确定'` | 确定按钮文本，如果为空则不显示 |
-| cancelButton | String | `'取消'` | 取消按钮文本，如果为空则不显示 |
-| size | String | `'normal'` | 抽屉的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
-| static | Boolean | `false` | 是否嵌入页面显示 |
-| maskClosable | Boolean | `true` | 是否点击遮罩时关闭抽屉 |
-
-### Slots
-
-| Slot | Description |
-| ---- | ----------- |
-| title | 抽屉标题自定义 |
-| head | 抽屉头部自定义 |
-| foot | 抽屉尾部自定义 |
-| (default) | 抽屉内容自定义 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| visible.sync | boolean |  | `false` | 是否显示 |
+| title | string |  | `'提示'` | 抽屉的标题 |
+| okButton | string |  | `'确定'` | 确定按钮文本，如果为空则不显示 |
+| cancelButton | string |  | `'取消'` | 取消按钮文本，如果为空则不显示 |
+| size | string |  | `'normal'` | 抽屉的尺寸。可选值：`'small'`, `'normal'`, `'large'` |
+| static | boolean |  | `false` | 是否嵌入页面显示 |
+| maskClosable | boolean |  | `true` | 是否点击遮罩时关闭抽屉 |
 
 ### Events
 
@@ -122,34 +115,15 @@ export default {
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| ok | Boolean | 是否确定 |
+| ok | boolean | 是否确定 |
 | $event.preventDefault | Function | 阻止关闭流程 |
 | senderVM | UDrawer | 发送事件实例 |
 
 #### @close
+
 关闭抽屉时触发
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| ok | Boolean | 是否确定 |
+| ok | boolean | 是否确定 |
 | senderVM | UDrawer | 发送事件实例 |
-
-### Static Methods
-
-#### alert(content, title)
-
-打开只有确定按钮的抽屉
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| content | String | 抽屉内容 |
-| title | String | 抽屉标题 |
-
-#### confirm(content, title)
-
-打开有确定和取消按钮的抽屉
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| content | String | 抽屉内容 |
-| title | String | 抽屉标题 |

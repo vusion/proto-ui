@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # URadios 单选组
 
-<s-component-labels :labels="[
-    'UI 组件', '表单控件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **表单控件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -44,11 +44,11 @@
 ## URadios API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Any | | 当前选择的值 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | any |  |  | 当前选择的值 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Slots
 
@@ -64,8 +64,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择项的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | any | 选择项的值 |
+| $event.oldValue | any | 旧的值 |
 | $event.itemVM | URadio | 选择项子组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | URadios | 发送事件实例 |
@@ -76,7 +76,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Any | 选择项的值 |
+| $event | any | 选择项的值 |
 | senderVM | URadios | 发送事件实例 |
 
 #### @select
@@ -85,9 +85,9 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 改变后的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.itemVM | URadio |  选择项子组件 |
+| $event.value | any | 改变后的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.itemVM | URadio | 选择项子组件 |
 | senderVM | URadios | 发送事件实例 |
 
 #### @change
@@ -96,20 +96,20 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选择项的值 |
-| $event.oldValue | Any | 旧的值 |
-| $event.item | Object | 选择项相关对象 |
+| $event.value | any | 选择项的值 |
+| $event.oldValue | any | 旧的值 |
+| $event.item | object | 选择项相关对象 |
 | $event.itemVM | URadio | 选择项子组件 |
 | senderVM | URadios | 发送事件实例 |
 
 ## URadio API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| label | Any | | 单选框标签。用于关联单选组的值 |
-| readonly | Boolean | `false` | 禁用只读 |
-| disabled | Boolean | `false` | 禁用此项 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| label | any |  |  | 单选框标签。用于关联单选组的值 |
+| readonly | boolean |  | `false` | 禁用只读 |
+| disabled | boolean |  | `false` | 禁用此项 |
 
 ### Slots
 
@@ -125,7 +125,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.label | Any | 此项的标签 |
+| $event.label | any | 此项的标签 |
 | $event.itemVM | URadio | 此组件 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | URadio | 发送事件实例 |

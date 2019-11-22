@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UCarousel 幻灯片
 
 ## 示例
@@ -66,16 +68,14 @@
 ## UCarousel API
 ### Props/Attrs
 
-| Prop | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync | Any |  | 播放位置 |
-| autoplay | Boolean | `true` | 是否自动播放 |
-| loop | Boolean | `true` | 是否循环播放，即首尾连接 |
-| interval | Number | `4000` | 幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换 |
-| direction | String | `'right'` | 幻灯片播放方向 |
-| animation | String | | 幻灯片过渡动画 |
-
-<!-- | router | Boolean | `false` | 是否根据vue-router来控制选择播放至哪个位置 | -->
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync | any |  |  | 播放位置 |
+| autoplay | boolean |  | `true` | 是否自动播放 |
+| loop | boolean |  | `true` | 是否循环播放，即首尾连接 |
+| interval | number |  | `4000` | 幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换 |
+| direction | string |  | `'right'` | 幻灯片播放方向 |
+| animation | string |  |  | 幻灯片过渡动画 |
 
 ### Slots
 
@@ -91,8 +91,8 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选中项的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | any | 选中项的值 |
+| $event.oldValue | any | 旧的值 |
 | $event.itemVM | UCarouselItem | 选中项实例 |
 | $event.preventDefault | Function | 阻止选择流程 |
 | senderVM | UCarousel | 发送事件实例 |
@@ -103,19 +103,18 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Any | 选中项的值 |
-| $event.oldValue | Any | 旧的值 |
+| $event.value | any | 选中项的值 |
+| $event.oldValue | any | 旧的值 |
 | $event.itemVM | UCarouselItem | 选中项实例 |
 | senderVM | UCarousel | 发送事件实例 |
 
 ## UCarouselItem API
-
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| title | String | | 该项的标题 |
-| value | Any | | 该项的值 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| title | string |  |  | 该项的标题 |
+| value | any |  |  | 该项的值 |
 
 ### Slots
 

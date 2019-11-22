@@ -1,6 +1,8 @@
-# Sample
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
 
-## Examples
+# USample 样本
+
+## 示例
 ### Basic
 
 ``` html
@@ -16,10 +18,12 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| color | String | | Try 'primary' |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| color | string |  |  | Try 'primary' |
 
 ### Slots
 
 #### (default)
+
+

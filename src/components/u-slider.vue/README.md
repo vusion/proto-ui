@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # USlider 滑块
 
-<s-component-labels :labels="[
-    'UI 组件', '表单控件', '块级展示',
-]"></s-component-labels>
+**UI 组件**, **表单控件**, **块级展示**
 
 ## 示例
 ### 基本用法
@@ -60,16 +60,16 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value.sync, v-model | Number | `0` | 滑块的值 |
-| min | Number | `0` | 最小值 |
-| max | Number | `100` | 最大值 |
-| step | Number | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量。`0`表示连续 |
-| precision | Number | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
-| range | Array | `[]` | 进一步对`value`限制，通常传入一个数组，第一个值表示范围开始值，第二个值表示范围的结束值。 |
-| readonly | Boolean | `false` | 是否只读 |
-| disabled | Boolean | `false` | 是否禁用 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value.sync, v-model | number |  | `0` | 滑块的值 |
+| min | number |  | `0` | 最小值 |
+| max | number |  | `100` | 最大值 |
+| step | number |  | `1` | 间隔，表示点击按钮或按上下键所增加或减少的量。`0`表示连续 |
+| precision | number |  | `1` | 精度，表示数字要保留的最小单位，整数、小数均可 |
+| range | Array |  | `[]` | 进一步对`value`限制，通常传入一个数组，第一个值表示范围开始值，第二个值表示范围的结束值。 |
+| readonly | boolean |  | `false` | 是否只读 |
+| disabled | boolean |  | `false` | 是否禁用 |
 
 ### Events
 
@@ -79,7 +79,7 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event | Number | 滑块的值 |
+| $event | number | 滑块的值 |
 | senderVM | USlider | 发送事件实例 |
 
 #### @slide
@@ -88,9 +88,9 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Number | 滑块的值 |
-| $event.oldValue | Number | 旧的值 |
-| $event.percent | Number | 滑块位置所在的百分比 |
+| $event.value | number | 滑块的值 |
+| $event.oldValue | number | 旧的值 |
+| $event.percent | number | 滑块位置所在的百分比 |
 | senderVM | USlider | 发送事件实例 |
 
 #### @change
@@ -99,6 +99,6 @@
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| $event.value | Number | 改变后的值 |
-| $event.oldValue | Number | 旧的值 |
+| $event.value | number | 改变后的值 |
+| $event.oldValue | number | 旧的值 |
 | senderVM | USlider | 发送事件实例 |

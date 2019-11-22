@@ -2,6 +2,8 @@
   title: 选择框
   labels: [UI 组件, 表单控件, 行内展示]
   description: 下拉选择框，支持支持单选、多选、搜索等功能，用于代替原生的选择框。
+  docs:
+    data: 数据相关
   attrs:
     - name: value.sync, v-model
       type: any
@@ -130,7 +132,7 @@
           type: USelect
           description: 发送事件实例
     - name: select
-      description: 选择某一项时触发
+      description: 选择某一项时触发。单选模式中：
       params:
         - name: $event.value
           type: any
@@ -154,7 +156,7 @@
           type: USelect
           description: 发送事件实例
     - name: select
-      description: 多选模式中：
+      description: 选择某一项时触发。多选模式中：
       params:
         - name: $event.selected
           type: boolean
@@ -187,7 +189,7 @@
           type: USelect
           description: 发送事件实例
     - name: change
-      description: 选择值改变时触发
+      description: 选择值改变时触发。单选模式中：
       params:
         - name: $event.value
           type: any
@@ -211,7 +213,7 @@
           type: USelect
           description: 发送事件实例
     - name: change
-      description: 多选模式中：
+      description: 选择值改变时触发。多选模式中：
       params:
         - name: $event.value
           type: Array

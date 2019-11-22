@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # UBadge 徽章
 
-<s-component-labels :labels="[
-    'UI 组件', '行内展示',
-]"></s-component-labels>
+**UI 组件**, **行内展示**
 
 ## 示例
 ### 基本用法
@@ -40,12 +40,12 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| value | Number, String |  | 显示的值 |
-| max | Number |  | 最大值，超过最大值会显示为`max+`的形式，要求`value`是 `Number`类型。 |
-| corner | Boolean | `false` | 是否插入到右上角 |
-| dot | Boolean | `false` | 是否显示为小圆点 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| value | number, string |  |  | 显示的值 |
+| max | number |  |  | 最大值，超过最大值会显示为`max+`的形式，要求`value`是 `Number`类型。 |
+| corner | boolean |  | `false` | 是否插入到右上角 |
+| dot | boolean |  | `false` | 是否显示为小圆点 |
 
 ### Slots
 

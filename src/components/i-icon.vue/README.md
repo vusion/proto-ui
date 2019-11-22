@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # IIcon 图标
 
-<s-component-labels :labels="[
-    '图标组件', '行内展示',
-]"></s-component-labels>
+**图标组件**, **行内展示**
 
 ## 示例
 ### 使用方法
@@ -29,6 +29,6 @@
 ## API
 ### Props/Attrs
 
-| Prop/Attr | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| name | String | | 图标名称 |
+| Prop/Attr | Type | Options | Default | Description |
+| --------- | ---- | ------- | ------- | ----------- |
+| name | string |  |  | 图标名称 |

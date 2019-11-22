@@ -1,3 +1,5 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # FCollapseTransition 折叠过渡
 
 如果要给某些节点添加展开/收起动画效果，但不知道节点的高度，这时动画光靠 CSS 的`transition`属性是实现不了的，需要用 JS 进行计算。
@@ -45,3 +47,10 @@ export default {
 }
 </style>
 ```
+
+## API
+### Slots
+
+#### (default)
+
+需要添加动画的元素或组件

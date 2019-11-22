@@ -1,8 +1,8 @@
+<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
+
 # ULogo 标识
 
-<s-component-labels :labels="[
-    'UI 组件', '行内展示',
-]"></s-component-labels>
+**UI 组件**, **行内展示**
 
 常见的网站标识。该组件作为一个示例，业务中请自行拓展。
 
@@ -24,3 +24,5 @@
     <u-logo color="inverse" href="https://vusion.github.io/icon-sets" target="_blank">图标库</u-logo>
 </u-linear-layout>
 ```
+
+## API
