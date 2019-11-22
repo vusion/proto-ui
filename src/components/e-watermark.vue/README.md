@@ -1,5 +1,7 @@
 # EWatermark 水印
 
+## 示例
+
 ``` html
 <e-watermark text="Watermark"></e-watermark>
 ```

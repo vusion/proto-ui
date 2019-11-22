@@ -9,11 +9,56 @@
 
 父组件会将多个子组件收集在`itemVMs`数组中，子组件将父组件标记为`parentVM`变量。这段过程发生在组件的`created`阶段。在`destroyed`阶段回收这些数据。
 
-<u-h2-tabs router>
-    <u-h2-tab title="基础示例" to="/components/m-parent/examples"></u-h2-tab>
-    <u-h2-tab hidden title="拓展应用" to="/components/m-parent/advanced"></u-h2-tab>
-    <u-h2-tab v-if="NODE_ENV === 'development'" title="测试用例" to="/components/m-parent/cases"></u-h2-tab>
-    <u-h2-tab title="API" to="/components/m-parent/api"></u-h2-tab>
-</u-h2-tabs>
+## 基础示例
 
-<router-view></router-view>
+### 基本用法
+
+``` html
+<m-parent>
+    <m-child>水杯</m-child>
+    <m-child>咖啡</m-child>
+    <m-child>坚果</m-child>
+</m-parent>
+```
+
+## MParent
+
+### Options
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| childName | String | `m-child` | 子组件的名称 |
+
+### Data
+
+| Data | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| itemVMs | Array\<MChild\> | `[]` | 子组件集合 |
+
+### Slots
+
+#### (default)
+
+插入`<m-child>`子组件。
+
+## MChild
+
+继承 [MEmitter](../m-emitter)。
+
+### Options
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| parentName | String | `m-parent` | 父组件的名称 |
+
+### Data
+
+| Data | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| parentVM | MParent |  | 父组件实例 |
+
+### Slots
+
+#### (default)
+
+插入文本或 HTML。
