@@ -47,7 +47,7 @@
     - name: default
       description: 插入文本或 HTML。
   events:
-    - name: "@before-check"
+    - name: before-check
       description: 切换选中状态前触发
       params:
         - name: $event.value
@@ -62,7 +62,7 @@
         - name: senderVM
           type: UCheckbox
           description: 发送事件实例
-    - name: "@input"
+    - name: input
       description: 切换选中状态时触发
       params:
         - name: $event
@@ -71,7 +71,7 @@
         - name: senderVM
           type: UCheckbox
           description: 发送事件实例
-    - name: "@check"
+    - name: check
       description: 切换选中状态时触发
       params:
         - name: $event.value
@@ -86,7 +86,7 @@
         - name: senderVM
           type: UCheckbox
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 选中状态改变时触发
       params:
         - name: $event.value

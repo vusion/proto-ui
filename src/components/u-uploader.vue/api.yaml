@@ -35,7 +35,7 @@
     - name: default
       description: 插入文本或HTML。
   events:
-    - name: "@before-send"
+    - name: before-send
       description: 发送前触发
       params:
         - name: $event.data
@@ -53,7 +53,7 @@
         - name: senderVM
           type: UUploader
           description: 发送事件对象
-    - name: "@send"
+    - name: send
       description: 刚发送时触发
       params:
         - name: $event.data
@@ -65,7 +65,7 @@
         - name: senderVM
           type: UUploader
           description: 发送事件对象
-    - name: "@progress"
+    - name: progress
       description: 发送进度改变时触发，在上传进度条时使用
       params:
         - name: $event.data
@@ -74,7 +74,7 @@
         - name: senderVM
           type: UUploader
           description: 发送事件对象
-    - name: "@complete"
+    - name: complete
       description: 上传完成时触发
       params:
         - name: $event.xml
@@ -83,7 +83,7 @@
         - name: senderVM
           type: UUploader
           description: 发送事件对象
-    - name: "@success"
+    - name: success
       description: 上传成功时触发
       params:
         - name: $event.data
@@ -95,7 +95,7 @@
         - name: senderVM
           type: UUploader
           description: 发送事件对象
-    - name: "@error"
+    - name: error
       description: 上传报错时触发
       params:
         - name: $event.name

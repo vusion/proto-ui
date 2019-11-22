@@ -33,7 +33,7 @@
     - name: default
       description: 插入`<u-carousel-item>`子组件。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一页前触发
       params:
         - name: $event.value
@@ -51,7 +51,7 @@
         - name: senderVM
           type: UCarousel
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一页时触发
       params:
         - name: $event.value

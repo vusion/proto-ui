@@ -18,7 +18,7 @@
     - name: default
       description: 插入`<u-collapse-item>`子组件。
   events:
-    - name: "@toggle"
+    - name: toggle
       description: 展开/折叠某面板时触发
       params:
         - name: $event.expanded
@@ -56,7 +56,7 @@
     - name: extra
       description: 在右侧可以附加内容。
   events:
-    - name: "@before-toggle"
+    - name: before-toggle
       description: 展开/折叠此面板前触发
       params:
         - name: $event.expanded
@@ -71,7 +71,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@toggle"
+    - name: toggle
       description: 展开/折叠某面板时触发
       params:
         - name: $event.expanded

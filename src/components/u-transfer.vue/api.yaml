@@ -20,7 +20,7 @@
   slots:
     - name: default
   events:
-    - name: "@transfer"
+    - name: transfer
       description: 数据转移时触发
       params:
         - name: $event.source
@@ -38,7 +38,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 数据改变时触发
       params:
         - name: $event.source

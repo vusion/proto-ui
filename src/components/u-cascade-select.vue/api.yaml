@@ -37,7 +37,7 @@
       default: false
       description: 是否禁用
   events:
-    - name: "@input"
+    - name: input
       description: 选择某一项时触发
       params:
         - name: $event
@@ -46,7 +46,7 @@
         - name: senderVM
           type: UCascadeSelect
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一项时触发
       params:
         - name: $event.level
@@ -67,7 +67,7 @@
         - name: senderVM
           type: UCascadeSelect
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 选择值改变时触发
       params:
         - name: $event.value

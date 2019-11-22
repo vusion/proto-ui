@@ -14,13 +14,13 @@
       default: false
       description: Disabled
   events:
-    - name: "@input"
+    - name: input
       description: Emit when checking.
       params:
         - Property: value
           type: boolean, null
           description: Checked value
-    - name: "@change"
+    - name: change
       description: Emit when change value.
       params:
         - Property: newValue

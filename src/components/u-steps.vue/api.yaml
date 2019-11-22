@@ -18,7 +18,7 @@
     - name: default
       description: 插入`<u-step>`子组件。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一步骤前触发
       params:
         - name: $event.value
@@ -39,7 +39,7 @@
         - name: senderVM
           type: USteps
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一步骤时触发
       params:
         - name: $event.value

@@ -35,7 +35,7 @@
       default: false
       description: 是否禁用
   events:
-    - name: "@input"
+    - name: input
       description: 拖动滑块时触发
       params:
         - name: $event
@@ -44,7 +44,7 @@
         - name: senderVM
           type: USlider
           description: 发送事件实例
-    - name: "@slide"
+    - name: slide
       description: 拖动滑块时触发
       params:
         - name: $event.value
@@ -59,7 +59,7 @@
         - name: senderVM
           type: USlider
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 滑块的值改变时触发
       params:
         - name: $event.value

@@ -75,7 +75,7 @@
     - name: default
       description: 插入需要布局的元素。
   events:
-    - name: "@responsive"
+    - name: responsive
       description: 响应式布局引发栅格变化时触发
       params:
         - name: $event.span

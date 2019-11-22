@@ -61,7 +61,7 @@
     - name: default
       description: 插入需要弹出的内容。
   events:
-    - name: "@before-open"
+    - name: before-open
       description: 弹出前触发。
       params:
         - name: $event.preventDefault
@@ -70,7 +70,7 @@
         - name: senderVM
           type: MPopper
           description: 发送事件实例
-    - name: "@open"
+    - name: open
       description: 弹出时触发。
       params:
         - name: $event
@@ -79,7 +79,7 @@
         - name: senderVM
           type: MPopper
           description: 发送事件实例
-    - name: "@before-close"
+    - name: before-close
       description: 隐藏前触发。
       params:
         - name: $event.preventDefault
@@ -88,7 +88,7 @@
         - name: senderVM
           type: MPopper
           description: 发送事件实例
-    - name: "@close"
+    - name: close
       description: 隐藏时触发。
       params:
         - name: $event
@@ -97,10 +97,10 @@
         - name: senderVM
           type: MPopper
           description: 发送事件实例
-    - name: "@before-toggle"
+    - name: before-toggle
       description: "@deprecated"
       params: []
-    - name: "@toggle"
+    - name: toggle
       description: "@deprecated"
       params: []
   methods:

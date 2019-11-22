@@ -12,7 +12,7 @@
     - name: transfer
       description: 自定义的移动元素。
       params: []
-    - name: "@dragenter"
+    - name: dragenter
       description: 拖拽进入该元素时触发
       params:
         - name: $event.originVM
@@ -78,7 +78,7 @@
         - name: senderVM
           type: FDroppable
           description: 发送事件实例
-    - name: "@dragleave"
+    - name: dragleave
       description: 拖拽离开该元素时触发
       params:
         - name: $event.originVM
@@ -144,7 +144,7 @@
         - name: senderVM
           type: FDroppable
           description: 发送事件实例
-    - name: "@dragover"
+    - name: dragover
       description: 拖拽在该元素上方时触发
       params:
         - name: $event.originVM
@@ -216,7 +216,7 @@
         - name: senderVM
           type: FDroppable
           description: 发送事件实例
-    - name: "@drop"
+    - name: drop
       description: 拖拽放置时触发
       params:
         - name: $event.originVM

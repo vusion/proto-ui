@@ -31,7 +31,7 @@
     - name: right
       description: 右部区域。
   events:
-    - name: "@click"
+    - name: click
       description: 点击此项时触发，与原生 click 事件不同的是，它只会在非只读和禁用的情况下触发。
       params:
         - name: $event
@@ -40,7 +40,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一项前触发
       params:
         - name: $event.value
@@ -61,7 +61,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@input"
+    - name: input
       description: 选择某一项时触发
       params:
         - name: $event
@@ -70,7 +70,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一项时触发
       params:
         - name: $event.value
@@ -94,7 +94,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 选择值改变时触发
       params:
         - name: $event.value
@@ -158,7 +158,7 @@
     - name: default
       description: 插入文本或 HTML。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择此项前触发
       params:
         - name: $event.value
@@ -176,7 +176,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@before-navigate"
+    - name: before-navigate
       description: 使用router相关属性切换路由前触发
       params:
         - name: $event.to
@@ -194,7 +194,7 @@
         - name: senderVM
           type: Vue
           description: 发送事件实例
-    - name: "@navigate"
+    - name: navigate
       description: 使用router相关属性切换路由时触发
       params:
         - name: $event.to

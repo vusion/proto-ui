@@ -174,7 +174,7 @@
     - name: empty
       description: 自定义空态。
   events:
-    - name: "@before-load"
+    - name: before-load
       description: 加载前触发
       params:
         - name: $event.preventDefault
@@ -183,7 +183,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@load"
+    - name: load
       description: 加载时触发
       params:
         - name: $event
@@ -192,7 +192,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@before-page"
+    - name: before-page
       description: 切换分页前触发
       params:
         - name: $event.size
@@ -213,7 +213,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@page"
+    - name: page
       description: 切换分页或改变分页大小时触发
       params:
         - name: $event.size
@@ -231,7 +231,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@before-sort"
+    - name: before-sort
       description: 排序前触发
       params:
         - name: $event.field
@@ -249,7 +249,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@sort"
+    - name: sort
       description: 排序时触发
       params:
         - name: $event.field
@@ -264,7 +264,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@before-filter"
+    - name: before-filter
       description: 过滤前触发
       params:
         - name: $event.field
@@ -276,7 +276,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@filter"
+    - name: filter
       description: 过滤时触发
       params:
         - name: $event
@@ -285,7 +285,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一项前触发
       params:
         - name: $event.value
@@ -306,7 +306,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@input"
+    - name: input
       description: 选择某一项时触发
       params:
         - name: $event
@@ -315,7 +315,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一项时触发
       params:
         - name: $event.value
@@ -336,7 +336,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@check"
+    - name: check
       description: 多选模式中，选中节点时触发
       params:
         - name: $event.checked
@@ -354,7 +354,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 多选模式中：
       params:
         - name: $event.oldValue
@@ -369,7 +369,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@resize"
+    - name: resize
       description: 调整列宽时触发
       params:
         - name: $event.columnVM

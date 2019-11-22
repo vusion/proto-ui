@@ -51,7 +51,7 @@
       default: false
       description: 是否显示页面跳转输入框
   events:
-    - name: "@change"
+    - name: change
       description: 页码改变时触发
       params:
         - name: $event.page
@@ -63,7 +63,7 @@
         - name: senderVM
           type: UComboPagination
           description: 发送事件实例
-    - name: "@change-page-size"
+    - name: change-page-size
       description: 每页大小改变时触发
       params:
         - name: $event.page

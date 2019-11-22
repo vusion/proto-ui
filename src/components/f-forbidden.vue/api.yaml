@@ -27,7 +27,7 @@
       default: 发送事件实例
       description: ""
   events:
-    - name: "@contextmenu"
+    - name: contextmenu
       description: 弹出右键菜单时触发
       params:
         - name: $event
@@ -36,7 +36,7 @@
         - name: senderVM
           type: FForbidden
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择文本时触发
       params:
         - name: $event
@@ -45,7 +45,7 @@
         - name: senderVM
           type: FForbidden
           description: 发送事件实例
-    - name: "@copy"
+    - name: copy
       description: 复制时触发
       params:
         - name: $event
@@ -54,7 +54,7 @@
         - name: senderVM
           type: FForbidden
           description: 发送事件实例
-    - name: "@save-key"
+    - name: save-key
       description: 按保存键时触发
       params:
         - name: $event
@@ -63,7 +63,7 @@
         - name: senderVM
           type: FForbidden
           description: 发送事件实例
-    - name: "@devtools-key"
+    - name: devtools-key
       description: 按开发人员工具键时触发
       params:
         - name: $event

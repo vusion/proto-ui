@@ -18,7 +18,7 @@
     - name: default
     - description: 插入文本或HTML
   events:
-    - name: "@before-toggle"
+    - name: before-toggle
       description: 切换开关状态前触发
       params:
         - name: $event.value
@@ -33,7 +33,7 @@
         - name: senderVM
           type: USwitch
           description: 发送事件实例
-    - name: "@input"
+    - name: input
       description: 切换开关状态时触发
       params:
         - name: $event
@@ -42,7 +42,7 @@
         - name: senderVM
           type: USwitch
           description: 发送事件实例
-    - name: "@on"
+    - name: on
       description: 开关打开时触发
       params:
         - name: $event
@@ -51,7 +51,7 @@
         - name: senderVM
           type: USwitch
           description: 发送事件实例
-    - name: "@off"
+    - name: off
       description: 开关关闭时触发
       params:
         - name: $event
@@ -60,7 +60,7 @@
         - name: senderVM
           type: USwitch
           description: 发送事件实例
-    - name: "@toggle"
+    - name: toggle
       description: 切换开关状态时触发
       params:
         - name: $event.value
@@ -72,7 +72,7 @@
         - name: senderVM
           type: USwitch
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 开关状态改变时触发
       params:
         - name: $event.value

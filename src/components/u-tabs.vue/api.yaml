@@ -28,7 +28,7 @@
     - name: extra
       description: 在标签右侧可以附加组件。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一页前触发
       params:
         - name: $event.value
@@ -49,7 +49,7 @@
         - name: senderVM
           type: UTabs
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一页时触发
       params:
         - name: $event.value
@@ -67,7 +67,7 @@
         - name: senderVM
           type: UTabs
           description: 发送事件实例
-    - name: "@before-close"
+    - name: before-close
       description: 关闭某一页前触发
       params:
         - name: $event.value
@@ -85,7 +85,7 @@
         - name: senderVM
           type: UTabs
           description: 发送事件实例
-    - name: "@close"
+    - name: close
       description: 关闭某一页时触发
       params:
         - name: $event.value

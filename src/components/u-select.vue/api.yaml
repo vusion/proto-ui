@@ -99,7 +99,7 @@
     - name: default
       description: 插入`<u-select-item>`、`<u-select-divider>`或`<u-select-group>`子组件。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择某一项前触发
       params:
         - name: $event.value
@@ -120,7 +120,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@input"
+    - name: input
       description: 选择某一项时触发
       params:
         - name: $event
@@ -129,7 +129,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 选择某一项时触发
       params:
         - name: $event.value
@@ -153,7 +153,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@select"
+    - name: select
       description: 多选模式中：
       params:
         - name: $event.selected
@@ -186,7 +186,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 选择值改变时触发
       params:
         - name: $event.value
@@ -210,7 +210,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@change"
+    - name: change
       description: 多选模式中：
       params:
         - name: $event.value
@@ -225,7 +225,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@before-open"
+    - name: before-open
       description: 弹出前触发。
       params:
         - name: $event.preventDefault
@@ -234,7 +234,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@open"
+    - name: open
       description: 弹出时触发。
       params:
         - name: $event
@@ -243,7 +243,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@before-close"
+    - name: before-close
       description: 隐藏前触发。
       params:
         - name: $event.preventDefault
@@ -252,7 +252,7 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@close"
+    - name: close
       description: 隐藏时触发。
       params:
         - name: $event
@@ -261,13 +261,13 @@
         - name: senderVM
           type: USelect
           description: 发送事件实例
-    - name: "@before-toggle"
+    - name: before-toggle
       description: "@deprecated"
       params: []
-    - name: "@toggle"
+    - name: toggle
       description: "@deprecated"
       params: []
-    - name: "@before-load"
+    - name: before-load
       description: 加载前触发
       params:
         - name: $event.preventDefault
@@ -276,7 +276,7 @@
         - name: senderVM
           type: UTableView
           description: 发送事件实例
-    - name: "@load"
+    - name: load
       description: 加载时触发
       params:
         - name: $event
@@ -322,7 +322,7 @@
     - name: default
       description: 插入文本或 HTML。
   events:
-    - name: "@before-select"
+    - name: before-select
       description: 选择此项前触发
       params:
         - name: $event.value

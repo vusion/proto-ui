@@ -27,7 +27,7 @@
       default: false
       description: 是否可以关闭提示
   events:
-    - name: "@open"
+    - name: open
       description: 弹出提示时触发
       params:
         - name: $event.text
@@ -42,7 +42,7 @@
         - name: senderVM
           type: UToast
           description: 发送事件实例
-    - name: "@before-close"
+    - name: before-close
       description: 关闭提示前触发
       params:
         - name: $event.text
@@ -60,7 +60,7 @@
         - name: senderVM
           type: UToast
           description: 发送事件实例
-    - name: "@close"
+    - name: close
       description: 关闭提示时触发
       params:
         - name: $event.text

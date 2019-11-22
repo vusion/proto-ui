@@ -22,25 +22,21 @@
   computed:
     - name: touched
       type: boolean
-      default: null
       description: 用户是否触碰
     - name: dirty
       type: boolean
-      default: null
       description: 用户是否修改值
     - name: valid
       type: boolean
-      default: null
       description: 验证是否通过
     - name: firstError
       type: string
-      default: null
       description: 第一个错误提示消息
   slots:
     - name: default
       description: 插入`<u-form-item>`子组件。
   events:
-    - name: "@validate"
+    - name: validate
       description: 验证时触发
       params:
         - name: $event.valid
@@ -165,7 +161,7 @@
     - name: extra
       description: 自定义标签右侧额外内容。
   events:
-    - name: "@validate"
+    - name: validate
       description: 对于第一个 Field 或者所有子 UValidator：
       params:
         - name: $event.valid

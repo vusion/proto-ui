@@ -36,7 +36,7 @@
     - name: default
       description: 添加文本或 HTML。
   events:
-    - name: "@before-add"
+    - name: before-add
       description: 添加前触发
       params:
         - name: $event.item
@@ -54,7 +54,7 @@
         - name: senderVM
           type: UFormTableView
           description: 发送事件实例
-    - name: "@add"
+    - name: add
       description: 添加时触发
       params:
         - name: $event.item
@@ -69,7 +69,7 @@
         - name: senderVM
           type: UFormTableView
           description: 发送事件实例
-    - name: "@before-remove"
+    - name: before-remove
       description: 删除前触发
       params:
         - name: $event.item
@@ -87,7 +87,7 @@
         - name: senderVM
           type: UFormTableView
           description: 发送事件实例
-    - name: "@remove"
+    - name: remove
       description: 删除时触发
       params:
         - name: $event.item
@@ -102,7 +102,7 @@
         - name: senderVM
           type: UFormTableView
           description: 发送事件实例
-    - name: "@splice"
+    - name: splice
       description: 数量变更（添加/删除）时触发
       params:
         - name: $event.item

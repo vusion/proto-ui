@@ -25,7 +25,7 @@
       default: click
       description: 展开/折叠的触发方式。可选值：`'click'`表示整行点击均可触发、`'click-expander'`表示仅点击小箭头时触发
   events:
-    - name: "@toggle"
+    - name: toggle
       description: 展开/折叠某分组时触发
       params:
         - name: $event.expanded
@@ -89,7 +89,7 @@
     - name: extra
       description: 在右侧可以附加内容。
   events:
-    - name: "@before-toggle"
+    - name: before-toggle
       description: 展开/折叠此分组前触发
       params:
         - name: $event.expanded
@@ -104,7 +104,7 @@
         - name: senderVM
           type: MGroup
           description: 发送事件实例
-    - name: "@toggle"
+    - name: toggle
       description: 展开/折叠某分组时触发
       params:
         - name: $event.expanded
