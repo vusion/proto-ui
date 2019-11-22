@@ -4,3 +4,5 @@
       type: string
       default: null
       description: Try 'primary'
+  slots:
+    - name: default

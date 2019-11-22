@@ -22,6 +22,4 @@
 
 ### Slots
 
-| Slot | Description |
-| ---- | ----------- |
-| (default) | |
+#### (default)

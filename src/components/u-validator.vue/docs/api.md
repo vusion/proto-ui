@@ -15,9 +15,7 @@
 | validating-process | Function | | 验证前对值进行预处理 |
 | manual | Boolean | `false` | 是否采取手动验证。如果为`true`，则 UValidator 将不会在监听到子组件的`input`、`change`和`blur`事件后进行相应的验证。 |
 
-### Computed
-
-对于第一个 Field 或者所有子 UValidator：
+### Computed 对于第一个 Field 或者所有子 UValidator：
 
 | Computed | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |

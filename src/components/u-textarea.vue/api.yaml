@@ -1,4 +1,6 @@
 - name: u-textarea
+  labels: 'UI 组件', '表单控件', '行内展示'
+  description: 多行输入组件，在原生`<textarea>`控件基础上进行了一些功能扩展。
   attrs:
     - name: value
       type: string
@@ -109,33 +111,6 @@
         - name: $event.value
           type: string
           description: 清空后的值
-        - name: $event.oldValue
-          type: string
-          description: 旧的值
-        - name: senderVM
-          type: UTextarea
-          description: 发送事件实例
-    - name: "@before-reset"
-      description: 重置前触发。
-      params:
-        - name: $event.value
-          type: string
-          description: 重置后的值
-        - name: $event.oldValue
-          type: string
-          description: 待重置的值
-        - name: $event.preventDefault
-          type: Function
-          description: 阻止重置流程
-        - name: senderVM
-          type: UTextarea
-          description: 发送事件实例
-    - name: "@reset"
-      description: 重置时触发。
-      params:
-        - name: $event.value
-          type: string
-          description: 重置后的值
         - name: $event.oldValue
           type: string
           description: 旧的值

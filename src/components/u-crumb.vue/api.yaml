@@ -1,4 +1,5 @@
 - name: u-crumb
+  labels: 'UI 组件', '路由链接', '块级展示'
   attrs:
     - name: 无
       type: ""
@@ -9,6 +10,10 @@
       description: 插入`<u-crumb-item>`子组件。
 - name: u-crumb-item
   attrs:
+    - name: type
+      type: string
+      default: link
+      description: 类型。可选值：`'link'`表示链接，可点击，`'text'`只显示为默认颜色文本，不可点。
     - name: href
       type: string
       default: null
@@ -35,14 +40,6 @@
       type: boolean
       default: false
       description: 是否不可点击。如果为`true`，则不会响应`click`事件。
-    - name: current
-      type: boolean
-      default: false
-      description: 是否为当前页。与`disabled`类似，只是显示为默认文字颜色，如果为`true`，则不会响应`click`事件。
-    - name: readonly
-      type: boolean
-      default: false
-      description: 是否为只读。与`current`类似，标识为只读，不对应任何链接。
   slots:
     - name: default
       description: 插入文本或 HTML。

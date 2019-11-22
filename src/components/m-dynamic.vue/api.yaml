@@ -1,4 +1,5 @@
 - name: m-dynamic
+  mixins: m-emitter
   attrs:
     - name: data
       type: Array

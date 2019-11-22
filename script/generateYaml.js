@@ -3,27 +3,36 @@ const path = require('path');
 const MarkdownIt = require('markdown-it');
 const YAML = require('yaml');
 const { walkSync } = require('./utils');
+
 function compareHeader(a, b) {
     return parseInt(a[a.length - 1]) - parseInt(b[b.length - 1]);
 }
 class ComponentMeta {
     constructor({
-        name, attrParser, evtParser, slotsParser, methodsParser,
+        name, optionParser, dataParser, attrParser, computedParser, evtParser, slotsParser, methodsParser, ariaParser,
     }) {
+        this.optionParser = optionParser;
+        this.dataParser = dataParser;
         this.attrParser = attrParser;
+        this.computedParser = computedParser;
         this.evtParser = evtParser;
         this.slotsParser = slotsParser;
         this.methodsParser = methodsParser;
+        this.ariaParser = ariaParser;
         this.name = name;
     }
 
     toYaml() {
         const obj = {
             name: this.name,
+            ...this.optionParser.toYamlObject(),
+            ...this.dataParser.toYamlObject(),
             ...this.attrParser.toYamlObject(),
+            ...this.computedParser.toYamlObject(),
             ...this.slotsParser.toYamlObject(),
             ...this.evtParser.toYamlObject(),
             ...this.methodsParser.toYamlObject(),
+            ...this.ariaParser.toYamlObject(),
         };
 
         Object.keys(obj).forEach((key) => {
@@ -87,10 +96,14 @@ const parseToken = function (tokens, dir) {
     const components = [];
     do {
         if (tokens[idx] && tokens[idx].type === 'heading_open' && tokens[idx].tag === 'h2') {
+            const optionParser = new OptionBlockParser();
+            const dataParser = new DataBlockParser();
             const attrParser = new AttrBlockParser();
+            const computedParser = new ComputedBlockParser();
             const evtParser = new EventsParser();
             const slotsParser = new SlotsBlockParser();
             const methodsParser = new MethodsBlockParser();
+            const ariaParser = new ARIABlockParser();
             idx++;
             let name = tokens[idx].content;
             if (/[\u4e00-\u9fa5]/.test(name))
@@ -103,10 +116,14 @@ const parseToken = function (tokens, dir) {
                     else {
                         idx++;
                         const f = idx;
+                        idx = optionParser.parse(tokens, idx);
+                        idx = dataParser.parse(tokens, idx);
                         idx = attrParser.parse(tokens, idx);
+                        idx = computedParser.parse(tokens, idx);
                         idx = evtParser.parse(tokens, idx);
                         idx = slotsParser.parse(tokens, idx);
                         idx = methodsParser.parse(tokens, idx);
+                        idx = ariaParser.parse(tokens, idx);
                         if (f === idx) {
                             flag = false;
                             break;
@@ -119,7 +136,7 @@ const parseToken = function (tokens, dir) {
             if (flag) {
                 name = resolveName(name, dir);
                 components.push(new ComponentMeta({
-                    name, attrParser, evtParser, slotsParser, methodsParser,
+                    name, optionParser, dataParser, attrParser, computedParser, evtParser, slotsParser, methodsParser, ariaParser,
                 }));
             }
         } else {
@@ -210,6 +227,10 @@ class SlotsBlockParser {
                         });
                         idx++;
                     }
+                } if (tokens[idx].type === 'table_open') {
+                    const parser = new TableParser();
+                    idx = parser.parse(tokens, idx);
+                    this.slots[this.slots.length - 1].table = parser;
                 } else {
                     idx++;
                 }
@@ -220,7 +241,80 @@ class SlotsBlockParser {
 
     toYamlObject() {
         return {
-            slots: this.slots,
+            slots: this.slots.map((slot) => {
+                if (slot.table) {
+                    slot.props = slot.table.toYamlObject();
+                    delete slot.table;
+                }
+
+                return slot;
+            }),
+        };
+    }
+}
+
+class OptionBlockParser {
+    constructor() {
+        this.table = null;
+        this.title = 'options';
+    }
+
+    parse(tokens, idx) {
+        if (tokens[idx] && tokens[idx].type === 'inline' && /options/.test(tokens[idx].content.toLowerCase())) {
+            const l = tokens.length;
+            do {
+                if (tokens[idx].type === 'table_open') {
+                    const parser = new TableParser();
+                    idx = parser.parse(tokens, idx);
+                    this.table = parser;
+                } else if (tokens[idx].type === 'heading_open') {
+                    break;
+                } else {
+                    idx++;
+                }
+            } while (idx < l);
+        }
+        return idx;
+    }
+
+    toYamlObject() {
+        if (!this.table)
+            return { options: [] };
+        return {
+            options: this.table.toYamlObject(),
+        };
+    }
+}
+
+class DataBlockParser {
+    constructor() {
+        this.table = null;
+        this.title = 'data';
+    }
+
+    parse(tokens, idx) {
+        if (tokens[idx] && tokens[idx].type === 'inline' && /data/.test(tokens[idx].content.toLowerCase())) {
+            const l = tokens.length;
+            do {
+                if (tokens[idx].type === 'table_open') {
+                    const parser = new TableParser();
+                    idx = parser.parse(tokens, idx);
+                    this.table = parser;
+                } else if (tokens[idx].type === 'heading_open') {
+                    break;
+                } else {
+                    idx++;
+                }
+            } while (idx < l);
+        }
+        return idx;
+    }
+
+    toYamlObject() {
+        if (!this.table)
+            return { data: [] };
+        return {
+            data: this.table.toYamlObject(),
         };
     }
 }
@@ -254,6 +348,39 @@ class AttrBlockParser {
             return { attrs: [] };
         return {
             attrs: this.table.toYamlObject(),
+        };
+    }
+}
+
+class ComputedBlockParser {
+    constructor() {
+        this.table = null;
+        this.title = 'computed';
+    }
+
+    parse(tokens, idx) {
+        if (tokens[idx] && tokens[idx].type === 'inline' && /computed/.test(tokens[idx].content.toLowerCase())) {
+            const l = tokens.length;
+            do {
+                if (tokens[idx].type === 'table_open') {
+                    const parser = new TableParser();
+                    idx = parser.parse(tokens, idx);
+                    this.table = parser;
+                } else if (tokens[idx].type === 'heading_open') {
+                    break;
+                } else {
+                    idx++;
+                }
+            } while (idx < l);
+        }
+        return idx;
+    }
+
+    toYamlObject() {
+        if (!this.table)
+            return { computed: [] };
+        return {
+            computed: this.table.toYamlObject(),
         };
     }
 }
@@ -305,6 +432,39 @@ class EventsParser {
             })),
         };
         return p;
+    }
+}
+
+class ARIABlockParser {
+    constructor() {
+        this.table = null;
+        this.title = 'aria';
+    }
+
+    parse(tokens, idx) {
+        if (tokens[idx] && tokens[idx].type === 'inline' && /aria and keyboard/.test(tokens[idx].content.toLowerCase())) {
+            const l = tokens.length;
+            do {
+                if (tokens[idx].type === 'table_open') {
+                    const parser = new TableParser();
+                    idx = parser.parse(tokens, idx);
+                    this.table = parser;
+                } else if (tokens[idx].type === 'heading_open') {
+                    break;
+                } else {
+                    idx++;
+                }
+            } while (idx < l);
+        }
+        return idx;
+    }
+
+    toYamlObject() {
+        if (!this.table)
+            return { aria: [] };
+        return {
+            aria: this.table.toYamlObject(),
+        };
     }
 }
 
@@ -410,12 +570,16 @@ class TableParser {
     toYamlObject() {
         const rslt = [];
         const mapping = {
+            Option: 'name',
+            Data: 'name',
             'Prop/Attr': 'name',
             Type: 'type',
             Default: 'default',
             Description: 'description',
             'Attr/Prop': 'name',
             Param: 'name',
+            Key: 'key',
+            Computed: 'name',
         };
         for (let i = 0; i < this.values.length; i += this.keys.length) {
             const obj = {};
@@ -453,4 +617,9 @@ class TableParser {
  * @param {*} next token
  */
 
-walkSync(path.resolve(__dirname, '../src/components'), iterator);
+if (process.argv.length > 2) {
+    const arr = process.argv.slice(2);
+    iterator(arr[0], arr[1]);
+} else {
+    walkSync(path.resolve(__dirname, '../src/components'), iterator);
+}

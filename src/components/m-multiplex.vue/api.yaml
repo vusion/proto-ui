@@ -1,4 +1,5 @@
 - name: m-multiplex
+  extends: m-parent
   attrs:
     - name: value.sync, v-model
       type: Array

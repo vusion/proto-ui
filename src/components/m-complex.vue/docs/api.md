@@ -59,6 +59,8 @@
 | $event.oldVM | MComplexItem | 旧的选择项子组件 |
 | senderVM | MComplex | 发送事件实例 |
 
+#### @select
+
 多选模式中：
 
 | Param | Type | Description |
@@ -89,6 +91,8 @@
 | $event.itemVM | MComplexItem | 选择项子组件 |
 | $event.oldVM | MComplexItem | 旧的选择项子组件 |
 | senderVM | MComplex | 发送事件实例 |
+
+#### @change
 
 多选模式中：
 

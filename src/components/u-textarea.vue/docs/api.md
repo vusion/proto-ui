@@ -81,27 +81,6 @@
 | $event.oldValue | String | 旧的值 |
 | senderVM | UTextarea | 发送事件实例 |
 
-#### @before-reset
-
-重置前触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 重置后的值 |
-| $event.oldValue | String | 待重置的值 |
-| $event.preventDefault | Function | 阻止重置流程 |
-| senderVM | UTextarea | 发送事件实例 |
-
-#### @reset
-
-重置时触发。
-
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| $event.value | String | 重置后的值 |
-| $event.oldValue | String | 旧的值 |
-| senderVM | UTextarea | 发送事件实例 |
-
 ### Methods
 
 #### focus()

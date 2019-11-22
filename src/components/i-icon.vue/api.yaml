@@ -1,4 +1,5 @@
 - name: i-icon
+  labels: 图标组件, 行内展示
   attrs:
     - name: name
       type: string

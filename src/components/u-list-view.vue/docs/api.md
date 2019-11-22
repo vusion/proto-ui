@@ -54,8 +54,6 @@
 
 选择某一项时触发
 
-单选模式中：
-
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.value | Any | 改变后的值 |
@@ -65,6 +63,8 @@
 | $event.itemVM | UListViewItem | 选择项子组件 |
 | $event.oldVM | UListViewItem | 旧的选择项子组件 |
 | senderVM | UListView | 发送事件实例 |
+
+#### @select
 
 多选模式中：
 
@@ -85,8 +85,6 @@
 
 选择值改变时触发
 
-单选模式中：
-
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | $event.value | Any | 选择项的值 |
@@ -96,6 +94,8 @@
 | $event.itemVM | UListViewItem | 选择项子组件 |
 | $event.oldVM | UListViewItem | 旧的选择项子组件 |
 | senderVM | UListView | 发送事件实例 |
+
+#### @change
 
 多选模式中：
 

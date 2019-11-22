@@ -1,25 +1,31 @@
 - name: u-linear-layout
+  labels: '布局组件', '块级展示'
   attrs:
     - name: direction
-      type: string
+      type: enum
+      options: horizontal, vertical
       default: horizontal
-      description: 排列方向。可选值：`'horizontal'`或`'vertical'`
+      description: 排列方向。
     - name: gap
-      type: string
+      type: enum
+      options: shrink, none, small, normal, large
       default: normal
-      description: 间隙大小，需自行扩展。可选值：`'shrink'`, `'none'`, `'small'`, `'normal'`或`'large'`
+      description: 间隙大小，需自行扩展。
     - name: display
       type: string
+      options: inline, block
       default: block
-      description: 展示方式。可选值：`'inline'`, `'block'`
+      description: 展示方式。可选值：
     - name: layout
       type: string
+      options: none, inline, block
       default: none
-      description: 布局方式，用于迅速调整子元素或组件的展示方式。可选值：`'none'`, `'inline'`, `'block'`
+      description: 布局方式，用于迅速调整子元素或组件的展示方式。
     - name: type
       type: string
+      options: flex
       default: null
-      description: 布局模式。可选值：`'flex'`或不填
+      description: 布局模式。
     - name: justify
       type: string
       default: start

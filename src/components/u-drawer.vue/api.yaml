@@ -68,7 +68,7 @@
         - name: senderVM
           type: UDrawer
           description: 发送事件实例
-  methods:
+  static-methods:
     - name: alert(content, title)
       description: 打开只有确定按钮的抽屉
       params:

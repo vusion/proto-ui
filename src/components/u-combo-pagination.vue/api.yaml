@@ -1,4 +1,5 @@
 - name: u-combo-pagination
+  labels: 'UI 组件', '块级展示'
   attrs:
     - name: page.sync
       type: number

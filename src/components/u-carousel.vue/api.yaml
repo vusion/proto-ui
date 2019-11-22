@@ -1,29 +1,33 @@
 - name: u-carousel
   attrs:
-    - Prop: value.sync
+    - name: value.sync
       type: any
       default: null
       description: 播放位置
-    - Prop: autoplay
+    - name: autoplay
       type: boolean
       default: true
       description: 是否自动播放
-    - Prop: loop
+    - name: loop
       type: boolean
       default: true
       description: 是否循环播放，即首尾连接
-    - Prop: interval
+    - name: interval
       type: number
       default: 4000
       description: 幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换
-    - Prop: direction
+    - name: direction
       type: string
       default: right
       description: 幻灯片播放方向
-    - Prop: animation
+    - name: animation
       type: string
       default: null
       description: 幻灯片过渡动画
+    # - name: router
+    #   type: boolean
+    #   default: false
+    #   description: 是否根据vue-router来控制选择播放至哪个位置
   slots:
     - name: default
       description: 插入`<u-carousel-item>`子组件。

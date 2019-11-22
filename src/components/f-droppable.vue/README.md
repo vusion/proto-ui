@@ -46,6 +46,8 @@ export default {
 
 插入可以放置的元素，仅一个。
 
+### Events
+
 #### transfer
 
 自定义的移动元素。
