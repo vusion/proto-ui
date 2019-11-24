@@ -6,8 +6,6 @@
 
 具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。
 
-具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。
-
 ### 相关组件
 
 #### 表单 UForm
@@ -376,12 +374,12 @@ export default {
 
 ### Computed
 
-| Computed | Type | Default | Description |
-| -------- | ---- | ------- | ----------- |
-| touched | boolean |  | 用户是否触碰 |
-| dirty | boolean |  | 用户是否修改值 |
-| valid | boolean |  | 验证是否通过 |
-| firstError | string |  | 第一个错误提示消息 |
+| Computed | Type | Description |
+| -------- | ---- | ----------- |
+| touched | boolean | 用户是否触碰 |
+| dirty | boolean | 用户是否修改值 |
+| valid | boolean | 验证是否通过 |
+| firstError | string | 第一个错误提示消息 |
 
 ### Slots
 
@@ -424,7 +422,7 @@ export default {
 | trigger | string | `'submit'` | 触发方式，可选值：`submit`、`blur`和`input`之一，或者它们的任意组合。 |
 | muted | boolean | `false` | 是否验证后无提示 |
 
-## FormItem API
+## UFormItem API
 ### Props/Attrs
 
 | Prop/Attr | Type | Options | Default | Description |

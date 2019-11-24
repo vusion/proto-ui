@@ -81,7 +81,7 @@
           type: boolean
           default: false
           description: 是否验证后无提示
-- name: form-item
+- name: u-form-item
   attrs:
     - name: name
       type: string

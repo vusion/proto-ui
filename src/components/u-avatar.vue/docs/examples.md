@@ -19,7 +19,7 @@
 ### 自定义图片
 
 ``` html
-<u-avatar><img src="./assets/music.png"></u-avatar> 多多
+<u-avatar><img src="../assets/music.png"></u-avatar> 多多
 ```
 
 ### 配合 UBadge 使用

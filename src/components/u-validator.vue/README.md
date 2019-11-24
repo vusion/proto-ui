@@ -1575,12 +1575,12 @@ export default {
 
 ### Computed
 
-| Computed | Type | Default | Description |
-| -------- | ---- | ------- | ----------- |
-| touched | boolean |  | 用户是否触碰 |
-| dirty | boolean |  | 用户是否修改值 |
-| valid | boolean |  | 验证是否通过 |
-| firstError | string |  | 第一个错误提示消息 |
+| Computed | Type | Description |
+| -------- | ---- | ----------- |
+| touched | boolean | 用户是否触碰 |
+| dirty | boolean | 用户是否修改值 |
+| valid | boolean | 验证是否通过 |
+| firstError | string | 第一个错误提示消息 |
 
 ### Slots
 
