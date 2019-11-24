@@ -77,15 +77,12 @@
       description: 分页大小
     - name: page-size-options
       type: Array
-      default:
-        - 10
-        - 20
-        - 50
+      default: [10, 20, 50]
       description: 每页大小选项列表
     - name: show-total
       type: boolean
       default: false
-      description: 是否显示总页数
+      description: 是否显示总条目数
     - name: show-sizer
       type: boolean
       default: false

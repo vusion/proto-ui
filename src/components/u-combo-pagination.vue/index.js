@@ -25,6 +25,14 @@ export const UComboPagination = {
             this.$emit('change', { page, oldPage }, this);
         },
     },
+    computed: {
+        currentTotalPage() {
+            if (this.totalItems)
+                return Math.ceil(this.totalItems / this.pageSize);
+            else
+                return this.total;
+        },
+    },
     methods: {
         onChange(page, oldPage) {
             if (page === oldPage)
