@@ -549,7 +549,7 @@
   },
   "u-combo-pagination/show-total": {
     "type": "boolean",
-    "description": "是否显示总页数"
+    "description": "是否显示总条目数"
   },
   "u-combo-pagination/show-sizer": {
     "type": "boolean",
@@ -1820,7 +1820,7 @@
   },
   "u-table-view/show-total": {
     "type": "boolean",
-    "description": "是否显示总页数"
+    "description": "是否显示总条目数"
   },
   "u-table-view/show-sizer": {
     "type": "boolean",

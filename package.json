@@ -1,7 +1,7 @@
 {
   "name": "proto-ui.vusion",
   "description": "Vusion Proto UI",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Rainfore <rainforest92@126.com>",
   "scripts": {
     "dev": "vue-cli-service doc --port 9000",
