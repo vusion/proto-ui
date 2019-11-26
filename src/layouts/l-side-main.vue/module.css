@@ -10,7 +10,6 @@
 
 .main {
     margin-left: var(--sidebar-width);
-    max-width: 1010px;
 }
 
 .content {
