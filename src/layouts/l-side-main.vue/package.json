@@ -1,7 +1,7 @@
 {
   "name": "@proto-ui/l-side-main.vue",
   "description": "只有左侧栏固定的通用布局",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./index.js",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "https://github.com/vusion/proto-ui.git",
     "directory": "src/layouts/l-side-main.vue"
   },
-  "homepage": "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.0/public/index.html",
+  "homepage": "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.1/public/index.html",
   "bugs": "http://github.com/vusion/proto-ui/issues",
   "license": "MIT",
   "keywords": [
@@ -37,8 +37,8 @@
     "team": "necfe",
     "access": "public",
     "screenshots": [
-      "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.0/screenshots/0.png",
-      "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.0/screenshots/1.png"
+      "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.1/screenshots/0.png",
+      "https://unpkg.com/@proto-ui/l-side-main.vue@0.6.1/screenshots/1.png"
     ],
     "category": "layout",
     "ui": "proto-ui.vusion"
