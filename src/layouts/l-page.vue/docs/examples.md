@@ -1,10 +1,3 @@
-<!-- 该 README.md 根据 api.yaml 和 docs/*.md 自动生成，为了方便在 GitHub 和 NPM 上查阅。如需修改，请查看源文件 -->
-
-# LPage 通用页面布局
-
-只有顶部栏和底部栏的通用页面布局。
-
-## 示例
 滚动区域设置在了全局，内容会随窗口自适应。（下面的示例暂时体现不出现滚动效果）
 
 ### 基本用法
@@ -144,38 +137,3 @@
     </l-page>
 </div>
 ```
-
-## LPage API
-### Slots
-
-#### (default)
-
-主内容区。
-
-#### head
-
-设置顶部内容。
-
-#### foot
-
-设置底部内容。
-
-## LPageCenter API
-### Props/Attrs
-
-| Prop/Attr | Type | Options | Default | Description |
-| --------- | ---- | ------- | ------- | ----------- |
-| size | enum | `'mini'`, `'small'`, `'normal'`, `'large'`, `'huge'` | `'normal'` | 宽度大小。 |
-
-### Slots
-
-#### (default)
-
-插入 HTML 或文本。
-
-## LPageSection API
-### Slots
-
-#### (default)
-
-插入 HTML 或文本。
