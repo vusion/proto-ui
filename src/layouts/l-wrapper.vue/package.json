@@ -1,51 +1,41 @@
 {
-    "name": "@proto-ui/l-wrapper.vue",
-    "description": "Proto UI - LWrapper",
-    "version": "0.1.0",
-    "author": "Rainfore <rainforest92@126.com>",
-    "main": "./index.js",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/vusion/proto-ui.git",
-      "directory": "src/layouts/l-wrapper.vue"
-    },
-    "homepage": "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/public/index.html",
-    "bugs": "http://github.com/vusion/proto-ui/issues",
-    "license": "MIT",
-    "keywords": [
-      "proto",
-      "extension",
-      "ui",
-      "layout"
-    ],
-    "scripts": {
-      "dev": "../../../node_modules/.bin/vue-cli-service doc --port 9090",
-      "build:doc": "../../../node_modules/.bin/vue-cli-service doc-build",
-      "screenshot": "vusion screenshot public/index.html --code-example --package",
-      "prepublishOnly": "npm run build:doc && npm run screenshot && vusion readme && vusion vetur && git add ."
-    },
-    "vuePlugins": {
-      "resolveFrom": "../../../"
-    },
-    "peerDependencies": {
-      "vue": "^2.5.0",
-      "proto-ui.vusion": "^0.6.0"
-    },
-    "vusion": {
-      "type": "component",
-      "title": "透传页",
-      "team": "necfe",
-      "access": "public",
-      "screenshots": [
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/0.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/1.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/2.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/3.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/4.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/5.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/6.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/7.png",
-        "https://unpkg.com/@cloud-ui/u-chips.vue@0.1.0/screenshots/8.png"
-      ]
-    }
+  "name": "@proto-ui/l-wrapper.vue",
+  "description": "Proto UI - LWrapper",
+  "version": "0.6.0",
+  "author": "Rainfore <rainforest92@126.com>",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vusion/proto-ui.git",
+    "directory": "src/layouts/l-wrapper.vue"
+  },
+  "homepage": "https://unpkg.com/@proto-ui/l-wrapper.vue@0.6.0/public/index.html",
+  "bugs": "http://github.com/vusion/proto-ui/issues",
+  "license": "MIT",
+  "keywords": [
+    "proto",
+    "extension",
+    "ui",
+    "layout"
+  ],
+  "scripts": {
+    "dev": "../../../node_modules/.bin/vue-cli-service doc --port 9090",
+    "build:doc": "../../../node_modules/.bin/vue-cli-service doc-build",
+    "screenshot": "vusion screenshot public/index.html --code-example --package",
+    "prepublishOnly": "npm run build:doc && npm run screenshot && vusion readme && vusion vetur && git add ."
+  },
+  "vuePlugins": {
+    "resolveFrom": "../../../"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.0",
+    "proto-ui.vusion": "^0.6.0"
+  },
+  "vusion": {
+    "type": "component",
+    "title": "透传页",
+    "team": "necfe",
+    "access": "public",
+    "screenshots": []
   }
+}
