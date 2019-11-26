@@ -36,6 +36,8 @@
     "title": "透传页",
     "team": "necfe",
     "access": "public",
-    "screenshots": []
+    "screenshots": [],
+    "category": "layout",
+    "ui": "proto-ui.vusion"
   }
 }
