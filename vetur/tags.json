@@ -1,4 +1,8 @@
 {
+  "u-logo": {
+    "attributes": [],
+    "description": "常见的网站标识。该组件作为一个示例，业务中请自行拓展。"
+  },
   "e-ripple": {
     "attributes": [
       "color"
@@ -630,10 +634,6 @@
       "display"
     ]
   },
-  "u-logo": {
-    "attributes": [],
-    "description": "常见的网站标识。该组件作为一个示例，业务中请自行拓展。"
-  },
   "u-menu": {
     "attributes": [
       "router",
@@ -1164,5 +1164,35 @@
       "validating-process",
       "manual"
     ]
+  },
+  "l-dashboard": {
+    "attributes": [],
+    "description": "常见中后台系统中的顶部栏和左侧栏固定的仪表盘布局。"
+  },
+  "l-document": {
+    "attributes": [],
+    "description": "常见文档网站中顶部栏和左侧栏固定的布局，如本文档页。"
+  },
+  "l-page": {
+    "attributes": [],
+    "description": "只有顶部栏和底部栏的通用页面布局。",
+    "subtags": [
+      "l-page-center",
+      "l-page-section"
+    ]
+  },
+  "l-page-center": {
+    "attributes": [
+      "size"
+    ]
+  },
+  "l-page-section": {
+    "attributes": []
+  },
+  "l-side-main": {
+    "attributes": []
+  },
+  "l-wrapper": {
+    "attributes": []
   }
 }

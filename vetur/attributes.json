@@ -2261,5 +2261,16 @@
   "u-validator/manual": {
     "type": "boolean",
     "description": "是否采取手动验证。如果为`true`，则 UValidator 将不会在监听到子组件的`input`、`change`和`blur`事件后进行相应的验证。"
+  },
+  "l-page-center/size": {
+    "type": "enum",
+    "options": [
+      "mini",
+      "small",
+      "normal",
+      "large",
+      "huge"
+    ],
+    "description": "宽度大小。"
   }
 }
