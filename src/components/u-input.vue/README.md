@@ -176,10 +176,3 @@ export default {
 
 | Param | Type | Default | Description |
 | ----- | ---- | ------- | ----------- |
-
-#### reset()
-
-重置输入框。
-
-| Param | Type | Default | Description |
-| ----- | ---- | ------- | ----------- |

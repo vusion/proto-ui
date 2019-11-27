@@ -120,6 +120,3 @@
     - name: clear()
       description: 清空输入框。
       params: []
-    - name: reset()
-      description: 重置输入框。
-      params: []

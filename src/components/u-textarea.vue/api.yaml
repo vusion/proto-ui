@@ -11,10 +11,6 @@
       type: string
       default: null
       description: 输入框的值
-    - name: default-value.sync, v-model
-      type: string
-      default: null
-      description: 默认值。即 reset 方法恢复的值。
     - name: clearable
       type: boolean
       default: null
@@ -127,7 +123,4 @@
       params: []
     - name: clear()
       description: 清空输入框。
-      params: []
-    - name: reset()
-      description: 重置输入框。
       params: []

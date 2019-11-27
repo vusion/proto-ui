@@ -58,37 +58,6 @@ export default {
 <u-input value="可清空" clearable></u-input>
 ```
 
-### 重置
-
-调用`reset`方法，会使组件重置为`default-value`所设置的值。
-
-``` vue
-<template>
-<u-linear-layout>
-    <u-input ref="input1" v-model="value1" maxlength="12" placeholder="请输入"></u-input>
-    <u-input ref="input2" v-model="value2" default-value="默认值" maxlength="12" placeholder="请输入"></u-input>
-    <u-button @click="reset">重置</u-button>
-</u-linear-layout>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            value1: '当前的值',
-            value2: '当前的值',
-        };
-    },
-    methods: {
-        reset() {
-            this.$refs.input1.reset();
-            this.$refs.input2.reset();
-        },
-    },
-};
-</script>
-```
-
 ### 展示方式
 
 默认为行内展示，可以将`display`设置为块级展示。
