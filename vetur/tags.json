@@ -1066,7 +1066,6 @@
     "attributes": [
       "value",
       "value",
-      "default-value",
       "clearable",
       "placeholder",
       "minlength",
