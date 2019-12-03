@@ -23,6 +23,14 @@ export const MPublisher = {
             pubsub.unpublish(topic);
         });
     },
+    methods: {
+        $publish(topic, data) {
+            return pubsub.publish(topic, data);
+        },
+        $unpublish(topic) {
+            return pubsub.unpublish(topic);
+        },
+    },
 };
 
 export const MSubscriber = {
@@ -61,6 +69,14 @@ export const MSubscriber = {
         Object.keys(subs).forEach((topic) => {
             pubsub.unsubscribe(topic, this.$options.subscriptions[topic]);
         });
+    },
+    methods: {
+        $subscribe(topic, func) {
+            return pubsub.subscribe(topic, func);
+        },
+        $unsubscribe(topic, func) {
+            return pubsub.unsubscribe(topic, func);
+        },
     },
 };
 
