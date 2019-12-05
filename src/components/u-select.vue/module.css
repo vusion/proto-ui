@@ -65,6 +65,9 @@
     margin: auto;
     color: #a7afbb;
 }
+.root[opend]::after {
+    icon-font: url('../i-icon.vue/assets/arrow-up.svg');
+}
 
 .root[clearable]::after {
     display: none;

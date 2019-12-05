@@ -10,6 +10,7 @@
     border-radius: 100px;
     background: var(--border-color-base);
     color: white;
+    transition: background-color 0.3s;
 }
 
 .root:focus {
@@ -24,6 +25,7 @@
     width: var(--switch-button-size);
     height: var(--switch-button-size);
     background: white;
+    transition: all 0.3s;
 }
 
 .text {

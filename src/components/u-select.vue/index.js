@@ -52,6 +52,7 @@ export const USelect = {
             filterText: '', // 过滤文本，只有 input 时会改变它
             preventBlur: false,
             inputWidth: 20,
+            popperOpened: false,
         };
     },
     computed: {
@@ -166,6 +167,7 @@ export const USelect = {
             this.$refs.popper && this.$refs.popper.toggle(opened);
         },
         onOpen($event) {
+            this.popperOpened = true;
             // 刚打开时，除非是没有加载，否则保留上次的 filter 过的数据
             if (this.filterable && !this.currentDataSource.initialLoaded) {
                 this.load().then(() => {
@@ -178,6 +180,7 @@ export const USelect = {
             this.$emit('open', $event, this);
         },
         onClose($event) {
+            this.popperOpened = false;
             this.focusedVM = undefined;
             this.$emit('close', $event, this);
         },
