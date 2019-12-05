@@ -1,6 +1,7 @@
 import Popper from '@vusion/popper.js';
 import MEmitter from '../m-emitter.vue';
 import ev from '../../utils/event';
+import single from '../../utils/event/single';
 
 export const MPopper = {
     name: 'm-popper',
@@ -195,7 +196,16 @@ export const MPopper = {
             this.timers = this.timers || [];
 
             // 绑定事件
-            this.followCursor && this.offEvents.push(ev.on(document, 'mousemove', (e) => this.updatePositionByCursor(e, el)));
+            this.followCursor && this.offEvents.push(
+                single.on('m-popper' + new Date(), {
+                    el,
+                    self: this,
+                }, document, 'mousemove', (e, datas) => {
+                    Object.values(datas).forEach(({ el, self }) => {
+                        self.updatePositionByCursor(e, el);
+                    });
+                })
+            );
 
             if (event === 'click')
                 this.offEvents.push(ev.on(el, 'click', (e) => {
@@ -215,12 +225,20 @@ export const MPopper = {
                         this.followCursor && this.$nextTick(() => this.updatePositionByCursor(e, el));
                     }, this.hoverDelay);
                 }));
-                this.offEvents.push(ev.on(document, 'mouseover', (e) => {
-                    if (this.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target)) {
-                        timer = setTimeout(() => this.close(), this.hideDelay);
-                        this.timers[1] = timer;
-                    }
-                }));
+                this.offEvents.push(
+                    single.on('m-popper' + new Date(), {
+                        self: this,
+                        el,
+                        popperEl,
+                        timer,
+                    }, document, 'mousemove', (e, datas) => {
+                        Object.values(datas).forEach(({ el, popperEl, self, timer }) => {
+                            if (self.currentOpened && !timer && !el.contains(e.target) && !popperEl.contains(e.target)) {
+                                self.timers[1] = setTimeout(() => self.close(), self.hideDelay);
+                            }
+                        });
+                    })
+                );
             } else if (event === 'double-click')
                 this.offEvents.push(ev.on(el, 'dblclick', (e) => {
                     this.toggle();
@@ -234,9 +252,17 @@ export const MPopper = {
                 }));
             }
             // @TODO: 有没有必要搞 focus-in
-            this.offEvents.push(ev.on(document, 'mousedown', (e) => {
-                !el.contains(e.target) && !popperEl.contains(e.target) && this.close();
-            }));
+            this.offEvents.push(
+                single.on('m-popper' + new Date(), {
+                    el,
+                    popperEl,
+                    self: this,
+                }, document, 'mousedown', (e, datas) => {
+                    Object.values(datas).forEach(({ el, popperEl, self }) => {
+                        !el.contains(e.target) && !popperEl.contains(e.target) && self.close();
+                    });
+                })
+            );
         },
         createPopper() {
             const referenceEl = this.referenceEl;
