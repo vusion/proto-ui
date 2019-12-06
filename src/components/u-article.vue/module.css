@@ -1,13 +1,13 @@
 .root {}
 
 .root > h1 {
-    font-size: 24px;
+    font-size: var(--h1-font-size);
     line-height: 30px;
     margin-bottom: 60px;
 }
 
 .root > h2 {
-    font-size: 20px;
+    font-size: var(--h2-font-size);
     margin: 40px 0;
     line-height: 44px;
     color: #767a80;
@@ -15,14 +15,14 @@
 }
 
 .root > h3 {
-    font-size: 17px;
+    font-size: var(--h3-font-size);
     margin: 40px 0 20px;
     padding-left: 0;
     color: var(--brand-primary);
 }
 
 .root > h4 {
-    font-size: 16px;
+    font-size: var(--h4-font-size);
     margin: 25px 0 10px;
 }
 
@@ -40,11 +40,13 @@
 }
 
 .root > h5 {
-    font-size: 12px;
+    font-size: var(--h5-font-size);
     margin: 0.3em 0;
 }
 
-.root > h6 {}
+.root > h6 {
+    font-size: var(--h6-font-size);
+}
 
 .root > h1 > :global(.heading-anchor),
 .root > h2 > :global(.heading-anchor),
@@ -106,7 +108,7 @@
 
 .root > table th, .root > table td {
     padding: 4px 8px;
-    font-size: 13px;
+    font-size: var(--article-tabel-font-size);
     border: 1px solid var(--border-color-base);
 }
 

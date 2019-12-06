@@ -53,7 +53,7 @@
 
 .title {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size-base);
 }
 
 .close {
@@ -65,7 +65,7 @@
 
 .close::before {
     content: '×';
-    font-size: 24px;
+    font-size: var(--font-size-huge);
     line-height: 0.8;
 }
 

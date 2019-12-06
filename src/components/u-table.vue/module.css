@@ -4,7 +4,7 @@
 }
 
 .root caption {
-    font-size: 14px;
+    font-size: var(--font-size-base);
     color: #6a6f75;
 }
 

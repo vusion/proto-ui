@@ -14,7 +14,7 @@
     height: 100%;
     float: left;
     background: var(--brand-primary);
-    font-size: 12px;
+    font-size: var(--font-size-small);
     color: white;
     transition: width 0.6s ease;
 }

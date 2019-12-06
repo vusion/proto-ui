@@ -50,6 +50,6 @@
 
 .close::before {
     content: '×';
-    font-size: 18px;
+    font-size: var(--font-size-bigger);
     line-height: 0.8;
 }

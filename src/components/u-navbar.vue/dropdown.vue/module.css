@@ -8,7 +8,7 @@
     border: none;
     padding-left: 10px;
     padding-right: 30px;
-    font-size: 16px;
+    font-size: var(--font-size-large);
 }
 
 .root:not(:last-child) {
@@ -18,7 +18,7 @@
 .root::after {
     position: absolute;
     icon-font: url('../../i-icon.vue/assets/arrow-down.svg');
-    font-size: 14px;
+    font-size: var(--font-size-base);
     right: 10px;
     top: 0;
     line-height: var(--navbar-height);
@@ -26,7 +26,7 @@
 
 .popper {
     background: white;
-    font-size: 14px;
+    font-size: var(--font-size-base);
     width: 100%;
     line-height: var(--line-height-base);
 }

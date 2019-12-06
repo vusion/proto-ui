@@ -106,7 +106,7 @@
 .filter::before {
     icon-font: url('../i-icon.vue/assets/filter.svg');
     color: var(--brand-disabled);
-    font-size: 12px;
+    font-size: var(--font-size-small);
     vertical-align: -2px;
 }
 

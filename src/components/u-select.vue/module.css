@@ -105,7 +105,7 @@
 .tag {
     display: inline-block;
     padding: 0 6px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     line-height: 22px;
     vertical-align: 1px;
     background: var(--background-color-base);

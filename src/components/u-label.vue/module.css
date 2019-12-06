@@ -1,6 +1,6 @@
 .root {
     padding: 2px 6px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     background: var(--background-color-base);
     border-radius: var(--border-radius-base);
 }

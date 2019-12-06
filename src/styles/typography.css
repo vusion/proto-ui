@@ -41,13 +41,13 @@ pre {
     background: var(--background-color-light);
     border-radius: var(--border-radius-base);
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     font-family: var(--font-family-code);
 }
 
 code {
     padding: 0 3px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     font-family: var(--font-family-code);
     background: var(--background-color-light);
     color: #e0276e;
@@ -65,7 +65,7 @@ pre code {
 
 kbd {
     padding: 1px 3px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     background: var(--background-color-base);
     border-radius: var(--border-radius-base);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);

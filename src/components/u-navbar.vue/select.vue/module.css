@@ -15,7 +15,7 @@
 }
 
 .root::before {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     line-height: var(--navbar-height);
 }
 
@@ -25,10 +25,10 @@
 }
 
 .placeholder {
-    font-size: 16px;
+    font-size: var(--font-size-large);
 }
 
 .text {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     line-height: var(--navbar-height);
 }

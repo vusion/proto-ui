@@ -3,7 +3,7 @@
     padding: 4px 8px;
     background: var(--tooltip-background-color);
     color: white;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     z-index: var(--z-index-tooltip);
 }
 

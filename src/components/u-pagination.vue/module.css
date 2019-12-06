@@ -13,7 +13,7 @@
     min-width: var(--pagination-item-size);
     height: var(--pagination-item-size);
     line-height: var(--pagination-item-size);
-    font-size: 12px;
+    font-size: var(--font-size-small);
     text-align: center;
     background: var(--background-color-base);
     color: var(--color-base);
@@ -35,7 +35,7 @@
 }
 
 .item[role="prev"] {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     padding: 0 4px;
     vertical-align: top;
 }
@@ -45,7 +45,7 @@
 }
 
 .item[role="next"] {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     padding: 0 4px;
     vertical-align: top;
 }

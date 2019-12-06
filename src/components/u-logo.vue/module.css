@@ -2,7 +2,7 @@
     display: inline-block;
     width: var(--sidebar-width);
     height: var(--navbar-height);
-    background: url('./assets/logo.svg') 20px center no-repeat;
+    background: url('./assets/logo.svg') var(--logo-font-size) center no-repeat;
     vertical-align: top;
 }
 
@@ -12,7 +12,7 @@
     color: var(--color-base);
     line-height: 73px;
     margin-left: 145px;
-    font-size: 20px;
+    font-size: var(--logo-font-size);
 }
 
 .sub:empty {

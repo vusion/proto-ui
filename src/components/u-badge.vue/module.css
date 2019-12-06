@@ -7,7 +7,7 @@
     display: inline-block;
     line-height: 18px;
     min-width: 18px;
-    font-size: 12px;
+    font-size: var(--font-size-small);
     padding: 0 6px;
     border-radius: 100px;
     background: var(--brand-error);

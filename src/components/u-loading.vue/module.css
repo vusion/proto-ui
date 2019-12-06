@@ -4,9 +4,16 @@
     color: var(--brand-disabled);
 }
 
-.root[size="small"] .icon { font-size: 14px; }
-.root .icon { font-size: 24px; vertical-align: -4px; }
-.root[size="large"] .icon { font-size: 40px; }
+.root[size="small"] .icon {
+    font-size: var(--loading-font-size-small);
+}
+.root .icon {
+    font-size: var(--loading-font-size-base);
+    vertical-align: -4px;
+}
+.root[size="large"] .icon {
+    font-size: var(--loading-font-size-large);
+}
 
 .root[display="block"] {
     display: block;
