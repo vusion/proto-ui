@@ -21,6 +21,7 @@
     /* Component Base Colors */
     --background-color-light: #f7f8fc;
     --background-color-base: #f2f3f8;
+    --background-color-default: white;
     --background-color-dark: #ebedf5;
     --color-base: #565b61;
     --border-color-base: #dfe4ec;
@@ -44,12 +45,10 @@
     /* Fonts */
     /* stylelint-disable value-keyword-case */
     --font-family-zh-CN: "Helvetica Neue", helvetica, tahoma, arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-    --font-family-code: menlo, consolas, monaco, monospace;
 
     --font-size-base: 14px;
     --font-size-small: calc(var(--font-size-base) * (12 / 14));
     --font-size-large: calc(var(--font-size-base) * (16 / 14));
-    --font-size-bigger: calc(var(--font-size-base) * (18 / 14));
     --font-size-huge: calc(var(--font-size-base) * (24 / 14));
 
     --h1-font-size: calc(var(--font-size-base) * (24 / 14));
@@ -58,6 +57,12 @@
     --h4-font-size: calc(var(--font-size-base) * (16 / 14));
     --h5-font-size: calc(var(--font-size-base) * (14 / 14));
     --h6-font-size: calc(var(--font-size-base) * (12 / 14));
+
+    --font-weight-lighter: lighter;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --font-weight-bolder: bolder;
 
     /* Z-Index */
     --z-index-loading: 9000;
@@ -107,9 +112,6 @@
     --table-row-primary-background: rgba(69, 124, 208, 0.2);
     --table-row-error-background: rgba(242, 45, 78, 0.2);
 
-    /* U-Logo */
-    --logo-font-size: calc(var(--font-size-base) * (20 / 14));
-
     /* U-Loading */
     --loading-font-size-small: var(--font-size-base);
     --loading-font-size-base: calc(var(--font-size-base) * (24 / 14));
@@ -125,8 +127,66 @@
     --upload-input-font-size: 100px;
 
     /* U-Text */
-    --text-font-size-large: var(--font-size-bigger);
+    --text-font-size-large: calc(var(--font-size-base) * (18 / 14));
 
     /* U-Form-Table */
     --form-table-button-font-size: var(--font-size-huge);
+
+    /* typography */
+    --code-color: #e0276e;
+    --code-font-size: var(--font-size-small);
+    --font-family-code: menlo, consolas, monaco, monospace;
+
+    --pre-font-size: var(--code-font-size);
+    --pre-font-family: var(--font-family-code);
+    --tab-size: 4;
+
+    --olul-padding-left: 20px;
+
+    --kbd-padding-y: 1px;
+    --kbd-padding-x: 3px;
+    --kbd-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --kbd-bg: var(--background-color-base);
+
+    /* U-Button */
+    --btn-line-height: calc(var(--height-base) - var(--border-width-base) * 2);
+    --btn-padding-x: 12px;
+    --btn-padding-y: 0;
+
+    --btn-bg: var(--background-color-default);
+    --btn-bg-disabled: var(--background-color-default);
+    --btn-active-bg: var(--background-color-base);
+
+    --btn-color: var(--color-base);
+    --btn-border-color: var(--border-color-base);
+
+    --btn-color-hover: var(--brand-primary);
+    --btn-border-color-hover: var(--brand-primary);
+
+    /* U-Label */
+    --label-padding-x: 6px;
+    --label-primary-color: var(--background-color-default);
+    --label-primary-bg: var(--brand-primary);
+
+    /* U-Badge */
+    --badge-bg: var(--brand-error);
+    --badge-color: var(--background-color-default);
+    --badge-value-line-height: 18px;
+    --badge-dot-size: 6px;
+
+    /* U-Avatar */
+    --avatar-size: 48px;
+    --avatar-size-min: 16px;
+    --avatar-size-small: 32px;
+    --avatar-size-large: 64px;
+    --avatar-size-huge: 108px;
+
+    /* U-Logo */
+    --logo-width: var(--sidebar-width);
+    --logo-height: var(--navbar-height);
+    --logo-sub-font-size: 20px;
+    --logo-sub-margin-left: 145px;
+    --logo-color-inverse: var(--background-color-default);
+    --logo-sub-color: var(--color-base);
+    --logo-bg-inverse: var(--brand-primary);
 }

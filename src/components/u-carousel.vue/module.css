@@ -44,7 +44,7 @@
     position: absolute;
     z-index: 100;
     font-size: var(--carousel-button-font-size);
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     color: rgba(255, 255, 255, 0.6);
     transition: all 0.3s;
     top: 36%;

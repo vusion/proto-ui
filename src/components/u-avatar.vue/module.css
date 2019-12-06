@@ -2,8 +2,8 @@
     display: inline-block;
     background: #c1c7d0 url('./assets/avatar.svg');
     background-size: 100%;
-    width: 48px;
-    height: 48px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     border-radius: 50%;
     vertical-align: middle;
     overflow: hidden;
@@ -20,24 +20,23 @@
 }
 
 .root[size="mini"] {
-    width: 16px;
-    height: 16px;
-    margin-bottom: 2px;
+    width: var(--avatar-size-min);
+    height: var(--avatar-size-min);
 }
 
 .root[size="small"] {
-    width: 32px;
-    height: 32px;
+    width: var(--avatar-size-small);
+    height: var(--avatar-size-small);
 }
 
 .root[size="normal"] { /* As default */ }
 
 .root[size="large"] {
-    width: 64px;
-    height: 64px;
+    width: var(--avatar-size-large);
+    height: var(--avatar-size-large);
 }
 
 .root[size="huge"] {
-    width: 108px;
-    height: 108px;
+    width: var(--avatar-size-huge);
+    height: var(--avatar-size-huge);
 }

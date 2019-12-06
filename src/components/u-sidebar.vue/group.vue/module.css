@@ -3,7 +3,7 @@
 }
 
 .head {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     color: #a7afbb;
     padding-left: 20px;
     line-height: 40px;

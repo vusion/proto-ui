@@ -1,18 +1,18 @@
 .root {
     display: inline-block;
-    width: var(--sidebar-width);
-    height: var(--navbar-height);
-    background: url('./assets/logo.svg') var(--logo-font-size) center no-repeat;
+    width: var(--logo-width);
+    height: var(--logo-height);
+    background: url('./assets/logo.svg') 20px center no-repeat;
     vertical-align: top;
 }
 
 .sub {
     display: inline-block;
     white-space: nowrap;
-    color: var(--color-base);
-    line-height: 73px;
+    color: var(--logo-sub-color);
+    line-height: var(--logo-height);
     margin-left: 145px;
-    font-size: var(--logo-font-size);
+    font-size: var(--logo-sub-font-size);
 }
 
 .sub:empty {
@@ -20,9 +20,9 @@
 }
 
 .root[color="inverse"] {
-    background: var(--brand-primary) url('./assets/logo-inverse.svg') 20px center no-repeat;
+    background: var(--logo-bg-inverse) url('./assets/logo-inverse.svg') 20px center no-repeat;
 }
 
 .root[color="inverse"] .sub {
-    color: white;
+    color: var(--logo-color-inverse);
 }
