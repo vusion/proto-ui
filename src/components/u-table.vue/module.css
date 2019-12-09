@@ -5,12 +5,12 @@
 
 .root caption {
     font-size: var(--font-size-base);
-    color: #6a6f75;
+    color: var(--table-caption-color);
 }
 
 .root th {
     text-align: left;
-    border-bottom: 1px solid var(--border-color-base);
+    border-bottom: var(--table-border-width) solid var(--table-border-color-base);
 }
 
 .root th, .root td {
@@ -18,37 +18,37 @@
 }
 
 .root[line="both"] th, .root[line="both"] td {
-    border: 1px solid var(--border-color-base);
+    border: var(--table-border-width) solid var(--table-border-color-base);
 }
 
 .root[line="horizontal"] th, .root[line="horizontal"] td {
-    border-top: 1px solid var(--border-color-base);
-    border-bottom: 1px solid var(--border-color-base);
+    border-top: var(--table-border-width) solid var(--table-border-color-base);
+    border-bottom: var(--table-border-width) solid var(--table-border-color-base);
 }
 
 .root[line="vertical"] th, .root[line="vertical"] td {
-    border-left: 1px solid var(--border-color-base);
-    border-right: 1px solid var(--border-color-base);
+    border-left: var(--table-border-width) solid var(--table-border-color-base);
+    border-right: var(--table-border-width) solid var(--table-border-color-base);
 }
 
 .root[striped] > tbody > tr:nth-of-type(odd) {
-    background: var(--background-color-light);
+    background: var(--table-striped-row-odd-background);
 }
 
 .root[hover] > tbody > tr:hover {
-    background: var(--background-color-base);
+    background: var(--table-row-hover-background);
 }
 
 .root > tbody > tr[color="light"] {
-    background: var(--background-color-light);
+    background: var(--table-row-light-background);
 }
 
 .root > tbody > tr[color="normal"] {
-    background: var(--background-color-base);
+    background: var(--table-row-base-background);
 }
 
 .root > tbody > tr[color="dark"] {
-    background: var(--background-color-dark);
+    background: var(--table-row-dark-background);
 }
 
 .root > tbody > tr[color="primary"] {

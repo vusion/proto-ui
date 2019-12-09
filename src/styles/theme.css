@@ -31,6 +31,7 @@
     --margin-base: 20px;
     --margin-large: 30px;
 
+
     /* Component Base Dimensions */
     --border-width-base: 1px;
     --width-base: 160px;
@@ -111,28 +112,36 @@
     /* Table */
     --table-row-primary-background: rgba(69, 124, 208, 0.2);
     --table-row-error-background: rgba(242, 45, 78, 0.2);
+    --table-row-dark-background: var(--background-color-dark);
+    --table-row-base-background: var(--background-color-base);
+    --table-row-light-background: var(--background-color-light);
+    --table-row-hover-background: var(--background-color-base);
+    --table-striped-row-odd-background: var(--background-color-light);
+    --table-caption-color: #6a6f75;
+    --table-border-color-base: var(--border-color-base);
+    --table-border-width: 1px;
 
-    /* U-Loading */
+    /* Loading */
     --loading-font-size-small: var(--font-size-base);
     --loading-font-size-base: calc(var(--font-size-base) * (24 / 14));
     --loading-font-size-large: calc(var(--font-size-base) * (40 / 14));
 
-    /* U-Article */
+    /* Article */
     --article-tabel-font-size: calc(var(--font-size-base) * (13 / 14));
 
-    /* U-Carousel */
+    /* Carousel */
     --carousel-button-font-size: 50px;
 
-    /* U-Upload */
+    /* Upload */
     --upload-input-font-size: 100px;
 
-    /* U-Text */
+    /* Text */
     --text-font-size-large: calc(var(--font-size-base) * (18 / 14));
 
-    /* U-Form-Table */
+    /* Form-table */
     --form-table-button-font-size: var(--font-size-huge);
 
-    /* typography */
+    /* Typography */
     --code-color: #e0276e;
     --code-font-size: var(--font-size-small);
     --font-family-code: menlo, consolas, monaco, monospace;
@@ -148,7 +157,7 @@
     --kbd-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     --kbd-bg: var(--background-color-base);
 
-    /* U-Button */
+    /* Button */
     --btn-line-height: calc(var(--height-base) - var(--border-width-base) * 2);
     --btn-padding-x: 12px;
     --btn-padding-y: 0;
@@ -163,25 +172,25 @@
     --btn-color-hover: var(--brand-primary);
     --btn-border-color-hover: var(--brand-primary);
 
-    /* U-Label */
+    /* Label */
     --label-padding-x: 6px;
     --label-primary-color: var(--background-color-default);
     --label-primary-bg: var(--brand-primary);
 
-    /* U-Badge */
+    /* Badge */
     --badge-bg: var(--brand-error);
     --badge-color: var(--background-color-default);
     --badge-value-line-height: 18px;
     --badge-dot-size: 6px;
 
-    /* U-Avatar */
+    /* Avatar */
     --avatar-size: 48px;
     --avatar-size-min: 16px;
     --avatar-size-small: 32px;
     --avatar-size-large: 64px;
     --avatar-size-huge: 108px;
 
-    /* U-Logo */
+    /* Logo */
     --logo-width: var(--sidebar-width);
     --logo-height: var(--navbar-height);
     --logo-sub-font-size: 20px;
@@ -189,4 +198,23 @@
     --logo-color-inverse: var(--background-color-default);
     --logo-sub-color: var(--color-base);
     --logo-bg-inverse: var(--brand-primary);
+
+    /* Grid-layout */
+    --grid-layout-margin-small: calc(var(--margin-small) / 2);
+    --grid-layout-margin-large: calc(var(--margin-large) / 2);
+    --grid-layout-margin-base: calc(var(--margin-base) / 2);
+
+    /* List */
+    --list-style: none;
+    --list-item-borde-bottom: 1px solid var(--border-color-base);
+    --list-item-bg-striped-odd: var(--background-color-light);
+    --list-item-bg-hover: var(--background-color-base);
+    --list-item-padding: 6px 8px;
+
+    /* Collapse */
+    --collapse-head-bg: var(--background-color-dark);
+    --collapse-disabled-expander-color: var(--brand-disabled);
+    --collapse-expander-size: 26px;
+    --collapse-head-padding: 2px 4px;
+    --collapse-border: 1px solid var(--border-color-base);
 }

@@ -1,16 +1,16 @@
 .root {
     margin: 0;
-    list-style: none;
+    list-style: var(--list-style);
 }
 
 .root[line] .item:not(:last-child) {
-    border-bottom: 1px solid var(--border-color-base);
+    border-bottom: var(--list-item-borde-bottom);
 }
 
 .root[striped] .item:nth-of-type(odd) {
-    background: var(--background-color-light);
+    background: var(--list-item-bg-striped-odd);
 }
 
 .root[hover] .item:hover {
-    background: var(--background-color-base);
+    background: var(--list-item-bg-hover);
 }
