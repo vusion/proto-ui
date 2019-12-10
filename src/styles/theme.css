@@ -92,17 +92,6 @@
 
     --pagination-item-size: 32px;
 
-    --tooltip-background-color: #333;
-    --tooltip-arrow-size: 5px;
-    --tooltip-arrow-offset: 10px;
-
-    --popup-background-color: var(--color-white);
-    --popup-background-head-color: var(--color-white);
-    --popup-border-color: var(--border-color-base);
-    --popup-arrow-size: 8px;
-    --popup-outer-arrow-size: calc(var(--popup-arrow-size) + 1px);
-    --popup-arrow-offset: 16px;
-
     --switch-height: 22px;
     --switch-button-size: 18px;
 
@@ -345,4 +334,24 @@
     --modal-body-padding: 15px;
     --modal-padding-padding: 15px;
     --modal-foot-padding: 20px 15px;
+
+    /* Popup */
+    --popup-padding: 6px 10px;
+    --popup-background-color: var(--color-white);
+    --popup-background-head-color: var(--color-white);
+    --popup-border-color: var(--border-color-base);
+    --popup-arrow-size: 8px;
+    --popup-outer-arrow-size: calc(var(--popup-arrow-size) + 1px);
+    --popup-arrow-offset: 16px;
+
+    /* Tooltip */
+
+    --tooltip-background-color: #333;
+    --tooltip-arrow-size: 5px;
+    --tooltip-arrow-offset: 10px;
+    --tooltip-color: var(--color-white);
+    --tooltip-padding: 4px 8px;
+
+    /* IconTooltip */
+    --icon-tooltip-clor: #bac2cf;
 }
