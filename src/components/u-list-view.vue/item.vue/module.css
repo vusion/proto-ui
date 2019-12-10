@@ -3,37 +3,37 @@
     cursor: var(--cursor-pointer);
 
     /* @Public */
-    padding: 4px 12px;
+    padding: var(--list-view-item-padding);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .root:hover {
-    background: var(--background-color-base);
+    background: var(--list-view-item-hover-background);
 }
 
 .root[readonly] {
     cursor: default;
-    background: none;
+    background: var(--list-view-item-readonly-background);
 }
 
 .root[focused] {
-    background: var(--background-color-base);
+    background: var(--list-view-item-focused-background);
 }
 
 .root[selected] {
-    background: var(--brand-primary);
-    color: white;
+    background: var(--list-view-item-selected-background);
+    color: var(--list-view-item-selected-color);
 }
 
 .root[disabled] {
     /* @Private */
     cursor: var(--cursor-not-allowed);
-    background: none;
-    color: var(--brand-disabled);
+    background: var(--list-view-item-disabled-background);
+    color: var(--list-view-item-disabled-color);
 }
 
 .root[selected][disabled] {
-    background: var(--brand-disabled-light);
+    background: var(--list-view-item-selected-disabled-background);
 }

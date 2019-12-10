@@ -1,5 +1,5 @@
 .root {
-    margin: 9px 0;
+    margin: var(--list-view-divider-margin);
     height: 1px;
-    background: var(--border-color-base);
+    background: var(--list-view-divider-background);
 }

@@ -3,6 +3,6 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    background: white;
+    background: var(--tree-view-background);
     border: 1px solid var(--border-color-base);
 }

@@ -354,4 +354,65 @@
 
     /* IconTooltip */
     --icon-tooltip-clor: #bac2cf;
+
+    /* Transfer */
+    --transfer-height: 182px;
+    --transfer-width: var(--width-base);
+    --transfer-button-size: var(--height-base);
+    --transfer-button-space: 10px;
+    --transfer-button-color: var(--color-white);
+    --transfer-button-color-hover: var(--brand-primary);
+    --transfer-button-border-color-hover: var(--brand-primary);
+    --transfer-button-background-color-active: var(--background-color-base);
+
+    --transfer-button-color-disabled: var(--color-white);
+    --transfer-button-border-color-disabled: var(--brand-disabled);
+    --transfer-button-background-color-disabled: var(--brand-disabled);
+
+    /* Table-view */
+    --table-view-table-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.2);
+    --table-view-table-right-shadow: -2px 0 6px -2px rgba(0, 0, 0, 0.2);
+    --table-view-filter-background: var(--color-white);
+    --table-view-filter-max-height: 180px;
+    --table-view-filter-line-height: 1.6;
+    --table-view-title-space: 10px;
+    --table-view-table-background: var(--color-white);
+    --table-view-sort-color: var(--brand-disabled);
+    --table-view-sort-size: 1em;
+    --table-view-sort-color-active: var(--brand-primary);
+    --table-view-expander-size: 26px;
+    --table-view-row-selected-background: #d7e5fb;
+    --table-view-pagination-space: var(--margin-base);
+
+    /* tree-view */
+    --tree-view-background: var(--color-white);
+    --tree-view-node-margin-left: 20px;
+    --tree-view-node-expander-size: 30px;
+    --tree-view-node-text-padding: 4px 12px;
+    --tree-view-node-background-active: var(--background-color-base);
+    --tree-view-node-background-selected: var(--brand-primary);
+    --tree-view-node-selected-text-color: var(--color-white);
+    --tree-view-node-selected-expander-color: var(--color-white);
+    --tree-view-node-disabled-color: var(--brand-disabled);
+    --tree-view-node-background-readonly: none;
+    --tree-view-node-background-disabled: none;
+    --tree-view-node-background-selected-disabled: var(--brand-disabled-light);
+
+    /* List-view */
+    --list-view-background: var(--color-white);
+    --list-view-border-color: var(--border-color-base);
+    --list-view-border-color-focus: var(--brand-primary);
+    --list-view-status-color: var(--gray-dark);
+    --list-view-divider-margin: 9px 0;
+    --list-view-divider-background: var(--border-color-base);
+    --list-view-group-head-padding: 2px 4px;
+    --list-view-group-expander-size: 26px;
+    --list-view-item-padding: 4px 12px;
+    --list-view-item-hover-background: var(--background-color-base);
+    --list-view-item-readonly-background: none;
+    --list-view-item-focused-background: var(--background-color-base);
+    --list-view-item-selected-background: var(--brand-primary);
+    --list-view-item-selected-color: var(--color-white);
+    --list-view-item-disabled-color: var(--brand-disabled);
+    --list-view-item-selected-disabled-background: var(--brand-disabled-light);
 }

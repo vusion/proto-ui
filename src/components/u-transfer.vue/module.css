@@ -1,36 +1,36 @@
 .listView {
     display: inline-block;
-    width: var(--width-base);
-    height: 182px;
+    width: var(--transfer-width);
+    height: var(--transfer-height);
 }
 
 .buttons {
     display: inline-block;
     vertical-align: top;
-    margin: 10px;
-    margin-top: 54px;
+    margin: var(--transfer-button-space);
+    margin-top: calc(var(--transfer-height) / 2 - (var(--transfer-button-size) + var(--border-width-base) * 2) - var(--transfer-button-space) / 2);
 }
 
 .button {
     display: block;
     text-align: center;
-    width: var(--height-base);
-    height: var(--height-base);
-    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
-    background: white;
+    width: var(--transfer-button-size);
+    height: var(--transfer-button-size);
+    line-height: calc(var(--transfer-button-size) - var(--border-width-base) * 2);
+    background: var(--transfer-button-color);
     color: var(--color-base);
     border: var(--border-width-base) solid var(--border-color-base);
 }
 
 .button:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: var(--transfer-button-space);
 }
 
 .button:hover {
     /* Required for `a` elements */
     text-decoration: none;
-    color: var(--brand-primary);
-    border-color: var(--brand-primary);
+    color: var(--transfer-button-color-hover);
+    border-color: var(--transfer-button-border-color-hover);
 }
 
 .button:focus {
@@ -41,7 +41,7 @@
 }
 
 .button:active {
-    background: var(--background-color-base);
+    background: var(--transfer-button-background-color-active);
 }
 
 .button[disabled] {
@@ -49,9 +49,9 @@
     cursor: var(--cursor-not-allowed);
 
     /* @Public */
-    background: white;
-    border-color: var(--brand-disabled);
-    color: var(--brand-disabled);
+    background: var(--transfer-button-background-color-disabled);
+    border-color: var(--transfer-button-border-color-disabled);
+    color: var(--transfer-button-color-disabled);
 }
 
 .button[role="reverse"]::before {

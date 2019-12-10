@@ -5,16 +5,16 @@
     position: relative;
 
     /* @Public */
-    background: white;
-    border: 1px solid var(--border-color-base);
+    background: var(--list-view-background);
+    border: 1px solid var(--list-view-border-color);
 }
 
 .root:focus {
-    border-color: var(--brand-primary);
+    border-color: var(--list-view-border-color-focus);
     outline: var(--focus-outline);
 }
 
 .status {
-    color: var(--gray-dark);
+    color: var(--list-view-status-color);
     text-align: center;
 }
