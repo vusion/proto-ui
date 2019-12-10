@@ -4,34 +4,34 @@
     cursor: var(--cursor-pointer);
 
     /* @Public */
-    padding: 4px 12px;
+    padding: var(--complex-item-padding);
 }
 
 .root:hover {
-    background: var(--background-color-base);
+    background: var(--complex-background-hover);
 }
 
 .root[readonly] {
     cursor: default;
-    background: none;
+    background: var(--complex-background-readonly);
 }
 
 .root[focused] {
-    background: var(--background-color-base);
+    background: var(--complex-background-focused);
 }
 
 .root[selected] {
-    background: var(--brand-primary);
-    color: white;
+    background: var(--complex-background-selected);
+    color: var(--complex-color-selected);
 }
 
 .root[disabled] {
     /* @Private */
     cursor: var(--cursor-not-allowed);
-    background: none;
-    color: var(--brand-disabled);
+    background: var(--complex-background-disabled);
+    color: var(--complex-color-disabled);
 }
 
 .root[selected][disabled] {
-    background: var(--brand-disabled-light);
+    background: var(--complex-background-selected-disabled);
 }

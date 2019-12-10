@@ -3,8 +3,8 @@
 }
 
 .head {
-    padding: 2px 4px;
-    background: var(--background-color-dark);
+    padding: var(--group-head-padding);
+    background: var(--group-head-background);
 }
 
 .text {
@@ -22,9 +22,9 @@
     right: 0;
     top: 0;
     z-index: 1;
-    width: 26px;
-    height: 26px;
-    line-height: 24px;
+    width: var(--group-expander-size);
+    height: var(--group-expander-size);
+    line-height: var(--group-expander-size);
     text-align: center;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .root[disabled] .expander {
-    color: var(--brand-disabled);
+    color: var(--group-disabled-expander-color);
 }
 
 .extra {

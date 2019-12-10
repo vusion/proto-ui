@@ -252,4 +252,48 @@
     --ripple-light-background-color: rgba(255, 255, 255, 0.2);
     --ripple-background-color: rgba(0, 0, 0, 0.2);
     --ripple-size: 100px;
+
+    /* Parent */
+    --parent-child-padding: 4px 12px;
+
+    /* Root */
+    --root-node-padding: 4px 12px;
+    --root-node-margin-left: 20px;
+
+    /* Singlex */
+    --singlex-item-padding: 4px 12px;
+    --singlex-background-hover: var(--background-color-base);
+    --singlex-background-selected: var(--brand-primary);
+    --singlex-color-selected: var(--color-white);
+    --singlex-background-disabled: none;
+    --singlex-background-readonly: none;
+    --singlex-background-selected-disabled: var(--brand-disabled-light);
+    --singlex-color-disabled: var(--brand-disabled);
+    /* Complex */
+    --complex-item-padding: 4px 12px;
+    --complex-background-hover: var(--background-color-base);
+    --complex-background-focused: var(--background-color-base);
+    --complex-background-selected: var(--brand-primary);
+    --complex-color-selected: var(--color-white);
+    --complex-background-disabled: none;
+    --complex-background-readonly: none;
+    --complex-background-selected-disabled: var(--brand-disabled-light);
+    --complex-color-disabled: var(--brand-disabled);
+
+    /* Multiplex */
+    --multiplex-item-padding: 4px 12px;
+    --multiplex-background-hover: var(--background-color-base);
+    --multiplex-background-focused: var(--background-color-base);
+    --multiplex-background-selected: var(--brand-primary);
+    --multiplex-color-selected: var(--color-white);
+    --multiplex-background-disabled: none;
+    --multiplex-background-readonly: none;
+    --multiplex-background-selected-disabled: var(--brand-disabled-light);
+    --multiplex-color-disabled: var(--brand-disabled);
+
+    /* group */
+    --group-head-padding: 2px 4px;
+    --group-head-background: var(--background-color-dark);
+    --group-expander-size: 26px;
+    --group-disabled-expander-color: var(--brand-disabled);
 }
