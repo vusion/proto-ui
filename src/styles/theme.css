@@ -126,6 +126,20 @@
 
     /* Carousel */
     --carousel-button-font-size: 50px;
+    --carousel-width: 700px;
+    --carousel-height: 420px;
+
+    --carousel-nav-bottom: 20px;
+    --carousel-nav-item-width: 30px;
+    --carousel-nav-item-height: 3px;
+    --carousel-nav-item-padding: 4px;
+    --carousel-nav-item-background-color: rgba(255, 255, 255, 0.5);
+    --carousel-nav-item-background-color-hover: var(--color-white);
+
+    --carousel-control-color: rgba(255, 255, 255, 0.6);
+    --carousel-control-color-hover: var(--color-white);
+    --carousel-control-space: 20px;
+    --carousel-control-transition: all 0.3s;
 
     /* Upload */
     --upload-input-font-size: 100px;
@@ -232,4 +246,10 @@
     --circular-progress-text-color: var(--gray-darker);
     --circular-progress-text-font-size: var(--font-size-base);
     --circular-progress-font-size-base: calc(var(--font-size-base) * (18 / 14));
+
+    /* Ripple */
+    --ripple-transition: transform 1s, background-color 1s;
+    --ripple-light-background-color: rgba(255, 255, 255, 0.2);
+    --ripple-background-color: rgba(0, 0, 0, 0.2);
+    --ripple-size: 100px;
 }
