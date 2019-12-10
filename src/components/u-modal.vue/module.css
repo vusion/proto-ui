@@ -26,7 +26,7 @@
 }
 
 .dialog {
-    width: 400px;
+    width: var(--modal-dialog-width);
     display: inline-block;
     vertical-align: middle;
     text-align: left;
@@ -34,11 +34,11 @@
 }
 
 .dialog[size="small"] {
-    width: 300px;
+    width: var(--modal-dialog-width-small);
 }
 
 .dialog[size="large"] {
-    width: 600px;
+    width: var(--modal-dialog-width-large);
 }
 
 .dialog[size="auto"] {
@@ -47,7 +47,7 @@
 
 .head {
     position: relative;
-    padding: 15px;
+    padding: var(--modal-head-padding);
     border-bottom: 1px solid var(--gray-lightest);
 }
 
@@ -58,9 +58,9 @@
 
 .close {
     position: absolute;
-    right: 15px;
-    top: 15px;
-    color: var(--gray-light);
+    right: var(--modal-close-size);
+    top: var(--modal-close-size);
+    color: var(--modal-close-color);
 }
 
 .close::before {
@@ -70,19 +70,19 @@
 }
 
 .close:hover {
-    color: var(--gray-dark);
+    color: var(--modal-close-color-hover);
 }
 
 .body {
-    padding: 15px;
+    padding: var(--modal-body-padding);
 }
 
 .foot {
     text-align: center;
-    padding: 20px 15px;
+    padding: var(--modal-foot-padding);
 }
 
 .root[static] {
     position: static;
-    padding: var(--margin-base);
+    padding: var(--modal-static-padding);
 }

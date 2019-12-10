@@ -1,7 +1,7 @@
 .root {
     display: inline-block;
     text-align: center;
-    color: var(--brand-disabled);
+    color: var(--loading-color);
 }
 
 .root[size="small"] .icon {
@@ -26,7 +26,7 @@
     top: 0;
     bottom: 0;
     z-index: 99;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--loading-full-background);
 }
 
 .root[display="full"] .body {
@@ -43,7 +43,7 @@
     top: 0;
     bottom: 0;
     z-index: var(--z-index-loading);
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--loading-fullWindow-background);
 }
 
 .root[display="fullWindow"] .body {

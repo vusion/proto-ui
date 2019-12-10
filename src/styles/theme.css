@@ -1,3 +1,7 @@
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 :root {
     /* Color */
     --color-white: white;
@@ -102,8 +106,6 @@
     --switch-height: 22px;
     --switch-button-size: 18px;
 
-    --toast-margin: 30px;
-
     /* Table */
     --table-row-primary-background: rgba(69, 124, 208, 0.2);
     --table-row-error-background: rgba(242, 45, 78, 0.2);
@@ -120,6 +122,9 @@
     --loading-font-size-small: var(--font-size-base);
     --loading-font-size-base: calc(var(--font-size-base) * (24 / 14));
     --loading-font-size-large: calc(var(--font-size-base) * (40 / 14));
+    --loading-color: var(--brand-disabled);
+    --loading-full-background: rgba(255, 255, 255, 0.8);
+    --loading-fullWindow-background: rgba(255, 255, 255, 0.6);
 
     /* Article */
     --article-tabel-font-size: calc(var(--font-size-base) * (13 / 14));
@@ -296,4 +301,48 @@
     --group-head-background: var(--background-color-dark);
     --group-expander-size: 26px;
     --group-disabled-expander-color: var(--brand-disabled);
+
+    /* Spinner */
+
+    --spinner-animation: spin 1.5s infinite linear;
+
+    /* Toast */
+    --toast-margin: 30px;
+    --toast-width: 300px;
+    --toast-top: 90px;
+    --toast-close-font-size: 18px;
+    --toast-close-color: var(--color-white);
+    --toast-item-color: var(--color-white);
+    --toast-item-padding: 10px;
+    --toast-item-space: 10px;
+    --toast-background-color: rgba(0, 0, 0, 0.6);
+
+    /* Drawer */
+    --drawer-width: 240px;
+    --drawer-background: var(--color-white);
+    --drawer-wrap-background: rgba(0, 0, 0, 0.6);
+    --drawer-width-small: 160px;
+    --drawer-width-large: 400px;
+    --drawer-close-size: 15px;
+    --drawer-close-color: var(--gray-light);
+    --drawer-close-color-hover: var(--gray-dark);
+    --drawer-body-padding: 15px;
+    --drawer-head-padding: 15px;
+    --drawer-padding-padding: 15px;
+    --drawer-foot-padding: 20px 15px;
+    --drawer-static-padding: var(--margin-base);
+
+    /* modal */
+    --modal-dialog-width: 400px;
+    --modal-dialog-width-small: 300px;
+    --modal-dialog-width-large: 600px;
+
+    --modal-close-size: 15px;
+    --modal-close-color: var(--gray-light);
+    --modal-close-color-hover: var(--gray-dark);
+    --modal-head-padding: 15px;
+    --modal-static-padding: var(--margin-base);
+    --modal-body-padding: 15px;
+    --modal-padding-padding: 15px;
+    --modal-foot-padding: 20px 15px;
 }
