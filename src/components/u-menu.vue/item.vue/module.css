@@ -5,7 +5,7 @@
     position: relative;
     z-index: 1;
     overflow: visible;
-    padding-right: 30px;
+    padding-right: var(--menu-item-sub-space-x);
     white-space: nowrap;
 }
 
@@ -15,9 +15,9 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 30px;
-    height: 30px;
-    line-height: 28px;
+    width: var(--menu-item-sub-space-x);
+    height: var(--menu-item-sub-space-y);
+    line-height: var(--menu-item-sub-space-y);
     text-align: center;
 }
 

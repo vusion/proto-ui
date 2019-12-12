@@ -90,8 +90,6 @@
     --checkbox-size: 18px;
     --radio-size: 18px;
 
-    --pagination-item-size: 32px;
-
     --switch-height: 22px;
     --switch-button-size: 18px;
 
@@ -415,4 +413,60 @@
     --list-view-item-selected-color: var(--color-white);
     --list-view-item-disabled-color: var(--brand-disabled);
     --list-view-item-selected-disabled-background: var(--brand-disabled-light);
+
+    /* Combo-pagination */
+    --combo-pagination-sizer-width: 100px;
+    --combo-pagination-jumper-width: 50px;
+
+    /* Pagination */
+    --pagination-item-size: 32px;
+    --pagination-item-padding: 0 10px;
+    --pagination-item-color-hover: var(--brand-primary);
+    --pagination-item-color-selected: var(--color-white);
+    --pagination-item-color-disabled: var(--brand-disabled);
+    --pagination-item-background-disabled-selected: var(--brand-disabled-light);
+    --pagination-item-background-selected: var(--brand-primary);
+    --pagination-item-background-blank: none;
+    --pagination-item-background: var(--background-color-base);
+    --pagination-item-color: var(--color-base);
+    --pagination-item-color-blank: var(--color-base);
+    --pagination-item-blank-color-disabled: var(--brand-disabled);
+
+    /* Crumb */
+    --crumb-link-color: var(--brand-primary);
+    --crumb-disabled-color: var(--brand-disabled);
+    --crumb-margin: 0 5px;
+
+    /* Steps */
+    --steps-item-width: 200px;
+    --steps-item-disabled-color: var(--brand-disabled);
+    --steps-item-radio-background: var(--background-color-base);
+    --steps-item-passed-background-color: var(--brand-primary);
+    --steps-item-passed-radio-color: var(--color-white);
+
+    /* Tabs */
+    --tabs-head-height: 32px;
+    --tabs-border-color: var(--border-color-base);
+    --tabs-item-height: 30px;
+    --tabs-item-padding: 0 20px;
+    --tabs-item-background-hover: var(--background-color-base);
+    --tabs-item-background-selected: var(--color-white);
+    --tabs-item-color-selected: var(--brand-primary);
+    --tabs-item-border-color-selected: var(--border-color-base);
+
+    --tabs-item-background-disabled: none;
+    --tabs-item-background-selected-disabled: var(--color-white);
+    --tabs-item-color-disabled: var(--brand-disabled);
+
+    /* Menu */
+    --menu-background: var(--color-white);
+    --menu-border-color: var(--border-color-base);
+    --menu-item-sub-space-x: 30px;
+    --menu-item-sub-space-y: 30px;
+    --menu-divider-background: var(--border-color-base);
+    --menu-divider-margin: 9px 0;
+    --menu-divider-height: 1px;
+
+    /* Sidebar */
+    --sidebar-background: var(--background-color-base);
 }
