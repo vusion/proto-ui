@@ -1,7 +1,3 @@
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
 :root {
     /* Color */
     --color-white: white;
@@ -172,6 +168,7 @@
 
     /* Label */
     --label-padding-x: 6px;
+    --label-padding-y: 2px;
     --label-primary-color: var(--background-color-default);
     --label-primary-bg: var(--brand-primary);
 
@@ -191,11 +188,6 @@
     /* Logo */
     --logo-width: var(--sidebar-width);
     --logo-height: var(--navbar-height);
-    --logo-sub-font-size: 20px;
-    --logo-sub-margin-left: 145px;
-    --logo-color-inverse: var(--background-color-default);
-    --logo-sub-color: var(--color-base);
-    --logo-bg-inverse: var(--brand-primary);
 
     /* Grid-layout */
     --grid-layout-margin-small: calc(var(--margin-small) / 2);
@@ -360,9 +352,9 @@
     --transfer-button-border-color-hover: var(--brand-primary);
     --transfer-button-background-color-active: var(--background-color-base);
 
-    --transfer-button-color-disabled: var(--color-white);
+    --transfer-button-color-disabled: var(--brand-disabled);
+    --transfer-button-background-color-disabled: var(--color-white);
     --transfer-button-border-color-disabled: var(--brand-disabled);
-    --transfer-button-background-color-disabled: var(--brand-disabled);
 
     /* Table-view */
     --table-view-table-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.2);
@@ -409,6 +401,8 @@
     --list-view-item-selected-background: var(--brand-primary);
     --list-view-item-selected-color: var(--color-white);
     --list-view-item-disabled-color: var(--brand-disabled);
+    --list-view-item-disabled-background: none;
+    --list-view-group-head-background: #ebedf5;
     --list-view-item-selected-disabled-background: var(--brand-disabled-light);
 
     /* Combo-pagination */

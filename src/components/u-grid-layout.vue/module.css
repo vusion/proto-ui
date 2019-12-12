@@ -21,18 +21,18 @@
 }
 
 .root[gap^="none"] .column {
-    padding-top: var(--grid-layout-margin-base);
-    padding-bottom: var(--grid-layout-margin-base);
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .root[gap$="none"] {
-    margin-left: var(--grid-layout-margin-base);
-    margin-right: var(--grid-layout-margin-base);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .root[gap$="none"] .column {
-    padding-left: var(--grid-layout-margin-base);
-    padding-right: var(--grid-layout-margin-base);
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .root[gap^="small"] {

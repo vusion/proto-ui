@@ -9,10 +9,10 @@
 .sub {
     display: inline-block;
     white-space: nowrap;
-    color: var(--logo-sub-color);
+    color: var(--color-base);
     line-height: var(--logo-height);
     margin-left: 145px;
-    font-size: var(--logo-sub-font-size);
+    font-size: 20px;
 }
 
 .sub:empty {
@@ -20,9 +20,9 @@
 }
 
 .root[color="inverse"] {
-    background: var(--logo-bg-inverse) url('./assets/logo-inverse.svg') 20px center no-repeat;
+    background: var(--brand-primary) url('./assets/logo-inverse.svg') 20px center no-repeat;
 }
 
 .root[color="inverse"] .sub {
-    color: var(--logo-color-inverse);
+    color: var(--background-color-default);
 }

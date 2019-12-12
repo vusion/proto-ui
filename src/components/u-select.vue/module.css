@@ -167,15 +167,15 @@
 .root[size="small"] {
     width: var(--select-small-width);
     height: var(--select-small-height);
-    line-height: calc(var(--select-small-height) - var(--select-border-width));
+    line-height: calc(var(--select-small-height) - var(--select-border-width) * 2);
 }
 
 .root[size="small"] .text {
-    line-height: calc(var(--select-small-height) - var(--select-border-width));
+    line-height: calc(var(--select-small-height) - var(--select-border-width) * 2);
 }
 
 .root[size="small"]::after {
-    line-height: calc(var(--select-small-height) - var(--select-border-width));
+    line-height: calc(var(--select-small-height) - var(--select-border-width) * 4);
 }
 
 .root[size="small"] .popper {
@@ -185,5 +185,5 @@
 .root[size="large"] {
     width: var(--select-large-width);
     height: var(--select-large-height);
-    line-height: calc(var(--select-large-height) - var(--select-border-width));
+    line-height: calc(var(--select-large-height) - var(--select-border-width) * 2);
 }
