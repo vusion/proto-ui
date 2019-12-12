@@ -5,17 +5,17 @@
     cursor: var(--cursor-pointer);
     text-align: center;
     font-size: var(--font-size-large);
-    padding: 0 10px;
+    padding: var(--navbar-item-padding);
     height: var(--navbar-height);
     line-height: var(--navbar-height);
 }
 
 .root:not(:last-child) {
-    margin-right: 30px;
+    margin-right: var(--navbar-item-nolast-margin-right);
 }
 
 .root:hover {
-    color: var(--brand-primary);
+    color: var(--navbar-item-color-hover);
 }
 
 .root[readonly] {
@@ -23,10 +23,10 @@
 }
 
 .root[selected] {
-    color: var(--brand-primary);
+    color: var(--navbar-item-color-selected);
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    color: var(--brand-disabled);
+    color: var(--navbar-item-color-disabled);
 }

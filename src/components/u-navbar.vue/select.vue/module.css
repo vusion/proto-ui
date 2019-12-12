@@ -4,18 +4,18 @@
     border: none;
     height: var(--navbar-height);
     line-height: var(--navbar-height);
-    padding-left: 10px;
-    padding-right: 30px;
-    width: 90px;
+    padding-left: var(--navbar-select-padding-left);
+    padding-right: var(--navbar-select-padding-right);
+    width: var(--navbar-select-width);
     vertical-align: top;
 }
 
 .root:not(:last-child) {
-    margin-right: 30px;
+    margin-right: var(--navbar-select-nolast-margin-right);
 }
 
 .root::before {
-    font-size: var(--font-size-large);
+    font-size: var(--navbar-select-font-size);
     line-height: var(--navbar-height);
 }
 
@@ -25,10 +25,10 @@
 }
 
 .placeholder {
-    font-size: var(--font-size-large);
+    font-size: var(--navbar-select-font-size);
 }
 
 .text {
-    font-size: var(--font-size-large);
+    font-size: var(--navbar-select-font-size);
     line-height: var(--navbar-height);
 }

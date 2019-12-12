@@ -40,8 +40,49 @@
     --line-height-base: 1.6;
 
     /* Specific Dimensions */
-    --navbar-height: 70px;
+
+    /* Sidebar */
     --sidebar-width: 240px;
+    --sidebar-background: var(--background-color-base);
+    --sidebar-item-height: 34px;
+    --sidebar-item-line-height: 34px;
+    --sidebar-item-padding-right: 20px;
+    --sidebar-item-color-hover: var(--brand-primary);
+    --sidebar-item-color-selected: var(--color-white);
+    --sidebar-item-background-color-selected: var(--brand-primary);
+    --sidebar-item-color-disabled: var(--brand-disabled);
+    --sidebar-item-background-disabled: none;
+    --sidebar-item-background-selected-disabled: var(--brand-disabled-light);
+    --sidebar-divider-margin: 9px 0;
+    --sidebar-divider-background: var(--border-color-base);
+    --sidebar-disabled-expander-color: var(--brand-disabled);
+    --sidebar-expander-size: 26px;
+    --sidebar-group-head-line-height: 40px;
+    --sidebar-group-head-color: #a7afbb;
+    --sidebar-group-head-padding-left: 20px;
+
+    /* Navbar */
+    --navbar-height: 70px;
+    --navbar-margin-x: 40px;
+    --navbar-inverse-color: var(--color-white);
+    --navbar-divider-margin: 0 30px;
+    --navbar-divider-height: 20px;
+    --navbar-divider-background: #ddd;
+    --navbar-dropdown-padding: 10px 0 30px;
+    --navbar-dropdown-color-disabled: var(--brand-disabled);
+    --navbar-dropdown-nolast-margin-right: 30px;
+    --navbar-dropdown-popper-line-height: var(--line-height-base);
+    --navbar-dropdown-popper-font-size: var(--font-size-base);
+    --navbar-item-padding: 0 10px;
+    --navbar-item-color-hover: var(--brand-primary);
+    --navbar-item-color-selected: var(--brand-primary);
+    --navbar-item-color-disabled: var(--brand-disabled);
+    --navbar-item-nolast-margin-right: 30px;
+    --navbar-select-width: 90px;
+    --navbar-select-padding-left: 10px;
+    --navbar-select-padding-right: 30px;
+    --navbar-select-nolast-margin-right: 30px;
+    --navbar-select-font-size: var(--font-size-large);
 
     /* Fonts */
     /* stylelint-disable value-keyword-case */
@@ -457,9 +498,6 @@
     --menu-divider-background: var(--border-color-base);
     --menu-divider-margin: 9px 0;
     --menu-divider-height: 1px;
-
-    /* Sidebar */
-    --sidebar-background: var(--background-color-base);
 
     /* Combo-slider */
     --combo-slider-slider-width: 160px;

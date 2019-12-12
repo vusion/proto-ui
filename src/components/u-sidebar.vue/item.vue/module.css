@@ -1,16 +1,16 @@
 .root {
     display: block;
     cursor: var(--cursor-pointer);
-    height: 34px;
-    line-height: 34px;
-    padding-left: 20px;
+    height: var(--sidebar-item-height);
+    line-height: var(--sidebar-item-line-height);
+    padding-left: var(--sidebar-item-padding-right);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .root:hover {
-    color: var(--brand-primary);
+    color: var(--sidebar-item-color-hover);
 }
 
 .root[readonly] {
@@ -18,16 +18,16 @@
 }
 
 .root[selected] {
-    background-color: var(--brand-primary);
-    color: white;
+    background-color: var(--sidebar-item-background-color-selected);
+    color: var(--sidebar-item-color-selected);
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    background: none;
-    color: var(--brand-disabled);
+    background: var(--sidebar-item-background-disabled);
+    color: var(--sidebar-item-color-disabled);
 }
 
 .root[selected][disabled] {
-    background: var(--brand-disabled-light);
+    background: var(--sidebar-item-background-selected-disabled);
 }
