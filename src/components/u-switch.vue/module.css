@@ -6,11 +6,11 @@
     vertical-align: middle;
     user-select: none;
     cursor: var(--cursor-pointer);
-    width: 44px;
-    border-radius: 100px;
-    background: var(--border-color-base);
-    color: white;
-    transition: background-color 0.3s;
+    width: var(--switch-width);
+    border-radius: var(--switch-border-radius);
+    background: var(--switch-background);
+    color: var(--switch-color);
+    transition: var(--switch-transition);
 }
 
 .root:focus {
@@ -19,27 +19,27 @@
 
 .button {
     position: absolute;
-    left: 2px;
-    top: 2px;
-    border-radius: 100px;
+    left: var(--switch-button-space);
+    top: calc((var(--switch-height) - var(--switch-button-size)) / 2);
+    border-radius: var(--switch-button-radius);
     width: var(--switch-button-size);
     height: var(--switch-button-size);
-    background: white;
-    transition: all 0.3s;
+    background: var(--switch-button-background);
+    transition: var(--switch-button-transition);
 }
 
 .text {
     display: block;
     text-align: right;
-    margin: 0 5px;
+    margin: var(--switch-text-margin);
 }
 
 .root[checked] {
-    background: var(--brand-primary);
+    background: var(--switch-background-checked);
 }
 
 .root[checked] .button {
-    left: calc(44px - var(--switch-button-size) - 2px);
+    left: calc(var(--switch-width) - var(--switch-button-size) - var(--switch-button-space));
 }
 
 .root[checked] .text {
@@ -47,14 +47,14 @@
 }
 
 .root[width="wide"] {
-    width: 54px;
+    width: var(--switch-width-wide);
 }
 
 .root[width="wide"][checked] .button {
-    left: calc(54px - var(--switch-button-size) - 2px);
+    left: calc(var(--switch-width-wide) - var(--switch-button-size) - var(--switch-button-space));
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    background: var(--background-color-base);
+    background: var(--switch-background-disabled);
 }

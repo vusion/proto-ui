@@ -2,12 +2,12 @@
     display: inline-block;
     position: relative;
     max-width: 100%; /* 防止表格等小的地方超出区域 */
-    width: var(--width-base);
-    height: var(--height-base);
-    padding: 0 8px;
-    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
-    background: white;
-    border: 1px solid var(--border-color-base);
+    width: var(--input-width);
+    height: var(--input-height);
+    padding: var(--input-padding);
+    line-height: calc(var(--input-height) - var(--input-border-width) * 2);
+    background: var(--input-background);
+    border: var(--input-border-width) solid var(--border-color-base);
     border-radius: var(--border-radius-base);
     cursor: text;
 }
@@ -36,7 +36,7 @@
 
 .placeholder, .input::placeholder {
     font-size: inherit;
-    color: #a7afbb;
+    color: var(--input-placeholder-color);
 }
 
 .placeholder { /* for IE9 */
@@ -62,7 +62,7 @@
     margin: auto;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
     cursor: var(--cursor-pointer);
-    color: #a7afbb;
+    color: var(--input-placeholder-color);
 }
 
 .input:focus {
@@ -70,18 +70,18 @@
 }
 
 .root[focus] {
-    border-color: var(--brand-primary);
+    border-color: var(--input-border-color-focus);
 }
 
 .root[color="default"] { /* As default */ }
 
 .root[color="error"] {
-    border-color: var(--brand-error);
+    border-color: var(--input-border-color-error);
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    background: var(--brand-disabled-light);
+    background: var(--input-background-disabled);
 }
 
 .root[size="normal"] { /* As default */ }

@@ -4,14 +4,14 @@
 }
 
 .message {
-    margin-left: 5px;
-    padding: 0 5px;
-    background: var(--background-color-base);
+    margin-left: var(--validator-message-margin-left);
+    padding: var(--validator-message-padding);
+    background: var(--validator-message-background);
 }
 
 .message[color="error"] {
-    background: var(--brand-error);
-    color: white;
+    background: var(--validator-message-background-error);
+    color: var(--validator-message-color-error);
 }
 
 .root[placement="bottom"] .message {

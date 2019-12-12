@@ -4,15 +4,15 @@
     user-select: none;
     position: absolute;
     right: 1px;
-    height: 14px;
-    line-height: 14px;
-    padding: 0 4px;
+    height: var(--number-input-height);
+    line-height: var(--number-input-line-height);
+    padding: var(--number-input-padding);
     cursor: var(--cursor-pointer);
-    background: var(--background-color-base);
+    background: var(--number-input-background);
 }
 
 .button:hover {
-    background: var(--background-color-dark);
+    background: var(--number-input-background-hover);
 }
 
 .button:focus {
@@ -20,7 +20,7 @@
 }
 
 .button:active {
-    background: var(--background-color-dark);
+    background: var(--number-input-background-active);
 }
 
 .button[role="up"] {
@@ -40,18 +40,18 @@
 }
 
 .button[disabled] {
-    background: var(--background-color-base);
-    color: var(--brand-disabled);
+    background: var(--number-input-background-disabled);
+    color: var(--number-input-color-disabled);
     cursor: var(--cursor-not-allowed);
 }
 
 .root[readonly] .button {
-    background: var(--background-color-base);
+    background: var(--number-input-background-readonly);
     cursor: default;
 }
 
 .root[disabled] .button {
-    background: var(--background-color-base);
-    color: var(--brand-disabled);
+    background: var(--number-input-background-disabled);
+    color: var(--number-input-color-disabled);
     cursor: var(--cursor-not-allowed);
 }

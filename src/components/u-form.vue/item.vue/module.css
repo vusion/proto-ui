@@ -2,12 +2,12 @@
 
 .label {
     display: inline-block;
-    padding-right: 5px;
+    padding-right: var(--form-item-label-space);
 }
 
 .label[required]::after {
     content: '*';
-    color: var(--brand-error);
+    color: var(--form-required-color);
 }
 
 .field {
@@ -16,14 +16,14 @@
 }
 
 .message {
-    margin-left: 5px;
-    padding: 0 5px;
-    background: var(--background-color-base);
+    margin-left: var(--form-message-margin-left);
+    padding: var(--form-message-padding);
+    background: var(--form-message-background);
 }
 
 .message[color="error"] {
-    background: var(--brand-error);
-    color: white;
+    background: var(--form-message-background-error);
+    color: var(--form-message-color-error);
 }
 
 .root[placement="bottom"] .message {
@@ -33,8 +33,8 @@
     margin-left: 0;
 }
 
-.root[label-size$="normal"] > .label { width: 80px; }
-.root[label-size$="normal"] > .field { max-width: calc(100% - 80px); }
+.root[label-size$="normal"] > .label { width: var(--form-item-label-width); }
+.root[label-size$="normal"] > .field { max-width: calc(100% - var(--form-item-label-width)); }
 
 .root[field-size="full"] > .field {
     width: 100%;

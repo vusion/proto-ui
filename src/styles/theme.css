@@ -90,9 +90,6 @@
     --checkbox-size: 18px;
     --radio-size: 18px;
 
-    --switch-height: 22px;
-    --switch-button-size: 18px;
-
     /* Table */
     --table-row-primary-background: rgba(69, 124, 208, 0.2);
     --table-row-error-background: rgba(242, 45, 78, 0.2);
@@ -469,4 +466,125 @@
 
     /* Sidebar */
     --sidebar-background: var(--background-color-base);
+
+    /* Combo-slider */
+    --combo-slider-slider-width: 160px;
+    --combo-slider-input-width: 60px;
+    --combo-slider-input-left: 10px;
+
+    /* Slider */
+    --slider-body-margin: 0 10px;
+    --slider-body-padding: 6px 0;
+    --slider-track-background: var(--background-color-base);
+    --slider-trail-background: var(--brand-primary);
+    --slider-trail-background-disabled: var(--brand-disabled);
+    --slider-track-height: 8px;
+    --slider-bound-background: rgba(255, 255, 255, 0.4);
+    --slider-handle-background: var(--color-white);
+    --slider-handle-size: 20px;
+    --slider-handle-border: 1px solid #ddd;
+
+    /* Select */
+    --select-border-width: 1px;
+    --select-item-hover: none;
+    --select-large-width: 260px;
+    --select-large-height: 36px;
+    --select-small-width: 120px;
+    --select-small-height: 30px;
+    --select-small-popper-line-height: 1.6;
+    --select-popper-line-height: 1.6;
+
+    --select-width: var(--width-base);
+    --select-height: var(--height-base);
+    --select-pading-right: 26px;
+    --select-pading: 0 var(--select-pading-right) 0 8px;
+    --select-background: var(--color-white);
+    --select-background-disabled: var(--brand-disabled-light);
+    --select-placeholder-color: #a7afbb;
+    --select-arrow-color: #a7afbb;
+    --select-tags-padding-y: 2px;
+    --select-tags-padding: var(--select-tags-padding-y) var(--select-pading-right)  var(--select-tags-padding-y) 4px;
+    --select-tags-line-height: 26px;
+    --select-tags-filterable-width: 40px;
+    --select-tag-line-height: calc(var(--select-tags-line-height) - var(--select-tags-padding-y) * 2);
+    --select-tag-background: var(--background-color-base);
+    --select-tag-padding: 0 6px;
+    --select-tag-margin-x: 4px;
+    --select-tag-remove-color: #a7afbb;
+    --select-tag-remove-color-hover: var(--color-base);
+    --select-popper-border-color: var(--border-color-base);
+    --select-popper-background: var(--color-white);
+    --select-popper-max-height: 180px;
+    --select-status-color: var(--gray-dark);
+
+    /* switch */
+    --switch-height: 22px;
+    --switch-button-size: 18px;
+    --switch-button-background: var(--color-white);
+    --switch-button-transition: all 0.3s;
+    --switch-button-radius: 100px;
+    --switch-background: var(--border-color-base);
+    --switch-background-checked: var(--brand-primary);
+    --switch-background-disabled: var(--background-color-base);
+    --switch-color: var(--color-white);
+    --switch-transition: background-color 0.3s;
+    --switch-width: 44px;
+    --switch-width-wide: 54px;
+    --switch-border-radius: 100px;
+    --switch-text-margin: 0 5px;
+    --switch-button-space: 2px;
+
+    /* Checkboxes */
+    --checkboxes-item-margin-right: 40px;
+
+    /* Radios */
+    --radios-item-margin-right: 40px;
+
+    /* Input */
+    --input-background-disabled: var(--brand-disabled-light);
+    --input-border-color-error: var(--brand-error);
+    --input-border-color-focus: var(--brand-primary);
+    --input-placeholder-color: #a7afbb;
+    --input-width: var(--width-base);
+    --input-height: var(--height-base);
+    --input-padding: 0 8px;
+    --input-border-width: 1px;
+    --input-background: var(--color-white);
+
+    /* Textarea */
+    --textarea-width: 320px;
+    --textarea-min-width: var(--width-base);
+    --textarea-height: 120px;
+    --textarea-min-height: var(--height-base);
+    --textarea-padding: 4px 8px;
+
+    /* Number-input */
+    --number-input-height: 14px;
+    --number-input-line-height: var(--number-input-height);
+    --number-input-padding: 0 4px;
+    --number-input-background: var(--background-color-base);
+    --number-input-background-hover: var(--background-color-dark);
+    --number-input-background-active: var(--number-input-background-hover);
+    --number-input-background-disabled: var(--background-color-base);
+    --number-input-background-readonly: var(--background-color-base);
+    --number-input-color-disabled: var(--brand-disabled);
+
+    /* Validator */
+    --validator-message-padding: 0 5px;
+    --validator-message-margin-left: 5px;
+    --validator-message-background: var(--background-color-base);
+    --validator-message-background-error: var(--brand-error);
+    --validator-message-color-error: var(--color-white);
+
+    /* Form */
+    --form-item-space: 20px;
+    --form-inline-item-space: 20px;
+    --form-item-label-space: 5px;
+    --form-required-color: var(--brand-error);
+    --form-message-background-error: var(--brand-error);
+    --form-message-background: var(--background-color-base);
+    --form-message-padding: 0 5px;
+    --form-message-margin-left: 5px;
+    --form-message-color-error: var(--color-white);
+    --form-item-label-width: 80px;
 }

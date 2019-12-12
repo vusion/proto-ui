@@ -4,13 +4,12 @@
     user-select: none;
     max-width: 100%;
     cursor: var(--cursor-pointer);
-    width: var(--width-base);
-    height: var(--height-base);
-    line-height: calc(var(--height-base) - var(--border-width-base) * 2);
-    padding: 0 8px;
-    padding-right: 26px;
-    background: white;
-    border: 1px solid var(--border-color-base);
+    width: var(--select-width);
+    height: var(--select-height);
+    line-height: calc(var(--select-height) - var(--select-border-width) * 2);
+    padding: var(--select-pading);
+    background: var(--select-background);
+    border: var(--select-border-width) solid var(--border-color-base);
 }
 
 .root:focus {
@@ -25,7 +24,7 @@
 }
 
 .placeholder {
-    color: #a7afbb;
+    color: var(--select-placeholder-color);
     position: absolute;
     left: 0;
     top: 0;
@@ -63,7 +62,7 @@
     line-height: 1;
     height: 1em;
     margin: auto;
-    color: #a7afbb;
+    color: var(--select-arrow-color);
 }
 .root[opend]::after {
     icon-font: url('../i-icon.vue/assets/arrow-up.svg');
@@ -79,7 +78,7 @@
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    background: var(--brand-disabled-light);
+    background: var(--select-background-disabled);
 }
 
 .text {
@@ -93,8 +92,8 @@
 
 .root[multiple-tags] {
     height: auto;
-    padding: 2px 26px 2px 4px;
-    line-height: 26px;
+    padding: var(--select-tags-padding);
+    line-height: var(--select-tags-line-height);
 }
 
 .root[multiple-tags] .text[tags-overflow="visible"] {
@@ -104,20 +103,20 @@
 
 .tag {
     display: inline-block;
-    padding: 0 6px;
+    padding: var(--select-tag-padding);
     font-size: var(--font-size-small);
-    line-height: 22px;
+    line-height: var(--select-tag-line-height);
     vertical-align: 1px;
-    background: var(--background-color-base);
+    background: var(--select-tag-background);
 }
 
 .tag:not(:last-child) {
-    margin-right: 4px;
+    margin-right: var(--select-tag-margin-x);
 }
 
 .tag-remove {
-    margin-left: 4px;
-    color: #a7afbb;
+    margin-left: var(--select-tag-margin-x);
+    color: var(--select-tag-remove-color);
 }
 
 .tag-remove::before {
@@ -126,7 +125,7 @@
 }
 
 .tag-remove:hover {
-    color: var(--color-base);
+    color: var(--select-tag-remove-color-hover);
 }
 
 .input {
@@ -141,8 +140,8 @@
 .input[multiple-tags][filterable] {
     position: relative;
     display: inline-block;
-    width: 40px;
-    line-height: 26px;
+    width: var(--select-tags-filterable-width);
+    line-height: var(--select-tags-line-height);
     padding: 0;
 }
 
@@ -150,41 +149,41 @@
     position: absolute;
     box-sizing: content-box;
     width: 100%;
-    line-height: 1.6;
-    max-height: 180px;
+    line-height: var(--select-popper-line-height);
+    max-height: var(--select-popper-max-height);
     overflow: auto;
-    background: white;
-    border: 1px solid var(--border-color-base);
+    background: var(--select-popper-background);
+    border: 1px solid var(--select-popper-border-color);
     z-index: var(--z-index-popper);
 }
 
 .status {
-    color: var(--gray-dark);
+    color: var(--select-status-color);
     text-align: center;
 }
 
 .root[size="normal"] { /* As default */ }
 
 .root[size="small"] {
-    width: 120px;
-    height: 30px;
-    line-height: 28px;
+    width: var(--select-small-width);
+    height: var(--select-small-height);
+    line-height: calc(var(--select-small-height) - var(--select-border-width));
 }
 
 .root[size="small"] .text {
-    line-height: 28px;
+    line-height: calc(var(--select-small-height) - var(--select-border-width));
 }
 
 .root[size="small"]::after {
-    line-height: 26px;
+    line-height: calc(var(--select-small-height) - var(--select-border-width));
 }
 
 .root[size="small"] .popper {
-    line-height: 1.6;
+    line-height: var(--select-small-popper-line-height);
 }
 
 .root[size="large"] {
-    width: 260px;
-    height: 36px;
-    line-height: 34px;
+    width: var(--select-large-width);
+    height: var(--select-large-height);
+    line-height: calc(var(--select-large-height) - var(--select-border-width));
 }

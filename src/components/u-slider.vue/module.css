@@ -4,26 +4,26 @@
 
 .body {
     position: relative;
-    margin: 0 10px;
-    padding: 6px 0;
+    margin: var(--slider-body-margin);
+    padding: var(--slider-body-padding);
 }
 
 .track {
     position: relative;
     overflow: hidden;
-    height: 8px;
-    background: var(--background-color-base);
+    height: var(--slider-track-height);
+    background: var(--slider-track-background);
 }
 
 .trail {
     position: absolute;
     height: 100%;
-    background: var(--brand-primary);
+    background: var(--slider-trail-background);
 }
 
 .bound {
     position: absolute;
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--slider-bound-background);
     height: 100%;
 }
 
@@ -39,12 +39,12 @@
     position: absolute;
     left: 0;
     top: 0;
-    margin-left: -10px;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 100px;
+    margin-left: calc(var(--slider-handle-size) / -2);
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+    background: var(--slider-handle-background);
+    border: var(--slider-handle-border);
+    border-radius: var(--slider-handle-size);
 }
 
 .root[disabled] {
@@ -52,5 +52,5 @@
 }
 
 .root[disabled] .trail {
-    background: var(--brand-disabled);
+    background: var(--slider-trail-background-disabled);
 }

@@ -2,10 +2,10 @@
 
 .slider {
     display: inline-block;
-    width: 160px;
+    width: var(--combo-slider-slider-width);
 }
 
 .input {
-    margin-left: 10px;
-    width: 60px;
+    margin-left: var(--combo-slider-input-left);
+    width: var(--combo-slider-input-width);
 }
