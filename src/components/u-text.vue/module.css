@@ -7,7 +7,7 @@
 }
 
 .root[size="small"] {
-    font-size: var(--font-size-small);
+    font-size: var(--text-font-size-small);
 }
 
 .root[size="normal"] { /* As default */ }
@@ -19,15 +19,15 @@
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: var(--brand-primary);
+    color: var(--text-primary-color);
 }
 
 .root[color="error"] {
-    color: var(--brand-error);
+    color: var(--text-error-color);
 }
 
 .root[color="disabled"] {
-    color: var(--brand-disabled);
+    color: var(--text-disabled-color);
 }
 
 .root[wrap="ellipsis"] {

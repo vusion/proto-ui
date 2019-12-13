@@ -20,20 +20,20 @@
     /* Others */
     display: inline-block;
     text-align: center;
-    padding: var(--btn-padding-y) var(--btn-padding-x);
-    height: var(--height-base);
-    line-height: var(--btn-line-height);
+    padding: var(--button-padding-y) var(--button-padding-x);
+    height: var(--button-height);
+    line-height: var(--button-line-height);
     /* stylelint-disable declaration-block-no-duplicate-properties */
-    background: var(--btn-bg);
-    color: var(--btn-color);
-    border: var(--border-width-base) solid var(--btn-border-color);
+    background: var(--button-background);
+    color: var(--button-color);
+    border: var(--border-width-base) solid var(--button-border-color);
 }
 
 .root:hover {
     /* Required for `a` elements */
     text-decoration: none;
-    color: var(--btn-color-hover);
-    border-color: var(--btn-border-color-hover);
+    color: var(--button-color-hover);
+    border-color: var(--button-border-color-hover);
 }
 
 .root:focus {
@@ -44,14 +44,14 @@
 }
 
 .root:active {
-    background: var(--btn-active-bg);
+    background: var(--button-background-active);
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    background: var(--btn-bg-disabled);
-    border-color: var(--border-color-base);
-    color: var(--brand-disabled);
+    background: var(--button-background-disabled);
+    border-color: var(--button-border-color-disabled);
+    color: var(--button-color-disabled);
 }
 
 .root[size="normal"] { /* As default */ }

@@ -1,7 +1,7 @@
 .root {
     padding: var(--label-padding-y) var(--label-padding-x);
     font-size: var(--font-size-small);
-    background: var(--background-color-base);
+    background: var(--label-background);
     border-radius: var(--border-radius-base);
 }
 
