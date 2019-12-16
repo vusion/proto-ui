@@ -1,16 +1,23 @@
+import single from '../../utils/event/single';
+const handler = function (e, datas) {
+    Object.values(datas).forEach(({ el, binding }) => {
+        if (el.contains(e.target))
+            return false;
+        if (binding.expression)
+            binding.value(e);
+    });
+};
 export const clickOutside = {
     bind(el, binding) {
-        const handler = function (e) {
-            if (el.contains(e.target))
-                return false;
-            if (binding.expression)
-                binding.value(e);
-        };
-        el.__clickOutsideHandler__ = handler;
-        document.addEventListener('click', handler);
+        el['v-click-outside-off'] = single.on('v-click-outside' + new Date(), {
+            el,
+            binding,
+        }, document, 'click', handler);
     },
-    unbind(el, binding) {
-        document.removeEventListener('click', el.__clickOutsideHandler__);
-        delete el.__clickOutsideHandler__;
+    unbind(el) {
+        if (el['v-click-outside-off']) {
+            el['v-click-outside-off']();
+            delete el['v-click-outside-off'];
+        }
     },
 };
