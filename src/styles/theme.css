@@ -46,7 +46,7 @@
     --sidebar-background: var(--background-color-base);
     --sidebar-item-height: 34px;
     --sidebar-item-line-height: var(--sidebar-item-height);
-    --sidebar-item-padding-right: 20px;
+    --sidebar-item-padding-left: 20px;
     --sidebar-item-color-hover: var(--brand-primary);
     --sidebar-item-color-selected: var(--color-white);
     --sidebar-item-background-color-selected: var(--brand-primary);
@@ -68,7 +68,7 @@
     --navbar-divider-margin: 0 30px;
     --navbar-divider-height: 20px;
     --navbar-divider-background: #ddd;
-    --navbar-dropdown-padding: 10px 0 30px;
+    --navbar-dropdown-padding: 0 30px 0 10px;
     --navbar-dropdown-color-disabled: var(--brand-disabled);
     --navbar-dropdown-nolast-margin-right: 30px;
     --navbar-dropdown-popper-line-height: var(--line-height-base);
@@ -268,6 +268,7 @@
     --circular-progress-text-color: var(--gray-darker);
     --circular-progress-text-font-size: var(--font-size-base);
     --circular-progress-font-size-base: calc(var(--font-size-base) * (18 / 14));
+    --circular-progress-text-line-height: var(--circular-progress-size-base);
 
     /* Ripple */
     --ripple-transition: transform 1s, background-color 1s;
@@ -386,13 +387,15 @@
     --transfer-width: var(--width-base);
     --transfer-button-size: var(--height-base);
     --transfer-button-space: 10px;
-    --transfer-button-color: var(--color-white);
+    --transfer-button-background: var(--color-white);
+    --transfer-button-color: var(--color-base);
     --transfer-button-color-hover: var(--brand-primary);
     --transfer-button-border-color-hover: var(--brand-primary);
     --transfer-button-background-color-active: var(--background-color-base);
     --transfer-button-color-disabled: var(--brand-disabled);
     --transfer-button-background-color-disabled: var(--color-white);
     --transfer-button-border-color-disabled: var(--brand-disabled);
+    --transfer-button-border-color: var(--border-color-base);
 
     /* Table-view */
     --table-view-table-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.2);
@@ -470,6 +473,7 @@
     --steps-item-width: 200px;
     --steps-item-disabled-color: var(--brand-disabled);
     --steps-item-radio-background: var(--background-color-base);
+    --steps-item-radio-size: 10px;
     --steps-item-passed-background-color: var(--brand-primary);
     --steps-item-passed-radio-color: var(--color-white);
 
@@ -477,6 +481,7 @@
     --tabs-head-height: 32px;
     --tabs-border-color: var(--border-color-base);
     --tabs-item-height: 30px;
+    --tabs-item-border-width: 1px;
     --tabs-item-padding: 0 20px;
     --tabs-item-background-hover: var(--background-color-base);
     --tabs-item-background-selected: var(--color-white);
@@ -509,11 +514,14 @@
     --slider-track-height: 8px;
     --slider-bound-background: rgba(255, 255, 255, 0.4);
     --slider-handle-background: var(--color-white);
-    --slider-handle-size: 20px;
+    --slider-handle-width: 20px;
+    --slider-handle-height: 20px;
+    --slider-handle-size: 100px;
     --slider-handle-border: 1px solid #ddd;
 
     /* Select */
     --select-border-width: 1px;
+    --select-border-color: var(--border-color-base);
     --select-item-hover: none;
     --select-large-width: 260px;
     --select-large-height: 36px;
@@ -574,11 +582,14 @@
     --input-border-color-error: var(--brand-error);
     --input-border-color-focus: var(--brand-primary);
     --input-placeholder-color: var(--brand-tip-color);
+    --input-clearable-color: var(--brand-tip-color);
     --input-width: var(--width-base);
     --input-height: var(--height-base);
     --input-padding: 0 8px;
     --input-border-width: 1px;
     --input-background: var(--color-white);
+    --input-border-color: var(--border-color-base);
+    --input-border-radius: var(--border-radius-base);
 
     /* Textarea */
     --textarea-width: 320px;
@@ -616,4 +627,7 @@
     --form-message-margin-left: 5px;
     --form-message-color-error: var(--color-white);
     --form-item-label-width: 80px;
+
+    /* Block */
+    --block-background: var(--border-color-base);
 }

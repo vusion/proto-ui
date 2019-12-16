@@ -9,7 +9,7 @@
     line-height: calc(var(--select-height) - var(--select-border-width) * 2);
     padding: var(--select-pading);
     background: var(--select-background);
-    border: var(--select-border-width) solid var(--border-color-base);
+    border: var(--select-border-width) solid var(--select-border-color);
 }
 
 .root:focus {

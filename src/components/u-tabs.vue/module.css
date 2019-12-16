@@ -12,10 +12,10 @@
     box-sizing: content-box;
 
     height: var(--tabs-item-height);
-    line-height: var(--tabs-item-height);
+    line-height: calc(var(--tabs-item-height) - var(--tabs-item-border-width) * 2);
     padding: var(--tabs-item-padding);
 
-    border: 1px solid transparent;
+    border: var(--tabs-item-border-width) solid transparent;
     border-bottom: none;
     margin-bottom: -1px;
 }

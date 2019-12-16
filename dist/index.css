@@ -2752,7 +2752,7 @@ kbd {
     height: 70px;
     line-height: 70px;
     border: none;
-    padding: 10px 0 30px;
+    padding: 0 10px 0 30px;
     font-size: 16px
 }
 
@@ -3797,7 +3797,7 @@ kbd {
     height: 20px;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 20px
+    border-radius: 100px
 }
 
 .u-slider_1kE0FMDD[disabled] {
@@ -3871,7 +3871,7 @@ kbd {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     height: 30px;
-    line-height: 30px;
+    line-height: 28px;
     padding: 0 20px;
     border: 1px solid rgba(0, 0, 0, 0);
     border-bottom: none;

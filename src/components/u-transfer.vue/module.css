@@ -17,9 +17,9 @@
     width: var(--transfer-button-size);
     height: var(--transfer-button-size);
     line-height: calc(var(--transfer-button-size) - var(--border-width-base) * 2);
-    background: var(--transfer-button-color);
-    color: var(--color-base);
-    border: var(--border-width-base) solid var(--border-color-base);
+    background: var(--transfer-button-background);
+    color: var(--transfer-button-color);
+    border: var(--border-width-base) solid var(--transfer-button-border-color);
 }
 
 .button:not(:last-child) {

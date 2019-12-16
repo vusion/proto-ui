@@ -29,7 +29,7 @@
     left: 0;
     right: 0;
     text-align: center;
-    line-height: var(--circular-progress-size-base);
+    line-height: var(--circular-progress-text-line-height);
     font-size: var(--circular-progress-text-font-size);
     color: var(--circular-progress-text-color);
 }

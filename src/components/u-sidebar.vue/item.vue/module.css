@@ -3,7 +3,7 @@
     cursor: var(--cursor-pointer);
     height: var(--sidebar-item-height);
     line-height: var(--sidebar-item-line-height);
-    padding-left: var(--sidebar-item-padding-right);
+    padding-left: var(--sidebar-item-padding-left);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

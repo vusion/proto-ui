@@ -29,8 +29,8 @@
 .radio {
     display: inline-block;
     content: '';
-    width: 10px;
-    height: 10px;
+    width: var(--steps-item-radio-size);
+    height: var(--steps-item-radio-size);
     border-radius: 100%;
     margin-left: -5px;
     background: var(--steps-item-radio-background);

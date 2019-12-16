@@ -39,9 +39,9 @@
     position: absolute;
     left: 0;
     top: 0;
-    margin-left: calc(var(--slider-handle-size) / -2);
-    width: var(--slider-handle-size);
-    height: var(--slider-handle-size);
+    margin-left: calc(var(--slider-handle-width) / -2);
+    width: var(--slider-handle-width);
+    height: var(--slider-handle-height);
     background: var(--slider-handle-background);
     border: var(--slider-handle-border);
     border-radius: var(--slider-handle-size);

@@ -7,8 +7,8 @@
     padding: var(--input-padding);
     line-height: calc(var(--input-height) - var(--input-border-width) * 2);
     background: var(--input-background);
-    border: var(--input-border-width) solid var(--border-color-base);
-    border-radius: var(--border-radius-base);
+    border: var(--input-border-width) solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
     cursor: text;
 }
 
@@ -62,7 +62,7 @@
     margin: auto;
     icon-font: url('../i-icon.vue/assets/close-solid.svg');
     cursor: var(--cursor-pointer);
-    color: var(--input-placeholder-color);
+    color: var(--input-clearable-color);
 }
 
 .input:focus {
