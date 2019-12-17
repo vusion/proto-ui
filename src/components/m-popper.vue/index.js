@@ -197,7 +197,7 @@ export const MPopper = {
 
             // 绑定事件
             this.followCursor && this.offEvents.push(
-                single.on('m-popper' + new Date(), {
+                single.on('m-popper-proto', {
                     el,
                     self: this,
                 }, document, 'mousemove', (e, datas) => {
@@ -226,7 +226,7 @@ export const MPopper = {
                     }, this.hoverDelay);
                 }));
                 this.offEvents.push(
-                    single.on('m-popper' + new Date(), {
+                    single.on('m-popper-proto', {
                         self: this,
                         el,
                         popperEl,
@@ -253,7 +253,7 @@ export const MPopper = {
             }
             // @TODO: 有没有必要搞 focus-in
             this.offEvents.push(
-                single.on('m-popper' + new Date(), {
+                single.on('m-popper-proto', {
                     el,
                     popperEl,
                     self: this,
