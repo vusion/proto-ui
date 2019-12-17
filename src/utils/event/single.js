@@ -1,8 +1,10 @@
 const eventsData = {};
 let token = 0;
+
 const getDataName = function (name, type) {
     return `${name}_${type}`;
 };
+
 const off = function (name, element, type, token) {
     const eventDataName = getDataName(name, type);
     const eventData = eventsData[eventDataName];
@@ -12,6 +14,7 @@ const off = function (name, element, type, token) {
         element.removeEventListener(type, eventData.listener, eventData.options);
     }
 };
+
 const initEvent = function (name, element, type, listener, options) {
     const eventDataName = getDataName(name, type);
     let eventData = eventsData[eventDataName];
@@ -30,6 +33,10 @@ const initEvent = function (name, element, type, listener, options) {
     }
     return eventDataName;
 };
+
+/**
+ * 避免多次绑定同一事件，方便添加 data
+ */
 export default {
     on(name, data, element, type, listener, options) {
         const eventDataName = initEvent(name, element, type, listener, options);
