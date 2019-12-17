@@ -7,11 +7,11 @@
 
 .left {
     float: left;
-    margin-right: 40px;
+    margin-right: var(--navbar-margin-x);
 }
 
 .middle {
-    margin: 0 40px;
+    margin: 0 var(--navbar-margin-x);
 }
 
 .root[alignment="center"] .middle {
@@ -24,7 +24,7 @@
 
 .right {
     float: right;
-    margin-left: 40px;
+    margin-left: var(--navbar-margin-x);
 }
 
 .root[color="inverse"] {
@@ -32,13 +32,13 @@
 }
 
 .root[color="inverse"] .item {
-    color: white;
+    color: var(--navbar-inverse-color);
 }
 
 .root[color="inverse"] .item:hover {
-    color: white;
+    color: var(--navbar-inverse-color);
 }
 
 .root[color="inverse"] .item[selected] {
-    color: white;
+    color: var(--navbar-inverse-color);
 }

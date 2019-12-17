@@ -1,5 +1,5 @@
 .root {
-    margin: 9px 0;
+    margin: var(--sidebar-divider-margin);
     height: 1px;
-    background: var(--border-color-base);
+    background: var(--sidebar-divider-background);
 }

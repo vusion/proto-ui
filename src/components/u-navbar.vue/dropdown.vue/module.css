@@ -6,19 +6,18 @@
     height: var(--navbar-height);
     line-height: var(--navbar-height);
     border: none;
-    padding-left: 10px;
-    padding-right: 30px;
-    font-size: 16px;
+    padding: var(--navbar-dropdown-padding);
+    font-size: var(--font-size-large);
 }
 
 .root:not(:last-child) {
-    margin-right: 30px;
+    margin-right: var(--navbar-dropdown-nolast-margin-right);
 }
 
 .root::after {
     position: absolute;
     icon-font: url('../../i-icon.vue/assets/arrow-down.svg');
-    font-size: 14px;
+    font-size: var(--navbar-dropdown-popper-font-size);
     right: 10px;
     top: 0;
     line-height: var(--navbar-height);
@@ -26,12 +25,12 @@
 
 .popper {
     background: white;
-    font-size: 14px;
+    font-size: var(--navbar-dropdown-popper-font-size);
     width: 100%;
-    line-height: var(--line-height-base);
+    line-height: var(--navbar-dropdown-popper-line-height);
 }
 
 .root[disabled] {
     cursor: var(--cursor-not-allowed);
-    color: var(--brand-disabled);
+    color: var(--navbar-dropdown-color-disabled);
 }

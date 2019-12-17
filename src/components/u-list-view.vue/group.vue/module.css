@@ -3,8 +3,8 @@
 }
 
 .head {
-    padding: 2px 4px;
-    background: var(--background-color-dark);
+    padding: var(--list-view-group-head-padding);
+    background: var(--list-view-group-head-background);
 }
 
 .text {
@@ -22,9 +22,9 @@
     right: 0;
     top: 0;
     z-index: 1;
-    width: 26px;
-    height: 26px;
-    line-height: 24px;
+    width: var(--list-view-group-expander-size);
+    height: var(--list-view-group-expander-size);
+    line-height: var(--list-view-group-expander-size);
     text-align: center;
 }
 

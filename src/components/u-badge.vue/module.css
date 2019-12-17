@@ -5,13 +5,14 @@
 
 .value {
     display: inline-block;
-    line-height: 18px;
-    min-width: 18px;
-    font-size: 12px;
+    text-align: center;
+    line-height: var(--badge-value-line-height);
+    min-width: var(--badge-value-line-height);
+    font-size: var(--font-size-small);
     padding: 0 6px;
     border-radius: 100px;
-    background: var(--brand-error);
-    color: white;
+    background: var(--badge-bg);
+    color: var(--badge-color);
 }
 
 .root[corner] {
@@ -22,14 +23,14 @@
     position: absolute;
     transform: translateX(50%);
     right: 0;
-    top: -9px;
+    top: calc(var(--badge-value-line-height) / -2);
 }
 
 .root[dot] .value {
-    width: 6px;
-    height: 6px;
+    width: var(--badge-dot-size);
+    height: var(--badge-dot-size);
     font-size: 0;
     min-width: auto;
     padding: 0;
-    top: -3px;
+    top: calc(var(--badge-dot-size) / -2);
 }

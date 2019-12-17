@@ -1,4 +1,4 @@
 .root {
     display: inline-block;
-    padding: 4px 12px;
+    padding: var(--parent-child-padding);
 }

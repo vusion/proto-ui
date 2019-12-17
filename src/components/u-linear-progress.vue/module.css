@@ -6,15 +6,15 @@
     overflow: hidden;
     height: var(--linear-progress-height-base);
     line-height: var(--linear-progress-height-base);
-    background: var(--background-color-base);
+    background: var(--linear-progress-track-bg);
 }
 
 .trail {
     width: 0;
     height: 100%;
     float: left;
-    background: var(--brand-primary);
-    font-size: 12px;
-    color: white;
-    transition: width 0.6s ease;
+    background: var(--linear-progress-trail-bg);
+    font-size: var(--linear-progress-trail-font-size);
+    color: var(--linear-progress-trail-color);
+    transition: var(--linear-progress-trail-transition);
 }

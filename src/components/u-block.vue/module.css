@@ -1,6 +1,6 @@
 .root {
     padding: 5px;
-    background: var(--border-color-base);
+    background: var(--block-background);
     color: white;
     text-align: center;
     overflow: hidden;

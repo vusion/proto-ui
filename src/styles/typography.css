@@ -23,11 +23,11 @@ blockquote {
 }
 
 ul, ol {
-    padding-left: 20px;
+    padding-left: var(--olul-padding-left);
 }
 
 dt {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
 }
 
 dd {
@@ -35,22 +35,22 @@ dd {
 }
 
 pre {
-    tab-size: 4;
+    tab-size: var(--tab-size);
     /* Contain overflow in all browsers. */
     overflow: auto;
     background: var(--background-color-light);
     border-radius: var(--border-radius-base);
     padding: 5px 10px;
-    font-size: 12px;
-    font-family: var(--font-family-code);
+    font-size: var(--pre-font-size);
+    font-family: var(--pre-font-family);
 }
 
 code {
     padding: 0 3px;
-    font-size: 12px;
+    font-size: var(--code-font-size);
     font-family: var(--font-family-code);
     background: var(--background-color-light);
-    color: #e0276e;
+    color: var(--code-color);
 }
 
 pre code {
@@ -64,9 +64,9 @@ pre code {
 }
 
 kbd {
-    padding: 1px 3px;
-    font-size: 12px;
-    background: var(--background-color-base);
+    padding: var(--kbd-padding-y) var(--kbd-padding-x);
+    font-size: var(--font-size-small);
+    background: var(--kbd-bg);
     border-radius: var(--border-radius-base);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--kbd-box-shadow);
 }

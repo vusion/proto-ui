@@ -1,6 +1,6 @@
 .root {
     cursor: var(--cursor-pointer);
-    margin-left: 20px;
+    margin-left: var(--tree-view-node-margin-left);
 }
 
 .item {
@@ -19,11 +19,11 @@
 .expander {
     position: absolute;
     z-index: 1;
-    width: 30px;
-    height: 30px;
-    line-height: 28px;
+    width: var(--tree-view-node-expander-size);
+    height: var(--tree-view-node-expander-size);
+    line-height: var(--tree-view-node-expander-size);
     text-align: center;
-    margin-left: -20px;
+    margin-left: calc(var(--tree-view-node-margin-left) * -1);
 }
 
 .expander::before {
@@ -36,14 +36,14 @@
 
 .text {
     position: relative;
-    padding: 4px 12px;
+    padding: var(--tree-view-node-text-padding);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .item:hover .back {
-    background: var(--background-color-base);
+    background: var(--tree-view-node-background-active);
 }
 
 .item:focus {
@@ -51,7 +51,7 @@
 }
 
 .item:focus .back {
-    background: var(--background-color-base);
+    background: var(--tree-view-node-background-active);
 }
 
 .item[readonly] {
@@ -59,31 +59,31 @@
 }
 
 .item[readonly] .back {
-    background: none;
+    background: var(--tree-view-node-background-readonly);
 }
 
 .item[selected] .back {
-    background: var(--brand-primary);
+    background: var(--tree-view-node-background-selected);
 }
 
 .item[selected] .text {
-    color: white;
+    color: var(--tree-view-node-selected-text-color);
 }
 
 .item[selected] .expander {
-    color: white;
+    color: var(--tree-view-node-selected-expander-color);
 }
 
 .item[disabled] {
     /* @Private */
     cursor: var(--cursor-not-allowed);
-    color: var(--brand-disabled);
+    color: var(--tree-view-node-disabled-color);
 }
 
 .item[disabled] .back {
-    background: none;
+    background: var(--tree-view-node-background-disabled);
 }
 
 .item[selected][disabled] .back {
-    background: var(--brand-disabled-light);
+    background: var(--tree-view-node-background-selected-disabled);
 }

@@ -7,22 +7,22 @@
 }
 
 .head {
-    padding: 6px 10px;
+    padding: var(--popup-padding);
     background: var(--popup-background-head-color);
     border-bottom: 1px solid var(--popup-border-color);
 }
 
 .title {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
 }
 
 .body {
-    padding: 6px 10px;
+    padding: var(--popup-padding);
 }
 
 .foot {
     border-top: 1px solid var(--popup-border-color);
-    padding: 6px 10px;
+    padding: var(--popup-padding);
 }
 
 .arrow {

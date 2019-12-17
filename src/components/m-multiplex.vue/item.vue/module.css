@@ -4,30 +4,30 @@
     cursor: var(--cursor-pointer);
 
     /* @Public */
-    padding: 4px 12px;
+    padding: var(--multiplex-item-padding);
 }
 
 .root:hover {
-    background: var(--background-color-base);
+    background: var(--multiplex-background-hover);
 }
 
 .root[readonly] {
     cursor: default;
-    background: none;
+    background: var(--multiplex-background-readonly);
 }
 
 .root[selected] {
-    background: var(--brand-primary);
-    color: white;
+    background: var(--multiplex-background-selected);
+    color: var(--multiplex-color-selected);
 }
 
 .root[disabled] {
     /* @Private */
     cursor: var(--cursor-not-allowed);
-    background: none;
-    color: var(--brand-disabled);
+    background: var(--multiplex-background-disabled);
+    color: var(--multiplex-color-disabled);
 }
 
 .root[selected][disabled] {
-    background: var(--brand-disabled-light);
+    background: var(--multiplex-background-selected-disabled);
 }

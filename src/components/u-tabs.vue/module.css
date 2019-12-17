@@ -2,8 +2,8 @@
 
 .head {
     user-select: none;
-    height: 32px;
-    border-bottom: 1px solid var(--border-color-base);
+    height: var(--tabs-head-height);
+    border-bottom: 1px solid var(--tabs-border-color);
 }
 
 .item {
@@ -11,35 +11,35 @@
     display: inline-block;
     box-sizing: content-box;
 
-    height: 30px;
-    line-height: 30px;
-    padding: 0 20px;
+    height: var(--tabs-item-height);
+    line-height: calc(var(--tabs-item-height) - var(--tabs-item-border-width) * 2);
+    padding: var(--tabs-item-padding);
 
-    border: 1px solid transparent;
+    border: var(--tabs-item-border-width) solid transparent;
     border-bottom: none;
     margin-bottom: -1px;
 }
 
 .item:hover {
-    background: var(--background-color-base);
+    background: var(--tabs-item-background-hover);
 }
 
 .item[selected] {
-    background: white;
-    border-color: var(--border-color-base);
-    color: var(--brand-primary);
+    background: var(--tabs-item-background-selected);
+    border-color: var(--tabs-item-border-color-selected);
+    color: var(--tabs-item-color-selected);
     border-bottom-color: transparent;
     padding-bottom: 1px;
 }
 
 .item[disabled] {
-    background: none;
-    color: var(--brand-disabled);
+    background: var(--tabs-item-background-disabled);
+    color: var(--tabs-item-color-disabled);
     cursor: var(--cursor-not-allowed);
 }
 
 .item[selected][disabled] {
-    background: white;
+    background: var(--tabs-item-background-selected-disabled);
 }
 
 .close::before {

@@ -1,7 +1,7 @@
 .root {
     display: inline-block;
-    width: var(--sidebar-width);
-    height: var(--navbar-height);
+    width: var(--logo-width);
+    height: var(--logo-height);
     background: url('./assets/logo.svg') 20px center no-repeat;
     vertical-align: top;
 }
@@ -10,7 +10,7 @@
     display: inline-block;
     white-space: nowrap;
     color: var(--color-base);
-    line-height: 73px;
+    line-height: var(--logo-height);
     margin-left: 145px;
     font-size: 20px;
 }
@@ -24,5 +24,5 @@
 }
 
 .root[color="inverse"] .sub {
-    color: white;
+    color: var(--background-color-default);
 }

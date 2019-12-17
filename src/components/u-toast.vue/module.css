@@ -1,14 +1,14 @@
 .root {
     position: fixed;
     z-index: var(--z-index-toast);
-    top: 90px;
+    top: var(--toast-top);
     left: var(--toast-margin);
-    width: 300px;
+    width: var(--toast-width);
 }
 
 .root[position='top-center'], .root[position='bottom-center'] {
     left: 50%;
-    margin-left: -150px;
+    margin-left: calc(var(--toast-width) / -2);
 }
 
 .root[position='bottom-center'], .root[position='bottom-left'], .root[position='bottom-right'] {
@@ -27,7 +27,7 @@
 }
 
 .root[position='top-left'], .root[position='top-center'], .root[position='top-right'] {
-    top: 90px;
+    top: var(--toast-top);
     bottom: auto;
 }
 
@@ -37,19 +37,19 @@
 }
 
 .item {
-    margin-bottom: 10px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
+    margin-bottom: var(--toast-item-space);
+    padding: var(--toast-item-padding);
+    background: var(--toast-background-color);
+    color: var(--toast-item-color);
 }
 
 .close {
     float: right;
-    color: white;
+    color: var(--toast-close-color);
 }
 
 .close::before {
     content: '×';
-    font-size: 18px;
+    font-size: var(--toast-close-font-size);
     line-height: 0.8;
 }

@@ -2,9 +2,9 @@
 
 .sizer {
     text-align: left;
-    width: 100px;
+    width: var(--combo-pagination-sizer-width);
 }
 
 .jumper {
-    width: 50px;
+    width: var(--combo-pagination-jumper-width);
 }

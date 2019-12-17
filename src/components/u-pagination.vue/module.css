@@ -9,33 +9,33 @@
     display: inline-block;
     text-decoration: none;
 
-    padding: 0 10px;
+    padding: var(--pagination-item-padding);
     min-width: var(--pagination-item-size);
     height: var(--pagination-item-size);
     line-height: var(--pagination-item-size);
-    font-size: 12px;
+    font-size: var(--font-size-small);
     text-align: center;
-    background: var(--background-color-base);
-    color: var(--color-base);
+    background: var(--pagination-item-background);
+    color: var(--pagination-item-color);
     cursor: var(--cursor-pointer);
 }
 
 .item:hover {
-    color: var(--brand-primary);
+    color: var(--pagination-item-color-hover);
 }
 
 .item[selected] {
-    background: var(--brand-primary);
-    color: white;
+    background: var(--pagination-item-background-selected);
+    color: var(--pagination-item-color-selected);
 }
 
 .item[disabled] {
     cursor: var(--cursor-not-allowed);
-    color: var(--brand-disabled);
+    color: var(--pagination-item-color-disabled);
 }
 
 .item[role="prev"] {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     padding: 0 4px;
     vertical-align: top;
 }
@@ -45,7 +45,7 @@
 }
 
 .item[role="next"] {
-    font-size: 16px;
+    font-size: var(--font-size-large);
     padding: 0 4px;
     vertical-align: top;
 }
@@ -55,8 +55,8 @@
 }
 
 .item[role="blank"] {
-    background: none;
-    color: var(--color-base);
+    background: var(--pagination-item-background-blank);
+    color: var(--pagination-item-color-blank);
     cursor: initial;
 }
 
@@ -65,17 +65,17 @@
 }
 
 .root[disabled] .item {
-    color: var(--brand-disabled);
+    color: var(--pagination-item-color-disabled);
     cursor: var(--cursor-not-allowed);
 }
 
 .root[disabled] .item[role="blank"] {
-    color: var(--brand-disabled);
+    color: var(--pagination-item-blank-color-disabled);
     cursor: initial;
 }
 
 .root[disabled] .item[selected] {
-    background: var(--brand-disabled-light);
+    background: var(--pagination-item-background-disabled-selected);
 }
 
 .root[display="inline"] {

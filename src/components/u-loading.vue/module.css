@@ -1,12 +1,19 @@
 .root {
     display: inline-block;
     text-align: center;
-    color: var(--brand-disabled);
+    color: var(--loading-color);
 }
 
-.root[size="small"] .icon { font-size: 14px; }
-.root .icon { font-size: 24px; vertical-align: -4px; }
-.root[size="large"] .icon { font-size: 40px; }
+.root[size="small"] .icon {
+    font-size: var(--loading-font-size-small);
+}
+.root .icon {
+    font-size: var(--loading-font-size-base);
+    vertical-align: -4px;
+}
+.root[size="large"] .icon {
+    font-size: var(--loading-font-size-large);
+}
 
 .root[display="block"] {
     display: block;
@@ -19,7 +26,7 @@
     top: 0;
     bottom: 0;
     z-index: 99;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--loading-full-background);
 }
 
 .root[display="full"] .body {
@@ -36,7 +43,7 @@
     top: 0;
     bottom: 0;
     z-index: var(--z-index-loading);
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--loading-fullWindow-background);
 }
 
 .root[display="fullWindow"] .body {

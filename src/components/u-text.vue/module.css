@@ -7,27 +7,27 @@
 }
 
 .root[size="small"] {
-    font-size: 12px;
+    font-size: var(--text-font-size-small);
 }
 
 .root[size="normal"] { /* As default */ }
 
 .root[size="large"] {
-    font-size: 18px;
+    font-size: var(--text-font-size-large);
 }
 
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: var(--brand-primary);
+    color: var(--text-primary-color);
 }
 
 .root[color="error"] {
-    color: var(--brand-error);
+    color: var(--text-error-color);
 }
 
 .root[color="disabled"] {
-    color: var(--brand-disabled);
+    color: var(--text-disabled-color);
 }
 
 .root[wrap="ellipsis"] {

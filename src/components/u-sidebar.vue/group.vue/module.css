@@ -3,10 +3,10 @@
 }
 
 .head {
-    font-weight: bold;
-    color: #a7afbb;
-    padding-left: 20px;
-    line-height: 40px;
+    font-weight: var(--font-weight-bold);
+    color: var(--sidebar-group-head-color);
+    padding-left: var(--sidebar-group-head-padding-left);
+    line-height: var(--sidebar-group-head-line-height);
 }
 
 .text {
@@ -20,9 +20,9 @@
     right: 0;
     top: 0;
     z-index: 1;
-    width: 26px;
-    height: 26px;
-    line-height: 40px;
+    width: var(--sidebar-expander-size);
+    height: var(--sidebar-expander-size);
+    line-height: var(--sidebar-group-head-line-height);
     text-align: center;
 }
 
@@ -39,5 +39,5 @@
 }
 
 .root[disabled] .expander {
-    color: var(--brand-disabled);
+    color: var(--sidebar-disabled-expander-color);
 }

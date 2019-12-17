@@ -1,13 +1,13 @@
 .root {
-    padding: 2px 6px;
-    font-size: 12px;
-    background: var(--background-color-base);
+    padding: var(--label-padding-y) var(--label-padding-x);
+    font-size: var(--font-size-small);
+    background: var(--label-background);
     border-radius: var(--border-radius-base);
 }
 
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: white;
-    background: var(--brand-primary);
+    color: var(--label-primary-color);
+    background: var(--label-primary-bg);
 }

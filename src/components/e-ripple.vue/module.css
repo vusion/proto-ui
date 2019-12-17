@@ -2,23 +2,23 @@
     display: block;
     position: absolute;
     z-index: 9000;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--ripple-background-color);
     border-radius: 100%;
-    width: 100px;
-    height: 100px;
-    margin-left: -50px;
-    margin-top: -50px;
+    width: var(--ripple-size);
+    height: var(--ripple-size);
+    margin-left: calc(var(--ripple-size) / -2);
+    margin-top: calc(var(--ripple-size) / -2);
     transform: scale(0);
     cursor: var(--cursor-pointer);
     pointer-events: none;
 }
 
 .root[color="light"] {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--ripple-light-background-color);
 }
 
 .root[animated] {
-    transition: transform 1s, background-color 1s;
+    transition: var(--ripple-transition);
     transform: scale(12);
     background-color: transparent;
 }

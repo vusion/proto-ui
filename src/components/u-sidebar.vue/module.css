@@ -1,6 +1,6 @@
 .root {
     user-select: none;
-    background: var(--background-color-base);
+    background: var(--sidebar-background);
     height: 100%;
     overflow: auto;
 }

@@ -27,14 +27,14 @@
     icon-font: url('../i-icon.vue/assets/check.svg');
     color: transparent;
     vertical-align: -2px;
-    font-size: 13px;
+    font-size: var(--font-size-small);
 }
 
 .box[status="true"]::before {
     icon-font: url('../i-icon.vue/assets/check.svg');
     color: var(--brand-primary);
     vertical-align: -2px;
-    font-size: 13px;
+    font-size: var(--font-size-small);
 }
 
 .box[status="null"]::before {
