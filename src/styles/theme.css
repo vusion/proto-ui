@@ -151,7 +151,7 @@
     --logo-width: var(--sidebar-width);
     --logo-height: var(--navbar-height);
 
-    /* Grid-layout */
+    /* Grid Layout */
     --grid-layout-margin-small: calc(var(--margin-small) / 2);
     --grid-layout-margin-large: calc(var(--margin-large) / 2);
     --grid-layout-margin-base: calc(var(--margin-base) / 2);
@@ -175,7 +175,7 @@
     --table-border-color: var(--border-color-base);
     --table-border-width: 1px;
 
-    /* Form-table */
+    /* Form Table */
     --form-table-button-font-size: var(--font-size-huge);
 
     /* Article */
@@ -289,7 +289,7 @@
     --pagination-item-color-blank: var(--color-base);
     --pagination-item-blank-color-disabled: var(--brand-disabled);
 
-    /* Combo-pagination */
+    /* Combo Pagination */
     --combo-pagination-sizer-width: 100px;
     --combo-pagination-jumper-width: 50px;
 
@@ -336,7 +336,7 @@
     --textarea-min-height: var(--height-base);
     --textarea-padding: 4px 8px;
 
-    /* Number-input */
+    /* Number Input */
     --number-input-height: 14px;
     --number-input-line-height: var(--number-input-height);
     --number-input-padding: 0 4px;
@@ -419,7 +419,7 @@
     --slider-handle-size: 100px;
     --slider-handle-border: 1px solid #ddd;
 
-    /* Combo-slider */
+    /* Combo Slider */
     --combo-slider-slider-width: 160px;
     --combo-slider-input-width: 60px;
     --combo-slider-input-left: 10px;
@@ -504,7 +504,7 @@
     --tooltip-color: var(--color-white);
     --tooltip-padding: 4px 8px;
 
-    /* IconTooltip */
+    /* Icon Tooltip */
     --icon-tooltip-color: #bac2cf;
 
     /* Loading */
@@ -533,7 +533,7 @@
     /* Uploader */
     --uploader-input-font-size: 100px;
 
-    /* Linear-progress */
+    /* Linear Progress */
     --linear-progress-track-background: var(--background-color-base);
     --linear-progress-height-base: 12px;
     --linear-progress-trail-background: var(--brand-primary);
@@ -541,7 +541,7 @@
     --linear-progress-trail-font-size: var(--font-size-small);
     --linear-progress-trail-color: var(--color-white);
 
-    /* Circular-progress */
+    /* Circular Progress */
     --circular-progress-size-base: 100px;
     --circular-progress-stroke-width: 6px;
     --circular-progress-track-stroke: var(--background-color-base);
@@ -593,7 +593,7 @@
     --drawer-foot-padding: 20px 15px;
     --drawer-static-padding: var(--margin-base);
 
-    /* modal */
+    /* Modal */
     --modal-dialog-width: 400px;
     --modal-dialog-width-small: 300px;
     --modal-dialog-width-large: 600px;
