@@ -7,7 +7,7 @@
     width: var(--select-width);
     height: var(--select-height);
     line-height: calc(var(--select-height) - var(--select-border-width) * 2);
-    padding: var(--select-pading);
+    padding: var(--select-padding);
     background: var(--select-background);
     border: var(--select-border-width) solid var(--select-border-color);
 }

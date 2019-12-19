@@ -7,11 +7,11 @@
 
 .left {
     float: left;
-    margin-right: var(--navbar-margin-x);
+    margin-right: var(--navbar-space-x);
 }
 
 .middle {
-    margin: 0 var(--navbar-margin-x);
+    margin: 0 var(--navbar-space-x);
 }
 
 .root[alignment="center"] .middle {
@@ -24,21 +24,21 @@
 
 .right {
     float: right;
-    margin-left: var(--navbar-margin-x);
+    margin-left: var(--navbar-space-x);
 }
 
 .root[color="inverse"] {
-    background-color: var(--brand-primary);
+    background-color: var(--navbar-background-inverse);
 }
 
 .root[color="inverse"] .item {
-    color: var(--navbar-inverse-color);
+    color: var(--navbar-item-color-inverse);
 }
 
 .root[color="inverse"] .item:hover {
-    color: var(--navbar-inverse-color);
+    color: var(--navbar-item-color-inverse);
 }
 
 .root[color="inverse"] .item[selected] {
-    color: var(--navbar-inverse-color);
+    color: var(--navbar-item-color-inverse);
 }

@@ -1,6 +1,6 @@
 .root {
     padding: var(--label-padding-y) var(--label-padding-x);
-    font-size: var(--font-size-small);
+    font-size: var(--label-font-size);
     background: var(--label-background);
     border-radius: var(--border-radius-base);
 }
@@ -8,6 +8,6 @@
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: var(--label-primary-color);
-    background: var(--label-primary-bg);
+    color: var(--label-color-primary);
+    background: var(--label-background-primary);
 }

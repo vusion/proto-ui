@@ -108,7 +108,7 @@
 
 .root > table th, .root > table td {
     padding: 4px 8px;
-    font-size: var(--article-tabel-font-size);
+    font-size: var(--article-table-font-size);
     border: 1px solid var(--border-color-base);
 }
 

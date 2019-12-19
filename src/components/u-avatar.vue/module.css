@@ -20,8 +20,8 @@
 }
 
 .root[size="mini"] {
-    width: var(--avatar-size-min);
-    height: var(--avatar-size-min);
+    width: var(--avatar-size-mini);
+    height: var(--avatar-size-mini);
 }
 
 .root[size="small"] {

@@ -6,7 +6,7 @@
     user-select: none;
     cursor: var(--cursor-pointer);
     padding: var(--collapse-head-padding);
-    background: var(--collapse-head-bg);
+    background: var(--collapse-head-background);
     overflow: hidden;
 }
 

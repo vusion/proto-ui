@@ -18,7 +18,7 @@
 }
 
 .root[selected] {
-    background-color: var(--sidebar-item-background-color-selected);
+    background: var(--sidebar-item-background-selected);
     color: var(--sidebar-item-color-selected);
 }
 

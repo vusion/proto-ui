@@ -19,15 +19,15 @@
 .root[color="default"] { /* As default */ }
 
 .root[color="primary"] {
-    color: var(--text-primary-color);
+    color: var(--text-color-primary);
 }
 
 .root[color="error"] {
-    color: var(--text-error-color);
+    color: var(--text-color-error);
 }
 
 .root[color="disabled"] {
-    color: var(--text-disabled-color);
+    color: var(--text-color-disabled);
 }
 
 .root[wrap="ellipsis"] {

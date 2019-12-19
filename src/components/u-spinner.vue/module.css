@@ -5,7 +5,7 @@
 }
 .root {
     display: inline-block;
-    animation: var(--spinner-animation);
+    animation: spin infinite linear var(--spinner-animation-duration);
 }
 
 .root::before {

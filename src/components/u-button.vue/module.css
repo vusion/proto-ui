@@ -22,11 +22,11 @@
     text-align: center;
     padding: var(--button-padding-y) var(--button-padding-x);
     height: var(--button-height);
-    line-height: var(--button-line-height);
+    line-height: calc(var(--button-height) - var(--button-border-width) * 2 - var(--button-padding-y) * 2);
     /* stylelint-disable declaration-block-no-duplicate-properties */
     background: var(--button-background);
     color: var(--button-color);
-    border: var(--border-width-base) solid var(--button-border-color);
+    border: var(--button-border-width) solid var(--button-border-color);
 }
 
 .root:hover {

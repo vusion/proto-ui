@@ -1,10 +1,10 @@
 .root {
-    margin-left: var(--root-node-margin-left);
+    margin-left: 20px;
 }
 
 .text {
     position: relative;
-    padding: var(--root-node-padding);
+    padding: 4px 12px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

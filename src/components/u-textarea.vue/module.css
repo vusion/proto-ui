@@ -3,7 +3,7 @@
 .root {
     width: var(--textarea-width);
     height: var(--textarea-height);
-    min-width: var(--textarea-min-width);
+    min-width: var(--textarea-width-mini);
     min-height: var(--textarea-min-height);
     padding: var(--textarea-padding);
     line-height: inherit;

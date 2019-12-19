@@ -12,18 +12,18 @@ h6 {
 
 hr {
     border: none;
-    border-top: 1px solid var(--border-color-base);
+    border-top: 1px solid var(--hr-border-color);
 }
 
 blockquote {
     margin-left: 0;
     margin-right: 0;
-    padding: 8px 16px;
+    padding: var(--blockquote-padding);
     border-left: 4px solid var(--border-color-base);
 }
 
 ul, ol {
-    padding-left: var(--olul-padding-left);
+    padding-left: var(--ulol-padding-left);
 }
 
 dt {
@@ -40,16 +40,16 @@ pre {
     overflow: auto;
     background: var(--background-color-light);
     border-radius: var(--border-radius-base);
-    padding: 5px 10px;
+    padding: var(--code-padding-y) var(--code-padding-x);
     font-size: var(--pre-font-size);
     font-family: var(--pre-font-family);
 }
 
 code {
-    padding: 0 3px;
+    padding: var(--code-padding-y) var(--code-padding-x);
     font-size: var(--code-font-size);
     font-family: var(--font-family-code);
-    background: var(--background-color-light);
+    background: var(--code-background);
     color: var(--code-color);
 }
 
@@ -65,8 +65,8 @@ pre code {
 
 kbd {
     padding: var(--kbd-padding-y) var(--kbd-padding-x);
-    font-size: var(--font-size-small);
-    background: var(--kbd-bg);
-    border-radius: var(--border-radius-base);
+    font-size: var(--kbd-font-size);
+    background: var(--kbd-background);
+    border-radius: var(--kbd-border-radius);
     box-shadow: var(--kbd-box-shadow);
 }

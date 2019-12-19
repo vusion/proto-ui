@@ -11,7 +11,7 @@
     font-size: var(--font-size-small);
     padding: 0 6px;
     border-radius: 100px;
-    background: var(--badge-bg);
+    background: var(--badge-background);
     color: var(--badge-color);
 }
 

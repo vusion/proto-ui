@@ -10,7 +10,7 @@
 
 .root th {
     text-align: left;
-    border-bottom: var(--table-border-width) solid var(--table-border-color-base);
+    border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 
 .root th, .root td {
@@ -18,21 +18,21 @@
 }
 
 .root[line="both"] th, .root[line="both"] td {
-    border: var(--table-border-width) solid var(--table-border-color-base);
+    border: var(--table-border-width) solid var(--table-border-color);
 }
 
 .root[line="horizontal"] th, .root[line="horizontal"] td {
-    border-top: var(--table-border-width) solid var(--table-border-color-base);
-    border-bottom: var(--table-border-width) solid var(--table-border-color-base);
+    border-top: var(--table-border-width) solid var(--table-border-color);
+    border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 
 .root[line="vertical"] th, .root[line="vertical"] td {
-    border-left: var(--table-border-width) solid var(--table-border-color-base);
-    border-right: var(--table-border-width) solid var(--table-border-color-base);
+    border-left: var(--table-border-width) solid var(--table-border-color);
+    border-right: var(--table-border-width) solid var(--table-border-color);
 }
 
 .root[striped] > tbody > tr:nth-of-type(odd) {
-    background: var(--table-striped-row-odd-background);
+    background: var(--table-row-striped-background);
 }
 
 .root[hover] > tbody > tr:hover {

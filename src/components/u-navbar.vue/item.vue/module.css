@@ -4,14 +4,14 @@
     user-select: none;
     cursor: var(--cursor-pointer);
     text-align: center;
-    font-size: var(--font-size-large);
+    font-size: var(--navbar-item-font-size);
     padding: var(--navbar-item-padding);
     height: var(--navbar-height);
     line-height: var(--navbar-height);
 }
 
 .root:not(:last-child) {
-    margin-right: var(--navbar-item-nolast-margin-right);
+    margin-right: var(--navbar-item-space);
 }
 
 .root:hover {
