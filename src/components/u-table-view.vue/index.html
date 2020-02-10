@@ -29,7 +29,8 @@
                             @click="sortTrigger === 'icon' && ($event.stopPropagation(), onClickSort(columnVM))"></span>
                         <!-- Filterable -->
                         <span v-if="columnVM.filters" :class="$style.filter">
-                            <u-table-view-filters :value="getFiltersValue(columnVM.field)" @select="onSelectFilters(columnVM.field, $event)">
+                            <u-table-view-filters :value="getFiltersValue(columnVM.field)" @select="onSelectFilters(columnVM.field, $event)"
+                                :style="{ width: columnVM.computedWidth + 'px' }">
                                 <u-table-view-filter v-for="filter in columnVM.filters" :key="filter.value" :value="filter.value">{{ filter.text }}</u-table-view-filter>
                             </u-table-view-filters>
                         </span>
