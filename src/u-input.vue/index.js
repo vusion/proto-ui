@@ -8,6 +8,7 @@ export default {
         color: { type: String },
         readonly: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
+        autoSize: { type: String, validator: (value) => ['horizontal', 'vertical', 'both'].includes(value) },
     },
     data() {
         return {
@@ -37,8 +38,14 @@ export default {
             this.currentColor = color;
         },
     },
+    mounted() {
+        if (this.autoSize)
+            this.autoResize();
+    },
     methods: {
         onInput(e) {
+            if (this.autoSize)
+                this.autoResize();
             if (!this.compositionInputing) {
                 this.currentValue = e.target.value;
                 this.$emit('input', this.currentValue);
@@ -66,6 +73,19 @@ export default {
         },
         blur() {
             this.$refs.input.blur();
+        },
+        autoResize() {
+            const inputEl = this.$refs.input;
+            if (this.autoSize === 'both' || this.autoSize === 'horizontal') {
+                inputEl.style.width = '3px';
+                this.$el.style.width = inputEl.scrollWidth + (this.$el.offsetWidth - this.$el.clientWidth) + 'px';
+                inputEl.style.width = '';
+            }
+            if (this.autoSize === 'both' || this.autoSize === 'vertical') {
+                inputEl.style.height = '3px';
+                this.$el.style.height = inputEl.scrollHeight + (this.$el.offsetHeight - this.$el.clientHeight) + 'px';
+                inputEl.style.height = '';
+            }
         },
     },
 };

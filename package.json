@@ -5,6 +5,7 @@
   "author": "Rainfore <rainforest92@126.com>",
   "main": "./src/index.js",
   "scripts": {
+    "dev": "npx vusion doc",
     "lint": "eslint --fix ./src/**/*.{js,vue} && stylelint --fix ./src/**/*.css",
     "precommit": "node node_modules/vusion-hooks/precommit"
   },
@@ -47,7 +48,8 @@
     "stylelint-config-vusion": "^1.1.2",
     "vue": "^2.5.0",
     "vusion-hooks": "^0.2.0",
-    "vusion-utils": "^0.2.7"
+    "vusion-utils": "^0.2.7",
+    "vusion-cli": "^0.8.17"
   },
   "peerDependencies": {
     "vue": "^2.5.0",
