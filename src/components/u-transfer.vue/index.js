@@ -11,55 +11,36 @@ export const UTransfer = {
         };
     },
     methods: {
-        reverse() {
+        transfer(source, target, values) {
             const transfer = [];
-            for (let i = 0; i < this.target.length; i++) {
-                const item = this.target[i];
-                if (this.targetValues.includes(item.value)) {
-                    this.target.splice(i--, 1);
-                    this.source.push(item);
+            for (let i = 0; i < source.length; i++) {
+                const item = source[i];
+                if (values.includes(item.value)) {
+                    source.splice(i--, 1);
+                    target.push(item);
                     transfer.push(item);
                 }
             }
-            const transferValues = Array.from(this.targetValues);
-            this.targetValues = [];
+            const newTransferValues = Array.from(values);
+            values.splice(0, values.length);
             this.$emit('transfer', {
-                source: this.source,
-                target: this.target,
+                source,
+                target,
                 transfer,
-                transferValues,
+                transferValues: newTransferValues,
             }, this);
             this.$emit('change', {
-                source: this.source,
-                target: this.target,
+                source,
+                target,
                 transfer,
-                transferValues,
+                transferValues: newTransferValues,
             }, this);
         },
         forward() {
-            const transfer = [];
-            for (let i = 0; i < this.source.length; i++) {
-                const item = this.source[i];
-                if (this.sourceValues.includes(item.value)) {
-                    this.source.splice(i--, 1);
-                    this.target.push(item);
-                    transfer.push(item);
-                }
-            }
-            const transferValues = Array.from(this.sourceValues);
-            this.sourceValues = [];
-            this.$emit('transfer', {
-                source: this.source,
-                target: this.target,
-                transfer,
-                transferValues,
-            }, this);
-            this.$emit('change', {
-                source: this.source,
-                target: this.target,
-                transfer,
-                transferValues,
-            }, this);
+            this.transfer(this.source, this.target, this.sourceValues);
+        },
+        reverse() {
+            this.transfer(this.target, this.source, this.targetValues);
         },
     },
 };
