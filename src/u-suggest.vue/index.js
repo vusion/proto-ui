@@ -153,6 +153,8 @@ export default {
 
                 if (result instanceof Promise)
                     return result.then(then).catch(() => this.loading = false);
+                else if (result && typeof result.then === 'function' && typeof result.catch === 'function')
+                    return result.then(then).catch(() => this.loading = false);
                 else if (result instanceof Array)
                     return Promise.resolve(result).then(then);
                 else
